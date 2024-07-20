@@ -15,32 +15,96 @@
 
         <!-- Critical CSS -->
         <style>
-            .hidden-until-loaded {
-                display: none;
+            @font-face {
+                font-family: HK Grotesk;
+                src: url("https://cdn.glitch.me/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Regular.otf?v=1603136326027")
+                    format("opentype");
             }
-            /* Additional CSS for social icons */
+            @font-face {
+                font-family: HK Grotesk;
+                font-weight: bold;
+                src: url("https://cdn.glitch.me/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Bold.otf?v=1603136323437")
+                    format("opentype");
+            }
+
+            :root {
+                --color-bg: #8da7d8;
+                --color-bg-alt: #c2d8f0;
+                --color-text-main: #303436;
+                --color-primary: #fffdfe;
+                --theme-color-title: #fffdfe;
+                --font-family: "HK Grotesk";
+                --font-family-header: "HK Grotesk";
+                --font-family-list: Menlo, Consolas, Monaco, "Lucida Console",
+                    monospace;
+            }
+            body {
+                font-family: var(--font-family);
+                background: fixed linear-gradient(0deg, #c2d8f0, #8da7d8);
+                color: var(--color-text-main);
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                text-align: center;
+            }
+            h1 {
+                font-family: var(--font-family-header);
+                font-size: 3rem;
+                color: var(--theme-color-title);
+            }
+            p {
+                font-size: 1rem;
+                color: var(--color-text-main);
+                margin: 0.5rem 0;
+            }
+            a {
+                text-decoration: none;
+                color: var(--color-text-main);
+                font-size: 1rem;
+                border: 2px solid var(--color-primary);
+                border-radius: 10px;
+                padding: 0.5rem 1rem;
+                display: block;
+                width: 300px;
+                margin: 0.5rem 0;
+                transition: background 0.3s, border 0.3s;
+            }
+            a:hover,
+            a:focus {
+                background: var(--color-primary);
+                border: 2px solid var(--theme-color-title);
+            }
             .social-icons {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                gap: 20px; /* Space between icons */
+                gap: 20px;
                 margin-top: 20px;
             }
             .social-icons a {
-                transition: transform 0.3s ease; /* Smooth transformation for hover effects */
+                transition: transform 0.3s ease;
             }
             .social-icons a:hover {
-                transform: scale(1.1); /* Enlarges icons slightly on hover */
+                transform: scale(1.1);
             }
             .social-icons i,
             .social-icons svg {
-                font-size: 30px; /* Set size of icons */
+                font-size: 30px;
                 width: 30px;
                 height: 30px;
                 vertical-align: middle;
             }
             .social-icons svg {
                 display: inline-block;
+            }
+            img.rounded-full {
+                border-radius: 50%;
+                width: 140px;
+                height: 140px;
+                margin-bottom: 20px;
             }
         </style>
 
@@ -77,48 +141,23 @@
         </script>
         <link rel="stylesheet" href="/output.css" />
     </head>
-    <body class="bg-black">
-        <div
-            class="break-normal px-6 text-white grid items-center place-items-center pt-6 sm-pt-2 font-ubuntu"
+    <body>
+        <img
+            class="rounded-full"
+            src="me.avif"
+            alt="thebenmeadows profile pic"
+        />
+        <h1>TheBenMeadows</h1>
+        <p>Founder ⬩ Artist ⬩ Technologist</p>
+        <a href="https://blog.thebenmeadows.com">My Art & Tech Blog</a>
+        <a href="https://index.thebenmeadows.com">Index of All Art Pieces</a>
+        <a href="https://art.thebenmeadows.com">Artist Profile (Outdated)</a>
+        <a href="https://thehug.xyz/artists/thebenmeadows"
+            >HUG Artist Profile (Outdated)</a
         >
-            <img
-                class="rounded-full mt-4 w-24 h-24 mb-3"
-                src="me.avif"
-                alt="thebenmeadows profile pic"
-            />
-            <h1 class="text-base font-medium">TheBenMeadows</h1>
-            <p
-                class="mb-5 max-w-screen-md items-center text-neutral-400 font-semibold text-center text-sm px-6"
-            >
-                Founder ⬩ Artist ⬩ Technologist
-            </p>
-            <h3 class="p-4 text-base font-medium">Websites</h3>
-            <a
-                class="rounded-xl p-7 max-w-screen-md flex flex-col w-full sm:w-5/12 h-10 bg-zinc-800 justify-center items-center m-1"
-                href="https://blog.thebenmeadows.com"
-                >My Art & Tech Blog</a
-            >
-            <a
-                class="rounded-xl p-7 max-w-screen-md flex flex-col w-full sm:w-5/12 h-10 bg-zinc-800 justify-center items-center m-1"
-                href="https://index.thebenmeadows.com"
-                >Index of All Art Pieces</a
-            >
-            <a
-                class="rounded-xl p-7 max-w-screen-md flex flex-col w-full sm:w-5/12 h-10 bg-zinc-800 justify-center items-center m-1"
-                href="https://art.thebenmeadows.com"
-                >Artist Profile (Outdated)</a
-            >
-            <a
-                class="rounded-xl p-7 max-w-screen-md flex flex-col w-full sm:w-5/12 h-10 bg-zinc-800 justify-center items-center m-1"
-                href="https://thehug.xyz/artists/thebenmeadows"
-                >HUG Artist Profile (Outdated)</a
-            >
-            <h3 class="p-5 text-base font-medium mt-4">Projects</h3>
-            <a
-                class="rounded-xl p-7 max-w-screen-md flex flex-col w-full sm:w-5/12 h-10 bg-zinc-800 justify-center items-center mb-3"
-                href="https://dailymuse.thebenmeadows.com"
-                >#DailyMuse (6 Months of Daily Art)</a
-            >
+        <a href="https://dailymuse.thebenmeadows.com"
+            >#DailyMuse (6 Months of Daily Art)</a
+        >
 
             <div class="social-icons">
                 <!-- Bluesky -->
