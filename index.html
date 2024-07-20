@@ -15,7 +15,20 @@
           .hidden-until-loaded {
             display: none;
           }
-          /* Add other critical CSS here if needed */
+          /* Additional CSS for social icons */
+          .social-icons a {
+            margin: 0 10px; /* Adds horizontal space between icons */
+            transition: transform 0.3s ease; /* Smooth transformation for hover effects */
+          }
+
+          .social-icons a:hover {
+            transform: scale(1.1); /* Enlarges icons slightly on hover */
+          }
+
+          .social-icons i {
+            width: 30px; /* Set width of icons */
+            height: 30px; /* Set height of icons */
+          }
         </style>
 
     <!-- Favicon Icons -->
@@ -57,7 +70,8 @@
         <h3 class="p-5 text-base font-medium mt-4">Projects</h3>
         <a class="rounded-xl p-7 max-w-screen-md flex flex-col w-full sm:w-5/12 h-10 bg-zinc-800 justify-center items-center mb-3" href="https://dailymuse.thebenmeadows.com">#DailyMuse (6 Months of Daily Art)</a>
 
-        <div class="inline-flex w-56 justify-evenly mt-4 text-xl duration-1000 ">
+
+        <div class="social-icons inline-flex w-56 justify-evenly mt-4 text-xl duration-1000 ">
             <!-- Bluesky -->
             <!--
             <a href="https://bsky.app/profile/thebenmeadows.com" target="_blank">
