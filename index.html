@@ -48,9 +48,12 @@
                 display: flex;
                 flex-direction: column;
                 max-width: 550px;
+                width: 100%; /* Ensure the container is responsive */
                 margin: 0 auto;
                 align-items: center; /* Centers the items horizontally */
                 text-align: center; /* Ensures the text is centered */
+                padding: 0 20px; /* Add some padding for better appearance */
+                box-sizing: border-box; /* Ensure padding is included in the width */
             }
 
             .container img {
@@ -58,15 +61,11 @@
             }
 
             /* CSS for the links */
-            .link-container {
-                width: 100%;
-            }
-            .link {
+            .link-container a {
                 display: block;
                 width: 100%;
-                max-width: 100%;
                 box-sizing: border-box;
-                padding: 7px;
+                padding: 10px; /* Adjust padding for better appearance */
                 border-radius: 10px;
                 background-color: #383838; /* Adjust background color as needed */
                 color: white;
@@ -111,7 +110,7 @@
     </head>
     <body class="bg-black">
         <div
-            class="container break-normal px-6 text-white grid items-center place-items-center pt-6 sm-pt-2 font-ubuntu"
+            class="container break-normal text-white grid items-center place-items-center pt-6 sm-pt-2 font-ubuntu"
         >
             <img
                 class="rounded-full w-24 h-24 mb-3"
@@ -119,27 +118,25 @@
                 alt="thebenmeadows profile pic"
             />
             <h1 class="text-base font-medium">TheBenMeadows</h1>
-            <p class="mb-5 text-neutral-400 font-semibold text-sm px-6">
+            <p class="mb-5 text-neutral-400 font-semibold text-sm">
                 Founder ⬩ Artist ⬩ Technologist
             </p>
             <h3 class="p-4 text-base font-medium">Websites</h3>
             <div class="link-container">
-                <a class="link" href="https://blog.thebenmeadows.com"
-                    >My Art & Tech Blog</a
-                >
-                <a class="link" href="https://index.thebenmeadows.com"
+                <a href="https://blog.thebenmeadows.com">My Art & Tech Blog</a>
+                <a href="https://index.thebenmeadows.com"
                     >Index of All Art Pieces</a
                 >
-                <a class="link" href="https://art.thebenmeadows.com"
+                <a href="https://art.thebenmeadows.com"
                     >Artist Profile (Outdated)</a
                 >
-                <a class="link" href="https://thehug.xyz/artists/thebenmeadows"
+                <a href="https://thehug.xyz/artists/thebenmeadows"
                     >HUG Artist Profile (Outdated)</a
                 >
             </div>
             <h3 class="p-5 text-base font-medium mt-4">Projects</h3>
             <div class="link-container">
-                <a class="link" href="https://dailymuse.thebenmeadows.com"
+                <a href="https://dailymuse.thebenmeadows.com"
                     >#DailyMuse (6 Months of Daily Art)</a
                 >
             </div>
