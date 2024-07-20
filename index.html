@@ -56,6 +56,24 @@
             .container img {
                 margin-top: 20px; /* Adjust as necessary */
             }
+
+            /* CSS for the links */
+            .link-container {
+                width: 100%;
+            }
+            .link {
+                display: block;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+                padding: 7px;
+                border-radius: 10px;
+                background-color: #383838; /* Adjust background color as needed */
+                color: white;
+                text-align: center;
+                margin: 5px 0;
+                text-decoration: none;
+            }
         </style>
 
         <!-- Favicon Icons -->
@@ -105,32 +123,26 @@
                 Founder ⬩ Artist ⬩ Technologist
             </p>
             <h3 class="p-4 text-base font-medium">Websites</h3>
-            <a
-                class="rounded-xl p-7 flex flex-col w-full sm:w-5/12 h-10 bg-zinc-800 justify-center items-center m-1"
-                href="https://blog.thebenmeadows.com"
-                >My Art & Tech Blog</a
-            >
-            <a
-                class="rounded-xl p-7 flex flex-col w-full sm:w-5/12 h-10 bg-zinc-800 justify-center items-center m-1"
-                href="https://index.thebenmeadows.com"
-                >Index of All Art Pieces</a
-            >
-            <a
-                class="rounded-xl p-7 flex flex-col w-full sm:w-5/12 h-10 bg-zinc-800 justify-center items-center m-1"
-                href="https://art.thebenmeadows.com"
-                >Artist Profile (Outdated)</a
-            >
-            <a
-                class="rounded-xl p-7 flex flex-col w-full sm:w-5/12 h-10 bg-zinc-800 justify-center items-center m-1"
-                href="https://thehug.xyz/artists/thebenmeadows"
-                >HUG Artist Profile (Outdated)</a
-            >
+            <div class="link-container">
+                <a class="link" href="https://blog.thebenmeadows.com"
+                    >My Art & Tech Blog</a
+                >
+                <a class="link" href="https://index.thebenmeadows.com"
+                    >Index of All Art Pieces</a
+                >
+                <a class="link" href="https://art.thebenmeadows.com"
+                    >Artist Profile (Outdated)</a
+                >
+                <a class="link" href="https://thehug.xyz/artists/thebenmeadows"
+                    >HUG Artist Profile (Outdated)</a
+                >
+            </div>
             <h3 class="p-5 text-base font-medium mt-4">Projects</h3>
-            <a
-                class="rounded-xl p-7 flex flex-col w-full sm:w-5/12 h-10 bg-zinc-800 justify-center items-center mb-3"
-                href="https://dailymuse.thebenmeadows.com"
-                >#DailyMuse (6 Months of Daily Art)</a
-            >
+            <div class="link-container">
+                <a class="link" href="https://dailymuse.thebenmeadows.com"
+                    >#DailyMuse (6 Months of Daily Art)</a
+                >
+            </div>
 
             <div class="social-icons">
                 <!-- Bluesky -->
