@@ -32,11 +32,15 @@
             .social-icons a:hover {
                 transform: scale(1.1); /* Enlarges icons slightly on hover */
             }
-            .social-icons img {
+            .social-icons i,
+            .social-icons svg {
                 font-size: 30px; /* Set size of icons */
                 width: 30px;
                 height: 30px;
                 vertical-align: middle;
+            }
+            .social-icons svg {
+                display: inline-block;
             }
         </style>
 
@@ -60,6 +64,12 @@
             href="favicon/favicon-16x16.png"
         />
         <link rel="manifest" href="favicon/site.webmanifest" />
+
+        <!-- Boxicons CDN ICONS -->
+        <link
+            href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+            rel="stylesheet"
+        />
 
         <!-- Style Sheet -->
         <script>
@@ -116,95 +126,76 @@
                     href="https://bsky.app/profile/thebenmeadows.com"
                     target="_blank"
                 >
-                    <img
-                        src="https://cdn.simpleicons.org/bluesky/ffffff"
-                        alt="Bluesky"
-                    />
+                    <span>
+                        <svg viewBox="-50 -50 430 390" aria-hidden="true">
+                            <path
+                                fill="#FFFFFF"
+                                d="M180 141.964C163.699 110.262 119.308 51.1817 78.0347 22.044C38.4971 -5.86834 23.414 -1.03207 13.526 3.43594C2.08093 8.60755 0 26.1785 0 36.5164C0 46.8542 5.66748 121.272 9.36416 133.694C21.5786 174.738 65.0603 188.607 105.104 184.156C107.151 183.852 109.227 183.572 111.329 183.312C109.267 183.642 107.19 183.924 105.104 184.156C46.4204 192.847 -5.69621 214.233 62.6582 290.33C137.848 368.18 165.705 273.637 180 225.702C194.295 273.637 210.76 364.771 295.995 290.33C360 225.702 313.58 192.85 254.896 184.158C252.81 183.926 250.733 183.645 248.671 183.315C250.773 183.574 252.849 183.855 254.896 184.158C294.94 188.61 338.421 174.74 350.636 133.697C354.333 121.275 360 46.8568 360 36.519C360 26.1811 357.919 8.61012 346.474 3.43851C336.586 -1.02949 321.503 -5.86576 281.965 22.0466C240.692 51.1843 196.301 110.262 180 141.964Z"
+                            ></path>
+                        </svg>
+                    </span>
                 </a>
                 <!-- Facebook -->
                 <a
                     href="https://www.facebook.com/thebenmeadows"
                     target="_blank"
                 >
-                    <img
-                        src="https://cdn.simpleicons.org/facebook/ffffff"
-                        alt="Facebook"
-                    />
+                    <i class="bx bxl-facebook"></i>
                 </a>
                 <!-- Farcaster -->
                 <a
                     href="https://www.warpcast.com/thebenmeadows"
                     target="_blank"
                 >
-                    <img
-                        src="https://cdn.simpleicons.org/farcaster/ffffff"
-                        alt="Farcaster"
-                    />
+                    <span>
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                fill="#FFFFFF"
+                                d="M18.24.24H5.76C2.5789.24 0 2.8188 0 6v12c0 3.1811 2.5789 5.76 5.76 5.76h12.48c3.1812 0 5.76-2.5789 5.76-5.76V6C24 2.8188 21.4212.24 18.24.24m.8155 17.1662v.504c.2868-.0256.5458.1905.5439.479v.5688h-5.1437v-.5688c-.0019-.2885.2576-.5047.5443-.479v-.504c0-.22.1525-.402.358-.458l-.0095-4.3645c-.1589-1.7366-1.6402-3.0979-3.4435-3.0979-1.8038 0-3.2846 1.3613-3.4435 3.0979l-.0096 4.3578c.2276.0424.5318.2083.5395.4648v.504c.2863-.0256.5457.1905.5438.479v.5688H4.3915v-.5688c-.0019-.2885.2575-.5047.5438-.479v-.504c0-.2529.2011-.4548.4536-.4724v-7.895h-.4905L4.2898 7.008l2.6405-.0005V5.0419h9.9495v1.9656h2.8219l-.6091 2.0314h-.4901v7.8949c.2519.0177.453.2195.453.4724"
+                            ></path>
+                        </svg>
+                    </span>
                 </a>
                 <!-- Github -->
                 <a href="https://github.com/thebenmeadows" target="_blank">
-                    <img
-                        src="https://cdn.simpleicons.org/github/ffffff"
-                        alt="Github"
-                    />
+                    <i class="bx bxl-github"></i>
                 </a>
                 <!-- Instagram -->
                 <a
                     href="https://www.instagram.com/thebenmeadows"
                     target="_blank"
                 >
-                    <img
-                        src="https://cdn.simpleicons.org/instagram/ffffff"
-                        alt="Instagram"
-                    />
+                    <i class="bx bxl-instagram"></i>
                 </a>
                 <!-- LinkedIn -->
                 <a
                     href="https://www.linkedin.com/thebenmeadows"
                     target="_blank"
                 >
-                    <img
-                        src="https://cdn.simpleicons.org/linkedin/ffffff"
-                        alt="LinkedIn"
-                    />
+                    <i class="bx bxl-linkedin"></i>
                 </a>
                 <!-- Mastodon -->
                 <a
                     href="https://mastodon.social/@thebenmeadows"
                     target="_blank"
                 >
-                    <img
-                        src="https://cdn.simpleicons.org/mastodon/ffffff"
-                        alt="Mastodon"
-                    />
+                    <i class="bx bxl-mastodon"></i>
                 </a>
                 <!-- Telegram -->
                 <a href="https://t.me/thebenmeadows" target="_blank">
-                    <img
-                        src="https://cdn.simpleicons.org/telegram/ffffff"
-                        alt="Telegram"
-                    />
+                    <i class="bx bxl-telegram"></i>
                 </a>
                 <!-- Twitter -->
                 <a href="https://twitter.com/thebenmeadows" target="_blank">
-                    <img
-                        src="https://cdn.simpleicons.org/twitter/ffffff"
-                        alt="Twitter"
-                    />
+                    <i class="bx bxl-twitter"></i>
                 </a>
                 <!-- YouTube -->
                 <a href="https://www.youtube.com/thebenmeadows" target="_blank">
-                    <img
-                        src="https://cdn.simpleicons.org/youtube/ffffff"
-                        alt="YouTube"
-                    />
+                    <i class="bx bxl-youtube"></i>
                 </a>
                 <!-- Email -->
                 <a href="mailto:ben@benjaminmeadows.com">
-                    <img
-                        src="https://cdn.simpleicons.org/maildotru/ffffff"
-                        alt="Email"
-                    />
+                    <i class="bx bx-envelope"></i>
                 </a>
             </div>
         </div>
