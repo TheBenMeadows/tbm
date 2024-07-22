@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="TheBenMeadows Personal Link Site" />
+        <meta http-equiv="content-language" content="en-us" />
+        <meta
+            property="og:description"
+            content="An open source linktree alternative created by rohan salunkhe and heavily edited by TheBenMeadows."
+        />
+        <meta property="og:url" content="https://thebenmeadows.com" />
+        <title>TheBenMeadows Links</title>
+
+        <!-- Critical CSS -->
+        <style>
+            @font-face {
+                font-family: HK Grotesk;
+                src: url("https://cdn.glitch.me/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Regular.otf?v=1603136326027")
+                    format("opentype");
+            }
+            @font-face {
+                font-family: HK Grotesk;
+                font-weight: bold;
+                src: url("https://cdn.glitch.me/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Bold.otf?v=1603136323437")
+                    format("opentype");
+            }
+
+            :root {
+                --color-bg: #8da7d8;
+                --color-bg-alt: #c2d8f0;
+                --color-text-main: #303436;
+                --color-primary: #fffdfe;
+                --theme-color-title: #fffdfe;
+                --font-family: "HK Grotesk";
+                --font-family-header: "HK Grotesk";
+                --font-family-list: Menlo, Consolas, Monaco, "Lucida Console",
+                    monospace;
+            }
+            body {
+                font-family: var(--font-family);
+                background: fixed linear-gradient(0deg, #c2d8f0, #8da7d8);
+                color: var(--color-text-main);
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                text-align: center;
+            }
+            h1 {
+                font-family: var(--font-family-header);
+                font-size: 3rem;
+                color: var(--theme-color-title);
+            }
+            p {
+                font-size: 1rem;
+                color: var(--color-text-main);
+                margin: 0.5rem 0;
+            }
+            a {
+                text-decoration: none;
+                color: var(--color-text-main);
+                font-size: 1rem;
+                border: 2px solid var(--color-primary);
+                border-radius: 10px;
+                padding: 0.5rem 1rem;
+                display: block;
+                width: 300px;
+                margin: 0.5rem 0;
+                transition: background 0.3s, border 0.3s;
+            }
+            a:hover,
+            a:focus {
+                background: var(--color-primary);
+                border: 2px solid var(--theme-color-title);
+            }
+            .social-icons {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+                margin-top: 20px;
+            }
+            .social-icons a {
+                transition: transform 0.3s ease;
+            }
+            .social-icons a:hover {
+                transform: scale(1.1);
+            }
+            .social-icons i,
+            .social-icons svg {
+                font-size: 30px;
+                width: 30px;
+                height: 30px;
+                vertical-align: middle;
+            }
+            .social-icons svg {
+                display: inline-block;
+            }
+            img.rounded-full {
+                border-radius: 50%;
+                width: 140px;
+                height: 140px;
+                margin-bottom: 20px;
+            }
+        </style>
+
+        <!-- Favicon Icons -->
+        <link rel="icon" href="favicon/favicon.ico" type="image/x-icon" />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="favicon/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="favicon/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="favicon/favicon-16x16.png"
+        />
+        <link rel="manifest" href="favicon/site.webmanifest" />
+
+        <!-- Boxicons CDN ICONS -->
+        <link
+            href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+            rel="stylesheet"
+        />
+
+        <!-- Style Sheet -->
+        <script>
+            console.warn = function () {};
+        </script>
+        <link rel="stylesheet" href="/output.css" />
+    </head>
+    <body>
+        <img
+            class="rounded-full"
+            src="me.avif"
+            alt="thebenmeadows profile pic"
+        />
+        <h1>TheBenMeadows</h1>
+        <p>Founder ⬩ Artist ⬩ Technologist</p>
+        <a href="https://blog.thebenmeadows.com">My Art & Tech Blog</a>
+        <a href="https://index.thebenmeadows.com">Index of All Art Pieces</a>
+        <a href="https://art.thebenmeadows.com">Artist Profile (Outdated)</a>
+        <a href="https://thehug.xyz/artists/thebenmeadows"
+            >HUG Artist Profile (Outdated)</a
+        >
+        <a href="https://dailymuse.thebenmeadows.com"
+            >#DailyMuse (6 Months of Daily Art)</a
+        >
+
+            <div class="social-icons">
+                <!-- Bluesky -->
+                <a
+                    href="https://bsky.app/profile/thebenmeadows.com"
+                    target="_blank"
+                >
+                    <span>
+                        <svg viewBox="-50 -50 430 390" aria-hidden="true">
+                            <path
+                                fill="#FFFFFF"
+                                d="M180 141.964C163.699 110.262 119.308 51.1817 78.0347 22.044C38.4971 -5.86834 23.414 -1.03207 13.526 3.43594C2.08093 8.60755 0 26.1785 0 36.5164C0 46.8542 5.66748 121.272 9.36416 133.694C21.5786 174.738 65.0603 188.607 105.104 184.156C107.151 183.852 109.227 183.572 111.329 183.312C109.267 183.642 107.19 183.924 105.104 184.156C46.4204 192.847 -5.69621 214.233 62.6582 290.33C137.848 368.18 165.705 273.637 180 225.702C194.295 273.637 210.76 364.771 295.995 290.33C360 225.702 313.58 192.85 254.896 184.158C252.81 183.926 250.733 183.645 248.671 183.315C250.773 183.574 252.849 183.855 254.896 184.158C294.94 188.61 338.421 174.74 350.636 133.697C354.333 121.275 360 46.8568 360 36.519C360 26.1811 357.919 8.61012 346.474 3.43851C336.586 -1.02949 321.503 -5.86576 281.965 22.0466C240.692 51.1843 196.301 110.262 180 141.964Z"
+                            ></path>
+                        </svg>
+                    </span>
+                </a>
+                <!-- Facebook -->
+                <a
+                    href="https://www.facebook.com/thebenmeadows"
+                    target="_blank"
+                >
+                    <i class="bx bxl-facebook"></i>
+                </a>
+                <!-- Github -->
+                <a href="https://github.com/thebenmeadows" target="_blank">
+                    <i class="bx bxl-github"></i>
+                </a>
+                <!-- Instagram -->
+                <a
+                    href="https://www.instagram.com/thebenmeadows"
+                    target="_blank"
+                >
+                    <i class="bx bxl-instagram"></i>
+                </a>
+                <!-- LinkedIn -->
+                <a
+                    href="https://www.linkedin.com/thebenmeadows"
+                    target="_blank"
+                >
+                    <i class="bx bxl-linkedin"></i>
+                </a>
+                <!-- Mastodon -->
+                <a
+                    href="https://mastodon.social/@thebenmeadows"
+                    target="_blank"
+                >
+                    <i class="bx bxl-mastodon"></i>
+                </a>
+                <!-- Telegram -->
+                <a href="https://t.me/thebenmeadows" target="_blank">
+                    <i class="bx bxl-telegram"></i>
+                </a>
+                <!-- Twitter -->
+                <a href="https://twitter.com/thebenmeadows" target="_blank">
+                    <i class="bx bxl-twitter"></i>
+                </a>
+                <!-- YouTube -->
+                <a href="https://www.youtube.com/thebenmeadows" target="_blank">
+                    <i class="bx bxl-youtube"></i>
+                </a>
+                <!-- Email -->
+                <a href="mailto:ben@benjaminmeadows.com">
+                    <i class="bx bx-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </body>
+</html>
