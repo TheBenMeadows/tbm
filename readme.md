@@ -1,10 +1,10 @@
-# Link Tree Alternative (LinkHub)
+# Link Tree Alternative
 
 ## Updates 🚀
 
-- Reformatted the code to be more readable and remove some unused code and unnecessary files.
-- Added Template for the new link tree.
-- More themes will be added soon.
+7.23.2024
+- Moved Icons to SVG
+ - Currently in process of moving from CDN (e.g. https://cdn.simpleicons.org/bluesky/a3a3a3) to local.
 
 ### New Templates
 
