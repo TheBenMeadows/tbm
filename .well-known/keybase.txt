@@ -1,0 +1,68 @@
+==================================================================
+https://keybase.io/benmeadows
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://thebenmeadows.com
+  * I am benmeadows (https://keybase.io/benmeadows) on keybase.
+  * I have a public key with fingerprint 4345 F556 4874 1484 64D2  5D0B 8025 F6F9 0701 6FC8
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01011e49dcf94ec676383d1e55b4f767c46eebbcbc4d99947632e1d995a4e89fc2b10a",
+      "fingerprint": "4345f5564874148464d25d0b8025f6f907016fc8",
+      "host": "keybase.io",
+      "key_id": "8025f6f907016fc8",
+      "kid": "01011e49dcf94ec676383d1e55b4f767c46eebbcbc4d99947632e1d995a4e89fc2b10a",
+      "uid": "0c3ffd2566eb56e018cd6b8b72373719",
+      "username": "benmeadows"
+    },
+    "service": {
+      "hostname": "thebenmeadows.com",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1739222806,
+  "expire_in": 157680000,
+  "prev": "dd413bdb19352813eaf869f022580bfdb8bc36971d09df7a34b91df6d3cb16e8",
+  "seqno": 35,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.1.13
+Comment: https://keybase.io/crypto
+
+yMIsAnicrZJbSBRRGMd3s7LdrZAoM8OsqQcDszkzZ87MrJfKsoeCKIioSNY5t91B
+3dl2Rs2WyCIigggqgh7sQg+RPiVd6IaXLpA+SIUYWXSTiKjoRmSQdqYLvfTYeTnn
+fN/v+5//+fhuTskKhIOrp10gyg3zfrCv+0RDIN7m5GYk7NBmKZqRatnPjdVR5nqx
+WptKUUkGMgAMmpRwEzKCdKQaKgVM0zDkOtIJRIxhTDCB1DRNKPIKA+KoWZAZJicK
+BrIlFUvcTsZZOpW2k56QhSrUuKYhaOgQQAMiSBWNytiQFY0jbsq6DBAnhihMOK5f
+Icxhy2UltiNi4hL7ae8f/H/23fBLjqicC4sIMawhJgODUIQNrCuqrurA9EGXpZNW
+PRM0Zsl6ZlGnyZV2FEsi3mgT5rfW/8tvxkuwv1gJceqFRCrteA5x6kQ64XkpN+qX
+e80pn29iOPZbKYbtJBXtFBWNLO3aTlKKAkESz/alga6aiqIYMiqW2LaUnWYx2yc0
+HRmyWP47rFFIUgqBiikGpqopBlCZxQ1kcllRNEPGnIr/ERWZOqCySbluqRCbgHJE
+VYIBYn6zXbY16UhRVRM+rbjQdO140vIa0kza0dO1ZXwgGA5MnDDOn7NAOJTzZ/qu
+bckeI1Urd4beZUUCs48PtIzMPzu1NPOlMRGqUCY9GxiKVN97dHlZrVSQs+uJvojn
+H5z3aPe+Clh1cfj6vVvZvGEznHm34lrbq0M9J8/PqBydnn8q3HoyXFnb6mwc7H1a
+U7a8tCy3403Ni9dLm4a2JyLnnk+O192e93bhof6c/L51re/tTi2U1xU7tqDwatHi
+x+tzng8PTu1+HO5vXnOq6Hv7nU0vXx+YNccqykSflQZbloT29OS1TT56LBIea191
+c8X2I4ezr4y2rHgwPHK6+tJeuADuX9Oa7h0JotFvay99qSifuPVrwVlsdq7KLQ9W
+dRVumP/x05mHFzvKevPCn0fvvhvTB+Z+KPsBmI89rg==
+=E7lY
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/benmeadows
+
+==================================================================
