@@ -1,10 +1,10 @@
 {
   "name": "your-project-name",
   "version": "1.0.0",
-  "scripts": {
-    "build": "tailwindcss -i ./src/input.css -o ./output.css --minify"
+  "dependencies": {
+    "tailwindcss": "^3.4.1"
   },
-  "devDependencies": {
-    "tailwindcss": "latest"
+  "scripts": {
+    "build": "npx tailwindcss -i ./src/input.css -o ./output.css --minify"
   }
 }
