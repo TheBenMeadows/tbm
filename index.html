@@ -72,11 +72,16 @@
         <div
             class="break-normal px-6 text-white grid items-center place-items-center pt-6 sm-pt-2 font-ubuntu"
         >
-            <img
-                class="rounded-full mt-4 w-24 h-24 mb-3"
-                src="me.avif"
-                alt="thebenmeadows profile pic"
-            />
+            <picture>
+                <source srcset="me.svg" type="image/svg+xml" />
+                <source srcset="me.avif" type="image/avif" />
+                <source srcset="me.webp" type="image/webp" />
+                <img
+                    class="rounded-full mt-4 w-24 h-24 mb-3"
+                    src="me.png"
+                    alt="thebenmeadows profile pic"
+                />
+            </picture>
             <h1 class="text-xl font-medium">TheBenMeadows</h1>
             <p
                 class="mb-5 max-w-screen-md items-center text-neutral-400 font-semibold text-center text-sm px-6"
