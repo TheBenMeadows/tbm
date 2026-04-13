@@ -2,13 +2,12 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="TheBenMeadows Personal Link Site" />
         <meta http-equiv="content-language" content="en-us" />
         <meta
             property="og:description"
-            content="An open source linktree alternative created by rohan salunkhe and heavily edited by TheBenMeadows."
+            content="TheBenMeadows - Entrepreneur, Innovator, Strategist, Artist, Technologist."
         />
         <meta property="og:url" content="https://thebenmeadows.com" />
         <title>TheBenMeadows Links</title>
@@ -73,7 +72,6 @@
             class="break-normal px-6 text-white grid items-center place-items-center pt-6 sm-pt-2 font-ubuntu"
         >
             <picture>
-                <source srcset="me.svg" type="image/svg+xml" />
                 <source srcset="me.avif" type="image/avif" />
                 <source srcset="me.webp" type="image/webp" />
                 <img
@@ -247,8 +245,8 @@
                             alt="YouTube"
                         />
                     </a>
-                    <!-- Email -->
-                    <a href="mailto:ben@benjaminmeadows.com">
+                    <!-- Email (obfuscated) -->
+                    <a id="email-link" rel="nofollow, noindex" href="/contact/">
                         <img
                             src="https://cdn.simpleicons.org/maildotru/a3a3a3"
                             alt="Email"
@@ -257,5 +255,14 @@
                 </div>
             </div>
         </div>
+        <script>
+        (function() {
+            var el = document.getElementById('email-link');
+            if (!el) return;
+            var p = ['b','e','n'];
+            var d = ['b','e','n','j','a','m','i','n','m','e','a','d','o','w','s'];
+            el.href = 'mai' + 'lto:' + p.join('') + '@' + d.join('') + '.com';
+        })();
+        </script>
     </body>
 </html>
