@@ -1,2 +1,2 @@
-/.well-known/*
+/.well-known/nostr.json
   Access-Control-Allow-Origin: *
