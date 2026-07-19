@@ -10,3 +10,13 @@
         font-display: swap;
     }
 }
+
+/* Light mode — auto via OS preference (brand: dark is default/canonical).
+   Palette mirrors the dark brand; wordmark + icons stay #a3a3a3 (works on both). */
+@media (prefers-color-scheme: light) {
+    body.bg-black { background-color: #ffffff; }
+    .bg-zinc-800 { background-color: #f4f4f5; }
+    .text-neutral-400 { color: #52525b; }
+    h3.text-neutral-400 { color: #71717a; }
+    .text-white { color: #000000; }
+}
