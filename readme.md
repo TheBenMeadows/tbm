@@ -46,3 +46,9 @@ correctly, on every host that runs the site:
 
 DNS verification records (Keybase, Tezos) live at the domain and must survive any
 DNS change.
+
+## License
+
+Code is [MIT](LICENSE). Personal images and brand assets — `me.png`,
+`btm-logo.png`, and the `favicon/` set — are not covered by the license;
+all rights reserved.
