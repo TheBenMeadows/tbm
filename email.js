@@ -1,7 +1,9 @@
-(function() {
+(function () {
     var el = document.getElementById('email-link');
     if (!el) return;
-    var p = ['b','e','n'];
-    var d = ['b','e','n','j','a','m','i','n','m','e','a','d','o','w','s'];
-    el.href = 'mai' + 'lto:' + p.join('') + '@' + d.join('') + '.com';
+    // Assembled at runtime so the address isn't a plain-text mailto in the HTML.
+    // iCloud Hide My Email alias — forwards to Ben's inbox, revocable if it leaks.
+    var u = ['basques', '.', 'crepes', '_7z'];
+    var d = ['icloud', 'com'];
+    el.href = 'mai' + 'lto:' + u.join('') + '@' + d.join('.');
 })();

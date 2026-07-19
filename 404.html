@@ -7,6 +7,12 @@
         <meta name="description" content="Page not found" />
         <link rel="icon" href="favicon/favicon.ico" type="image/x-icon" />
         <style>
+            @font-face {
+                font-family: "Public Sans";
+                src: url("/fonts/publicsans-v1.woff2") format("woff2-variations");
+                font-weight: 400 700;
+                font-display: swap;
+            }
             * {
                 box-sizing: border-box;
                 margin: 0;
@@ -15,7 +21,7 @@
             body {
                 background: #000;
                 color: #a3a3a3;
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                font-family: "Public Sans", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -50,6 +56,12 @@
             a:hover {
                 color: #fff;
                 border-color: #fff;
+            }
+            @media (prefers-color-scheme: light) {
+                body { background: #ffffff; color: #52525b; }
+                h1 { color: #000000; }
+                a { color: #52525b; border-color: #52525b; }
+                a:hover { color: #000000; border-color: #000000; }
             }
         </style>
     </head>

@@ -11,6 +11,8 @@
         />
         <meta property="og:url" content="https://thebenmeadows.com" />
         <title>TheBenMeadows Links</title>
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000" />
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
 
         <!-- Critical CSS -->
         <style>
@@ -62,14 +64,33 @@
         <link rel="manifest" href="favicon/site.webmanifest" />
 
         <!-- Style Sheet -->
-        <script>
-            console.warn = function () {};
-        </script>
+        <link
+            rel="preload"
+            href="/fonts/publicsans-v1.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+        />
+        <script src="/theme.js"></script>
         <link rel="stylesheet" href="/output.css" />
     </head>
     <body class="bg-black">
+        <button
+            id="theme-toggle"
+            type="button"
+            aria-label="Toggle light/dark theme"
+            title="Toggle light/dark theme"
+            class="fixed top-4 left-4 z-10 p-0 border-0 bg-transparent cursor-pointer"
+        >
+            <img
+                src="btm-logo.png"
+                alt="BTM"
+                width="48" height="48"
+                decoding="async"
+            />
+        </button>
         <div
-            class="break-normal px-6 text-white grid items-center place-items-center pt-6 sm-pt-2 font-ubuntu"
+            class="break-normal px-6 text-white grid items-center place-items-center pt-6 sm-pt-2"
         >
             <img
                 class="rounded-full mt-4"
@@ -129,53 +150,53 @@
                     <!-- Bluesky -->
                     <a
                         href="https://bsky.app/profile/thebenmeadows.com"
-                        target="_blank"
+                        target="_blank" rel="noopener"
                     >
-                        <img
-                            src="https://cdn.simpleicons.org/bluesky/a3a3a3"
+                        <img width="30" height="30" loading="lazy" decoding="async"
+                            src="icons/bluesky.svg"
                             alt="Bluesky"
                         />
                     </a>
                     <!-- Facebook -->
                     <a
                         href="https://www.facebook.com/thebenmeadows"
-                        target="_blank"
+                        target="_blank" rel="noopener"
                     >
-                        <img
-                            src="https://cdn.simpleicons.org/facebook/a3a3a3"
+                        <img width="30" height="30" loading="lazy" decoding="async"
+                            src="icons/facebook.svg"
                             alt="Facebook"
                         />
                     </a>
                     <!-- Farcaster -->
                     <a
                         href="https://www.warpcast.com/thebenmeadows"
-                        target="_blank"
+                        target="_blank" rel="noopener"
                     >
-                        <img
-                            src="https://cdn.simpleicons.org/farcaster/a3a3a3"
+                        <img width="30" height="30" loading="lazy" decoding="async"
+                            src="icons/farcaster.svg"
                             alt="Farcaster"
                         />
                     </a>
                     <!-- Github -->
-                    <a href="https://github.com/thebenmeadows" target="_blank">
-                        <img
-                            src="https://cdn.simpleicons.org/github/a3a3a3"
+                    <a href="https://github.com/thebenmeadows" target="_blank" rel="noopener">
+                        <img width="30" height="30" loading="lazy" decoding="async"
+                            src="icons/github.svg"
                             alt="Github"
                         />
                     </a>
                     <!-- Instagram -->
                     <a
                         href="https://www.instagram.com/thebenmeadows"
-                        target="_blank"
+                        target="_blank" rel="noopener"
                     >
-                        <img
-                            src="https://cdn.simpleicons.org/instagram/a3a3a3"
+                        <img width="30" height="30" loading="lazy" decoding="async"
+                            src="icons/instagram.svg"
                             alt="Instagram"
                         />
                     </a>
                     <!-- Lens Protocol -->
-                    <a href="https://firefly.social/profile/lens/bmeadows" target="_blank">
-                        <img
+                    <a href="https://firefly.social/profile/lens/bmeadows" target="_blank" rel="noopener">
+                        <img width="30" height="30" loading="lazy" decoding="async"
                             src="icons/lenster.svg"
                             alt="Lens"
                             style="
@@ -188,26 +209,26 @@
                     <!-- LinkedIn -->
                     <a
                         href="https://www.linkedin.com/in/thebenmeadows"
-                        target="_blank"
+                        target="_blank" rel="noopener"
                     >
-                        <img src="icons/linkedin.svg" alt="LinkedIn" />
+                        <img width="30" height="30" loading="lazy" decoding="async" src="icons/linkedin.svg" alt="LinkedIn" />
                     </a>
                     <!-- Mastodon -->
                     <a
                         href="https://mastodon.social/@thebenmeadows"
-                        target="_blank"
+                        target="_blank" rel="noopener"
                     >
-                        <img
-                            src="https://cdn.simpleicons.org/mastodon/a3a3a3"
+                        <img width="30" height="30" loading="lazy" decoding="async"
+                            src="icons/mastodon.svg"
                             alt="Mastodon"
                         />
                     </a>
                     <!-- Nostr -->
                     <a
                         href="https://primal.net/p/npub1wldqfuy0yge4fvxukdm43gze2ral9dnp5avlps5a6t8q0vyv2nds84nq29"
-                        target="_blank"
+                        target="_blank" rel="noopener"
                     >
-                        <img
+                        <img width="30" height="30" loading="lazy" decoding="async"
                             src="icons/nostr.svg"
                             alt="Nostr"
                             style="
@@ -218,43 +239,43 @@
                         />
                     </a>
                     <!-- Telegram -->
-                    <a href="https://t.me/thebenmeadows" target="_blank">
-                        <img
-                            src="https://cdn.simpleicons.org/telegram/a3a3a3"
+                    <a href="https://t.me/thebenmeadows" target="_blank" rel="noopener">
+                        <img width="30" height="30" loading="lazy" decoding="async"
+                            src="icons/telegram.svg"
                             alt="Telegram"
                         />
                     </a>
                     <!-- Threads -->
                     <a
                         href="https://www.threads.net/@thebenmeadows"
-                        target="_blank"
+                        target="_blank" rel="noopener"
                     >
-                        <img
-                            src="https://cdn.simpleicons.org/threads/a3a3a3"
+                        <img width="30" height="30" loading="lazy" decoding="async"
+                            src="icons/threads.svg"
                             alt="Twitter"
                         />
                     </a>
                     <!-- X -->
-                    <a href="https://x.com/thebenmeadows" target="_blank">
-                        <img
-                            src="https://cdn.simpleicons.org/x/a3a3a3"
+                    <a href="https://x.com/thebenmeadows" target="_blank" rel="noopener">
+                        <img width="30" height="30" loading="lazy" decoding="async"
+                            src="icons/x.svg"
                             alt="Twitter"
                         />
                     </a>
                     <!-- YouTube -->
                     <a
                         href="https://www.youtube.com/thebenmeadows"
-                        target="_blank"
+                        target="_blank" rel="noopener"
                     >
-                        <img
-                            src="https://cdn.simpleicons.org/youtube/a3a3a3"
+                        <img width="30" height="30" loading="lazy" decoding="async"
+                            src="icons/youtube.svg"
                             alt="YouTube"
                         />
                     </a>
                     <!-- Email (obfuscated) -->
-                    <a id="email-link" rel="nofollow, noindex" href="/contact/">
-                        <img
-                            src="https://cdn.simpleicons.org/maildotru/a3a3a3"
+                    <a id="email-link" rel="nofollow" href="/">
+                        <img width="30" height="30" loading="lazy" decoding="async"
+                            src="icons/maildotru.svg"
                             alt="Email"
                         />
                     </a>

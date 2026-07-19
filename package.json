@@ -1,6 +1,8 @@
 {
-  "name": "your-project-name",
+  "name": "tbm",
   "version": "1.0.0",
+  "description": "Source for thebenmeadows.com — a static personal link hub (HTML + Tailwind).",
+  "private": true,
   "dependencies": {
     "tailwindcss": "^3.4.1"
   },

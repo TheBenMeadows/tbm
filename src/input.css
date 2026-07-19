@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: "Public Sans";
+        src: url("/fonts/publicsans-v1.woff2") format("woff2-variations");
+        font-weight: 400 700;
+        font-display: swap;
+    }
+}
+
+/* Light mode — auto via OS preference, manually overridable via the BTM corner
+   toggle (html.light / html.dark set by theme.js, persisted in localStorage).
+   Palette mirrors the dark brand; wordmark + icons stay #a3a3a3 (works on both). */
+@media (prefers-color-scheme: light) {
+    html:not(.dark) body.bg-black { background-color: #ffffff; }
+    html:not(.dark) .bg-zinc-800 { background-color: #f4f4f5; }
+    html:not(.dark) .text-neutral-400 { color: #52525b; }
+    html:not(.dark) h3.text-neutral-400 { color: #71717a; }
+    html:not(.dark) .text-white { color: #000000; }
+}
+html.light body.bg-black { background-color: #ffffff; }
+html.light .bg-zinc-800 { background-color: #f4f4f5; }
+html.light .text-neutral-400 { color: #52525b; }
+html.light h3.text-neutral-400 { color: #71717a; }
+html.light .text-white { color: #000000; }
