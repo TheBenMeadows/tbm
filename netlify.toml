@@ -1,3 +1,6 @@
+# Netlify mirror of thebenmeadows.com (primary: Cloudflare Pages).
+# Netlify cannot publish the repo root, so build:netlify assembles the
+# served files into dist/. Cloudflare Pages keeps building from root.
 [build]
-  command = "npm run build"
-  publish = "."
+  command = "npm run build:netlify"
+  publish = "dist"

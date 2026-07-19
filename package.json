@@ -1,12 +1,13 @@
 {
   "name": "tbm",
   "version": "1.0.0",
-  "description": "Source for thebenmeadows.com — a static personal link hub (HTML + Tailwind).",
+  "description": "Source for thebenmeadows.com \u2014 a static personal link hub (HTML + Tailwind).",
   "private": true,
   "dependencies": {
     "tailwindcss": "^3.4.1"
   },
   "scripts": {
-    "build": "npx tailwindcss -i ./src/input.css -o ./output.css --minify"
+    "build": "npx tailwindcss -i ./src/input.css -o ./output.css --minify",
+    "build:netlify": "npm run build && rm -rf dist && mkdir dist && cp index.html 404.html output.css email.js theme.js btm-logo.png me.png sitemap.xml _headers dist/ && cp -R favicon icons fonts .well-known dist/"
   }
 }
