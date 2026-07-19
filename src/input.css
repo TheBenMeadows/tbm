@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: "Public Sans";
+        src: url("/fonts/publicsans.woff2") format("woff2-variations");
+        font-weight: 100 900;
+        font-display: swap;
+    }
+}
