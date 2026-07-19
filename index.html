@@ -67,17 +67,24 @@
         <script>
             console.warn = function () {};
         </script>
+        <script src="/theme.js"></script>
         <link rel="stylesheet" href="/output.css" />
     </head>
     <body class="bg-black">
-        <a href="/" class="fixed top-4 left-4 z-10">
+        <button
+            id="theme-toggle"
+            type="button"
+            aria-label="Toggle light/dark theme"
+            title="Toggle light/dark theme"
+            class="fixed top-4 left-4 z-10 p-0 border-0 bg-transparent cursor-pointer"
+        >
             <img
                 src="btm-logo.png"
                 alt="BTM"
                 width="48" height="48"
                 decoding="async"
             />
-        </a>
+        </button>
         <div
             class="break-normal px-6 text-white grid items-center place-items-center pt-6 sm-pt-2"
         >
