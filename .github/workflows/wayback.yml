@@ -1,0 +1,31 @@
+# Ask the Internet Archive to snapshot the site after each deploy, so the
+# Wayback copy linked from /mirrors/ tracks what actually shipped.
+name: Archive to Wayback
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      # Cloudflare Pages and Netlify both rebuild on the same push; give them
+      # time to publish before the crawl, so the snapshot is the new version.
+      - name: Wait for deploys to publish
+        run: sleep 300
+
+      - name: Request Wayback snapshots
+        run: |
+          for url in \
+            "https://thebenmeadows.com/" \
+            "https://thebenmeadows.com/mirrors/" \
+            "https://thebenmeadows.com/tech/"; do
+            curl -sS -m 120 --retry 3 --retry-delay 60 -o /dev/null \
+              -w "%{http_code} $url\n" \
+              "https://web.archive.org/save/$url" || true
+            sleep 30
+          done

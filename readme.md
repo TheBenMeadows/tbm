@@ -36,7 +36,9 @@ the model borrowed from [Privacy Guides](https://www.privacyguides.org):
 - **Source (recoverability).** This repository is mirrored to **Codeberg**,
   **Gitea**, and **GitLab** alongside GitHub, kept in sync automatically. Each
   mirror holds the full history, so the source survives any single forge.
-- **Archive.** The site is snapshotted by the Internet Archive's Wayback Machine.
+- **Archive.** A GitHub Action (`.github/workflows/wayback.yml`) requests a
+  Wayback Machine snapshot after every deploy, so the archived copy tracks
+  what actually shipped.
 
 The live index of every host, forge, and archive is at
 [`/mirrors/`](https://thebenmeadows.com/mirrors/); the stack and the design
