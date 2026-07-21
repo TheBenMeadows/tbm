@@ -28,7 +28,7 @@ the folder with any static server, after building.
 ## Mirrors & availability
 
 Availability is treated as two separate concerns, each handled independently —
-the model borrowed from [Privacy Guides](https://www.privacyguides.org):
+the model borrowed from [Privacy Guides](https://github.com/privacyguides/privacyguides.org):
 
 - **Serving (reachability).** The same static output is published to two
   independent hosts — **Cloudflare Pages** (primary) and **Netlify** (second),
