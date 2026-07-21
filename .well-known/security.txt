@@ -1,0 +1,5 @@
+# Security contact for thebenmeadows.com — https://www.rfc-editor.org/rfc/rfc9116
+Contact: mailto:basques.crepes_7z@icloud.com
+Expires: 2027-07-21T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://thebenmeadows.com/.well-known/security.txt
