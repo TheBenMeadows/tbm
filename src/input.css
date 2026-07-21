@@ -13,16 +13,23 @@
 
 /* Light mode — auto via OS preference, manually overridable via the BTM corner
    toggle (html.light / html.dark set by theme.js, persisted in localStorage).
-   Palette mirrors the dark brand; wordmark + icons stay #a3a3a3 (works on both). */
+   Palette mirrors the dark brand; wordmark + icons stay #a3a3a3 (works on both).
+   Covers the home page, the footer, and the /mirrors/ + /tech/ subpages. */
 @media (prefers-color-scheme: light) {
     html:not(.dark) body.bg-black { background-color: #ffffff; }
     html:not(.dark) .bg-zinc-800 { background-color: #f4f4f5; }
     html:not(.dark) .text-neutral-400 { color: #52525b; }
     html:not(.dark) h3.text-neutral-400 { color: #71717a; }
+    html:not(.dark) .text-neutral-500 { color: #71717a; }
+    html:not(.dark) .text-neutral-300 { color: #3f3f46; }
     html:not(.dark) .text-white { color: #000000; }
+    html:not(.dark) .hover\:text-white:hover { color: #000000; }
 }
 html.light body.bg-black { background-color: #ffffff; }
 html.light .bg-zinc-800 { background-color: #f4f4f5; }
 html.light .text-neutral-400 { color: #52525b; }
 html.light h3.text-neutral-400 { color: #71717a; }
+html.light .text-neutral-500 { color: #71717a; }
+html.light .text-neutral-300 { color: #3f3f46; }
 html.light .text-white { color: #000000; }
+html.light .hover\:text-white:hover { color: #000000; }

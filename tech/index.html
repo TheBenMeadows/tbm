@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="How thebenmeadows.com is built — the stack, the redundancy behind it, and the design decisions."
+        />
+        <meta http-equiv="content-language" content="en-us" />
+        <link rel="canonical" href="https://thebenmeadows.com/tech/" />
+        <title>Tech Stack · TheBenMeadows</title>
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000" />
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+
+        <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
+
+        <link
+            rel="preload"
+            href="/fonts/publicsans-v1.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+        />
+        <script src="/theme.js"></script>
+        <link rel="stylesheet" href="/output.css" />
+    </head>
+    <body class="bg-black">
+        <button
+            id="theme-toggle"
+            type="button"
+            aria-label="Toggle light/dark theme"
+            title="Toggle light/dark theme"
+            class="fixed top-8 left-8 z-10 p-0 border-0 bg-transparent cursor-pointer"
+        >
+            <img src="/btm-logo.png" alt="BTM" width="64" height="28" decoding="async" />
+        </button>
+
+        <main class="text-neutral-400 max-w-screen-md mx-auto px-6 pt-24 pb-12 leading-relaxed">
+            <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">Tech Stack</h1>
+            <p class="mt-4 max-w-prose">
+                A colophon — how this site is built and why. It is a plain static site:
+                hand-written HTML, one build step, no framework, no tracking. The whole
+                thing is small enough to read in a few minutes on
+                <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://github.com/TheBenMeadows/tbm" target="_blank" rel="noopener">GitHub</a>.
+            </p>
+
+            <h2 class="mt-10 text-neutral-400 font-medium uppercase text-sm tracking-widest">The stack</h2>
+            <ul class="mt-4 space-y-3 max-w-prose list-none">
+                <li><span class="text-white font-medium">Markup</span> — hand-written HTML. No framework, no client-side rendering.</li>
+                <li><span class="text-white font-medium">Styles</span> — <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://tailwindcss.com" target="_blank" rel="noopener">Tailwind CSS</a>, compiled to a single minified stylesheet at build time. Only the classes actually used are shipped.</li>
+                <li><span class="text-white font-medium">Type</span> — <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://public-sans.digital.gov" target="_blank" rel="noopener">Public Sans</a> (SIL Open Font License), self-hosted, subset to Latin and trimmed to the weights in use, then versioned, preloaded, and cached for a year. No font CDN.</li>
+                <li><span class="text-white font-medium">Icons</span> — self-hosted SVGs. The page makes no third-party requests when it loads.</li>
+                <li><span class="text-white font-medium">Scripts</span> — two small vanilla-JS files: a light/dark toggle and a contact address assembled in the browser to cut scraping. No bundler, no analytics, no cookies.</li>
+            </ul>
+
+            <h2 class="mt-10 text-neutral-400 font-medium uppercase text-sm tracking-widest">Hosting &amp; build</h2>
+            <p class="mt-4 max-w-prose">
+                <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://pages.cloudflare.com" target="_blank" rel="noopener">Cloudflare Pages</a>
+                is the primary host and <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://www.netlify.com" target="_blank" rel="noopener">Netlify</a>
+                is a second, independent one. Both rebuild from the same repository on
+                every push — compile the CSS, then serve the static output from their
+                own CDN edges. The build is a single command; there is nothing to run
+                server-side.
+            </p>
+
+            <h2 class="mt-10 text-neutral-400 font-medium uppercase text-sm tracking-widest">Redundancy</h2>
+            <p class="mt-4 max-w-prose">
+                Availability is treated as two separate problems — keeping the site
+                <em>reachable</em>, and keeping its source <em>recoverable</em> — and
+                each is solved independently:
+            </p>
+            <ul class="mt-4 space-y-3 max-w-prose list-none">
+                <li><span class="text-white font-medium">Reachable</span> — two independent serving hosts from one source, so a single provider outage doesn't take the site down.</li>
+                <li><span class="text-white font-medium">Recoverable</span> — the repository is mirrored to Codeberg, Gitea, and GitLab alongside GitHub and kept in sync automatically. No single code host is a point of failure.</li>
+                <li><span class="text-white font-medium">Preserved</span> — the site is snapshotted publicly by the Internet Archive's Wayback Machine, outside every host above.</li>
+            </ul>
+            <p class="mt-4 max-w-prose">
+                The full list of hosts, forges, and archives lives on the
+                <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="/mirrors/">mirrors page</a>.
+            </p>
+
+            <h2 class="mt-10 text-neutral-400 font-medium uppercase text-sm tracking-widest">Privacy &amp; security</h2>
+            <ul class="mt-4 space-y-3 max-w-prose list-none">
+                <li>A strict <span class="text-white font-medium">Content-Security-Policy</span> (<code class="text-neutral-300">default-src 'self'</code>) — the browser only ever talks to this origin.</li>
+                <li>Security headers on every response: MIME-sniffing off, framing denied, a strict referrer policy, and camera / microphone / geolocation disabled.</li>
+                <li>No analytics, no cookies, no third-party embeds, no external fonts or CDNs. Nothing to consent to because nothing is collected.</li>
+            </ul>
+
+            <h2 class="mt-10 text-neutral-400 font-medium uppercase text-sm tracking-widest">Identity &amp; payments</h2>
+            <p class="mt-4 max-w-prose">
+                A few <code class="text-neutral-300">.well-known</code> endpoints serve live lookups —
+                <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://github.com/nostr-protocol/nips/blob/master/05.md" target="_blank" rel="noopener">Nostr NIP-05</a>
+                name verification, a <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://github.com/lnurl/luds" target="_blank" rel="noopener">Lightning LNURL-pay</a>
+                address, and a Keybase proof — served with the right headers on every
+                host, so they keep working no matter which mirror answers.
+            </p>
+
+            <h2 class="mt-10 text-neutral-400 font-medium uppercase text-sm tracking-widest">Design</h2>
+            <p class="mt-4 max-w-prose">
+                Monochrome and minimal, in Public Sans. The theme is light or dark
+                automatically, following your system; the small mark in the top-left
+                corner toggles it, and your choice is remembered.
+            </p>
+
+            <h2 class="mt-10 text-neutral-400 font-medium uppercase text-sm tracking-widest">Source &amp; license</h2>
+            <p class="mt-4 max-w-prose">
+                The repository is public. The code is
+                <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://github.com/TheBenMeadows/tbm/blob/main/LICENSE" target="_blank" rel="noopener">MIT-licensed</a>;
+                the personal images and brand marks are not — all rights reserved on
+                those.
+            </p>
+        </main>
+
+        <footer class="text-neutral-400 text-sm text-center px-6 pb-10 pt-4">
+            <nav class="flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
+                <a class="hover:text-white transition-colors" href="/">Home</a>
+                <span aria-hidden="true" class="text-neutral-600">·</span>
+                <a class="hover:text-white transition-colors" href="https://github.com/TheBenMeadows/tbm" target="_blank" rel="noopener">Source</a>
+                <span aria-hidden="true" class="text-neutral-600">·</span>
+                <a class="hover:text-white transition-colors" href="/mirrors/">Mirrors</a>
+                <span aria-hidden="true" class="text-neutral-600">·</span>
+                <a class="hover:text-white transition-colors" href="/tech/">Tech&nbsp;Stack</a>
+            </nav>
+        </footer>
+    </body>
+</html>
