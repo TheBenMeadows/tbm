@@ -14,6 +14,9 @@
 /btm-logo.png
   Cache-Control: public, max-age=604800
 
+/og.png
+  Cache-Control: public, max-age=604800
+
 /favicon/*
   Cache-Control: public, max-age=604800
 

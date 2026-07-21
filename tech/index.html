@@ -7,8 +7,26 @@
             name="description"
             content="How thebenmeadows.com is built — the stack, the redundancy behind it, and the design decisions."
         />
+        <meta name="color-scheme" content="dark light" />
         <meta http-equiv="content-language" content="en-us" />
         <link rel="canonical" href="https://thebenmeadows.com/tech/" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="TheBenMeadows" />
+        <meta property="og:title" content="Tech Stack · TheBenMeadows" />
+        <meta property="og:description" content="How thebenmeadows.com is built — the stack, the redundancy behind it, and the design decisions." />
+        <meta property="og:url" content="https://thebenmeadows.com/tech/" />
+        <meta property="og:image" content="https://thebenmeadows.com/og.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="TheBenMeadows — thebenmeadows.com" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Tech Stack · TheBenMeadows" />
+        <meta name="twitter:description" content="How thebenmeadows.com is built — the stack, the redundancy behind it, and the design decisions." />
+        <meta name="twitter:image" content="https://thebenmeadows.com/og.png" />
+
         <title>Tech Stack · TheBenMeadows</title>
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000" />
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
@@ -89,6 +107,7 @@
                 <li>A strict <span class="text-white font-medium">Content-Security-Policy</span> (<code class="text-neutral-300">default-src 'self'</code>) — the browser only ever talks to this origin.</li>
                 <li>Security headers on every response: MIME-sniffing off, framing denied, a strict referrer policy, and camera / microphone / geolocation disabled.</li>
                 <li>No analytics, no cookies, no third-party embeds, no external fonts or CDNs. Nothing to consent to because nothing is collected.</li>
+                <li>A <code class="text-neutral-300">.well-known/security.txt</code> (<a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://www.rfc-editor.org/rfc/rfc9116" target="_blank" rel="noopener">RFC 9116</a>) publishes a contact for reporting vulnerabilities.</li>
             </ul>
 
             <h2 class="mt-10 text-neutral-400 font-medium uppercase text-sm tracking-widest">Identity &amp; payments</h2>
