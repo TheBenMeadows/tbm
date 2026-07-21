@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Where thebenmeadows.com is served and mirrored — independent hosts, code forges, and web archives."
+        />
+        <meta http-equiv="content-language" content="en-us" />
+        <link rel="canonical" href="https://thebenmeadows.com/mirrors/" />
+        <title>Mirrors · TheBenMeadows</title>
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000" />
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+
+        <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
+
+        <link
+            rel="preload"
+            href="/fonts/publicsans-v1.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+        />
+        <script src="/theme.js"></script>
+        <link rel="stylesheet" href="/output.css" />
+    </head>
+    <body class="bg-black">
+        <button
+            id="theme-toggle"
+            type="button"
+            aria-label="Toggle light/dark theme"
+            title="Toggle light/dark theme"
+            class="fixed top-8 left-8 z-10 p-0 border-0 bg-transparent cursor-pointer"
+        >
+            <img src="/btm-logo.png" alt="BTM" width="64" height="28" decoding="async" />
+        </button>
+
+        <main class="text-neutral-400 max-w-screen-md mx-auto px-6 pt-24 pb-12 leading-relaxed">
+            <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">Mirrors</h1>
+            <p class="mt-4 max-w-prose">
+                This site is deliberately hard to take offline. The same pages are
+                served from more than one independent host, and the source that builds
+                them is mirrored across several code forges — so if any single provider
+                disappears, both the live site and its source survive. The approach
+                follows the <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://github.com/privacyguides/privacyguides.org" target="_blank" rel="noopener">Privacy Guides</a>
+                mirror model: one source of truth, many mirrors.
+            </p>
+
+            <h2 class="mt-10 text-neutral-400 font-medium uppercase text-sm tracking-widest">Live site</h2>
+            <p class="mt-2 text-sm text-neutral-500">Independent hosts serving the same site.</p>
+            <div class="mt-4 grid gap-3 sm:grid-cols-2">
+                <a class="block rounded-xl bg-zinc-800 p-5 transition-opacity hover:opacity-80" href="https://thebenmeadows.com/" rel="noopener">
+                    <span class="block text-white font-medium">Cloudflare Pages <span class="text-neutral-500 font-normal">— primary</span></span>
+                    <span class="block text-neutral-500 text-sm break-words">thebenmeadows.com</span>
+                </a>
+                <a class="block rounded-xl bg-zinc-800 p-5 transition-opacity hover:opacity-80" href="https://thebenmeadows.netlify.app/" target="_blank" rel="noopener">
+                    <span class="block text-white font-medium">Netlify <span class="text-neutral-500 font-normal">— second host</span></span>
+                    <span class="block text-neutral-500 text-sm break-words">thebenmeadows.netlify.app</span>
+                </a>
+                <a class="block rounded-xl bg-zinc-800 p-5 transition-opacity hover:opacity-80" href="https://tbm-linktree.pages.dev/" target="_blank" rel="noopener">
+                    <span class="block text-white font-medium">Pages direct URL</span>
+                    <span class="block text-neutral-500 text-sm break-words">tbm-linktree.pages.dev</span>
+                </a>
+            </div>
+
+            <h2 class="mt-10 text-neutral-400 font-medium uppercase text-sm tracking-widest">Source code</h2>
+            <p class="mt-2 text-sm text-neutral-500">The repository, mirrored to independent forges and kept in sync automatically — each holds the full history.</p>
+            <div class="mt-4 grid gap-3 sm:grid-cols-2">
+                <a class="block rounded-xl bg-zinc-800 p-5 transition-opacity hover:opacity-80" href="https://github.com/TheBenMeadows/tbm" target="_blank" rel="noopener">
+                    <span class="block text-white font-medium">GitHub <span class="text-neutral-500 font-normal">— source of truth</span></span>
+                    <span class="block text-neutral-500 text-sm break-words">github.com/TheBenMeadows/tbm</span>
+                </a>
+                <a class="block rounded-xl bg-zinc-800 p-5 transition-opacity hover:opacity-80" href="https://codeberg.org/thebenmeadows/tbm" target="_blank" rel="noopener">
+                    <span class="block text-white font-medium">Codeberg</span>
+                    <span class="block text-neutral-500 text-sm break-words">codeberg.org/thebenmeadows/tbm</span>
+                </a>
+                <a class="block rounded-xl bg-zinc-800 p-5 transition-opacity hover:opacity-80" href="https://gitea.com/thebenmeadows/tbm" target="_blank" rel="noopener">
+                    <span class="block text-white font-medium">Gitea</span>
+                    <span class="block text-neutral-500 text-sm break-words">gitea.com/thebenmeadows/tbm</span>
+                </a>
+                <a class="block rounded-xl bg-zinc-800 p-5 transition-opacity hover:opacity-80" href="https://gitlab.com/TheBenMeadows/tbm" target="_blank" rel="noopener">
+                    <span class="block text-white font-medium">GitLab</span>
+                    <span class="block text-neutral-500 text-sm break-words">gitlab.com/TheBenMeadows/tbm</span>
+                </a>
+            </div>
+
+            <h2 class="mt-10 text-neutral-400 font-medium uppercase text-sm tracking-widest">Archived</h2>
+            <p class="mt-2 text-sm text-neutral-500">Point-in-time snapshots held by a third party, outside any host above.</p>
+            <div class="mt-4 grid gap-3 sm:grid-cols-2">
+                <a class="block rounded-xl bg-zinc-800 p-5 transition-opacity hover:opacity-80" href="https://web.archive.org/web/2/https://thebenmeadows.com/" target="_blank" rel="noopener">
+                    <span class="block text-white font-medium">Wayback Machine <span class="text-neutral-500 font-normal">— latest</span></span>
+                    <span class="block text-neutral-500 text-sm break-words">web.archive.org</span>
+                </a>
+                <a class="block rounded-xl bg-zinc-800 p-5 transition-opacity hover:opacity-80" href="https://web.archive.org/web/*/https://thebenmeadows.com" target="_blank" rel="noopener">
+                    <span class="block text-white font-medium">Wayback Machine <span class="text-neutral-500 font-normal">— all snapshots</span></span>
+                    <span class="block text-neutral-500 text-sm break-words">web.archive.org</span>
+                </a>
+            </div>
+
+            <p class="mt-10 text-sm text-neutral-500">
+                Curious how it's put together? See the
+                <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="/tech/">tech&nbsp;stack</a>.
+            </p>
+        </main>
+
+        <footer class="text-neutral-400 text-sm text-center px-6 pb-10 pt-4">
+            <nav class="flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
+                <a class="hover:text-white transition-colors" href="/">Home</a>
+                <span aria-hidden="true" class="text-neutral-600">·</span>
+                <a class="hover:text-white transition-colors" href="https://github.com/TheBenMeadows/tbm" target="_blank" rel="noopener">Source</a>
+                <span aria-hidden="true" class="text-neutral-600">·</span>
+                <a class="hover:text-white transition-colors" href="/mirrors/">Mirrors</a>
+                <span aria-hidden="true" class="text-neutral-600">·</span>
+                <a class="hover:text-white transition-colors" href="/tech/">Tech&nbsp;Stack</a>
+            </nav>
+        </footer>
+    </body>
+</html>

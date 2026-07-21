@@ -8,6 +8,6 @@
   },
   "scripts": {
     "build": "npx tailwindcss -i ./src/input.css -o ./output.css --minify",
-    "build:netlify": "npm run build && rm -rf dist && mkdir dist && cp index.html 404.html output.css email.js theme.js btm-logo.png me.png sitemap.xml _headers dist/ && cp -R favicon icons fonts .well-known dist/"
+    "build:netlify": "npm run build && rm -rf dist && mkdir dist && cp index.html 404.html output.css email.js theme.js btm-logo.png me.png sitemap.xml _headers dist/ && cp -R favicon icons fonts .well-known mirrors tech dist/"
   }
 }
