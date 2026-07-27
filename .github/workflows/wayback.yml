@@ -23,7 +23,9 @@ jobs:
           for url in \
             "https://thebenmeadows.com/" \
             "https://thebenmeadows.com/mirrors/" \
-            "https://thebenmeadows.com/tech/"; do
+            "https://thebenmeadows.com/tech/" \
+            "https://thebenmeadows.com/experiments/" \
+            "https://thebenmeadows.com/infra/"; do
             curl -sS -m 120 --retry 3 --retry-delay 60 -o /dev/null \
               -w "%{http_code} $url\n" \
               "https://web.archive.org/save/$url" || true
