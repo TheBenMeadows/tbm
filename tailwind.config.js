@@ -9,6 +9,8 @@ module.exports = {
     "./email.js",
     "./mirrors/index.html",
     "./tech/index.html",
+    "./experiments/index.html",
+    "./infra/index.html",
   ],
   theme: {
     extend: {

@@ -50,6 +50,7 @@ decisions behind it are at [`/tech/`](https://thebenmeadows.com/tech/).
 |------|------------|
 | `index.html` | the home page (link hub) |
 | `mirrors/`, `tech/` | the mirror list and the tech-stack colophon |
+| `experiments/`, `infra/` | experiments gallery and the network/ASN colophon |
 | `404.html` | not-found page (self-contained, inline styles) |
 | `src/input.css`, `tailwind.config.js` | Tailwind source + config |
 | `icons/` | self-hosted social SVGs (no external CDN at runtime) |
