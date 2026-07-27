@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Small web experiments by Ben Meadows — toys, provocations, and mock-serious protocols." />
+        <meta name="color-scheme" content="dark light" />
+        <meta http-equiv="content-language" content="en-us" />
+        <link rel="canonical" href="https://thebenmeadows.com/experiments/" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="TheBenMeadows" />
+        <meta property="og:title" content="Experiments · TheBenMeadows" />
+        <meta property="og:description" content="Small web experiments by Ben Meadows — toys, provocations, and mock-serious protocols." />
+        <meta property="og:url" content="https://thebenmeadows.com/experiments/" />
+        <meta property="og:image" content="https://thebenmeadows.com/og.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="TheBenMeadows — thebenmeadows.com" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Experiments · TheBenMeadows" />
+        <meta name="twitter:description" content="Small web experiments by Ben Meadows — toys, provocations, and mock-serious protocols." />
+        <meta name="twitter:image" content="https://thebenmeadows.com/og.png" />
+
+        <title>Experiments · TheBenMeadows</title>
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000" />
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+
+        <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
+
+        <link
+            rel="preload"
+            href="/fonts/publicsans-v1.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+        />
+        <script src="/theme.js"></script>
+        <link rel="stylesheet" href="/output.css" />
+    </head>
+    <body class="bg-black">
+        <button
+            id="theme-toggle"
+            type="button"
+            aria-label="Toggle light/dark theme"
+            title="Toggle light/dark theme"
+            class="fixed top-8 left-8 z-10 p-0 border-0 bg-transparent cursor-pointer"
+        >
+            <img src="/btm-logo.png" alt="BTM" width="64" height="28" decoding="async" />
+        </button>
+
+        <main class="text-neutral-400 max-w-screen-md mx-auto px-6 pt-24 pb-12 leading-relaxed">
+            <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">Experiments</h1>
+            <p class="mt-4 max-w-prose">
+                A handful of small web experiments — toys, provocations, and
+                mock-serious protocols. Each one stands on its own and opens in a
+                new tab.
+            </p>
+
+            <div class="mt-8 grid gap-4 sm:grid-cols-2">
+                <a class="block rounded-xl bg-zinc-800 p-6 transition-opacity hover:opacity-80" href="https://mdws.me/pendulum" target="_blank" rel="noopener">
+                    <div class="flex items-center justify-between font-mono text-xs">
+                        <span class="uppercase tracking-widest text-neutral-500">Generative</span>
+                        <span class="text-neutral-600">01</span>
+                    </div>
+                    <h2 class="mt-3 text-xl font-bold text-white">Pendulum Simulator</h2>
+                    <p class="mt-2 text-sm text-neutral-400">A harmonograph generator: tune the ratios, phase, and damping, watch the Lissajous figure resolve, then export it as PNG or SVG.</p>
+                    <div class="mt-4 font-mono text-xs text-neutral-500">mdws.me/pendulum&nbsp;↗</div>
+                </a>
+
+                <a class="block rounded-xl bg-zinc-800 p-6 transition-opacity hover:opacity-80" href="https://mdws.me/porcine" target="_blank" rel="noopener">
+                    <div class="flex items-center justify-between font-mono text-xs">
+                        <span class="uppercase tracking-widest text-neutral-500">Essay</span>
+                        <span class="text-neutral-600">02</span>
+                    </div>
+                    <h2 class="mt-3 text-xl font-bold text-white">Protocol 3LP</h2>
+                    <p class="mt-2 text-sm text-neutral-400">A mock-academic reading of the Three Little Pigs as recursive ontological failure — the huff-and-puff as a denial-of-service attack against reality.</p>
+                    <div class="mt-4 font-mono text-xs text-neutral-500">mdws.me/porcine&nbsp;↗</div>
+                </a>
+
+                <a class="block rounded-xl bg-zinc-800 p-6 transition-opacity hover:opacity-80" href="https://mdws.me/etherhoo" target="_blank" rel="noopener">
+                    <div class="flex items-center justify-between font-mono text-xs">
+                        <span class="uppercase tracking-widest text-neutral-500">Parody</span>
+                        <span class="text-neutral-600">03</span>
+                    </div>
+                    <h2 class="mt-3 text-xl font-bold text-white">Etherhoo!</h2>
+                    <p class="mt-2 text-sm text-neutral-400">Etherscan by way of the old Yahoo! homepage — a blockchain explorer reimagined as a late-'90s web portal.</p>
+                    <div class="mt-4 font-mono text-xs text-neutral-500">mdws.me/etherhoo&nbsp;↗</div>
+                </a>
+
+                <a class="block rounded-xl bg-zinc-800 p-6 transition-opacity hover:opacity-80" href="https://mdws.me/dls" target="_blank" rel="noopener">
+                    <div class="flex items-center justify-between font-mono text-xs">
+                        <span class="uppercase tracking-widest text-neutral-500">Manifesto</span>
+                        <span class="text-neutral-600">04</span>
+                    </div>
+                    <h2 class="mt-3 text-xl font-bold text-white">Dog Lovers Society</h2>
+                    <p class="mt-2 text-sm text-neutral-400">A straight-faced manifesto advocating for canine representation — one paw at a time.</p>
+                    <div class="mt-4 font-mono text-xs text-neutral-500">mdws.me/dls&nbsp;↗</div>
+                </a>
+            </div>
+        </main>
+
+        <footer class="text-neutral-400 text-sm text-center px-6 pb-10 pt-4">
+            <nav class="flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
+                <a class="hover:text-white transition-colors" href="/">Home</a>
+                <span aria-hidden="true" class="text-neutral-600">·</span>
+                <a class="hover:text-white transition-colors" href="https://github.com/TheBenMeadows/tbm" target="_blank" rel="noopener">Source</a>
+                <span aria-hidden="true" class="text-neutral-600">·</span>
+                <a class="hover:text-white transition-colors" href="/mirrors/">Mirrors</a>
+                <span aria-hidden="true" class="text-neutral-600">·</span>
+                <a class="hover:text-white transition-colors" href="/tech/">Tech&nbsp;Stack</a>
+                <span aria-hidden="true" class="text-neutral-600">·</span>
+                <a class="hover:text-white transition-colors" href="/experiments/">Experiments</a>
+                <span aria-hidden="true" class="text-neutral-600">·</span>
+                <a class="hover:text-white transition-colors" href="/infra/">Infra</a>
+            </nav>
+        </footer>
+    </body>
+</html>
