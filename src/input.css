@@ -71,6 +71,14 @@ html.light .hover\:text-white:hover { color: #000000; }
     background: rgba(0, 0, 0, 0.72);
     overflow-y: auto;
 }
+/* search.js closes the overlay with the `hidden` attribute, whose Preflight rule
+   `[hidden]:where(:not([hidden=until-found])){display:none}` has the SAME specificity
+   as `.search-overlay` — and loses on source order, because this file is appended
+   after Preflight. Without this rule the closed overlay stays display:flex and covers
+   every page. Keep it adjacent to the rule it defends against. */
+.search-overlay[hidden] {
+    display: none;
+}
 html.search-open,
 html.search-open body {
     overflow: hidden;
