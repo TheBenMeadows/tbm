@@ -11,6 +11,16 @@
     }
 }
 
+/* The footer's "Top" link is a plain #top anchor rather than a floating button —
+   a fixed control hovering over the page is the pattern the header rework removed,
+   and on narrow screens it would land back on top of content. Smooth scrolling is
+   opt-out for anyone who has asked for less motion. */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
 /* Site header. Sticky and OPAQUE on purpose: the old control was position:fixed,
    which left it outside the flow so page content scrolled underneath it — on every
    viewport below ~960px that meant body copy (and, on the home page, a tappable
