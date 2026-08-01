@@ -13,6 +13,9 @@ module.exports = {
     "./infra/index.html",
     "./essentialism/index.html",
     "./essentialism/play.js",
+    "./search/index.html",
+    // search.js builds the overlay at runtime; without this its classes get purged.
+    "./search.js",
   ],
   theme: {
     extend: {
