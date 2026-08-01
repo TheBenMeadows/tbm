@@ -58,9 +58,11 @@
             </p>
 
             <p class="mt-6 max-w-prose">
-                In November 2022 I wrote a p5.js sketch that dropped columns of dots
-                over a photograph and let the image pick the colors. I called the test
-                outputs Essentialism and never released them. This is that system,
+                In November 2022 I worked through Andy Haskell&rsquo;s tutorial
+                <a class="text-neutral-300 underline underline-offset-4 hover:text-white transition-colors" href="https://dev.to/andyhaskell/convert-images-to-mosaics-in-p5js-2dlc" target="_blank" rel="noopener">Convert images to mosaics in p5.js</a>
+                and kept going with it, randomizing the dot size and feeding it my own
+                photographs. I called the test outputs Essentialism and never released
+                them. The column-of-dots structure is his. This is that sketch,
                 rewritten to live entirely on-chain in under 10&nbsp;KB.
             </p>
             <p class="mt-4 max-w-prose">
@@ -162,10 +164,13 @@
 
             <h2 class="mt-14 text-white text-2xl font-bold" style="letter-spacing: -0.025em">2022</h2>
             <p class="mt-3 max-w-prose">
-                The sketch this came from is still public, bugs and all. It loaded a
-                photograph, walked down columns of dots, and asked the image for a color
-                at every step. Below is one of the nine test outputs I saved in November
-                2022 and never released. I was
+                The sketch this came from is still public, bugs and all. I built it by
+                working through
+                <a class="text-neutral-300 underline underline-offset-4 hover:text-white transition-colors" href="https://dev.to/andyhaskell/convert-images-to-mosaics-in-p5js-2dlc" target="_blank" rel="noopener">Andy Haskell&rsquo;s mosaic tutorial</a>
+                &mdash; his program walks down columns of dots and asks the image for a
+                color at every step &mdash; then randomized the dot size and pointed it
+                at my own photographs. Below is one of the nine test outputs I saved in
+                November 2022 and never released. I was
                 <a class="text-neutral-300 underline underline-offset-4 hover:text-white transition-colors" href="https://x.com/TheBenMeadows/status/1601740879999295488" target="_blank" rel="noopener">learning p5.js at the time</a>.
             </p>
             <div class="mt-6 grid gap-4 sm:grid-cols-2">
@@ -177,9 +182,10 @@
                     <h3 class="text-white text-lg font-bold">What changed</h3>
                     <p class="mt-2 text-sm">
                         The column structure, the dot spacing constant, and several
-                        variable names survive unchanged. The photograph does not: on-chain
-                        there is no room for one, so the image became two grids of grey and
-                        the palette became five inks sampled from my earlier work.
+                        variable names survive unchanged &mdash; that structure is Haskell&rsquo;s.
+                        The photograph does not survive: on-chain there is no room for one,
+                        so the image became two grids of grey and the palette became five
+                        inks sampled from my earlier work.
                     </p>
                     <p class="mt-3 text-sm">
                         The 2022 sketch also called <code class="font-mono text-xs text-neutral-300">noise(50, 100)</code>
