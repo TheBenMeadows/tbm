@@ -1,4 +1,5 @@
 node_modules
 output.css
+search-index.json
 .DS_Store
 dist

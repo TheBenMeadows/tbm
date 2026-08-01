@@ -45,31 +45,41 @@
             crossorigin
         />
         <script src="/theme.js"></script>
+        <script src="/search.js" defer></script>
         <link rel="stylesheet" href="/output.css" />
     </head>
     <body class="bg-black">
         <header class="site-chrome sticky top-0 z-20">
             <div class="max-w-screen-md mx-auto px-6 h-16 flex items-center justify-between">
-            <a
-                href="/"
-                aria-label="TheBenMeadows — home"
-                title="Home"
-                class="flex items-center h-11 px-1 -ml-1 rounded-lg"
-            >
-                <img src="/btm-logo.png" alt="" width="64" height="28" decoding="async" />
-            </a>
-                <div class="flex items-center gap-1">
-            <button
-                    id="theme-toggle"
-                    type="button"
-                    aria-label="Theme: follow system"
-                    title="Theme: follow system"
-                    class="flex items-center justify-center w-11 h-11 rounded-lg border-0 bg-transparent cursor-pointer text-neutral-400 hover:text-white transition-colors"
+                <a
+                    href="/"
+                    aria-label="TheBenMeadows — home"
+                    title="Home"
+                    class="flex items-center h-11 px-1 -ml-1 rounded-lg"
                 >
-                    <svg class="theme-ico" data-theme-ico="light" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-                    <svg class="theme-ico" data-theme-ico="dark" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-                    <svg class="theme-ico" data-theme-ico="system" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.5" y="3.5" width="19" height="13" rx="2"/><path d="M8 20.5h8M12 16.5v4"/></svg>
-                </button>
+                    <img src="/btm-logo.png" alt="" width="64" height="28" decoding="async" />
+                </a>
+                <div class="flex items-center gap-1">
+                    <button
+                        id="search-open"
+                        type="button"
+                        aria-label="Search this site"
+                        title="Search (press / )"
+                        class="flex items-center justify-center w-11 h-11 rounded-lg border-0 bg-transparent cursor-pointer text-neutral-400 hover:text-white transition-colors"
+                    >
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                    </button>
+                    <button
+                        id="theme-toggle"
+                        type="button"
+                        aria-label="Theme: follow system"
+                        title="Theme: follow system"
+                        class="flex items-center justify-center w-11 h-11 rounded-lg border-0 bg-transparent cursor-pointer text-neutral-400 hover:text-white transition-colors"
+                    >
+                        <svg class="theme-ico" data-theme-ico="light" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+                        <svg class="theme-ico" data-theme-ico="dark" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+                        <svg class="theme-ico" data-theme-ico="system" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.5" y="3.5" width="19" height="13" rx="2"/><path d="M8 20.5h8M12 16.5v4"/></svg>
+                    </button>
                 </div>
             </div>
         </header>
@@ -88,7 +98,8 @@
                 <li><span class="text-white font-medium">Styles</span> — <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://tailwindcss.com" target="_blank" rel="noopener">Tailwind CSS</a>, compiled to a single minified stylesheet at build time. Only the classes actually used are shipped.</li>
                 <li><span class="text-white font-medium">Type</span> — <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://public-sans.digital.gov" target="_blank" rel="noopener">Public Sans</a> (SIL Open Font License), self-hosted, subset to Latin and trimmed to the weights in use, then versioned, preloaded, and cached for a year. No font CDN.</li>
                 <li><span class="text-white font-medium">Icons</span> — self-hosted SVGs. The page makes no third-party requests when it loads.</li>
-                <li><span class="text-white font-medium">Scripts</span> — two small vanilla-JS files: a light/dark toggle and a contact address assembled in the browser to cut scraping. No bundler, no analytics, no cookies.</li>
+                <li><span class="text-white font-medium">Scripts</span> — three small vanilla-JS files: the theme control, a contact address assembled in the browser to cut scraping, and <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="/search/">site search</a>. No bundler, no analytics, no cookies.</li>
+                <li><span class="text-white font-medium">Search</span> — an index built from these pages at deploy time and matched in your browser; the query never leaves it. No search library: the whole corpus is about 11&nbsp;KB, and a WebAssembly search engine would have meant loosening the CSP below to allow <span class="font-mono text-xs">wasm-unsafe-eval</span>.</li>
             </ul>
 
             <h2 class="mt-10 text-neutral-400 font-medium uppercase text-sm tracking-widest">Hosting &amp; build</h2>

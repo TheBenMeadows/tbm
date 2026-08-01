@@ -26,6 +26,9 @@
 /output.css
   Cache-Control: public, max-age=3600
 
+/search-index.json
+  Cache-Control: public, max-age=3600
+
 /.well-known/nostr.json
   Access-Control-Allow-Origin: *
 

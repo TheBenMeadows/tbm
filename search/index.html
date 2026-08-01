@@ -3,16 +3,18 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="The network behind thebenmeadows.com — an independent autonomous system, AS219158." />
+        <meta name="description" content="Search thebenmeadows.com." />
         <meta name="color-scheme" content="dark light" />
         <meta http-equiv="content-language" content="en-us" />
-        <link rel="canonical" href="https://thebenmeadows.com/infra/" />
+        <link rel="canonical" href="https://thebenmeadows.com/search/" />
+        <!-- A result set is a query, not a document: useful to link, not to index. -->
+        <meta name="robots" content="noindex, follow" />
 
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="TheBenMeadows" />
-        <meta property="og:title" content="Infra · TheBenMeadows" />
-        <meta property="og:description" content="The network behind thebenmeadows.com — an independent autonomous system, AS219158." />
-        <meta property="og:url" content="https://thebenmeadows.com/infra/" />
+        <meta property="og:title" content="Search · TheBenMeadows" />
+        <meta property="og:description" content="Search thebenmeadows.com." />
+        <meta property="og:url" content="https://thebenmeadows.com/search/" />
         <meta property="og:image" content="https://thebenmeadows.com/og.png" />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="1200" />
@@ -20,11 +22,11 @@
         <meta property="og:image:alt" content="TheBenMeadows — thebenmeadows.com" />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Infra · TheBenMeadows" />
-        <meta name="twitter:description" content="The network behind thebenmeadows.com — an independent autonomous system, AS219158." />
+        <meta name="twitter:title" content="Search · TheBenMeadows" />
+        <meta name="twitter:description" content="Search thebenmeadows.com." />
         <meta name="twitter:image" content="https://thebenmeadows.com/og.png" />
 
-        <title>Infra · TheBenMeadows</title>
+        <title>Search · TheBenMeadows</title>
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000" />
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
 
@@ -34,13 +36,7 @@
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
         <link rel="manifest" href="/favicon/site.webmanifest" />
 
-        <link
-            rel="preload"
-            href="/fonts/publicsans-v1.woff2"
-            as="font"
-            type="font/woff2"
-            crossorigin
-        />
+        <link rel="preload" href="/fonts/publicsans-v1.woff2" as="font" type="font/woff2" crossorigin />
         <script src="/theme.js"></script>
         <script src="/search.js" defer></script>
         <link rel="stylesheet" href="/output.css" />
@@ -58,15 +54,6 @@
                 </a>
                 <div class="flex items-center gap-1">
                     <button
-                        id="search-open"
-                        type="button"
-                        aria-label="Search this site"
-                        title="Search (press / )"
-                        class="flex items-center justify-center w-11 h-11 rounded-lg border-0 bg-transparent cursor-pointer text-neutral-400 hover:text-white transition-colors"
-                    >
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-                    </button>
-                    <button
                         id="theme-toggle"
                         type="button"
                         aria-label="Theme: follow system"
@@ -81,46 +68,33 @@
             </div>
         </header>
         <main class="text-neutral-400 max-w-screen-md mx-auto px-6 pt-8 pb-12 leading-relaxed">
-            <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">Infra</h1>
+            <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">Search</h1>
             <p class="mt-4 max-w-prose">
-                Beyond the pages themselves, Ben is standing up his own corner of
-                the internet's plumbing — an independent
-                <span class="text-white">autonomous system</span>: a registered slice
-                of the global routing table, run rather than rented. It's allocated
-                and being brought online now; the routing and DNS story will grow
-                here as it does.
+                Everything on this site, plus the links the home page points to. The
+                index is built from the pages themselves at deploy time.
             </p>
 
-            <div class="mt-8 grid gap-3 sm:grid-cols-2">
-                <a class="block rounded-xl bg-zinc-800 p-6 transition-opacity hover:opacity-80" href="https://stat.ripe.net/AS219158" target="_blank" rel="noopener">
-                    <span class="block font-mono text-xs uppercase tracking-widest text-neutral-500">Autonomous System</span>
-                    <span class="mt-2 block font-mono text-xl text-white break-words">AS219158</span>
-                    <span class="mt-2 block font-mono text-xs text-neutral-500">stat.ripe.net&nbsp;↗</span>
-                </a>
-                <div class="rounded-xl bg-zinc-800 p-6">
-                    <span class="block font-mono text-xs uppercase tracking-widest text-neutral-500">IPv6 allocation</span>
-                    <span class="mt-2 block font-mono text-xl text-white break-words">2a06:9801:f11::/48</span>
-                    <span class="mt-2 block font-mono text-xs text-neutral-500">65,536 &times; /64</span>
-                </div>
-                <div class="rounded-xl bg-zinc-800 p-6">
-                    <span class="block font-mono text-xs uppercase tracking-widest text-neutral-500">Registry</span>
-                    <span class="mt-2 block font-mono text-xl text-white">RIPE NCC</span>
-                </div>
-                <div class="rounded-xl bg-zinc-800 p-6">
-                    <span class="block font-mono text-xs uppercase tracking-widest text-neutral-500">Status</span>
-                    <span class="mt-2 block font-mono text-xl text-white">Being brought online</span>
-                </div>
-            </div>
+            <form id="search-page-form" role="search" action="/search/" method="get" class="mt-8 max-w-prose">
+                <label class="sr-only" for="search-page-input">Search this site</label>
+                <input
+                    id="search-page-input"
+                    name="q"
+                    type="search"
+                    autocomplete="off"
+                    placeholder="Search this site…"
+                    class="search-input w-full rounded-xl bg-zinc-800 px-4"
+                />
+            </form>
 
-            <h2 class="mt-10 text-neutral-400 font-medium uppercase text-sm tracking-widest">What's next</h2>
-            <ul class="mt-4 space-y-3 max-w-prose list-none">
-                <li><span class="text-white font-medium">BGP</span> — announcing the prefix into the global routing table, multi-homed.</li>
-                <li><span class="text-white font-medium">DNS</span> — self-hosted authoritative name service on the allocation.</li>
-                <li><span class="text-white font-medium">Anycast</span> — the same address served from more than one place.</li>
-            </ul>
-            <p class="mt-6 text-sm text-neutral-500">This page is a stub — it'll fill in as the network comes up.</p>
+            <p id="search-page-status" class="mt-6 text-sm text-neutral-500">Loading…</p>
+            <ul id="search-page-results" class="mt-2 max-w-prose list-none"></ul>
+
+            <p class="mt-10 max-w-prose text-sm text-neutral-500">
+                Search runs entirely in your browser — the query is never sent anywhere.
+                On any page you can press <span class="font-mono">/</span> to open it
+                without leaving the page.
+            </p>
         </main>
-
         <footer class="text-neutral-400 text-sm text-center px-6 pb-10 pt-4">
             <nav class="flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
                 <a class="inline-block py-1 hover:text-white transition-colors" href="/">Home</a>
