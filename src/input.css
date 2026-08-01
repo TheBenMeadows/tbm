@@ -11,10 +11,33 @@
     }
 }
 
-/* Light mode — auto via OS preference, manually overridable via the BTM corner
-   toggle (html.light / html.dark set by theme.js, persisted in localStorage).
+/* Site header. Sticky and OPAQUE on purpose: the old control was position:fixed,
+   which left it outside the flow so page content scrolled underneath it — on every
+   viewport below ~960px that meant body copy (and, on the home page, a tappable
+   link card) sat directly under the wordmark. A header that occupies real space and
+   paints its own background can't be scrolled under. */
+.site-chrome {
+    background-color: #000000;
+    border-bottom: 1px solid #18181b;
+}
+
+/* Theme button shows exactly one icon — whichever state the cycle is on. */
+.theme-ico {
+    display: none;
+}
+.theme-ico.is-active {
+    display: block;
+}
+
+/* Long contract addresses / URLs in prose must not push the page sideways. */
+main {
+    overflow-wrap: anywhere;
+}
+
+/* Light mode — auto via OS preference, manually overridable via the header theme
+   button (html.light / html.dark set by theme.js; "follow system" = no stored key).
    Palette mirrors the dark brand; wordmark + icons stay #a3a3a3 (works on both).
-   Covers the home page, the footer, and the /mirrors/ + /tech/ subpages. */
+   Covers the home page, the header, the footer, and every subpage. */
 @media (prefers-color-scheme: light) {
     html:not(.dark) body.bg-black { background-color: #ffffff; }
     html:not(.dark) .bg-zinc-800 { background-color: #f4f4f5; }
@@ -24,7 +47,9 @@
     html:not(.dark) .text-neutral-300 { color: #3f3f46; }
     html:not(.dark) .text-white { color: #000000; }
     html:not(.dark) .hover\:text-white:hover { color: #000000; }
+    html:not(.dark) .site-chrome { background-color: #ffffff; border-bottom-color: #e4e4e7; }
 }
+html.light .site-chrome { background-color: #ffffff; border-bottom-color: #e4e4e7; }
 html.light body.bg-black { background-color: #ffffff; }
 html.light .bg-zinc-800 { background-color: #f4f4f5; }
 html.light .text-neutral-400 { color: #52525b; }
@@ -33,6 +58,20 @@ html.light .text-neutral-500 { color: #71717a; }
 html.light .text-neutral-300 { color: #3f3f46; }
 html.light .text-white { color: #000000; }
 html.light .hover\:text-white:hover { color: #000000; }
+
+/* WebKit renders a native <select> at its own intrinsic height and ignores
+   min-height until -webkit-appearance is cleared — which left this control 18px tall,
+   under the 24px minimum target size. Clearing appearance also drops the native
+   chevron, so draw one (data: URIs are permitted by the img-src CSP directive). */
+select.ess-control {
+    -webkit-appearance: none;
+    appearance: none;
+    padding-right: 2rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 4.5 6 8.5 10 4.5' fill='none' stroke='%23a3a3a3' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.625rem center;
+    background-size: 12px 12px;
+}
 
 /* essentialism page controls — the dark chips need a light counterpart, or
    they render as black-on-grey when the light palette kicks in. */

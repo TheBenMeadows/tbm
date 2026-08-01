@@ -31,6 +31,20 @@
             .container {
                 padding: 2rem;
             }
+            .mark {
+                display: inline-block;
+                border: 0;
+                padding: 0;
+                margin-bottom: 2rem;
+            }
+            .mark:hover {
+                border: 0;
+            }
+            .mark img {
+                display: block;
+                width: 64px;
+                height: 28px;
+            }
             h1 {
                 font-size: 6rem;
                 font-weight: 900;
@@ -47,7 +61,7 @@
                 color: #a3a3a3;
                 text-decoration: none;
                 border: 1px solid #a3a3a3;
-                padding: 0.625rem 2rem;
+                padding: 0.75rem 2rem;
                 font-size: 0.875rem;
                 font-weight: 600;
                 border-radius: 0.75rem;
@@ -67,9 +81,17 @@
     </head>
     <body>
         <div class="container">
+            <!-- Root-relative on purpose: an absolute apex URL would bounce visitors
+                 off the Netlify/pages.dev mirrors, which is exactly the failover the
+                 mirrors exist to provide. This page stays self-contained (its own CSS,
+                 no output.css) so it still renders when the stylesheet is the thing
+                 that failed to load. -->
+            <a class="mark" href="/" aria-label="TheBenMeadows — home">
+                <img src="/btm-logo.png" alt="" width="64" height="28" />
+            </a>
             <h1>404</h1>
             <p>Page not found</p>
-            <a href="https://thebenmeadows.com">Back to Home</a>
+            <a href="/">Back to Home</a>
         </div>
     </body>
 </html>
