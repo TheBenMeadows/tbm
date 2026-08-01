@@ -5,10 +5,11 @@
 window.ESSENTIALISM = function (BTLDR) {
 // essentialism
 //
-// in november 2022 i wrote a p5.js sketch called "365 days of tbm":
-// columns of dots dropped over a photograph, with the image choosing
-// every color. this is that algorithm, rewritten to run entirely
-// on-chain.
+// in november 2022 i made a p5.js sketch called "365 days of tbm" by
+// working through andy haskell's tutorial "convert images to mosaics
+// in p5.js", january 2022. the column-of-dots structure is his. i
+// changed what feeds it. this is that sketch, rewritten to run
+// entirely on-chain.
 //
 // it remembers two of my photographs, reduced to the 28x38 grids of
 // grey below (TREE, SKY), one character per cell. both are minted on
@@ -155,5 +156,4 @@ if (dots.length && rnd() < .55) {
 put('rect', { x: 0, y: 0, width: W, height: H, filter: 'url(#g)' });
 
 put('desc', {}).textContent = `essentialism · ${density} · ${nInks} ink${nInks > 1 ? 's' : ''} · source: ${source} · memory ${Math.round(f * 100)}%${night ? ' · night' : ''}${ember ? ' · ember' : ''} · ed. ${it}`;
-
 };
