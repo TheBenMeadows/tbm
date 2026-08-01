@@ -227,11 +227,12 @@
 
             <h2 class="mt-14 text-white text-2xl font-bold" style="letter-spacing: -0.025em">The code</h2>
             <p class="mt-3 max-w-prose">
-                Under 10&nbsp;KB, stored on Tezos, and displayed in full on the mint page.
-                Below is the file this page just ran &mdash; the same body, byte for byte,
-                with a wrapper so the browser can call it.
+                Under 10&nbsp;KB and stored on Tezos. The code below is not served from
+                this site &mdash; it is read out of the contract when you open the page,
+                then compared against the source of the function this page actually ran.
             </p>
-            <pre class="mt-6 max-h-96 overflow-auto rounded-xl bg-zinc-800 p-6 text-xs leading-relaxed"><code id="code" class="font-mono text-neutral-400">Loading source…</code></pre>
+            <pre class="mt-6 max-h-96 overflow-auto rounded-xl bg-zinc-800 p-6 text-xs leading-relaxed"><code id="code" class="font-mono text-neutral-400">Reading from the contract…</code></pre>
+            <p id="code-status" class="mt-3 font-mono text-xs text-neutral-500"></p>
 
             <p class="mt-6 font-mono text-xs text-neutral-500">
                 <a class="hover:text-white transition-colors" href="https://better-call.dev/mainnet/KT1CB4MYiAViCuXWBU961x7LjQXGeA8SnQwt" target="_blank" rel="noopener">contract KT1CB4M&hellip;SnQwt&nbsp;&#8599;</a>
