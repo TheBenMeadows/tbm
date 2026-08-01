@@ -15,6 +15,7 @@ var NS = 'http://www.w3.org/2000/svg';
 var EDITIONS = 44, W = 750, H = 1000;
 var TZKT = 'https://api.tzkt.io/v1/bigmaps/771409/keys?value.generator_id=407&select=key,value&limit=60';
 var META = 'https://api.tzkt.io/v1/tokens?contract=KT1CB4MYiAViCuXWBU961x7LjQXGeA8SnQwt&select=tokenId,metadata&tokenId.in=';
+var GENERATOR = 'https://api.tzkt.io/v1/bigmaps/771404/keys/407';
 var THUMB = 'https://media.bootloader.art/svg-js/v1/thumbnail/';
 var TOKEN = 'https://bootloader.art/token/svg-js/';
 
@@ -258,12 +259,34 @@ document.addEventListener('DOMContentLoaded', function () {
 
   draw(cur);
 
-  /* the source that just ran */
-  var code = $('code');
+  /* The code shown below is read from the contract, not from this server, and
+     then checked against the source of the function this page actually ran. */
+  var code = $('code'), codeStatus = $('code-status');
   if (code) {
-    fetch('/essentialism/essentialism.js')
-      .then(function (r) { return r.text(); })
-      .then(function (t) { code.textContent = t; })
-      .catch(function () { code.textContent = 'Source: /essentialism/essentialism.js'; });
+    fetch(GENERATOR)
+      .then(function (r) { return r.json(); })
+      .then(function (row) {
+        var hex = row.value.code, s = '';
+        for (var i = 0; i < hex.length; i += 2) s += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+        var onchain = decodeURIComponent(s);
+        code.textContent = onchain;
+
+        // the running function's own source, minus the wrapper
+        var running = window.ESSENTIALISM.toString();
+        var body = running.slice(running.indexOf('{') + 1, running.lastIndexOf('}'));
+        var norm = function (x) { return x.replace(/\r\n/g, '\n').replace(/^\n+|\n+$/g, ''); };
+        var match = norm(body) === norm(onchain);
+
+        if (codeStatus) {
+          codeStatus.textContent = match
+            ? 'Verified: generator v' + row.value.version + ' on Tezos, and the code this page just ran, are identical.'
+            : 'Mismatch: the code this page ran differs from generator v' + row.value.version + ' on Tezos. Trust the chain, not this page.';
+          codeStatus.className = 'mt-3 font-mono text-xs ' + (match ? 'text-neutral-500' : 'text-red-400');
+        }
+      })
+      .catch(function () {
+        code.textContent = 'Could not reach the chain indexer. The generator is readable on Tezos at KT1CB4MYiAViCuXWBU961x7LjQXGeA8SnQwt.';
+        if (codeStatus) codeStatus.textContent = '';
+      });
   }
 });
