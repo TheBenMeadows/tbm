@@ -33,3 +33,10 @@ html.light .text-neutral-500 { color: #71717a; }
 html.light .text-neutral-300 { color: #3f3f46; }
 html.light .text-white { color: #000000; }
 html.light .hover\:text-white:hover { color: #000000; }
+
+/* essentialism page controls — the dark chips need a light counterpart, or
+   they render as black-on-grey when the light palette kicks in. */
+@media (prefers-color-scheme: light) {
+    html:not(.dark) .ess-control { background-color: #e4e4e7; color: #3f3f46; }
+}
+html.light .ess-control { background-color: #e4e4e7; color: #3f3f46; }

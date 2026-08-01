@@ -11,6 +11,8 @@ module.exports = {
     "./tech/index.html",
     "./experiments/index.html",
     "./infra/index.html",
+    "./essentialism/index.html",
+    "./essentialism/play.js",
   ],
   theme: {
     extend: {
