@@ -56,7 +56,7 @@ const date = gitOut('log -1 --format=%cd --date=format-local:%Y-%m-%d', "", { TZ
 
 const label = date ? `${short} &middot; ${date}` : short;
 const marker = 'class="mt-3 text-xs text-neutral-600">Build ';
-const stamp = `            <p ${marker}${label}</p>\n`;
+const stamp = `            <p ${marker}${label} &middot; <a class="hover:text-neutral-400" href="https://iheartrss.com/" target="_blank" rel="noopener">I &hearts; RSS</a></p>\n`;
 
 let stamped = 0;
 for (const page of PAGES) {
