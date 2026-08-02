@@ -24,9 +24,9 @@ const DIST = "dist";
 const MANIFEST = join(DIST, "manifest.json");
 const EXCLUDE = new Set(["manifest.json", "manifest.sig.json"]);
 
-function gitOut(args, fallback) {
+function gitOut(args, fallback, extraEnv = {}) {
     try {
-        return execSync(`git ${args}`, { stdio: ["ignore", "pipe", "ignore"] })
+        return execSync(`git ${args}`, { stdio: ["ignore", "pipe", "ignore"], env: { ...process.env, ...extraEnv } })
             .toString()
             .trim();
     } catch {
@@ -73,7 +73,10 @@ const treeHash = sha256(Buffer.from(treeLines, "utf8"));
 const manifest = {
     site: "thebenmeadows.com",
     commit,
-    commitDate: gitOut("log -1 --format=%cd --date=format-local:%Y-%m-%dT%H:%M:%SZ", ""),
+    // TZ=UTC or the manifest differs per builder timezone and the signature is
+    // worthless -- this shipped broken once and was caught by the signed hash not
+    // matching the deployed one.
+    commitDate: gitOut('log -1 --format=%cd --date=format-local:%Y-%m-%dT%H:%M:%SZ', "", { TZ: "UTC" }),
     fileCount: sortedKeys.length,
     treeSha256: treeHash,
     files: ordered,
