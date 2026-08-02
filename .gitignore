@@ -3,3 +3,4 @@ output.css
 search-index.json
 .DS_Store
 dist
+feed.xml
