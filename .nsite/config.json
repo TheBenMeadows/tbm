@@ -1,0 +1,15 @@
+{
+  "relays": [
+    "wss://relay.mdws.me",
+    "wss://nos.lol",
+    "wss://relay.damus.io",
+    "wss://relay.primal.net"
+  ],
+  "servers": [
+    "https://blossom.primal.net",
+    "https://cdn.satellite.earth"
+  ],
+  "publishRelayList": false,
+  "publishServerList": true,
+  "publishProfile": false
+}
