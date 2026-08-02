@@ -90,8 +90,9 @@ if [ -z "${NOSTR_SECRET_KEY:-}" ]; then
 fi
 
 # shellcheck disable=SC2086
-EVENT=$(printf '%s' "$CONTENT" | nak event \
+EVENT=$(nak event \
     --sec "$NOSTR_SECRET_KEY" \
+    -c "$CONTENT" \
     -k 30078 \
     -d "thebenmeadows.com" \
     -t "t=site-release" \
