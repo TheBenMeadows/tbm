@@ -3,13 +3,6 @@
 Source for [thebenmeadows.com](https://thebenmeadows.com) — a personal link hub
 pointing to Ben Meadows' sites, projects, and social profiles.
 
-## Git Mirrors
-
-[![GitHub](https://img.shields.io/badge/GITHUB-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/TheBenMeadows/tbm)
-[![Codeberg](https://img.shields.io/badge/CODEBERG-2185D0?style=for-the-badge&logo=codeberg&logoColor=white)](https://codeberg.org/thebenmeadows/tbm)
-[![Gitea](https://img.shields.io/badge/GITEA-609926?style=for-the-badge&logo=gitea&logoColor=white)](https://gitea.com/thebenmeadows/tbm)
-[![GitLab](https://img.shields.io/badge/GITLAB-FC6D26?style=for-the-badge&logo=gitlab&logoColor=white)](https://gitlab.com/TheBenMeadows/tbm)
-[![SourceHut](https://img.shields.io/badge/SOURCEHUT-000000?style=for-the-badge&logo=sourcehut&logoColor=white)](https://git.sr.ht/~thebenmeadows/tbm)
 
 It is a small static site: hand-written HTML styled with Tailwind, plus
 supporting pages — [`/mirrors/`](https://thebenmeadows.com/mirrors/),
@@ -67,6 +60,14 @@ the model borrowed from [Privacy Guides](https://github.com/privacyguides/privac
   OpenTimestamps; the proofs live in `commitments/`. Any mirror can be
   verified against the manifest — see
   [`/mirrors/`](https://thebenmeadows.com/mirrors/) for how.
+
+## Git Mirrors
+
+[![GitHub](https://img.shields.io/badge/GITHUB-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/TheBenMeadows/tbm)
+[![Codeberg](https://img.shields.io/badge/CODEBERG-2185D0?style=for-the-badge&logo=codeberg&logoColor=white)](https://codeberg.org/thebenmeadows/tbm)
+[![Gitea](https://img.shields.io/badge/GITEA-609926?style=for-the-badge&logo=gitea&logoColor=white)](https://gitea.com/thebenmeadows/tbm)
+[![GitLab](https://img.shields.io/badge/GITLAB-FC6D26?style=for-the-badge&logo=gitlab&logoColor=white)](https://gitlab.com/TheBenMeadows/tbm)
+[![SourceHut](https://img.shields.io/badge/SOURCEHUT-000000?style=for-the-badge&logo=sourcehut&logoColor=white)](https://git.sr.ht/~thebenmeadows/tbm)
 
 The live index of every host, forge, and archive is at
 [`/mirrors/`](https://thebenmeadows.com/mirrors/); the stack and the design
