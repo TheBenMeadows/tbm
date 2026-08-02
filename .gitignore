@@ -4,3 +4,4 @@ search-index.json
 .DS_Store
 dist
 feed.xml
+rss.xml

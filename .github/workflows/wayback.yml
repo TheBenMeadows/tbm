@@ -31,3 +31,17 @@ jobs:
               "https://web.archive.org/save/$url" || true
             sleep 30
           done
+
+      # WebSub: tell the hub the feeds changed so subscribed readers get pushed
+      # updates instead of waiting for their next poll. Runs after the deploy
+      # settle above, so the hub fetches the new build.
+      - name: Ping WebSub hub
+        run: |
+          for feed in \
+            "https://thebenmeadows.com/feed.xml" \
+            "https://thebenmeadows.com/rss.xml"; do
+            curl -sS -m 30 --retry 2 -o /dev/null \
+              -w "%{http_code} hub ping $feed\n" \
+              -d "hub.mode=publish" --data-urlencode "hub.url=$feed" \
+              "https://pubsubhubbub.appspot.com/" || true
+          done

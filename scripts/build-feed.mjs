@@ -45,6 +45,36 @@ const entries = lines.map((l) => {
 
 const feedUpdated = lines.length ? lines[0].split("\t")[1] : "2026-01-01T00:00:00Z";
 
+// WebSub: readers that speak it get pushed updates instead of polling. The
+// wayback workflow pings the hub after each deploy.
+const HUB = "https://pubsubhubbub.appspot.com/";
+
+const rssItems = lines.map((l) => {
+    const [sha, date, subject] = l.split("\t");
+    return `    <item>
+      <guid isPermaLink="false">tag:thebenmeadows.com,2026:release/${sha}</guid>
+      <title>${esc(subject)}</title>
+      <pubDate>${new Date(date).toUTCString()}</pubDate>
+      <link>https://thebenmeadows.com/</link>
+      <description>Site release ${sha.slice(0, 7)}: ${esc(subject)}. Every build ships a signed manifest; see /mirrors/ for verification.</description>
+    </item>`;
+}).join("\n");
+
+const rss = `<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>TheBenMeadows — site releases</title>
+    <link>https://thebenmeadows.com/</link>
+    <description>Changes to thebenmeadows.com, one entry per release.</description>
+    <lastBuildDate>${new Date(feedUpdated).toUTCString()}</lastBuildDate>
+    <atom:link rel="self" href="https://thebenmeadows.com/rss.xml" type="application/rss+xml" />
+    <atom:link rel="hub" href="${HUB}" />
+${rssItems}
+  </channel>
+</rss>
+`;
+writeFileSync("rss.xml", rss);
+
 const feed = `<?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://thebenmeadows.com/feed.xml</id>
@@ -53,9 +83,10 @@ const feed = `<?xml version="1.0" encoding="utf-8"?>
   <updated>${feedUpdated}</updated>
   <link href="https://thebenmeadows.com/" />
   <link rel="self" href="https://thebenmeadows.com/feed.xml" />
+  <link rel="hub" href="${HUB}" />
   <author><name>Ben Meadows</name><uri>https://thebenmeadows.com/</uri></author>
 ${entries}
 </feed>
 `;
 writeFileSync("feed.xml", feed);
-console.log(`build-feed         ${lines.length} entries, updated ${feedUpdated}`);
+console.log(`build-feed         ${lines.length} entries (atom + rss), updated ${feedUpdated}`);
