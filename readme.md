@@ -3,6 +3,14 @@
 Source for [thebenmeadows.com](https://thebenmeadows.com) — a personal link hub
 pointing to Ben Meadows' sites, projects, and social profiles.
 
+## Git Mirrors
+
+[![GitHub](https://img.shields.io/badge/GITHUB-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/TheBenMeadows/tbm)
+[![Codeberg](https://img.shields.io/badge/CODEBERG-2185D0?style=for-the-badge&logo=codeberg&logoColor=white)](https://codeberg.org/thebenmeadows/tbm)
+[![Gitea](https://img.shields.io/badge/GITEA-609926?style=for-the-badge&logo=gitea&logoColor=white)](https://gitea.com/thebenmeadows/tbm)
+[![GitLab](https://img.shields.io/badge/GITLAB-FC6D26?style=for-the-badge&logo=gitlab&logoColor=white)](https://gitlab.com/TheBenMeadows/tbm)
+[![SourceHut](https://img.shields.io/badge/SOURCEHUT-000000?style=for-the-badge&logo=sourcehut&logoColor=white)](https://git.sr.ht/~thebenmeadows/tbm)
+
 It is a small static site: hand-written HTML styled with Tailwind, plus
 supporting pages — [`/mirrors/`](https://thebenmeadows.com/mirrors/),
 [`/tech/`](https://thebenmeadows.com/tech/), `/experiments/`, `/infra/` and
@@ -40,14 +48,25 @@ Availability is treated as two separate concerns, each handled independently —
 the model borrowed from [Privacy Guides](https://github.com/privacyguides/privacyguides.org):
 
 - **Serving (reachability).** The same static output is published to two
-  independent hosts — **Cloudflare Pages** (primary) and **Netlify** (second),
-  both building from this repo. If one provider is down, the other still serves.
+  independent web hosts — **Cloudflare Pages** (primary) and **Netlify** — and
+  beyond the web: a **Tor onion** and an **I2P eepsite** on self-run hardware,
+  **IPFS** from the site's own nodes (an IPNS name that ENS, Tezos, and Solana
+  name records all point at), a permanent **Arweave** copy behind
+  `ar://thebenmeadows`, a **Nostr nsite**, and **Gemini** and **gopher**
+  mirrors. Different networks fail differently.
 - **Source (recoverability).** This repository is mirrored to **Codeberg**,
-  **Gitea**, and **GitLab** alongside GitHub, kept in sync automatically. Each
-  mirror holds the full history, so the source survives any single forge.
+  **Gitea**, **GitLab**, and **SourceHut** alongside GitHub, kept in sync
+  automatically. Each mirror holds the full history, so the source survives any
+  single forge. **Software Heritage** holds a permanent archival copy.
 - **Archive.** A GitHub Action (`.github/workflows/wayback.yml`) requests a
   Wayback Machine snapshot after every deploy, so the archived copy tracks
   what actually shipped.
+- **Provenance.** Every build emits `manifest.json` (SHA-256 of every shipped
+  file). Each release's manifest hash is signed to Nostr under the key this
+  domain attests at `/.well-known/nostr.json` and anchored in Bitcoin with
+  OpenTimestamps; the proofs live in `commitments/`. Any mirror can be
+  verified against the manifest — see
+  [`/mirrors/`](https://thebenmeadows.com/mirrors/) for how.
 
 The live index of every host, forge, and archive is at
 [`/mirrors/`](https://thebenmeadows.com/mirrors/); the stack and the design
@@ -69,6 +88,12 @@ decisions behind it are at [`/tech/`](https://thebenmeadows.com/tech/).
 | `theme.js` | three-state theme control (system / light / dark) |
 | `search.js` | search overlay + `/search/` page; fetches the index on first use |
 | `scripts/build-search-index.mjs` | builds `search-index.json` from the pages at build time |
+| `scripts/build-stamp.mjs` | stamps every page with the commit it was built from |
+| `scripts/build-feed.mjs` | emits `feed.xml` (Atom) + `rss.xml` (RSS 2.0) from the release log |
+| `scripts/build-manifest.mjs` | emits `manifest.json` — SHA-256 of every shipped file |
+| `scripts/sign-release.sh` | signs the manifest to Nostr and anchors it with OpenTimestamps |
+| `commitments/` | one OpenTimestamps proof per release, named for the hash it attests |
+| `.nsite/` | nsyte config for the Nostr nsite deploy |
 | `_headers` | security headers + cache and CORS rules (Cloudflare/Netlify) |
 | `.well-known/` | identity + payment endpoints (see below) |
 
