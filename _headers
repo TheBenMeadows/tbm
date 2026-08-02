@@ -36,6 +36,39 @@
   Access-Control-Allow-Origin: *
   Content-Type: application/json
 
+# no-transform stops Cloudflare's edge rewriting the HTML. On this zone the
+# JavaScript Detections beacon kept injecting into every page even with Bot
+# fight mode off -- a state the Free plan exposes no control for -- which made
+# the primary site fail its own manifest.json verification while every mirror
+# passed. Cloudflare documents that it does not inject the script when the
+# response carries Cache-Control: no-transform. The rest of the directive
+# restates what Cloudflare Pages already serves for HTML, so only no-transform
+# is new. Trade-off: the edge may also skip compressing these pages, which
+# costs a few KB each; correctness of the published bytes wins.
+/
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/mirrors/
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/tech/
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/experiments/
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/infra/
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/essentialism/
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/search/
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/404.html
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
 # Onion-Location tells Tor Browser that an onion service carries the same page,
 # so it can offer the .onion instead. Tor requires the advertising page to be
 # HTTPS, which Cloudflare Pages and Netlify both are. Paths are listed one by
