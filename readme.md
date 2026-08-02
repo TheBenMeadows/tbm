@@ -50,7 +50,10 @@ the model borrowed from [Privacy Guides](https://github.com/privacyguides/privac
 - **Source (recoverability).** This repository is mirrored to **Codeberg**,
   **Gitea**, **GitLab**, and **SourceHut** alongside GitHub, kept in sync
   automatically. Each mirror holds the full history, so the source survives any
-  single forge. **Software Heritage** holds a permanent archival copy.
+  single forge. It is also published to **Radicle** as
+  `rad:z3vBEjEJAvd3CjciS1JBiFzHda3KA`, which has no forge at all — nodes
+  replicate it between themselves, so it survives every forge at once.
+  **Software Heritage** holds a permanent archival copy.
 - **Archive.** A GitHub Action (`.github/workflows/wayback.yml`) requests a
   Wayback Machine snapshot after every deploy, so the archived copy tracks
   what actually shipped.
@@ -68,6 +71,7 @@ the model borrowed from [Privacy Guides](https://github.com/privacyguides/privac
 [![Gitea](https://img.shields.io/badge/GITEA-609926?style=for-the-badge&logo=gitea&logoColor=white)](https://gitea.com/thebenmeadows/tbm)
 [![GitLab](https://img.shields.io/badge/GITLAB-FC6D26?style=for-the-badge&logo=gitlab&logoColor=white)](https://gitlab.com/TheBenMeadows/tbm)
 [![SourceHut](https://img.shields.io/badge/SOURCEHUT-000000?style=for-the-badge&logo=sourcehut&logoColor=white)](https://git.sr.ht/~thebenmeadows/tbm)
+[![Radicle](https://img.shields.io/badge/RADICLE-0A0D10?style=for-the-badge&logo=radicle&logoColor=white)](https://radicle.network/nodes/index.radicle.garden/rad:z3vBEjEJAvd3CjciS1JBiFzHda3KA)
 
 The live index of every host, forge, and archive is at
 [`/mirrors/`](https://thebenmeadows.com/mirrors/); the stack and the design
