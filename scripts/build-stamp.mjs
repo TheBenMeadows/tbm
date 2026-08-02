@@ -26,9 +26,9 @@ const PAGES = [
     "search/index.html",
 ];
 
-function gitOut(args, fallback) {
+function gitOut(args, fallback, extraEnv = {}) {
     try {
-        return execSync(`git ${args}`, { stdio: ["ignore", "pipe", "ignore"] })
+        return execSync(`git ${args}`, { stdio: ["ignore", "pipe", "ignore"], env: { ...process.env, ...extraEnv } })
             .toString()
             .trim();
     } catch {
@@ -49,7 +49,10 @@ const short = sha ? sha.slice(0, 7) : "unknown";
 
 // Committer date, UTC, date only. If git is unavailable and the host supplied
 // only a sha, show the sha alone rather than inventing a date.
-const date = gitOut("log -1 --format=%cd --date=format-local:%Y-%m-%d", "");
+// TZ=UTC is essential: git's format-local renders in the *builder's* timezone, so a
+// machine west of UTC stamps the previous day and the build stops being
+// reproducible. Cloudflare and Netlify build in UTC; a laptop in MST does not.
+const date = gitOut('log -1 --format=%cd --date=format-local:%Y-%m-%d', "", { TZ: "UTC" });
 
 const label = date ? `${short} &middot; ${date}` : short;
 const marker = 'class="mt-3 text-xs text-neutral-600">Build ';
