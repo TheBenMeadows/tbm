@@ -22,7 +22,34 @@ import { execSync } from "node:child_process";
 
 const DIST = "dist";
 const MANIFEST = join(DIST, "manifest.json");
+const MIRRORS = "mirrors.json";
 const EXCLUDE = new Set(["manifest.json", "manifest.sig.json"]);
+
+// The mirror list travels inside the signed manifest, so a visitor holding any
+// single copy of this site can find every other copy and know the list itself
+// was not altered. Read it here rather than hardcoding: one file to edit.
+//
+// Fail loudly if it is missing or malformed. Emitting a manifest with no
+// mirrors would still sign cleanly and still verify -- it would just quietly
+// stop being a recovery path, which is the whole reason the field exists.
+function loadMirrors() {
+    let raw;
+    try {
+        raw = readFileSync(MIRRORS, "utf8");
+    } catch {
+        throw new Error(`build-manifest: ${MIRRORS} is missing -- refusing to publish a manifest with no mirror list`);
+    }
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed.mirrors) || parsed.mirrors.length === 0) {
+        throw new Error(`build-manifest: ${MIRRORS} has no mirrors[] entries`);
+    }
+    for (const m of parsed.mirrors) {
+        if (!m.kind || !m.network || !m.address) {
+            throw new Error(`build-manifest: ${MIRRORS} entry missing kind/network/address: ${JSON.stringify(m)}`);
+        }
+    }
+    return parsed.mirrors;
+}
 
 function gitOut(args, fallback, extraEnv = {}) {
     try {
@@ -79,6 +106,7 @@ const manifest = {
     commitDate: gitOut('log -1 --format=%cd --date=format-local:%Y-%m-%dT%H:%M:%SZ', "", { TZ: "UTC" }),
     fileCount: sortedKeys.length,
     treeSha256: treeHash,
+    mirrors: loadMirrors(),
     files: ordered,
 };
 
