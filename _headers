@@ -29,6 +29,10 @@
 /search-index.json
   Cache-Control: public, max-age=3600
 
+/feed.xml
+  Content-Type: application/atom+xml; charset=utf-8
+  Cache-Control: public, max-age=3600
+
 /.well-known/nostr.json
   Access-Control-Allow-Origin: *
 
