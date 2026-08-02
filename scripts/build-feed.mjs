@@ -7,9 +7,11 @@
 // signature still hold. All dates are forced to UTC; git's format-local
 // renders in the builder's timezone and already broke reproducibility once.
 //
-// Entry count is capped at 15. If a host's shallow clone has fewer commits the
-// feeds would diverge between hosts -- the manifest check will catch that, and
-// the fallback is lowering the cap. (Verified after first deploy.)
+// One entry: the current release. Cloudflare Pages clones at depth 1, so any
+// deeper history diverges between hosts -- the first deploy proved it, one
+// entry on Cloudflare against fifteen on Netlify, caught by the manifest
+// comparison. Depth 1 is the only count every builder is guaranteed to have.
+// Subscribers still accumulate a release log, one entry per poll cycle.
 import { execSync } from "node:child_process";
 import { writeFileSync } from "node:fs";
 
@@ -24,7 +26,7 @@ const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, 
 
 let lines = [];
 try {
-    lines = git('log -15 --format=%H%x09%cd%x09%s --date=format-local:%Y-%m-%dT%H:%M:%SZ')
+    lines = git('log -1 --format=%H%x09%cd%x09%s --date=format-local:%Y-%m-%dT%H:%M:%SZ')
         .split("\n").filter(Boolean);
 } catch {
     console.warn("build-feed: git log unavailable, writing empty feed");
