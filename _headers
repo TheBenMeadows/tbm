@@ -35,3 +35,25 @@
 /.well-known/lnurlp/*
   Access-Control-Allow-Origin: *
   Content-Type: application/json
+
+# Onion-Location tells Tor Browser that an onion service carries the same page,
+# so it can offer the .onion instead. Tor requires the advertising page to be
+# HTTPS, which Cloudflare Pages and Netlify both are. Paths are listed one by
+# one so each page points at its own onion equivalent rather than the homepage.
+/
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/
+
+/mirrors/
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/mirrors/
+
+/tech/
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/tech/
+
+/experiments/
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/experiments/
+
+/infra/
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/infra/
+
+/essentialism/
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/essentialism/
