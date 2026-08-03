@@ -10,6 +10,7 @@ module.exports = {
     "./mirrors/index.html",
     "./tech/index.html",
     "./experiments/index.html",
+    "./projects/index.html",
     "./infra/index.html",
     "./essentialism/index.html",
     "./essentialism/play.js",

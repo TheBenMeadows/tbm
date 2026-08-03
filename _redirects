@@ -1,0 +1,3 @@
+# Orthodox Prayers graduated to its own domain (2026-08-03).
+/experiments/prayers  https://orthodoxprayers.net/  301
+/experiments/prayers/*  https://orthodoxprayers.net/:splat  301

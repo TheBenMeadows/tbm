@@ -22,14 +22,13 @@ const PAGES = [
     { file: 'mirrors/index.html', url: '/mirrors/' },
     { file: 'tech/index.html', url: '/tech/' },
     { file: 'experiments/index.html', url: '/experiments/' },
+    { file: 'projects/index.html', url: '/projects/' },
     { file: 'infra/index.html', url: '/infra/' },
     { file: 'essentialism/index.html', url: '/essentialism/' },
     { file: 'experiments/pendulum/index.html', url: '/experiments/pendulum/' },
     { file: 'experiments/porcine/index.html', url: '/experiments/porcine/' },
     { file: 'experiments/etherhoo/index.html', url: '/experiments/etherhoo/' },
     { file: 'experiments/dls/index.html', url: '/experiments/dls/' },
-    { file: 'experiments/prayers/index.html', url: '/experiments/prayers/' },
-    { file: 'experiments/prayers/morning/index.html', url: '/experiments/prayers/morning/' },
 ];
 
 const ENTITIES = {
