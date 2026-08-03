@@ -228,7 +228,7 @@ footer a:hover { color: var(--rubric); }
 }
 .inscription {
     text-align: center;
-    color: var(--ink-soft);
+    color: var(--rubric);
     font-style: italic;
     font-size: 1rem;
     margin-bottom: 0.9rem;
@@ -262,3 +262,8 @@ footer a:hover { color: var(--rubric); }
 
 
 .rubric { color: var(--rubric); font-style: italic; font-variant: normal; letter-spacing: 0; }
+
+/* Book-style paragraphing: first-line indents, no inter-paragraph space --
+   matches the printed sources that set prayers as indented paragraphs. */
+.prayer.indented p { margin-bottom: 0; text-indent: 1.5em; }
+.prayer.indented p.opening { text-indent: 0; }
