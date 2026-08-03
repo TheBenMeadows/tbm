@@ -98,7 +98,7 @@ main.page {
     max-width: 34em;
     width: 100%;
     margin: 0 auto;
-    padding: 2.6rem 1.5rem 5rem;
+    padding: 2.6rem 1.5rem 2.2rem;
 }
 
 /* Ornaments are alpha-ink PNGs: black ink, transparent paper. Day shows
@@ -205,11 +205,12 @@ footer {
     font-size: 0.85rem;
     padding: 0 1.5rem 2rem;
 }
+footer div { margin-top: 0.35rem; }
 footer a { color: inherit; }
 footer a:hover { color: var(--rubric); }
 
 @media (max-width: 600px) {
-    main.page { padding: 1.9rem 1.1rem 3.5rem; }
+    main.page { padding: 1.9rem 1.1rem 1.8rem; }
     h1 { font-size: 1.6rem; }
     .prayer p { font-size: 1.07rem; }
     .ornament { margin-bottom: 1.6rem; }

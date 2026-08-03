@@ -1,7 +1,7 @@
 {
-    "name": "Prayers",
+    "name": "Orthodox Prayers",
     "short_name": "Prayers",
-    "description": "Orthodox prayers — morning, evening, Typika.",
+    "description": "Orthodox prayers by TheBenMeadows — morning, evening, Typika.",
     "start_url": "./",
     "scope": "./",
     "display": "standalone",
