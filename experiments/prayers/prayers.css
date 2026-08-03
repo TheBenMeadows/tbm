@@ -267,3 +267,5 @@ footer a:hover { color: var(--rubric); }
    matches the printed sources that set prayers as indented paragraphs. */
 .prayer.indented p { margin-bottom: 0; text-indent: 1.5em; }
 .prayer.indented p.opening { text-indent: 0; }
+
+.rubric-line { color: var(--rubric); font-style: italic; margin: 1.4rem 0 0.9rem; }
