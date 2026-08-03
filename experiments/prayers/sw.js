@@ -1,7 +1,7 @@
 // Offline shell for /experiments/prayers/. Precache everything fixed;
 // cache-first with network fallback. Bump VERSION on any asset change —
 // tbm releases are deliberate, so a manual version string is fine.
-const VERSION = "prayers-v1";
+const VERSION = "prayers-v2";
 const BASE = "/experiments/prayers/";
 const ASSETS = [
     BASE,
@@ -12,7 +12,8 @@ const ASSETS = [
     BASE + "vendor/pretext.js",
     BASE + "fonts/ebgaramond-var.woff2",
     BASE + "fonts/ebgaramond-italic-var.woff2",
-    BASE + "art/header-rus.gif",
+    BASE + "art/header-arch.png",
+    BASE + "art/header-gladzor.png",
     BASE + "manifest.webmanifest",
     BASE + "icon-192.png",
     BASE + "icon-512.png",

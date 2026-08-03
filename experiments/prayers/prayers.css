@@ -29,8 +29,6 @@
     --rubric: #8f1f1f;
     --accent: #a67c1e;
     --rule: #dccfae;
-    --orn-filter: sepia(0.35);
-    --orn-blend: multiply;
 }
 :root[data-theme="night"] {
     --bg: #0f0e0c;
@@ -39,8 +37,6 @@
     --rubric: #cf5b58;
     --accent: #c9a227;
     --rule: #2e2b25;
-    --orn-filter: invert(1);
-    --orn-blend: screen;
 }
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme="day"]) {
@@ -50,8 +46,6 @@
         --rubric: #cf5b58;
         --accent: #c9a227;
         --rule: #2e2b25;
-        --orn-filter: invert(1);
-        --orn-blend: screen;
     }
 }
 
@@ -107,14 +101,17 @@ main.page {
     padding: 2.6rem 1.5rem 5rem;
 }
 
+/* Ornaments are alpha-ink PNGs (transparent paper) rendered through a CSS
+   mask and tinted with the theme ink -- no filters, no blend modes, both of
+   which Safari mishandles on images. Each instance sets --orn, width and
+   aspect-ratio inline. */
 .ornament {
     display: block;
-    width: 75%;
-    max-width: 22rem;
     margin: 0 auto 2.2rem;
-    filter: var(--orn-filter);
-    mix-blend-mode: var(--orn-blend);
-    opacity: 0.9;
+    background-color: var(--ink);
+    -webkit-mask: var(--orn) center / contain no-repeat;
+    mask: var(--orn) center / contain no-repeat;
+    opacity: 0.92;
 }
 
 .section-label {
@@ -212,5 +209,5 @@ footer a:hover { color: var(--rubric); }
     main.page { padding: 1.9rem 1.1rem 3.5rem; }
     h1 { font-size: 1.6rem; }
     .prayer p { font-size: 1.07rem; }
-    .ornament { width: 88%; margin-bottom: 1.6rem; }
+    .ornament { margin-bottom: 1.6rem; }
 }
