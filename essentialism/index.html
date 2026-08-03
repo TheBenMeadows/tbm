@@ -84,7 +84,7 @@
                 44 editions · fully on-chain · Tezos · 2026
             </p>
 
-            <p class="mt-6 max-w-prose">
+            <p class="mt-6">
                 In November 2022 I worked through Andy Haskell&rsquo;s tutorial
                 <a class="text-neutral-300 underline underline-offset-4 hover:text-white transition-colors" href="https://dev.to/andyhaskell/convert-images-to-mosaics-in-p5js-2dlc" target="_blank" rel="noopener">Convert images to mosaics in p5.js</a>
                 and kept going with it, randomizing the dot size and feeding it my own
@@ -92,7 +92,7 @@
                 them. The column-of-dots structure is his. This is that sketch,
                 rewritten to live entirely on-chain in under 10&nbsp;KB.
             </p>
-            <p class="mt-4 max-w-prose">
+            <p class="mt-4">
                 It remembers two of my photographs, each reduced to a 28&times;38 grid
                 of grey. Both are minted on Ethereum. The first is
                 <a class="text-neutral-300 underline underline-offset-4 hover:text-white transition-colors" href="https://manifold.xyz/@thebenmeadows-c36dad91/contract/1175470320/5" target="_blank" rel="noopener">Blue&nbsp;Tree</a>,
@@ -103,7 +103,7 @@
                 2023, an unedited sky with its full resolution stored permanently on
                 Arweave. The originals are permanent, unlike the memories.
             </p>
-            <p class="mt-4 max-w-prose">
+            <p class="mt-4">
                 Each edition remembers less than the one before it. Edition&nbsp;1
                 samples its photograph at full strength. Edition&nbsp;44 is mostly
                 grain. The memory percentage is written into every token.
@@ -132,7 +132,7 @@
             </div>
 
             <h2 class="mt-14 text-white text-2xl font-bold" style="letter-spacing: -0.025em">The editions</h2>
-            <p class="mt-3 max-w-prose">
+            <p class="mt-3">
                 Every edition that has been minted, as bootloader renders it. Each one
                 draws its seed from Tezos block entropy at the moment of the mint, so
                 nobody &mdash; including me &mdash; knows what an edition looks like
@@ -143,7 +143,7 @@
             <div id="mints" class="mt-6 grid gap-4 sm:grid-cols-3"></div>
 
             <h2 class="mt-14 text-white text-2xl font-bold" style="letter-spacing: -0.025em">Playground</h2>
-            <p class="mt-3 max-w-prose">
+            <p class="mt-3">
                 The real generator, running in your browser with bootloader&rsquo;s exact
                 seeding. Shuffle for a new seed, or drag the edition slider to watch one
                 seed forget its photograph. These are explorations of the space, not
@@ -183,14 +183,14 @@
             </div>
 
             <h2 class="mt-14 text-white text-2xl font-bold" style="letter-spacing: -0.025em">The space</h2>
-            <p class="mt-3 max-w-prose">
+            <p class="mt-3">
                 Twelve seeds, spread across the edition run. Every one is drawn live by
                 the same code that is stored on Tezos.
             </p>
             <div id="gallery" class="mt-6 grid gap-4 sm:grid-cols-3"></div>
 
             <h2 class="mt-14 text-white text-2xl font-bold" style="letter-spacing: -0.025em">2022</h2>
-            <p class="mt-3 max-w-prose">
+            <p class="mt-3">
                 The sketch this came from is still public, bugs and all. I built it by
                 working through
                 <a class="text-neutral-300 underline underline-offset-4 hover:text-white transition-colors" href="https://dev.to/andyhaskell/convert-images-to-mosaics-in-p5js-2dlc" target="_blank" rel="noopener">Andy Haskell&rsquo;s mosaic tutorial</a>
@@ -227,7 +227,7 @@
             </div>
 
             <h2 class="mt-14 text-white text-2xl font-bold" style="letter-spacing: -0.025em">The odds</h2>
-            <p class="mt-3 max-w-prose">
+            <p class="mt-3">
                 Every trait is decided by the seed except memory, which is decided by the
                 edition number.
             </p>
@@ -246,14 +246,14 @@
                     </tbody>
                 </table>
             </div>
-            <p class="mt-3 max-w-prose text-sm">
+            <p class="mt-3 text-sm">
                 Every edition also carries its own trait line inside the artwork, in the
                 SVG&rsquo;s <code class="font-mono text-xs text-neutral-300">desc</code>
                 element. View source on any token and it will tell you what it is.
             </p>
 
             <h2 class="mt-14 text-white text-2xl font-bold" style="letter-spacing: -0.025em">The code</h2>
-            <p class="mt-3 max-w-prose">
+            <p class="mt-3">
                 Under 10&nbsp;KB and stored on Tezos. The code below is not served from
                 this site &mdash; it is read out of the contract when you open the page,
                 then compared against the source of the function this page actually ran.
