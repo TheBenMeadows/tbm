@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "npx tailwindcss -i ./src/input.css -o ./output.css --minify && node scripts/build-search-index.mjs && node scripts/build-feed.mjs",
-    "build:netlify": "npm run build && rm -rf dist && mkdir dist && cp index.html 404.html output.css email.js theme.js search.js search-index.json btm-logo.png me.png og.png robots.txt sitemap.xml feed.xml rss.xml _headers dist/ && cp -R favicon icons fonts .well-known mirrors tech experiments infra essentialism search dist/ && node scripts/build-stamp.mjs && node scripts/build-manifest.mjs",
+    "build:netlify": "npm run build && rm -rf dist && mkdir dist && cp index.html 404.html output.css email.js theme.js search.js search-index.json btm-logo.png me.png me.webp me.avif og.png robots.txt sitemap.xml feed.xml rss.xml _headers dist/ && cp -R favicon icons fonts .well-known mirrors tech experiments infra essentialism search dist/ && node scripts/build-stamp.mjs && node scripts/build-manifest.mjs",
     "build:experiments": "node scripts/build-experiments-css.mjs"
   }
 }

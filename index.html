@@ -89,9 +89,9 @@
             type="font/woff2"
             crossorigin
         />
+        <link rel="stylesheet" href="/output.css" />
         <script src="/theme.js"></script>
         <script src="/search.js" defer></script>
-        <link rel="stylesheet" href="/output.css" />
     </head>
     <body id="top" class="bg-black">
         <header class="site-chrome sticky top-0 z-20">
@@ -129,12 +129,22 @@
         <div
             class="break-normal px-6 text-white grid items-center place-items-center pt-6 h-card"
         >
-            <img
-                class="rounded-full mt-4 u-photo"
-                style="width: 128px; height: 128px; margin-bottom: 1.25rem"
-                src="me.png"
-                alt="thebenmeadows profile pic"
-            />
+            <!-- The PNG is a 512px photograph and was 42% of this page's weight.
+                 AVIF and WebP at 256px (2x the 128px display box) carry the same
+                 image for a fraction of it. me.png stays as the <img> fallback
+                 because /.well-known/webfinger points external clients at it. -->
+            <picture>
+                <source srcset="me.avif" type="image/avif" />
+                <source srcset="me.webp" type="image/webp" />
+                <img
+                    class="rounded-full mt-4 u-photo"
+                    style="width: 128px; height: 128px; margin-bottom: 1.25rem"
+                    src="me.png"
+                    width="128"
+                    height="128"
+                    alt="thebenmeadows profile pic"
+                />
+            </picture>
             <h1 class="text-2xl font-bold p-name" style="letter-spacing: -0.025em; margin-bottom: 1.5rem">TheBenMeadows</h1>
             <a class="u-url u-uid" href="https://thebenmeadows.com/" hidden>thebenmeadows.com</a>
             <h3 class="text-neutral-400 font-medium uppercase" style="padding-bottom: 1rem; font-size: 0.875rem; letter-spacing: 0.1em">Websites</h3>
