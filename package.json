@@ -1,9 +1,10 @@
 {
   "name": "tbm",
   "version": "1.0.0",
-  "description": "Source for thebenmeadows.com \u2014 a static personal link hub (HTML + Tailwind).",
+  "description": "Source for thebenmeadows.com — a static personal link hub (HTML + Tailwind).",
   "private": true,
   "dependencies": {
+    "@chenglou/pretext": "^0.0.8",
     "tailwindcss": "^3.4.1"
   },
   "scripts": {

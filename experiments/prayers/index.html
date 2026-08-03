@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Orthodox prayers — morning, evening, Typika. Readable, offline-capable, quiet." />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="canonical" href="https://thebenmeadows.com/experiments/prayers/" />
+    <title>Prayers</title>
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f5edda" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0f0e0c" />
+    <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="icon-192.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="preload" href="fonts/ebgaramond-var.woff2" as="font" type="font/woff2" crossorigin />
+    <script src="theme.js"></script>
+    <link rel="stylesheet" href="prayers.css" />
+</head>
+<body>
+    <header>
+        <a href="/experiments/">&larr; Experiments</a>
+        <button id="theme" type="button" aria-label="Theme: follow system" title="Theme: follow system">◐</button>
+    </header>
+
+    <main class="page">
+        <img class="ornament" alt="" data-rotate="0" src="art/bars/bar19.svg" width="2243" height="479" style="width: min(88%, 26rem);" decoding="async" />
+        <div class="section-label">Orthodox Prayers</div>
+        <h1>Prayers</h1>
+        <hr class="rule" />
+
+        <ul class="toc">
+            <li>
+                <a href="morning/">Morning Prayer</a>
+                <span class="who">St. Philaret of Moscow</span>
+            </li>
+        </ul>
+
+        <p class="coming">Evening prayers and the Typika are being prepared.</p>
+
+        <div class="finis">&#10016;</div>
+    </main>
+
+    <footer>
+        Ornaments from the
+        <a href="https://orthodoxartsjournal.org/orthodox-illustration-project/" rel="noopener">Orthodox Illustration Project</a>
+        of the Orthodox Arts Journal.
+    </footer>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>

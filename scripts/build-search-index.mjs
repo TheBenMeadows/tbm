@@ -28,6 +28,8 @@ const PAGES = [
     { file: 'experiments/porcine/index.html', url: '/experiments/porcine/' },
     { file: 'experiments/etherhoo/index.html', url: '/experiments/etherhoo/' },
     { file: 'experiments/dls/index.html', url: '/experiments/dls/' },
+    { file: 'experiments/prayers/index.html', url: '/experiments/prayers/' },
+    { file: 'experiments/prayers/morning/index.html', url: '/experiments/prayers/morning/' },
 ];
 
 const ENTITIES = {
