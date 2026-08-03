@@ -118,3 +118,34 @@ writeFileSync(MANIFEST, body);
 console.log(
     `build-manifest     ${sortedKeys.length} files, tree ${treeHash.slice(0, 12)}, manifest ${sha256(Buffer.from(body, "utf8")).slice(0, 12)}`,
 );
+
+// Guard: Cloudflare Pages does NOT merge two blocks for the same path in
+// _headers -- the later one wins and the earlier block's headers are silently
+// dropped. That is invisible from the repo and cost us `no-transform` on ten
+// of twelve pages, which is the directive that stops Cloudflare injecting a
+// beacon into the HTML and breaking this very manifest's verification.
+// Fail the build rather than ship it again.
+{
+    const headersPath = "_headers";
+    let raw;
+    try {
+        raw = readFileSync(headersPath, "utf8");
+    } catch {
+        raw = null;
+    }
+    if (raw) {
+        const seen = new Map();
+        for (const line of raw.split("\n")) {
+            if (!line.startsWith("/")) continue;
+            const p = line.trim();
+            seen.set(p, (seen.get(p) ?? 0) + 1);
+        }
+        const dupes = [...seen.entries()].filter(([, n]) => n > 1).map(([p]) => p);
+        if (dupes.length) {
+            throw new Error(
+                `build-manifest: ${headersPath} declares these paths more than once, ` +
+                `so Cloudflare Pages will drop all but the last block: ${dupes.join(", ")}`,
+            );
+        }
+    }
+}
