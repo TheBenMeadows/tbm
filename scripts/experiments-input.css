@@ -1,0 +1,6 @@
+/* Input for scripts/build-experiments-css.mjs -- per-page Tailwind for the
+   ported single-file experiments. Kept out of experiments/ so build inputs
+   never ship in dist. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

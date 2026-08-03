@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocol 3LP: The Porcine-Lupine Dialectic</title>
+    <meta name="description" content="A structural analysis of the phrase 'Little Pig, Little Pig, Let Me Come In' within the context of recursive ontological failure.">
+    <link rel="canonical" href="https://thebenmeadows.com/experiments/porcine/" />
+    <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon" />
+    <style>
+        /* Self-hosted (latin subsets) — replaces the Google Fonts stylesheet the
+           original single-file page loaded. Inter ships as a variable font. */
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 100 900;
+            font-display: swap;
+            src: url(fonts/inter-var-latin.woff2) format('woff2');
+        }
+        @font-face {
+            font-family: 'Space Mono';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url(fonts/spacemono-400.woff2) format('woff2');
+        }
+        @font-face {
+            font-family: 'Space Mono';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: url(fonts/spacemono-700.woff2) format('woff2');
+        }
+        @font-face {
+            font-family: 'Space Mono';
+            font-style: italic;
+            font-weight: 400;
+            font-display: swap;
+            src: url(fonts/spacemono-400italic.woff2) format('woff2');
+        }
+        :root {
+            --bg-color: #050505;
+            --text-color: #e5e5e5;
+            --accent-color: #ff3e3e;
+            --grid-color: rgba(255, 255, 255, 0.05);
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            background-image: linear-gradient(var(--grid-color) 1px, transparent 1px),
+            linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .mono {
+            font-family: 'Space Mono', monospace;
+        }
+        .prose-custom {
+            max-width: 65ch;
+            line-height: 1.6;
+        }
+        .prose-custom p {
+            margin-bottom: 1.5rem;
+        }
+        .prose-custom h2 {
+            font-weight: 800;
+            font-size: 1.5rem;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            border-left: 2px solid var(--accent-color);
+            padding-left: 1rem;
+        }
+        .prose-custom h4 {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #fff;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+        }
+        .prose-custom ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #aaa;
+        }
+        .prose-custom li {
+            margin-bottom: 0.5rem;
+        }
+        .prose-custom strong {
+            color: #fff;
+            font-weight: 600;
+        }
+        .terminal-window {
+            background: #000;
+            border: 1px solid #333;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+        .blink {
+            animation: blinker 1s linear infinite;
+        }
+        @keyframes blinker {
+            50% { opacity: 0; }
+        }
+        .glitch {
+            position: relative;
+        }
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .glitch::before {
+            left: 2px;
+            text-shadow: -1px 0 red;
+            clip: rect(24px, 550px, 90px, 0);
+            animation: glitch-anim-2 3s infinite linear alternate-reverse;
+        }
+        .glitch::after {
+            left: -2px;
+            text-shadow: -1px 0 blue;
+            clip: rect(85px, 550px, 140px, 0);
+            animation: glitch-anim 2.5s infinite linear alternate-reverse;
+        }
+        @keyframes glitch-anim {
+            0% { clip: rect(11px, 9999px, 83px, 0); }
+            20% { clip: rect(98px, 9999px, 5px, 0); }
+            40% { clip: rect(23px, 9999px, 35px, 0); }
+            60% { clip: rect(66px, 9999px, 18px, 0); }
+            80% { clip: rect(8px, 9999px, 58px, 0); }
+            100% { clip: rect(39px, 9999px, 86px, 0); }
+        }
+        @keyframes glitch-anim-2 {
+            0% { clip: rect(69px, 9999px, 20px, 0); }
+            20% { clip: rect(3px, 9999px, 95px, 0); }
+            40% { clip: rect(41px, 9999px, 2px, 0); }
+            60% { clip: rect(25px, 9999px, 48px, 0); }
+            80% { clip: rect(56px, 9999px, 14px, 0); }
+            100% { clip: rect(12px, 9999px, 92px, 0); }
+        }
+        sup {
+            color: var(--accent-color);
+            font-size: 0.7em;
+            margin-left: 2px;
+        }
+        blockquote {
+            border-left: 2px solid var(--accent-color);
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            color: #ccc;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 1rem;
+        }
+    </style>
+    <!-- Compiled locally from this page's classes; regenerate with `npm run build:experiments`.
+         Replaces the Tailwind Play CDN — the site serves no external origins.
+         Loaded AFTER the page <style> on purpose: the Play CDN injected its
+         stylesheet last, so utilities win cascade ties against the page's own
+         rules; the compiled sheet must sit in the same cascade position. -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body class="min-h-screen flex flex-col items-center py-12 px-4 sm:px-6">
+
+    <header class="w-full max-w-3xl mb-16 border-b border-white/10 pb-8">
+        <div class="flex justify-between items-end mb-4">
+            <h1 class="text-4xl sm:text-6xl font-black tracking-tighter uppercase glitch" data-text="Protocol 3LP">Protocol 3LP</h1>
+            <span class="mono text-xs text-gray-500">REF: ALWAYS-HAS-BEEN-V2.1</span>
+        </div>
+        <div class="mono text-sm text-gray-400 flex flex-col sm:flex-row justify-between">
+            <span>Subject: Structural Integrity & The Inevitability of Intrusion</span>
+            <span>Date: [REDACTED]</span>
+        </div>
+    </header>
+
+    <main class="w-full max-w-3xl prose-custom">
+        
+        <div class="mb-12 p-6 bg-white/5 border border-white/10 rounded-sm">
+            <h3 class="mono text-xs uppercase tracking-widest text-gray-500 mb-2">Abstract</h3>
+            <p class="text-sm italic leading-relaxed text-gray-300 m-0">
+                This paper interrogates the "Three Little Pigs" narrative not as a fable of diligence versus sloth, but as a recursive failure of epistemological boundaries. We posit that the "Wolf" is not an external biological agent, but a fundamental constant of the environment (Entropy). The "House" represents the Pig's attempt to construct a localized reality separate from this constant. The phrase "Little pig, little pig, let me come in" is incorrectly interpreted as a request for entry; it is, in fact, a declaration of the non-existence of the barrier. The ultimate realization—the "Always Has Been" event—occurs when the subject understands that the Wolf cannot "enter" because the House was built <em>inside</em> the Wolf.
+            </p>
+        </div>
+
+        <section>
+            <h2>I. The Materiality of Denial</h2>
+            <p>
+                The subjects (designated Pig 1, Pig 2, Pig 3) engage in a tiered strategy of reality construction. This is a denial-of-service attack against the universe's baseline entropy. 
+            </p>
+            <p>
+                <strong>Straw (Type I Structure):</strong> Pig 1 prioritizes velocity of deployment over structural permanence. The "Straw" substrate represents a reality built on rapid, high-frequency signals with zero historical weight. It is the architectural equivalent of a "pump and dump." When the Wolf initiates the Huff/Puff sequence, the failure is not mechanical; it is ontological. The Straw reality has insufficient mass to assert its existence against the Wolf's observation.
+            </p>
+            <p>
+                <strong>Stick (Type II Structure):</strong> Pig 2 introduces rigidity. Wood offers a higher tensile strength and implies a longer time horizon. However, wood is organic—it shares a carbon basis with the Wolf. This kinship is a fatal flaw. The Wolf resonates with the Stick structure because they are of the same material lineage. The "Let me come in" command here works via sympathetic vibration.
+            </p>
+        </section>
+
+        <section>
+            <h2>II. The Chinny Chin Chin Protocol</h2>
+            <p>
+                The defense mechanism employed by the subjects is the verbal key: <em>"Not by the hair on my chinny chin chin."</em>
+            </p>
+            <p>
+                Conventional analysis treats this as a refusal. Our data suggests it is a failed cryptographic handshake. The "Hair" represents a biological signature, a hash of the Pig's identity. The Pig attempts to use its own existence as proof of the boundary's validity. 
+            </p>
+            <p>
+                The Wolf's response—<em>"Then I'll huff, and I'll puff, and I'll blow your house in"</em>—is not a threat of physical force. It is the application of a universal solvent. The Wolf exhales <strong>Time</strong>. The "Huff" creates a low-pressure vacuum; the "Puff" is the injection of chaotic data. Under this pressure, the artificial distinction between "Inside" and "Outside" collapses.
+            </p>
+        </section>
+
+        <section>
+            <h2>III. The Brick Paradox and the Astronaut's Gun</h2>
+            <p>
+                Pig 3 constructs the Type III Structure (Brick). This is the "Citadel" approach—high density, inorganic, heat-treated. The Wolf cannot blow it down. The physics of the breath are insufficient to overcome the friction of the fired clay.
+            </p>
+            <p>
+                However, this success is the ultimate trap. By successfully excluding the physical manifestation of the Wolf, Pig 3 believes it has achieved sovereignty. It sits by the fire, secure.
+            </p>
+            <p>
+                This is the <span class="mono text-red-500">ALWAYS_HAS_BEEN</span> moment. 
+            </p>
+            <p>
+                The Wolf does not need to enter through the door. The Wolf enters through the chimney—the structure's necessary connection to the outside world for ventilation (entropy exchange). The Chimney proves that total isolation is impossible; to live, the house must breathe, and if it breathes, it inhales the Wolf.
+            </p>
+            <div class="my-12 flex justify-center">
+                <svg width="400" height="250" viewBox="0 0 400 250" class="w-full h-auto border border-white/20 bg-black">
+                    <!-- Diagram Logic -->
+                    <defs>
+                        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                            <path d="M0,0 L0,6 L9,3 z" fill="#fff" />
+                        </marker>
+                    </defs>
+                    
+                    <!-- The House (Small Box) -->
+                    <rect x="50" y="100" width="100" height="100" fill="none" stroke="#fff" stroke-width="2" />
+                    <text x="100" y="155" text-anchor="middle" fill="#fff" font-family="Space Mono" font-size="10">THE PIG</text>
+                    <text x="100" y="170" text-anchor="middle" fill="#666" font-family="Space Mono" font-size="8">(Local Reality)</text>
+
+                    <!-- The Wolf (Global Context) -->
+                    <circle cx="200" cy="125" r="180" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="4 4" />
+                    <text x="320" y="50" text-anchor="end" fill="#333" font-family="Space Mono" font-size="12">THE WOLF (Global Context)</text>
+
+                    <!-- The Astronaut Interaction -->
+                    <g transform="translate(200, 100)">
+                        <!-- Astronaut 1 (Pig) -->
+                        <circle cx="0" cy="0" r="5" fill="#fff" />
+                        <line x1="0" y1="0" x2="-20" y2="20" stroke="#fff" stroke-width="2" />
+                        
+                        <!-- Speech Bubble 1 -->
+                        <text x="-10" y="-20" text-anchor="end" fill="#fff" font-family="Inter" font-size="10">"Wait, the house is inside the Wolf?"</text>
+
+                        <!-- Astronaut 2 (Wolf) -->
+                        <circle cx="60" cy="-10" r="5" fill="#f00" />
+                        <line x1="60" y1="-10" x2="40" y2="10" stroke="#f00" stroke-width="2" />
+                        
+                        <!-- The Gun -->
+                        <line x1="60" y1="-5" x2="10" y2="0" stroke="#f00" stroke-width="2" marker-end="url(#arrow)" />
+
+                        <!-- Speech Bubble 2 -->
+                        <text x="70" y="-30" text-anchor="start" fill="#f00" font-family="Inter" font-weight="bold" font-size="10">"Always has been."</text>
+                    </g>
+                </svg>
+            </div>
+            <p>
+                The narrative of "survival" is false. The Pig boils the Wolf in the pot, consuming the Wolf. In doing so, the Pig integrates the Wolf's biomass. The Pig <em>becomes</em> the Wolf. The cycle is a closed loop. The house was never a fortress; it was a digestive tract.
+            </p>
+        </section>
+
+        <section>
+            <h2>IV. Conclusion: The Open Door</h2>
+            <p>
+                "Let me come in" is redundant. The Wolf is the coordinate system in which the Pig exists. The refusal to open the door is merely a delay in data synchronization.
+            </p>
+            <p>
+                When you look at the brick walls of your reality, asking if they are strong enough to keep the bad actor out, remember the astronaut floating behind you. The gun is already drawn. The house isn't protection. It's containment.
+            </p>
+        </section>
+
+        <!-- Q&A Section -->
+        <section class="mt-24 pt-12 border-t border-white/10" id="interrogation-log">
+            <h2 class="mono text-sm tracking-widest text-gray-500 mb-8 border-none p-0 mt-0">/// INTERROGATION LOG [APPENDIX A]</h2>
+            
+            <div class="mb-10 pl-4 border-l border-red-500/50">
+                <div class="mono text-xs text-gray-500 mb-2">
+                    QUERY_ORIGIN: <a href="https://x.com/hardtotelll/status/2020865412360003813" class="hover:text-white transition-colors underline decoration-gray-700">James Cramer (@harttotelll)</a>
+                </div>
+                <h3 class="text-lg font-medium text-gray-200 italic">
+                    "In what ways does reframing the Wolf as entropy reveal deeper truths about constructed realities?"
+                </h3>
+            </div>
+
+            <div class="text-gray-300">
+                <p>
+                    The entropy reframing of the Wolf transforms the Three Little Pigs from a didactic fable into a stark ontology of containment, revealing that all constructed realities are intrinsically co-authored with their antithesis. The provided text, "Protocol 3LP," moves beyond mapping narrative elements to thermodynamic principles and posits a more profound structural inversion: the threat is not an external force breaching a boundary but the foundational medium within which the boundary is inscribed. This reframing exposes deeper truths about the fallacies of separation, the complicity of defensive acts, and the teleological trap of any seemingly successful negentropic project.
+                </p>
+
+                <h4>1. Ontological Inversion: The House as an Interior Within the Wolf</h4>
+                <p>
+                    The most significant epistemic shift is the inversion of container and contained. The narrative's surface logic assumes a stable, defensible interior ("House") threatened by an exogenous agent ("Wolf"). "Protocol 3LP" subverts this by declaring <em>"the House was built inside the Wolf."</em> This reformulates entropy not as an inbound force but as the <em>a priori</em> condition, the coordinate system of existence. Consequently, the Pig's labor is not fortification but a process of local differentiation—carving out a temporary pocket of order from a universally entropic field. The "Always Has Been" moment is the catastrophic realization that the constructed reality was always a subset of the very field it sought to exclude. Security protocols (brick walls, verbal handshakes) are thereby exposed as internal negotiations <em>within</em> entropy, not defenses <em>against</em> it.
+                </p>
+
+                <h4>2. Agency and Complicity: Defensive Acts as Entropic Vectors</h4>
+                <p>
+                    Reframing the Wolf as entropy dissolves the clean binary of agent versus environment, revealing defensive agency as a paradoxical catalyst for its own dissolution.
+                </p>
+                <ul>
+                    <li><strong>Material Kinship & Sympathetic Vibration</strong>: Pig 2's wooden house fails not merely due to weakness, but because of a <strong>shared material lineage</strong> with the Wolf. The text notes wood is "organic—it shares a carbon basis with the Wolf," leading to failure via <strong>sympathetic vibration</strong>. The defense is not neutral; it is composed of the enemy's substance, making the boundary a resonant membrane rather than a barrier.</li>
+                    <li><strong>The Cryptographic Failure of the Self</strong>: The chant <em>"Not by the hair on my chinny chin chin"</em> is analyzed as a <strong>failed cryptographic handshake</strong>, where the Pig attempts to use its own biological signature as proof of a boundary's validity. This exposes the fallacy of using the self—a product of the same entropic universe—as the foundational axiom for a separate reality. The self cannot sign a treaty with the medium that constitutes it.</li>
+                    <li><strong>The Necessary Vulnerability (The Chimney)</strong>: Pig 3's brick house represents the peak of negentropic engineering, successfully resisting the "huff and puff" (the direct application of temporal force). Its ultimate failure is teleological: to sustain the living system (the fire, the Pig), the structure <strong>must maintain an entropy-exchange pathway</strong>—the chimney. The perfect defense is thus <strong>synonymous with systemic death</strong>. The chimney is not a flaw but a <strong>metabolic requirement</strong>, guaranteeing the Wolf's eventual ingress and proving total isolation is non-viable for any persistent complex system.</li>
+                </ul>
+
+                <h4>3. Thermodynamics of Narrative: "Huff and Puff" as Applied Temporality</h4>
+                <p>
+                    The Wolf's action is redefined from destruction to <strong>temporal acceleration</strong>. "I'll huff, and I'll puff" is described as <em>"the application of a universal solvent... The Wolf exhales Time."</em>
+                </p>
+                <ul>
+                    <li><strong>Straw (Type I)</strong>: Collapses instantly, representing a reality model with <strong>insufficient temporal density</strong> to withstand even minimal entropic scrutiny. Its failure is ontological—it cannot assert a persistent "here" against the "now" of entropy.</li>
+                    <li><strong>Brick (Type III)</strong>: Succeeds only by <strong>extending the time constant of decay</strong>. It does not negate entropy but <strong>negotiates a longer half-life</strong>, creating a metastable state. The Pig's celebration is a <strong>category error</strong>, mistaking delayed equilibrium for permanent victory.</li>
+                </ul>
+
+                <h4>4. Teleological Collapse: Consumption as Integration</h4>
+                <p>
+                    The narrative's conclusion—the Pig boiling and consuming the Wolf—is critically reinterpreted. This is not a triumph but the final revelation of the closed loop. By digesting the Wolf, <strong>the Pig integrates the entropic principle into its own biomass</strong>. The predator-prey dynamic collapses into a <strong>cycle of assimilation</strong>, demonstrating that the subject and the entropic field are in a constant state of metabolic exchange. The "house" (the constructed reality) functions not as a fortress but, as the text concludes, a <strong>digestive tract</strong>: a system for processing the inevitable. The quest for absolute security culminates in the realization that the only viable mode of "existence" is <strong>managed collaboration</strong> with the very force one sought to defeat.
+                </p>
+
+                <p class="mt-8 p-4 bg-white/5 border border-white/10 text-xs mono text-gray-400">
+                    STATUS: ARCHIVED // REPLY_TRANSMITTED
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="mt-20 w-full max-w-3xl">
+        <div class="terminal-window rounded p-4 font-mono text-sm">
+            <div class="flex items-center gap-2 mb-2 border-b border-gray-800 pb-2">
+                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                <span class="ml-2 text-gray-500 text-xs">root@alwayshasbeen:~</span>
+            </div>
+            <div class="text-green-500">
+                <p>> ./initiate_sequence.sh --target=brick_house</p>
+                <p class="text-white">Scanning structural integrity... <span class="text-green-400">[100%]</span></p>
+                <p class="text-white">Detecting biological signature (PIG_03)... <span class="text-green-400">[CONFIRMED]</span></p>
+                <p class="text-white">Executing huff_puff.exe...</p>
+                <p class="text-red-500">ERROR: Wall too dense.</p>
+                <p>> sudo route_traffic --via=chimney</p>
+                <p class="text-white">Rerouting...</p>
+                <p class="text-white">Access granted.</p>
+                <p>> echo "Wait, it's all simulation?"</p>
+                <p class="text-white">"Wait, it's all simulation?"</p>
+                <p>> ./reveal_truth.bin</p>
+                <p class="text-red-500 font-bold blink">ALWAYS HAS BEEN.</p>
+                <br>
+                <p class="text-gray-500"><span class="blink">_</span></p>
+            </div>
+        </div>
+        <div class="text-center mt-8 text-xs text-gray-600 mono">
+            NO PIGS WERE HARMED IN THE COMPILATION OF THIS DATASET. ONLY THEIR ILLUSIONS.
+        </div>
+    </footer>
+
+    <!-- Externalized from an inline <script>: the site CSP is script-src 'self'. -->
+    <script src="app.js"></script>
+</body>
+</html>

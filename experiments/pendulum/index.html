@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheBenMeadows Pendulum Simulator</title>
+    <link rel="canonical" href="https://thebenmeadows.com/experiments/pendulum/" />
+    <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon" />
+    <style>
+        /* Custom Slider Styling for a minimal, technical look */
+        input[type=range] {
+            -webkit-appearance: none; 
+            width: 100%; 
+            background: transparent; 
+        }
+        
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 12px;
+            width: 12px;
+            border-radius: 50%;
+            background: #e5e5e5;
+            cursor: pointer;
+            margin-top: -5px; 
+            box-shadow: 0 0 2px rgba(0,0,0,0.5);
+        }
+        
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 2px;
+            cursor: pointer;
+            background: #404040;
+            border-radius: 1.3px;
+        }
+        
+        input[type=range]:focus {
+            outline: none;
+        }
+
+        /* Custom Scrollbar for the sidebar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333; 
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555; 
+        }
+
+        body {
+            font-family: 'Courier New', Courier, monospace; /* Technical/Data font */
+        }
+        
+        canvas {
+            touch-action: none;
+        }
+        
+        .lock-btn svg {
+            width: 12px;
+            height: 12px;
+        }
+    </style>
+    <!-- Compiled locally from this page's classes; regenerate with `npm run build:experiments`.
+         Replaces the Tailwind Play CDN — the site serves no external origins.
+         Loaded AFTER the page <style> on purpose: the Play CDN injected its
+         stylesheet last, so utilities win cascade ties against the page's own
+         rules; the compiled sheet must sit in the same cascade position. -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-black text-gray-300 h-screen w-screen flex flex-col md:flex-row overflow-hidden">
+
+    <!-- Left/Top: Canvas Area -->
+    <div class="relative flex-grow h-1/2 md:h-full w-full flex items-center justify-center overflow-hidden" id="canvas-container" style="background-color: #050505;">
+        <canvas id="simCanvas"></canvas>
+        
+        <!-- Overlay Info -->
+        <div class="absolute top-6 left-6 pointer-events-none opacity-70 text-xs md:text-sm">
+            <h1 id="title-text" class="text-white font-bold tracking-widest mb-1">THEBENMEADOWS PENDULUM SIMULATOR</h1>
+            <div id="status" class="text-green-500">ACTIVE</div>
+        </div>
+    </div>
+
+    <!-- Right/Bottom: Controls -->
+    <div class="w-full md:w-96 h-1/2 md:h-full bg-[#0f0f0f] border-t md:border-t-0 md:border-l border-[#222] flex flex-col z-10">
+        
+        <div class="p-6 border-b border-[#222] flex justify-between items-center">
+            <h2 class="text-white text-sm font-bold tracking-wider">PARAMETERS</h2>
+            <button id="btn-random" class="text-xs bg-[#222] hover:bg-white hover:text-black text-gray-300 px-3 py-1 transition-colors uppercase tracking-wider">
+                Randomize
+            </button>
+        </div>
+
+        <div class="flex-grow overflow-y-auto p-6 space-y-8">
+            
+            <!-- Harmonics (Period Ratio & Offset) -->
+            <div class="space-y-3">
+                <div class="flex justify-between text-xs text-gray-400 uppercase tracking-wider">
+                    <div class="flex items-center gap-2">
+                        <span>Period Ratio</span>
+                        <button id="lock-ratio" class="lock-btn text-gray-600 hover:text-white">
+                            <!-- Unlocked Icon (Open) -->
+                            <svg class="icon-unlocked block" fill="currentColor" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6h2c0-1.66 1.34-3 3-3s3 1.34 3 3v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm0 12H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg>
+                            <!-- Locked Icon (Closed) -->
+                            <svg class="icon-locked hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                        </button>
+                    </div>
+                    <span id="val-ratio" class="text-white">1.500</span>
+                </div>
+                <input type="range" id="ratio" min="1.0" max="10.0" step="0.01" value="1.5">
+                
+                <div class="flex justify-between text-xs text-gray-400 uppercase tracking-wider mt-2">
+                    <div class="flex items-center gap-2">
+                        <span>Period Offset</span>
+                        <button id="lock-offset" class="lock-btn text-gray-600 hover:text-white">
+                            <svg class="icon-unlocked block" fill="currentColor" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6h2c0-1.66 1.34-3 3-3s3 1.34 3 3v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm0 12H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg>
+                            <svg class="icon-locked hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                        </button>
+                    </div>
+                    <span id="val-offset" class="text-white">0.005</span>
+                </div>
+                <input type="range" id="offset" min="0.000" max="0.200" step="0.001" value="0.005">
+                
+                <div class="flex justify-between text-xs text-gray-400 uppercase tracking-wider mt-2">
+                    <div class="flex items-center gap-2">
+                        <span>Phase Offset</span>
+                        <button id="lock-phase" class="lock-btn text-red-500 hover:text-white">
+                            <svg class="icon-unlocked hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6h2c0-1.66 1.34-3 3-3s3 1.34 3 3v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm0 12H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg>
+                            <svg class="icon-locked block" fill="currentColor" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                        </button>
+                    </div>
+                    <span id="val-phase" class="text-white">90°</span>
+                </div>
+                <input type="range" id="phase" min="0" max="360" step="1" value="90">
+            </div>
+
+            <!-- Amplitude Controls -->
+            <div class="space-y-3">
+                <div class="flex justify-between text-xs text-gray-400 uppercase tracking-wider">
+                    <div class="flex items-center gap-2">
+                        <span>Amplitude X</span>
+                        <button id="lock-ampX" class="lock-btn text-gray-600 hover:text-white">
+                            <svg class="icon-unlocked block" fill="currentColor" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6h2c0-1.66 1.34-3 3-3s3 1.34 3 3v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm0 12H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg>
+                            <svg class="icon-locked hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                        </button>
+                    </div>
+                    <span id="val-amp-x" class="text-white">1.00</span>
+                </div>
+                <input type="range" id="amp-x" min="0.1" max="2.0" step="0.01" value="1.00">
+
+                <div class="flex justify-between text-xs text-gray-400 uppercase tracking-wider">
+                    <div class="flex items-center gap-2">
+                        <span>Amplitude Y</span>
+                        <button id="lock-ampY" class="lock-btn text-gray-600 hover:text-white">
+                            <svg class="icon-unlocked block" fill="currentColor" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6h2c0-1.66 1.34-3 3-3s3 1.34 3 3v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm0 12H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg>
+                            <svg class="icon-locked hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                        </button>
+                    </div>
+                    <span id="val-amp-y" class="text-white">1.00</span>
+                </div>
+                <input type="range" id="amp-y" min="0.1" max="2.0" step="0.01" value="1.00">
+            </div>
+
+            <!-- Damping Controls -->
+            <div class="space-y-3">
+                <div class="flex justify-between text-xs text-gray-400 uppercase tracking-wider">
+                    <div class="flex items-center gap-2">
+                        <span>Damping X</span>
+                        <button id="lock-dampingX" class="lock-btn text-gray-600 hover:text-white">
+                            <svg class="icon-unlocked block" fill="currentColor" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6h2c0-1.66 1.34-3 3-3s3 1.34 3 3v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm0 12H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg>
+                            <svg class="icon-locked hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                        </button>
+                    </div>
+                    <span id="val-damping-x" class="text-white">0.005</span>
+                </div>
+                <input type="range" id="damping-x" min="0" max="0.1" step="0.0001" value="0.005">
+
+                <div class="flex justify-between text-xs text-gray-400 uppercase tracking-wider mt-2">
+                    <div class="flex items-center gap-2">
+                        <span>Damping Y</span>
+                        <button id="lock-dampingY" class="lock-btn text-gray-600 hover:text-white">
+                            <svg class="icon-unlocked block" fill="currentColor" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6h2c0-1.66 1.34-3 3-3s3 1.34 3 3v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm0 12H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg>
+                            <svg class="icon-locked hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                        </button>
+                    </div>
+                    <span id="val-damping-y" class="text-white">0.005</span>
+                </div>
+                <input type="range" id="damping-y" min="0" max="0.1" step="0.0001" value="0.005">
+            </div>
+
+            <!-- Time/Cycle Controls -->
+            <div class="space-y-3 pt-4 border-t border-[#222]">
+                <div class="flex justify-between text-xs text-gray-400 uppercase tracking-wider">
+                    <div class="flex items-center gap-2">
+                        <span>Cycle Count (Loops)</span>
+                        <button id="lock-cycles" class="lock-btn text-gray-600 hover:text-white">
+                            <svg class="icon-unlocked block" fill="currentColor" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6h2c0-1.66 1.34-3 3-3s3 1.34 3 3v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm0 12H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg>
+                            <svg class="icon-locked hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                        </button>
+                    </div>
+                    <span id="val-cycles" class="text-white">100</span>
+                </div>
+                <input type="range" id="cycles" min="1" max="500" step="1" value="100">
+                
+                 <div class="flex justify-between text-xs text-gray-400 uppercase tracking-wider mt-2">
+                    <div class="flex items-center gap-2">
+                        <span>Swing Time (Speed)</span>
+                        <button id="lock-swingTime" class="lock-btn text-red-500 hover:text-white">
+                            <svg class="icon-unlocked hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6h2c0-1.66 1.34-3 3-3s3 1.34 3 3v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm0 12H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg>
+                            <svg class="icon-locked block" fill="currentColor" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                        </button>
+                    </div>
+                    <span id="val-swing-time" class="text-white">100x</span>
+                </div>
+                <input type="range" id="swing-time" min="1" max="100" step="1" value="100">
+
+                 <div class="flex justify-between text-xs text-gray-400 uppercase tracking-wider mt-2">
+                    <div class="flex items-center gap-2">
+                        <span>Line Type</span>
+                        <button id="lock-lineType" class="lock-btn text-gray-600 hover:text-white">
+                            <svg class="icon-unlocked block" fill="currentColor" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6h2c0-1.66 1.34-3 3-3s3 1.34 3 3v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm0 12H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg>
+                            <svg class="icon-locked hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <select id="line-type" class="w-full bg-[#222] text-gray-300 text-xs p-2 rounded-sm outline-none border border-[#404040]">
+                    <option value="solid">Solid</option>
+                    <option value="dashed">Dashed</option>
+                </select>
+            </div>
+            
+            <!-- View & Style Controls -->
+             <div class="space-y-3 pt-4 border-t border-[#222]">
+                <div class="flex justify-between text-xs text-gray-400 uppercase tracking-wider">
+                    <span>Global Zoom</span>
+                    <span id="val-zoom" class="text-white">1.0x</span>
+                </div>
+                <input type="range" id="zoom" min="0.1" max="3.0" step="0.1" value="1.0">
+
+                <!-- Color Theme Lock -->
+                 <div class="flex justify-between text-xs text-gray-400 uppercase tracking-wider mt-4">
+                    <div class="flex items-center gap-2">
+                        <span>Color Theme</span>
+                        <button id="lock-color" class="lock-btn text-gray-600 hover:text-white">
+                            <svg class="icon-unlocked block" fill="currentColor" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6h2c0-1.66 1.34-3 3-3s3 1.34 3 3v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm0 12H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg>
+                            <svg class="icon-locked hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="flex gap-2">
+                    <div id="color-preview-bg" class="w-6 h-6 rounded border border-gray-600" style="background-color: #050505;"></div>
+                    <div id="color-preview-line" class="w-6 h-6 rounded border border-gray-600" style="background-color: rgba(255,255,255,0.6);"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="p-6 border-t border-[#222] bg-[#0f0f0f]">
+            <button id="btn-generate" class="w-full bg-white text-black py-3 text-xs font-bold tracking-widest hover:bg-gray-200 transition-colors uppercase">
+                Generate System
+            </button>
+            <div class="flex gap-2 mt-3">
+                <button id="btn-save-png" class="w-1/2 border border-[#333] text-gray-400 py-2 text-xs font-bold tracking-widest hover:text-white hover:border-white transition-colors uppercase">
+                    Save PNG
+                </button>
+                <button id="btn-save-svg" class="w-1/2 border border-[#333] text-gray-400 py-2 text-xs font-bold tracking-widest hover:text-white hover:border-white transition-colors uppercase">
+                    Save SVG
+                </button>
+            </div>
+             <button id="btn-reset" class="w-full mt-2 border border-[#333] text-gray-500 py-2 text-[10px] font-bold tracking-widest hover:text-white hover:border-white transition-colors uppercase">
+                Reset All
+            </button>
+        </div>
+
+    </div>
+
+    <!-- Externalized from an inline <script>: the site CSP is script-src 'self'. -->
+    <script src="app.js"></script>
+</body>
+</html>
