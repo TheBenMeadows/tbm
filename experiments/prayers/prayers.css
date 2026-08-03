@@ -101,17 +101,20 @@ main.page {
     padding: 2.6rem 1.5rem 5rem;
 }
 
-/* Ornaments are alpha-ink PNGs (transparent paper) rendered through a CSS
-   mask and tinted with the theme ink -- no filters, no blend modes, both of
-   which Safari mishandles on images. Each instance sets --orn, width and
-   aspect-ratio inline. */
+/* Ornaments are alpha-ink PNGs: black ink, transparent paper. Day shows
+   them as-is; night inverts the ink to off-white -- safe now that there is
+   no paper in the file to invert along with it. height:auto is load-bearing:
+   overriding an img's width in CSS while its height attribute still applies
+   is exactly the stretch bug this replaces. */
 .ornament {
     display: block;
+    height: auto;
     margin: 0 auto 2.2rem;
-    background-color: var(--ink);
-    -webkit-mask: var(--orn) center / contain no-repeat;
-    mask: var(--orn) center / contain no-repeat;
     opacity: 0.92;
+}
+:root[data-theme="night"] .ornament { filter: invert(0.9); }
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="day"]) .ornament { filter: invert(0.9); }
 }
 
 .section-label {
