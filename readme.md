@@ -1,3 +1,14 @@
+<div align="center">
+  <a href="https://thebenmeadows.com">
+    <img alt="thebenmeadows.com" width="600" src="og.png">
+  </a>
+
+  <p><a href="https://github.com/TheBenMeadows/tbm/releases/latest">
+    <img alt="Last release" src="https://img.shields.io/github/release-date/TheBenMeadows/tbm?label=last%20release"></a>
+  <a href="https://github.com/TheBenMeadows/tbm/compare/main">
+    <img alt="Commits since last release" src="https://img.shields.io/github/commits-since/TheBenMeadows/tbm/latest?label=commits%20since"></a></p>
+</div>
+
 # thebenmeadows.com
 
 Source for [thebenmeadows.com](https://thebenmeadows.com) — a personal link hub
@@ -21,8 +32,9 @@ browser; the index is fetched only when search is first opened.
 
 ```sh
 npm install
-npm run build      # compiles src/input.css -> output.css (minified),
-                   # then builds search-index.json from the pages
+npm run build      # compiles src/input.css -> output.css (minified), then builds
+                   # search-index.json and the feeds, and refreshes the address
+                   # tables in this file from mirrors.json
 ```
 
 `output.css` and `search-index.json` are generated and git-ignored. Open `index.html` directly, or serve
@@ -34,6 +46,36 @@ the folder with any static server, after building.
   `npm run build` and publishes the folder.
 - **Netlify:** `netlify.toml` runs the same build (`npm run build:netlify`,
   which assembles a clean `dist/`), for use as a second host.
+
+## Releasing
+
+Deploying and releasing are different things here, and the mirror list below only
+makes sense once that split is clear.
+
+Most surfaces are **continuous**: Cloudflare Pages, Netlify, the onion, and the
+eepsite rebuild themselves from `main`, so a merged PR is live within a minute
+and nothing else has to happen. The rest are **release-pinned**: the Arweave
+copy, the IPNS name, and the Nostr nsite hold one specific build and only move
+when a release is cut. That is deliberate — those surfaces are permanent,
+paid for, or signed, and none of those are things to do automatically on every
+merge.
+
+A release therefore lags `main` by design. `scripts/build-manifest.mjs` and the
+proofs in `commitments/` are what make the lag measurable rather than a guess.
+
+Cutting one builds from a clean checkout of `main` and then, in order: uploads
+to Arweave and moves the ArNS record for `ar://thebenmeadows`; signs the
+manifest's SHA-256 to Nostr under the key this domain attests at
+`/.well-known/nostr.json`; anchors that hash in Bitcoin with OpenTimestamps and
+commits the proof to `commitments/`; and tags the commit `YYYY.MM.DD` (plus the
+short SHA if a day carries more than one). The tag is annotated with the Arweave
+transaction and the manifest hash, and signed when a signing key is available.
+Tags replicate to every git mirror, so the record of what shipped survives the
+loss of any one forge — including this one.
+
+To check a release rather than trust it, fetch `/manifest.json` from any surface
+and compare its hashes against the bytes that surface serves;
+[`/mirrors/`](https://thebenmeadows.com/mirrors/) walks through it.
 
 ## Mirrors & availability
 
@@ -67,6 +109,53 @@ the model borrowed from [Privacy Guides](https://github.com/privacyguides/privac
   OpenTimestamps; the proofs live in `commitments/`. Any mirror can be
   verified against the manifest — see
   [`/mirrors/`](https://thebenmeadows.com/mirrors/) for how.
+
+### Addresses
+
+[`/mirrors/`](https://thebenmeadows.com/mirrors/) is the canonical index, but it
+is served *by* the site: if the domain is unreachable, so is the page listing the
+alternatives to the domain. This README is mirrored to seven forges and Software
+Heritage, so it still resolves when nothing else does. The tables below are
+generated from `mirrors.json` by `scripts/sync-readme-mirrors.mjs` — the same
+file the build signs into `manifest.json`, so the README, the site, and the
+manifest cannot disagree.
+
+<!-- mirrors:start -->
+
+**Serving** — the same build, reachable by different means:
+
+| Network | Address |
+|---------|---------|
+| Web (primary) | `https://thebenmeadows.com/` |
+| Web | `https://thebenmeadows.netlify.app/` |
+| Web | `https://tbm-linktree.pages.dev/` |
+| Tor | `http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/` |
+| I2P | `http://d24ftl3svuczr2neg7dhlys7hgj4oinz3u3d5rwd2t4rbkbwt4wa.b32.i2p/` |
+| IPFS | `ipns://k51qzi5uqu5dkx54ehvkna983zjtfn04eu4sklgx2ag1tozh9js5p9cn5jwqmy` |
+| Arweave | `ar://thebenmeadows` |
+| Nostr (nsite) | `npub1wldqfuy0yge4fvxukdm43gze2ral9dnp5avlps5a6t8q0vyv2nds84nq29` |
+| Gemini | `gemini://gemini.thebenmeadows.com/` |
+| Gopher | `gopher://gopher.thebenmeadows.com/` |
+| SSH | `ssh://text@text.thebenmeadows.com:2222` |
+| Telnet | `telnet://text.thebenmeadows.com` |
+| FTP | `ftp://text.thebenmeadows.com/` |
+
+**Source** — copies whose identity is not tied to one forge:
+
+| Network | Address |
+|---------|---------|
+| Radicle | `rad:z3vBEjEJAvd3CjciS1JBiFzHda3KA` |
+| Tangled (ATProto) | `https://tangled.org/thebenmeadows.com/tbm` |
+| Nostr (GRASP) | `nostr://npub1wldqfuy0yge4fvxukdm43gze2ral9dnp5avlps5a6t8q0vyv2nds84nq29/tbm` |
+
+**Archive** — third-party copies, not under this project's control:
+
+| Network | Address |
+|---------|---------|
+| Archive | `https://archive.softwareheritage.org/browse/origin/directory/?origin_url=https://github.com/TheBenMeadows/tbm` |
+| Archive | `https://web.archive.org/web/2/https://thebenmeadows.com/` |
+
+<!-- mirrors:end -->
 
 ## Git Mirrors
 
