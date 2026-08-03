@@ -118,3 +118,73 @@ writeFileSync(MANIFEST, body);
 console.log(
     `build-manifest     ${sortedKeys.length} files, tree ${treeHash.slice(0, 12)}, manifest ${sha256(Buffer.from(body, "utf8")).slice(0, 12)}`,
 );
+
+// Guard: Cloudflare Pages does NOT merge two blocks for the same path in
+// _headers -- the later one wins and the earlier block's headers are silently
+// dropped. That is invisible from the repo and cost us `no-transform` on ten
+// of twelve pages, which is the directive that stops Cloudflare injecting a
+// beacon into the HTML and breaking this very manifest's verification.
+// Fail the build rather than ship it again.
+{
+    const headersPath = "_headers";
+    let raw;
+    try {
+        raw = readFileSync(headersPath, "utf8");
+    } catch {
+        raw = null;
+    }
+    if (raw) {
+        const seen = new Map();
+        for (const line of raw.split("\n")) {
+            if (!line.startsWith("/")) continue;
+            const p = line.trim();
+            seen.set(p, (seen.get(p) ?? 0) + 1);
+        }
+        const dupes = [...seen.entries()].filter(([, n]) => n > 1).map(([p]) => p);
+        if (dupes.length) {
+            throw new Error(
+                `build-manifest: ${headersPath} declares these paths more than once, ` +
+                `so Cloudflare Pages will drop all but the last block: ${dupes.join(", ")}`,
+            );
+        }
+    }
+}
+
+// Page-weight budget. Ben's standing rule: the homepage stays under 100 KB
+// uncompressed. Measured as the bytes a cold visit to / actually pulls -- the
+// document, the stylesheet, the scripts, the font, the wordmark, the social
+// icons and the smallest avatar a modern browser will pick. og.png is excluded
+// because only crawlers fetch it; the PNG and WebP avatars are excluded because
+// AVIF wins for anything current.
+//
+// A budget nobody measures is a wish. This fails the build instead.
+{
+    const BUDGET = 100 * 1024;
+    const critical = [
+        "index.html", "output.css", "theme.js", "search.js", "email.js",
+        "btm-logo.png", "fonts/publicsans-v1.woff2", "me.avif",
+    ];
+    let total = 0;
+    const missing = [];
+    for (const rel of critical) {
+        try {
+            total += statSync(join(DIST, rel)).size;
+        } catch {
+            missing.push(rel);
+        }
+    }
+    for (const key of sortedKeys) {
+        if (key.startsWith("icons/")) total += statSync(join(DIST, key)).size;
+    }
+    const kb = (n) => `${(n / 1024).toFixed(1)} KB`;
+    if (missing.length) {
+        throw new Error(`build-manifest: page-weight budget cannot be checked, missing: ${missing.join(", ")}`);
+    }
+    if (total > BUDGET) {
+        throw new Error(
+            `build-manifest: homepage is ${kb(total)} uncompressed, over the ${kb(BUDGET)} budget ` +
+            `by ${kb(total - BUDGET)}. Shrink something or raise BUDGET deliberately.`,
+        );
+    }
+    console.log(`page-weight        ${kb(total)} of ${kb(BUDGET)} budget (${kb(BUDGET - total)} headroom)`);
+}

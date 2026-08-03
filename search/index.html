@@ -39,9 +39,9 @@
         <link rel="manifest" href="/favicon/site.webmanifest" />
 
         <link rel="preload" href="/fonts/publicsans-v1.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="stylesheet" href="/output.css" />
         <script src="/theme.js"></script>
         <script src="/search.js" defer></script>
-        <link rel="stylesheet" href="/output.css" />
     </head>
     <body id="top" class="bg-black">
         <header class="site-chrome sticky top-0 z-20">
@@ -71,12 +71,12 @@
         </header>
         <main class="text-neutral-400 max-w-screen-md mx-auto px-6 pt-8 pb-12 leading-relaxed">
             <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">Search</h1>
-            <p class="mt-4 max-w-prose">
+            <p class="mt-4">
                 Everything on this site, plus the links the home page points to. The
                 index is built from the pages themselves at deploy time.
             </p>
 
-            <form id="search-page-form" role="search" action="/search/" method="get" class="mt-8 max-w-prose">
+            <form id="search-page-form" role="search" action="/search/" method="get" class="mt-8">
                 <label class="sr-only" for="search-page-input">Search this site</label>
                 <input
                     id="search-page-input"
@@ -89,9 +89,9 @@
             </form>
 
             <p id="search-page-status" class="mt-6 text-sm text-neutral-500">Loading…</p>
-            <ul id="search-page-results" class="mt-2 max-w-prose list-none"></ul>
+            <ul id="search-page-results" class="mt-2 list-none"></ul>
 
-            <p class="mt-10 max-w-prose text-sm text-neutral-500">
+            <p class="mt-10 text-sm text-neutral-500">
                 Search runs entirely in your browser — the query is never sent anywhere.
                 On any page you can press <span class="font-mono">/</span> to open it
                 without leaving the page.

@@ -55,8 +55,9 @@ the model borrowed from [Privacy Guides](https://github.com/privacyguides/privac
   themselves, and on **Nostr** via [GRASP](https://ngit.dev/grasp/), where
   signed events are the authority and any compliant git server can carry it
   (`git clone nostr://npub1wldqfuy0yge4fvxukdm43gze2ral9dnp5avlps5a6t8q0vyv2nds84nq29/tbm`
-  with the [ngit](https://ngit.dev/) plugin). **Software Heritage** holds a
-  permanent archival copy.
+  with the [ngit](https://ngit.dev/) plugin), and on **Tangled**, where the
+  repository lives on an AT Protocol knot and carries its own DID.
+  **Software Heritage** holds a permanent archival copy.
 - **Archive.** A GitHub Action (`.github/workflows/wayback.yml`) requests a
   Wayback Machine snapshot after every deploy, so the archived copy tracks
   what actually shipped.
@@ -76,6 +77,7 @@ the model borrowed from [Privacy Guides](https://github.com/privacyguides/privac
 [![SourceHut](https://img.shields.io/badge/SOURCEHUT-000000?style=for-the-badge&logo=sourcehut&logoColor=white)](https://git.sr.ht/~thebenmeadows/tbm)
 [![Radicle](https://img.shields.io/badge/RADICLE-0A0D10?style=for-the-badge&logo=radicle&logoColor=white)](https://radicle.network/nodes/index.radicle.garden/rad:z3vBEjEJAvd3CjciS1JBiFzHda3KA)
 [![Nostr](https://img.shields.io/badge/NOSTR-662482?style=for-the-badge&logoColor=white)](https://gitworkshop.dev/npub1wldqfuy0yge4fvxukdm43gze2ral9dnp5avlps5a6t8q0vyv2nds84nq29/relay.ngit.dev/tbm)
+[![Tangled](https://img.shields.io/badge/TANGLED-1185FE?style=for-the-badge&logoColor=white)](https://tangled.org/thebenmeadows.com/tbm)
 
 The live index of every host, forge, and archive is at
 [`/mirrors/`](https://thebenmeadows.com/mirrors/); the stack and the design

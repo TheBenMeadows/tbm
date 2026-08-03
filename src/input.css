@@ -5,7 +5,12 @@
 @layer base {
     @font-face {
         font-family: "Public Sans";
-        src: url("/fonts/publicsans-v1.woff2") format("woff2-variations");
+        /* format("woff2"), not the legacy format("woff2-variations") token: the latter
+       came from an early CSS Fonts 4 draft, and a UA that does not recognise a
+       format token SKIPS that src entry. This @font-face has only one entry, so
+       an unrecognised token means the face is never used -- while the
+       <link rel=preload> fetches all 19 KB of it regardless. */
+    src: url("/fonts/publicsans-v1.woff2") format("woff2");
         font-weight: 400 700;
         font-display: swap;
     }
@@ -240,3 +245,43 @@ select.ess-control {
     html:not(.dark) .ess-control { background-color: #e4e4e7; color: #3f3f46; }
 }
 html.light .ess-control { background-color: #e4e4e7; color: #3f3f46; }
+
+/* Body copy: one measure, justified.
+   The pages used to set max-w-prose (65ch) on every <p> while the containing
+   <main> was max-w-screen-md (768px), so paragraphs wrapped ~150px narrower
+   than the headings and card grids above them and nothing lined up on the
+   right. The container is now the single source of measure; paragraphs fill it.
+
+   Justification needs hyphenation or it opens rivers of white space, so
+   hyphens are on wherever text is justified (the <html lang="en"> declaration
+   is what lets the browser hyphenate correctly). Below 640px the column is too
+   narrow for justification to look like anything but gaps, so it stays ragged
+   there -- hyphens still help the rag. */
+/* DIRECT children only. Card and grid-item paragraphs are nested, and they are
+   UI copy in a ~300px column -- justifying those produced "fig-ure resolve" and
+   "ca-nine representation" on /experiments/. Body copy is the only thing wide
+   enough to justify well. */
+main > p,
+main > ul > li,
+main > ol > li {
+    hyphens: auto;
+}
+
+@media (min-width: 640px) {
+    main > p:not(.no-justify),
+    main > ul > li:not(.no-justify),
+    main > ol > li:not(.no-justify) {
+        text-align: justify;
+        text-justify: inter-word;
+    }
+}
+
+/* Short metadata lines, captions and anything monospace read as broken when
+   stretched to a full justified line. */
+main > p.text-sm,
+main > p.font-mono,
+main > ul > li.text-sm,
+main > ol > li.text-sm,
+main .no-justify {
+    text-align: left;
+}
