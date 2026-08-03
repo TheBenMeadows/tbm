@@ -115,6 +115,11 @@
     },
     {
       "kind": "source",
+      "network": "atproto",
+      "address": "https://tangled.org/thebenmeadows.com/tbm"
+    },
+    {
+      "kind": "source",
       "network": "nostr",
       "address": "nostr://npub1wldqfuy0yge4fvxukdm43gze2ral9dnp5avlps5a6t8q0vyv2nds84nq29/tbm"
     },
