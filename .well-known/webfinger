@@ -1,0 +1,24 @@
+{
+  "subject": "acct:ben@thebenmeadows.com",
+  "aliases": [
+    "https://thebenmeadows.com/",
+    "https://primal.net/p/npub1wldqfuy0yge4fvxukdm43gze2ral9dnp5avlps5a6t8q0vyv2nds84nq29"
+  ],
+  "links": [
+    {
+      "rel": "http://webfinger.net/rel/profile-page",
+      "type": "text/html",
+      "href": "https://thebenmeadows.com/"
+    },
+    {
+      "rel": "http://webfinger.net/rel/avatar",
+      "type": "image/png",
+      "href": "https://thebenmeadows.com/me.png"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/atom+xml",
+      "href": "https://thebenmeadows.com/feed.xml"
+    }
+  ]
+}

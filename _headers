@@ -44,6 +44,12 @@
   Access-Control-Allow-Origin: *
   Content-Type: application/json
 
+# WebFinger must be JRD and CORS-open or no fediverse client will read it; the
+# file has no extension, so the content type has to be set explicitly here.
+/.well-known/webfinger
+  Access-Control-Allow-Origin: *
+  Content-Type: application/jrd+json
+
 # no-transform stops Cloudflare's edge rewriting the HTML. On this zone the
 # JavaScript Detections beacon kept injecting into every page even with Bot
 # fight mode off -- a state the Free plan exposes no control for -- which made
