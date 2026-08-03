@@ -123,16 +123,20 @@
                 </div>
             </div>
         </header>
+        <!-- h-card: the IndieWeb microformat for "who this page is about". Lets
+             feed readers, Mastodon and other consumers extract identity from the
+             markup itself rather than guessing from meta tags. -->
         <div
-            class="break-normal px-6 text-white grid items-center place-items-center pt-6"
+            class="break-normal px-6 text-white grid items-center place-items-center pt-6 h-card"
         >
             <img
-                class="rounded-full mt-4"
+                class="rounded-full mt-4 u-photo"
                 style="width: 128px; height: 128px; margin-bottom: 1.25rem"
                 src="me.png"
                 alt="thebenmeadows profile pic"
             />
-            <h1 class="text-2xl font-bold" style="letter-spacing: -0.025em; margin-bottom: 1.5rem">TheBenMeadows</h1>
+            <h1 class="text-2xl font-bold p-name" style="letter-spacing: -0.025em; margin-bottom: 1.5rem">TheBenMeadows</h1>
+            <a class="u-url u-uid" href="https://thebenmeadows.com/" hidden>thebenmeadows.com</a>
             <h3 class="text-neutral-400 font-medium uppercase" style="padding-bottom: 1rem; font-size: 0.875rem; letter-spacing: 0.1em">Websites</h3>
             <a
                 class="rounded-xl px-6 py-4 max-w-screen-md flex flex-col w-full sm:w-8/12 md:w-5/12 min-h-14 text-neutral-400 bg-zinc-800 justify-center items-center m-1"
