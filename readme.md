@@ -1,6 +1,9 @@
 <div align="center">
   <a href="https://thebenmeadows.com">
-    <img alt="thebenmeadows.com" width="600" src="og.png">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="readme-header-dark.png">
+      <img alt="thebenmeadows.com" width="460" src="readme-header-light.png">
+    </picture>
   </a>
 
   <p><a href="https://github.com/TheBenMeadows/tbm/releases/latest">
@@ -184,6 +187,7 @@ decisions behind it are at [`/tech/`](https://thebenmeadows.com/tech/).
 | `src/input.css`, `tailwind.config.js` | Tailwind source + config |
 | `icons/` | self-hosted social SVGs (no external CDN at runtime) |
 | `favicon/`, `me.png` | icons and profile image |
+| `readme-header-*.png` | the header above — keyed out of `og.png` by `scripts/make-readme-header.py`, one variant per theme; repo-only, never shipped |
 | `email.js` | assembles the contact address at runtime to cut scraping |
 | `theme.js` | three-state theme control (system / light / dark) |
 | `search.js` | search overlay + `/search/` page; fetches the index on first use |
