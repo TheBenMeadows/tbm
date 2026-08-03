@@ -2,7 +2,9 @@
 import { prepare, layout } from "./vendor/pretext.js";
 
 /* ---- Theme: one button cycling auto -> day -> night -> auto ---------- */
-const ICONS = { auto: "◐", day: "☀", night: "☽" };
+// U+FE0E (VARIATION SELECTOR-15) forces text presentation -- without it
+// iOS renders the sun as a full-color emoji, which clashes with the design.
+const ICONS = { auto: "\u25D0\uFE0E", day: "\u2600\uFE0E", night: "\u263D\uFE0E" };
 const LABEL = {
     auto: "Theme: follow system",
     day: "Theme: day (parchment)",
