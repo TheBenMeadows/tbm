@@ -111,6 +111,21 @@
   Cache-Control: public, max-age=0, must-revalidate, no-transform
   Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/experiments/prayers/morning/
 
+/experiments/prayers/morning/daybreak/
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/experiments/prayers/morning/daybreak/
+
+/experiments/prayers/hours/
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/experiments/prayers/hours/
+
+/experiments/prayers/psalter/
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/experiments/prayers/psalter/
+
+/experiments/prayers/psalter/*
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
 /search/
   Cache-Control: public, max-age=0, must-revalidate, no-transform
 

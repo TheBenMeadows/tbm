@@ -215,3 +215,57 @@ footer a:hover { color: var(--rubric); }
     .prayer p { font-size: 1.07rem; }
     .ornament { margin-bottom: 1.6rem; }
 }
+
+/* Psalter */
+.psalm-head {
+    text-align: center;
+    color: var(--rubric);
+    font-variant: small-caps;
+    font-weight: 500;
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+    margin: 2rem 0 0.4rem;
+}
+.inscription {
+    text-align: center;
+    color: var(--rubric);
+    font-style: italic;
+    font-size: 1rem;
+    margin-bottom: 0.9rem;
+}
+.glory {
+    text-align: center;
+    color: var(--rubric);
+    font-variant: small-caps;
+    letter-spacing: 0.18em;
+    margin: 1.8rem 0;
+}
+.after { color: var(--ink); }
+.knav {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2.6rem;
+    font-variant: small-caps;
+    letter-spacing: 0.08em;
+}
+.knav a { color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid var(--rule); }
+.knav a:hover { color: var(--rubric); border-color: var(--rubric); }
+.today-line {
+    text-align: center;
+    color: var(--ink);
+    font-size: 1.05rem;
+    margin-bottom: 1.8rem;
+}
+.today-line a { color: var(--rubric); }
+.notice { max-width: 34em; margin-left: auto; margin-right: auto; }
+
+
+.rubric { color: var(--rubric); font-style: italic; font-variant: normal; letter-spacing: 0; }
+
+/* Book-style paragraphing: first-line indents, no inter-paragraph space --
+   matches the printed sources that set prayers as indented paragraphs. */
+.prayer.indented p { margin-bottom: 0; text-indent: 1.5em; }
+.prayer.indented p.opening { text-indent: 0; }
+
+.rubric-line { color: var(--rubric); font-style: italic; margin: 1.4rem 0 0.9rem; }
