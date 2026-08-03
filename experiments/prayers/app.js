@@ -100,6 +100,30 @@ addEventListener("resize", () => {
     resizeT = setTimeout(fitDropCap, 150);
 });
 
+/* ---- Masthead: daily-rotating ornament bar ---------------------------- */
+// A small curated subset of Orthodox Illustration Project bars. The pick is
+// seeded by the calendar day (plus a per-page offset from data-rotate), so
+// every visitor sees the same bar on a given day, pages differ from each
+// other, and the ornament turns over at midnight. The static src in the HTML
+// is the no-JS fallback.
+const BARS = [
+    ["bar2", 2816, 477],
+    ["bar8", 2741, 418],
+    ["bar12", 4371, 718],
+    ["bar13", 5087, 647],
+    ["bar19", 2243, 479],
+    ["bar20", 2556, 565],
+];
+const masthead = document.querySelector(".ornament[data-rotate]");
+if (masthead) {
+    const day = Math.floor(Date.now() / 864e5);
+    const offset = parseInt(masthead.dataset.rotate, 10) || 0;
+    const [name, w, h] = BARS[(day + offset) % BARS.length];
+    masthead.src = "/experiments/prayers/art/bars/" + name + ".svg";
+    masthead.width = w;
+    masthead.height = h;
+}
+
 /* ---- PWA ------------------------------------------------------------- */
 if ("serviceWorker" in navigator) {
     // Absolute path: this module is loaded from subpages too, and a relative
