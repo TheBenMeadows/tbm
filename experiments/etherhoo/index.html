@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etherhoo! - The World's Favorite Blockchain Explorer</title>
+    <link rel="canonical" href="https://thebenmeadows.com/experiments/etherhoo/" />
+    <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon" />
+    <style>
+        /* RESET & BASICS */
+        body {
+            background-color: #FFFFFF;
+            font-family: "Times New Roman", Times, serif;
+            font-size: 13px;
+            margin: 0;
+            padding: 0;
+            color: #000000;
+        }
+        a {
+            color: #0000CC;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        a:visited {
+            color: #660099;
+        }
+        a:hover {
+            color: #FF0000;
+        }
+        table {
+            border-collapse: collapse;
+            border: 0;
+        }
+        td {
+            vertical-align: top;
+            padding: 2px;
+        }
+        
+        /* UTILS */
+        .small { font-family: Arial, Helvetica, sans-serif; font-size: 11px; }
+        .tiny { font-family: Arial, Helvetica, sans-serif; font-size: 10px; }
+        .bold { font-weight: bold; }
+        .red { color: #FF0000; }
+        .green { color: #009900; }
+        .gray { color: #666666; }
+        .center { text-align: center; }
+        .right { text-align: right; }
+        .nowrap { white-space: nowrap; }
+        
+        /* LAYOUT */
+        .container {
+            width: 100%;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 5px;
+        }
+        
+        /* HEADER */
+        .header-top {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        .logo-row {
+            margin-bottom: 15px;
+        }
+        .logo-text {
+            font-family: Georgia, serif;
+            font-size: 42px;
+            color: #FF0000;
+            font-weight: bold;
+            letter-spacing: -1px;
+        }
+        .logo-sub {
+            color: #000000;
+            font-size: 42px;
+        }
+        
+        /* SEARCH BOX */
+        .search-box-container {
+            background-color: #DDDDEE;
+            padding: 10px;
+            border: 1px solid #9999CC;
+        }
+        .search-input {
+            width: 300px;
+            font-size: 14px;
+        }
+        
+        /* COLUMNS */
+        .main-layout {
+            width: 100%;
+            margin-top: 10px;
+        }
+        .col-left { width: 160px; background-color: #EEEEEE; padding: 5px; border-right: 1px solid #CCCCCC; }
+        .col-center { padding: 0 10px; }
+        .col-right { width: 200px; background-color: #F0F8FF; padding: 5px; border-left: 1px solid #CCCCCC; }
+
+        /* DIRECTORY (LEFT) */
+        .dir-header {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            font-weight: bold;
+            background-color: #CCCCFF;
+            padding: 3px;
+            margin-bottom: 5px;
+            border-top: 1px solid #9999CC;
+            border-bottom: 1px solid #9999CC;
+        }
+        .dir-item {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 11px;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        .dir-bullet {
+            color: #666666;
+            font-size: 9px;
+            vertical-align: middle;
+        }
+
+        /* FEED (CENTER) */
+        .section-header {
+            background-color: #6699CC;
+            color: #FFFFFF;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            padding: 2px 5px;
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+        .news-item {
+            margin-bottom: 8px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .data-table {
+            width: 100%;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 11px;
+            border: 1px solid #CCCCCC;
+        }
+        .data-table th {
+            background-color: #EEEEEE;
+            text-align: left;
+            padding: 4px;
+            border-bottom: 1px solid #999999;
+        }
+        .data-table td {
+            padding: 3px;
+            border-bottom: 1px solid #EFEFEF;
+        }
+        .hash {
+            font-family: "Courier New", Courier, monospace;
+            font-size: 11px;
+        }
+        
+        /* WIDGETS (RIGHT) */
+        .widget-box {
+            border: 1px solid #CCCCCC;
+            background-color: #FFFFFF;
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+        .ad-banner {
+            width: 100%;
+            height: 60px;
+            background-color: #FFFFCC;
+            border: 1px solid #999900;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 10px;
+            color: #666600;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .main-layout, .col-left, .col-center, .col-right {
+                display: block;
+                width: 100% !important;
+                border: none;
+            }
+            .col-left, .col-right {
+                background-color: #F9F9F9;
+                margin-bottom: 20px;
+            }
+            .search-input {
+                width: 100%;
+            }
+        }
+        
+        /* UTILITY ICONS (CSS Shapes) */
+        .new-icon {
+            background: yellow;
+            color: red;
+            font-size: 9px;
+            padding: 0 2px;
+            border: 1px solid red;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+            <td align="left" valign="middle">
+                <div class="logo-row">
+                    <span class="logo-text">Etherhoo<span class="logo-sub">!</span></span>
+                    <div class="small gray" style="margin-left: 5px;">The World's Favorite Blockchain Explorer</div>
+                </div>
+            </td>
+            <td align="right" valign="top">
+                <div class="header-top">
+                    <a href="#">My Etherhoo!</a> | <a href="#">Wallet</a> | <a href="#">Help</a>
+                </div>
+                <div class="ad-banner" style="width: 234px; height: 60px;">
+                    [Ad] DO YOU WANT TO<br>MINT NFTS FROM HOME?<br><a href="#">Click Here!</a>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Search Bar -->
+    <div class="search-box-container">
+        <table width="100%">
+            <tr>
+                <td align="center">
+                    <form id="searchForm">
+                        <span class="bold small">Search:</span>
+                        <input type="radio" name="scope" value="all" checked><span class="small">The Blockchain</span>
+                        <input type="radio" name="scope" value="address"><span class="small">Addresses</span>
+                        <input type="radio" name="scope" value="tx"><span class="small">Txns</span>
+                        <br>
+                        <input type="text" id="searchInput" class="search-input" placeholder="Address, Txn Hash, Block, Token..." value="">
+                        <input type="submit" value="Search">
+                    </form>
+                    <div class="tiny" style="margin-top: 5px;">
+                        <a href="#">Advanced Search</a> | <a href="#">Contract Verification</a> | <a href="#">Submit Token</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Main Content Table -->
+    <table class="main-layout" cellpadding="0" cellspacing="0">
+        <tr>
+            <!-- LEFT COLUMN: Directory -->
+            <td class="col-left">
+                <div class="dir-header">Explorer Directory</div>
+                
+                <div class="dir-item">
+                    <span class="dir-bullet">&#9632;</span> <a href="#"><b>DeFi & Yield</b></a><br>
+                    <span class="tiny">&nbsp;&nbsp;<a href="#">Uniswap</a>, <a href="#">Aave</a>, <a href="#">Curve</a></span>
+                </div>
+                
+                <div class="dir-item">
+                    <span class="dir-bullet">&#9632;</span> <a href="#"><b>NFTs & Collectibles</b></a> <span class="new-icon">NEW!</span><br>
+                    <span class="tiny">&nbsp;&nbsp;<a href="#">Bored Apes</a>, <a href="#">Punks</a>, <a href="#">ArtBlocks</a></span>
+                </div>
+                
+                <div class="dir-item">
+                    <span class="dir-bullet">&#9632;</span> <a href="#"><b>Infrastructure</b></a><br>
+                    <span class="tiny">&nbsp;&nbsp;<a href="#">Oracles</a>, <a href="#">Bridges</a>, <a href="#">L2s</a></span>
+                </div>
+
+                <div class="dir-item">
+                    <span class="dir-bullet">&#9632;</span> <a href="#"><b>Tokens (ERC-20)</b></a><br>
+                    <span class="tiny">&nbsp;&nbsp;<a href="#">Stablecoins</a>, <a href="#">Meme Coins</a></span>
+                </div>
+
+                <div class="dir-item">
+                    <span class="dir-bullet">&#9632;</span> <a href="#"><b>Gaming</b></a><br>
+                    <span class="tiny">&nbsp;&nbsp;<a href="#">Play-to-Earn</a>, <a href="#">Metaverse</a></span>
+                </div>
+
+                <br>
+                <div class="center tiny">
+                    <a href="#">Suggest a Site</a>
+                </div>
+            </td>
+
+            <!-- CENTER COLUMN: Feed -->
+            <td class="col-center">
+                <!-- Status Message Area -->
+                <div id="statusArea" style="display:none; background-color: #FFFFE0; border: 1px solid #CCCC99; padding: 5px; margin-bottom: 10px; font-family: Arial; font-size: 11px;"></div>
+
+                <!-- Default View: Blocks and Txns -->
+                <div id="mainView">
+                    <div class="section-header">Latest Ethereum News</div>
+                    <div class="news-item small">
+                        <ul>
+                            <li><a href="#"><b>Vitalik Buterin</b> proposes new blob scaling solution</a> <span class="tiny gray">(10 mins ago)</span></li>
+                            <li><a href="#">Gas prices hit 4-year low</a> - network congestion eases.</li>
+                            <li><a href="#">Etherhoo!</a> launches new "Web3 Mail" service.</li>
+                        </ul>
+                    </div>
+
+                    <div class="section-header">Latest Blocks</div>
+                    <table class="data-table" id="blocksTable">
+                        <thead>
+                            <tr>
+                                <th>Block</th>
+                                <th>Miner/Proposer</th>
+                                <th>Reward</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+                        <tbody id="blocksBody">
+                            <!-- JS populates this -->
+                        </tbody>
+                    </table>
+                    <div class="right tiny" style="margin-top: 2px;"><a href="#">View all blocks...</a></div>
+
+                    <div class="section-header">Latest Transactions</div>
+                    <table class="data-table" id="txTable">
+                        <thead>
+                            <tr>
+                                <th>Tx Hash</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody id="txBody">
+                            <!-- JS populates this -->
+                        </tbody>
+                    </table>
+                    <div class="right tiny" style="margin-top: 2px;"><a href="#">View all transactions...</a></div>
+                </div>
+
+                <!-- Search Result View (Hidden by default) -->
+                <div id="resultView" style="display:none;">
+                    <div class="section-header">Search Results</div>
+                    <div style="background:#F9F9F9; padding:10px; border:1px solid #CCC; margin-bottom:10px;">
+                        <table width="100%" class="small">
+                            <tr>
+                                <td width="80" class="bold gray" align="right">Address:</td>
+                                <td class="hash bold" id="resAddress">0x...</td>
+                            </tr>
+                            <tr>
+                                <td class="bold gray" align="right">Balance:</td>
+                                <td><span id="resBalance">0.00</span> ETH</td>
+                            </tr>
+                            <tr>
+                                <td class="bold gray" align="right">Nonce:</td>
+                                <td id="resNonce">0</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="section-header">Transaction History</div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Tx Hash</th>
+                                <th>Method</th>
+                                <th>Age</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resTxBody"></tbody>
+                    </table>
+                    <div class="center" style="margin-top:10px;">
+                        <button id="btn-clear">Return to Home</button>
+                    </div>
+                </div>
+
+            </td>
+
+            <!-- RIGHT COLUMN: Widgets -->
+            <td class="col-right">
+                
+                <!-- Market Watch -->
+                <div class="dir-header center">Market Watch</div>
+                <div class="widget-box center small">
+                    <div style="font-size: 14px; font-weight: bold; margin-bottom: 3px;">ETH / USD</div>
+                    <div id="ethPrice" style="font-size: 18px; color: #009900; font-family: Arial;">$2,450.32</div>
+                    <div class="tiny green">+2.4% <img src="data:image/gif;base64,R0lGODlhCwALAIABAAAAAP///yH5BAEAAAEALAAAAAALAAsAAAIUhI+py+0PD4i0UoCz3rxDzzWcUAAAOw==" alt="up" width="9" height="9"></div>
+                    <hr size="1" color="#CCCCCC">
+                    <table width="100%" class="tiny">
+                        <tr><td>BTC</td> <td align="right">$92,104</td></tr>
+                        <tr><td>SOL</td> <td align="right">$210.50</td></tr>
+                    </table>
+                    <div class="tiny center" style="margin-top: 5px;"><a href="#">Full Quotes</a></div>
+                </div>
+
+                <!-- Gas Tracker -->
+                <div class="dir-header center">Gas Tracker</div>
+                <div class="widget-box small">
+                    <table width="100%">
+                        <tr>
+                            <td>Low:</td>
+                            <td align="right" class="bold">12 gwei</td>
+                        </tr>
+                        <tr>
+                            <td>Avg:</td>
+                            <td align="right" class="bold" style="color:blue">15 gwei</td>
+                        </tr>
+                        <tr>
+                            <td>High:</td>
+                            <td align="right" class="bold" style="color:red">22 gwei</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- Login -->
+                <div class="dir-header center">My Etherhoo!</div>
+                <div class="widget-box center small">
+                    Welcome, <b>Guest</b><br>
+                    <a href="#">Sign In</a> | <a href="#">Sign Up</a><br>
+                    <div class="tiny gray" style="margin-top:5px;">Connect Wallet</div>
+                </div>
+
+                <!-- Ad -->
+                <div class="ad-banner" style="height: 120px; flex-direction: column;">
+                    <div style="font-weight:bold; color:black;">WEB3 DOMAINS</div>
+                    <div style="color:blue;">.eth .crypto</div>
+                    <br>
+                    <button style="font-size:10px;">Register Now</button>
+                </div>
+
+            </td>
+        </tr>
+    </table>
+
+    <!-- Footer -->
+    <div class="center small gray" style="margin-top: 20px; border-top: 1px solid #CCCCCC; padding-top: 10px; margin-bottom: 20px;">
+        <a href="#">Company Info</a> - <a href="#">Copyright Policy</a> - <a href="#">Terms of Service</a> - <a href="#">Jobs</a>
+        <br>
+        Copyright &copy; 2025 Etherhoo! Inc. All rights reserved.
+    </div>
+</div>
+
+<!-- Externalized from an inline <script>: the site CSP is script-src 'self'. -->
+<script src="app.js"></script>
+</body>
+</html>
