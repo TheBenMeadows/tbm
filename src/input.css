@@ -268,7 +268,9 @@ main > ol > li {
 }
 
 @media (min-width: 640px) {
-    main > p:not(.no-justify) {
+    main > p:not(.no-justify),
+    main > ul > li:not(.no-justify),
+    main > ol > li:not(.no-justify) {
         text-align: justify;
         text-justify: inter-word;
     }
@@ -278,6 +280,8 @@ main > ol > li {
    stretched to a full justified line. */
 main > p.text-sm,
 main > p.font-mono,
+main > ul > li.text-sm,
+main > ol > li.text-sm,
 main .no-justify {
     text-align: left;
 }
