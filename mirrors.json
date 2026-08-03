@@ -16,26 +16,117 @@
     "Keep in sync with mirrors/index.html when a surface is added or retired."
   ],
   "mirrors": [
-    { "kind": "serving", "network": "https",   "primary": true, "address": "https://thebenmeadows.com/" },
-    { "kind": "serving", "network": "https",   "address": "https://thebenmeadows.netlify.app/" },
-    { "kind": "serving", "network": "https",   "address": "https://tbm-linktree.pages.dev/" },
-    { "kind": "serving", "network": "tor",     "address": "http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/" },
-    { "kind": "serving", "network": "i2p",     "address": "http://d24ftl3svuczr2neg7dhlys7hgj4oinz3u3d5rwd2t4rbkbwt4wa.b32.i2p/" },
-    { "kind": "serving", "network": "ipfs",    "address": "ipns://k51qzi5uqu5dkx54ehvkna983zjtfn04eu4sklgx2ag1tozh9js5p9cn5jwqmy" },
-    { "kind": "serving", "network": "arweave", "address": "ar://thebenmeadows" },
-    { "kind": "serving", "network": "nostr",   "address": "npub1wldqfuy0yge4fvxukdm43gze2ral9dnp5avlps5a6t8q0vyv2nds84nq29" },
-    { "kind": "serving", "network": "gemini",  "address": "gemini://gemini.thebenmeadows.com/" },
-    { "kind": "serving", "network": "gopher",  "address": "gopher://gopher.thebenmeadows.com/" },
-
-    { "kind": "source",  "network": "https",   "primary": true, "address": "https://github.com/TheBenMeadows/tbm" },
-    { "kind": "source",  "network": "https",   "address": "https://codeberg.org/thebenmeadows/tbm" },
-    { "kind": "source",  "network": "https",   "address": "https://gitea.com/thebenmeadows/tbm" },
-    { "kind": "source",  "network": "https",   "address": "https://gitlab.com/TheBenMeadows/tbm" },
-    { "kind": "source",  "network": "https",   "address": "https://git.sr.ht/~thebenmeadows/tbm" },
-    { "kind": "source",  "network": "radicle", "address": "rad:z3vBEjEJAvd3CjciS1JBiFzHda3KA" },
-    { "kind": "source",  "network": "nostr",   "address": "nostr://npub1wldqfuy0yge4fvxukdm43gze2ral9dnp5avlps5a6t8q0vyv2nds84nq29/tbm" },
-
-    { "kind": "archive", "network": "https",   "address": "https://archive.softwareheritage.org/browse/origin/directory/?origin_url=https://github.com/TheBenMeadows/tbm" },
-    { "kind": "archive", "network": "https",   "address": "https://web.archive.org/web/2/https://thebenmeadows.com/" }
+    {
+      "kind": "serving",
+      "network": "https",
+      "primary": true,
+      "address": "https://thebenmeadows.com/"
+    },
+    {
+      "kind": "serving",
+      "network": "https",
+      "address": "https://thebenmeadows.netlify.app/"
+    },
+    {
+      "kind": "serving",
+      "network": "https",
+      "address": "https://tbm-linktree.pages.dev/"
+    },
+    {
+      "kind": "serving",
+      "network": "tor",
+      "address": "http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/"
+    },
+    {
+      "kind": "serving",
+      "network": "i2p",
+      "address": "http://d24ftl3svuczr2neg7dhlys7hgj4oinz3u3d5rwd2t4rbkbwt4wa.b32.i2p/"
+    },
+    {
+      "kind": "serving",
+      "network": "ipfs",
+      "address": "ipns://k51qzi5uqu5dkx54ehvkna983zjtfn04eu4sklgx2ag1tozh9js5p9cn5jwqmy"
+    },
+    {
+      "kind": "serving",
+      "network": "arweave",
+      "address": "ar://thebenmeadows"
+    },
+    {
+      "kind": "serving",
+      "network": "nostr",
+      "address": "npub1wldqfuy0yge4fvxukdm43gze2ral9dnp5avlps5a6t8q0vyv2nds84nq29"
+    },
+    {
+      "kind": "serving",
+      "network": "gemini",
+      "address": "gemini://gemini.thebenmeadows.com/"
+    },
+    {
+      "kind": "serving",
+      "network": "gopher",
+      "address": "gopher://gopher.thebenmeadows.com/"
+    },
+    {
+      "kind": "serving",
+      "network": "ssh",
+      "address": "ssh://text@text.thebenmeadows.com:2222"
+    },
+    {
+      "kind": "serving",
+      "network": "telnet",
+      "address": "telnet://text.thebenmeadows.com"
+    },
+    {
+      "kind": "serving",
+      "network": "ftp",
+      "address": "ftp://text.thebenmeadows.com/"
+    },
+    {
+      "kind": "source",
+      "network": "https",
+      "primary": true,
+      "address": "https://github.com/TheBenMeadows/tbm"
+    },
+    {
+      "kind": "source",
+      "network": "https",
+      "address": "https://codeberg.org/thebenmeadows/tbm"
+    },
+    {
+      "kind": "source",
+      "network": "https",
+      "address": "https://gitea.com/thebenmeadows/tbm"
+    },
+    {
+      "kind": "source",
+      "network": "https",
+      "address": "https://gitlab.com/TheBenMeadows/tbm"
+    },
+    {
+      "kind": "source",
+      "network": "https",
+      "address": "https://git.sr.ht/~thebenmeadows/tbm"
+    },
+    {
+      "kind": "source",
+      "network": "radicle",
+      "address": "rad:z3vBEjEJAvd3CjciS1JBiFzHda3KA"
+    },
+    {
+      "kind": "source",
+      "network": "nostr",
+      "address": "nostr://npub1wldqfuy0yge4fvxukdm43gze2ral9dnp5avlps5a6t8q0vyv2nds84nq29/tbm"
+    },
+    {
+      "kind": "archive",
+      "network": "https",
+      "address": "https://archive.softwareheritage.org/browse/origin/directory/?origin_url=https://github.com/TheBenMeadows/tbm"
+    },
+    {
+      "kind": "archive",
+      "network": "https",
+      "address": "https://web.archive.org/web/2/https://thebenmeadows.com/"
+    }
   ]
 }
