@@ -3,18 +3,18 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="Small web experiments by Ben Meadows — toys, provocations, and mock-serious protocols." />
+        <meta name="description" content="Software Ben Meadows builds and maintains — an Orthodox prayer book for the browser, and native Apple silicon builds of open-source wallets." />
         <meta name="color-scheme" content="dark light" />
         <meta http-equiv="content-language" content="en-us" />
-        <link rel="canonical" href="https://thebenmeadows.com/experiments/" />
+        <link rel="canonical" href="https://thebenmeadows.com/projects/" />
         <link rel="alternate" type="application/atom+xml" title="Site releases" href="/feed.xml" />
         <link rel="alternate" type="application/rss+xml" title="Site releases (RSS)" href="/rss.xml" />
 
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="TheBenMeadows" />
-        <meta property="og:title" content="Experiments · TheBenMeadows" />
-        <meta property="og:description" content="Small web experiments by Ben Meadows — toys, provocations, and mock-serious protocols." />
-        <meta property="og:url" content="https://thebenmeadows.com/experiments/" />
+        <meta property="og:title" content="Projects · TheBenMeadows" />
+        <meta property="og:description" content="Software Ben Meadows builds and maintains — an Orthodox prayer book for the browser, and native Apple silicon builds of open-source wallets." />
+        <meta property="og:url" content="https://thebenmeadows.com/projects/" />
         <meta property="og:image" content="https://thebenmeadows.com/og.png" />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="1200" />
@@ -22,11 +22,11 @@
         <meta property="og:image:alt" content="TheBenMeadows — thebenmeadows.com" />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Experiments · TheBenMeadows" />
-        <meta name="twitter:description" content="Small web experiments by Ben Meadows — toys, provocations, and mock-serious protocols." />
+        <meta name="twitter:title" content="Projects · TheBenMeadows" />
+        <meta name="twitter:description" content="Software Ben Meadows builds and maintains — an Orthodox prayer book for the browser, and native Apple silicon builds of open-source wallets." />
         <meta name="twitter:image" content="https://thebenmeadows.com/og.png" />
 
-        <title>Experiments · TheBenMeadows</title>
+        <title>Projects · TheBenMeadows</title>
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000" />
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
 
@@ -83,53 +83,68 @@
             </div>
         </header>
         <main class="text-neutral-400 max-w-screen-md mx-auto px-6 pt-8 pb-12 leading-relaxed">
-            <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">Experiments</h1>
+            <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">Projects</h1>
             <p class="mt-4">
-                A handful of small web experiments — toys, provocations, and
-                mock-serious protocols. Each one stands on its own, styled its
-                own way.
+                Software I build and maintain. The wallets are continuations of
+                open-source projects, carrying native Apple silicon builds.
+                Source for all of them lives in
+                <a class="underline decoration-neutral-600 underline-offset-4 hover:text-white transition-colors" href="https://github.com/mdws-org" target="_blank" rel="noopener">mdws-org</a>.
             </p>
 
             <div class="mt-8 grid gap-4 sm:grid-cols-2">
-                <a class="block rounded-xl bg-zinc-800 p-6 transition-opacity hover:opacity-80" href="/experiments/pendulum/">
+                <div class="rounded-xl bg-zinc-800 p-6">
                     <div class="flex items-center justify-between font-mono text-xs">
-                        <span class="uppercase tracking-widest text-neutral-500">Generative</span>
+                        <span class="uppercase tracking-widest text-neutral-500">Prayer Book</span>
                         <span class="text-neutral-600">01</span>
                     </div>
-                    <h2 class="mt-3 text-xl font-bold text-white">Pendulum Simulator</h2>
-                    <p class="mt-2 text-sm text-neutral-400">A harmonograph generator: tune the ratios, phase, and damping, watch the Lissajous figure resolve, then export it as PNG or SVG.</p>
-                    <div class="mt-4 font-mono text-xs text-neutral-500">/experiments/pendulum/</div>
-                </a>
+                    <h2 class="mt-3 text-xl font-bold text-white">Orthodox Prayers</h2>
+                    <p class="mt-2 text-sm text-neutral-400">An Orthodox prayer book for the browser: morning prayers, the Hours, and the complete Psalter in twenty kathismata. Set like the printed books, and readable offline once opened.</p>
+                    <div class="mt-3 font-mono text-xs uppercase tracking-widest text-neutral-500">Web &middot; installs to home screen</div>
+                    <div class="mt-3 flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs">
+                        <a class="text-neutral-400 hover:text-white transition-colors" href="https://orthodoxprayers.net/" target="_blank" rel="noopener">orthodoxprayers.net</a>
+                        <a class="text-neutral-400 hover:text-white transition-colors" href="https://github.com/mdws-org/orthodoxprayers" target="_blank" rel="noopener">source</a>
+                    </div>
+                </div>
 
-                <a class="block rounded-xl bg-zinc-800 p-6 transition-opacity hover:opacity-80" href="/experiments/porcine/">
+                <div class="rounded-xl bg-zinc-800 p-6">
                     <div class="flex items-center justify-between font-mono text-xs">
-                        <span class="uppercase tracking-widest text-neutral-500">Essay</span>
+                        <span class="uppercase tracking-widest text-neutral-500">Wallet</span>
                         <span class="text-neutral-600">02</span>
                     </div>
-                    <h2 class="mt-3 text-xl font-bold text-white">Protocol 3LP</h2>
-                    <p class="mt-2 text-sm text-neutral-400">A mock-academic reading of the Three Little Pigs as recursive ontological failure — the huff-and-puff as a denial-of-service attack against reality.</p>
-                    <div class="mt-4 font-mono text-xs text-neutral-500">/experiments/porcine/</div>
-                </a>
+                    <h2 class="mt-3 text-xl font-bold text-white">FreeWallet</h2>
+                    <p class="mt-2 text-sm text-neutral-400">A wallet for Bitcoin and Counterparty assets. Continued here with native builds for Apple silicon and iOS.</p>
+                    <div class="mt-3 font-mono text-xs uppercase tracking-widest text-neutral-500">macOS ARM64 &middot; iOS</div>
+                    <div class="mt-3 flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs">
+                        <a class="text-neutral-400 hover:text-white transition-colors" href="https://github.com/mdws-org/freewallet-desktop" target="_blank" rel="noopener">desktop source</a>
+                        <a class="text-neutral-400 hover:text-white transition-colors" href="https://github.com/mdws-org/freewallet-mobile" target="_blank" rel="noopener">mobile source</a>
+                    </div>
+                </div>
 
-                <a class="block rounded-xl bg-zinc-800 p-6 transition-opacity hover:opacity-80" href="/experiments/etherhoo/">
+                <div class="rounded-xl bg-zinc-800 p-6">
                     <div class="flex items-center justify-between font-mono text-xs">
-                        <span class="uppercase tracking-widest text-neutral-500">Parody</span>
+                        <span class="uppercase tracking-widest text-neutral-500">Wallet</span>
                         <span class="text-neutral-600">03</span>
                     </div>
-                    <h2 class="mt-3 text-xl font-bold text-white">Etherhoo!</h2>
-                    <p class="mt-2 text-sm text-neutral-400">Etherscan by way of the old Yahoo! homepage — a blockchain explorer reimagined as a late-'90s web portal.</p>
-                    <div class="mt-4 font-mono text-xs text-neutral-500">/experiments/etherhoo/</div>
-                </a>
+                    <h2 class="mt-3 text-xl font-bold text-white">Wowlet</h2>
+                    <p class="mt-2 text-sm text-neutral-400">A desktop wallet for Wownero, built on the Feather Wallet codebase. Continued here with a native Apple silicon build.</p>
+                    <div class="mt-3 font-mono text-xs uppercase tracking-widest text-neutral-500">macOS ARM64</div>
+                    <div class="mt-3 flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs">
+                        <a class="text-neutral-400 hover:text-white transition-colors" href="https://github.com/mdws-org/wowlet" target="_blank" rel="noopener">source</a>
+                    </div>
+                </div>
 
-                <a class="block rounded-xl bg-zinc-800 p-6 transition-opacity hover:opacity-80" href="/experiments/dls/">
+                <div class="rounded-xl bg-zinc-800 p-6">
                     <div class="flex items-center justify-between font-mono text-xs">
-                        <span class="uppercase tracking-widest text-neutral-500">Manifesto</span>
+                        <span class="uppercase tracking-widest text-neutral-500">Node &amp; Wallet</span>
                         <span class="text-neutral-600">04</span>
                     </div>
-                    <h2 class="mt-3 text-xl font-bold text-white">Dog Lovers Society</h2>
-                    <p class="mt-2 text-sm text-neutral-400">A straight-faced manifesto advocating for canine representation — one paw at a time.</p>
-                    <div class="mt-4 font-mono text-xs text-neutral-500">/experiments/dls/</div>
-                </a>
+                    <h2 class="mt-3 text-xl font-bold text-white">Pepecoin Core Wallet</h2>
+                    <p class="mt-2 text-sm text-neutral-400">The full node and wallet for Pepecoin, a Scrypt proof-of-work chain adapted from Dogecoin Core. Continued here with a native Apple silicon build.</p>
+                    <div class="mt-3 font-mono text-xs uppercase tracking-widest text-neutral-500">macOS ARM64</div>
+                    <div class="mt-3 flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs">
+                        <a class="text-neutral-400 hover:text-white transition-colors" href="https://github.com/mdws-org/pepecoin" target="_blank" rel="noopener">source</a>
+                    </div>
+                </div>
             </div>
         </main>
 
