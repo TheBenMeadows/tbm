@@ -1,0 +1,216 @@
+/* /experiments/prayers/ — prayer-book design per the Hieratikon brief
+   (projects/prayers-experiment-scope.md in arch's home).
+   Two palettes: Day (parchment) and Night (vigil). Auto follows the system.
+   Theme resolution: no data-theme or data-theme="auto" on <html> follows
+   prefers-color-scheme; explicit "day"/"night" forces one. theme.js sets the
+   attribute before first paint so there is no flash. */
+
+@font-face {
+    font-family: 'EB Garamond';
+    font-style: normal;
+    font-weight: 400 800;
+    font-display: swap;
+    src: url(fonts/ebgaramond-var.woff2) format('woff2');
+}
+@font-face {
+    font-family: 'EB Garamond';
+    font-style: italic;
+    font-weight: 400 800;
+    font-display: swap;
+    src: url(fonts/ebgaramond-italic-var.woff2) format('woff2');
+}
+
+:root {
+    --serif: 'EB Garamond', 'Iowan Old Style', Palatino, Georgia, serif;
+    /* Day — parchment */
+    --bg: #f5edda;
+    --ink: #3b3226;
+    --ink-soft: #6f6352;
+    --rubric: #8f1f1f;
+    --accent: #a67c1e;
+    --rule: #dccfae;
+    --orn-filter: sepia(0.35);
+    --orn-blend: multiply;
+}
+:root[data-theme="night"] {
+    --bg: #0f0e0c;
+    --ink: #e6e1d5;
+    --ink-soft: #96907f;
+    --rubric: #cf5b58;
+    --accent: #c9a227;
+    --rule: #2e2b25;
+    --orn-filter: invert(1);
+    --orn-blend: screen;
+}
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="day"]) {
+        --bg: #0f0e0c;
+        --ink: #e6e1d5;
+        --ink-soft: #96907f;
+        --rubric: #cf5b58;
+        --accent: #c9a227;
+        --rule: #2e2b25;
+        --orn-filter: invert(1);
+        --orn-blend: screen;
+    }
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--serif);
+    line-height: 1.65;
+    transition: background 0.35s, color 0.35s;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header: static, quiet. One nav link left, one theme button right. */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 38em;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1.1rem 1.25rem 0;
+}
+header a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-variant: small-caps;
+    letter-spacing: 0.12em;
+    font-size: 1rem;
+}
+header a:hover { color: var(--rubric); }
+#theme {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    line-height: 1;
+    background: none;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    color: var(--ink-soft);
+    width: 2.2rem;
+    height: 2.2rem;
+    cursor: pointer;
+}
+#theme:hover { color: var(--rubric); border-color: var(--rubric); }
+
+main.page {
+    max-width: 34em;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2.6rem 1.5rem 5rem;
+}
+
+.ornament {
+    display: block;
+    width: 75%;
+    max-width: 22rem;
+    margin: 0 auto 2.2rem;
+    filter: var(--orn-filter);
+    mix-blend-mode: var(--orn-blend);
+    opacity: 0.9;
+}
+
+.section-label {
+    text-align: center;
+    color: var(--rubric);
+    font-size: 0.72rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    margin-bottom: 0.9rem;
+}
+h1 {
+    text-align: center;
+    font-weight: 500;
+    font-size: 2rem;
+    letter-spacing: 0.01em;
+    margin-bottom: 0.55rem;
+}
+.attribution {
+    text-align: center;
+    color: var(--ink-soft);
+    font-variant: small-caps;
+    letter-spacing: 0.14em;
+    font-size: 0.95rem;
+    margin-bottom: 2.2rem;
+}
+.rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    width: 38%;
+    margin: 0 auto 2.4rem;
+}
+
+.prayer p {
+    font-size: 1.16rem;
+    text-align: justify;
+    hyphens: auto;
+    margin-bottom: 1.15em;
+}
+/* Drop cap. CSS float is the no-JS baseline; app.js refines --cap-size and
+   --cap-pad with measured font metrics (via Pretext) so the cap spans whole
+   lines exactly in whatever font actually loaded. */
+.prayer p.opening::first-letter {
+    color: var(--rubric);
+    font-size: var(--cap-size, 3.4em);
+    float: left;
+    line-height: 0.82;
+    padding: var(--cap-pad, 0.06em 0.12em 0 0);
+    font-weight: 500;
+}
+
+.finis {
+    text-align: center;
+    color: var(--rubric);
+    font-size: 1.35rem;
+    margin-top: 2.4rem;
+}
+
+/* Index (table of contents) */
+.toc { list-style: none; margin-top: 0.4rem; }
+.toc li { margin-bottom: 0.9rem; text-align: center; }
+.toc a {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 1.25rem;
+    border-bottom: 1px solid var(--rule);
+}
+.toc a:hover { color: var(--rubric); border-color: var(--rubric); }
+.toc .who {
+    display: block;
+    color: var(--ink-soft);
+    font-variant: small-caps;
+    letter-spacing: 0.12em;
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+}
+.coming {
+    text-align: center;
+    color: var(--ink-soft);
+    font-style: italic;
+    font-size: 0.98rem;
+    margin-top: 2.2rem;
+}
+
+footer {
+    margin-top: auto;
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+    padding: 0 1.5rem 2rem;
+}
+footer a { color: inherit; }
+footer a:hover { color: var(--rubric); }
+
+@media (max-width: 600px) {
+    main.page { padding: 1.9rem 1.1rem 3.5rem; }
+    h1 { font-size: 1.6rem; }
+    .prayer p { font-size: 1.07rem; }
+    .ornament { width: 88%; margin-bottom: 1.6rem; }
+}
