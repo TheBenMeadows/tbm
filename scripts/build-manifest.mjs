@@ -162,7 +162,7 @@ console.log(
     const BUDGET = 100 * 1024;
     const critical = [
         "index.html", "output.css", "theme.js", "search.js", "email.js",
-        "btm-logo.png", "fonts/publicsans-v1.woff2", "me.avif",
+        "btm-logo.png", "fonts/publicsans-v1.woff2", "me.webp",
     ];
     let total = 0;
     const missing = [];
