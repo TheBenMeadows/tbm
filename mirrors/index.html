@@ -265,14 +265,23 @@
                     <span class="block text-white font-medium">Radicle <span class="text-neutral-500 font-normal">&mdash; peer-to-peer</span></span>
                     <span class="block text-neutral-500 text-sm break-words">rad:z3vBEjEJAvd3CjciS1JBiFzHda3KA</span>
                 </a>
+                <a class="block rounded-xl bg-zinc-800 p-5 transition-opacity hover:opacity-80" href="https://gitworkshop.dev/npub1wldqfuy0yge4fvxukdm43gze2ral9dnp5avlps5a6t8q0vyv2nds84nq29/relay.ngit.dev/tbm" target="_blank" rel="noopener">
+                    <span class="block text-white font-medium">Nostr <span class="text-neutral-500 font-normal">&mdash; GRASP</span></span>
+                    <span class="block text-neutral-500 text-sm break-words">nostr://npub1wld&hellip;4nq29/tbm</span>
+                </a>
             </div>
             <p class="mt-3 text-sm text-neutral-500">
-                Radicle is the odd one out: it has no host. The repository is replicated
-                between peer-to-peer nodes, so it stays reachable for as long as any one
-                node still seeds it. With
+                The last two have no host. On
                 <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://radicle.xyz/" target="_blank" rel="noopener">Radicle</a>
-                installed, <code class="text-neutral-400">rad clone rad:z3vBEjEJAvd3CjciS1JBiFzHda3KA</code>
-                fetches it from whichever node answers first &mdash; no forge, no account, nothing to take down.
+                the repository is replicated between peer-to-peer nodes, so it stays
+                reachable for as long as any one node still seeds it &mdash;
+                <code class="text-neutral-400">rad clone rad:z3vBEjEJAvd3CjciS1JBiFzHda3KA</code>
+                fetches it from whichever node answers first. On Nostr, signed
+                <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://ngit.dev/grasp/" target="_blank" rel="noopener">GRASP</a>
+                events are the authority and git servers are interchangeable relays:
+                with the <code class="text-neutral-400">ngit</code> plugin installed,
+                <code class="text-neutral-400">git clone nostr://npub1wldqfuy0yge4fvxukdm43gze2ral9dnp5avlps5a6t8q0vyv2nds84nq29/tbm</code>
+                pulls from any server carrying it. No forge, no account, nothing to take down.
             </p>
 
             <h2 class="mt-10 text-neutral-400 font-medium uppercase text-sm tracking-widest">Archived</h2>
@@ -306,6 +315,14 @@
                 Proofs live in
                 <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://github.com/TheBenMeadows/tbm/tree/main/commitments" target="_blank" rel="noopener">commitments/</a>
                 in the repository, one per release, named for the hash they attest.
+            </p>
+            <p class="mt-3 text-sm text-neutral-500">
+                The manifest also carries this mirror list itself, as a
+                <code class="text-neutral-400">mirrors</code> array. This page dies with
+                the site that serves it; the manifest is replicated to IPFS, Arweave and
+                Nostr with everything else. Whichever copy you are reading, its manifest
+                names every other copy &mdash; and the signature tells you nobody edited
+                the list on the way.
             </p>
 
             <p class="mt-10 text-sm text-neutral-500">

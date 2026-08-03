@@ -33,6 +33,7 @@
     { "kind": "source",  "network": "https",   "address": "https://gitlab.com/TheBenMeadows/tbm" },
     { "kind": "source",  "network": "https",   "address": "https://git.sr.ht/~thebenmeadows/tbm" },
     { "kind": "source",  "network": "radicle", "address": "rad:z3vBEjEJAvd3CjciS1JBiFzHda3KA" },
+    { "kind": "source",  "network": "nostr",   "address": "nostr://npub1wldqfuy0yge4fvxukdm43gze2ral9dnp5avlps5a6t8q0vyv2nds84nq29/tbm" },
 
     { "kind": "archive", "network": "https",   "address": "https://archive.softwareheritage.org/browse/origin/directory/?origin_url=https://github.com/TheBenMeadows/tbm" },
     { "kind": "archive", "network": "https",   "address": "https://web.archive.org/web/2/https://thebenmeadows.com/" }
