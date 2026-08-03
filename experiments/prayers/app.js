@@ -126,6 +126,23 @@ if (masthead) {
     masthead.height = h;
 }
 
+/* ---- Psalter: today's kathisma --------------------------------------- */
+// Day-of-month rule: kathisma 1 on the 1st through kathisma 20 on the 20th,
+// wrapping on the 21st. Highlights the entry and fills the pointer line.
+const todayLine = document.getElementById("today-line");
+if (todayLine) {
+    const dom = new Date().getDate();
+    const k = ((dom - 1) % 20) + 1;
+    const link = document.querySelector(`.toc a[data-kathisma="${k}"]`);
+    if (link) {
+        document.getElementById("today-day").textContent = String(dom);
+        document.getElementById("today-name").textContent = link.textContent.toLowerCase();
+        document.getElementById("today-link").href = link.getAttribute("href");
+        todayLine.hidden = false;
+        link.style.color = "var(--rubric)";
+    }
+}
+
 /* ---- PWA ------------------------------------------------------------- */
 if ("serviceWorker" in navigator) {
     // Absolute path: this module is loaded from subpages too, and a relative
