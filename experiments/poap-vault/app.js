@@ -109,8 +109,8 @@
             ' &middot; <b>event</b> ' + esc(p.e == null ? '?' : p.e) +
             (p.loc ? ' &middot; <b>where</b> ' + esc(p.loc) : '') + '</div>' +
             '<div><b>held by</b> ' + esc(p.w) + '</div>' +
-            '<div><b>token URI (offline)</b> <span class="dead">' + esc(p.uri) + '</span></div>' +
-            '<div><b>original image (offline)</b> <span class="dead">' + esc(p.src) + '</span></div>' +
+            '<div><b>token URI (POAP-hosted)</b> <span class="dead">' + esc(p.uri) + '</span></div>' +
+            '<div><b>original image (POAP-hosted)</b> <span class="dead">' + esc(p.src) + '</span></div>' +
             '<div><b>original sha256</b> ' + esc(p.sha || 'n/a') + '</div>' +
             '<div><a href="' + scan + '" target="_blank" rel="noopener">view token on chain</a></div>' +
             '</div>';
