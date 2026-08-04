@@ -32,33 +32,6 @@
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000" />
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
 
-        <!-- Critical CSS -->
-        <style>
-            .hidden-until-loaded {
-                display: none;
-            }
-            /* Additional CSS for social icons */
-            .social-icons {
-                display: flex;
-                flex-wrap: wrap; /* Ensure icons wrap */
-                justify-content: center;
-                align-items: center;
-                gap: 20px; /* Space between icons */
-                margin-top: 20px;
-            }
-            .social-icons a {
-                transition: transform 0.3s ease; /* Smooth transformation for hover effects */
-            }
-            .social-icons a:hover {
-                transform: scale(1.1); /* Enlarges icons slightly on hover */
-            }
-            .social-icons img {
-                font-size: 30px; /* Set size of icons */
-                width: 30px;
-                height: 30px;
-                vertical-align: middle;
-            }
-        </style>
 
         <!-- Favicon Icons -->
         <link rel="icon" href="favicon/favicon.ico" type="image/x-icon" />
@@ -81,6 +54,23 @@
         />
         <link rel="manifest" href="favicon/site.webmanifest" />
 
+        <!-- Profile verification (Mastodon and friends fetch this page and look
+             for rel=me back-links). The visible links live on /profiles/ now;
+             these head links keep verification anchored to the apex. -->
+        <link rel="me" href="https://bsky.app/profile/thebenmeadows.com" />
+        <link rel="me" href="https://www.facebook.com/thebenmeadows" />
+        <link rel="me" href="https://www.warpcast.com/thebenmeadows" />
+        <link rel="me" href="https://github.com/thebenmeadows" />
+        <link rel="me" href="https://www.instagram.com/thebenmeadows" />
+        <link rel="me" href="https://firefly.social/profile/lens/bmeadows" />
+        <link rel="me" href="https://www.linkedin.com/in/thebenmeadows" />
+        <link rel="me" href="https://mastodon.social/@thebenmeadows" />
+        <link rel="me" href="https://primal.net/p/npub1wldqfuy0yge4fvxukdm43gze2ral9dnp5avlps5a6t8q0vyv2nds84nq29" />
+        <link rel="me" href="https://t.me/thebenmeadows" />
+        <link rel="me" href="https://www.threads.net/@thebenmeadows" />
+        <link rel="me" href="https://x.com/thebenmeadows" />
+        <link rel="me" href="https://www.youtube.com/thebenmeadows" />
+
         <!-- Style Sheet -->
         <link
             rel="preload"
@@ -94,277 +84,75 @@
         <script src="/search.js" defer></script>
     </head>
     <body id="top" class="bg-black">
-        <header class="site-chrome sticky top-0 z-20">
-            <div class="max-w-screen-md mx-auto px-6 h-16 flex items-center justify-between">
-                <span class="flex items-center h-11 px-1 -ml-1" aria-current="page">
-                    <img src="/btm-logo.png" alt="TheBenMeadows" width="64" height="28" decoding="async" />
-                </span>
-                <div class="flex items-center gap-1">
-                    <button
-                        id="search-open"
-                        type="button"
-                        aria-label="Search this site"
-                        title="Search (press / )"
-                        class="flex items-center justify-center w-11 h-11 rounded-lg border-0 bg-transparent cursor-pointer text-neutral-400 hover:text-white transition-colors"
-                    >
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-                    </button>
-                    <button
-                        id="theme-toggle"
-                        type="button"
-                        aria-label="Theme: follow system"
-                        title="Theme: follow system"
-                        class="flex items-center justify-center w-11 h-11 rounded-lg border-0 bg-transparent cursor-pointer text-neutral-400 hover:text-white transition-colors"
-                    >
-                        <svg class="theme-ico" data-theme-ico="light" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-                        <svg class="theme-ico" data-theme-ico="dark" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-                        <svg class="theme-ico" data-theme-ico="system" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.5" y="3.5" width="19" height="13" rx="2"/><path d="M8 20.5h8M12 16.5v4"/></svg>
-                    </button>
-                </div>
-            </div>
+        <header class="running-head">
+            <span class="rh-left"><a href="/" aria-current="page">Index</a></span>
+            <nav class="rh-right">
+                <button id="search-open" type="button" aria-label="Search this site" title="Search (press / )">Search</button>
+                <span aria-hidden="true">&nbsp;&middot;&nbsp;</span>
+                <button id="theme-toggle" type="button"></button>
+            </nav>
         </header>
         <!-- h-card: the IndieWeb microformat for "who this page is about". Lets
              feed readers, Mastodon and other consumers extract identity from the
              markup itself rather than guessing from meta tags. -->
-        <div
-            class="break-normal px-6 text-white grid items-center place-items-center pt-6 h-card"
-        >
-            <!-- The PNG is a 512px photograph and was 42% of this page's weight.
-                 WebP at 256px (2x the 128px display box) carries the same image
-                 for a third of it. me.png stays as the <img> fallback because
-                 /.well-known/webfinger points external clients at it.
-
-                 AVIF was here and is deliberately gone. It saved a further 3.4 KB
-                 but rendered as a broken image on iOS, because the encode was
-                 YUV444 and WebKit does not reliably decode that subsampling. The
-                 trap: <picture> falls back on TYPE support, not on decode
-                 failure -- Safari says it supports image/avif, commits to that
-                 source, fails to decode it, and never tries the next one. So a
-                 format that any client mis-decodes has no safety net here, and
-                 3.4 KB does not justify that on a site whose point is working
-                 everywhere. -->
+        <main class="h-card max-w-xl mx-auto px-6 pt-12 text-center text-neutral-400">
+            <!-- The PNG is a 512px photograph; WebP at 256px (2x the 128px display
+                 box) carries the same image for a third of it. me.png stays as the
+                 <img> fallback because /.well-known/webfinger points external
+                 clients at it. AVIF is deliberately absent: <picture> falls back on
+                 TYPE support, not decode failure, and iOS mis-decoded the encode. -->
             <picture>
                 <source srcset="me.webp" type="image/webp" />
                 <img
-                    class="rounded-full mt-4 u-photo"
-                    style="width: 128px; height: 128px; margin-bottom: 1.25rem"
+                    class="rounded-full u-photo mx-auto"
+                    style="width: 116px; height: 116px; margin-bottom: 1.4rem"
                     src="me.png"
-                    width="128"
-                    height="128"
+                    width="116"
+                    height="116"
                     alt="thebenmeadows profile pic"
                 />
             </picture>
-            <h1 class="text-2xl font-bold p-name" style="letter-spacing: -0.025em; margin-bottom: 1.5rem">TheBenMeadows</h1>
+            <h1 class="text-white text-3xl font-bold p-name" style="letter-spacing: -0.025em; margin-bottom: 1.1rem">TheBenMeadows</h1>
             <a class="u-url u-uid" href="https://thebenmeadows.com/" hidden>thebenmeadows.com</a>
-            <h3 class="text-neutral-400 font-medium uppercase" style="padding-bottom: 1rem; font-size: 0.875rem; letter-spacing: 0.1em">Websites</h3>
-            <a
-                class="rounded-xl px-6 py-4 max-w-screen-md flex flex-col w-full sm:w-8/12 md:w-5/12 min-h-14 text-neutral-400 bg-zinc-800 justify-center items-center m-1"
-                href="https://blog.thebenmeadows.com"
-                >My Art & Tech Blog</a
-            >
-            <a
-                class="rounded-xl px-6 py-4 max-w-screen-md flex flex-col w-full sm:w-8/12 md:w-5/12 min-h-14 text-neutral-400 bg-zinc-800 justify-center items-center m-1"
-                href="https://index.thebenmeadows.com"
-                >Index of All Art Pieces</a
-            >
-            <a
-                class="rounded-xl px-6 py-4 max-w-screen-md flex flex-col w-full sm:w-8/12 md:w-5/12 min-h-14 text-neutral-400 bg-zinc-800 justify-center items-center m-1"
-                href="https://art.thebenmeadows.com"
-                >Artist Profile (Outdated)</a
-            >
-            <a
-                class="rounded-xl px-6 py-4 max-w-screen-md flex flex-col w-full sm:w-8/12 md:w-5/12 min-h-14 text-neutral-400 bg-zinc-800 justify-center items-center m-1"
-                href="https://thehug.xyz/artists/thebenmeadows"
-                >HUG Artist Profile (Outdated)</a
-            >
-            <h3 class="pt-6 text-neutral-400 font-medium uppercase" style="padding-bottom: 1rem; font-size: 0.875rem; letter-spacing: 0.1em">
-                Projects & Posts
-            </h3>
-            <a
-                class="rounded-xl px-6 py-4 max-w-screen-md flex flex-col w-full sm:w-8/12 md:w-5/12 min-h-14 text-neutral-400 bg-zinc-800 justify-center items-center mb-3"
-                href="/essentialism/"
-                >essentialism (On-Chain Generative Art)</a
-            >
-            <a
-                class="rounded-xl px-6 py-4 max-w-screen-md flex flex-col w-full sm:w-8/12 md:w-5/12 min-h-14 text-neutral-400 bg-zinc-800 justify-center items-center mb-3"
-                href="/projects/"
-                >Projects (Software &amp; Sites)</a
-            >
-            <a
-                class="rounded-xl px-6 py-4 max-w-screen-md flex flex-col w-full sm:w-8/12 md:w-5/12 min-h-14 text-neutral-400 bg-zinc-800 justify-center items-center mb-3"
-                href="/experiments/"
-                >Experiments (Web Toys &amp; Provocations)</a
-            >
-            <a
-                class="rounded-xl px-6 py-4 max-w-screen-md flex flex-col w-full sm:w-8/12 md:w-5/12 min-h-14 text-neutral-400 bg-zinc-800 justify-center items-center mb-3"
-                href="https://blog.thebenmeadows.com/art-tech-highlights/"
-                >Art & Tech Highlights (Blog Post)</a
-            >
-            <a
-                class="rounded-xl px-6 py-4 max-w-screen-md flex flex-col w-full sm:w-8/12 md:w-5/12 min-h-14 text-neutral-400 bg-zinc-800 justify-center items-center mb-3"
-                href="https://blog.thebenmeadows.com/podcasts-public-speaking/"
-                >Recent Public Speaking (Blog Post)</a
-            >
-            <a
-                class="rounded-xl px-6 py-4 max-w-screen-md flex flex-col w-full sm:w-8/12 md:w-5/12 min-h-14 text-neutral-400 bg-zinc-800 justify-center items-center mb-3"
-                href="https://dailymuse.thebenmeadows.com"
-                >#DailyMuse (6 Months of Daily Art)</a
-            >
-            <a
-                class="rounded-xl px-6 py-4 max-w-screen-md flex flex-col w-full sm:w-8/12 md:w-5/12 min-h-14 text-neutral-400 bg-zinc-800 justify-center items-center mb-3"
-                href="https://typefully.com/TheBenMeadows/thvOBsa"
-                >Bitcoin Ordinals: Saving with SVGZ</a
-            >
-            <div
-                class="rounded-xl max-w-screen-md flex flex-col w-full sm:w-8/12 md:w-5/12 justify-center items-center"
-            >
-                <div class="social-icons w-full">
-                    <!-- Bluesky -->
-                    <a
-                        href="https://bsky.app/profile/thebenmeadows.com"
-                        target="_blank" rel="me noopener"
-                    >
-                        <img width="30" height="30" loading="lazy" decoding="async"
-                            src="icons/bluesky.svg"
-                            alt="Bluesky"
-                        />
-                    </a>
-                    <!-- Facebook -->
-                    <a
-                        href="https://www.facebook.com/thebenmeadows"
-                        target="_blank" rel="me noopener"
-                    >
-                        <img width="30" height="30" loading="lazy" decoding="async"
-                            src="icons/facebook.svg"
-                            alt="Facebook"
-                        />
-                    </a>
-                    <!-- Farcaster -->
-                    <a
-                        href="https://www.warpcast.com/thebenmeadows"
-                        target="_blank" rel="me noopener"
-                    >
-                        <img width="30" height="30" loading="lazy" decoding="async"
-                            src="icons/farcaster.svg"
-                            alt="Farcaster"
-                        />
-                    </a>
-                    <!-- Github -->
-                    <a href="https://github.com/thebenmeadows" target="_blank" rel="me noopener">
-                        <img width="30" height="30" loading="lazy" decoding="async"
-                            src="icons/github.svg"
-                            alt="Github"
-                        />
-                    </a>
-                    <!-- Instagram -->
-                    <a
-                        href="https://www.instagram.com/thebenmeadows"
-                        target="_blank" rel="me noopener"
-                    >
-                        <img width="30" height="30" loading="lazy" decoding="async"
-                            src="icons/instagram.svg"
-                            alt="Instagram"
-                        />
-                    </a>
-                    <!-- Lens Protocol -->
-                    <a href="https://firefly.social/profile/lens/bmeadows" target="_blank" rel="me noopener">
-                        <img width="30" height="30" loading="lazy" decoding="async"
-                            src="icons/lenster.svg"
-                            alt="Lens"
-                            style="
-                                filter: brightness(0) saturate(100%) invert(64%)
-                                    sepia(0%) saturate(0%) hue-rotate(153deg)
-                                    brightness(95%) contrast(90%);
-                            "
-                        />
-                    </a>
-                    <!-- LinkedIn -->
-                    <a
-                        href="https://www.linkedin.com/in/thebenmeadows"
-                        target="_blank" rel="me noopener"
-                    >
-                        <img width="30" height="30" loading="lazy" decoding="async" src="icons/linkedin.svg" alt="LinkedIn" />
-                    </a>
-                    <!-- Mastodon -->
-                    <a
-                        href="https://mastodon.social/@thebenmeadows"
-                        target="_blank" rel="me noopener"
-                    >
-                        <img width="30" height="30" loading="lazy" decoding="async"
-                            src="icons/mastodon.svg"
-                            alt="Mastodon"
-                        />
-                    </a>
-                    <!-- Nostr -->
-                    <a
-                        href="https://primal.net/p/npub1wldqfuy0yge4fvxukdm43gze2ral9dnp5avlps5a6t8q0vyv2nds84nq29"
-                        target="_blank" rel="me noopener"
-                    >
-                        <img width="30" height="30" loading="lazy" decoding="async"
-                            src="icons/nostr.svg"
-                            alt="Nostr"
-                            style="
-                                filter: brightness(0) saturate(100%) invert(64%)
-                                    sepia(0%) saturate(0%) hue-rotate(153deg)
-                                    brightness(95%) contrast(90%);
-                            "
-                        />
-                    </a>
-                    <!-- Telegram -->
-                    <a href="https://t.me/thebenmeadows" target="_blank" rel="me noopener">
-                        <img width="30" height="30" loading="lazy" decoding="async"
-                            src="icons/telegram.svg"
-                            alt="Telegram"
-                        />
-                    </a>
-                    <!-- Threads -->
-                    <a
-                        href="https://www.threads.net/@thebenmeadows"
-                        target="_blank" rel="me noopener"
-                    >
-                        <img width="30" height="30" loading="lazy" decoding="async"
-                            src="icons/threads.svg"
-                            alt="Threads"
-                        />
-                    </a>
-                    <!-- X -->
-                    <a href="https://x.com/thebenmeadows" target="_blank" rel="me noopener">
-                        <img width="30" height="30" loading="lazy" decoding="async"
-                            src="icons/x.svg"
-                            alt="X"
-                        />
-                    </a>
-                    <!-- YouTube -->
-                    <a
-                        href="https://www.youtube.com/thebenmeadows"
-                        target="_blank" rel="me noopener"
-                    >
-                        <img width="30" height="30" loading="lazy" decoding="async"
-                            src="icons/youtube.svg"
-                            alt="YouTube"
-                        />
-                    </a>
-                    <!-- Email (obfuscated) -->
-                    <a id="email-link" rel="nofollow" href="/">
-                        <img width="30" height="30" loading="lazy" decoding="async"
-                            src="icons/maildotru.svg"
-                            alt="Email"
-                        />
-                    </a>
-                </div>
-            </div>
-        </div>
-        <footer class="text-neutral-400 text-sm text-center px-6 pb-10 pt-4">
-            <nav class="flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
-                <a class="inline-block py-1 hover:text-white transition-colors" href="https://github.com/TheBenMeadows/tbm" target="_blank" rel="noopener">Source</a>
-                <span aria-hidden="true" class="text-neutral-600">·</span>
-                <a class="inline-block py-1 hover:text-white transition-colors" href="/mirrors/">Mirrors</a>
-                <span aria-hidden="true" class="text-neutral-600">·</span>
-                <a class="inline-block py-1 hover:text-white transition-colors" href="/tech/">Tech&nbsp;Stack</a>
-                <span aria-hidden="true" class="text-neutral-600">·</span>
-                <a class="inline-block py-1 hover:text-white transition-colors" href="/infra/">Infra</a>
-                <span aria-hidden="true" class="text-neutral-600">·</span>
-                <a class="inline-block py-1 hover:text-white transition-colors" href="#top">&uarr;&nbsp;Top</a>
+            <hr class="center-rule" />
+
+            <h3 class="section-label">Websites</h3>
+            <ul class="toc">
+                <li><a href="https://blog.thebenmeadows.com">My Art &amp; Tech Blog<span class="who">blog.thebenmeadows.com</span></a></li>
+                <li><a href="https://index.thebenmeadows.com">Index of All Art Pieces<span class="who">index.thebenmeadows.com</span></a></li>
+                <li><a href="https://art.thebenmeadows.com">Artist Profile<span class="who">art.thebenmeadows.com &middot; outdated</span></a></li>
+                <li><a href="https://thehug.xyz/artists/thebenmeadows">HUG Artist Profile<span class="who">thehug.xyz &middot; outdated</span></a></li>
+            </ul>
+
+            <h3 class="section-label">Projects &amp; Posts</h3>
+            <ul class="toc">
+                <li><a href="/essentialism/">essentialism<span class="who">on-chain generative art</span></a></li>
+                <li><a href="/projects/">Projects<span class="who">software &amp; sites</span></a></li>
+                <li><a href="/experiments/">Experiments<span class="who">web toys &amp; provocations</span></a></li>
+                <li><a href="https://blog.thebenmeadows.com/art-tech-highlights/">Art &amp; Tech Highlights<span class="who">blog post</span></a></li>
+                <li><a href="https://blog.thebenmeadows.com/podcasts-public-speaking/">Recent Public Speaking<span class="who">blog post</span></a></li>
+                <li><a href="https://dailymuse.thebenmeadows.com">#DailyMuse<span class="who">6 months of daily art</span></a></li>
+                <li><a href="https://typefully.com/TheBenMeadows/thvOBsa">Bitcoin Ordinals: Saving with SVGZ<span class="who">blog post</span></a></li>
+            </ul>
+        </main>
+        <footer class="site-footer">
+            <nav class="footer-line">
+                <a class="js-email" rel="nofollow" href="/">Email</a>
+                <span aria-hidden="true">&middot;</span>
+                <a href="https://x.com/thebenmeadows" target="_blank" rel="me noopener">X</a>
+                <span aria-hidden="true">&middot;</span>
+                <a href="https://primal.net/p/npub1wldqfuy0yge4fvxukdm43gze2ral9dnp5avlps5a6t8q0vyv2nds84nq29" target="_blank" rel="me noopener">Nostr</a>
+                <span aria-hidden="true">&middot;</span>
+                <a href="/profiles/">All profiles &rarr;</a>
+            </nav>
+            <nav class="footer-line">
+                <a href="https://github.com/TheBenMeadows/tbm" target="_blank" rel="noopener">Source</a>
+                <span aria-hidden="true">&middot;</span>
+                <a href="/mirrors/">Mirrors</a>
+                <span aria-hidden="true">&middot;</span>
+                <a href="/tech/">Tech&nbsp;Stack</a>
+                <span aria-hidden="true">&middot;</span>
+                <a href="/infra/">Infra</a>
             </nav>
         </footer>
         <script src="/email.js"></script>

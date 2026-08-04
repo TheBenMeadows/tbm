@@ -285,3 +285,173 @@ main > ol > li.text-sm,
 main .no-justify {
     text-align: left;
 }
+
+/* ------------------------------------------------------------------ */
+/* The six color roles — knowledge is in the brand doc; the rule here: */
+/* every color in the components below is one of these six variables. */
+/* Resolution mirrors the theme model: dark is canonical, the system   */
+/* preference is the silent default, html.light / html.dark (set by   */
+/* theme.js) force a mode.                                            */
+:root {
+    --bg: #000000;
+    --ink: #a3a3a3;
+    --ink-soft: #737373;
+    --title: #d4d4d4;
+    --rule: #27272a;
+    --accent: #ffffff;
+}
+html.light {
+    --bg: #ffffff;
+    --ink: #52525b;
+    --ink-soft: #71717a;
+    --title: #3f3f46;
+    --rule: #e4e4e7;
+    --accent: #000000;
+}
+@media (prefers-color-scheme: light) {
+    html:not(.dark) {
+        --bg: #ffffff;
+        --ink: #52525b;
+        --ink-soft: #71717a;
+        --title: #3f3f46;
+        --rule: #e4e4e7;
+        --accent: #000000;
+    }
+}
+
+/* Running head: page label at the left margin (INDEX — the homepage IS the
+   index, so the label is truthful from every page and is the slot a menu
+   would later occupy), controls at the right, the two ends tied by one
+   hairline. Static, not sticky: it occupies real space, so nothing can
+   scroll under it, and it retires with the page like a printed running head. */
+.running-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    max-width: 768px;
+    margin: 0 auto;
+    padding: 1.3rem 1.5rem 0;
+}
+.running-head .rh-left,
+.running-head .rh-right {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.8rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+}
+.running-head .rh-left { flex: 1 1 auto; }
+.running-head .rh-right { flex: 0 0 auto; padding-left: 1rem; text-align: right; }
+.running-head a,
+.running-head button {
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    color: inherit;
+    text-decoration: none;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+}
+.running-head a:hover,
+.running-head button:hover { color: var(--accent); }
+/* The theme control names the mode a tap switches TO, and the label lives in
+   CSS so it is correct before first paint and with JavaScript disabled. The
+   cascade mirrors the palette resolution above exactly. */
+#theme-toggle::before { content: "Light"; }
+html.light #theme-toggle::before { content: "Dark"; }
+@media (prefers-color-scheme: light) {
+    html:not(.dark) #theme-toggle::before { content: "Dark"; }
+}
+html.dark #theme-toggle::before { content: "Light"; }
+
+/* Entry rows. The whole row is the link: destination at the left in the title
+   ink, what-it-is at the right in the quiet register. Structure is drawn with
+   hairlines, never with filled boxes. Below 540px the annotation drops under
+   the title so neither truncates. */
+.toc {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align: left;
+    border-top: 1px solid var(--rule);
+}
+.toc li { border-bottom: 1px solid var(--rule); }
+.toc a {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    color: var(--title);
+    text-decoration: none;
+    font-size: 1.08rem;
+    font-weight: 500;
+    padding: 0.85rem 0.4rem;
+    transition: color 0.15s;
+}
+.toc a:hover { color: var(--accent); }
+.toc a:hover .who { color: var(--ink); }
+.toc a:focus-visible { outline: 1px solid var(--ink); outline-offset: -1px; }
+.toc .who {
+    color: var(--ink-soft);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: color 0.15s;
+}
+@media (max-width: 540px) {
+    .toc a { flex-direction: column; align-items: flex-start; gap: 0.15rem; }
+    .toc .who { white-space: normal; }
+}
+
+/* Hairline card: the box idiom of the subpage grids, translated — no fill,
+   no radius, structure drawn with the same 1px rule as everything else. */
+.hairline-card {
+    border: 1px solid var(--rule);
+    background: transparent;
+}
+
+/* Section label + the short centered rule under a page title. */
+.section-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 2.6rem 0 1.1rem;
+    text-align: center;
+}
+.section-label:first-of-type { margin-top: 0; }
+.center-rule {
+    border: 0;
+    border-top: 1px solid var(--rule);
+    width: 34%;
+    margin: 0 auto 2.6rem;
+}
+
+/* Footer: three quiet lines — contact, site nav, build stamp — one spacing
+   rule between them, one step (2.4rem) up to the content above. The build
+   stamp <p> is injected at dist time by scripts/build-stamp.mjs after the
+   last </nav>; its classes are fixed there, not here. */
+.site-footer {
+    text-align: center;
+    color: var(--ink-soft);
+    padding: 2.4rem 1.5rem 2.2rem;
+}
+.site-footer .footer-line {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-top: 0.45rem;
+}
+.site-footer .footer-line:first-child { margin-top: 0; }
+.site-footer a { color: inherit; text-decoration: none; }
+.site-footer a:hover { color: var(--accent); }
+/* The build stamp <p> is injected by scripts/build-stamp.mjs with a hardcoded
+   mt-3 in its marker string (the marker doubles as the idempotency check, so
+   it stays untouched there). This wins on specificity and keeps all three
+   footer lines on the same 0.45rem rhythm. */
+.site-footer p { margin-top: 0.45rem; }

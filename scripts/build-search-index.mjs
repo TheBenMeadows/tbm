@@ -19,6 +19,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
  * blog, the art index — is a one-line change rather than a rewrite. */
 const PAGES = [
     { file: 'index.html', url: '/' },
+    { file: 'profiles/index.html', url: '/profiles/' },
     { file: 'mirrors/index.html', url: '/mirrors/' },
     { file: 'tech/index.html', url: '/tech/' },
     { file: 'experiments/index.html', url: '/experiments/' },
@@ -70,21 +71,27 @@ const headingsOf = (html) =>
         .map((m) => strip(m[1]))
         .filter(Boolean);
 
-/* The home page is a link hub: its own prose is 373 bytes, but each card points
- * somewhere. Index the cards individually so "dailymuse" or "ordinals" resolves to
- * the destination rather than just "the home page". */
+/* The home page is a link hub: its own prose is tiny, but each entry points
+ * somewhere. Index the entries individually so "dailymuse" or "ordinals" resolves
+ * to the destination rather than just "the home page". An entry row is the only
+ * anchor that carries a <span class="who"> annotation, so that span is the
+ * detector — and its text joins the title, because it holds exactly the words
+ * (generative, blog post) people search for. */
 function linkCards(html) {
     const out = [];
-    /* `</a\s*>` matters: index.html closes these anchors as `</a\n            >`, and
-     * a regex demanding a literal `</a>` skips past every card to the next real one. */
     const re = /<a\b([^>]*?)>([\s\S]*?)<\/a\s*>/gi;
     let m;
     while ((m = re.exec(html))) {
         const attrs = m[1];
-        if (!/bg-zinc-800/.test(attrs)) continue;
+        const inner = m[2];
+        const whoM = inner.match(/<span class="who">([\s\S]*?)<\/span>/i);
+        if (!whoM) continue;
         const href = attrs.match(/href="([^"]+)"/);
-        const label = strip(m[2]);
-        if (href && label) out.push({ url: href[1], title: label, kind: 'link' });
+        const label = strip(inner.replace(/<span class="who">[\s\S]*?<\/span>/i, ' '));
+        const who = strip(whoM[1]);
+        if (href && label) {
+            out.push({ url: href[1], title: who ? `${label} — ${who}` : label, kind: 'link' });
+        }
     }
     return out;
 }

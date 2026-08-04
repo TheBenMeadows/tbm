@@ -152,17 +152,18 @@ console.log(
 
 // Page-weight budget. Ben's standing rule: the homepage stays under 100 KB
 // uncompressed. Measured as the bytes a cold visit to / actually pulls -- the
-// document, the stylesheet, the scripts, the font, the wordmark, the social
-// icons and the smallest avatar a modern browser will pick. og.png is excluded
-// because only crawlers fetch it; the PNG and WebP avatars are excluded because
-// AVIF wins for anything current.
+// document, the stylesheet, the scripts, the font and the avatar. The
+// typographic redesign removed the wordmark and the social icons from the
+// page entirely, so they are no longer part of the measurement (or of dist/).
+// og.png is excluded because only crawlers fetch it; me.png is excluded
+// because any current browser takes the WebP source.
 //
 // A budget nobody measures is a wish. This fails the build instead.
 {
     const BUDGET = 100 * 1024;
     const critical = [
         "index.html", "output.css", "theme.js", "search.js", "email.js",
-        "btm-logo.png", "fonts/publicsans-v1.woff2", "me.webp",
+        "fonts/publicsans-v1.woff2", "me.webp",
     ];
     let total = 0;
     const missing = [];
@@ -172,9 +173,6 @@ console.log(
         } catch {
             missing.push(rel);
         }
-    }
-    for (const key of sortedKeys) {
-        if (key.startsWith("icons/")) total += statSync(join(DIST, key)).size;
     }
     const kb = (n) => `${(n / 1024).toFixed(1)} KB`;
     if (missing.length) {
