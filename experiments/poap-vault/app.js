@@ -13,8 +13,17 @@
     var year = null;
     var coll = 'b';
 
-    function inColl(p) {
-        if (coll === 'cb') return p.cb;
+    /* The issued tab shows one badge per event, not one per copy held —
+       prefer Ben's copy when both wallets hold the same event's badge. */
+    var issuedPick = {};
+    DATA.forEach(function (p, i) {
+        if (!p.cb) return;
+        var cur = issuedPick[p.e];
+        if (cur === undefined || (DATA[cur].o !== 'b' && p.o === 'b')) issuedPick[p.e] = i;
+    });
+
+    function inColl(p, i) {
+        if (coll === 'cb') return p.cb && issuedPick[p.e] === i;
         return p.o === coll;
     }
 
@@ -63,7 +72,7 @@
         var n = 0;
         var total = 0;
         DATA.forEach(function (p, i) {
-            if (!inColl(p)) return;
+            if (!inColl(p, i)) return;
             total++;
             if (year && p.y !== year) return;
             if (term && (p.n + ' ' + p.d).toLowerCase().indexOf(term) === -1) return;
