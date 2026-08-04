@@ -200,11 +200,12 @@ decisions behind it are at [`/tech/`](https://thebenmeadows.com/tech/).
 |------|------------|
 | `index.html` | the home page (link hub) |
 | `mirrors/`, `tech/` | the mirror list and the tech-stack colophon |
+| `profiles/` | every profile, one page — the footer's "All profiles" target |
 | `experiments/`, `infra/` | experiments gallery and the network/ASN colophon |
 | `search/` | the search page (`/search/?q=…`) |
 | `404.html` | not-found page (self-contained, inline styles) |
 | `src/input.css`, `tailwind.config.js` | Tailwind source + config |
-| `icons/` | self-hosted social SVGs (no external CDN at runtime) |
+| `icons/` | social SVGs — repo-only since the typographic redesign; the site ships no icons |
 | `svgo.config.mjs` | optimizer settings for `icons/` — run `npm run optimize:icons` after adding one |
 | `favicon/`, `me.png` | icons and profile image |
 | `readme-header-*.png` | the header above — keyed out of `og.png` by `scripts/make-readme-header.py`, one variant per theme; repo-only, never shipped |

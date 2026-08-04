@@ -25,6 +25,7 @@ const PAGES = [
     "infra/index.html",
     "essentialism/index.html",
     "search/index.html",
+    "profiles/index.html",
 ];
 
 function gitOut(args, fallback, extraEnv = {}) {

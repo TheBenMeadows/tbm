@@ -1,17 +1,19 @@
-/* Three-state theme control: system -> light -> dark -> system.
-   "system" is stored as the absence of the key, so an existing 'light'/'dark' value
-   left over from the previous two-state toggle keeps working untouched.
-   The class is applied synchronously (this file is loaded in <head>, not deferred)
-   so the page never paints the wrong theme first. */
+/* Two-state theme control, prayer-book model: the system preference is the
+   silent default and never a button position; the control switches to the
+   OTHER mode, and its visible label (set in CSS via #theme-toggle::before)
+   names that target. Stored values: "light" | "dark"; absence of the key
+   means follow the system. html.light / html.dark drive both the Tailwind
+   override rules and the six role variables in src/input.css.
+
+   Refinement over the three-state cycle this replaces: if the mode a tap
+   switches to is what the system would give anyway, the override is CLEARED
+   instead of stored — auto-follow returns without ever being a visible state.
+
+   Loaded synchronously in <head> so the stored class applies before first
+   paint and the page never flashes the wrong theme. */
 (function () {
     var d = document.documentElement;
     var KEY = 'theme';
-    var ORDER = ['system', 'light', 'dark'];
-    var LABEL = {
-        system: 'Theme: follow system',
-        light: 'Theme: light',
-        dark: 'Theme: dark',
-    };
 
     function stored() {
         var v = null;
@@ -20,13 +22,19 @@
         } catch (e) {
             /* private mode / storage disabled — fall through to system */
         }
-        return v === 'light' || v === 'dark' ? v : 'system';
+        return v === 'light' || v === 'dark' ? v : null;
     }
 
-    /* What the user actually sees, once "system" is resolved. */
-    function effective(mode) {
-        if (mode === 'light' || mode === 'dark') return mode;
+    function systemTheme() {
         return matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+
+    /* What the visitor is actually looking at: an explicit choice, else the
+       system. */
+    function effective() {
+        if (d.classList.contains('light')) return 'light';
+        if (d.classList.contains('dark')) return 'dark';
+        return systemTheme();
     }
 
     function applyClass(mode) {
@@ -34,58 +42,57 @@
         if (mode === 'light' || mode === 'dark') d.classList.add(mode);
     }
 
-    function paintMeta(mode) {
-        var color = effective(mode) === 'light' ? '#ffffff' : '#000000';
+    function paintMeta() {
+        var color = effective() === 'light' ? '#ffffff' : '#000000';
         var metas = document.querySelectorAll('meta[name="theme-color"]');
         for (var i = 0; i < metas.length; i++) metas[i].setAttribute('content', color);
     }
 
-    function paintButton(mode) {
+    /* The visible label is CSS ::before content; only the accessible name is
+       painted here, and it names the same target mode the label shows. */
+    function paintButton() {
         var btn = document.getElementById('theme-toggle');
         if (!btn) return;
-        btn.setAttribute('aria-label', LABEL[mode]);
-        btn.setAttribute('title', LABEL[mode]);
-        var icons = btn.querySelectorAll('.theme-ico');
-        for (var i = 0; i < icons.length; i++) {
-            var on = icons[i].getAttribute('data-theme-ico') === mode;
-            icons[i].classList.toggle('is-active', on);
-        }
+        var label = effective() === 'light' ? 'Switch to dark' : 'Switch to light';
+        btn.setAttribute('aria-label', label);
+        btn.title = label;
     }
 
     // Synchronous, pre-paint.
-    var current = stored();
-    applyClass(current);
-
-    function set(mode) {
-        current = mode;
-        try {
-            if (mode === 'system') localStorage.removeItem(KEY);
-            else localStorage.setItem(KEY, mode);
-        } catch (e) {
-            /* not persisting is survivable; the page still switches */
-        }
-        applyClass(mode);
-        paintMeta(mode);
-        paintButton(mode);
-    }
+    applyClass(stored());
 
     document.addEventListener('DOMContentLoaded', function () {
-        paintMeta(current);
-        paintButton(current);
+        paintMeta();
+        paintButton();
         var btn = document.getElementById('theme-toggle');
-        if (!btn) return;
-        btn.addEventListener('click', function (e) {
-            e.preventDefault();
-            set(ORDER[(ORDER.indexOf(current) + 1) % ORDER.length]);
-        });
-    });
+        if (btn) {
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                var next = effective() === 'light' ? 'dark' : 'light';
+                if (next === systemTheme()) {
+                    // The explicit choice would match the system anyway —
+                    // clear it so auto-follow silently returns.
+                    applyClass(null);
+                    try { localStorage.removeItem(KEY); } catch (e2) {}
+                } else {
+                    applyClass(next);
+                    try { localStorage.setItem(KEY, next); } catch (e2) {}
+                }
+                paintMeta();
+                paintButton();
+            });
+        }
 
-    /* While following the system, track OS changes live so the address-bar colour
-       doesn't drift out of sync with the page. */
-    var mq = matchMedia('(prefers-color-scheme: light)');
-    var onChange = function () {
-        if (current === 'system') paintMeta('system');
-    };
-    if (mq.addEventListener) mq.addEventListener('change', onChange);
-    else if (mq.addListener) mq.addListener(onChange);
+        /* While following the system, track OS changes live so the label and
+           address-bar colour don't drift out of sync with the page. */
+        var mq = matchMedia('(prefers-color-scheme: light)');
+        var onChange = function () {
+            if (!stored()) {
+                paintMeta();
+                paintButton();
+            }
+        };
+        if (mq.addEventListener) mq.addEventListener('change', onChange);
+        else if (mq.addListener) mq.addListener(onChange);
+    });
 })();
