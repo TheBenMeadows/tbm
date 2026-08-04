@@ -1,0 +1,207 @@
+/* poap-saver — page styling. Color roles and chrome mirror src/input.css from
+   the typographic redesign; resolution matches the site theme model: dark
+   canonical, system preference the silent default, html.light / html.dark
+   (set by /theme.js) force a mode. */
+@font-face {
+    font-family: 'Public Sans';
+    src: url('/fonts/publicsans-v1.woff2') format('woff2');
+    font-weight: 100 900;
+    font-display: swap;
+}
+:root {
+    --bg: #000000;
+    --ink: #a3a3a3;
+    --ink-soft: #737373;
+    --title: #d4d4d4;
+    --rule: #27272a;
+    --accent: #ffffff;
+}
+@media (prefers-color-scheme: light) {
+    html:not(.dark) {
+        --bg: #ffffff;
+        --ink: #52525b;
+        --ink-soft: #71717a;
+        --title: #3f3f46;
+        --rule: #e4e4e7;
+        --accent: #000000;
+    }
+}
+html.light {
+    --bg: #ffffff;
+    --ink: #52525b;
+    --ink-soft: #71717a;
+    --title: #3f3f46;
+    --rule: #e4e4e7;
+    --accent: #000000;
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Public Sans', system-ui, sans-serif;
+    line-height: 1.6;
+}
+a {
+    color: inherit;
+}
+
+.running-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    max-width: 768px;
+    margin: 0 auto;
+    padding: 1.3rem 1.5rem 0;
+}
+.running-head .rh-left,
+.running-head .rh-right {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.8rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+}
+.running-head .rh-left { flex: 1 1 auto; }
+.running-head .rh-right { flex: 0 0 auto; padding-left: 1rem; text-align: right; }
+.running-head a,
+.running-head button {
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    color: inherit;
+    text-decoration: none;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+}
+.running-head a:hover,
+.running-head button:hover { color: var(--accent); }
+#theme-toggle::before { content: "Light"; }
+html.light #theme-toggle::before { content: "Dark"; }
+@media (prefers-color-scheme: light) {
+    html:not(.dark) #theme-toggle::before { content: "Dark"; }
+}
+html.dark #theme-toggle::before { content: "Light"; }
+
+main {
+    max-width: 768px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 3rem;
+}
+h1 {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 1.9rem;
+    letter-spacing: -0.025em;
+    margin: 0 0 10px;
+}
+p {
+    margin: 0 0 14px;
+}
+main a {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: var(--ink-soft);
+}
+main a:hover {
+    color: var(--accent);
+}
+
+form {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 26px 0 8px;
+}
+input {
+    flex: 1 1 260px;
+    background: transparent;
+    border: 1px solid var(--rule);
+    color: var(--ink);
+    padding: 11px 13px;
+    font: inherit;
+    font-size: 1rem; /* 16px — anything smaller and iOS zooms the page on focus */
+}
+input:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+form button {
+    background: transparent;
+    border: 1px solid var(--ink);
+    color: var(--accent);
+    padding: 11px 18px;
+    font: inherit;
+    cursor: pointer;
+}
+form button:disabled {
+    opacity: 0.5;
+    cursor: wait;
+}
+#status {
+    min-height: 1.5em;
+    color: var(--title);
+}
+#log {
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    padding-left: 18px;
+}
+#result a {
+    color: var(--accent);
+}
+#preview {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+}
+#preview .pv {
+    margin: 0;
+    border: 1px solid var(--rule);
+    padding: 8px;
+}
+#preview img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: contain;
+    background: var(--bg);
+}
+#preview figcaption {
+    font-size: 0.7rem;
+    color: var(--ink-soft);
+    margin-top: 6px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.fine {
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--rule);
+    margin-top: 34px;
+    padding-top: 14px;
+}
+
+.site-footer {
+    text-align: center;
+    color: var(--ink-soft);
+    padding: 2.4rem 20px 2.2rem;
+    font-size: 0.8rem;
+}
+.site-footer .footer-line {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-top: 0.45rem;
+}
+.site-footer .footer-line:first-child { margin-top: 0; }
+.site-footer a { color: inherit; text-decoration: none; }
+.site-footer a:hover { color: var(--accent); }
