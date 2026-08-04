@@ -29,6 +29,7 @@ const PAGES = [
     { file: 'experiments/porcine/index.html', url: '/experiments/porcine/' },
     { file: 'experiments/etherhoo/index.html', url: '/experiments/etherhoo/' },
     { file: 'experiments/dls/index.html', url: '/experiments/dls/' },
+    { file: 'experiments/poap-vault/index.html', url: '/experiments/poap-vault/' },
 ];
 
 const ENTITIES = {
