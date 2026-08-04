@@ -24,12 +24,13 @@ supporting pages — [`/mirrors/`](https://thebenmeadows.com/mirrors/),
 `/essentialism/`. The build compiles the CSS and the search index; there is no
 framework or client-side rendering.
 
-Search is dependency-free on purpose. The whole corpus is about 11 KB, so a
-search library would outweigh what it indexes — and the usual pick, Pagefind,
-runs on WebAssembly, which under this site's `script-src 'self'` CSP would mean
-adding `'wasm-unsafe-eval'`. Instead `scripts/build-search-index.mjs` emits a
-small JSON index at build time and `search.js` matches against it in the
-browser; the index is fetched only when search is first opened.
+Search is dependency-free on purpose. The corpus is about 29 KB across 13 pages
+and the index built from it about 33 KB — small enough to match in the browser
+without a search library. The usual pick, Pagefind, runs on WebAssembly, which
+under this site's `script-src 'self'` CSP would mean adding `'wasm-unsafe-eval'`.
+Instead `scripts/build-search-index.mjs` emits a JSON index at build time and
+`search.js` matches against it in the browser; the index is fetched only when
+search is first opened.
 
 ## Build
 
@@ -45,10 +46,11 @@ the folder with any static server, after building.
 
 ### Page weight
 
-[512kb.club](https://512kb.club/) lists this site on the green team, which requires
-the measured page to stay under 100 KB **uncompressed**. The scan covers one URL —
-the home page — so new subpages do not count against it directly. Three home-page
-assets are shared with every other page and do:
+[512kb.club](https://512kb.club/) measures one URL — the home page — **uncompressed**,
+and its green team requires that page to stay under 100 KB. The submission is
+[PR #17](https://codeberg.org/btxx/512kb-club/pulls/17), open and awaiting review.
+New subpages are not measured, but three home-page assets are shared with every other
+page and do count:
 
 - `output.css` is a single Tailwind build over the content list in `tailwind.config.js`.
   A new page that uses utility classes not already present grows it, and the home page
@@ -59,7 +61,9 @@ assets are shared with every other page and do:
 `search.js` fetches it on first search rather than on load, so it stays out of the
 measurement. It is 33 KB — a third of the budget — so it must stay lazy.
 
-The home page currently measures about 92 KB. To check it after a change, run a
+The home page currently measures about 72 KB. `scripts/build-manifest.mjs` enforces the
+budget on every build and fails over it, so the number cannot drift unnoticed; to check
+it independently, run a
 [DebugBear page-weight scan](https://www.debugbear.com/test/page-size-checker).
 
 ## Deploy
@@ -213,6 +217,7 @@ decisions behind it are at [`/tech/`](https://thebenmeadows.com/tech/).
 | `theme.js` | three-state theme control (system / light / dark) |
 | `search.js` | search overlay + `/search/` page; fetches the index on first use |
 | `scripts/build-search-index.mjs` | builds `search-index.json` from the pages at build time |
+| `scripts/version-css.mjs` | content-hashes the stylesheet's `dist/` filename and repoints every page at it, so a deploy can never serve new HTML with a cached old stylesheet |
 | `scripts/build-stamp.mjs` | stamps every page with the commit it was built from |
 | `scripts/build-feed.mjs` | emits `feed.xml` (Atom) + `rss.xml` (RSS 2.0) from the release log |
 | `scripts/build-manifest.mjs` | emits `manifest.json` — SHA-256 of every shipped file |
