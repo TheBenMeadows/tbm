@@ -156,6 +156,32 @@ form button:disabled {
 #result a {
     color: var(--accent);
 }
+#preview {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+}
+#preview .pv {
+    margin: 0;
+    border: 1px solid var(--rule);
+    padding: 8px;
+}
+#preview img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: contain;
+    background: var(--bg);
+}
+#preview figcaption {
+    font-size: 0.7rem;
+    color: var(--ink-soft);
+    margin-top: 6px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
 .fine {
     font-size: 0.8rem;
     color: var(--ink-soft);
