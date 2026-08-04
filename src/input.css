@@ -408,6 +408,13 @@ html.dark #theme-toggle::before { content: "Light"; }
     .toc .who { white-space: normal; }
 }
 
+/* Hairline card: the box idiom of the subpage grids, translated — no fill,
+   no radius, structure drawn with the same 1px rule as everything else. */
+.hairline-card {
+    border: 1px solid var(--rule);
+    background: transparent;
+}
+
 /* Section label + the short centered rule under a page title. */
 .section-label {
     font-size: 0.72rem;
@@ -443,3 +450,8 @@ html.dark #theme-toggle::before { content: "Light"; }
 .site-footer .footer-line:first-child { margin-top: 0; }
 .site-footer a { color: inherit; text-decoration: none; }
 .site-footer a:hover { color: var(--accent); }
+/* The build stamp <p> is injected by scripts/build-stamp.mjs with a hardcoded
+   mt-3 in its marker string (the marker doubles as the idempotency check, so
+   it stays untouched there). This wins on specificity and keeps all three
+   footer lines on the same 0.45rem rhythm. */
+.site-footer p { margin-top: 0.45rem; }
