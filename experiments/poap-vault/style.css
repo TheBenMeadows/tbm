@@ -1,5 +1,7 @@
-/* poap-vault — standalone styling (experiments diverge from the site build).
-   Colours follow the tbm brand: #000 bg, #a3a3a3 primary, white as rare accent. */
+/* poap-vault — standalone styling (experiments carry their own styles).
+   The color roles mirror src/input.css from the typographic redesign. Resolution matches
+   the site theme model: dark canonical, system preference the silent default,
+   html.light / html.dark (set by /theme.js) force a mode. */
 @font-face {
     font-family: 'Public Sans';
     src: url('publicsans.woff2') format('woff2');
@@ -8,33 +10,29 @@
 }
 :root {
     --bg: #000000;
-    --card: #27272a;
-    --fg: #a3a3a3;
+    --ink: #a3a3a3;
+    --ink-soft: #737373;
+    --title: #d4d4d4;
+    --rule: #27272a;
     --accent: #ffffff;
-    --line: #3f3f46;
 }
 @media (prefers-color-scheme: light) {
-    :root {
+    html:not(.dark) {
         --bg: #ffffff;
-        --card: #f4f4f5;
-        --fg: #52525b;
+            --ink: #52525b;
+        --ink-soft: #71717a;
+        --title: #3f3f46;
+        --rule: #e4e4e7;
         --accent: #000000;
-        --line: #e4e4e7;
     }
-}
-html.dark {
-    --bg: #000000;
-    --card: #27272a;
-    --fg: #a3a3a3;
-    --accent: #ffffff;
-    --line: #3f3f46;
 }
 html.light {
     --bg: #ffffff;
-    --card: #f4f4f5;
-    --fg: #52525b;
+    --ink: #52525b;
+    --ink-soft: #71717a;
+    --title: #3f3f46;
+    --rule: #e4e4e7;
     --accent: #000000;
-    --line: #e4e4e7;
 }
 * {
     box-sizing: border-box;
@@ -42,7 +40,7 @@ html.light {
 body {
     margin: 0;
     background: var(--bg);
-    color: var(--fg);
+    color: var(--ink);
     font-family: 'Public Sans', system-ui, sans-serif;
     line-height: 1.55;
 }
@@ -50,28 +48,51 @@ a {
     color: inherit;
 }
 
-/* Theme button shows exactly one icon — whichever state the cycle is on. */
-.theme-ico {
-    display: none;
-}
-.theme-ico.is-active {
-    display: block;
-}
-.tbtn {
+/* Running head — mirrors the site-wide pattern from the redesign: label left,
+   controls right, one hairline, static not sticky. This page is wider than the
+   768px prose pages, so the head follows the gallery width. */
+.running-head {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
+    align-items: baseline;
+    justify-content: space-between;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 1.3rem 20px 0;
+}
+.running-head .rh-left,
+.running-head .rh-right {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.8rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+}
+.running-head .rh-left { flex: 1 1 auto; }
+.running-head .rh-right { flex: 0 0 auto; padding-left: 1rem; text-align: right; }
+.running-head a,
+.running-head button {
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    color: inherit;
+    text-decoration: none;
+    background: none;
     border: 0;
-    border-radius: 8px;
-    background: transparent;
-    color: var(--fg);
+    padding: 0;
     cursor: pointer;
 }
-.tbtn:hover {
-    color: var(--accent);
+.running-head a:hover,
+.running-head button:hover { color: var(--accent); }
+/* The theme control names the mode a tap switches TO; the label lives in CSS
+   so it is right pre-paint and with JS off. Works under both the current
+   3-state /theme.js and the redesign's 2-state one. */
+#theme-toggle::before { content: "Light"; }
+html.light #theme-toggle::before { content: "Dark"; }
+@media (prefers-color-scheme: light) {
+    html:not(.dark) #theme-toggle::before { content: "Dark"; }
 }
+html.dark #theme-toggle::before { content: "Light"; }
 
 .head,
 main,
@@ -79,20 +100,6 @@ footer {
     max-width: 1080px;
     margin: 0 auto;
     padding: 0 20px;
-}
-.bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px 0;
-}
-.home {
-    font-size: 0.85rem;
-    text-decoration: none;
-    opacity: 0.85;
-}
-.home:hover {
-    color: var(--accent);
 }
 h1 {
     color: var(--accent);
@@ -106,7 +113,7 @@ h1 {
 }
 .meta {
     font-size: 0.85rem;
-    opacity: 0.8;
+    color: var(--ink-soft);
     margin: 0;
 }
 .controls {
@@ -118,19 +125,17 @@ h1 {
     padding: 0;
 }
 .controls input {
-    background: var(--card);
-    border: 1px solid var(--line);
-    color: var(--fg);
-    border-radius: 12px;
+    background: transparent;
+    border: 1px solid var(--rule);
+    color: var(--ink);
     padding: 9px 13px;
     font: inherit;
     width: 230px;
 }
 .chip {
-    background: var(--card);
-    border: 1px solid var(--line);
-    color: var(--fg);
-    border-radius: 12px;
+    background: transparent;
+    border: 1px solid var(--rule);
+    color: var(--ink);
     padding: 7px 13px;
     font: inherit;
     font-size: 0.85rem;
@@ -138,7 +143,13 @@ h1 {
 }
 .chip.on {
     color: var(--accent);
-    border-color: var(--fg);
+    border-color: var(--ink);
+}
+.controls + .controls {
+    margin-top: 10px;
+}
+.coll.on {
+    background: var(--rule);
 }
 .count {
     font-size: 0.8rem;
@@ -154,8 +165,8 @@ h1 {
 }
 .card {
     position: relative;
-    background: var(--card);
-    border-radius: 16px;
+    background: transparent;
+    border: 1px solid var(--rule);
     padding: 12px;
     cursor: pointer;
     text-align: center;
@@ -173,7 +184,6 @@ h1 {
     width: 100%;
     aspect-ratio: 1;
     object-fit: contain;
-    border-radius: 12px;
     background: var(--bg);
 }
 .card .n {
@@ -186,7 +196,7 @@ h1 {
 }
 .card .y {
     font-size: 0.72rem;
-    opacity: 0.7;
+    color: var(--ink-soft);
 }
 .anim {
     position: absolute;
@@ -195,16 +205,14 @@ h1 {
     font-size: 0.6rem;
     letter-spacing: 0.06em;
     background: var(--bg);
-    color: var(--fg);
-    border-radius: 6px;
+    color: var(--ink);
     padding: 1px 5px;
     opacity: 0.85;
 }
 dialog {
-    background: var(--card);
-    color: var(--fg);
-    border: 1px solid var(--line);
-    border-radius: 16px;
+    background: var(--bg);
+    color: var(--ink);
+    border: 1px solid var(--rule);
     max-width: 560px;
     width: 92vw;
     padding: 22px;
@@ -216,7 +224,6 @@ dialog img {
     width: min(300px, 70vw);
     display: block;
     margin: 0 auto 14px;
-    border-radius: 12px;
 }
 dialog h2 {
     color: var(--accent);
@@ -232,12 +239,12 @@ dialog h2 {
     margin-top: 12px;
     font-size: 0.78rem;
     opacity: 0.85;
-    border-left: 2px solid var(--line);
+    border-left: 2px solid var(--rule);
     padding-left: 10px;
 }
 .prov {
     margin-top: 14px;
-    border-top: 1px solid var(--line);
+    border-top: 1px solid var(--rule);
     padding-top: 12px;
     font-size: 0.75rem;
     word-break: break-all;
@@ -256,7 +263,7 @@ dialog h2 {
     float: right;
     background: none;
     border: 0;
-    color: var(--fg);
+    color: var(--ink);
     font-size: 1.3rem;
     line-height: 1;
     cursor: pointer;
