@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Save the metadata and artwork your POAP badges point at. Runs entirely in your browser; nothing is uploaded, and no wallet connection is asked for." />
+        <meta name="color-scheme" content="dark light" />
+        <meta http-equiv="content-language" content="en-us" />
+        <link rel="canonical" href="https://thebenmeadows.com/projects/poap-saver/" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="TheBenMeadows" />
+        <meta property="og:title" content="POAP Saver &middot; TheBenMeadows" />
+        <meta property="og:description" content="Save the metadata and artwork your POAP badges point at. Runs entirely in your browser; nothing is uploaded, and no wallet connection is asked for." />
+        <meta property="og:url" content="https://thebenmeadows.com/projects/poap-saver/" />
+        <meta property="og:image" content="https://thebenmeadows.com/og.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="TheBenMeadows — thebenmeadows.com" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="POAP Saver &middot; TheBenMeadows" />
+        <meta name="twitter:description" content="Save the metadata and artwork your POAP badges point at. Runs entirely in your browser; nothing is uploaded, and no wallet connection is asked for." />
+        <meta name="twitter:image" content="https://thebenmeadows.com/og.png" />
+
+        <title>POAP Saver &middot; TheBenMeadows</title>
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000" />
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+
+        <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+
+        <link rel="preload" href="/fonts/publicsans-v1.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="stylesheet" href="style.css" />
+        <script src="/theme.js"></script>
+        <script src="app.js" defer></script>
+    </head>
+    <body>
+        <header class="running-head">
+            <span class="rh-left"><a href="/">Index</a></span>
+            <nav class="rh-right">
+                <a href="/projects/">Projects</a>
+                <span aria-hidden="true">&nbsp;&middot;&nbsp;</span>
+                <button id="theme-toggle" type="button"></button>
+            </nav>
+        </header>
+        <main>
+            <h1>POAP Saver</h1>
+            <p>POAP shut down in August 2026. Your badges are permanent tokens
+            on Gnosis Chain, but their names, descriptions, and artwork live on
+            POAP&rsquo;s servers, and the pointer written into each token cannot
+            be changed. When those servers go dark, that layer is gone.</p>
+            <p>This page saves it while they still answer. Enter an address or
+            ENS name; your browser fetches every badge&rsquo;s metadata and
+            artwork directly, records a SHA-256 of each image, and gives you one
+            zip: the archive plus a gallery page that works offline, forever.
+            Nothing is uploaded, and no wallet connection is ever asked for
+            &mdash; an address is all it needs.</p>
+            <form id="rescue-form">
+                <input id="address" type="text" placeholder="0x&hellip; or name.eth" aria-label="Address or ENS name" autocomplete="off" spellcheck="false" />
+                <button id="go" type="submit">Save my POAPs</button>
+            </form>
+            <p id="status"></p>
+            <ul id="log"></ul>
+            <p id="result"></p>
+            <p class="fine">Runs entirely in your browser against public RPC
+            endpoints and POAP&rsquo;s own hosts. Large collections take a few
+            minutes and are held in memory until the zip downloads. The same
+            tool exists for the command line, and both are open source:
+            <a href="https://github.com/mdws-org/poap-saver" target="_blank" rel="noopener">github.com/mdws-org/poap-saver</a>.
+            The collection that started this is at
+            <a href="/experiments/poap-vault/">/experiments/poap-vault/</a>.</p>
+        </main>
+        <footer class="site-footer">
+            <nav class="footer-line">
+                <a class="js-email" rel="nofollow" href="/">Email</a>
+                <span aria-hidden="true">&middot;</span>
+                <a href="https://x.com/thebenmeadows" target="_blank" rel="me noopener">X</a>
+                <span aria-hidden="true">&middot;</span>
+                <a href="https://primal.net/p/npub1wldqfuy0yge4fvxukdm43gze2ral9dnp5avlps5a6t8q0vyv2nds84nq29" target="_blank" rel="me noopener">Nostr</a>
+                <span aria-hidden="true">&middot;</span>
+                <a href="/profiles/">All profiles &rarr;</a>
+            </nav>
+            <nav class="footer-line">
+                <a href="https://github.com/TheBenMeadows/tbm" target="_blank" rel="noopener">Source</a>
+                <span aria-hidden="true">&middot;</span>
+                <a href="/mirrors/">Mirrors</a>
+                <span aria-hidden="true">&middot;</span>
+                <a href="/tech/">Tech&nbsp;Stack</a>
+                <span aria-hidden="true">&middot;</span>
+                <a href="/infra/">Infra</a>
+            </nav>
+        </footer>
+    </body>
+</html>
