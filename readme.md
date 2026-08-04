@@ -221,6 +221,7 @@ decisions behind it are at [`/tech/`](https://thebenmeadows.com/tech/).
 | `scripts/build-stamp.mjs` | stamps every page with the commit it was built from |
 | `scripts/build-feed.mjs` | emits `feed.xml` (Atom) + `rss.xml` (RSS 2.0) from the release log |
 | `scripts/build-manifest.mjs` | emits `manifest.json` — SHA-256 of every shipped file |
+| `scripts/check-figures.mjs` | asserts every KB figure in this file and `/tech/` against what the tree measures; an unregistered figure fails the build |
 | `scripts/sign-release.sh` | signs the manifest to Nostr and anchors it with OpenTimestamps |
 | `commitments/` | one OpenTimestamps proof per release, named for the hash it attests |
 | `.nsite/` | nsyte config for the Nostr nsite deploy |
