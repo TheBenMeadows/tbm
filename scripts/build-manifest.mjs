@@ -161,8 +161,14 @@ console.log(
 // A budget nobody measures is a wish. This fails the build instead.
 {
     const BUDGET = 100 * 1024;
+    // output.css carries a content hash in its dist filename (version-css.mjs),
+    // so find it rather than name it.
+    const versionedCss = sortedKeys.find((k) => /^output-[0-9a-f]{8}\.css$/.test(k));
+    if (!versionedCss) {
+        throw new Error("build-manifest: no output-<hash>.css in dist — did version-css.mjs run?");
+    }
     const critical = [
-        "index.html", "output.css", "theme.js", "search.js", "email.js",
+        "index.html", versionedCss, "theme.js", "search.js", "email.js",
         "fonts/publicsans-v1.woff2", "me.webp",
     ];
     let total = 0;
