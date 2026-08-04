@@ -43,6 +43,25 @@ npm run build      # compiles src/input.css -> output.css (minified), then build
 `output.css` and `search-index.json` are generated and git-ignored. Open `index.html` directly, or serve
 the folder with any static server, after building.
 
+### Page weight
+
+[512kb.club](https://512kb.club/) lists this site on the green team, which requires
+the measured page to stay under 100 KB **uncompressed**. The scan covers one URL —
+the home page — so new subpages do not count against it directly. Three home-page
+assets are shared with every other page and do:
+
+- `output.css` is a single Tailwind build over the content list in `tailwind.config.js`.
+  A new page that uses utility classes not already present grows it, and the home page
+  pays for that.
+- `theme.js` and `search.js` are shared but fixed in size.
+
+`search-index.json` grows with every page in `scripts/build-search-index.mjs`, but
+`search.js` fetches it on first search rather than on load, so it stays out of the
+measurement. It is 33 KB — a third of the budget — so it must stay lazy.
+
+The home page currently measures about 92 KB. To check it after a change, run a
+[DebugBear page-weight scan](https://www.debugbear.com/test/page-size-checker).
+
 ## Deploy
 
 - **Primary:** Cloudflare Pages, connected to this repo's `main`. Each push runs
@@ -186,6 +205,7 @@ decisions behind it are at [`/tech/`](https://thebenmeadows.com/tech/).
 | `404.html` | not-found page (self-contained, inline styles) |
 | `src/input.css`, `tailwind.config.js` | Tailwind source + config |
 | `icons/` | self-hosted social SVGs (no external CDN at runtime) |
+| `svgo.config.mjs` | optimizer settings for `icons/` — run `npm run optimize:icons` after adding one |
 | `favicon/`, `me.png` | icons and profile image |
 | `readme-header-*.png` | the header above — keyed out of `og.png` by `scripts/make-readme-header.py`, one variant per theme; repo-only, never shipped |
 | `email.js` | assembles the contact address at runtime to cut scraping |
