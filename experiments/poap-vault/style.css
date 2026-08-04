@@ -272,7 +272,6 @@ dialog h2 {
     font-weight: 600;
 }
 .dead {
-    text-decoration: line-through;
     opacity: 0.7;
 }
 .close {
