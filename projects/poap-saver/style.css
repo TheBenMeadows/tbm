@@ -144,18 +144,6 @@ form button:disabled {
     opacity: 0.5;
     cursor: wait;
 }
-.mirror-opt {
-    display: flex;
-    gap: 8px;
-    align-items: flex-start;
-    font-size: 0.8rem;
-    color: var(--ink-soft);
-    margin: 0 0 14px;
-    max-width: 60ch;
-}
-.mirror-opt input {
-    margin: 0.25rem 0 0;
-}
 #status {
     min-height: 1.5em;
     color: var(--title);
