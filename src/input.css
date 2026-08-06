@@ -413,6 +413,28 @@ html.dark #theme-toggle::before { content: "Light"; }
     background: transparent;
 }
 
+/* The card's title is its link. A card is a container, not a button: anchoring
+   the title is what a printed index does, and it gives the entry one honest
+   destination — copyable, keyboard-reachable, and announced by name rather than
+   as a wall of card text. It also lets a card carry other links (source, run it
+   here) without nesting an anchor inside an anchor, which the whole-card link
+   idiom on /experiments/ could not. Nothing is drawn at rest — the hover is the
+   same quiet dim the whole-card links used before, so a grid of these reads as
+   a page of titles rather than a page of links. The focus ring is not
+   decoration and stays. */
+.card-title a {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.15s;
+}
+.card-title a:hover {
+    opacity: 0.7;
+}
+.card-title a:focus-visible {
+    outline: 1px solid var(--ink);
+    outline-offset: 3px;
+}
+
 /* Section label + the short centered rule under a page title. */
 .section-label {
     font-size: 0.72rem;
