@@ -44,14 +44,23 @@ const decode = (s) =>
         /^&#\d+;$/.test(m) ? String.fromCodePoint(Number(m.slice(2, -1))) : m
     ));
 
-const strip = (html) => decode(html.replace(/<[^>]*>/g, ' ')).replace(/\s+/g, ' ').trim();
+/* Comments must go before tags do. The tag pattern below stops at the first ">",
+ * so a comment that mentions markup — index.html's note about <img> and <picture>
+ * — is only half-consumed and its remaining prose lands in the corpus. That text
+ * then rides search-index.json into site search and into the Gemini capsule and
+ * gopher hole, which vps1 generates from this file rather than from the HTML. */
+const decomment = (html) => html.replace(/<!--[\s\S]*?-->/g, ' ');
+
+const strip = (html) => decode(decomment(html).replace(/<[^>]*>/g, ' ')).replace(/\s+/g, ' ').trim();
 
 /* Chrome (header/footer nav) would otherwise make every page match "Mirrors",
  * "Tech Stack", "Experiments"… The <pre> on /essentialism/ is 8 KB of generator
  * source and is deliberately excluded — it would nearly double the index to match
  * on things like `}`. */
 function bodyText(html) {
-    let s = html
+    /* Comments go first here too: these section removals run before strip(), and a
+     * commented-out </head> or <pre> would otherwise cut the wrong span. */
+    let s = decomment(html)
         .replace(/<head\b[\s\S]*?<\/head>/gi, ' ')
         .replace(/<script\b[\s\S]*?<\/script>/gi, ' ')
         .replace(/<style\b[\s\S]*?<\/style>/gi, ' ')
