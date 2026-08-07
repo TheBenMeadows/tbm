@@ -1,4 +1,4 @@
-/* essentialism — live renderer for thebenmeadows.com/essentialism/
+/* essentialism - live renderer for thebenmeadows.com/essentialism/
    Uses bootloader's exact on-chain seeding (splitmix64 -> sfc32). No eval: the
    generator is a real function loaded from essentialism.js (CSP script-src 'self').
 
@@ -161,7 +161,7 @@ function exportPNG(svgEl, scale, name) {
 document.addEventListener('DOMContentLoaded', function () {
   var $ = function (id) { return document.getElementById(id); };
 
-  /* the space — twelve seeds across the run */
+  /* the space - twelve seeds across the run */
   var gal = $('gallery');
   if (gal) {
     var picks = [[7211n, 1], [90210n, 3], [4242n, 8], [1007922n, 12],
@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function () {
     gal.appendChild(frag);
   }
 
-  /* minted editions — bootloader's own renders, pulled from chain */
+  /* minted editions - bootloader's own renders, pulled from chain */
   var mints = $('mints');
   if (mints) {
     fetch(TZKT).then(function (r) { return r.json(); }).then(function (rows) {

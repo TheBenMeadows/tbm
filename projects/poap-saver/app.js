@@ -1,4 +1,4 @@
-/* poap-saver — in-browser rescuer.
+/* poap-saver - in-browser rescuer.
    Everything runs client-side: the page talks to public RPC endpoints and to
    POAP's still-answering hosts, hashes every image with WebCrypto, and hands
    back a zip. Nothing is uploaded anywhere; there is no server side.
@@ -414,7 +414,7 @@
             });
         }).catch(function (e) {
             fails.push(tok.chain + '/' + tok.id + ': ' + e.message);
-            note('failed ' + tok.chain + '/' + tok.id + ' — ' + e.message);
+            note('failed ' + tok.chain + '/' + tok.id + ' - ' + e.message);
         });
     }
 
@@ -534,7 +534,7 @@
                         (blob.size / 1e6).toFixed(1) + ' MB zip)';
                     ui.result.appendChild(a);
                     var doneMsg = rows.length + ' badges saved';
-                    if (fails.length) doneMsg += ', ' + fails.length + ' failed — run it again later for those';
+                    if (fails.length) doneMsg += ', ' + fails.length + ' failed - run it again later for those';
                     say(doneMsg + '. Unzip the download and open index.html.');
                     showPreview(rows);
                     a.click();

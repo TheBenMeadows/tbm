@@ -100,7 +100,7 @@ function linkCards(html) {
         const label = strip(inner.replace(/<span class="who">[\s\S]*?<\/span>/i, ' '));
         const who = strip(whoM[1]);
         if (href && label) {
-            out.push({ url: href[1], title: who ? `${label} — ${who}` : label, kind: 'link' });
+            out.push({ url: href[1], title: who ? `${label} · ${who}` : label, kind: 'link' });
         }
     }
     return out;

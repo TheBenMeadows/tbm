@@ -1,6 +1,6 @@
 {
   "title": "TheBenMeadows",
-  "description": "Links, projects and profiles — a deliberately durable personal site, mirrored across Tor, I2P, IPFS, Arweave, Nostr, Gemini and gopher.",
+  "description": "Links, projects and profiles - a deliberately durable personal site, mirrored across Tor, I2P, IPFS, Arweave, Nostr, Gemini and gopher.",
   "relays": [
     "wss://relay.mdws.me",
     "wss://nos.lol",

@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
             name="description"
-            content="How thebenmeadows.com is built — the stack, the redundancy behind it, and the design decisions."
+            content="How thebenmeadows.com is built - the stack, the redundancy behind it, and the design decisions."
         />
         <meta name="color-scheme" content="dark light" />
         <meta http-equiv="content-language" content="en-us" />
@@ -16,17 +16,17 @@
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="TheBenMeadows" />
         <meta property="og:title" content="Tech Stack · TheBenMeadows" />
-        <meta property="og:description" content="How thebenmeadows.com is built — the stack, the redundancy behind it, and the design decisions." />
+        <meta property="og:description" content="How thebenmeadows.com is built - the stack, the redundancy behind it, and the design decisions." />
         <meta property="og:url" content="https://thebenmeadows.com/tech/" />
         <meta property="og:image" content="https://thebenmeadows.com/og.png" />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="TheBenMeadows — thebenmeadows.com" />
+        <meta property="og:image:alt" content="TheBenMeadows · thebenmeadows.com" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Tech Stack · TheBenMeadows" />
-        <meta name="twitter:description" content="How thebenmeadows.com is built — the stack, the redundancy behind it, and the design decisions." />
+        <meta name="twitter:description" content="How thebenmeadows.com is built - the stack, the redundancy behind it, and the design decisions." />
         <meta name="twitter:image" content="https://thebenmeadows.com/og.png" />
 
         <title>Tech Stack · TheBenMeadows</title>
@@ -62,7 +62,7 @@
         <main class="text-neutral-400 max-w-screen-md mx-auto px-6 pt-8 pb-12 leading-relaxed">
             <h1 class="text-white text-3xl font-bold text-center" style="letter-spacing: -0.025em">Tech Stack</h1>
             <p class="mt-4">
-                A colophon — how this site is built and why. It is a plain static site:
+                A colophon: how this site is built and why. It is a plain static site:
                 hand-written HTML, one build step, no framework, no tracking. The whole
                 thing is small enough to read in a few minutes on
                 <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://github.com/TheBenMeadows/tbm" target="_blank" rel="noopener">GitHub</a>.
@@ -71,13 +71,13 @@
 
             <h2 class="section-label" style="margin-top: 2.6rem">The stack</h2>
             <ul class="mt-4 space-y-3 list-none">
-                <li><span class="text-white font-medium">Weight</span> — a cold visit to this site's home page pulls under 100&nbsp;KB uncompressed, images and font included. That is a budget the build enforces, not an aspiration: exceed it and the build fails. The home page is listed on <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://512kb.club/" target="_blank" rel="noopener">512kb.club</a>&rsquo;s green team.</li>
-                <li><span class="text-white font-medium">Markup</span> — hand-written HTML. No framework, no client-side rendering.</li>
-                <li><span class="text-white font-medium">Styles</span> — <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://tailwindcss.com" target="_blank" rel="noopener">Tailwind CSS</a>, compiled to a single minified stylesheet at build time. Only the classes actually used are shipped, and the file name carries a hash of its contents so a new deploy can never be served with an old stylesheet.</li>
-                <li><span class="text-white font-medium">Type</span> — <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://public-sans.digital.gov" target="_blank" rel="noopener">Public Sans</a> (SIL Open Font License), self-hosted, subset to Latin and trimmed to the weights in use, then versioned, preloaded, and cached for a year. No font CDN.</li>
-                <li><span class="text-white font-medium">Icons</span> — none. The design is typographic; the only image on the site is the profile photo, and the page makes no third-party requests when it loads.</li>
-                <li><span class="text-white font-medium">Scripts</span> — three small vanilla-JS files: the theme control, a contact address assembled in the browser to cut scraping, and <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="/search/">site search</a>. No bundler, no analytics, no cookies.</li>
-                <li><span class="text-white font-medium">Search</span> — an index built from these pages at deploy time and matched in your browser; the query never leaves it. No search library: the corpus is about 29&nbsp;KB and the index about 33&nbsp;KB, fetched only when you first open search. A WebAssembly search engine would also have meant loosening the CSP below to allow <span class="font-mono text-xs">wasm-unsafe-eval</span>.</li>
+                <li><span class="text-white font-medium">Weight</span>: a cold visit to this site's home page pulls under 100&nbsp;KB uncompressed, images and font included. That is a budget the build enforces, not an aspiration: exceed it and the build fails. The home page is listed on <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://512kb.club/" target="_blank" rel="noopener">512kb.club</a>&rsquo;s green team.</li>
+                <li><span class="text-white font-medium">Markup</span>: hand-written HTML. No framework, no client-side rendering.</li>
+                <li><span class="text-white font-medium">Styles</span>: <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://tailwindcss.com" target="_blank" rel="noopener">Tailwind CSS</a>, compiled to a single minified stylesheet at build time. Only the classes actually used are shipped, and the file name carries a hash of its contents so a new deploy can never be served with an old stylesheet.</li>
+                <li><span class="text-white font-medium">Type</span>: <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://public-sans.digital.gov" target="_blank" rel="noopener">Public Sans</a> (SIL Open Font License), self-hosted, subset to Latin and trimmed to the weights in use, then versioned, preloaded, and cached for a year. No font CDN.</li>
+                <li><span class="text-white font-medium">Icons</span>: none. The design is typographic; the only image on the site is the profile photo, and the page makes no third-party requests when it loads.</li>
+                <li><span class="text-white font-medium">Scripts</span>: three small vanilla-JS files: the theme control, a contact address assembled in the browser to cut scraping, and <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="/search/">site search</a>. No bundler, no analytics, no cookies.</li>
+                <li><span class="text-white font-medium">Search</span>: an index built from these pages at deploy time and matched in your browser; the query never leaves it. No search library: the corpus is about 29&nbsp;KB and the index about 33&nbsp;KB, fetched only when you first open search. A WebAssembly search engine would also have meant loosening the CSP below to allow <span class="font-mono text-xs">wasm-unsafe-eval</span>.</li>
             </ul>
 
             <h2 class="section-label" style="margin-top: 2.6rem">Hosting &amp; build</h2>
@@ -85,23 +85,23 @@
                 <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://pages.cloudflare.com" target="_blank" rel="noopener">Cloudflare Pages</a>
                 is the primary host and <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://www.netlify.com" target="_blank" rel="noopener">Netlify</a>
                 is a second, independent one. Both rebuild from the same repository on
-                every push — compile the CSS, then serve the static output from their
+                every push: compile the CSS, then serve the static output from their
                 own CDN edges. The build is a single command; there is nothing to run
                 server-side.
             </p>
 
             <h2 class="section-label" style="margin-top: 2.6rem">Redundancy</h2>
             <p class="mt-4">
-                Availability is treated as two separate problems — keeping the site
-                <em>reachable</em>, and keeping its source <em>recoverable</em> — and
-                each is solved independently:
+                Availability is treated as two separate problems: keeping the site
+                <em>reachable</em>, and keeping its source <em>recoverable</em>.
+                Each is solved independently:
             </p>
             <ul class="mt-4 space-y-3 list-none">
-                <li><span class="text-white font-medium">Reachable</span> — two independent serving hosts from one source, so a single provider outage doesn't take the site down.</li>
-                <li><span class="text-white font-medium">Reachable, again</span> — beyond the two web hosts, the same build is served over Tor and I2P from a server I run, over IPFS from this site's own nodes, permanently on Arweave, as a Nostr nsite, and over Gemini, gopher, SSH, telnet and anonymous FTP. Different networks, different failure modes.</li>
-                <li><span class="text-white font-medium">Recoverable</span> — the repository is mirrored to Codeberg, Gitea, GitLab, and SourceHut alongside GitHub and kept in sync automatically. No single code host is a point of failure. It is also published hostlessly to Radicle, which replicates it peer-to-peer between nodes, and to Nostr via GRASP, where signed events are the authority and git servers are interchangeable relays — so it survives every forge at once. On AT Protocol it lives on a Tangled knot with a DID of its own, addressable through the atmosphere rather than through an account on any one forge. Software Heritage holds a permanent archival copy.</li>
-                <li><span class="text-white font-medium">Preserved</span> — the site is snapshotted by the Internet Archive's Wayback Machine after every deploy, outside every host above.</li>
-                <li><span class="text-white font-medium">Verifiable</span> — every build ships a manifest of file hashes; each release's manifest is signed with the same Nostr key this domain attests at <code class="text-neutral-300">/.well-known/nostr.json</code> and anchored in Bitcoin with OpenTimestamps. Any mirror can be checked against it.</li>
+                <li><span class="text-white font-medium">Reachable</span>: two independent serving hosts from one source, so a single provider outage doesn't take the site down.</li>
+                <li><span class="text-white font-medium">Reachable, again</span>: beyond the two web hosts, the same build is served over Tor and I2P from a server I run, over IPFS from this site's own nodes, permanently on Arweave, as a Nostr nsite, and over Gemini, gopher, SSH, telnet and anonymous FTP. Different networks, different failure modes.</li>
+                <li><span class="text-white font-medium">Recoverable</span>: the repository is mirrored to Codeberg, Gitea, GitLab, and SourceHut alongside GitHub and kept in sync automatically. No single code host is a point of failure. It is also published hostlessly to Radicle, which replicates it peer-to-peer between nodes, and to Nostr via GRASP, where signed events are the authority and git servers are interchangeable relays, so it survives every forge at once. On AT Protocol it lives on a Tangled knot with a DID of its own, addressable through the atmosphere rather than through an account on any one forge. Software Heritage holds a permanent archival copy.</li>
+                <li><span class="text-white font-medium">Preserved</span>: the site is snapshotted by the Internet Archive's Wayback Machine after every deploy, outside every host above.</li>
+                <li><span class="text-white font-medium">Verifiable</span>: every build ships a manifest of file hashes; each release's manifest is signed with the same Nostr key this domain attests at <code class="text-neutral-300">/.well-known/nostr.json</code> and anchored in Bitcoin with OpenTimestamps. Any mirror can be checked against it.</li>
             </ul>
             <p class="mt-4">
                 The full list of hosts, forges, and archives lives on the
@@ -110,7 +110,7 @@
 
             <h2 class="section-label" style="margin-top: 2.6rem">Privacy &amp; security</h2>
             <ul class="mt-4 space-y-3 list-none">
-                <li>A strict <span class="text-white font-medium">Content-Security-Policy</span> (<code class="text-neutral-300">default-src 'self'</code>) — the browser only ever talks to this origin.</li>
+                <li>A strict <span class="text-white font-medium">Content-Security-Policy</span> (<code class="text-neutral-300">default-src 'self'</code>) - the browser only ever talks to this origin.</li>
                 <li>Security headers on every response: MIME-sniffing off, framing denied, a strict referrer policy, and camera / microphone / geolocation disabled.</li>
                 <li>No analytics, no cookies, no third-party embeds, no external fonts or CDNs. Nothing to consent to because nothing is collected.</li>
                 <li>A <code class="text-neutral-300">.well-known/security.txt</code> (<a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://www.rfc-editor.org/rfc/rfc9116" target="_blank" rel="noopener">RFC 9116</a>) publishes a contact for reporting vulnerabilities.</li>
@@ -118,25 +118,26 @@
 
             <h2 class="section-label" style="margin-top: 2.6rem">Identity &amp; payments</h2>
             <p class="mt-4">
-                A few <code class="text-neutral-300">.well-known</code> endpoints serve live lookups —
+                A few <code class="text-neutral-300">.well-known</code> endpoints serve live lookups:
                 <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://github.com/nostr-protocol/nips/blob/master/05.md" target="_blank" rel="noopener">Nostr NIP-05</a>
                 name verification, a <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://github.com/lnurl/luds" target="_blank" rel="noopener">Lightning LNURL-pay</a>
-                address, and a Keybase proof — served with the right headers on every
-                host, so they keep working no matter which mirror answers.
+                address, and a Keybase proof. All three are served with the right
+                headers on every host, so they keep working no matter which mirror
+                answers.
             </p>
 
             <h2 class="section-label" style="margin-top: 2.6rem">Design</h2>
             <p class="mt-4">
                 Monochrome and minimal, in Public Sans. The theme button in the header
-                cycles through three states — follow your system, force light, force
-                dark — and your choice is remembered. The mark itself is the way home.
+                cycles through three states (follow your system, force light, force
+                dark), and your choice is remembered. The mark itself is the way home.
             </p>
 
             <h2 class="section-label" style="margin-top: 2.6rem">Source &amp; license</h2>
             <p class="mt-4">
                 The repository is public. The code is
                 <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://github.com/TheBenMeadows/tbm/blob/main/LICENSE" target="_blank" rel="noopener">MIT-licensed</a>;
-                the personal images and brand marks are not — all rights reserved on
+                the personal images and brand marks are not - all rights reserved on
                 those.
             </p>
         </main>
