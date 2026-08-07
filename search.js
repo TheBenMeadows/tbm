@@ -1,6 +1,6 @@
 /* Site search. Two modes from one file:
- *   - overlay  — the header's search button, on every page
- *   - page     — /search/?q=…, so a result set is linkable and shareable
+ *   - overlay  - the header's search button, on every page
+ *   - page     - /search/?q=…, so a result set is linkable and shareable
  *
  * The index is fetched lazily on first use, so a normal page load pays nothing for
  * search at all. No library: the corpus is ~11 KB, and staying dependency-free keeps
@@ -83,7 +83,7 @@
         return (start > 0 ? '…' : '') + text.slice(start, end).trim() + (end < text.length ? '…' : '');
     }
 
-    /* Built with textContent + real <mark> nodes rather than innerHTML — the query is
+    /* Built with textContent + real <mark> nodes rather than innerHTML - the query is
        user input and arrives from the URL on /search/. */
     function highlight(container, str, tokens) {
         var low = str.toLowerCase();
@@ -225,7 +225,7 @@
             /* Blur before hiding. Hiding an element that still holds focus leaves
                document.activeElement pointing at something invisible, which both
                strands screen-reader focus and makes the "/" shortcut think the user
-               is typing in a field — so search could never be reopened with "/". */
+               is typing in a field - so search could never be reopened with "/". */
             if (document.activeElement && wrap.contains(document.activeElement)) {
                 document.activeElement.blur();
             }

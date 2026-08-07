@@ -7,7 +7,7 @@
 
    Refinement over the three-state cycle this replaces: if the mode a tap
    switches to is what the system would give anyway, the override is CLEARED
-   instead of stored — auto-follow returns without ever being a visible state.
+   instead of stored - auto-follow returns without ever being a visible state.
 
    Loaded synchronously in <head> so the stored class applies before first
    paint and the page never flashes the wrong theme. */
@@ -20,7 +20,7 @@
         try {
             v = localStorage.getItem(KEY);
         } catch (e) {
-            /* private mode / storage disabled — fall through to system */
+            /* private mode / storage disabled - fall through to system */
         }
         return v === 'light' || v === 'dark' ? v : null;
     }
@@ -70,7 +70,7 @@
                 e.preventDefault();
                 var next = effective() === 'light' ? 'dark' : 'light';
                 if (next === systemTheme()) {
-                    // The explicit choice would match the system anyway —
+                    // The explicit choice would match the system anyway -
                     // clear it so auto-follow silently returns.
                     applyClass(null);
                     try { localStorage.removeItem(KEY); } catch (e2) {}
