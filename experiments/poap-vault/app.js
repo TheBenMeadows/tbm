@@ -9,7 +9,14 @@
        modal upgrades to the original after verifying its sha256 against the
        hash recorded at rescue time. Fails closed: any error, the poster stays. */
     var ARTROOT = 'bafybeidnp33uoncjsbpq2255xg27eiapmcidog46d3hmaf6zon3qecfig4';
-    var GATEWAYS = ['https://ipfs.io/ipfs/', 'https://dweb.link/ipfs/'];
+    /* Public IPFS gateways first, then our own archive Worker as a backstop.
+       The Worker serves the identical bytes from S3-compatible storage and is
+       edge-cached, so the modal still upgrades even when both gateways flake. */
+    var SOURCES = [
+        'https://ipfs.io/ipfs/' + ARTROOT + '/',
+        'https://dweb.link/ipfs/' + ARTROOT + '/',
+        'https://poap-mirror.bemeadows.workers.dev/corpus/img/',
+    ];
     var fullUrl = null;
 
     function upgrade(p) {
@@ -18,8 +25,8 @@
         var want = String(p.sha).toLowerCase();
         var i = 0;
         function next() {
-            if (i >= GATEWAYS.length) return;
-            fetch(GATEWAYS[i++] + ARTROOT + '/' + p.e)
+            if (i >= SOURCES.length) return;
+            fetch(SOURCES[i++] + p.e)
                 .then(function (r) {
                     if (!r.ok) throw 0;
                     return r.arrayBuffer();
