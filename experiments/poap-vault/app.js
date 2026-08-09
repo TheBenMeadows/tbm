@@ -58,6 +58,12 @@
         var i = 0;
         function next() {
             if (i >= SOURCES.length) {
+                /* Detach BEFORE restoring the poster. Leaving onerror armed
+                   here means a poster that fails to load re-enters next(),
+                   restores it again, and loops forever. Reachable: events
+                   above the crawl ceiling exhaust every source by design. */
+                img.onerror = null;
+                img.onload = null;
                 img.src = poster;
                 return;
             }
