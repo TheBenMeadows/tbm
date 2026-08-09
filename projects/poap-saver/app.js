@@ -441,7 +441,7 @@
             });
         }).catch(function (e) {
             fails.push(tok.chain + '/' + tok.id + ': ' + e.message);
-            note('failed ' + tok.chain + '/' + tok.id + ' — ' + e.message);
+            note('failed ' + tok.chain + '/' + tok.id + ' - ' + e.message);
         });
     }
 
@@ -564,7 +564,7 @@
                         (blob.size / 1e6).toFixed(1) + ' MB zip)';
                     ui.result.appendChild(a);
                     var doneMsg = rows.length + ' badges saved';
-                    if (fails.length) doneMsg += ', ' + fails.length + ' failed — run it again later for those';
+                    if (fails.length) doneMsg += ', ' + fails.length + ' failed - run it again later for those';
                     showPreview(rows);
                     showCoverage(rows);
                     /* The zip is offered, not forced. Everything is already
@@ -787,13 +787,13 @@
                         b.textContent = 'Download metadata';
                         ui.result.appendChild(b);
                         say('Event ' + eid + ': ' + row.n +
-                            ' — artwork verified, sha256 ' + sha.slice(0, 12) + '…');
+                            ' - artwork verified, sha256 ' + sha.slice(0, 12) + '…');
                         ui.button.disabled = false;
                     });
                 });
             })
             .catch(function (e) {
-                say('Event ' + eid + ' is not in the archive — ' +
+                say('Event ' + eid + ' is not in the archive - ' +
                     'it may never have existed, or POAP never stored artwork for it ' +
                     '(' + e.message + ').');
                 ui.button.disabled = false;
