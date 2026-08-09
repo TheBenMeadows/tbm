@@ -3,7 +3,7 @@
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://media.bootloader.art; connect-src 'self' https://api.tzkt.io https://api.poap.tech https://assets.poap.xyz https://poap-mirror.bemeadows.workers.dev https://ipfs.io https://dweb.link https://*.ipfs.dweb.link https://rpc.gnosischain.com https://gnosis-rpc.publicnode.com https://gnosis.drpc.org https://ethereum-rpc.publicnode.com https://eth.drpc.org; frame-ancestors 'none'; base-uri 'self'; object-src 'none'
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://media.bootloader.art https://poap-mirror.bemeadows.workers.dev https://ipfs.io https://dweb.link https://*.ipfs.dweb.link; connect-src 'self' https://api.tzkt.io https://api.poap.tech https://assets.poap.xyz https://poap-mirror.bemeadows.workers.dev https://ipfs.io https://dweb.link https://*.ipfs.dweb.link https://rpc.gnosischain.com https://gnosis-rpc.publicnode.com https://gnosis.drpc.org https://ethereum-rpc.publicnode.com https://eth.drpc.org; frame-ancestors 'none'; base-uri 'self'; object-src 'none'
 
 /icons/*
   Cache-Control: public, max-age=604800
