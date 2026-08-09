@@ -197,6 +197,17 @@ form button:disabled {
     border-left: 2px solid var(--rule);
     padding-left: 10px;
 }
+.opt {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    margin: 8px 0 0;
+}
+.opt label {
+    cursor: pointer;
+}
+.opt input {
+    margin-right: 6px;
+}
 #saver-dlg {
     background: var(--bg);
     color: var(--ink);

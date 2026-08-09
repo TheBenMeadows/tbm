@@ -70,6 +70,8 @@
                 <input id="address" type="text" placeholder="0x&hellip;, name.eth, or an event id" aria-label="Address, ENS name, or POAP event id" autocomplete="off" spellcheck="false" />
                 <button id="go" type="submit">Save my POAPs</button>
             </form>
+            <p class="opt"><label><input type="checkbox" id="want-zip" />
+            Also download a zip when it finishes</label></p>
             <p id="status"></p>
             <ul id="log"></ul>
             <p id="result"></p>
@@ -82,8 +84,9 @@
             uploaded anywhere. A bare event id looks up one event instead of
             a wallet; results can be linked with <code>?address=</code> or
             <code>?event=</code>.
-            Large collections take a few minutes and are held in memory until
-            the zip downloads. The same tool exists for the command line, and
+            Results are shown here and nothing downloads unless you ask for
+            the zip. Large collections take a few minutes and are held in
+            memory. The same tool exists for the command line, and
             both are open source:
             <a href="https://github.com/mdws-org/poap-saver" target="_blank" rel="noopener">github.com/mdws-org/poap-saver</a>.
             The
