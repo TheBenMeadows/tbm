@@ -83,7 +83,43 @@
             };
             img.src = url;
         }
-        next();
+
+        /* The archive also keeps a playback re-encode of each animation
+           (H.264 where the badge is opaque, animated WebP where it uses
+           transparency - H.264 has no alpha), at roughly a third of the GIF's
+           weight. Ask what format this badge got and use the right element:
+           video for H.264, the img we already have for WebP. These are
+           re-encodes, so the original's sha does not apply to them; the
+           hash-verified GIF stays at /corpus/img and is the fallback chain
+           below whenever the derivative is missing (e.g. events above the
+           crawl ceiling) or fails to play. */
+        var animUrl = SOURCES[0].replace('/corpus/img/', '/corpus/anim/') + p.e;
+        fetch(animUrl, { method: 'HEAD' }).then(function (r) {
+            if (!r.ok) throw 0;
+            var ct = r.headers.get('content-type') || '';
+            if (ct.indexOf('video/') === 0) {
+                var v = document.createElement('video');
+                v.autoplay = true;
+                v.loop = true;
+                v.muted = true;
+                v.setAttribute('playsinline', '');
+                v.onerror = function () {
+                    if (v.parentNode) v.parentNode.replaceChild(img, v);
+                    next();
+                };
+                v.src = animUrl;
+                img.parentNode.replaceChild(v, img);
+                if (note) note.textContent = 'Animation re-encoded for '
+                    + 'playback; the original GIF is preserved in the '
+                    + 'archive with its hash.';
+            } else {
+                img.onerror = next;
+                img.src = animUrl;
+                if (note) note.textContent = 'Animation re-encoded for '
+                    + 'playback; the original GIF is preserved in the '
+                    + 'archive with its hash.';
+            }
+        }).catch(function () { next(); });
     }
 
     var grid = document.getElementById('grid');
@@ -212,6 +248,8 @@
            against a modal the reader has already dismissed. */
         var img = dlg.querySelector('img');
         if (img) { img.onerror = null; img.onload = null; }
+        var v = dlg.querySelector('video');
+        if (v) { v.onerror = null; v.pause(); v.removeAttribute('src'); v.load(); }
     });
 
     dlg.addEventListener('click', function (e) {
