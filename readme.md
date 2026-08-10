@@ -179,8 +179,9 @@ manifest cannot disagree.
 
 | Network | Address |
 |---------|---------|
-| Archive | `https://archive.softwareheritage.org/browse/origin/directory/?origin_url=https://github.com/TheBenMeadows/tbm` |
-| Archive | `https://web.archive.org/web/2/https://thebenmeadows.com/` |
+| Software Heritage | `https://archive.softwareheritage.org/browse/origin/directory/?origin_url=https://github.com/TheBenMeadows/tbm` |
+| Wayback Machine | `https://web.archive.org/web/2/https://thebenmeadows.com/` |
+| archive.today | `https://archive.ph/newest/https://thebenmeadows.com/` |
 
 <!-- mirrors:end -->
 

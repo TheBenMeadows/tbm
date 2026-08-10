@@ -44,7 +44,14 @@ const LABELS = {
     "archive/https": "Archive",
 };
 
+// An entry may carry its own `label`, which wins. The kind+network pair cannot
+// tell three archives apart -- Software Heritage keeps the source, the Wayback
+// Machine and archive.today keep the pages -- and three rows all reading
+// "Archive" is useless in the one document someone reads while the site is
+// down. An explicit label is still explicit, so this does not weaken the rule
+// below that an unmapped pair is an error rather than a guess.
 const label = (m) => {
+    if (m.label) return m.label;
     const key = `${m.kind}/${m.network}`;
     const found = LABELS[key];
     if (!found) throw new Error(`sync-readme-mirrors: no label for "${key}" — add one to LABELS`);
