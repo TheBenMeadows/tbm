@@ -236,7 +236,8 @@ dialog {
 dialog::backdrop {
     background: rgba(0, 0, 0, 0.75);
 }
-dialog img {
+dialog img,
+dialog video {
     width: min(300px, 70vw);
     display: block;
     margin: 0 auto 14px;
