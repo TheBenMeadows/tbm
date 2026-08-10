@@ -21,7 +21,7 @@
        arrives; the hash is checked afterwards against the browser-cached
        copy, and a mismatch reverts to the poster. Integrity is still
        enforced, it just no longer blocks the picture. */
-    var ARTROOT = 'bafybeidnp33uoncjsbpq2255xg27eiapmcidog46d3hmaf6zon3qecfig4';
+    var ARTROOT = 'Qmcub76vVUS1vY9MsAw3XgRhpe85G5JMAAMvg6nnf8FLTw';
     var SOURCES = [
         'https://poap-mirror.bemeadows.workers.dev/corpus/img/',
         'https://ipfs.io/ipfs/' + ARTROOT + '/',
