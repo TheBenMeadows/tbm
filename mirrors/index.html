@@ -213,6 +213,31 @@
                 path, that is what HTTPS, the onion service and Gemini are for.
             </p>
 
+            <h2 class="section-label" style="margin-top: 2.6rem">BitTorrent</h2>
+            <p class="mt-2 text-sm text-neutral-500">
+                The whole site as a torrent, rebuilt every release. It is the one
+                copy where readers become mirrors: every client left seeding is
+                capacity nobody had to provision. It carries no tracker, so peers
+                find each other over the DHT and no third party sits in the middle
+                of a download.
+            </p>
+            <div class="mt-4 grid gap-3 sm:grid-cols-2">
+                <a class="block hairline-card p-5 transition-opacity hover:opacity-80" href="/tbm.torrent">
+                    <span class="block text-white font-medium">Torrent <span class="text-neutral-500 font-normal">&middot; current release</span></span>
+                    <span class="block text-neutral-500 text-sm break-words">thebenmeadows.com/tbm.torrent</span>
+                </a>
+            </div>
+            <p class="mt-3 text-sm text-neutral-500">
+                An empty swarm would normally make a torrent useless, so this one
+                names this site as a
+                <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://www.bittorrent.org/beps/bep_0019.html" target="_blank" rel="noopener">webseed</a>:
+                with no peers at all your client just downloads over HTTPS from
+                here, and with peers it takes the pieces from them instead. The
+                worst case is an ordinary download. Each release is a different
+                torrent with its own magnet link, held inside the file above,
+                because the content it names has changed.
+            </p>
+
             <h2 class="section-label" style="margin-top: 2.6rem">Feeds</h2>
             <p class="mt-2 text-sm text-neutral-500">
                 One entry per release, in both syndication formats, with

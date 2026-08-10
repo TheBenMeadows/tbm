@@ -25,7 +25,7 @@ supporting pages — [`/mirrors/`](https://thebenmeadows.com/mirrors/),
 framework or client-side rendering.
 
 Search is dependency-free on purpose. The corpus is about 29 KB across 14 pages
-and the index built from it about 33 KB — small enough to match in the browser
+and the index built from it about 37 KB — small enough to match in the browser
 without a search library. The usual pick, Pagefind, runs on WebAssembly, which
 under this site's `script-src 'self'` CSP would mean adding `'wasm-unsafe-eval'`.
 Instead `scripts/build-search-index.mjs` emits a JSON index at build time and
@@ -60,7 +60,7 @@ page and do count:
 
 `search-index.json` grows with every page in `scripts/build-search-index.mjs`, but
 `search.js` fetches it on first search rather than on load, so it stays out of the
-measurement. It is 33 KB — a third of the budget — so it must stay lazy.
+measurement. It is 37 KB — over a third of the budget — so it must stay lazy.
 
 The home page currently measures about 72 KB. `scripts/build-manifest.mjs` enforces the
 budget on every build and fails over it, so the number cannot drift unnoticed; to check
@@ -161,6 +161,7 @@ manifest cannot disagree.
 | IPFS | `ipns://k51qzi5uqu5dkx54ehvkna983zjtfn04eu4sklgx2ag1tozh9js5p9cn5jwqmy` |
 | Arweave | `ar://thebenmeadows` |
 | Nostr (nsite) | `npub1wldqfuy0yge4fvxukdm43gze2ral9dnp5avlps5a6t8q0vyv2nds84nq29` |
+| BitTorrent | `https://thebenmeadows.com/tbm.torrent` |
 | Gemini | `gemini://gemini.thebenmeadows.com/` |
 | Gopher | `gopher://gopher.thebenmeadows.com/` |
 | SSH | `ssh://text@text.thebenmeadows.com:2222` |

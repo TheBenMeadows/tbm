@@ -32,6 +32,7 @@ const LABELS = {
     "serving/ipfs": "IPFS",
     "serving/arweave": "Arweave",
     "serving/nostr": "Nostr (nsite)",
+    "serving/bittorrent": "BitTorrent",
     "serving/gemini": "Gemini",
     "serving/gopher": "Gopher",
     "serving/ssh": "SSH",

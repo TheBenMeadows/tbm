@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
 
+# The BitTorrent webseed serves the whole site a second time under /tbm/ (see
+# _redirects). It exists for torrent clients fetching pieces over HTTP, not for
+# readers, and indexing it would file every page twice.
+Disallow: /tbm/
+
 Sitemap: https://thebenmeadows.com/sitemap.xml

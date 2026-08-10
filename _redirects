@@ -1,3 +1,12 @@
 # Orthodox Prayers graduated to its own domain (2026-08-03).
 /experiments/prayers  https://orthodoxprayers.net/  301
 /experiments/prayers/*  https://orthodoxprayers.net/:splat  301
+
+# BitTorrent webseed (BEP 19). A multi-file torrent's webseed URL is built as
+# <url-list><name>/<path>, so a client fetching this site's torrent asks for
+# /tbm/index.html, /tbm/favicon/favicon.ico and so on. The site is served at the
+# root, so map that prefix back onto it. 200, not 301: a redirect would work for
+# a browser but several clients treat a 3xx on a webseed as a failed range
+# request and drop the seed. Nothing else links these paths; robots.txt keeps
+# them out of the index so they cannot read as duplicate content.
+/tbm/*  /:splat  200

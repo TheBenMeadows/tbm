@@ -59,6 +59,11 @@
     },
     {
       "kind": "serving",
+      "network": "bittorrent",
+      "address": "https://thebenmeadows.com/tbm.torrent"
+    },
+    {
+      "kind": "serving",
       "network": "gemini",
       "address": "gemini://gemini.thebenmeadows.com/"
     },
