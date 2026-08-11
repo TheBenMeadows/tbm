@@ -113,9 +113,16 @@ the model borrowed from [Privacy Guides](https://github.com/privacyguides/privac
   independent web hosts — **Cloudflare Pages** (primary) and **Netlify** — and
   beyond the web: a **Tor onion** and an **I2P eepsite** on self-run hardware,
   **IPFS** from the site's own nodes (an IPNS name that ENS, Tezos, and Solana
-  name records all point at), a permanent **Arweave** copy behind
-  `ar://thebenmeadows`, a **Nostr nsite**, and **Gemini** and **gopher**
-  mirrors. Different networks fail differently.
+  name records all point at, and that a **DNSLink** record on the domain itself
+  also carries), a permanent **Arweave** copy behind `ar://thebenmeadows`, a
+  **Nostr nsite**, a **BitTorrent** download naming this origin as a webseed,
+  and **Gemini**, **gopher**, **SSH**, **telnet** and **FTP** mirrors.
+  Different networks fail differently.
+- **Currency.** Every push changes the site's IPFS hash. One machine builds,
+  pins, publishes the IPNS name, and writes the new hash to a file it serves
+  and to the DNSLink record; the other nodes poll that and pin what it says.
+  None of them resolves the IPNS name itself, because IPNS records stay valid
+  for a year and the network returns months-old ones.
 - **Source (recoverability).** This repository is mirrored to **Codeberg**,
   **Gitea**, **GitLab**, and **SourceHut** alongside GitHub, kept in sync
   automatically. Each mirror holds the full history, so the source survives any
@@ -129,7 +136,8 @@ the model borrowed from [Privacy Guides](https://github.com/privacyguides/privac
   **Software Heritage** holds a permanent archival copy.
 - **Archive.** A GitHub Action (`.github/workflows/wayback.yml`) requests a
   Wayback Machine snapshot after every deploy, so the archived copy tracks
-  what actually shipped.
+  what actually shipped. **archive.today** holds a second copy under a
+  different operator, and **Software Heritage** archives the source.
 - **Provenance.** Every build emits `manifest.json` (SHA-256 of every shipped
   file). Each release's manifest hash is signed to Nostr under the key this
   domain attests at `/.well-known/nostr.json` and anchored in Bitcoin with
