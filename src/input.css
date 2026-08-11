@@ -252,9 +252,12 @@ html.light .ess-control { background-color: #e4e4e7; color: #3f3f46; }
 
    Justification needs hyphenation or it opens rivers of white space, so
    hyphens are on wherever text is justified (the <html lang="en"> declaration
-   is what lets the browser hyphenate correctly). Below 640px the column is too
-   narrow for justification to look like anything but gaps, so it stays ragged
-   there -- hyphens still help the rag. */
+   is what lets the browser hyphenate correctly). Justified at EVERY width,
+   including the phone: a narrow column is exactly where an unhyphenated
+   justification falls apart, and exactly where a hyphenated one holds, because
+   the hyphen gives the line breaker somewhere to put the slack that is not
+   between two words. This is the setting a printed book uses at a far narrower
+   measure than any phone. */
 /* DIRECT children only. Card and grid-item paragraphs are nested, and they are
    UI copy in a ~300px column -- justifying those produced "fig-ure resolve" and
    "ca-nine representation" on /experiments/. Body copy is the only thing wide
@@ -265,13 +268,11 @@ main > ol > li {
     hyphens: auto;
 }
 
-@media (min-width: 640px) {
-    main > p:not(.no-justify),
-    main > ul > li:not(.no-justify),
-    main > ol > li:not(.no-justify) {
-        text-align: justify;
-        text-justify: inter-word;
-    }
+main > p:not(.no-justify),
+main > ul > li:not(.no-justify),
+main > ol > li:not(.no-justify) {
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 /* Short metadata lines, captions and anything monospace read as broken when

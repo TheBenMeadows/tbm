@@ -12,7 +12,7 @@
     "check:readme": "node scripts/sync-readme-mirrors.mjs --check",
     "check:figures": "node scripts/check-figures.mjs",
     "optimize:icons": "npx svgo@3 -f icons -o icons --config svgo.config.mjs",
-    "build:netlify": "npm run build && rm -rf dist && mkdir dist && cp index.html 404.html output.css email.js theme.js search.js search-index.json me.png me.webp og.png robots.txt sitemap.xml feed.xml rss.xml _headers _redirects dist/ && cp -R favicon fonts .well-known mirrors tech experiments infra essentialism search projects profiles dist/ && node scripts/version-css.mjs && node scripts/build-stamp.mjs && node scripts/build-manifest.mjs && node scripts/check-figures.mjs",
+    "build:netlify": "npm run build && rm -rf dist && mkdir dist && cp index.html 404.html output.css email.js theme.js search.js search-index.json me.png me.webp og.png robots.txt sitemap.xml feed.xml rss.xml _headers _redirects dist/ && cp -R favicon fonts .well-known mirrors tech experiments infra essentialism search projects profiles dist/ && node scripts/version-css.mjs && node scripts/build-stamp.mjs && node scripts/build-manifest.mjs && node scripts/build-torrent.mjs && node scripts/check-figures.mjs",
     "build:experiments": "node scripts/build-experiments-css.mjs"
   }
 }

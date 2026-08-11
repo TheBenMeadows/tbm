@@ -3,98 +3,263 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>404 - TheBenMeadows</title>
         <meta name="description" content="Page not found" />
-        <link rel="icon" href="favicon/favicon.ico" type="image/x-icon" />
+        <meta name="author" content="Ben Meadows" />
+        <meta name="color-scheme" content="dark light" />
+        <!-- A 404 is not a document; keeping it out of the index stops search
+             engines from listing dead URLs as though they were pages. -->
+        <meta name="robots" content="noindex" />
+
+        <title>404 &middot; TheBenMeadows</title>
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000" />
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+
+        <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+
+        <link rel="preload" href="/fonts/publicsans-v1.woff2" as="font" type="font/woff2" crossorigin />
+
+        <!-- This page carries its own stylesheet instead of linking /output.css:
+             a 404 is exactly what gets served when a path is missing, and a
+             missing stylesheet is one of the paths that can be missing. Every
+             value below is copied from src/input.css rather than invented, so
+             the two cannot drift in appearance without drifting in source.
+             Scripts are progressive enhancement: without them the page still
+             renders, reads and navigates, and the theme still follows the OS. -->
         <style>
             @font-face {
                 font-family: "Public Sans";
-                src: url("/fonts/publicsans-v1.woff2") format("woff2-variations");
+                src: url("/fonts/publicsans-v1.woff2") format("woff2");
                 font-weight: 400 700;
                 font-display: swap;
             }
+
+            /* The six color roles, resolved exactly as src/input.css resolves
+               them: dark is canonical, the system preference is the silent
+               default, html.light / html.dark (set by theme.js) force a mode. */
+            :root {
+                --bg: #000000;
+                --ink: #a3a3a3;
+                --ink-soft: #737373;
+                --title: #d4d4d4;
+                --rule: #27272a;
+                --accent: #ffffff;
+            }
+            html.light {
+                --bg: #ffffff;
+                --ink: #52525b;
+                --ink-soft: #71717a;
+                --title: #3f3f46;
+                --rule: #e4e4e7;
+                --accent: #000000;
+            }
+            @media (prefers-color-scheme: light) {
+                html:not(.dark) {
+                    --bg: #ffffff;
+                    --ink: #52525b;
+                    --ink-soft: #71717a;
+                    --title: #3f3f46;
+                    --rule: #e4e4e7;
+                    --accent: #000000;
+                }
+            }
+
             * {
                 box-sizing: border-box;
                 margin: 0;
                 padding: 0;
             }
             body {
-                background: #000;
-                color: #a3a3a3;
-                font-family: "Public Sans", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-                display: flex;
-                align-items: center;
-                justify-content: center;
+                background: var(--bg);
+                color: var(--ink);
+                font-family: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
                 min-height: 100vh;
-                text-align: center;
             }
-            .container {
-                padding: 2rem;
+
+            /* Running head: page label at the left margin, controls at the
+               right, the two ends tied by one hairline. */
+            .running-head {
+                display: flex;
+                align-items: baseline;
+                justify-content: space-between;
+                max-width: 768px;
+                margin: 0 auto;
+                padding: 1.3rem 1.5rem 0;
             }
-            .mark {
+            .running-head .rh-left,
+            .running-head .rh-right {
+                border-bottom: 1px solid var(--rule);
+                padding-bottom: 0.8rem;
                 font-size: 0.72rem;
                 letter-spacing: 0.22em;
                 text-transform: uppercase;
-                color: #737373;
+                color: var(--ink-soft);
+            }
+            .running-head .rh-left { flex: 1 1 auto; }
+            .running-head .rh-right { flex: 0 0 auto; padding-left: 1rem; text-align: right; }
+            .running-head a,
+            .running-head button {
+                font: inherit;
+                letter-spacing: inherit;
+                text-transform: inherit;
+                color: inherit;
                 text-decoration: none;
-                display: inline-block;
+                background: none;
                 border: 0;
                 padding: 0;
-                margin-bottom: 2rem;
+                cursor: pointer;
             }
-            .mark:hover {
-                border: 0;
+            .running-head a:hover,
+            .running-head button:hover { color: var(--accent); }
+
+            /* The control names the mode a tap switches TO, and the label lives
+               in CSS so it is correct before first paint and without scripts. */
+            #theme-toggle::before { content: "Light"; }
+            html.light #theme-toggle::before { content: "Dark"; }
+            @media (prefers-color-scheme: light) {
+                html:not(.dark) #theme-toggle::before { content: "Dark"; }
             }
-            .mark img {
-                display: block;
-                width: 64px;
-                height: 28px;
+            html.dark #theme-toggle::before { content: "Light"; }
+
+            main {
+                max-width: 36rem;
+                margin: 0 auto;
+                padding: 3rem 1.5rem 0;
+                line-height: 1.65;
             }
             h1 {
-                font-size: 6rem;
-                font-weight: 900;
-                color: #fff;
-                line-height: 1;
-                margin-bottom: 0.5rem;
+                color: var(--accent);
+                font-size: 1.875rem;
+                font-weight: 700;
+                line-height: 1.2;
+                letter-spacing: -0.025em;
+                margin-bottom: 0.7rem;
+                text-align: center;
             }
-            p {
-                font-size: 1.125rem;
-                margin-bottom: 2rem;
+            /* Body copy: one measure, justified at every width, same setting as
+               every other page. Justification needs hyphenation or it opens
+               rivers of white space, and <html lang="en"> is what lets the
+               browser hyphenate correctly. */
+            main p {
+                font-size: 1rem;
+                hyphens: auto;
+                hyphenate-limit-chars: 6 3 2;
+                -webkit-hyphenate-limit-before: 3;
+                -webkit-hyphenate-limit-after: 2;
+                text-align: justify;
+                text-justify: inter-word;
             }
-            a {
-                display: inline-block;
-                color: #a3a3a3;
+            .center-rule {
+                border: 0;
+                border-top: 1px solid var(--rule);
+                width: 34%;
+                margin: 1.9rem auto 2.6rem;
+            }
+
+            /* Entry rows: destination at the left in the title ink, what-it-is
+               at the right in the quiet register. Structure is drawn with
+               hairlines, never with filled boxes. */
+            .toc {
+                list-style: none;
+                width: 100%;
+                text-align: left;
+                border-top: 1px solid var(--rule);
+            }
+            .toc li { border-bottom: 1px solid var(--rule); }
+            .toc a {
+                display: flex;
+                align-items: baseline;
+                justify-content: space-between;
+                gap: 1rem;
+                color: var(--title);
                 text-decoration: none;
-                border: 1px solid #a3a3a3;
-                padding: 0.75rem 2rem;
-                font-size: 0.875rem;
-                font-weight: 600;
-                border-radius: 0.75rem;
-                transition: color 0.2s, border-color 0.2s;
+                font-size: 1.08rem;
+                font-weight: 500;
+                padding: 0.85rem 0.4rem;
+                transition: color 0.15s;
             }
-            a:hover {
-                color: #fff;
-                border-color: #fff;
+            .toc a:hover { color: var(--accent); }
+            .toc a:hover .who { color: var(--ink); }
+            .toc a:focus-visible { outline: 1px solid var(--ink); outline-offset: -1px; }
+            .toc .who {
+                color: var(--ink-soft);
+                font-size: 0.68rem;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                white-space: nowrap;
+                transition: color 0.15s;
             }
-            @media (prefers-color-scheme: light) {
-                body { background: #ffffff; color: #52525b; }
-                h1 { color: #000000; }
-                a { color: #52525b; border-color: #52525b; }
-                a:hover { color: #000000; border-color: #000000; }
+            @media (max-width: 540px) {
+                .toc a { flex-direction: column; align-items: flex-start; gap: 0.15rem; }
+                .toc .who { white-space: normal; }
             }
+
+            .site-footer {
+                text-align: center;
+                color: var(--ink-soft);
+                padding: 2.4rem 1.5rem 2.2rem;
+            }
+            .site-footer .footer-line {
+                font-size: 0.7rem;
+                letter-spacing: 0.14em;
+                text-transform: uppercase;
+                margin-top: 0.45rem;
+            }
+            .site-footer .footer-line:first-child { margin-top: 0; }
+            .site-footer a { color: inherit; text-decoration: none; }
+            .site-footer a:hover { color: var(--accent); }
         </style>
+        <script src="/theme.js"></script>
+        <script src="/search.js" defer></script>
     </head>
-    <body>
-        <div class="container">
-            <!-- Root-relative on purpose: an absolute apex URL would bounce visitors
-                 off the Netlify/pages.dev mirrors, which is exactly the failover the
-                 mirrors exist to provide. This page stays self-contained (its own CSS,
-                 no output.css) so it still renders when the stylesheet is the thing
-                 that failed to load. -->
-            <a class="mark" href="/" aria-label="TheBenMeadows home">Index</a>
+    <body id="top">
+        <!-- Root-relative on purpose: an absolute apex URL would bounce visitors
+             off the Netlify/pages.dev mirrors, which is exactly the failover the
+             mirrors exist to provide. -->
+        <header class="running-head">
+            <span class="rh-left"><a href="/">Index</a></span>
+            <nav class="rh-right">
+                <button id="search-open" type="button" aria-label="Search this site" title="Search (press / )">Search</button>
+                <span aria-hidden="true">&nbsp;&middot;&nbsp;</span>
+                <button id="theme-toggle" type="button"></button>
+            </nav>
+        </header>
+        <main>
             <h1>404</h1>
-            <p>Page not found</p>
-            <a href="/">Back to Home</a>
-        </div>
+            <p>
+                No page at this address. It may have moved, or it may never have
+                existed. The main sections are below; search finds anything else.
+            </p>
+            <hr class="center-rule" />
+
+            <ul class="toc">
+                <li><a href="/">Index<span class="who">home</span></a></li>
+                <li><a href="/projects/">Projects<span class="who">software &amp; sites</span></a></li>
+                <li><a href="/experiments/">Experiments<span class="who">web toys &amp; provocations</span></a></li>
+            </ul>
+        </main>
+        <footer class="site-footer">
+            <nav class="footer-line">
+                <a class="js-email" rel="nofollow" href="/">Email</a>
+                <span aria-hidden="true">&middot;</span>
+                <a href="https://x.com/thebenmeadows" target="_blank" rel="me noopener">X</a>
+                <span aria-hidden="true">&middot;</span>
+                <a href="https://primal.net/p/npub1wldqfuy0yge4fvxukdm43gze2ral9dnp5avlps5a6t8q0vyv2nds84nq29" target="_blank" rel="me noopener">Nostr</a>
+                <span aria-hidden="true">&middot;</span>
+                <a href="/profiles/">All profiles &rarr;</a>
+            </nav>
+            <nav class="footer-line">
+                <a href="https://github.com/TheBenMeadows/tbm" target="_blank" rel="noopener">Source</a>
+                <span aria-hidden="true">&middot;</span>
+                <a href="/mirrors/">Mirrors</a>
+                <span aria-hidden="true">&middot;</span>
+                <a href="/tech/">Tech&nbsp;Stack</a>
+                <span aria-hidden="true">&middot;</span>
+                <a href="/infra/">Infra</a>
+            </nav>
+        </footer>
+        <script src="/email.js"></script>
     </body>
 </html>

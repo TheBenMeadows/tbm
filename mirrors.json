@@ -59,6 +59,11 @@
     },
     {
       "kind": "serving",
+      "network": "bittorrent",
+      "address": "https://thebenmeadows.com/tbm.torrent"
+    },
+    {
+      "kind": "serving",
       "network": "gemini",
       "address": "gemini://gemini.thebenmeadows.com/"
     },
@@ -126,12 +131,20 @@
     {
       "kind": "archive",
       "network": "https",
+      "label": "Software Heritage",
       "address": "https://archive.softwareheritage.org/browse/origin/directory/?origin_url=https://github.com/TheBenMeadows/tbm"
     },
     {
       "kind": "archive",
       "network": "https",
+      "label": "Wayback Machine",
       "address": "https://web.archive.org/web/2/https://thebenmeadows.com/"
+    },
+    {
+      "kind": "archive",
+      "network": "https",
+      "label": "archive.today",
+      "address": "https://archive.ph/newest/https://thebenmeadows.com/"
     }
   ]
 }
