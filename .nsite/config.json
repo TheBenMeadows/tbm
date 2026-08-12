@@ -8,8 +8,11 @@
     "wss://relay.snort.social"
   ],
   "servers": [
+    "https://blossom.mdws.me",
     "https://blossom.primal.net",
-    "https://cdn.satellite.earth"
+    "https://cdn.satellite.earth",
+    "https://nostr.download",
+    "https://blossom.band"
   ],
   "publishRelayList": false,
   "publishServerList": true,
