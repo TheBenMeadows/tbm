@@ -2,10 +2,10 @@
   "title": "TheBenMeadows",
   "description": "Links, projects and profiles - a deliberately durable personal site, mirrored across Tor, I2P, IPFS, Arweave, Nostr, Gemini and gopher.",
   "relays": [
+    "wss://relay2.mdws.me",
     "wss://relay.mdws.me",
-    "wss://nos.lol",
-    "wss://relay.damus.io",
-    "wss://relay.primal.net"
+    "wss://relay.primal.net",
+    "wss://relay.snort.social"
   ],
   "servers": [
     "https://blossom.primal.net",
