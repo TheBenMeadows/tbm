@@ -59,8 +59,20 @@
     },
     {
       "kind": "serving",
+      "network": "https",
+      "label": "4EVERLAND",
+      "address": "https://thebenmeadows-cbvr.ipfs.4everland.app/"
+    },
+    {
+      "kind": "serving",
       "network": "bittorrent",
       "address": "https://thebenmeadows.com/tbm.torrent"
+    },
+    {
+      "kind": "serving",
+      "network": "zim",
+      "label": "ZIM (offline)",
+      "address": "https://github.com/TheBenMeadows/tbm/releases/latest"
     },
     {
       "kind": "serving",

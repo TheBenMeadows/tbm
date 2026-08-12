@@ -72,7 +72,11 @@
             <hr class="center-rule" style="margin-top: 2.2rem; margin-bottom: 0" />
 
             <h2 class="section-label" style="margin-top: 2.6rem">Live site</h2>
-            <p class="mt-2 text-sm text-neutral-500">Independent hosts serving the same site.</p>
+            <p class="mt-2 text-sm text-neutral-500">
+                Independent hosts serving the same site. The first three follow
+                every push; the 4EVERLAND copy serves from IPFS and moves only
+                at each release, like the permanent mirrors further down.
+            </p>
             <div class="mt-4 grid gap-3 sm:grid-cols-2">
                 <a class="block hairline-card p-5 transition-opacity hover:opacity-80" href="https://thebenmeadows.com/" rel="noopener">
                     <span class="block text-white font-medium">Cloudflare Pages <span class="text-neutral-500 font-normal">&middot; primary</span></span>
@@ -85,6 +89,10 @@
                 <a class="block hairline-card p-5 transition-opacity hover:opacity-80" href="https://tbm-linktree.pages.dev/" target="_blank" rel="noopener">
                     <span class="block text-white font-medium">Pages direct URL</span>
                     <span class="block text-neutral-500 text-sm break-words">tbm-linktree.pages.dev</span>
+                </a>
+                <a class="block hairline-card p-5 transition-opacity hover:opacity-80" href="https://thebenmeadows-cbvr.ipfs.4everland.app/" target="_blank" rel="noopener">
+                    <span class="block text-white font-medium">4EVERLAND <span class="text-neutral-500 font-normal">&middot; releases only</span></span>
+                    <span class="block text-neutral-500 text-sm break-words">thebenmeadows-cbvr.ipfs.4everland.app</span>
                 </a>
             </div>
 
@@ -252,6 +260,23 @@
                 torrent with its own magnet link, held inside the file above,
                 because the content it names has changed.
             </p>
+
+            <h2 class="section-label" style="margin-top: 2.6rem">Offline</h2>
+            <p class="mt-2 text-sm text-neutral-500">
+                Every mirror above answers "can I still reach it". This one
+                answers "can I hold it": the whole site as a single
+                <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://en.wikipedia.org/wiki/ZIM_(file_format)" target="_blank" rel="noopener">ZIM</a>
+                file, attached to each release. It opens in
+                <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://kiwix.org/" target="_blank" rel="noopener">Kiwix</a>
+                on a phone or from a USB stick, with no network at all, and the
+                format needs no cooperation from this site to stay readable.
+            </p>
+            <div class="mt-4 grid gap-3 sm:grid-cols-2">
+                <a class="block hairline-card p-5 transition-opacity hover:opacity-80" href="https://github.com/TheBenMeadows/tbm/releases/latest" target="_blank" rel="noopener">
+                    <span class="block text-white font-medium">ZIM archive <span class="text-neutral-500 font-normal">&middot; current release</span></span>
+                    <span class="block text-neutral-500 text-sm break-words">github.com/TheBenMeadows/tbm/releases</span>
+                </a>
+            </div>
 
             <h2 class="section-label" style="margin-top: 2.6rem">Feeds</h2>
             <p class="mt-2 text-sm text-neutral-500">

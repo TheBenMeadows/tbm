@@ -19,7 +19,11 @@ DIST="${1:-dist}"
 MANIFEST="$DIST/manifest.json"
 OTS_BIN="${OTS_BIN:-$HOME/.config/openagents/ots-venv/bin/ots}"
 COMMITMENTS="commitments"
-RELAYS="${NOSTR_RELAYS:-wss://relay.mdws.me wss://nos.lol wss://relay.damus.io wss://relay.primal.net}"
+# Keep this list in step with .nsite/config.json and .well-known/nostr.json.
+# It drifted once: the 2026.08.12 release signature still went to nos.lol and
+# damus.io after both had been dropped everywhere else, because this default
+# was a fourth, forgotten copy of the relay list.
+RELAYS="${NOSTR_RELAYS:-wss://relay2.mdws.me wss://relay.mdws.me wss://relay.primal.net wss://relay.snort.social}"
 
 if [ ! -f "$MANIFEST" ]; then
     echo "sign-release: $MANIFEST not found. Run the build first." >&2

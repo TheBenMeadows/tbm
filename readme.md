@@ -116,7 +116,9 @@ the model borrowed from [Privacy Guides](https://github.com/privacyguides/privac
   name records all point at, and that a **DNSLink** record on the domain itself
   also carries), a permanent **Arweave** copy behind `ar://thebenmeadows`, a
   **Nostr nsite**, a **BitTorrent** download naming this origin as a webseed,
-  and **Gemini**, **gopher**, **SSH**, **telnet** and **FTP** mirrors.
+  a **4EVERLAND** host serving each release from IPFS, and **Gemini**,
+  **gopher**, **SSH**, **telnet** and **FTP** mirrors. Each release also
+  attaches the whole site as one **ZIM** file, which opens offline in Kiwix.
   Different networks fail differently.
 - **Currency.** Every push changes the site's IPFS hash. One machine builds,
   pins, publishes the IPNS name, and writes the new hash to a file it serves
@@ -169,7 +171,9 @@ manifest cannot disagree.
 | IPFS | `ipns://k51qzi5uqu5dkx54ehvkna983zjtfn04eu4sklgx2ag1tozh9js5p9cn5jwqmy` |
 | Arweave | `ar://thebenmeadows` |
 | Nostr (nsite) | `npub1wldqfuy0yge4fvxukdm43gze2ral9dnp5avlps5a6t8q0vyv2nds84nq29` |
+| 4EVERLAND | `https://thebenmeadows-cbvr.ipfs.4everland.app/` |
 | BitTorrent | `https://thebenmeadows.com/tbm.torrent` |
+| ZIM (offline) | `https://github.com/TheBenMeadows/tbm/releases/latest` |
 | Gemini | `gemini://gemini.thebenmeadows.com/` |
 | Gopher | `gopher://gopher.thebenmeadows.com/` |
 | SSH | `ssh://text@text.thebenmeadows.com:2222` |
