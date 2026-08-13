@@ -192,6 +192,20 @@
                 event on Nostr relays under the same key this site publishes at
                 /.well-known/nostr.json. No conventional host involved.
             </p>
+            <p class="mt-3 text-sm text-neutral-500">
+                Part of that machinery is mine. The manifest rides four relays,
+                two of them run under this roof:
+                <span class="text-neutral-400">relay.mdws.me</span> on
+                Cloudflare Workers and
+                <span class="text-neutral-400">relay2.mdws.me</span>, a
+                <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://github.com/hoytech/strfry" target="_blank" rel="noopener">strfry</a>
+                on my own hardware that only I can write to. The files sit on
+                five Blossom servers, and one of them,
+                <span class="text-neutral-400">blossom.mdws.me</span>, is also
+                mine: uploads locked to my key, blobs never pruned. If every
+                third-party relay and blob host disappeared, the nsite would
+                still resolve from machines I control.
+            </p>
             <div class="mt-4 grid gap-3">
                 <a class="block hairline-card p-5 transition-opacity hover:opacity-80" href="https://npub1wldqfuy0yge4fvxukdm43gze2ral9dnp5avlps5a6t8q0vyv2nds84nq29.nsite.run/" target="_blank" rel="noopener">
                     <span class="block text-white font-medium">nsite</span>
