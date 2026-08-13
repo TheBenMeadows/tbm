@@ -19,6 +19,13 @@ module.exports = {
     // search.js builds the overlay at runtime; without this its classes get purged.
     "./search.js",
   ],
+  // Tailwind's extractor treats any bare word in a scanned file as a possible
+  // class name, so ordinary English in 404.html's inline <style> and a .blur()
+  // call in search.js were generating four utilities that no class attribute in
+  // the site ever uses. Blocking them by name is 640 bytes off the stylesheet.
+  // These are exact names: .transition-colors and .outline-none are different
+  // strings and still build.
+  blocklist: ["transition", "outline", "blur", "text-justify"],
   theme: {
     extend: {
       fontFamily: {
