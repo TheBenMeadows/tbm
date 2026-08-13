@@ -93,9 +93,12 @@ if [ -z "${NOSTR_SECRET_KEY:-}" ]; then
     exit 1
 fi
 
+# nak reads the key from NOSTR_SECRET_KEY itself (`--sec value ... [$NOSTR_SECRET_KEY]`
+# in its own help), so passing --sec here only put the release key into argv --
+# visible to every same-uid process -- in a script whose header says never to do
+# that. The check above already guarantees the variable is set.
 # shellcheck disable=SC2086
 EVENT=$(nak event \
-    --sec "$NOSTR_SECRET_KEY" \
     -c "$CONTENT" \
     -k 30078 \
     -d "thebenmeadows.com" \

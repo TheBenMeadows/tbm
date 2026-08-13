@@ -9,4 +9,33 @@
 # a browser but several clients treat a 3xx on a webseed as a failed range
 # request and drop the seed. Nothing else links these paths; robots.txt keeps
 # them out of the index so they cannot read as duplicate content.
+#
+# The splat alone is not enough. Cloudflare Pages runs its own clean-URL
+# canonicalisation AFTER a 200 rewrite resolves, so /tbm/index.html rewrites to
+# /index.html and Pages then 308s that to / -- the exact 3xx-on-a-webseed this
+# rule exists to avoid. Verified 2026-08-13: all 17 HTML paths in the torrent
+# returned 308, every non-HTML path returned 200/206. Netlify serves the same
+# paths 200, so this is Pages-only.
+#
+# These rules name each HTML file's ALREADY-CANONICAL target, so there is
+# nothing left for Pages to normalise. They must stay above the splat, which
+# remains the catch-all for the other 763 files. Regenerate if a page is added:
+# the torrent's file list is the source of truth.
+/tbm/index.html  /  200
+/tbm/404.html  /404  200
+/tbm/essentialism/index.html  /essentialism/  200
+/tbm/experiments/index.html  /experiments/  200
+/tbm/experiments/dls/index.html  /experiments/dls/  200
+/tbm/experiments/etherhoo/index.html  /experiments/etherhoo/  200
+/tbm/experiments/pendulum/index.html  /experiments/pendulum/  200
+/tbm/experiments/poap-vault/index.html  /experiments/poap-vault/  200
+/tbm/experiments/porcine/index.html  /experiments/porcine/  200
+/tbm/infra/index.html  /infra/  200
+/tbm/mirrors/index.html  /mirrors/  200
+/tbm/profiles/index.html  /profiles/  200
+/tbm/projects/index.html  /projects/  200
+/tbm/projects/poap-saver/index.html  /projects/poap-saver/  200
+/tbm/projects/poap-saver/gallery-template.html  /projects/poap-saver/gallery-template  200
+/tbm/search/index.html  /search/  200
+/tbm/tech/index.html  /tech/  200
 /tbm/*  /:splat  200
