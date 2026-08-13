@@ -39,6 +39,11 @@
     },
     {
       "kind": "serving",
+      "network": "https",
+      "address": "https://thebenmeadows.srht.site/"
+    },
+    {
+      "kind": "serving",
       "network": "tor",
       "address": "http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/"
     },
