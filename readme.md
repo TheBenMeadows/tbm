@@ -24,7 +24,7 @@ supporting pages — [`/mirrors/`](https://thebenmeadows.com/mirrors/),
 `/essentialism/`. The build compiles the CSS and the search index; there is no
 framework or client-side rendering.
 
-Search is dependency-free on purpose. The corpus is about 29 KB across 14 pages
+Search is dependency-free on purpose. The corpus is about 36 KB across 14 pages
 and the index built from it about 37 KB — small enough to match in the browser
 without a search library. The usual pick, Pagefind, runs on WebAssembly, which
 under this site's `script-src 'self'` CSP would mean adding `'wasm-unsafe-eval'`.
@@ -120,6 +120,15 @@ the model borrowed from [Privacy Guides](https://github.com/privacyguides/privac
   **gopher**, **SSH**, **telnet** and **FTP** mirrors. Each release also
   attaches the whole site as one **ZIM** file, which opens offline in Kiwix.
   Different networks fail differently.
+- **Resolution.** DNS itself is redundant: **Cloudflare** and **deSEC** are
+  both authoritative for the domain, under multi-signer DNSSEC
+  ([RFC 8901](https://www.rfc-editor.org/rfc/rfc8901)). Each provider signs
+  the zone with its own keys and serves both public keys, and the registry
+  anchors both chains, so answers validate whichever provider a resolver
+  asks. The zone is declared once (OpenTofu) and applied to each provider;
+  the hot `_dnslink` record is written to both on every push, and a timer
+  alerts when the providers drift apart, including when either rotates a
+  signing key.
 - **Currency.** Every push changes the site's IPFS hash. One machine builds,
   pins, publishes the IPNS name, and writes the new hash to a file it serves
   and to the DNSLink record; the other nodes poll that and pin what it says.
