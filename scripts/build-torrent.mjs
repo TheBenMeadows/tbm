@@ -95,6 +95,40 @@ if (files.length === 0) {
     process.exit(1);
 }
 
+/* ------------------------------------------------- webseed rule assertion */
+// Every HTML file in this torrent needs its own explicit 200 rule in
+// _redirects. The catch-all splat is not enough: Cloudflare Pages runs its
+// clean-URL canonicalisation AFTER a rewrite resolves, so /tbm/foo/index.html
+// rewritten to /foo/index.html gets 308'd to /foo/ -- and a 3xx on a webseed
+// makes clients treat the range request as failed and drop the seed. All 17
+// HTML paths served 308 for eleven days before an audit caught it, because
+// nothing tied "a page exists" to "the webseed can serve it".
+//
+// Checked here, offline, because this script is the one place that knows the
+// torrent's exact file list, and the build is deliberately network-free. The
+// live-probe version of this check would belong in tbm-mirror-health.
+{
+    const redirects = readFileSync(join(DIST, "_redirects"), "utf8");
+    const ruled = new Set(
+        redirects
+            .split("\n")
+            .map((line) => line.trim())
+            .filter((line) => line.startsWith("/tbm/") && line.split(/\s+/)[2] === "200")
+            .map((line) => line.split(/\s+/)[0]),
+    );
+    const missing = files.filter(
+        (f) => f.endsWith(".html") && !ruled.has("/tbm/" + f),
+    );
+    if (missing.length > 0) {
+        console.error(
+            "build-torrent: HTML files with no explicit /tbm/ webseed rule in _redirects:",
+        );
+        for (const f of missing) console.error(`  /tbm/${f}  /${f.replace(/index\.html$/, "")}  200`);
+        console.error("add the lines above (before the /tbm/* splat) or the webseed 308s them");
+        process.exit(1);
+    }
+}
+
 /* ----------------------------------------------------------------- pieces */
 // Pieces span the concatenation of every file in order, so a piece boundary
 // usually falls inside a file. Carry the remainder across rather than padding.
