@@ -73,6 +73,10 @@ it independently, run a
   `npm run build` and publishes the folder.
 - **Netlify:** `netlify.toml` runs the same build (`npm run build:netlify`,
   which assembles a clean `dist/`), for use as a second host.
+- **Codeberg Pages** and **sourcehut pages**: a machine of mine rebuilds from
+  `main` hourly and pushes the built output — to a `pages` repo on Codeberg,
+  and as a tarball to pages.sr.ht. Neither host runs the build; both serve
+  bytes that hash against the same manifest as everything else.
 
 ## Releasing
 
@@ -161,8 +165,9 @@ the model borrowed from [Privacy Guides](https://github.com/privacyguides/privac
 
 [`/mirrors/`](https://thebenmeadows.com/mirrors/) is the canonical index, but it
 is served *by* the site: if the domain is unreachable, so is the page listing the
-alternatives to the domain. This README is mirrored to seven forges and Software
-Heritage, so it still resolves when nothing else does. The tables below are
+alternatives to the domain. This README is mirrored to nine git hosts — five
+conventional forges, Radicle, Tangled, and two Nostr GRASP servers — plus
+Software Heritage, so it still resolves when nothing else does. The tables below are
 generated from `mirrors.json` by `scripts/sync-readme-mirrors.mjs` — the same
 file the build signs into `manifest.json`, so the README, the site, and the
 manifest cannot disagree.

@@ -260,7 +260,7 @@
 
             <h2 class="section-label" style="margin-top: 2.6rem">BitTorrent</h2>
             <p class="mt-2 text-sm text-neutral-500">
-                The whole site as a torrent, rebuilt every release. It is the one
+                The whole site as a torrent, rebuilt on every push. It is the one
                 copy where readers become mirrors: every client left seeding is
                 capacity nobody had to provision. It carries no tracker, so peers
                 find each other over the DHT and no third party sits in the middle
@@ -411,13 +411,33 @@
                 handed is not always the copy that was stored.
             </p>
             <p class="mt-3 text-sm text-neutral-500">
-                The manifest's own hash is signed with my Nostr key and timestamped into
-                the Bitcoin blockchain with
+                Each release's manifest hash is signed with my Nostr key and timestamped
+                into the Bitcoin blockchain with
                 <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://opentimestamps.org/" target="_blank" rel="noopener">OpenTimestamps</a>,
                 so the signature says who published it and the anchor says roughly when.
-                Proofs live in
+                The signature covers the newest release, and this site deploys ahead of
+                releases by design, so the live manifest usually hashes differently than
+                the signed one; the release-pinned mirrors (Arweave, the nsite,
+                4EVERLAND) are the copies it matches exactly. Proofs are served at
+                <code class="text-neutral-400">commitments/&lt;hash&gt;.ots</code> here
+                and on every mirror, one per release, named for the hash they attest,
+                and browsable in
                 <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://github.com/TheBenMeadows/tbm/tree/main/commitments" target="_blank" rel="noopener">commitments/</a>
-                in the repository, one per release, named for the hash they attest.
+                in the repository.
+            </p>
+            <p class="mt-3 text-sm text-neutral-500">
+                To fetch the signature itself, ask any of the relays for my
+                latest release event with
+                <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://github.com/fiatjaf/nak" target="_blank" rel="noopener">nak</a>:
+            </p>
+            <pre class="mt-2 overflow-x-auto rounded-lg bg-zinc-900 p-4 text-xs text-neutral-400"><code>nak req -k 30078 -a 77da04f08f223354b0dcb37758a05950fbf2b661a759f0c29dd2ce07b08c54db \
+    -d thebenmeadows.com wss://relay2.mdws.me</code></pre>
+            <p class="mt-2 text-sm text-neutral-500">
+                The event's content names the manifest hash, the commit, the Arweave
+                transaction and the proof path; kind 30078 is replaceable, so relays
+                keep only the newest release's signature. Older releases keep their
+                Bitcoin proofs in <code class="text-neutral-400">commitments/</code>,
+                but their Nostr signatures are replaced with each new release.
             </p>
             <p class="mt-3 text-sm text-neutral-500">
                 The manifest also carries this mirror list itself, as a
