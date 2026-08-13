@@ -79,11 +79,11 @@ it independently, run a
 Deploying and releasing are different things here, and the mirror list below only
 makes sense once that split is clear.
 
-Most surfaces are **continuous**: Cloudflare Pages, Netlify, the onion, and the
-eepsite rebuild themselves from `main`, so a merged PR is live within a minute
-and nothing else has to happen. The rest are **release-pinned**: the Arweave
-copy, the IPNS name, and the Nostr nsite hold one specific build and only move
-when a release is cut. That is deliberate — those surfaces are permanent,
+Most surfaces are **continuous**: Cloudflare Pages, Netlify, the onion, the
+eepsite, and the IPFS copy the IPNS name points at all rebuild themselves from
+`main`, so a merged PR is live within a minute and nothing else has to happen.
+The rest are **release-pinned**: the Arweave copy and the Nostr nsite hold one
+specific build and only move when a release is cut. That is deliberate — those surfaces are permanent,
 paid for, or signed, and none of those are things to do automatically on every
 merge.
 
