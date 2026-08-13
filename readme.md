@@ -109,9 +109,9 @@ and compare its hashes against the bytes that surface serves;
 Availability is treated as two separate concerns, each handled independently —
 the model borrowed from [Privacy Guides](https://github.com/privacyguides/privacyguides.org):
 
-- **Serving (reachability).** The same static output is published to three
-  independent web hosts — **Cloudflare Pages** (primary), **Netlify**, and
-  **Codeberg Pages** — and
+- **Serving (reachability).** The same static output is published to four
+  independent web hosts — **Cloudflare Pages** (primary), **Netlify**,
+  **Codeberg Pages**, and **sourcehut pages** — and
   beyond the web: a **Tor onion** and an **I2P eepsite** on self-run hardware,
   **IPFS** from the site's own nodes (an IPNS name that ENS, Tezos, and Solana
   name records all point at, and that a **DNSLink** record on the domain itself
@@ -177,6 +177,7 @@ manifest cannot disagree.
 | Web | `https://thebenmeadows.netlify.app/` |
 | Web | `https://tbm-linktree.pages.dev/` |
 | Web | `https://thebenmeadows.codeberg.page/` |
+| Web | `https://thebenmeadows.srht.site/` |
 | Tor | `http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/` |
 | I2P | `http://d24ftl3svuczr2neg7dhlys7hgj4oinz3u3d5rwd2t4rbkbwt4wa.b32.i2p/` |
 | IPFS | `ipns://k51qzi5uqu5dkx54ehvkna983zjtfn04eu4sklgx2ag1tozh9js5p9cn5jwqmy` |
