@@ -113,7 +113,7 @@
 
             <h2 class="section-label" style="margin-top: 2.6rem">Privacy &amp; security</h2>
             <ul class="mt-4 space-y-3 list-none">
-                <li>A strict <span class="text-white font-medium">Content-Security-Policy</span> (<code class="text-neutral-300">default-src 'self'</code>) - on all but three pages the browser only ever talks to this origin. The two POAP pages and the Tezos gallery each name the outside endpoints they need, and no other page inherits them.</li>
+                <li>A <span class="text-white font-medium">Content-Security-Policy</span> built on <code class="text-neutral-300">default-src 'self'</code>, with <code class="text-neutral-300">script-src 'self'</code> - no third-party code runs on this site, on any page. Three pages do read outside data: the two POAP pages and the Tezos gallery pull images, video and chain data from named endpoints, and the policy lists every one of them by name rather than allowing a wildcard.</li>
                 <li>Security headers on every response: MIME-sniffing off, framing denied, a strict referrer policy, and camera / microphone / geolocation disabled.</li>
                 <li>No analytics, no cookies, no third-party embeds, no external fonts or CDNs. Nothing to consent to because nothing is collected.</li>
                 <li>A <code class="text-neutral-300">.well-known/security.txt</code> (<a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://www.rfc-editor.org/rfc/rfc9116" target="_blank" rel="noopener">RFC 9116</a>) publishes a contact for reporting vulnerabilities.</li>

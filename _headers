@@ -1,46 +1,9 @@
-# The site-wide policy is self-only. Three pages need outside origins, and they
-# declare them below rather than every page carrying the union: the homepage had
-# no business holding permission to reach Gnosis RPC endpoints. Audited
-# 2026-08-13 -- media.bootloader.art and api.tzkt.io are used only by
-# /essentialism/, and the POAP endpoints only by the two POAP pages. Most of the
-# other https:// strings in those files are link hrefs in baked-in data, not
-# fetch targets, so they need no policy at all.
-#
-# Browsers enforce EVERY Content-Security-Policy header they receive and take
-# the intersection, so if Cloudflare Pages appended these rules to the /* rule
-# instead of overriding it, the scoped pages would be governed by the strict
-# policy and break. Verified on a preview deployment before merge: exactly one
-# CSP header per response, carrying the scoped value.
 /*
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; frame-ancestors 'none'; base-uri 'self'; object-src 'none'
-
-# /essentialism/ pulls Tezos token metadata from tzkt and thumbnails from the
-# bootloader.art media host (essentialism/play.js).
-/essentialism
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://media.bootloader.art; connect-src 'self' https://api.tzkt.io; frame-ancestors 'none'; base-uri 'self'; object-src 'none'
-
-/essentialism/*
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://media.bootloader.art; connect-src 'self' https://api.tzkt.io; frame-ancestors 'none'; base-uri 'self'; object-src 'none'
-
-# The POAP vault reads the POAP API and serves images and video through the
-# mirror Worker and public IPFS gateways.
-/experiments/poap-vault
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://poap-mirror.bemeadows.workers.dev https://assets.poap.xyz https://ipfs.io https://dweb.link https://*.ipfs.dweb.link; media-src 'self' https://poap-mirror.bemeadows.workers.dev; connect-src 'self' https://api.poap.tech https://assets.poap.xyz https://poap-mirror.bemeadows.workers.dev https://ipfs.io https://dweb.link https://*.ipfs.dweb.link; frame-ancestors 'none'; base-uri 'self'; object-src 'none'
-
-/experiments/poap-vault/*
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://poap-mirror.bemeadows.workers.dev https://assets.poap.xyz https://ipfs.io https://dweb.link https://*.ipfs.dweb.link; media-src 'self' https://poap-mirror.bemeadows.workers.dev; connect-src 'self' https://api.poap.tech https://assets.poap.xyz https://poap-mirror.bemeadows.workers.dev https://ipfs.io https://dweb.link https://*.ipfs.dweb.link; frame-ancestors 'none'; base-uri 'self'; object-src 'none'
-
-# The POAP saver additionally reads token ownership straight from Gnosis and
-# Ethereum RPC endpoints, and builds its previews as blob: URLs.
-/projects/poap-saver
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://poap-mirror.bemeadows.workers.dev https://ipfs.io https://dweb.link https://*.ipfs.dweb.link; connect-src 'self' https://poap-mirror.bemeadows.workers.dev https://ipfs.io https://dweb.link https://*.ipfs.dweb.link https://rpc.gnosischain.com https://gnosis-rpc.publicnode.com https://gnosis.drpc.org https://ethereum-rpc.publicnode.com https://eth.drpc.org; frame-ancestors 'none'; base-uri 'self'; object-src 'none'
-
-/projects/poap-saver/*
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://poap-mirror.bemeadows.workers.dev https://ipfs.io https://dweb.link https://*.ipfs.dweb.link; connect-src 'self' https://poap-mirror.bemeadows.workers.dev https://ipfs.io https://dweb.link https://*.ipfs.dweb.link https://rpc.gnosischain.com https://gnosis-rpc.publicnode.com https://gnosis.drpc.org https://ethereum-rpc.publicnode.com https://eth.drpc.org; frame-ancestors 'none'; base-uri 'self'; object-src 'none'
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://media.bootloader.art https://poap-mirror.bemeadows.workers.dev https://ipfs.io https://dweb.link https://*.ipfs.dweb.link; media-src 'self' https://poap-mirror.bemeadows.workers.dev; connect-src 'self' https://api.tzkt.io https://api.poap.tech https://assets.poap.xyz https://poap-mirror.bemeadows.workers.dev https://ipfs.io https://dweb.link https://*.ipfs.dweb.link https://rpc.gnosischain.com https://gnosis-rpc.publicnode.com https://gnosis.drpc.org https://ethereum-rpc.publicnode.com https://eth.drpc.org; frame-ancestors 'none'; base-uri 'self'; object-src 'none'
 
 /icons/*
   Cache-Control: public, max-age=604800
