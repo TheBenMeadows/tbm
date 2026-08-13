@@ -5,14 +5,8 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://media.bootloader.art https://poap-mirror.bemeadows.workers.dev https://ipfs.io https://dweb.link https://*.ipfs.dweb.link; media-src 'self' https://poap-mirror.bemeadows.workers.dev; connect-src 'self' https://api.tzkt.io https://api.poap.tech https://assets.poap.xyz https://poap-mirror.bemeadows.workers.dev https://ipfs.io https://dweb.link https://*.ipfs.dweb.link https://rpc.gnosischain.com https://gnosis-rpc.publicnode.com https://gnosis.drpc.org https://ethereum-rpc.publicnode.com https://eth.drpc.org; frame-ancestors 'none'; base-uri 'self'; object-src 'none'
 
-/icons/*
-  Cache-Control: public, max-age=604800
-
 /fonts/*
   Cache-Control: public, max-age=31536000, immutable
-
-/btm-logo.png
-  Cache-Control: public, max-age=604800
 
 /og.png
   Cache-Control: public, max-age=604800
@@ -22,6 +16,24 @@
 
 /me.png
   Cache-Control: public, max-age=86400
+
+# me.webp is the file browsers actually fetch; me.png is the <picture> fallback
+# almost nothing takes. Only the fallback had a caching rule, so the avatar that
+# ships was revalidated on every navigation while the one that does not was
+# cached for a day.
+/me.webp
+  Cache-Control: public, max-age=86400
+
+# Unversioned, so cached but not immutable -- same treatment search-index.json
+# already gets. Without a rule these revalidate on every page load.
+/theme.js
+  Cache-Control: public, max-age=3600
+
+/search.js
+  Cache-Control: public, max-age=3600
+
+/email.js
+  Cache-Control: public, max-age=3600
 
 # The stylesheet's dist filename carries a content hash (scripts/version-css.mjs),
 # so it can be cached like the font: forever, immutable. A new build names a new
@@ -53,65 +65,63 @@
   Access-Control-Allow-Origin: *
   Content-Type: application/jrd+json
 
-# no-transform stops Cloudflare's edge rewriting the HTML. On this zone the
-# JavaScript Detections beacon kept injecting into every page even with Bot
-# fight mode off -- a state the Free plan exposes no control for -- which made
-# the primary site fail its own manifest.json verification while every mirror
-# passed. Cloudflare documents that it does not inject the script when the
-# response carries Cache-Control: no-transform. The rest of the directive
-# restates what Cloudflare Pages already serves for HTML, so only no-transform
-# is new. Trade-off: the edge may also skip compressing these pages, which
-# costs a few KB each; correctness of the published bytes wins.
+# These pages carried Cache-Control: no-transform until 2026-08-13. It was
+# added because Cloudflare's JavaScript Detections beacon kept injecting into
+# every page even with Bot Fight Mode off -- a state the Free plan exposes no
+# control for -- which made the primary site fail its own manifest.json
+# verification while every mirror passed.
+#
+# The cost turned out to be much larger than the "few KB each" originally
+# assumed: no-transform also forbids the edge from compressing, so all twelve
+# pages shipped uncompressed. Measured across nine live pages, the correlation
+# was exact -- the only two pages without the directive were the only two
+# Cloudflare compressed. Removing it saves roughly 138 KB site-wide and 6.8 KB
+# on the home page alone, about 14% of a cold visit.
+#
+# Safe to remove because the premise no longer reproduces: a page Cloudflare
+# was free to transform came back byte-identical to the local build apart from
+# the build stamp, with no beacon anywhere in it. And if injection ever
+# returns, this site detects it by construction -- the primary would fail
+# manifest verification while the mirrors passed, which is exactly how it was
+# caught the first time.
 # Onion-Location tells Tor Browser that an onion service carries the same page,
 # so it can offer the .onion instead. Tor requires the advertising page to be
 # HTTPS, which Cloudflare Pages and Netlify both are. Paths are listed one by
 # one so each page points at its own onion equivalent rather than the homepage.
 /
-  Cache-Control: public, max-age=0, must-revalidate, no-transform
-  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/
+  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/
 
 /mirrors/
-  Cache-Control: public, max-age=0, must-revalidate, no-transform
-  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/mirrors/
+  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/mirrors/
 
 /tech/
-  Cache-Control: public, max-age=0, must-revalidate, no-transform
-  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/tech/
+  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/tech/
 
 /experiments/
-  Cache-Control: public, max-age=0, must-revalidate, no-transform
-  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/experiments/
+  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/experiments/
 
 /infra/
-  Cache-Control: public, max-age=0, must-revalidate, no-transform
-  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/infra/
+  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/infra/
 
 /essentialism/
-  Cache-Control: public, max-age=0, must-revalidate, no-transform
-  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/essentialism/
+  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/essentialism/
 
 /experiments/pendulum/
-  Cache-Control: public, max-age=0, must-revalidate, no-transform
-  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/experiments/pendulum/
+  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/experiments/pendulum/
 
 /experiments/porcine/
-  Cache-Control: public, max-age=0, must-revalidate, no-transform
-  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/experiments/porcine/
+  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/experiments/porcine/
 
 /experiments/etherhoo/
-  Cache-Control: public, max-age=0, must-revalidate, no-transform
-  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/experiments/etherhoo/
+  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/experiments/etherhoo/
 
 /experiments/dls/
-  Cache-Control: public, max-age=0, must-revalidate, no-transform
-  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/experiments/dls/
+  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/experiments/dls/
 
 /search/
-  Cache-Control: public, max-age=0, must-revalidate, no-transform
-
+  Cache-Control: public, max-age=0, must-revalidate
 /404.html
-  Cache-Control: public, max-age=0, must-revalidate, no-transform
-
+  Cache-Control: public, max-age=0, must-revalidate
 /experiments/porcine/fonts/*
   Cache-Control: public, max-age=31536000, immutable
 

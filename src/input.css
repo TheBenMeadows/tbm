@@ -26,24 +26,6 @@
     }
 }
 
-/* Site header. Sticky and OPAQUE on purpose: the old control was position:fixed,
-   which left it outside the flow so page content scrolled underneath it — on every
-   viewport below ~960px that meant body copy (and, on the home page, a tappable
-   link card) sat directly under the wordmark. A header that occupies real space and
-   paints its own background can't be scrolled under. */
-.site-chrome {
-    background-color: #000000;
-    border-bottom: 1px solid #18181b;
-}
-
-/* Theme button shows exactly one icon — whichever state the cycle is on. */
-.theme-ico {
-    display: none;
-}
-.theme-ico.is-active {
-    display: block;
-}
-
 /* Long contract addresses / URLs in prose must not push the page sideways. */
 main {
     overflow-wrap: anywhere;
@@ -62,9 +44,7 @@ main {
     html:not(.dark) .text-neutral-300 { color: #3f3f46; }
     html:not(.dark) .text-white { color: #000000; }
     html:not(.dark) .hover\:text-white:hover { color: #000000; }
-    html:not(.dark) .site-chrome { background-color: #ffffff; border-bottom-color: #e4e4e7; }
 }
-html.light .site-chrome { background-color: #ffffff; border-bottom-color: #e4e4e7; }
 html.light body.bg-black { background-color: #ffffff; }
 html.light .bg-zinc-800 { background-color: #f4f4f5; }
 html.light .text-neutral-400 { color: #52525b; }
