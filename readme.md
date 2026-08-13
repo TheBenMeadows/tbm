@@ -48,8 +48,9 @@ the folder with any static server, after building.
 
 [512kb.club](https://512kb.club/) measures one URL — the home page — **uncompressed**,
 and its green team requires that page to stay under 100 KB. The site is on the green
-team, [added by PR #17](https://codeberg.org/btxx/512kb-club/pulls/17). The club
-re-measures on its own schedule, so the size it lists lags this repo.
+team, [added by PR #17](https://codeberg.org/btxx/512kb-club/pulls/17), and is
+[a member of the 250kb.club](https://250kb.club/thebenmeadows-com/). The clubs
+re-measure on their own schedules, so the sizes they list lag this repo.
 New subpages are not measured, but three home-page assets are shared with every other
 page and do count:
 
