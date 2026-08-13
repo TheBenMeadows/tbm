@@ -139,6 +139,13 @@ the model borrowed from [Privacy Guides](https://github.com/privacyguides/privac
   and to the DNSLink record; the other nodes poll that and pin what it says.
   None of them resolves the IPNS name itself, because IPNS records stay valid
   for a year and the network returns months-old ones.
+- **Monitoring.** A mirror nobody checks is worse than no mirror: it goes
+  stale, keeps answering, and quietly contradicts the signed manifest. So
+  every serving surface is compared against the manifest on a schedule, the
+  primary is re-checked hourly from two separate networks, and the machine
+  running the automation is itself watched from another — a monitor that can
+  fail silently is half a monitor. Staleness pages the operator before a
+  visitor is likely to notice it.
 - **Source (recoverability).** This repository is mirrored to **Codeberg**,
   **Gitea**, **GitLab**, and **SourceHut** alongside GitHub, kept in sync
   automatically. Each mirror holds the full history, so the source survives any
