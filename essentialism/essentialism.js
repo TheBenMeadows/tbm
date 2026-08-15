@@ -1,6 +1,11 @@
 // The generator published on-chain as bootloader svg-js/407, byte-for-byte.
 // Body below is identical to the code stored on Tezos; only this wrapper differs.
 // Contract: KT1CB4MYiAViCuXWBU961x7LjQXGeA8SnQwt
+//
+// Everything from the line below to the closing brace is chain bytes, comments
+// included, and /essentialism compares it against the contract in the browser.
+// A house style applied to a comment down there is a mismatch on the live page.
+// Edit only by regenerating from the contract, then repin scripts/check-onchain-code.mjs.
 
 window.ESSENTIALISM = function (BTLDR) {
 // essentialism
@@ -46,13 +51,13 @@ const vn = (x, y) => {
 };
 const fbm = (x, y) => vn(x, y) * .65 + vn(x * 2.7 + 11.3, y * 2.7 + 7.1) * .35;
 
-// ink library - on-chain color palette.txt
+// ink library — on-chain color palette.txt
 const LIB = [
-  '#dd68a4', // ink 1 - pink from "together"
-  '#85dad9', // ink 2 - tiffany blue from "together"
-  '#6a93c9', // ink 3 - background blue from "overhead"
-  '#36597d', // ink 4 - dark blue from "overhead"
-  '#87c2e4', // ink 5 - background from "mr. blue sky"
+  '#dd68a4', // ink 1 — pink from "together"
+  '#85dad9', // ink 2 — tiffany blue from "together"
+  '#6a93c9', // ink 3 — background blue from "overhead"
+  '#36597d', // ink 4 — dark blue from "overhead"
+  '#87c2e4', // ink 5 — background from "mr. blue sky"
 ];
 const BONE = '#f3e7d4', CARBON = '#1c161c'; // svg noise workprints
 const EMBER = '#e0521b'; // test output 4

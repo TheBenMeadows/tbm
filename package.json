@@ -11,8 +11,9 @@
     "build": "npx tailwindcss -i ./src/input.css -o ./output.css --minify && node scripts/build-search-index.mjs && node scripts/build-feed.mjs && node scripts/sync-readme-mirrors.mjs",
     "check:readme": "node scripts/sync-readme-mirrors.mjs --check",
     "check:figures": "node scripts/check-figures.mjs",
+    "check:onchain": "node scripts/check-onchain-code.mjs",
     "optimize:icons": "npx svgo@3 -f icons -o icons --config svgo.config.mjs",
-    "build:netlify": "npm run build && rm -rf dist && mkdir dist && cp index.html 404.html output.css email.js theme.js search.js search-index.json me.png me.webp og.png robots.txt sitemap.xml feed.xml rss.xml _headers _redirects dist/ && cp -R favicon fonts .well-known commitments mirrors tech experiments infra essentialism search projects profiles dist/ && node scripts/version-css.mjs && node scripts/build-stamp.mjs && node scripts/build-manifest.mjs && node scripts/build-torrent.mjs && node scripts/check-figures.mjs",
+    "build:netlify": "npm run build && rm -rf dist && mkdir dist && cp index.html 404.html output.css email.js theme.js search.js search-index.json me.png me.webp og.png robots.txt sitemap.xml feed.xml rss.xml _headers _redirects dist/ && cp -R favicon fonts .well-known commitments mirrors tech experiments infra essentialism search projects profiles dist/ && node scripts/version-css.mjs && node scripts/build-stamp.mjs && node scripts/build-manifest.mjs && node scripts/build-torrent.mjs && node scripts/check-figures.mjs && node scripts/check-onchain-code.mjs",
     "build:experiments": "node scripts/build-experiments-css.mjs"
   }
 }
