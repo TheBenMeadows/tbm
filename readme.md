@@ -24,7 +24,7 @@ supporting pages — [`/mirrors/`](https://thebenmeadows.com/mirrors/),
 `/essentialism/`. The build compiles the CSS and the search index; there is no
 framework or client-side rendering.
 
-Search is dependency-free on purpose. The corpus is about 36 KB across 14 pages
+Search is dependency-free on purpose. The corpus is about 39 KB across 14 pages
 and the index built from it about 41 KB — small enough to match in the browser
 without a search library. The usual pick, Pagefind, runs on WebAssembly, which
 under this site's `script-src 'self'` CSP would mean adding `'wasm-unsafe-eval'`.
