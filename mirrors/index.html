@@ -72,7 +72,7 @@
             <hr class="center-rule" style="margin-top: 2.2rem; margin-bottom: 0" />
 
             <h2 class="section-label" style="margin-top: 2.6rem">Live site</h2>
-            <p class="mt-2 text-sm text-neutral-500">
+            <p class="mt-2">
                 Independent hosts serving the same site. The first three follow
                 every push; the 4EVERLAND copy serves from IPFS and moves only
                 at each release, like the permanent mirrors further down.
@@ -105,7 +105,7 @@
             </div>
 
             <h2 class="section-label" style="margin-top: 2.6rem">Tor</h2>
-            <p class="mt-2 text-sm text-neutral-500">
+            <p class="mt-2">
                 The same pages as an onion service, reachable only through the
                 <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://www.torproject.org/" target="_blank" rel="noopener">Tor</a>
                 network. It runs on a server I control and is not published in DNS, so it
@@ -118,7 +118,7 @@
                     <span class="block text-neutral-500 text-sm break-words">meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion</span>
                 </a>
             </div>
-            <p class="mt-3 text-sm text-neutral-500">
+            <p class="mt-3">
                 One caveat: the minted editions on
                 <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="/essentialism/">essentialism</a>
                 are fetched live from tzkt.io and bootloader.art, so that gallery stays
@@ -127,7 +127,7 @@
             </p>
 
             <h2 class="section-label" style="margin-top: 2.6rem">I2P</h2>
-            <p class="mt-2 text-sm text-neutral-500">
+            <p class="mt-2">
                 The same pages again on
                 <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://geti2p.net/" target="_blank" rel="noopener">I2P</a>,
                 a different anonymity network from Tor and served by the same machine. Two
@@ -142,7 +142,7 @@
             </div>
 
             <h2 class="section-label" style="margin-top: 2.6rem">Names</h2>
-            <p class="mt-2 text-sm text-neutral-500">
+            <p class="mt-2">
                 The same site under blockchain name systems. Each name is set once and
                 follows every release on its own, so none of them can quietly go stale.
                 Brave resolves the .eth and .sol names natively.
@@ -169,14 +169,14 @@
                     <span class="block text-neutral-500 text-sm break-words">the .sol name's own web bridge</span>
                 </a>
             </div>
-            <p class="mt-3 text-sm text-neutral-500">
+            <p class="mt-3">
                 The Ethereum, Tezos, and Solana names all point at the same IPFS name,
                 <span class="text-neutral-400 break-all">ipns://k51qzi5uqu5dkx54ehvkna983zjtfn04eu4sklgx2ag1tozh9js5p9cn5jwqmy</span>,
                 published from this site's own IPFS nodes. The Arweave name points at a
                 permanent copy of each release; some ar.io gateways are still catching up
                 to it.
             </p>
-            <p class="mt-3 text-sm text-neutral-500">
+            <p class="mt-3">
                 The domain is a content name as well. A
                 <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://dnslink.dev/" target="_blank" rel="noopener">DNSLink</a>
                 record at <span class="text-neutral-400 break-all">_dnslink.thebenmeadows.com</span>
@@ -185,7 +185,7 @@
                 fetch the pages from the network instead of from this server. No
                 blockchain and no gateway: a DNS lookup answers it.
             </p>
-            <p class="mt-3 text-sm text-neutral-500">
+            <p class="mt-3">
                 Six machines hold that copy, five of mine and one pinning service. One
                 publishes the name; the rest read the hash it published and fetch the
                 blocks that match. A copy can lag, but it cannot disagree, because only
@@ -193,14 +193,14 @@
             </p>
 
             <h2 class="section-label" style="margin-top: 2.6rem">Nostr</h2>
-            <p class="mt-2 text-sm text-neutral-500">
+            <p class="mt-2">
                 The site is also published as an
                 <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://nsite.run/" target="_blank" rel="noopener">nsite</a>:
                 every file lives as a signed blob on Blossom servers, with a manifest
                 event on Nostr relays under the same key this site publishes at
                 /.well-known/nostr.json. No conventional host involved.
             </p>
-            <p class="mt-3 text-sm text-neutral-500">
+            <p class="mt-3">
                 Part of that machinery is mine. The manifest rides four relays,
                 two of them run under this roof:
                 <span class="text-neutral-400">relay.mdws.me</span> on
@@ -222,7 +222,7 @@
             </div>
 
             <h2 class="section-label" style="margin-top: 2.6rem">Small web</h2>
-            <p class="mt-2 text-sm text-neutral-500">
+            <p class="mt-2">
                 The same pages on five pre-web protocols, generated from the site's own
                 search index at each release. You need a Gemini client (Lagrange, Amfora)
                 or a gopher client (lynx works) - ordinary browsers speak neither.
@@ -250,7 +250,7 @@
                     <span class="block text-neutral-500 text-sm break-words">ftp://text.thebenmeadows.com</span>
                 </a>
             </div>
-            <p class="mt-3 text-sm text-neutral-500">
+            <p class="mt-3">
                 No login for any of them: SSH takes the user <code class="text-neutral-400">text</code>
                 with no password and drops you straight into a read-only pager. FTP is
                 plain, deliberately: these pages are public, so there is nothing to
@@ -259,7 +259,7 @@
             </p>
 
             <h2 class="section-label" style="margin-top: 2.6rem">BitTorrent</h2>
-            <p class="mt-2 text-sm text-neutral-500">
+            <p class="mt-2">
                 The whole site as a torrent, rebuilt on every push. It is the one
                 copy where readers become mirrors: every client left seeding is
                 capacity nobody had to provision. It carries no tracker, so peers
@@ -272,7 +272,7 @@
                     <span class="block text-neutral-500 text-sm break-words">thebenmeadows.com/tbm.torrent</span>
                 </a>
             </div>
-            <p class="mt-3 text-sm text-neutral-500">
+            <p class="mt-3">
                 An empty swarm would normally make a torrent useless, so this one
                 names this site as a
                 <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://www.bittorrent.org/beps/bep_0019.html" target="_blank" rel="noopener">webseed</a>:
@@ -284,7 +284,7 @@
             </p>
 
             <h2 class="section-label" style="margin-top: 2.6rem">Offline</h2>
-            <p class="mt-2 text-sm text-neutral-500">
+            <p class="mt-2">
                 Every mirror above answers "can I still reach it". This one
                 answers "can I hold it": the whole site as a single
                 <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://en.wikipedia.org/wiki/ZIM_(file_format)" target="_blank" rel="noopener">ZIM</a>
@@ -301,7 +301,7 @@
             </div>
 
             <h2 class="section-label" style="margin-top: 2.6rem">Feeds</h2>
-            <p class="mt-2 text-sm text-neutral-500">
+            <p class="mt-2">
                 One entry per release, in both syndication formats, with
                 <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://www.w3.org/TR/websub/" target="_blank" rel="noopener">WebSub</a>
                 pings on deploy so subscribed readers hear about releases without polling.
@@ -321,7 +321,7 @@
             </div>
 
             <h2 class="section-label" style="margin-top: 2.6rem">Source code</h2>
-            <p class="mt-2 text-sm text-neutral-500">The repository, mirrored to independent forges and kept in sync automatically - each holds the full history.</p>
+            <p class="mt-2">The repository, mirrored to independent forges and kept in sync automatically - each holds the full history.</p>
             <div class="mt-4 grid gap-3 sm:grid-cols-2">
                 <a class="block hairline-card p-5 transition-opacity hover:opacity-80" href="https://github.com/TheBenMeadows/tbm" target="_blank" rel="noopener">
                     <span class="block text-white font-medium">GitHub <span class="text-neutral-500 font-normal">&middot; source of truth</span></span>
@@ -356,7 +356,7 @@
                     <span class="block text-neutral-500 text-sm break-words">nostr://npub1wld&hellip;4nq29/tbm</span>
                 </a>
             </div>
-            <p class="mt-3 text-sm text-neutral-500">
+            <p class="mt-3">
                 The last two have no host. On
                 <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://radicle.xyz/" target="_blank" rel="noopener">Radicle</a>
                 the repository is replicated between peer-to-peer nodes, so it stays
@@ -371,7 +371,7 @@
             </p>
 
             <h2 class="section-label" style="margin-top: 2.6rem">Archived</h2>
-            <p class="mt-2 text-sm text-neutral-500">Point-in-time snapshots held by a third party, outside any host above.</p>
+            <p class="mt-2">Point-in-time snapshots held by a third party, outside any host above.</p>
             <div class="mt-4 grid gap-3 sm:grid-cols-2">
                 <a class="block hairline-card p-5 transition-opacity hover:opacity-80" href="https://web.archive.org/web/2/https://thebenmeadows.com/" target="_blank" rel="noopener">
                     <span class="block text-white font-medium">Wayback Machine <span class="text-neutral-500 font-normal">&middot; latest</span></span>
@@ -390,7 +390,7 @@
                     <span class="block text-neutral-500 text-sm break-words">archive.softwareheritage.org</span>
                 </a>
             </div>
-            <p class="mt-3 text-sm text-neutral-500">
+            <p class="mt-3">
                 Three of these keep the pages and one keeps the source. A web
                 archive and a code archive fail for different reasons and hold
                 different things, so neither can restore what the other has:
@@ -401,7 +401,7 @@
             </p>
 
             <h2 class="section-label" style="margin-top: 2.6rem">Verify</h2>
-            <p class="mt-2 text-sm text-neutral-500">
+            <p class="mt-2">
                 Every build publishes
                 <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="/manifest.json">manifest.json</a>,
                 listing the SHA-256 of every file it shipped. Hash the files you
@@ -410,7 +410,7 @@
                 public IPFS gateways do inject their own script, so the copy you are
                 handed is not always the copy that was stored.
             </p>
-            <p class="mt-3 text-sm text-neutral-500">
+            <p class="mt-3">
                 Each release's manifest hash is signed with my Nostr key and timestamped
                 into the Bitcoin blockchain with
                 <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://opentimestamps.org/" target="_blank" rel="noopener">OpenTimestamps</a>,
@@ -425,21 +425,21 @@
                 <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://github.com/TheBenMeadows/tbm/tree/main/commitments" target="_blank" rel="noopener">commitments/</a>
                 in the repository.
             </p>
-            <p class="mt-3 text-sm text-neutral-500">
+            <p class="mt-3">
                 To fetch the signature itself, ask any of the relays for my
                 latest release event with
                 <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://github.com/fiatjaf/nak" target="_blank" rel="noopener">nak</a>:
             </p>
             <pre class="mt-2 overflow-x-auto rounded-lg bg-zinc-900 p-4 text-xs text-neutral-400"><code>nak req -k 30078 -a 77da04f08f223354b0dcb37758a05950fbf2b661a759f0c29dd2ce07b08c54db \
     -d thebenmeadows.com wss://relay2.mdws.me</code></pre>
-            <p class="mt-2 text-sm text-neutral-500">
+            <p class="mt-2">
                 The event's content names the manifest hash, the commit, the Arweave
                 transaction and the proof path; kind 30078 is replaceable, so relays
                 keep only the newest release's signature. Older releases keep their
                 Bitcoin proofs in <code class="text-neutral-400">commitments/</code>,
                 but their Nostr signatures are replaced with each new release.
             </p>
-            <p class="mt-3 text-sm text-neutral-500">
+            <p class="mt-3">
                 The manifest also carries this mirror list itself, as a
                 <code class="text-neutral-400">mirrors</code> array. This page dies with
                 the site that serves it; the manifest is replicated to IPFS, Arweave and
@@ -448,7 +448,7 @@
                 the list on the way.
             </p>
 
-            <p class="mt-10 text-sm text-neutral-500">
+            <p class="mt-10">
                 Curious how it's put together? See the
                 <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="/tech/">tech&nbsp;stack</a>.
             </p>

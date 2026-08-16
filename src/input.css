@@ -259,12 +259,14 @@ main > ol > li:not(.no-justify) {
    and .no-justify is the explicit opt-out for a line that should stay ragged.
 
    Font size used to be on this list, on the assumption that text-sm meant a
-   short caption. It does not: /mirrors styles every section blurb text-sm and
-   they are full-measure body copy, so the page rendered one justified lead
-   above 26 ragged paragraphs. Size describes emphasis, not length -- a caption
-   short enough to look wrong justified is a single line, and a single line is
-   its own last line, which justification leaves alone anyway. Mark the
-   exceptions that are really exceptions and let the rest set consistently. */
+   short caption. It does not: /mirrors once styled all 26 of its section
+   blurbs text-sm and they were full-measure body copy, so the page rendered
+   one justified lead above 26 ragged paragraphs (the blurbs are base size now,
+   like every other page's body, but the rule was wrong regardless). Size
+   describes emphasis, not length -- a caption short enough to look wrong
+   justified is a single line, and a single line is its own last line, which
+   justification leaves alone anyway. Mark the exceptions that are really
+   exceptions and let the rest set consistently. */
 main > p.font-mono,
 main .no-justify {
     text-align: left;
