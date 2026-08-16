@@ -59,12 +59,13 @@
         <main class="text-neutral-400 max-w-screen-md mx-auto px-6 pt-8 pb-12 leading-relaxed">
             <h1 class="text-white text-3xl font-bold text-center" style="letter-spacing: -0.025em">Infra</h1>
             <p class="mt-4">
-                Beyond the pages themselves, Ben is standing up his own corner of
-                the internet's plumbing - an independent
-                <span class="text-white">autonomous system</span>: a registered slice
-                of the global routing table, run rather than rented. It's allocated
-                and being brought online now; the routing and DNS story will grow
-                here as it does.
+                Beyond the pages themselves, Ben runs his own corner of the
+                internet's plumbing — an independent
+                <span class="text-white">autonomous system</span>: a registered
+                slice of the global routing table, run rather than rented. As of
+                August 2026 it is on the air: the IPv6 block is announced from
+                two places, signed, and reverse-DNS delegated. The routing and DNS
+                story will keep growing here.
             </p>
             <hr class="center-rule" style="margin-top: 2.2rem; margin-bottom: 0" />
 
@@ -83,19 +84,53 @@
                     <span class="block font-mono text-xs uppercase tracking-widest text-neutral-500">Registry</span>
                     <span class="mt-2 block font-mono text-xl text-white">RIPE NCC</span>
                 </div>
-                <div class="hairline-card p-6">
+                <a class="block hairline-card p-6 transition-opacity hover:opacity-80" href="https://bgp.tools/prefix/2a06:9801:f11::/48" target="_blank" rel="noopener">
                     <span class="block font-mono text-xs uppercase tracking-widest text-neutral-500">Status</span>
-                    <span class="mt-2 block font-mono text-xl text-white">Being brought online</span>
+                    <span class="mt-2 block font-mono text-xl text-white">Announced</span>
+                    <span class="mt-2 block font-mono text-xs text-neutral-500">since 2026-08-16 &middot; bgp.tools&nbsp;↗</span>
+                </a>
+            </div>
+
+            <h2 class="section-label" style="margin-top: 2.6rem">Where it lives</h2>
+            <div class="mt-4 grid gap-3 sm:grid-cols-3">
+                <div class="hairline-card p-6">
+                    <span class="block font-mono text-xs uppercase tracking-widest text-neutral-500">Frankfurt</span>
+                    <span class="mt-2 block font-mono text-base text-white">upstream AS209533</span>
+                    <span class="mt-2 block font-mono text-xs text-neutral-500">iFog &middot; live</span>
+                </div>
+                <div class="hairline-card p-6">
+                    <span class="block font-mono text-xs uppercase tracking-widest text-neutral-500">Kansas City</span>
+                    <span class="mt-2 block font-mono text-base text-white">upstream AS209533</span>
+                    <span class="mt-2 block font-mono text-xs text-neutral-500">iFog &middot; live</span>
+                </div>
+                <div class="hairline-card p-6">
+                    <span class="block font-mono text-xs uppercase tracking-widest text-neutral-500">Manchester</span>
+                    <span class="mt-2 block font-mono text-base text-white">upstream AS209735</span>
+                    <span class="mt-2 block font-mono text-xs text-neutral-500">Lagrange &middot; turning up</span>
                 </div>
             </div>
+            <p class="mt-4 text-sm text-neutral-500">
+                Two of the three are WireGuard tunnels to a friendly upstream; the
+                Manchester box is a native session. The two routers that announce
+                the block also talk to each other over a private link, so the
+                whole /48 stays reachable no matter which door traffic comes in.
+            </p>
+
+            <h2 class="section-label" style="margin-top: 2.6rem">Hygiene</h2>
+            <ul class="mt-4 space-y-3 list-none">
+                <li><span class="text-white font-medium">RPKI</span>: the prefix has a valid ROA for AS219158 (max length /48) — anything else claiming it is invalid.</li>
+                <li><span class="text-white font-medium">IRR</span>: <code class="font-mono text-sm">route6</code> and <code class="font-mono text-sm">as-set AS219158:AS-ALL</code> in the RIPE database.</li>
+                <li><span class="text-white font-medium">Reverse DNS</span>: the block's <code class="font-mono text-sm">ip6.arpa</code> zone is delegated and answers for the routers.</li>
+                <li><span class="text-white font-medium">PeeringDB</span>: <a class="underline decoration-neutral-600 underline-offset-4 hover:text-white" href="https://www.peeringdb.com/net/43274" target="_blank" rel="noopener">AS219158&nbsp;↗</a>, open peering policy.</li>
+            </ul>
 
             <h2 class="section-label" style="margin-top: 2.6rem">What's next</h2>
             <ul class="mt-4 space-y-3 list-none">
-                <li><span class="text-white font-medium">BGP</span>: announcing the prefix into the global routing table, multi-homed.</li>
-                <li><span class="text-white font-medium">DNS</span>: self-hosted authoritative name service on the allocation.</li>
-                <li><span class="text-white font-medium">Anycast</span>: the same address served from more than one place.</li>
+                <li><span class="text-white font-medium">Anycast</span>: the same address served from Frankfurt and Kansas City at once — the routing already does it; the first service to sit on it is a mirror of this site.</li>
+                <li><span class="text-white font-medium">IPv4</span>: a small legacy block, so the network is reachable from everywhere, not just the IPv6 internet.</li>
+                <li><span class="text-white font-medium">DNS</span>: self-hosted authoritative name service on the allocation, starting with the reverse zone.</li>
             </ul>
-            <p class="mt-6 text-sm text-neutral-500">This page is a stub - it'll fill in as the network comes up.</p>
+            <p class="mt-6 text-sm text-neutral-500">Numbers on this page are checkable: the RIPE and bgp.tools links above read the live routing table, not this site.</p>
         </main>
 
         <footer class="site-footer">
