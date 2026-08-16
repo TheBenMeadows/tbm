@@ -26,6 +26,7 @@ const PAGES = [
     { file: 'projects/index.html', url: '/projects/' },
     { file: 'infra/index.html', url: '/infra/' },
     { file: 'essentialism/index.html', url: '/essentialism/' },
+    { file: 'archive/index.html', url: '/archive/' },
     { file: 'experiments/pendulum/index.html', url: '/experiments/pendulum/' },
     { file: 'experiments/porcine/index.html', url: '/experiments/porcine/' },
     { file: 'experiments/etherhoo/index.html', url: '/experiments/etherhoo/' },

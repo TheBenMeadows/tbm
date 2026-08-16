@@ -106,6 +106,9 @@
 /essentialism/
   Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/essentialism/
 
+/archive/
+  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/archive/
+
 /experiments/pendulum/
   Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/experiments/pendulum/
 

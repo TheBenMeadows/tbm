@@ -23,6 +23,7 @@
 # the torrent's file list is the source of truth.
 /tbm/index.html  /  200
 /tbm/404.html  /404  200
+/tbm/archive/index.html  /archive/  200
 /tbm/essentialism/index.html  /essentialism/  200
 /tbm/experiments/index.html  /experiments/  200
 /tbm/experiments/dls/index.html  /experiments/dls/  200
