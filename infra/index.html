@@ -92,7 +92,12 @@
             </div>
 
             <h2 class="section-label" style="margin-top: 2.6rem">Where it lives</h2>
-            <div class="mt-4 grid gap-3 sm:grid-cols-3">
+            <div class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                <div class="hairline-card p-6">
+                    <span class="block font-mono text-xs uppercase tracking-widest text-neutral-500">Fremont</span>
+                    <span class="mt-2 block font-mono text-base text-white">upstream AS212895</span>
+                    <span class="mt-2 block font-mono text-xs text-neutral-500">Route64 &middot; live</span>
+                </div>
                 <div class="hairline-card p-6">
                     <span class="block font-mono text-xs uppercase tracking-widest text-neutral-500">Frankfurt</span>
                     <span class="mt-2 block font-mono text-base text-white">upstream AS209533</span>
@@ -110,11 +115,19 @@
                 </div>
             </div>
             <p class="mt-4 text-sm text-neutral-500">
-                Two of the three are WireGuard tunnels to a friendly upstream; the
-                Manchester box is a native session. The two routers that announce
-                the block also talk to each other over a private link, so the
-                whole /48 stays reachable no matter which door traffic comes in.
+                Three of the four are WireGuard tunnels to a friendly upstream; the
+                Manchester box is a native session. Fremont is the preferred door
+                for the Americas, the two iFog sessions announce with a longer path
+                and take over if it drops. The two routers that announce the block
+                also talk to each other over a private link, so the whole /48 stays
+                reachable no matter which door traffic comes in. A /56 of it is
+                routed home over WireGuard, so the LAN has real addresses too.
             </p>
+
+            <h2 class="section-label" style="margin-top: 2.6rem">Running on it</h2>
+            <ul class="mt-4 space-y-3 list-none">
+                <li><span class="text-white font-medium">Anycast</span>: <code class="font-mono text-sm">2a06:9801:f11::a</code> is served from Frankfurt and Los Angeles at once; the first thing on it is <a class="underline decoration-neutral-600 underline-offset-4 hover:text-white" href="https://v6.thebenmeadows.com/">a mirror of this site&nbsp;↗</a> (IPv6 only).</li>
+            </ul>
 
             <h2 class="section-label" style="margin-top: 2.6rem">Hygiene</h2>
             <ul class="mt-4 space-y-3 list-none">
@@ -126,7 +139,6 @@
 
             <h2 class="section-label" style="margin-top: 2.6rem">What's next</h2>
             <ul class="mt-4 space-y-3 list-none">
-                <li><span class="text-white font-medium">Anycast</span>: the same address served from Frankfurt and Kansas City at once — the routing already does it; the first service to sit on it is a mirror of this site.</li>
                 <li><span class="text-white font-medium">IPv4</span>: a small legacy block, so the network is reachable from everywhere, not just the IPv6 internet.</li>
                 <li><span class="text-white font-medium">DNS</span>: self-hosted authoritative name service on the allocation, starting with the reverse zone.</li>
             </ul>
