@@ -219,6 +219,7 @@ manifest cannot disagree.
 | IPFS | `ipns://k51qzi5uqu5dkx54ehvkna983zjtfn04eu4sklgx2ag1tozh9js5p9cn5jwqmy` |
 | Arweave | `ar://thebenmeadows` |
 | Nostr (nsite) | `npub1wldqfuy0yge4fvxukdm43gze2ral9dnp5avlps5a6t8q0vyv2nds84nq29` |
+| Own network (AS219158, IPv6 anycast) | `https://v6.thebenmeadows.com/` |
 | 4EVERLAND | `https://thebenmeadows-cbvr.ipfs.4everland.app/` |
 | BitTorrent | `https://thebenmeadows.com/tbm.torrent` |
 | ZIM (offline) | `https://github.com/TheBenMeadows/tbm/releases/latest` |
