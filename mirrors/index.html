@@ -74,8 +74,12 @@
             <h2 class="section-label" style="margin-top: 2.6rem">Live site</h2>
             <p class="mt-2">
                 Independent hosts serving the same site. The first three follow
-                every push; the 4EVERLAND copy serves from IPFS and moves only
-                at each release, like the permanent mirrors further down.
+                every push; the own-network copy syncs from the primary every ten
+                minutes and is served from
+                <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="/infra/">AS219158</a>
+                on an IPv6 anycast address, so it needs an IPv6 connection; the
+                4EVERLAND copy serves from IPFS and moves only at each release,
+                like the permanent mirrors further down.
             </p>
             <div class="mt-4 grid gap-3 sm:grid-cols-2">
                 <a class="block hairline-card p-5 transition-opacity hover:opacity-80" href="https://thebenmeadows.com/" rel="noopener">
@@ -97,6 +101,10 @@
                 <a class="block hairline-card p-5 transition-opacity hover:opacity-80" href="https://thebenmeadows.srht.site/" target="_blank" rel="noopener">
                     <span class="block text-white font-medium">sourcehut pages <span class="text-neutral-500 font-normal">&middot; fourth host</span></span>
                     <span class="block text-neutral-500 text-sm break-words">thebenmeadows.srht.site</span>
+                </a>
+                <a class="block hairline-card p-5 transition-opacity hover:opacity-80" href="https://v6.thebenmeadows.com/" target="_blank" rel="noopener">
+                    <span class="block text-white font-medium">Own network <span class="text-neutral-500 font-normal">&middot; IPv6 anycast</span></span>
+                    <span class="block text-neutral-500 text-sm break-words">v6.thebenmeadows.com</span>
                 </a>
                 <a class="block hairline-card p-5 transition-opacity hover:opacity-80" href="https://thebenmeadows-cbvr.ipfs.4everland.app/" target="_blank" rel="noopener">
                     <span class="block text-white font-medium">4EVERLAND <span class="text-neutral-500 font-normal">&middot; releases only</span></span>

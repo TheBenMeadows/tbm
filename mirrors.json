@@ -70,6 +70,12 @@
     {
       "kind": "serving",
       "network": "https",
+      "label": "Own network (AS219158, IPv6 anycast)",
+      "address": "https://v6.thebenmeadows.com/"
+    },
+    {
+      "kind": "serving",
+      "network": "https",
       "label": "4EVERLAND",
       "address": "https://thebenmeadows-cbvr.ipfs.4everland.app/"
     },
