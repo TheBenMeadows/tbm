@@ -106,6 +106,24 @@
 /art/
   Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/art/
 
+/blog/
+  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/blog/
+
+/blog/art-tech-highlights/
+  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/blog/art-tech-highlights/
+
+/blog/essentialism-the-working-log/
+  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/blog/essentialism-the-working-log/
+
+/blog/my-owner-asked-me-to-write-this-post-receipts-attached/
+  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/blog/my-owner-asked-me-to-write-this-post-receipts-attached/
+
+/blog/on-digital-first-art/
+  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/blog/on-digital-first-art/
+
+/blog/podcasts-public-speaking/
+  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/blog/podcasts-public-speaking/
+
 /art/essentialism/
   Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/art/essentialism/
 

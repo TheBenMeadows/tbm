@@ -20,12 +20,13 @@ pointing to Ben Meadows' sites, projects, and social profiles.
 
 It is a small static site: hand-written HTML styled with Tailwind, plus
 supporting pages — [`/mirrors/`](https://thebenmeadows.com/mirrors/),
-[`/tech/`](https://thebenmeadows.com/tech/), `/experiments/`, `/infra/` and
-`/art/`. The build compiles the CSS and the search index; there is no
-framework or client-side rendering.
+[`/tech/`](https://thebenmeadows.com/tech/), `/experiments/`, `/infra/`,
+`/art/` and [`/blog/`](https://thebenmeadows.com/blog/). The build compiles the
+CSS, the search index and the blog; there is no framework or client-side
+rendering.
 
-Search is dependency-free on purpose. The corpus is about 40 KB across 16 pages
-and the index built from it about 43 KB — small enough to match in the browser
+Search is dependency-free on purpose. The corpus is about 73 KB across 22 pages
+and the index built from it about 78 KB — small enough to match in the browser
 without a search library. The usual pick, Pagefind, runs on WebAssembly, which
 under this site's `script-src 'self'` CSP would mean adding `'wasm-unsafe-eval'`.
 Instead `scripts/build-search-index.mjs` emits a JSON index at build time and
@@ -44,6 +45,26 @@ npm run build      # compiles src/input.css -> output.css (minified), then build
 `output.css` and `search-index.json` are generated and git-ignored. Open `index.html` directly, or serve
 the folder with any static server, after building.
 
+### Blog
+
+Posts are markdown in `blog/posts/`, one file per post, with front matter for the
+title, date, tags and description. `scripts/build-blog.mjs` renders them into
+`blog/<slug>/index.html`, the `/blog/` index and `blog/feed.xml`, all git-ignored
+like the CSS. It runs first in the build, because Tailwind scans the pages it
+writes. It also emits `blog/pages.json`; `build-search-index.mjs` and
+`build-stamp.mjs` read that list, so adding a markdown file is the whole of
+adding a post — no other script needs editing.
+
+Post images live in `blog/media/<slug>/` as webp at 1600px — over twice the
+column they display in. The originals they were made from are one to two orders
+of magnitude larger and are backup material, not serving material; every image
+the blog ships is under 500 KB, and the build fails if one is not. Nothing on a
+post page loads from another origin, which is what lets a post survive in the
+ZIM, the torrent and the Arweave copy exactly as it appears on the web.
+
+Writing a post is: add the markdown, open a PR, merge. The mirrors pick it up on
+the next release.
+
 ### Page weight
 
 [512kb.club](https://512kb.club/) measures one URL — the home page — **uncompressed**,
@@ -59,9 +80,11 @@ page and do count:
   pays for that.
 - `theme.js` and `search.js` are shared but fixed in size.
 
-`search-index.json` grows with every page in `scripts/build-search-index.mjs`, but
-`search.js` fetches it on first search rather than on load, so it stays out of the
-measurement. It is 41 KB — over a third of the budget — so it must stay lazy.
+`search-index.json` grows with every page in `scripts/build-search-index.mjs` and with
+every post under `blog/posts/`, but `search.js` fetches it on first search rather than
+on load, so it stays out of the measurement. It is 78 KB — more than three quarters of
+the whole budget, most of it blog prose — so it must stay lazy. Fetching it on load
+would fail the build on its own.
 
 The home page currently measures about 72 KB. `scripts/build-manifest.mjs` enforces the
 budget on every build and fails over it, so the number cannot drift unnoticed; to check
