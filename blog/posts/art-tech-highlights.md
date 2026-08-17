@@ -17,7 +17,7 @@ In the business world, I have had a successful career, mostly in the constructio
 
 ---
 
-**An index of all my currently minted pieces can be found [HERE](/archive/).**
+**An index of all my minted pieces used to live at index.thebenmeadows.com. The service behind it shut down; a [capture is kept here](/archive/), and current work is on [/art](/art/).**
 
 ---
 
