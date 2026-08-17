@@ -168,10 +168,16 @@ const RENDERER = {
     },
 };
 
-/* html: false is not enough on its own -- these posts came out of a WYSIWYG
- * editor, so any stray markup in the source is escaped rather than passed
- * through, which also keeps the CSP argument on /tech/ honest. */
-marked.use({ renderer: RENDERER, gfm: true, breaks: false, async: false });
+/* Stray markup in a post is escaped rather than passed through -- three of these
+ * posts came out of a WYSIWYG editor -- which also keeps the CSP argument on
+ * /tech/ honest.
+ *
+ * breaks: true, because a single newline inside a paragraph is always deliberate
+ * here: nothing wraps prose in these files, so the only newlines a paragraph
+ * contains are the ones that were <br> in the source. Several entries are a bold
+ * title, a line break, then a date, and collapsing that to a space runs them
+ * together. */
+marked.use({ renderer: RENDERER, gfm: true, breaks: true, async: false });
 
 /* ------------------------------------------------------------------ */
 /* page templates                                                       */

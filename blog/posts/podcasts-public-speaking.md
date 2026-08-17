@@ -4,15 +4,15 @@ date: 2024-05-26
 updated: 2026-06-12
 tags: [Art, Blockchain, Podcasts, Technology]
 image: /blog/media/podcasts-public-speaking/feb-23-website-an-introduction-to-ai-art-1.webp
-description: "Introduction: Below is a non-exhaustive list of Twitter Spaces, podcasts, classes, and events I have spoken at in the past few years."
+description: "Introduction: Below is a non-exhaustive list of Twitter Spaces, podcasts, classes, and events I have spoken at in the past few years."
 ---
 
-**Introduction:** Below is a non-exhaustive list of Twitter Spaces, podcasts, classes, and events I have spoken at in the past few years.
+**Introduction:** Below is a non-exhaustive list of Twitter Spaces, podcasts, classes, and events I have spoken at in the past few years.
 
 ---
 
-**"#Mission Monday – Ben Meadows" - The Arizona Insider
-**May 30, 2026 - Article by Alison Bailin Batz
+**"#Mission Monday – Ben Meadows" - The Arizona Insider**
+May 30, 2026 - Article by Alison Bailin Batz
 
 - [Read the Article](https://theazinsider.com/mission-monday-ben-meadows/)
 
@@ -20,8 +20,8 @@ description: "Introduction: Below is a non-exhaustive list of Twitter Spaces, po
 
 ---
 
-**"Color Commentary x Blu Node 🎨 Recapping Last Week's WILD B25"
-**June 3, 2025 - X/Twitter Space - Hosts: [Steven Miller](https://x.com/SteveMiller_PHX) & [Blutoshi](https://x.com/Blutoshi)
+**"Color Commentary x Blu Node 🎨 Recapping Last Week's WILD B25"**
+June 3, 2025 - X/Twitter Space - Hosts: [Steven Miller](https://x.com/SteveMiller_PHX) & [Blutoshi](https://x.com/Blutoshi)
 
 - [Listen to the Recording on X](https://x.com/SteveMiller_PHX/status/1929963267109290092) (97 min. mark)
 
@@ -29,8 +29,8 @@ description: "Introduction: Below is a non-exhaustive list of Twitter Spaces, po
 
 ---
 
-**"Bitcoin Ordinals"
-**July 18, 2024 - X/Twitter Space - Host: [TheBuildersDAO](https://x.com/TheBuildersDao)
+**"Bitcoin Ordinals"**
+July 18, 2024 - X/Twitter Space - Host: [TheBuildersDAO](https://x.com/TheBuildersDao)
 
 - [Listen to the Recording on X](https://x.com/TheBuildersDao/status/1813936742334099811)
 
@@ -49,8 +49,8 @@ April 15, 2024 - X/Twitter Space - Host: [TheBuildersDAO](https://x.com/TheBuild
 
 ---
 
-**"Smart Contracts & Fully On-Chain NFTs: Breaking Down the Basics"
-**December 21, 2023 - Host: [theMiracle](https://x.com/themiracle_io)
+**"Smart Contracts & Fully On-Chain NFTs: Breaking Down the Basics"**
+December 21, 2023 - Host: [theMiracle](https://x.com/themiracle_io)
 
 - [Listen to the Recording](https://x.com/themiracle_io/status/1737845182882828320)
 
@@ -67,8 +67,8 @@ November 20, 2023 - X/Twitter Space - Host: [TheBuildersDAO](https://x.com/TheBu
 
 ---
 
-**"Bear Market Learnings, Bull Market Signs"
-**November 9, 2023 - X/Twitter Space - Host: [Pop Punk](https://twitter.com/CryptoPopPunk)
+**"Bear Market Learnings, Bull Market Signs"**
+November 9, 2023 - X/Twitter Space - Host: [Pop Punk](https://twitter.com/CryptoPopPunk)
 
 - [Listen to the Recording](https://x.com/CryptoPopPunk/status/1721906388266545661)
 
@@ -98,8 +98,8 @@ May 24, 2023 - Live Webinar - Hosts: [InPeak](https://x.com/inpeakxyz) & [Async 
 
 ---
 
-**"AI: Tools & Art"
-**May 5, 2023 - X/Twitter Space - Host: [Zo World](https://x.com/The_Zo_World)
+**"AI: Tools & Art"**
+May 5, 2023 - X/Twitter Space - Host: [Zo World](https://x.com/The_Zo_World)
 
 - Listen to the Recording ([Part 1](https://x.com/The_Zo_World/status/1653815574479388673), [Part 2](https://x.com/The_Zo_World/status/1654522342767497216))
 
@@ -129,8 +129,8 @@ March 15, 2023 - Live Panel Discussion - Host: [Evenness](https://x.com/Evenness
 
 ---
 
-**"Introduction to AI Art: A 5-Part Series"
-**February - April 2023 - Live Webinar - Host: [InPeak](https://x.com/inpeakxyz)
+**"Introduction to AI Art: A 5-Part Series"**
+February - April 2023 - Live Webinar - Host: [InPeak](https://x.com/inpeakxyz)
 
 - [Lesson 1 - An Introduction to AI Art](https://www.inpeak.xyz/event/ai-art)
 - [Lesson 2 - Basic Tools for Creating AI Art](https://www.inpeak.xyz/event/creating-ai-art)
@@ -144,8 +144,8 @@ March 15, 2023 - Live Panel Discussion - Host: [Evenness](https://x.com/Evenness
 
 ---
 
-**"Exploring Art Style Narratives in Web3 - Collectors & Artists Views"
-**December 21, 2022 - X/Twitter Space - Host: [art2act](https://x.com/art2actofficial)
+**"Exploring Art Style Narratives in Web3 - Collectors & Artists Views"**
+December 21, 2022 - X/Twitter Space - Host: [art2act](https://x.com/art2actofficial)
 
 - [Listen to the Recording](https://x.com/art2actofficial/status/1605593943415980032)
 
@@ -158,8 +158,8 @@ October 2022 - Podcast Interview - Host: [EVMavericks](https://x.com/EVMavericks
 
 ---
 
-**"Intro to Blockchain, NFTs & Web3"
-**July 1, 2022 - In-Person Event - Host: [Club FOMO](https://x.com/theclubfomo)
+**"Intro to Blockchain, NFTs & Web3"**
+July 1, 2022 - In-Person Event - Host: [Club FOMO](https://x.com/theclubfomo)
 
 I was asked to do a 90-minute informational session on Blockchain, NFTs & Web3 for Club FOMO (billed as "the first-ever real-world NFT club") for their inaugural Crypto Curious: First Friday event in Phoenix, Arizona.
 
@@ -172,8 +172,8 @@ The point of this presentation was to share my knowledge of blockchain technolog
 
 ---
 
-**"IT Hardware & Systems / Network Security"
-**May 2019 - Keynote Speaker - National Conference (PHCC)
+**"IT Hardware & Systems / Network Security"**
+May 2019 - Keynote Speaker - National Conference (PHCC)
 
 In May 2019, as a featured conference speaker, I gave a 90-minute presentation on IT Hardware & Systems / Network Security at PHCC Construction Contractors' Alliance's national meeting in Madison, Wisconsin.
 
