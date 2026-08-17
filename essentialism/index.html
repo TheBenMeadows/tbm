@@ -1,32 +1,35 @@
 <!doctype html>
+<!--
+    essentialism moved to /art/essentialism/ on 2026-08-16. This file is the
+    forwarding stub, and it is a FILE rather than a rule in _redirects on
+    purpose.
+
+    /essentialism/ is a published address. It is pinned into the Arweave
+    snapshot, the IPNS root, the nsite copy, the ZIM and the torrent, and none
+    of those has a redirect layer to configure -- a rule in _redirects moves the
+    address on the apex and leaves it broken on every surface this site exists
+    on to survive the apex. A stub is bytes, so it travels with the bytes and
+    behaves the same everywhere.
+
+    The cost is that the apex forwards with a meta refresh instead of a 301.
+    The canonical link below is what tells indexers where the page went; the
+    visible link is what works when script and refresh are both off.
+
+    Do not fold a matching rule into _redirects. /tbm/essentialism/index.html
+    rewrites here for the BitTorrent webseed, and a 3xx on a webseed drops the
+    seed -- the failure the named rows in _redirects exist to avoid.
+-->
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="essentialism - a fully on-chain generative system by Ben Meadows. 44 editions on Tezos, each remembering less of two photographs than the one before it." />
+        <meta name="description" content="essentialism now lives at thebenmeadows.com/art/essentialism/." />
         <meta name="color-scheme" content="dark light" />
         <meta http-equiv="content-language" content="en-us" />
-        <link rel="canonical" href="https://thebenmeadows.com/essentialism/" />
-        <link rel="alternate" type="application/atom+xml" title="Site releases" href="/feed.xml" />
-        <link rel="alternate" type="application/rss+xml" title="Site releases (RSS)" href="/rss.xml" />
+        <meta http-equiv="refresh" content="0; url=/art/essentialism/" />
+        <link rel="canonical" href="https://thebenmeadows.com/art/essentialism/" />
 
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="TheBenMeadows" />
-        <meta property="og:title" content="essentialism · TheBenMeadows" />
-        <meta property="og:description" content="A fully on-chain generative system. 44 editions on Tezos, each remembering less of two photographs than the one before it." />
-        <meta property="og:url" content="https://thebenmeadows.com/essentialism/" />
-        <meta property="og:image" content="https://thebenmeadows.com/og.png" />
-        <meta property="og:image:type" content="image/png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="TheBenMeadows · thebenmeadows.com" />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="essentialism · TheBenMeadows" />
-        <meta name="twitter:description" content="A fully on-chain generative system. 44 editions on Tezos, each remembering less of two photographs than the one before it." />
-        <meta name="twitter:image" content="https://thebenmeadows.com/og.png" />
-
-        <title>essentialism · TheBenMeadows</title>
+        <title>essentialism moved · TheBenMeadows</title>
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000" />
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
 
@@ -36,230 +39,26 @@
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
         <link rel="manifest" href="/favicon/site.webmanifest" />
 
-        <link rel="preload" href="/fonts/publicsans-v1.woff2" as="font" type="font/woff2" crossorigin />
+        <link
+            rel="preload"
+            href="/fonts/publicsans-v1.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+        />
         <link rel="stylesheet" href="/output.css" />
         <script src="/theme.js"></script>
-        <script src="/search.js" defer></script>
-        <script src="/essentialism/essentialism.js" defer></script>
-        <script src="/essentialism/play.js" defer></script>
     </head>
     <body id="top" class="bg-black">
-        <header class="running-head">
-            <span class="rh-left"><a href="/">Index</a></span>
-            <nav class="rh-right">
-                <button id="search-open" type="button" aria-label="Search this site" title="Search (press / )">Search</button>
-                <span aria-hidden="true">&nbsp;&middot;&nbsp;</span>
-                <button id="theme-toggle" type="button"></button>
-            </nav>
-        </header>
-        <main class="text-neutral-400 max-w-screen-md mx-auto px-6 pt-8 pb-12 leading-relaxed">
-            <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">essentialism</h1>
-            <p class="mt-2 font-mono text-xs uppercase tracking-widest text-neutral-500">
-                44 editions · fully on-chain · Tezos · 2026
-            </p>
-
-            <p class="mt-6">
-                In November 2022 I worked through Andy Haskell&rsquo;s tutorial
-                <a class="text-neutral-300 underline underline-offset-4 hover:text-white transition-colors" href="https://dev.to/andyhaskell/convert-images-to-mosaics-in-p5js-2dlc" target="_blank" rel="noopener">Convert images to mosaics in p5.js</a>
-                and kept going with it, randomizing the dot size and feeding it my own
-                photographs. I called the test outputs Essentialism and never released
-                them. The column-of-dots structure is his. This is that sketch,
-                rewritten to live entirely on-chain in under 10&nbsp;KB.
-            </p>
+        <main class="text-neutral-400 max-w-screen-md mx-auto px-6 pt-12 pb-12 leading-relaxed text-center">
+            <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">essentialism moved</h1>
             <p class="mt-4">
-                It remembers two of my photographs, each reduced to a 28&times;38 grid
-                of grey. Both are minted on Ethereum. The first is
-                <a class="text-neutral-300 underline underline-offset-4 hover:text-white transition-colors" href="https://manifold.xyz/@thebenmeadows-c36dad91/contract/1175470320/5" target="_blank" rel="noopener">Blue&nbsp;Tree</a>,
-                2023; the tree itself was
-                <a class="text-neutral-300 underline underline-offset-4 hover:text-white transition-colors" href="https://x.com/TheBenMeadows/status/1731064738967396640" target="_blank" rel="noopener">removed after a storm</a>
-                that December, so the picture outlived its subject. The second is
-                <a class="text-neutral-300 underline underline-offset-4 hover:text-white transition-colors" href="https://manifold.xyz/@thebenmeadows-c36dad91/contract/1175470320/6" target="_blank" rel="noopener">Natural&nbsp;Gradient</a>,
-                2023, an unedited sky with its full resolution stored permanently on
-                Arweave. The originals are permanent, unlike the memories.
-            </p>
-            <p class="mt-4">
-                Each edition remembers less than the one before it. Edition&nbsp;1
-                samples its photograph at full strength. Edition&nbsp;44 is mostly
-                grain. The memory percentage is written into every token.
-            </p>
-
-            <div class="mt-8 grid gap-4 sm:grid-cols-2">
-                <a class="block hairline-card p-6 transition-opacity hover:opacity-80" href="https://bootloader.art/generator/svg-js/407" target="_blank" rel="noopener">
-                    <div class="flex items-center justify-between font-mono text-xs">
-                        <span class="uppercase tracking-widest text-neutral-500">Mint</span>
-                        <span class="text-neutral-600">8&nbsp;XTZ</span>
-                    </div>
-                    <h2 class="mt-3 text-xl font-bold text-white">Collect on bootloader</h2>
-                    <p class="mt-2 text-sm text-neutral-400">objkt&rsquo;s on-chain generative platform. Each mint draws its seed from Tezos block entropy.</p>
-                    <div class="mt-4 font-mono text-xs text-neutral-500">bootloader.art&nbsp;&#8599;</div>
-                </a>
-
-                <a class="block hairline-card p-6 transition-opacity hover:opacity-80" href="https://blog.thebenmeadows.com" target="_blank" rel="noopener">
-                    <div class="flex items-center justify-between font-mono text-xs">
-                        <span class="uppercase tracking-widest text-neutral-500">Read</span>
-                        <span class="text-neutral-600">2022-2026</span>
-                    </div>
-                    <h2 class="mt-3 text-xl font-bold text-white">The working log</h2>
-                    <p class="mt-2 text-sm text-neutral-400">Where the algorithm came from, what was changed to get it on-chain, and who changed it. Including the bugs.</p>
-                    <div class="mt-4 font-mono text-xs text-neutral-500">blog.thebenmeadows.com&nbsp;&#8599;</div>
-                </a>
-            </div>
-
-            <h2 class="mt-14 text-white text-2xl font-bold" style="letter-spacing: -0.025em">The editions</h2>
-            <p class="mt-3">
-                Every edition that has been minted, as bootloader renders it. Each one
-                draws its seed from Tezos block entropy at the moment of the mint, so
-                nobody, including me, knows what an edition looks like
-                until it exists.
-            </p>
-            <p id="mints-status" class="mt-3 font-mono text-xs text-neutral-500">Loading from the chain&hellip;</p>
-            <p class="mt-1 font-mono text-xs text-neutral-600">Select an edition for its traits and on-chain detail.</p>
-            <div id="mints" class="mt-6 grid gap-4 sm:grid-cols-3"></div>
-
-            <h2 class="mt-14 text-white text-2xl font-bold" style="letter-spacing: -0.025em">Playground</h2>
-            <p class="mt-3">
-                The real generator, running in your browser with bootloader&rsquo;s exact
-                seeding. Shuffle for a new seed, or drag the edition slider to watch one
-                seed forget its photograph. These are explorations of the space, not
-                previews of any edition - mints take their seeds from the chain.
-            </p>
-
-            <div class="mt-6 hairline-card p-4">
-                <div class="flex flex-wrap items-center gap-3">
-                    <button id="shuffle" type="button" class="ess-control hairline-card bg-black px-4 py-2 font-mono text-xs text-neutral-400 transition-opacity hover:opacity-80">new seed</button>
-                    <label class="flex items-center gap-2 font-mono text-xs text-neutral-500">
-                        seed
-                        <input id="seed" type="text" spellcheck="false" class="ess-control hairline-card w-44 bg-black px-3 py-2 font-mono text-xs text-neutral-400" />
-                    </label>
-                    <label class="flex flex-1 items-center gap-2 font-mono text-xs text-neutral-500">
-                        edition
-                        <input id="ed" type="range" min="1" max="44" value="1" class="flex-1 accent-neutral-400" />
-                        <span id="ed-out" class="w-6 text-right text-neutral-400">1</span>
-                        <span class="text-neutral-600">·</span>
-                        <span id="mem-out" class="w-10 text-neutral-400">100%</span>
-                    </label>
-                </div>
-                <div class="mt-3 flex flex-wrap items-center gap-3">
-                    <button id="dl-svg" type="button" class="ess-control hairline-card bg-black px-4 py-2 font-mono text-xs text-neutral-400 transition-opacity hover:opacity-80">download SVG</button>
-                    <button id="dl-png" type="button" class="ess-control hairline-card bg-black px-4 py-2 font-mono text-xs text-neutral-400 transition-opacity hover:opacity-80">download PNG</button>
-                    <label class="flex items-center gap-2 font-mono text-xs text-neutral-500">
-                        size
-                        <select id="png-scale" class="ess-control hairline-card min-h-8 bg-black px-3 py-2 font-mono text-xs text-neutral-400">
-                            <option value="1">750 × 1000</option>
-                            <option value="2" selected>1500 × 2000</option>
-                            <option value="4">3000 × 4000</option>
-                            <option value="8">6000 × 8000</option>
-                        </select>
-                    </label>
-                </div>
-                <div id="stage" class="mt-4"></div>
-                <p id="traits" class="mt-3 font-mono text-xs text-neutral-500"></p>
-            </div>
-
-            <h2 class="mt-14 text-white text-2xl font-bold" style="letter-spacing: -0.025em">The space</h2>
-            <p class="mt-3">
-                Twelve seeds, spread across the edition run. Every one is drawn live by
-                the same code that is stored on Tezos.
-            </p>
-            <div id="gallery" class="mt-6 grid gap-4 sm:grid-cols-3"></div>
-
-            <h2 class="mt-14 text-white text-2xl font-bold" style="letter-spacing: -0.025em">2022</h2>
-            <p class="mt-3">
-                The sketch this came from is still public, bugs and all. I built it by
-                working through
-                <a class="text-neutral-300 underline underline-offset-4 hover:text-white transition-colors" href="https://dev.to/andyhaskell/convert-images-to-mosaics-in-p5js-2dlc" target="_blank" rel="noopener">Andy Haskell&rsquo;s mosaic tutorial</a>
-                (his program walks down columns of dots and asks the image for a
-                color at every step), then randomized the dot size and pointed it
-                at my own photographs. Below is one of the nine test outputs I saved in
-                November 2022 and never released. I was
-                <a class="text-neutral-300 underline underline-offset-4 hover:text-white transition-colors" href="https://x.com/TheBenMeadows/status/1601740879999295488" target="_blank" rel="noopener">learning p5.js at the time</a>.
-            </p>
-            <div class="mt-6 grid gap-4 sm:grid-cols-2">
-                <figure class="m-0">
-                    <img src="/essentialism/essentialism-2022.png" alt="Essentialism test output, November 2022" width="1200" height="900" loading="lazy" decoding="async" class="block w-full h-auto" />
-                    <figcaption class="mt-2 font-mono text-xs text-neutral-500">2022 · p5.js · sampling a photograph</figcaption>
-                </figure>
-                <div class="hairline-card p-6">
-                    <h3 class="text-white text-lg font-bold">What changed</h3>
-                    <p class="mt-2 text-sm">
-                        The column structure, the dot spacing constant, and several
-                        variable names survive unchanged - that structure is Haskell&rsquo;s.
-                        The photograph does not survive: on-chain there is no room for one,
-                        so the image became two grids of grey and the palette became five
-                        inks sampled from my earlier work.
-                    </p>
-                    <p class="mt-3 text-sm">
-                        The 2022 sketch also called <code class="font-mono text-xs text-neutral-300">noise(50, 100)</code>
-                        as if it took a range. It does not, so the dot-size variation the
-                        sketch advertised never actually ran. That is fixed here, four
-                        years later.
-                    </p>
-                    <p class="mt-4 font-mono text-xs text-neutral-500">
-                        <a class="inline-block py-1 hover:text-white transition-colors" href="https://editor.p5js.org/TheBenMeadows/sketches/xWZgZaDJN" target="_blank" rel="noopener">the original sketch&nbsp;&#8599;</a>
-                    </p>
-                </div>
-            </div>
-
-            <h2 class="mt-14 text-white text-2xl font-bold" style="letter-spacing: -0.025em">The odds</h2>
-            <p class="mt-3">
-                Every trait is decided by the seed except memory, which is decided by the
-                edition number.
-            </p>
-            <div class="mt-6 overflow-x-auto hairline-card p-6">
-                <table class="w-full text-left text-sm">
-                    <thead class="font-mono text-xs uppercase tracking-widest text-neutral-500">
-                        <tr><th class="pb-3 pr-6 font-normal">Trait</th><th class="pb-3 font-normal">Values</th></tr>
-                    </thead>
-                    <tbody class="align-top">
-                        <tr><td class="py-1 pr-6 text-neutral-500">density</td><td class="py-1">air 50% · field 38% · full 12%</td></tr>
-                        <tr><td class="py-1 pr-6 text-neutral-500">inks</td><td class="py-1">two 56% · three 30% · four 10% · one 4%</td></tr>
-                        <tr><td class="py-1 pr-6 text-neutral-500">source</td><td class="py-1">blue tree 87% · natural gradient 13%</td></tr>
-                        <tr><td class="py-1 pr-6 text-neutral-500">paper</td><td class="py-1">blush 28% · ivory 22% · rose 20% · fog 12% · overhead blue 10% · night 8%</td></tr>
-                        <tr><td class="py-1 pr-6 text-neutral-500">ember</td><td class="py-1">present 55%</td></tr>
-                        <tr><td class="py-1 pr-6 text-neutral-500">memory</td><td class="py-1">not random: 100% at edition 1, falling to 12% at edition 44</td></tr>
-                    </tbody>
-                </table>
-            </div>
-            <p class="mt-3 text-sm">
-                Every edition also carries its own trait line inside the artwork, in the
-                SVG&rsquo;s <code class="font-mono text-xs text-neutral-300">desc</code>
-                element. View source on any token and it will tell you what it is.
-            </p>
-
-            <h2 class="mt-14 text-white text-2xl font-bold" style="letter-spacing: -0.025em">The code</h2>
-            <p class="mt-3">
-                Under 10&nbsp;KB and stored on Tezos. The code below is not served from
-                this site - it is read out of the contract when you open the page,
-                then compared against the source of the function this page actually ran.
-            </p>
-            <pre class="mt-6 max-h-96 overflow-auto hairline-card p-6 text-xs leading-relaxed"><code id="code" class="font-mono text-neutral-400">Reading from the contract…</code></pre>
-            <p id="code-status" class="mt-3 font-mono text-xs text-neutral-500"></p>
-
-            <p class="mt-6 font-mono text-xs text-neutral-500">
-                <a class="inline-block py-1 hover:text-white transition-colors" href="https://better-call.dev/mainnet/KT1CB4MYiAViCuXWBU961x7LjQXGeA8SnQwt" target="_blank" rel="noopener">contract KT1CB4M&hellip;SnQwt&nbsp;&#8599;</a>
+                The page is now at
+                <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="/art/essentialism/">/art/essentialism/</a>,
+                under the
+                <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="/art/">art index</a>.
+                Nothing about the piece changed; only its address did.
             </p>
         </main>
-
-        <footer class="site-footer">
-            <nav class="footer-line">
-                <a class="js-email" rel="nofollow" href="/">Email</a>
-                <span aria-hidden="true">&middot;</span>
-                <a href="https://x.com/thebenmeadows" target="_blank" rel="me noopener">X</a>
-                <span aria-hidden="true">&middot;</span>
-                <a href="https://primal.net/p/npub1wldqfuy0yge4fvxukdm43gze2ral9dnp5avlps5a6t8q0vyv2nds84nq29" target="_blank" rel="me noopener">Nostr</a>
-                <span aria-hidden="true">&middot;</span>
-                <a href="/profiles/">All profiles &rarr;</a>
-            </nav>
-            <nav class="footer-line">
-                <a href="https://github.com/TheBenMeadows/tbm" target="_blank" rel="noopener">Source</a>
-                <span aria-hidden="true">&middot;</span>
-                <a href="/mirrors/">Mirrors</a>
-                <span aria-hidden="true">&middot;</span>
-                <a href="/tech/">Tech&nbsp;Stack</a>
-                <span aria-hidden="true">&middot;</span>
-                <a href="/infra/">Infra</a>
-            </nav>
-        </footer>
-        <script src="/email.js"></script>
     </body>
 </html>

@@ -1,4 +1,4 @@
-/* essentialism - live renderer for thebenmeadows.com/essentialism/
+/* essentialism - live renderer for thebenmeadows.com/art/essentialism/
    Uses bootloader's exact on-chain seeding (splitmix64 -> sfc32). No eval: the
    generator is a real function loaded from essentialism.js (CSP script-src 'self').
 

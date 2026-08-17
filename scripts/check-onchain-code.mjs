@@ -1,5 +1,5 @@
-// essentialism/essentialism.js is not source. It is a copy of the generator
-// stored on Tezos as bootloader svg-js/407, and /essentialism fetches those
+// art/essentialism/essentialism.js is not source. It is a copy of the generator
+// stored on Tezos as bootloader svg-js/407, and /art/essentialism fetches those
 // bytes at runtime and diffs them against the function it just ran, printing
 // "Verified" or "Mismatch" to the reader. So the file has a correctness
 // condition no linter, formatter, or house-style pass can be trusted with:
@@ -22,8 +22,8 @@
 import { readFileSync, existsSync } from "node:fs";
 import { createHash } from "node:crypto";
 
-const FILE = "essentialism/essentialism.js";
-const SHIPPED = "dist/essentialism/essentialism.js";
+const FILE = "art/essentialism/essentialism.js";
+const SHIPPED = "dist/art/essentialism/essentialism.js";
 const OPEN = "window.ESSENTIALISM = function (BTLDR) {\n";
 const CLOSE = "\n};";
 
@@ -54,7 +54,7 @@ if (got !== BODY_SHA256) {
         `  expected ${BODY_SHA256}\n` +
         `       got ${got}\n` +
         `  Every byte inside the wrapper is chain bytes, comments included, and\n` +
-        `  /essentialism diffs them against the contract in the reader's browser.\n` +
+        `  /art/essentialism diffs them against the contract in the reader's browser.\n` +
         `  If you were restyling prose, revert this file. If the generator really\n` +
         `  changed on-chain, regenerate the body from the contract and repin\n` +
         `  BODY_SHA256 in scripts/check-onchain-code.mjs.`

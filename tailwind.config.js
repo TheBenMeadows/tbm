@@ -12,8 +12,12 @@ module.exports = {
     "./experiments/index.html",
     "./projects/index.html",
     "./infra/index.html",
+    "./art/index.html",
+    "./art/essentialism/index.html",
+    "./art/essentialism/play.js",
+    // The forwarding stub left behind when essentialism moved under /art/.
     "./essentialism/index.html",
-    "./essentialism/play.js",
+    "./archive/index.html",
     "./search/index.html",
         "./profiles/index.html",
     // search.js builds the overlay at runtime; without this its classes get purged.

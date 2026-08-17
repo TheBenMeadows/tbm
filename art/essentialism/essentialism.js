@@ -3,7 +3,7 @@
 // Contract: KT1CB4MYiAViCuXWBU961x7LjQXGeA8SnQwt
 //
 // Everything from the line below to the closing brace is chain bytes, comments
-// included, and /essentialism compares it against the contract in the browser.
+// included, and /art/essentialism compares it against the contract in the browser.
 // A house style applied to a comment down there is a mismatch on the live page.
 // Edit only by regenerating from the contract, then repin scripts/check-onchain-code.mjs.
 
