@@ -40,6 +40,16 @@ const PAGES = [
     { file: 'projects/poap-saver/index.html', url: '/projects/poap-saver/' },
 ];
 
+/* Blog pages are generated, so they arrive as a list rather than as literals:
+ * scripts/build-blog.mjs writes blog/pages.json before this runs, and a new post
+ * joins site search by existing, without an edit here. Missing is fatal rather
+ * than skipped — a silently blog-less index is exactly the drift the build is
+ * meant to catch. */
+const blogPages = JSON.parse(
+    await readFile(join(ROOT, 'blog', 'pages.json'), 'utf8')
+).pages;
+PAGES.push(...blogPages);
+
 const ENTITIES = {
     '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&#39;': "'",
     '&nbsp;': ' ', '&mdash;': '—', '&ndash;': '–', '&hellip;': '…', '&times;': '×',

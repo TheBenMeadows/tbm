@@ -17,6 +17,10 @@ import { join } from "node:path";
 
 const DIST = "dist";
 const PAGES = [
+    // Generated blog pages come from the list scripts/build-blog.mjs emits, so a
+    // new post is stamped without an edit here. Reading it from the source tree
+    // rather than dist keeps this the same one list every builder consumes.
+    ...JSON.parse(readFileSync(join("blog", "pages.json"), "utf8")).pages.map((p) => p.file),
     "index.html",
     "mirrors/index.html",
     "tech/index.html",
