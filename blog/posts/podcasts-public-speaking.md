@@ -87,6 +87,8 @@ June 2, 2023 - Live Interview - Host: [Ned](https://x.com/NedzzoneXR)
 - [Watch the Recording](https://www.youtube.com/live/MgBbICKbf_k?si=wj80G-UKhmvXwsv5)
 - [Clip](https://www.linkedin.com/feed/update/urn:li:activity:7070535820373331968/) "AI is a Lazy Term"
 
+![G-Talk promotional card for the interview, captioned "G-Talk · Ben Meadows"](/blog/media/podcasts-public-speaking/fxnhjvuxoauogld.webp)
+
 ---
 
 **"Dynamic Blueprints: Pushing the Limits of NFT Collaboration"**
