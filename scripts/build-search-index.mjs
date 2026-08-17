@@ -16,7 +16,11 @@ import { fileURLToPath } from 'node:url';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
 /* One entry per page. Kept as an array so folding in another property later — the
- * blog, the art index — is a one-line change rather than a rewrite. */
+ * blog, the art index — is a one-line change rather than a rewrite.
+ *
+ * /essentialism/ is absent on purpose: it is the forwarding stub left behind when
+ * the page moved under /art/, and indexing it would put a signpost in the results
+ * alongside the page it points at. */
 const PAGES = [
     { file: 'index.html', url: '/' },
     { file: 'profiles/index.html', url: '/profiles/' },
@@ -25,7 +29,8 @@ const PAGES = [
     { file: 'experiments/index.html', url: '/experiments/' },
     { file: 'projects/index.html', url: '/projects/' },
     { file: 'infra/index.html', url: '/infra/' },
-    { file: 'essentialism/index.html', url: '/essentialism/' },
+    { file: 'art/index.html', url: '/art/' },
+    { file: 'art/essentialism/index.html', url: '/art/essentialism/' },
     { file: 'archive/index.html', url: '/archive/' },
     { file: 'experiments/pendulum/index.html', url: '/experiments/pendulum/' },
     { file: 'experiments/porcine/index.html', url: '/experiments/porcine/' },
@@ -55,7 +60,7 @@ const decomment = (html) => html.replace(/<!--[\s\S]*?-->/g, ' ');
 const strip = (html) => decode(decomment(html).replace(/<[^>]*>/g, ' ')).replace(/\s+/g, ' ').trim();
 
 /* Chrome (header/footer nav) would otherwise make every page match "Mirrors",
- * "Tech Stack", "Experiments"… The <pre> on /essentialism/ is 8 KB of generator
+ * "Tech Stack", "Experiments"… The <pre> on /art/essentialism/ is 8 KB of generator
  * source and is deliberately excluded — it would nearly double the index to match
  * on things like `}`. */
 function bodyText(html) {

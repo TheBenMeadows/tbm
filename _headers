@@ -103,6 +103,16 @@
 /infra/
   Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/infra/
 
+/art/
+  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/art/
+
+/art/essentialism/
+  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/art/essentialism/
+
+# The forwarding stub. Onion-Location points at the onion's own stub rather than
+# the destination, so a Tor visitor who lands on the old address crosses to the
+# onion first and follows the same move there, instead of being handed a clearnet
+# address mid-redirect.
 /essentialism/
   Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/essentialism/
 
