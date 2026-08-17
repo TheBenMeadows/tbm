@@ -64,7 +64,8 @@ const date = gitOut('log -1 --format=%cd --date=format-local:%Y-%m-%d', "", { TZ
 
 const label = date ? `${short} &middot; ${date}` : short;
 const marker = 'class="mt-3 text-xs text-neutral-600">Build ';
-const stamp = `            <p ${marker}${label} &middot; <a class="hover:text-neutral-400" href="https://iheartrss.com/" target="_blank" rel="noopener">I &hearts;&#xFE0E; RSS</a></p>\n`;
+// Status sits between the build stamp and the RSS sign-off: build -> date -> is it up.
+const stamp = `            <p ${marker}${label} &middot; <a class="hover:text-neutral-400" href="https://status.thebenmeadows.com/" target="_blank" rel="noopener">Status</a> &middot; <a class="hover:text-neutral-400" href="https://iheartrss.com/" target="_blank" rel="noopener">I &hearts;&#xFE0E; RSS</a></p>\n`;
 
 let stamped = 0;
 for (const page of PAGES) {
