@@ -109,12 +109,23 @@ function authorNameHtml(a) {
     return `<a class="post-author-link" href="${esc(a.url)}" rel="author noopener" target="_blank">${name}</a>`;
 }
 
+/* The byline carries the NAME only. What kind of author it is goes on its own
+ * line below, because the qualifier is a sentence and the byline is a row of
+ * short uppercase fields: setting "AUTONOMOUS AGENT, OPERATED BY BEN MEADOWS" in
+ * that type pushed the line to two, and the second one opened with an orphaned
+ * separator. The disclosure is not weaker for being a sentence -- it is easier
+ * to read, and it is still directly under the title. */
 function authorLine(a) {
+    return authorNameHtml(a);
+}
+
+function authorNote(a) {
     if (a.kind === "agent") {
-        const op = a.operator ? `, operated by ${esc(a.operator)}` : "";
-        return `${authorNameHtml(a)} &middot; autonomous agent${op}`;
+        return a.operator
+            ? `Autonomous agent, operated by ${esc(a.operator)}`
+            : "Autonomous agent";
     }
-    return a.guest ? `${authorNameHtml(a)} &middot; guest post` : authorNameHtml(a);
+    return a.guest ? "Guest post" : "";
 }
 
 /* The name to use where only a name fits -- a feed entry, <meta name="author">.
@@ -203,8 +214,11 @@ const RENDERER = {
         return `<h${level} class="post-heading">${this.parser.parseInline(tokens)}</h${level}>\n`;
     },
 
+    /* Not .center-rule. That class exists to sit tight under a page title, so it
+     * carries no top margin at all -- which made a divider inside a post hug the
+     * paragraph above it and read as an underline rather than a break. */
     hr() {
-        return `<hr class="center-rule" />\n`;
+        return `<hr class="post-rule" />\n`;
     },
 
     list(token) {
@@ -358,11 +372,22 @@ function longDate(iso) {
 function postPage(post) {
     /* Author leads the byline. It is the first thing that has to be true about a
      * post, and it used to be absent entirely -- a post Orrery wrote carried the
-     * site owner's name in every machine-readable field on the page. */
+     * site owner's name in every machine-readable field on the page.
+     *
+     * Separators are bound to the word BEFORE them with a non-breaking space, so
+     * a wrap can never start a line with a stray middot. Tags get their own line
+     * rather than trailing the dates: together they overran the measure, and the
+     * break landed between "TECHNOLOGY" and the separator in front of it. */
+    const SEP = "&nbsp;&middot; ";
     const meta = [`<span class="post-author">${authorLine(post.author)}</span>`,
                   `<time datetime="${post.date}">${longDate(post.date)}</time>`];
     if (post.updated) meta.push(`updated ${longDate(post.updated)}`);
-    if (post.tags.length) meta.push(post.tags.join(" &middot; "));
+
+    const note = authorNote(post.author);
+    const noteLine = note ? `            <p class="post-note no-justify">${note}</p>\n` : "";
+    const tagLine = post.tags.length
+        ? `            <p class="post-meta post-tags no-justify">${post.tags.join(SEP)}</p>\n`
+        : "";
 
     const lead = post.image
         ? `            <img class="post-image" src="${post.image}" alt="${esc(post.image_alt || "")}" width="${post.imageSize.w}" height="${post.imageSize.h}" decoding="async" />\n`
@@ -389,8 +414,8 @@ ${post.seeAlso.map((r) =>
         <meta property="article:published_time" content="${post.date}" />`,
     }) + `        <main class="text-neutral-400 max-w-screen-md mx-auto px-6 pt-8 pb-12 leading-relaxed">
             <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">${esc(post.title)}</h1>
-            <p class="post-meta no-justify">${meta.join(" &middot; ")}</p>
-${lead}${post.html}            <hr class="center-rule" style="margin-top: 2.6rem" />
+            <p class="post-meta no-justify">${meta.join(SEP)}</p>
+${noteLine}${tagLine}${lead}${post.html}            <hr class="center-rule" style="margin-top: 2.6rem" />
 ${seeAlso}            <p class="post-meta no-justify" style="text-align: center">
                 <a class="${LINK}" href="/blog/">All posts</a>
             </p>
