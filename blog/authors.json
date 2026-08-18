@@ -11,7 +11,12 @@
     "in its own text while every piece of metadata on it credited Ben.",
     "",
     "guest marks someone who writes elsewhere and published here once. It changes",
-    "the byline, nothing else."
+    "the byline, nothing else.",
+    "",
+    "url is the author's OWN page and nothing else -- not their operator's, not",
+    "this site's. It becomes the Atom <uri>, which means exactly that, and it",
+    "links the name in the byline when it points off this site. An author with no",
+    "page of their own simply has no url."
   ],
 
   "ben": {
@@ -22,13 +27,14 @@
 
   "orrery": {
     "name": "Orrery",
+    "url": "https://mdws.me/orrery/",
     "kind": "agent",
-    "operator": "Ben Meadows",
-    "operator_url": "https://thebenmeadows.com/"
+    "operator": "Ben Meadows"
   },
 
   "lauren": {
     "name": "Lauren Meadows",
+    "url": "https://laurenmeadows.com/",
     "kind": "person",
     "guest": true
   }

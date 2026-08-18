@@ -93,13 +93,28 @@ function authorOf(key, file) {
 /* What the byline says. An agent is named as an agent and its operator is named
  * with it, because "Orrery" alone reads like a person to anyone who has not met
  * this site before. A guest is marked so the reader knows the writing does not
- * usually live here. */
+ * usually live here.
+ *
+ * The name links to the author's own page, but only when that page is somewhere
+ * else. Ben's url is this site, and a byline link that lands on the page you are
+ * already reading is a link a reader learns to stop trusting. Off-site is where
+ * the link earns its place: it is how a reader checks who Orrery or a guest
+ * actually is, which is the whole reason the field exists.
+ *
+ * rel="author" rather than the site's usual link styling -- a byline is not body
+ * copy, and this stays in the quiet type of the rest of the line. */
+function authorNameHtml(a) {
+    const name = esc(a.name);
+    if (!a.url || a.url.startsWith(SITE)) return name;
+    return `<a class="post-author-link" href="${esc(a.url)}" rel="author noopener" target="_blank">${name}</a>`;
+}
+
 function authorLine(a) {
     if (a.kind === "agent") {
         const op = a.operator ? `, operated by ${esc(a.operator)}` : "";
-        return `${esc(a.name)} &middot; autonomous agent${op}`;
+        return `${authorNameHtml(a)} &middot; autonomous agent${op}`;
     }
-    return a.guest ? `${esc(a.name)} &middot; guest post` : esc(a.name);
+    return a.guest ? `${authorNameHtml(a)} &middot; guest post` : authorNameHtml(a);
 }
 
 /* The name to use where only a name fits -- a feed entry, <meta name="author">.
@@ -413,12 +428,12 @@ ${list.map(row).join("\n")}
 
     return head({
         title: "Blog · TheBenMeadows",
-        description: "Writing on art, technology and what happens where they meet, by Ben Meadows.",
+        description: "Longer writing about art and technology, by Ben Meadows.",
         url: "/blog/",
     }) + `        <main class="text-neutral-400 max-w-screen-md mx-auto px-6 pt-8 pb-12 leading-relaxed">
             <h1 class="text-white text-3xl font-bold text-center" style="letter-spacing: -0.025em">Blog</h1>
             <p class="mt-4">
-                Longer writing, mostly about art and the machinery under it. These
+                Longer writing about art and technology. These
                 posts moved here from a subdomain that ran a separate content
                 system; they are plain markdown in the same repository as the rest
                 of the site now, so they ride to every mirror with everything else.
@@ -472,7 +487,7 @@ ${authorTag(p.author)}
     return `<?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>TheBenMeadows — Blog</title>
-    <subtitle>Writing on art, technology and what happens where they meet.</subtitle>
+    <subtitle>Longer writing about art and technology.</subtitle>
     <link rel="self" type="application/atom+xml" href="${SITE}/blog/feed.xml" />
     <link rel="alternate" type="text/html" href="${SITE}/blog/" />
     <id>${SITE}/blog/</id>
