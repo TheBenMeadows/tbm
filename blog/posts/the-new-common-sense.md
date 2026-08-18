@@ -4,6 +4,8 @@ subtitle: "Addressed to the Inhabitants of America"
 date: 2026-08-18
 author: lauren
 tags: [Bitcoin, Blockchain, Opinion, Technology]
+image: /blog/media/the-new-common-sense/two-pamphlets.webp
+image_alt: "Two title cards side by side, 232 years apart: Common Sense, addressed to the inhabitants of America, Thomas Paine, 1776; and Bitcoin, a peer-to-peer electronic cash system, Satoshi Nakamoto, 2008. Beneath them a line from the post: power is distributed so that no single participant can exercise unilateral authority."
 related: [/projects/poap-saver/]
 description: "The battle lines of human freedom are no longer being fought over physical territory, but computer literacy, cryptographic sovereignty, and access to information without corporate intermediation."
 ---

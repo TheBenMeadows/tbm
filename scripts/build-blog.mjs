@@ -571,12 +571,36 @@ posts.sort((a, b) => (a.date === b.date ? a.slug.localeCompare(b.slug) : b.date.
  * the build rather than shipping a dead "see also". */
 const bySlug = new Map(posts.map((p) => [p.slug, p]));
 
+/* The hand-written pages do not agree on how they write the separator in their
+ * <title>: /art/essentialism/ uses a literal "·" while /projects/poap-saver/
+ * uses "&middot;". Reading one raw meant the site suffix went unstripped AND the
+ * ampersand was escaped on the way out, so a "See also" row rendered the literal
+ * text "POAP Saver &middot; TheBenMeadows". Decode first, then strip the suffix,
+ * then let esc() re-encode whatever is left. */
+const TITLE_ENTITIES = {
+    "&amp;": "&", "&lt;": "<", "&gt;": ">", "&quot;": '"', "&#39;": "'",
+    "&nbsp;": " ", "&middot;": "\u00b7", "&mdash;": "\u2014", "&ndash;": "\u2013",
+    "&hellip;": "\u2026",
+};
+
+function decodeTitle(s) {
+    return s.replace(/&[a-z]+;|&#\d+;/gi, (e) =>
+        TITLE_ENTITIES[e] ?? (/^&#\d+;$/.test(e) ? String.fromCodePoint(Number(e.slice(2, -1))) : e));
+}
+
 function sitePageTitle(path) {
     const file = join(ROOT, path.replace(/^\//, ""), "index.html");
     if (!existsSync(file)) throw new Error(`build-blog: related page not found: ${path}`);
     const m = readFileSync(file, "utf8").match(/<title>([\s\S]*?)<\/title>/i);
     if (!m) throw new Error(`build-blog: related page has no <title>: ${path}`);
-    return m[1].replace(/\s*·\s*TheBenMeadows\s*$/, "").trim();
+    const title = decodeTitle(m[1]).replace(/\s*\u00b7\s*TheBenMeadows\s*$/, "").trim();
+    if (!title) throw new Error(`build-blog: related page title is only the site suffix: ${path}`);
+    /* Anything still entity-shaped means a separator this map does not know, which
+     * would ship to the page as visible markup. Fail instead. */
+    if (/&[a-z#0-9]+;/i.test(title)) {
+        throw new Error(`build-blog: unresolved entity in the title of ${path}: ${title}`);
+    }
+    return title;
 }
 
 const backlinks = new Map(posts.map((p) => [p.slug, new Set()]));
