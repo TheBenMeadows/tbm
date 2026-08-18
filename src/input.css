@@ -460,6 +460,15 @@ html.dark #theme-toggle::before { content: "Light"; }
    owner of the domain, or by an agent, and both cases are only honest if the
    name is the first thing read. Everything else on the line stays quiet. */
 .post-author { color: var(--title); }
+/* Underlined rather than coloured: the byline is already the brightest thing on
+   the line, so the link needs to be findable without adding a second signal. */
+.post-author-link {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--rule);
+}
+.post-author-link:hover { text-decoration-color: var(--accent); }
 .post-image {
     display: block;
     width: 100%;
