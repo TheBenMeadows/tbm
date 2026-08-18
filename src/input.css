@@ -459,6 +459,18 @@ html.dark #theme-toggle::before { content: "Light"; }
    without looking for it — a post here may be written by someone other than the
    owner of the domain, or by an agent, and both cases are only honest if the
    name is the first thing read. Everything else on the line stays quiet. */
+/* The post header — title, byline, what-kind-of-author, tags — centred as one
+   block, the way /archive, /art, /mirrors, /tech, /infra and the blog index
+   already centre theirs. Centring the title alone would leave it floating over a
+   left-aligned byline, so the whole header moves or none of it does.
+
+   It holds at both extremes: a title that wraps to two lines sits over a wider
+   byline, and a short one gets a wider byline beneath it. Either way the lead
+   image below anchors the block. A post with no lead image has nothing under it
+   but body copy, which is the case to look at if this ever stops working. */
+.post-head { text-align: center; }
+.post-head .no-justify { text-align: center; }
+
 .post-author { color: var(--title); }
 /* What kind of author this is. A sentence, so it is set as one — the byline's
    uppercase letterspaced type is for short fields, and a clause in that type
@@ -500,6 +512,18 @@ html.dark #theme-toggle::before { content: "Light"; }
     font-size: 1.15rem;
     letter-spacing: -0.01em;
     margin: 2.4rem 0 0;
+}
+/* A heading has to sit closer to the section it opens than to the one it ends,
+   or it belongs to neither. It did not: every paragraph carries mt-4, so the gap
+   BELOW a heading was 1rem -- the same 1rem that separates two ordinary
+   paragraphs -- while the gap above it was 2.4rem. The heading read as floating
+   rather than as a division.
+
+   Tightening below is the fix rather than loosening above: the space above is
+   doing real work, and matching the two would remove the division entirely.
+   Two class names beat the utility's one, so this wins without !important. */
+main .post-heading + * {
+    margin-top: 0.6rem;
 }
 .post-list {
     margin-top: 1rem;
