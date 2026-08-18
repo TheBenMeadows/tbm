@@ -384,9 +384,9 @@ function postPage(post) {
     if (post.updated) meta.push(`updated ${longDate(post.updated)}`);
 
     const note = authorNote(post.author);
-    const noteLine = note ? `            <p class="post-note no-justify">${note}</p>\n` : "";
+    const noteLine = note ? `                <p class="post-note no-justify">${note}</p>\n` : "";
     const tagLine = post.tags.length
-        ? `            <p class="post-meta post-tags no-justify">${post.tags.join(SEP)}</p>\n`
+        ? `                <p class="post-meta post-tags no-justify">${post.tags.join(SEP)}</p>\n`
         : "";
 
     const lead = post.image
@@ -413,9 +413,11 @@ ${post.seeAlso.map((r) =>
         extraLinks: `        <meta property="og:type" content="article" />
         <meta property="article:published_time" content="${post.date}" />`,
     }) + `        <main class="text-neutral-400 max-w-screen-md mx-auto px-6 pt-8 pb-12 leading-relaxed">
-            <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">${esc(post.title)}</h1>
-            <p class="post-meta no-justify">${meta.join(SEP)}</p>
-${noteLine}${tagLine}${lead}${post.html}            <hr class="center-rule" style="margin-top: 2.6rem" />
+            <header class="post-head">
+                <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">${esc(post.title)}</h1>
+                <p class="post-meta no-justify">${meta.join(SEP)}</p>
+${noteLine}${tagLine}            </header>
+${lead}${post.html}            <hr class="center-rule" style="margin-top: 2.6rem" />
 ${seeAlso}            <p class="post-meta no-justify" style="text-align: center">
                 <a class="${LINK}" href="/blog/">All posts</a>
             </p>

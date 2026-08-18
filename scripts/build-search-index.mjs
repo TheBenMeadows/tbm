@@ -81,7 +81,11 @@ function bodyText(html) {
         .replace(/<script\b[\s\S]*?<\/script>/gi, ' ')
         .replace(/<style\b[\s\S]*?<\/style>/gi, ' ')
         .replace(/<svg\b[\s\S]*?<\/svg>/gi, ' ')
-        .replace(/<header\b[\s\S]*?<\/header>/gi, ' ')
+        /* Only the site chrome. This used to strip EVERY <header>, which was fine
+         * while the running head was the only one — then a blog post wrapped its
+         * title and byline in one and the author's name silently left the search
+         * corpus, so a guest post could not be found by who wrote it. */
+        .replace(/<header class="running-head"[\s\S]*?<\/header>/gi, ' ')
         .replace(/<footer\b[\s\S]*?<\/footer>/gi, ' ')
         .replace(/<pre\b[\s\S]*?<\/pre>/gi, ' ');
     return strip(s);
