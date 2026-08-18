@@ -50,9 +50,15 @@ const blogPages = JSON.parse(
 ).pages;
 PAGES.push(...blogPages);
 
+/* Every named entity the pages actually use. A missing one does not fail loudly:
+ * it survives decoding and ships as visible markup inside a search result, which
+ * is how '&middot;' reached the index the first time a home-page row carried one.
+ * The audit at the end of this file is what makes the next omission noisy. */
 const ENTITIES = {
     '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&#39;': "'",
     '&nbsp;': ' ', '&mdash;': '—', '&ndash;': '–', '&hellip;': '…', '&times;': '×',
+    '&middot;': '·', '&rarr;': '→', '&larr;': '←', '&hearts;': '♥', '&copy;': '©',
+    '&lsquo;': '‘', '&rsquo;': '’', '&ldquo;': '“', '&rdquo;': '”',
 };
 
 const decode = (s) =>
@@ -140,6 +146,20 @@ for (const { file, url } of PAGES) {
     if (url === '/') {
         for (const card of linkCards(html)) docs.push({ ...card, from: '/' });
     }
+}
+
+/* Nothing entity-shaped may reach the index. Anything left here is a name the
+ * map above does not know, and it would render as literal markup in the search
+ * overlay rather than as the character the page shows. */
+const leftover = [...new Set(
+    docs.flatMap((d) => [d.title, d.text ?? '', ...(d.headings ?? [])])
+        .flatMap((t) => [...String(t).matchAll(/&[a-z]+;|&#\d+;/gi)].map((m) => m[0])),
+)];
+if (leftover.length) {
+    throw new Error(
+        `build-search-index: undecoded entities in the index: ${leftover.join(' ')} ` +
+        `\u2014 add them to ENTITIES rather than shipping them as visible markup`,
+    );
 }
 
 const json = JSON.stringify({ built: docs.length, docs });

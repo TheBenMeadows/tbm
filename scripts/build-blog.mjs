@@ -30,7 +30,7 @@ const SITE = "https://thebenmeadows.com";
  * a fixed set of scalar keys plus one bracketed list, and a real YAML parser
  * would accept far more than this build knows how to render. If a post needs a
  * key that is not here, the build should fail loudly rather than drop it. */
-const KNOWN = new Set(["title", "date", "updated", "tags", "description", "image", "image_alt",
+const KNOWN = new Set(["title", "subtitle", "date", "updated", "tags", "description", "image", "image_alt",
                        "author", "pin", "related"]);
 
 function frontMatter(text, file) {
@@ -383,6 +383,13 @@ function postPage(post) {
                   `<time datetime="${post.date}">${longDate(post.date)}</time>`];
     if (post.updated) meta.push(`updated ${longDate(post.updated)}`);
 
+    /* A subtitle belongs to the title, not to the body. Set as its own line in
+     * the header rather than as a first paragraph, which is where it landed
+     * before and left it reading as an opening sentence. */
+    const subLine = post.subtitle
+        ? `                <p class="post-subtitle no-justify">${esc(post.subtitle)}</p>\n`
+        : "";
+
     const note = authorNote(post.author);
     const noteLine = note ? `                <p class="post-note no-justify">${note}</p>\n` : "";
     const tagLine = post.tags.length
@@ -415,7 +422,7 @@ ${post.seeAlso.map((r) =>
     }) + `        <main class="text-neutral-400 max-w-screen-md mx-auto px-6 pt-8 pb-12 leading-relaxed">
             <header class="post-head">
                 <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">${esc(post.title)}</h1>
-                <p class="post-meta no-justify">${meta.join(SEP)}</p>
+${subLine}                <p class="post-meta no-justify">${meta.join(SEP)}</p>
 ${noteLine}${tagLine}            </header>
 ${lead}${post.html}            <hr class="center-rule" style="margin-top: 2.6rem" />
 ${seeAlso}            <p class="post-meta no-justify" style="text-align: center">
@@ -564,12 +571,36 @@ posts.sort((a, b) => (a.date === b.date ? a.slug.localeCompare(b.slug) : b.date.
  * the build rather than shipping a dead "see also". */
 const bySlug = new Map(posts.map((p) => [p.slug, p]));
 
+/* The hand-written pages do not agree on how they write the separator in their
+ * <title>: /art/essentialism/ uses a literal "·" while /projects/poap-saver/
+ * uses "&middot;". Reading one raw meant the site suffix went unstripped AND the
+ * ampersand was escaped on the way out, so a "See also" row rendered the literal
+ * text "POAP Saver &middot; TheBenMeadows". Decode first, then strip the suffix,
+ * then let esc() re-encode whatever is left. */
+const TITLE_ENTITIES = {
+    "&amp;": "&", "&lt;": "<", "&gt;": ">", "&quot;": '"', "&#39;": "'",
+    "&nbsp;": " ", "&middot;": "\u00b7", "&mdash;": "\u2014", "&ndash;": "\u2013",
+    "&hellip;": "\u2026",
+};
+
+function decodeTitle(s) {
+    return s.replace(/&[a-z]+;|&#\d+;/gi, (e) =>
+        TITLE_ENTITIES[e] ?? (/^&#\d+;$/.test(e) ? String.fromCodePoint(Number(e.slice(2, -1))) : e));
+}
+
 function sitePageTitle(path) {
     const file = join(ROOT, path.replace(/^\//, ""), "index.html");
     if (!existsSync(file)) throw new Error(`build-blog: related page not found: ${path}`);
     const m = readFileSync(file, "utf8").match(/<title>([\s\S]*?)<\/title>/i);
     if (!m) throw new Error(`build-blog: related page has no <title>: ${path}`);
-    return m[1].replace(/\s*·\s*TheBenMeadows\s*$/, "").trim();
+    const title = decodeTitle(m[1]).replace(/\s*\u00b7\s*TheBenMeadows\s*$/, "").trim();
+    if (!title) throw new Error(`build-blog: related page title is only the site suffix: ${path}`);
+    /* Anything still entity-shaped means a separator this map does not know, which
+     * would ship to the page as visible markup. Fail instead. */
+    if (/&[a-z#0-9]+;/i.test(title)) {
+        throw new Error(`build-blog: unresolved entity in the title of ${path}: ${title}`);
+    }
+    return title;
 }
 
 const backlinks = new Map(posts.map((p) => [p.slug, new Set()]));

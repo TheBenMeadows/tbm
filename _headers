@@ -124,6 +124,9 @@
 /blog/podcasts-public-speaking/
   Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/blog/podcasts-public-speaking/
 
+/blog/the-new-common-sense/
+  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/blog/the-new-common-sense/
+
 /art/essentialism/
   Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/art/essentialism/
 
