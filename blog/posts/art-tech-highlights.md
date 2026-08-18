@@ -2,7 +2,9 @@
 title: "Art & Technology Highlights"
 date: 2024-05-22
 updated: 2025-02-05
+pin: 2
 tags: [Art, Blockchain, Technology]
+related: [podcasts-public-speaking]
 image: /blog/media/art-tech-highlights/1-enhanced-topaz-standard-v2-2x-cropped-2.webp
 description: "Introduction: I was exposed to art from a young age. My creative journey began with piano lessons and art classes, which my parents encouraged for both me and my siblings.…"
 ---

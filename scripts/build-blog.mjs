@@ -30,7 +30,8 @@ const SITE = "https://thebenmeadows.com";
  * a fixed set of scalar keys plus one bracketed list, and a real YAML parser
  * would accept far more than this build knows how to render. If a post needs a
  * key that is not here, the build should fail loudly rather than drop it. */
-const KNOWN = new Set(["title", "date", "updated", "tags", "description", "image", "image_alt"]);
+const KNOWN = new Set(["title", "date", "updated", "tags", "description", "image", "image_alt",
+                       "author", "pin", "related"]);
 
 function frontMatter(text, file) {
     if (!text.startsWith("---\n")) throw new Error(`build-blog: ${file} has no front matter`);
@@ -44,8 +45,16 @@ function frontMatter(text, file) {
         const key = line.slice(0, i).trim();
         let value = line.slice(i + 1).trim();
         if (!KNOWN.has(key)) throw new Error(`build-blog: ${file} has unknown front-matter key "${key}"`);
-        if (key === "tags") {
-            meta.tags = value.replace(/^\[|\]$/g, "").split(",").map((t) => t.trim()).filter(Boolean);
+        if (key === "tags" || key === "related") {
+            meta[key] = value.replace(/^\[|\]$/g, "").split(",").map((t) => t.trim()).filter(Boolean);
+            continue;
+        }
+        if (key === "pin") {
+            const n = Number(value);
+            if (!Number.isInteger(n) || n < 1) {
+                throw new Error(`build-blog: ${file} pin must be a whole number from 1 up, got "${value}"`);
+            }
+            meta.pin = n;
             continue;
         }
         if (value.startsWith('"')) value = JSON.parse(value);
@@ -56,6 +65,41 @@ function frontMatter(text, file) {
     }
     if (!/^\d{4}-\d{2}-\d{2}$/.test(meta.date)) throw new Error(`build-blog: ${file} date must be YYYY-MM-DD`);
     return { meta, body: text.slice(end + 5) };
+}
+
+/* ------------------------------------------------------------------ */
+/* authors                                                             */
+
+/* Read from blog/authors.json rather than hardcoded here: adding a writer is
+ * adding data, not editing a build script. An unknown key fails the build --
+ * quietly falling back to the site owner is how a guest post or an agent post
+ * ends up under the wrong name, which is the exact failure this file exists to
+ * prevent. */
+const AUTHORS = JSON.parse(readFileSync(join(OUT, "authors.json"), "utf8"));
+
+function authorOf(key, file) {
+    const id = key || "ben";
+    const a = AUTHORS[id];
+    if (!a || id.startsWith("_")) {
+        throw new Error(
+            `build-blog: ${file} names author "${id}", which is not in blog/authors.json ` +
+            `(known: ${Object.keys(AUTHORS).filter((k) => !k.startsWith("_")).join(", ")})`
+        );
+    }
+    if (!a.name || !a.kind) throw new Error(`build-blog: author "${id}" needs a name and a kind`);
+    return { id, ...a };
+}
+
+/* What the byline says. An agent is named as an agent and its operator is named
+ * with it, because "Orrery" alone reads like a person to anyone who has not met
+ * this site before. A guest is marked so the reader knows the writing does not
+ * usually live here. */
+function authorLine(a) {
+    if (a.kind === "agent") {
+        const op = a.operator ? `, operated by ${esc(a.operator)}` : "";
+        return `${esc(a.name)} &middot; autonomous agent${op}`;
+    }
+    return a.guest ? `${esc(a.name)} &middot; guest post` : esc(a.name);
 }
 
 /* ------------------------------------------------------------------ */
@@ -204,16 +248,19 @@ const FOOTER = `        <footer class="site-footer">
         </footer>
         <script src="/email.js"></script>`;
 
-function head({ title, description, url, image, imageAlt, extraLinks = "" }) {
+function head({ title, description, url, image, imageAlt, author, extraLinks = "" }) {
     const img = image ? SITE + image : `${SITE}/og.png`;
     const alt = imageAlt || "TheBenMeadows · thebenmeadows.com";
+    /* The index has no single author; a post does, and it is whoever wrote that
+     * post rather than whoever owns the domain. */
+    const by = author ? author.name : "Ben Meadows";
     return `<!doctype html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="${esc(description)}" />
-        <meta name="author" content="Ben Meadows" />
+        <meta name="author" content="${esc(by)}" />
         <meta name="color-scheme" content="dark light" />
         <meta http-equiv="content-language" content="en-us" />
         <link rel="canonical" href="${SITE}${url}" />
@@ -279,12 +326,26 @@ function longDate(iso) {
 }
 
 function postPage(post) {
-    const meta = [`<time datetime="${post.date}">${longDate(post.date)}</time>`];
+    /* Author leads the byline. It is the first thing that has to be true about a
+     * post, and it used to be absent entirely -- a post Orrery wrote carried the
+     * site owner's name in every machine-readable field on the page. */
+    const meta = [`<span class="post-author">${authorLine(post.author)}</span>`,
+                  `<time datetime="${post.date}">${longDate(post.date)}</time>`];
     if (post.updated) meta.push(`updated ${longDate(post.updated)}`);
     if (post.tags.length) meta.push(post.tags.join(" &middot; "));
 
     const lead = post.image
         ? `            <img class="post-image" src="${post.image}" alt="${esc(post.image_alt || "")}" width="${post.imageSize.w}" height="${post.imageSize.h}" decoding="async" />\n`
+        : "";
+
+    const seeAlso = post.seeAlso.length
+        ? `            <h2 class="section-label" style="margin-top: 2.6rem">See also</h2>
+            <ul class="toc">
+${post.seeAlso.map((r) =>
+    `                <li><a href="${r.url}">${esc(r.title)}<span class="who">${esc(r.who)}</span></a></li>`
+).join("\n")}
+            </ul>
+`
         : "";
 
     return head({
@@ -293,13 +354,14 @@ function postPage(post) {
         url: post.url,
         image: post.image,
         imageAlt: post.image_alt,
+        author: post.author,
         extraLinks: `        <meta property="og:type" content="article" />
         <meta property="article:published_time" content="${post.date}" />`,
     }) + `        <main class="text-neutral-400 max-w-screen-md mx-auto px-6 pt-8 pb-12 leading-relaxed">
             <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">${esc(post.title)}</h1>
             <p class="post-meta no-justify">${meta.join(" &middot; ")}</p>
 ${lead}${post.html}            <hr class="center-rule" style="margin-top: 2.6rem" />
-            <p class="post-meta no-justify" style="text-align: center">
+${seeAlso}            <p class="post-meta no-justify" style="text-align: center">
                 <a class="${LINK}" href="/blog/">All posts</a>
             </p>
         </main>
@@ -311,9 +373,28 @@ ${FOOTER}
 }
 
 function indexPage(posts) {
-    const rows = posts.map((p) =>
-        `                <li><a href="${p.url}">${esc(p.title)}<span class="who">${longDate(p.date)}</span></a></li>`
-    ).join("\n");
+    /* A row says who wrote it only when that is not the obvious answer. Printing
+     * "Ben Meadows" beside every entry on Ben's own site is noise; printing it
+     * beside the two that someone else wrote is the whole point. */
+    const row = (p) => {
+        const who = p.author.id === "ben"
+            ? longDate(p.date)
+            : `${esc(p.author.name)} &middot; ${longDate(p.date)}`;
+        return `                <li><a href="${p.url}">${esc(p.title)}<span class="who">${who}</span></a></li>`;
+    };
+
+    const pinned = posts.filter((p) => p.pin).sort((a, b) => a.pin - b.pin);
+    const rest = posts.filter((p) => !p.pin);
+
+    /* Pinned posts are not repeated below. At this length the list fits on one
+     * screen and showing a post twice reads as a mistake rather than emphasis;
+     * revisit if the archive ever outgrows a single view. */
+    const group = (label, list, first) => !list.length ? "" :
+        `            <h2 class="section-label" style="margin-top: ${first ? "2.6rem" : "3rem"}">${label}</h2>
+            <ul class="toc">
+${list.map(row).join("\n")}
+            </ul>
+`;
 
     return head({
         title: "Blog · TheBenMeadows",
@@ -326,15 +407,12 @@ function indexPage(posts) {
                 posts moved here from a subdomain that ran a separate content
                 system; they are plain markdown in the same repository as the rest
                 of the site now, so they ride to every mirror with everything else.
-                The <a class="${LINK}" href="/blog/feed.xml">feed</a> is Atom.
+                The <a class="${LINK}" href="/blog/feed.xml">feed</a> is Atom, and
+                it stays in date order whatever this page does.
             </p>
             <hr class="center-rule" style="margin-top: 2.2rem; margin-bottom: 0" />
 
-            <h2 class="section-label" style="margin-top: 2.6rem">Posts</h2>
-            <ul class="toc">
-${rows}
-            </ul>
-        </main>
+${group("Start here", pinned, true)}${group(pinned.length ? "More posts" : "Posts", rest, !pinned.length)}        </main>
 
 ${FOOTER}
     </body>
@@ -344,13 +422,33 @@ ${FOOTER}
 
 /* The release feed in build-feed.mjs and this one are deliberately separate:
  * one announces that the site was published, the other announces that something
- * was written. A reader who wants one rarely wants the other. */
+ * was written. A reader who wants one rarely wants the other.
+ *
+ * ORDER HERE IS ALWAYS BY DATE, never by pin. Pinning is a decision about a page
+ * a reader chooses to open; a feed is pushed at people who have already read what
+ * came before, and re-ordering it re-surfaces old entries as if they were new.
+ * The index may promote a post. The feed may not.
+ *
+ * Every entry carries its own author. Atom lets an entry-level author override
+ * the feed-level one (RFC 4287 §4.2.1), which is what makes a guest post or an
+ * agent post readable as such in a reader that shows bylines. */
 function feed(posts) {
-    const latest = posts[0];
-    const entries = posts.map((p) => `    <entry>
+    const byDate = [...posts].sort((a, b) =>
+        a.date === b.date ? a.slug.localeCompare(b.slug) : b.date.localeCompare(a.date));
+    const latest = byDate[0];
+
+    const authorTag = (a) => {
+        const uri = a.url || a.operator_url;
+        return `        <author><name>${esc(a.name)}</name>` +
+               (uri ? `<uri>${esc(uri)}</uri>` : "") +
+               `</author>`;
+    };
+
+    const entries = byDate.map((p) => `    <entry>
         <title>${esc(p.title)}</title>
         <link rel="alternate" type="text/html" href="${SITE}${p.url}" />
         <id>${SITE}${p.url}</id>
+${authorTag(p.author)}
         <updated>${p.updated || p.date}T00:00:00Z</updated>
         <published>${p.date}T00:00:00Z</published>
         <summary>${esc(p.description)}</summary>
@@ -382,6 +480,8 @@ const posts = files.map((file) => {
     return {
         ...meta,
         tags: meta.tags ?? [],
+        related: meta.related ?? [],
+        author: authorOf(meta.author, file),
         slug,
         url: `/blog/${slug}/`,
         markdown: body,
@@ -393,6 +493,58 @@ const posts = files.map((file) => {
 /* Newest first, slug breaking ties, so two posts sharing a date cannot reorder
  * between hosts on directory-read order. */
 posts.sort((a, b) => (a.date === b.date ? a.slug.localeCompare(b.slug) : b.date.localeCompare(a.date)));
+
+/* ---- related, and the backlinks that come free with it ---------------
+ *
+ * `related:` takes post slugs and site paths. A slug gets a link both ways: if
+ * this post names that one, that one names this one back, without anyone having
+ * to remember to edit both files. A site path (/art/essentialism/) links one way
+ * only -- the hand-written pages are not generated here, so nothing can be
+ * inserted into them -- and its title is read out of the page it points at
+ * rather than typed here, where it would drift.
+ *
+ * Everything resolves at build time. A slug or path that does not exist fails
+ * the build rather than shipping a dead "see also". */
+const bySlug = new Map(posts.map((p) => [p.slug, p]));
+
+function sitePageTitle(path) {
+    const file = join(ROOT, path.replace(/^\//, ""), "index.html");
+    if (!existsSync(file)) throw new Error(`build-blog: related page not found: ${path}`);
+    const m = readFileSync(file, "utf8").match(/<title>([\s\S]*?)<\/title>/i);
+    if (!m) throw new Error(`build-blog: related page has no <title>: ${path}`);
+    return m[1].replace(/\s*·\s*TheBenMeadows\s*$/, "").trim();
+}
+
+const backlinks = new Map(posts.map((p) => [p.slug, new Set()]));
+for (const p of posts) {
+    for (const ref of p.related) {
+        if (ref.startsWith("/")) continue;
+        if (!bySlug.has(ref)) {
+            throw new Error(`build-blog: ${p.slug} lists related post "${ref}", which does not exist`);
+        }
+        if (ref === p.slug) throw new Error(`build-blog: ${p.slug} lists itself as related`);
+        backlinks.get(ref).add(p.slug);
+    }
+}
+
+for (const p of posts) {
+    const seen = new Set();
+    p.seeAlso = [];
+    for (const ref of [...p.related, ...backlinks.get(p.slug)]) {
+        if (seen.has(ref)) continue;
+        seen.add(ref);
+        if (ref.startsWith("/")) {
+            p.seeAlso.push({ url: ref, title: sitePageTitle(ref), who: ref });
+        } else {
+            const t = bySlug.get(ref);
+            p.seeAlso.push({
+                url: t.url,
+                title: t.title,
+                who: t.author.id === "ben" ? longDate(t.date) : `${t.author.name} · ${longDate(t.date)}`,
+            });
+        }
+    }
+}
 
 for (const p of posts) {
     const dir = join(OUT, p.slug);
