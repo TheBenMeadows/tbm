@@ -381,6 +381,26 @@ html.dark #theme-toggle::before { content: "Light"; }
 .toc a:hover { color: var(--accent); }
 .toc a:hover .who { color: var(--ink); }
 .toc a:focus-visible { outline: 1px solid var(--ink); outline-offset: -1px; }
+/* A row can carry markers under its title — what is new, what is not mine.
+   They go below rather than in the .who slot on the right, because that slot
+   says what a thing IS and every other row uses it that way; a marker is a
+   different kind of fact and would read as a category if it sat there.
+
+   The row is baseline-aligned, so the title and the right-hand annotation stay
+   on one line and the markers hang beneath without pushing anything down. */
+.toc .lede { display: block; }
+.toc .marks {
+    display: block;
+    margin-top: 0.3rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--ink-soft);
+}
+/* The loudest ink in either theme, because "new" is the whole point of saying it. */
+.toc .marks .new { color: var(--accent); }
+
 .toc .who {
     color: var(--ink-soft);
     font-size: 0.68rem;
