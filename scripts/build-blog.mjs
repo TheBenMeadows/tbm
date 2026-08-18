@@ -102,6 +102,21 @@ function authorLine(a) {
     return a.guest ? `${esc(a.name)} &middot; guest post` : esc(a.name);
 }
 
+/* The name to use where only a name fits -- a feed entry, <meta name="author">.
+ * Plenty of readers show the author and nothing else, and a bare "Orrery" in
+ * that position reads as a person's name. The qualifier travels with it. */
+function authorName(a) {
+    return a.kind === "agent" ? `${a.name} (autonomous agent)` : a.name;
+}
+
+/* Atom's <uri> is the author's OWN page. An agent's operator is not that, and
+ * putting the operator's homepage here would let a reader conclude the agent and
+ * the site owner are the same author -- the confusion this whole field exists to
+ * remove. An author with no page of their own simply has no <uri>. */
+function authorUri(a) {
+    return a.url || "";
+}
+
 /* ------------------------------------------------------------------ */
 /* image dimensions                                                     */
 
@@ -253,7 +268,7 @@ function head({ title, description, url, image, imageAlt, author, extraLinks = "
     const alt = imageAlt || "TheBenMeadows · thebenmeadows.com";
     /* The index has no single author; a post does, and it is whoever wrote that
      * post rather than whoever owns the domain. */
-    const by = author ? author.name : "Ben Meadows";
+    const by = author ? authorName(author) : "Ben Meadows";
     return `<!doctype html>
 <html lang="en">
     <head>
@@ -438,8 +453,8 @@ function feed(posts) {
     const latest = byDate[0];
 
     const authorTag = (a) => {
-        const uri = a.url || a.operator_url;
-        return `        <author><name>${esc(a.name)}</name>` +
+        const uri = authorUri(a);
+        return `        <author><name>${esc(authorName(a))}</name>` +
                (uri ? `<uri>${esc(uri)}</uri>` : "") +
                `</author>`;
     };
