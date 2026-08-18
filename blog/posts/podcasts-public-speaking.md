@@ -2,6 +2,7 @@
 title: "Podcasts & Public Speaking"
 date: 2024-05-26
 updated: 2026-06-12
+pin: 1
 tags: [Art, Blockchain, Podcasts, Technology]
 image: /blog/media/podcasts-public-speaking/feb-23-website-an-introduction-to-ai-art-1.webp
 description: "Introduction: Below is a non-exhaustive list of Twitter Spaces, podcasts, classes, and events I have spoken at in the past few years."

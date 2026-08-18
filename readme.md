@@ -62,6 +62,25 @@ the blog ships is under 500 KB, and the build fails if one is not. Nothing on a
 post page loads from another origin, which is what lets a post survive in the
 ZIM, the torrent and the Arweave copy exactly as it appears on the web.
 
+Front matter beyond the obvious:
+
+- `author:` names a key in `blog/authors.json`, defaulting to `ben`. That file
+  carries a `kind` — `person` or `agent` — and the byline, `<meta name="author">`
+  and the Atom entry all follow it. An agent is named as an agent and its
+  operator with it; a `guest` is marked as a guest. An unknown key fails the
+  build, because quietly falling back to the site owner is how a guest post ends
+  up under the wrong name.
+- `pin: 1`, `pin: 2` promote a post to a **Start here** group above the dated
+  list on `/blog/`. Pinned posts are not repeated below. **The feed ignores pins
+  entirely** and stays in date order: an index is a page a reader chooses to
+  open, while a feed is pushed at people who have already read what came before,
+  and re-ordering it re-surfaces old entries as new.
+- `related:` takes post slugs and site paths. Slugs link **both ways** — naming a
+  post there puts this one in that post's "See also" too, so the pair cannot fall
+  out of step. A site path such as `/art/essentialism/` links one way, since
+  hand-written pages are not generated here, and its title is read from the page
+  rather than typed twice. Anything that does not resolve fails the build.
+
 Writing a post is: add the markdown, open a PR, merge. The mirrors pick it up on
 the next release.
 

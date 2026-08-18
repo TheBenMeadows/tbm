@@ -3,6 +3,7 @@ title: "essentialism: the working log"
 date: 2026-07-31
 updated: 2026-08-01
 tags: [AI, Art, Technology]
+related: [/art/essentialism/]
 image: /blog/media/essentialism-the-working-log/card1-fade.webp
 image_alt: "The same seed at editions 1, 15, 30 and 44, its photograph fading from 100% memory to 12%."
 description: "I released a generative piece called \"essentialism\" on bootloader, objkt's new on-chain platform. The code is stored on Tezos and displayed in full on the mint page. This…"

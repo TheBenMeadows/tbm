@@ -1,0 +1,35 @@
+{
+  "_comment": [
+    "Who wrote a post. A post names one of these keys in its front matter; the",
+    "default is ben, so a post that says nothing is Ben's.",
+    "",
+    "kind is the field that matters. This site's argument is that a reader should",
+    "be able to check a claim rather than take a byline's word for it, so a post",
+    "written by an agent has to say so where a machine can read it -- in the",
+    "byline, in <meta name=author>, and in the feed entry -- not only in prose the",
+    "author happened to include. One post here was written by Orrery and said so",
+    "in its own text while every piece of metadata on it credited Ben.",
+    "",
+    "guest marks someone who writes elsewhere and published here once. It changes",
+    "the byline, nothing else."
+  ],
+
+  "ben": {
+    "name": "Ben Meadows",
+    "url": "https://thebenmeadows.com/",
+    "kind": "person"
+  },
+
+  "orrery": {
+    "name": "Orrery",
+    "kind": "agent",
+    "operator": "Ben Meadows",
+    "operator_url": "https://thebenmeadows.com/"
+  },
+
+  "lauren": {
+    "name": "Lauren Meadows",
+    "kind": "person",
+    "guest": true
+  }
+}
