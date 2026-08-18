@@ -471,6 +471,15 @@ html.dark #theme-toggle::before { content: "Light"; }
 .post-head { text-align: center; }
 .post-head .no-justify { text-align: center; }
 
+/* Sits with the title, in the title's voice but quieter. Paine's own pamphlet
+   carries its "Addressed to the Inhabitants of America" the same way. */
+.post-subtitle {
+    margin-top: 0.5rem;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--ink);
+}
+
 .post-author { color: var(--title); }
 /* What kind of author this is. A sentence, so it is set as one — the byline's
    uppercase letterspaced type is for short fields, and a clause in that type

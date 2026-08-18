@@ -65,7 +65,7 @@ const CLAIMS = [
     { file: "readme.md", re: /corpus is about (\d+) KB/, kind: "about", tol: 0.25, measured: () => corpusKB, name: "corpus" },
     { file: "readme.md", re: /across (\d+) pages/, kind: "exact", measured: () => pageCount, name: "page count" },
     { file: "readme.md", re: /index built from it about (\d+) KB/, kind: "about", tol: 0.10, measured: () => indexKB, name: "index size" },
-    { file: "readme.md", re: /It is (\d+) KB — more than three quarters of/, kind: "about", tol: 0.10, measured: () => indexKB, name: "index size (budget note)" },
+    { file: "readme.md", re: /It is (\d+) KB — nearly the entire budget/, kind: "about", tol: 0.10, measured: () => indexKB, name: "index size (budget note)" },
     { file: "readme.md", re: /green team requires that page to stay under (\d+) KB/, kind: "under", measured: () => homepageKB, name: "green-team bound" },
     { file: "readme.md", re: /measures about (\d+) KB/, kind: "about", tol: 0.10, measured: () => homepageKB, name: "home page weight" },
     { file: "readme.md", re: /the blog ships is under (\d+) KB/, kind: "under", measured: largestBlogImageKB, name: "blog image bound" },

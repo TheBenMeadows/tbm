@@ -30,7 +30,7 @@ const SITE = "https://thebenmeadows.com";
  * a fixed set of scalar keys plus one bracketed list, and a real YAML parser
  * would accept far more than this build knows how to render. If a post needs a
  * key that is not here, the build should fail loudly rather than drop it. */
-const KNOWN = new Set(["title", "date", "updated", "tags", "description", "image", "image_alt",
+const KNOWN = new Set(["title", "subtitle", "date", "updated", "tags", "description", "image", "image_alt",
                        "author", "pin", "related"]);
 
 function frontMatter(text, file) {
@@ -383,6 +383,13 @@ function postPage(post) {
                   `<time datetime="${post.date}">${longDate(post.date)}</time>`];
     if (post.updated) meta.push(`updated ${longDate(post.updated)}`);
 
+    /* A subtitle belongs to the title, not to the body. Set as its own line in
+     * the header rather than as a first paragraph, which is where it landed
+     * before and left it reading as an opening sentence. */
+    const subLine = post.subtitle
+        ? `                <p class="post-subtitle no-justify">${esc(post.subtitle)}</p>\n`
+        : "";
+
     const note = authorNote(post.author);
     const noteLine = note ? `                <p class="post-note no-justify">${note}</p>\n` : "";
     const tagLine = post.tags.length
@@ -415,7 +422,7 @@ ${post.seeAlso.map((r) =>
     }) + `        <main class="text-neutral-400 max-w-screen-md mx-auto px-6 pt-8 pb-12 leading-relaxed">
             <header class="post-head">
                 <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">${esc(post.title)}</h1>
-                <p class="post-meta no-justify">${meta.join(SEP)}</p>
+${subLine}                <p class="post-meta no-justify">${meta.join(SEP)}</p>
 ${noteLine}${tagLine}            </header>
 ${lead}${post.html}            <hr class="center-rule" style="margin-top: 2.6rem" />
 ${seeAlso}            <p class="post-meta no-justify" style="text-align: center">

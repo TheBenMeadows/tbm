@@ -25,8 +25,8 @@ supporting pages — [`/mirrors/`](https://thebenmeadows.com/mirrors/),
 CSS, the search index and the blog; there is no framework or client-side
 rendering.
 
-Search is dependency-free on purpose. The corpus is about 73 KB across 22 pages
-and the index built from it about 78 KB — small enough to match in the browser
+Search is dependency-free on purpose. The corpus is about 90 KB across 23 pages
+and the index built from it about 96 KB — small enough to match in the browser
 without a search library. The usual pick, Pagefind, runs on WebAssembly, which
 under this site's `script-src 'self'` CSP would mean adding `'wasm-unsafe-eval'`.
 Instead `scripts/build-search-index.mjs` emits a JSON index at build time and
@@ -101,9 +101,11 @@ page and do count:
 
 `search-index.json` grows with every page in `scripts/build-search-index.mjs` and with
 every post under `blog/posts/`, but `search.js` fetches it on first search rather than
-on load, so it stays out of the measurement. It is 78 KB — more than three quarters of
-the whole budget, most of it blog prose — so it must stay lazy. Fetching it on load
-would fail the build on its own.
+on load, so it stays out of the measurement. It is 96 KB — nearly the entire budget on
+its own, most of it blog prose — so it must stay lazy. Fetching it on load would fail
+the build. It will outgrow the budget entirely as the blog does, which is survivable only because it
+is never part of a cold visit; the day it stops being lazy is the day it stops being
+affordable.
 
 The home page currently measures about 72 KB. `scripts/build-manifest.mjs` enforces the
 budget on every build and fails over it, so the number cannot drift unnoticed; to check
