@@ -1,10 +1,17 @@
 {
   "subject": "acct:ben@thebenmeadows.com",
   "aliases": [
+    "https://fedi.thebenmeadows.com/users/ben",
+    "https://fedi.thebenmeadows.com/@ben",
     "https://thebenmeadows.com/",
     "https://primal.net/p/npub1wldqfuy0yge4fvxukdm43gze2ral9dnp5avlps5a6t8q0vyv2nds84nq29"
   ],
   "links": [
+    {
+      "rel": "self",
+      "type": "application/activity+json",
+      "href": "https://fedi.thebenmeadows.com/users/ben"
+    },
     {
       "rel": "http://webfinger.net/rel/profile-page",
       "type": "text/html",
