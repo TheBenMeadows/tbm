@@ -248,6 +248,7 @@ manifest cannot disagree.
 | Gopher | `gopher://gopher.thebenmeadows.com/` |
 | SSH | `ssh://text@text.thebenmeadows.com:2222` |
 | Telnet | `telnet://text.thebenmeadows.com` |
+| Finger | `finger://ben@text.thebenmeadows.com` |
 | FTP | `ftp://text.thebenmeadows.com/` |
 
 **Source** — copies whose identity is not tied to one forge:

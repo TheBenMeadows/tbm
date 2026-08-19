@@ -112,6 +112,11 @@
     },
     {
       "kind": "serving",
+      "network": "finger",
+      "address": "finger://ben@text.thebenmeadows.com"
+    },
+    {
+      "kind": "serving",
       "network": "ftp",
       "address": "ftp://text.thebenmeadows.com/"
     },
