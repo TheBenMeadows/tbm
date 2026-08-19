@@ -37,6 +37,7 @@ const LABELS = {
     "serving/gopher": "Gopher",
     "serving/ssh": "SSH",
     "serving/telnet": "Telnet",
+    "serving/finger": "Finger",
     "serving/ftp": "FTP",
     "source/https": "Forge",
     "source/radicle": "Radicle",
