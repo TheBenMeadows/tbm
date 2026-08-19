@@ -231,10 +231,10 @@
 
             <h2 class="section-label" style="margin-top: 2.6rem">Small web</h2>
             <p class="mt-2">
-                The same pages on five pre-web protocols, generated from the site's own
+                The same pages on six pre-web protocols, generated from the site's own
                 search index at each release. You need a Gemini client (Lagrange, Amfora)
                 or a gopher client (lynx works) - ordinary browsers speak neither.
-                The last three need nothing but a terminal.
+                The last four need nothing but a terminal.
             </p>
             <div class="mt-4 grid gap-3 sm:grid-cols-2">
                 <a class="block hairline-card p-5 transition-opacity hover:opacity-80" href="gemini://gemini.thebenmeadows.com/" rel="noopener">
@@ -253,6 +253,10 @@
                     <span class="block text-white font-medium">Telnet</span>
                     <span class="block text-neutral-500 text-sm break-words">telnet text.thebenmeadows.com</span>
                 </div>
+                <div class="block hairline-card p-5">
+                    <span class="block text-white font-medium">Finger <span class="text-neutral-500 font-normal">&middot; 1971</span></span>
+                    <span class="block text-neutral-500 text-sm break-words">finger ben@text.thebenmeadows.com</span>
+                </div>
                 <a class="block hairline-card p-5 transition-opacity hover:opacity-80" href="ftp://text.thebenmeadows.com/" rel="noopener">
                     <span class="block text-white font-medium">FTP <span class="text-neutral-500 font-normal">&middot; anonymous</span></span>
                     <span class="block text-neutral-500 text-sm break-words">ftp://text.thebenmeadows.com</span>
@@ -260,7 +264,9 @@
             </div>
             <p class="mt-3">
                 No login for any of them: SSH takes the user <code class="text-neutral-400">text</code>
-                with no password and drops you straight into a read-only pager. FTP is
+                with no password and drops you straight into a read-only pager. Finger
+                answers with a .plan built from the blog's feed, dated entries
+                newest-first, the way John Carmack published id Software engine progress. FTP is
                 plain, deliberately: these pages are public, so there is nothing to
                 encrypt, and clients this old predate TLS. When you want the encrypted
                 path, that is what HTTPS, the onion service and Gemini are for.
