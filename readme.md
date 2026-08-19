@@ -249,7 +249,10 @@ manifest cannot disagree.
 | SSH | `ssh://text@text.thebenmeadows.com:2222` |
 | Telnet | `telnet://text.thebenmeadows.com` |
 | Finger | `finger://ben@text.thebenmeadows.com` |
+| Whois | `whois://text.thebenmeadows.com` |
+| QOTD | `qotd://text.thebenmeadows.com` |
 | FTP | `ftp://text.thebenmeadows.com/` |
+| rsync | `rsync://text.thebenmeadows.com/tbm/` |
 
 **Source** — copies whose identity is not tied to one forge:
 
