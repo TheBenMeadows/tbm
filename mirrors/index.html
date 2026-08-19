@@ -231,10 +231,10 @@
 
             <h2 class="section-label" style="margin-top: 2.6rem">Small web</h2>
             <p class="mt-2">
-                The same pages on six pre-web protocols, generated from the site's own
-                search index at each release. You need a Gemini client (Lagrange, Amfora)
+                The same content on nine small protocols, most of them older than the
+                web, all generated from the site's own build at each release. You need a Gemini client (Lagrange, Amfora)
                 or a gopher client (lynx works) - ordinary browsers speak neither.
-                The last four need nothing but a terminal.
+                The rest need nothing but a terminal.
             </p>
             <div class="mt-4 grid gap-3 sm:grid-cols-2">
                 <a class="block hairline-card p-5 transition-opacity hover:opacity-80" href="gemini://gemini.thebenmeadows.com/" rel="noopener">
@@ -261,6 +261,18 @@
                     <span class="block text-white font-medium">FTP <span class="text-neutral-500 font-normal">&middot; anonymous</span></span>
                     <span class="block text-neutral-500 text-sm break-words">ftp://text.thebenmeadows.com</span>
                 </a>
+                <div class="block hairline-card p-5">
+                    <span class="block text-white font-medium">Whois <span class="text-neutral-500 font-normal">&middot; 1982</span></span>
+                    <span class="block text-neutral-500 text-sm break-words">whois -h text.thebenmeadows.com ben</span>
+                </div>
+                <div class="block hairline-card p-5">
+                    <span class="block text-white font-medium">QOTD <span class="text-neutral-500 font-normal">&middot; 1983</span></span>
+                    <span class="block text-neutral-500 text-sm break-words">nc text.thebenmeadows.com 17</span>
+                </div>
+                <div class="block hairline-card p-5">
+                    <span class="block text-white font-medium">rsync <span class="text-neutral-500 font-normal">&middot; run a mirror</span></span>
+                    <span class="block text-neutral-500 text-sm break-words">rsync -av rsync://text.thebenmeadows.com/tbm/ tbm/</span>
+                </div>
             </div>
             <p class="mt-3">
                 No login for any of them: SSH takes the user <code class="text-neutral-400">text</code>
@@ -270,6 +282,11 @@
                 plain, deliberately: these pages are public, so there is nothing to
                 encrypt, and clients this old predate TLS. When you want the encrypted
                 path, that is what HTTPS, the onion service and Gemini are for.
+                Whois returns the same profile finger does; port 17 returns
+                one line from the blog, rotating daily. The rsync module is
+                what to point a cron job at if you want a mirror of your own:
+                the first run copies the site, a re-run moves only what
+                changed.
             </p>
 
             <h2 class="section-label" style="margin-top: 2.6rem">BitTorrent</h2>

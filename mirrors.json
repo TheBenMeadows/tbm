@@ -117,8 +117,23 @@
     },
     {
       "kind": "serving",
+      "network": "whois",
+      "address": "whois://text.thebenmeadows.com"
+    },
+    {
+      "kind": "serving",
+      "network": "qotd",
+      "address": "qotd://text.thebenmeadows.com"
+    },
+    {
+      "kind": "serving",
       "network": "ftp",
       "address": "ftp://text.thebenmeadows.com/"
+    },
+    {
+      "kind": "serving",
+      "network": "rsync",
+      "address": "rsync://text.thebenmeadows.com/tbm/"
     },
     {
       "kind": "source",
