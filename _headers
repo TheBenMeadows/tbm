@@ -179,10 +179,7 @@
 /experiments/porcine/fonts/*
   Cache-Control: public, max-age=31536000, immutable
 
-/experiments/dls/*.jpeg
-  Cache-Control: public, max-age=604800
-
-/experiments/dls/*.jpg
+/experiments/dls/*.webp
   Cache-Control: public, max-age=604800
 
 # Everything below had no rule, so it fell to the Pages default of
@@ -200,7 +197,7 @@
 /experiments/poap-vault/img/*
   Cache-Control: public, max-age=31536000, immutable
 
-/art/essentialism/essentialism-2022.png
+/art/essentialism/essentialism-2022.webp
   Cache-Control: public, max-age=604800
 
 # Unversioned, so cached but not immutable -- same treatment theme.js and
