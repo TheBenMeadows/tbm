@@ -152,7 +152,7 @@
         Array.prototype.forEach.call(collsEl.children, function (c) {
             var on = c.dataset.c === coll;
             c.classList.toggle('on', on);
-            c.setAttribute('aria-selected', on ? 'true' : 'false');
+            c.setAttribute('aria-pressed', on ? 'true' : 'false');
         });
         render();
     });

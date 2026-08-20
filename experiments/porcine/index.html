@@ -154,7 +154,18 @@
             background: rgba(255, 255, 255, 0.02);
             padding: 1rem;
         }
-    </style>
+    
+        /* WCAG 2.2.2: the glitch layers and the 1 Hz blink start on load, run
+           forever and have no pause control. Anyone who has asked for less
+           motion gets the static version. */
+        @media (prefers-reduced-motion: reduce) {
+            .glitch::before,
+            .glitch::after,
+            .blink {
+                animation: none;
+            }
+        }
+</style>
     <!-- Compiled locally from this page's classes; regenerate with `npm run build:experiments`.
          Replaces the Tailwind Play CDN - the site serves no external origins.
          Loaded AFTER the page <style> on purpose: the Play CDN injected its
@@ -166,7 +177,7 @@
 
     <header class="w-full max-w-3xl mb-16 border-b border-white/10 pb-8">
         <div class="flex justify-between items-end mb-4">
-            <h1 class="text-4xl sm:text-6xl font-black tracking-tighter uppercase glitch" data-text="Protocol 3LP">Protocol 3LP</h1>
+            <h1 class="text-4xl sm:text-6xl font-black tracking-tighter uppercase glitch" data-text="Protocol 3LP" aria-label="Protocol 3LP">Protocol 3LP</h1>
             <span class="mono text-xs text-gray-500">REF: ALWAYS-HAS-BEEN-V2.1</span>
         </div>
         <div class="mono text-sm text-gray-400 flex flex-col sm:flex-row justify-between">
@@ -178,7 +189,7 @@
     <main class="w-full max-w-3xl prose-custom">
         
         <div class="mb-12 p-6 bg-white/5 border border-white/10 rounded-sm">
-            <h3 class="mono text-xs uppercase tracking-widest text-gray-500 mb-2">Abstract</h3>
+            <h2 class="mono text-xs uppercase tracking-widest text-gray-500 mb-2">Abstract</h2>
             <p class="text-sm italic leading-relaxed text-gray-300 m-0">
                 This paper interrogates the "Three Little Pigs" narrative not as a fable of diligence versus sloth, but as a recursive failure of epistemological boundaries. We posit that the "Wolf" is not an external biological agent, but a fundamental constant of the environment (Entropy). The "House" represents the Pig's attempt to construct a localized reality separate from this constant. The phrase "Little pig, little pig, let me come in" is incorrectly interpreted as a request for entry; it is, in fact, a declaration of the non-existence of the barrier. The ultimate realization—the "Always Has Been" event—occurs when the subject understands that the Wolf cannot "enter" because the House was built <em>inside</em> the Wolf.
             </p>
