@@ -326,7 +326,6 @@ function head({ title, description, url, image, imageAlt, author, extraLinks = "
         <meta name="description" content="${esc(description)}" />
         <meta name="author" content="${esc(by)}" />
         <meta name="color-scheme" content="dark light" />
-        <meta http-equiv="content-language" content="en-us" />
         <link rel="canonical" href="${SITE}${url}" />
         <link rel="alternate" type="application/atom+xml" title="Blog" href="/blog/feed.xml" />
         <link rel="alternate" type="application/atom+xml" title="Site releases" href="/feed.xml" />
@@ -372,7 +371,7 @@ ${extraLinks}
             <nav class="rh-right">
                 <button id="search-open" type="button" aria-label="Search this site" title="Search (press / )">Search</button>
                 <span aria-hidden="true">&nbsp;&middot;&nbsp;</span>
-                <button id="theme-toggle" type="button"></button>
+                <button id="theme-toggle" type="button" aria-label="Switch theme"></button>
             </nav>
         </header>
 `;
