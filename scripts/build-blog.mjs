@@ -64,6 +64,12 @@ function frontMatter(text, file) {
         if (!meta[need]) throw new Error(`build-blog: ${file} is missing front-matter "${need}"`);
     }
     if (!/^\d{4}-\d{2}-\d{2}$/.test(meta.date)) throw new Error(`build-blog: ${file} date must be YYYY-MM-DD`);
+    /* `updated` had no check at all, while it reaches both longDate() and the
+     * Atom <updated> element raw -- a malformed value injects markup into the
+     * page or invalid XML into the feed. */
+    if (meta.updated && !/^\d{4}-\d{2}-\d{2}$/.test(meta.updated)) {
+        throw new Error(`build-blog: ${file} updated must be YYYY-MM-DD`);
+    }
     return { meta, body: text.slice(end + 5) };
 }
 
@@ -254,6 +260,20 @@ const RENDERER = {
         const body = token.rows.length ? `<tbody>\n${token.rows.map((r) => cells(r, "td")).join("")}</tbody>\n` : "";
         return `<div class="post-table-wrap">\n<table class="post-table">\n${head}${body}</table>\n</div>\n`;
     },
+
+    /* The comment below has always claimed stray markup is escaped. It was not:
+     * RENDERER defined no html(), marked.use() merges onto the default renderer,
+     * and marked's default html() returns its input verbatim -- so a raw tag in
+     * a post reached the page. That matters most off this host: script-src
+     * 'self' neutralises injected inline script on Pages and Netlify, but none
+     * of the mirrors carry _headers, so the Tor, IPFS, Arweave, torrent and ZIM
+     * copies have no CSP at all. One of the six posts is guest-authored.
+     *
+     * If a post ever needs real HTML, add an explicit front-matter opt-in
+     * rather than reopening this by default. */
+    html({ text }) {
+        return esc(text);
+    },
 };
 
 /* Stray markup in a post is escaped rather than passed through -- three of these
@@ -393,11 +413,11 @@ function postPage(post) {
     const note = authorNote(post.author);
     const noteLine = note ? `                <p class="post-note no-justify">${note}</p>\n` : "";
     const tagLine = post.tags.length
-        ? `                <p class="post-meta post-tags no-justify">${post.tags.join(SEP)}</p>\n`
+        ? `                <p class="post-meta post-tags no-justify">${post.tags.map(esc).join(SEP)}</p>\n`
         : "";
 
     const lead = post.image
-        ? `            <img class="post-image" src="${post.image}" alt="${esc(post.image_alt || "")}" width="${post.imageSize.w}" height="${post.imageSize.h}" decoding="async" />\n`
+        ? `            <img class="post-image" src="${esc(post.image)}" alt="${esc(post.image_alt || "")}" width="${post.imageSize.w}" height="${post.imageSize.h}" decoding="async" />\n`
         : "";
 
     const seeAlso = post.seeAlso.length

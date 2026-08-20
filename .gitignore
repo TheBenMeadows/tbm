@@ -13,3 +13,8 @@ blog/index.html
 blog/feed.xml
 blog/pages.json
 blog/*/index.html
+
+# Worktrees and scratch state from Claude Code sessions. Each worktree is an
+# embedded repo, so `git add -A` would otherwise stage a handful of bogus
+# gitlink entries rather than any real content.
+.claude/
