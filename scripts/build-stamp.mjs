@@ -68,17 +68,18 @@ const marker = 'class="mt-3 text-xs text-neutral-600">Build ';
 const stamp = `            <p ${marker}${label} &middot; <a class="hover:text-neutral-400" href="https://status.thebenmeadows.com/" target="_blank" rel="noopener">Status</a> &middot; <a class="hover:text-neutral-400" href="https://iheartrss.com/" target="_blank" rel="noopener">I &hearts;&#xFE0E; RSS</a></p>\n`;
 
 let stamped = 0;
+let alreadyStamped = 0;
 for (const page of PAGES) {
     const path = join(DIST, page);
     let html;
     try {
         html = readFileSync(path, "utf8");
     } catch {
-        console.warn(`build-stamp: ${page} missing, skipped`);
-        continue;
+        throw new Error(`build-stamp: ${page} is missing from dist/`);
     }
 
     if (html.includes(marker)) {
+        alreadyStamped += 1;
         continue; // already stamped; keep the run idempotent
     }
 
@@ -88,12 +89,20 @@ for (const page of PAGES) {
     );
 
     if (replaced === html) {
-        console.warn(`build-stamp: no footer anchor in ${page}, skipped`);
-        continue;
+        throw new Error(`build-stamp: no footer anchor in ${page}`);
     }
 
     writeFileSync(path, replaced);
     stamped += 1;
+}
+
+// The stamp is what lets a human diff two mirrors and see drift at a glance.
+// A page that silently loses it loses that, so the count has to close: every
+// page is either stamped by this run or was stamped by an earlier one.
+if (stamped + alreadyStamped !== PAGES.length) {
+    throw new Error(
+        `build-stamp: ${stamped + alreadyStamped}/${PAGES.length} pages accounted for`,
+    );
 }
 
 console.log(

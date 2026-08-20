@@ -1,0 +1,48 @@
+# Run the repo's own guards on every push and pull request. They already
+# existed and already fail loudly; nothing ran them, so a regression could
+# only be caught by hand after it shipped -- which is how the Onion-Location
+# headers stayed broken for six days.
+#
+# build:netlify is what both hosts run, and it ends in check-figures and
+# check-onchain-code. Running it here means the manifest guards, the page
+# budget, the webseed assertion and the on-chain byte comparison all gate a
+# merge instead of only reporting after deploy.
+name: Checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          # build-stamp, build-manifest and build-feed all read `git log -1`.
+          # A shallow clone still satisfies that, but fetch the full history so
+          # a future guard that walks further does not fail here first.
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+          cache: npm
+
+      # .npmrc pins ignore-scripts, so this installs no lifecycle hooks.
+      - name: Install
+        run: npm ci
+
+      - name: Check the readme mirror table against mirrors.json
+        run: npm run check:readme
+
+      # Ends in check-figures.mjs and check-onchain-code.mjs.
+      - name: Build and run the build-time guards
+        run: npm run build:netlify
