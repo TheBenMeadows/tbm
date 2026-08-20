@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="A rescued archive of 357 POAP badges: images and metadata saved and hash-verified before the POAP platform shut down." />
         <meta name="color-scheme" content="dark light" />
+        <meta http-equiv="content-language" content="en-us" />
         <link rel="canonical" href="https://thebenmeadows.com/experiments/poap-vault/" />
 
         <meta property="og:type" content="website" />
@@ -43,7 +44,7 @@
             <nav class="rh-right">
                 <a href="/experiments/">Experiments</a>
                 <span aria-hidden="true">&nbsp;&middot;&nbsp;</span>
-                <button id="theme-toggle" type="button" aria-label="Switch theme"></button>
+                <button id="theme-toggle" type="button"></button>
             </nav>
         </header>
         <header class="head">
@@ -59,10 +60,10 @@
             contract 0x22C1&hellip;B415 on Gnosis and Ethereum</p>
         </header>
         <main>
-            <div class="controls" id="colls" role="tablist" aria-label="Collection">
-                <button class="chip coll on" role="tab" aria-selected="true" data-c="b">Ben&rsquo;s collection</button>
-                <button class="chip coll" role="tab" aria-selected="false" data-c="l">Lauren&rsquo;s collection</button>
-                <button class="chip coll" role="tab" aria-selected="false" data-c="cb">Issued by Ben</button>
+            <div class="controls" id="colls" role="group" aria-label="Collection">
+                <button class="chip coll on" aria-pressed="true" data-c="b">Ben&rsquo;s collection</button>
+                <button class="chip coll" aria-pressed="false" data-c="l">Lauren&rsquo;s collection</button>
+                <button class="chip coll" aria-pressed="false" data-c="cb">Issued by Ben</button>
             </div>
             <div class="controls">
                 <input id="q" type="search" placeholder="Search badges" aria-label="Search badges" />

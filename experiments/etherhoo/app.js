@@ -121,9 +121,14 @@ function clearSearch() {
 for(let i=0; i<8; i++) { addBlock(); addTx(); }
 
 // Start loops
-setInterval(addBlock, 3500); // New block every 3.5s (simulated)
-setInterval(addTx, 800);     // New tx every 0.8s
-setInterval(updatePrice, 2000);
+/* WCAG 2.2.2: these three tickers start on load and run forever with no pause
+   control, mutating two tables every 0.8s and 3.5s. Anyone who has asked for
+   less motion gets the page as rendered, without the churn. */
+if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    setInterval(addBlock, 3500); // New block every 3.5s (simulated)
+    setInterval(addTx, 800);     // New tx every 0.8s
+    setInterval(updatePrice, 2000);
+}
 
 // --- CSP WIRING ---
 // The original single-file page used inline onclick=/onsubmit= attributes,
