@@ -125,9 +125,15 @@ html.search-open body {
     border: 0;
     font: inherit;
     font-size: 1rem; /* 16px — anything smaller and iOS zooms the page on focus */
-    outline: none;
     -webkit-appearance: none;
     appearance: none;
+}
+
+/* Replaces the outline removed above: the caret alone is not an indicator for
+   anyone navigating by keyboard rather than typing. */
+.search-input:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
 }
 .search-input::placeholder {
     color: #71717a;
@@ -167,7 +173,14 @@ html.search-open body {
 .search-result:hover,
 .search-result:focus {
     background: #18181b;
-    outline: none;
+}
+
+/* The overlay's own arrow keys move focus between results, so this is the
+   primary keyboard path through search. The background tint alone measured
+   1.12:1 against the panel, which is not a focus indicator. */
+.search-result:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
 }
 .search-result-title {
     display: block;

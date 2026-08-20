@@ -283,6 +283,27 @@
         });
 
         // arrow-key navigation between results
+        /* aria-modal="true" hides the rest of the page from assistive tech, so
+           without a trap a screen-reader user tabs straight into elements their
+           AT reports as not existing. Focus stays inside the dialog until it is
+           closed; Escape and the close button are the ways out. */
+        wrap.addEventListener('keydown', function (e) {
+            if (e.key !== 'Tab' || wrap.hidden) return;
+            var focusable = wrap.querySelectorAll(
+                'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])',
+            );
+            if (!focusable.length) return;
+            var first = focusable[0];
+            var last = focusable[focusable.length - 1];
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
+        });
+
         wrap.addEventListener('keydown', function (e) {
             if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
             var links = list.querySelectorAll('a');
