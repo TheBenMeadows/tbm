@@ -24,12 +24,15 @@ function git(args) {
 
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-let lines = [];
-try {
-    lines = git('log -1 --format=%H%x09%cd%x09%s --date=format-local:%Y-%m-%dT%H:%M:%SZ')
-        .split("\n").filter(Boolean);
-} catch {
-    console.warn("build-feed: git log unavailable, writing empty feed");
+// No fallback. An empty feed is a valid-looking artifact that the manifest
+// then hashes, sign-release signs and OpenTimestamps anchors -- the chain would
+// certify the degraded file faithfully. Every host that builds this site has
+// git, so the old warn-and-continue protected nothing and hid the one case it
+// was written for.
+const lines = git('log -1 --format=%H%x09%cd%x09%s --date=format-local:%Y-%m-%dT%H:%M:%SZ')
+    .split("\n").filter(Boolean);
+if (!lines.length) {
+    throw new Error("build-feed: git log returned nothing; refusing to write an empty feed");
 }
 
 const entries = lines.map((l) => {
@@ -43,7 +46,7 @@ const entries = lines.map((l) => {
   </entry>`;
 }).join("\n");
 
-const feedUpdated = lines.length ? lines[0].split("\t")[1] : "2026-01-01T00:00:00Z";
+const feedUpdated = lines[0].split("\t")[1];
 
 // WebSub: readers that speak it get pushed updates instead of polling. The
 // wayback workflow pings the hub after each deploy.

@@ -98,11 +98,33 @@ fi
 # visible to every same-uid process -- in a script whose header says never to do
 # that. The check above already guarantees the variable is set.
 # shellcheck disable=SC2086
+# Keep stdout and stderr apart, and read nak's own status rather than tail's.
+# Folding them together and piping to tail discarded the exit code, so a run
+# where every relay rejected the event printed the rejections and still exited
+# 0 -- "it ran" reported as "the signature published".
+EVENT_ERR=$(mktemp)
+trap 'rm -f "$EVENT_ERR"' EXIT
+set +o pipefail
 EVENT=$(nak event \
     -c "$CONTENT" \
     -k 30078 \
     -d "thebenmeadows.com" \
     -t "t=site-release" \
-    $RELAYS 2>&1 | tail -5)
+    $RELAYS 2>"$EVENT_ERR")
+NAK_STATUS=$?
+set -o pipefail
 
+if [ "$NAK_STATUS" -ne 0 ]; then
+    echo "sign-release: nak exited $NAK_STATUS; the release event did not publish." >&2
+    tail -5 "$EVENT_ERR" >&2
+    exit 1
+fi
+
+if [ -z "$EVENT" ]; then
+    echo "sign-release: nak produced no event; the release event did not publish." >&2
+    tail -5 "$EVENT_ERR" >&2
+    exit 1
+fi
+
+tail -5 "$EVENT_ERR" >&2
 echo "$EVENT"
