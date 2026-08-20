@@ -184,3 +184,59 @@
 
 /experiments/dls/*.jpg
   Cache-Control: public, max-age=604800
+
+# Everything below had no rule, so it fell to the Pages default of
+# max-age=0, must-revalidate: a conditional GET on every asset, every repeat
+# visit. Measured at 0.096-0.230s each and 0 bytes of payload -- the blog posts
+# re-check fourteen images during scroll, which is why lazy images arrive late.
+#
+# Paths are named by extension rather than with a bare directory splat, because
+# `/art/essentialism/*` would also match `/art/essentialism/` itself and take
+# the page's own must-revalidate rule with it.
+/blog/media/*
+  Cache-Control: public, max-age=604800
+
+# 714 files, 37 MB, content-addressed by token id and never rewritten.
+/experiments/poap-vault/img/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/art/essentialism/essentialism-2022.png
+  Cache-Control: public, max-age=604800
+
+# Unversioned, so cached but not immutable -- same treatment theme.js and
+# search.js already get.
+/art/essentialism/essentialism.js
+  Cache-Control: public, max-age=3600
+
+/art/essentialism/play.js
+  Cache-Control: public, max-age=3600
+
+/experiments/pendulum/app.js
+  Cache-Control: public, max-age=3600
+
+/experiments/pendulum/style.css
+  Cache-Control: public, max-age=3600
+
+/experiments/porcine/app.js
+  Cache-Control: public, max-age=3600
+
+/experiments/porcine/style.css
+  Cache-Control: public, max-age=3600
+
+/experiments/etherhoo/app.js
+  Cache-Control: public, max-age=3600
+
+/experiments/dls/style.css
+  Cache-Control: public, max-age=3600
+
+/experiments/poap-vault/app.js
+  Cache-Control: public, max-age=3600
+
+/experiments/poap-vault/style.css
+  Cache-Control: public, max-age=3600
+
+/projects/poap-saver/app.js
+  Cache-Control: public, max-age=3600
+
+/projects/poap-saver/style.css
+  Cache-Control: public, max-age=3600

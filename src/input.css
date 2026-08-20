@@ -54,6 +54,28 @@ html.light .text-neutral-300 { color: #3f3f46; }
 html.light .text-white { color: #000000; }
 html.light .hover\:text-white:hover { color: #000000; }
 
+/* Dark is the base, so these are unscoped and the light rules above and below
+   override them. Tailwind's own neutral-500 (#737373) and neutral-600 (#525252)
+   measure 4.43:1 and 2.69:1 on black; neutral-600 carries the two links in the
+   footer build stamp, the card numbers on /projects/ and /experiments/, and the
+   price on /art/essentialism/. Both go to the same #757575 as --ink-soft, which
+   collapses two dim tones into one -- the gap between "passes AA on black" and
+   "is already --ink" is narrow enough that there is little room for a third. */
+.text-neutral-500 { color: #757575; }
+.text-neutral-600 { color: #757575; }
+
+/* ...which means light mode needs its own neutral-600, or the line above would
+   lighten it from 7.8:1 to 4.6:1 there. */
+@media (prefers-color-scheme: light) {
+    html:not(.dark) .text-neutral-600 { color: #52525b; }
+    /* .bg-zinc-900 had no light override, so the <pre> on /mirrors/ kept its
+       dark #18181b while .text-neutral-400 remapped to #52525b -- 2.29:1, the
+       only light-mode contrast failure on the site. */
+    html:not(.dark) .bg-zinc-900 { background-color: #f4f4f5; }
+}
+html.light .text-neutral-600 { color: #52525b; }
+html.light .bg-zinc-900 { background-color: #f4f4f5; }
+
 /* Search. Plain CSS rather than utilities because search.js injects the overlay
    markup at runtime; keeping the class names here means no purge surprises. */
 .search-overlay {
@@ -281,7 +303,10 @@ main .no-justify {
 :root {
     --bg: #000000;
     --ink: #a3a3a3;
-    --ink-soft: #737373;
+    /* #737373 measured 4.43:1 on black -- under the 4.5:1 floor, and this token
+       carries running heads, section labels, post meta and table headers on
+       every page. #757575 is the nearest value that clears it. */
+    --ink-soft: #757575;
     --title: #d4d4d4;
     --rule: #27272a;
     --accent: #ffffff;
