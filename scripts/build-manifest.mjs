@@ -147,6 +147,24 @@ console.log(
                 `so Cloudflare Pages will drop all but the last block: ${dupes.join(", ")}`,
             );
         }
+        // Guard: a header line must be a single "Name: value" pair. Editing a
+        // Cache-Control directive once swallowed the newline before the next
+        // header, gluing Onion-Location onto the same line -- Pages then emits
+        // the onion URL inside the Cache-Control value and the real header
+        // never ships. A second "Word:" token after the value is that failure.
+        const glued = [];
+        for (const line of raw.split("\n")) {
+            if (!line.startsWith("  ")) continue;
+            const m = line.match(/^  [A-Za-z][A-Za-z0-9-]*: .*?\s([A-Z][A-Za-z0-9]*(?:-[A-Za-z0-9]+)*): \S/);
+            if (m) glued.push(line.trim().slice(0, 80));
+        }
+        if (glued.length) {
+            throw new Error(
+                `build-manifest: ${headersPath} has header lines carrying a second ` +
+                `"Name:" token -- a swallowed newline; each header goes on its own line: ` +
+                glued.join(" | "),
+            );
+        }
     }
 }
 
