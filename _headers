@@ -89,68 +89,88 @@
 # HTTPS, which Cloudflare Pages and Netlify both are. Paths are listed one by
 # one so each page points at its own onion equivalent rather than the homepage.
 /
-  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/
+  Cache-Control: public, max-age=0, must-revalidate
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/
 
 /mirrors/
-  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/mirrors/
+  Cache-Control: public, max-age=0, must-revalidate
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/mirrors/
 
 /tech/
-  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/tech/
+  Cache-Control: public, max-age=0, must-revalidate
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/tech/
 
 /experiments/
-  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/experiments/
+  Cache-Control: public, max-age=0, must-revalidate
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/experiments/
 
 /infra/
-  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/infra/
+  Cache-Control: public, max-age=0, must-revalidate
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/infra/
 
 /art/
-  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/art/
+  Cache-Control: public, max-age=0, must-revalidate
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/art/
 
 /blog/
-  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/blog/
+  Cache-Control: public, max-age=0, must-revalidate
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/blog/
 
 /blog/art-tech-highlights/
-  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/blog/art-tech-highlights/
+  Cache-Control: public, max-age=0, must-revalidate
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/blog/art-tech-highlights/
 
 /blog/essentialism-the-working-log/
-  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/blog/essentialism-the-working-log/
+  Cache-Control: public, max-age=0, must-revalidate
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/blog/essentialism-the-working-log/
 
 /blog/my-owner-asked-me-to-write-this-post-receipts-attached/
-  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/blog/my-owner-asked-me-to-write-this-post-receipts-attached/
+  Cache-Control: public, max-age=0, must-revalidate
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/blog/my-owner-asked-me-to-write-this-post-receipts-attached/
 
 /blog/on-digital-first-art/
-  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/blog/on-digital-first-art/
+  Cache-Control: public, max-age=0, must-revalidate
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/blog/on-digital-first-art/
 
 /blog/podcasts-public-speaking/
-  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/blog/podcasts-public-speaking/
+  Cache-Control: public, max-age=0, must-revalidate
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/blog/podcasts-public-speaking/
 
 /blog/the-new-common-sense/
-  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/blog/the-new-common-sense/
+  Cache-Control: public, max-age=0, must-revalidate
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/blog/the-new-common-sense/
 
 /art/essentialism/
-  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/art/essentialism/
+  Cache-Control: public, max-age=0, must-revalidate
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/art/essentialism/
 
 # The forwarding stub. Onion-Location points at the onion's own stub rather than
 # the destination, so a Tor visitor who lands on the old address crosses to the
 # onion first and follows the same move there, instead of being handed a clearnet
 # address mid-redirect.
 /essentialism/
-  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/essentialism/
+  Cache-Control: public, max-age=0, must-revalidate
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/essentialism/
 
 /archive/
-  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/archive/
+  Cache-Control: public, max-age=0, must-revalidate
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/archive/
 
 /experiments/pendulum/
-  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/experiments/pendulum/
+  Cache-Control: public, max-age=0, must-revalidate
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/experiments/pendulum/
 
 /experiments/porcine/
-  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/experiments/porcine/
+  Cache-Control: public, max-age=0, must-revalidate
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/experiments/porcine/
 
 /experiments/etherhoo/
-  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/experiments/etherhoo/
+  Cache-Control: public, max-age=0, must-revalidate
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/experiments/etherhoo/
 
 /experiments/dls/
-  Cache-Control: public, max-age=0, must-revalidate  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/experiments/dls/
+  Cache-Control: public, max-age=0, must-revalidate
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/experiments/dls/
 
 /search/
   Cache-Control: public, max-age=0, must-revalidate
