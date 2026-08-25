@@ -660,3 +660,52 @@ main .post-heading + * {
    it stays untouched there). This wins on specificity and keeps all three
    footer lines on the same 0.45rem rhythm. */
 .site-footer p { margin-top: 0.45rem; }
+
+/* ------------------------------------------------------------------ */
+/* Syntax highlighting for the on-chain generator on /art/essentialism/.
+   Off unless the visitor asks for it: the block ships as one flat value,
+   and the control next to it sets data-syntax="on" here.
+
+   Drawn with the CSS Custom Highlight API, which colours live Ranges
+   rather than wrapping tokens in <span>s. That is the reason this
+   approach is on the page at all. The block claims to be the bytes read
+   from Tezos and verified against the code the page just ran, so its
+   textContent has to stay exactly what came off the chain — selection,
+   copy and the comparison all read the same string highlighted or not.
+   A span-injecting highlighter would have made the claim false.
+
+   Four values, no hue. The palette above is the whole palette, and red
+   is already spoken for by the mismatch state under the block, where it
+   means the chain and this page disagree. So structure is carried by
+   contrast alone, in four steps that mean something:
+
+       accent     keywords, storage   the skeleton
+       title      literals            the data
+       inherited  names               the vocabulary
+       ink-soft   comments, operators the glue
+
+   Both directions work, because every step is a role variable: brightest
+   on black, darkest on white.
+
+   Colour is all there is to work with here. Highlight pseudo-elements
+   accept a short list of properties — colour, background, decoration,
+   shadow — and font properties are not on it, since a highlight cannot
+   be allowed to change metrics and reflow the line under it. Italic
+   comments are not available at any price; do not add font-style below
+   expecting it to render. */
+#code[data-syntax="on"]::highlight(keyword),
+#code[data-syntax="on"]::highlight(storage) {
+    color: var(--accent);
+}
+#code[data-syntax="on"]::highlight(string),
+#code[data-syntax="on"]::highlight(regexp),
+#code[data-syntax="on"]::highlight(numeric),
+#code[data-syntax="on"]::highlight(boolean),
+#code[data-syntax="on"]::highlight(constant) {
+    color: var(--title);
+}
+#code[data-syntax="on"]::highlight(comment),
+#code[data-syntax="on"]::highlight(operator) {
+    color: var(--ink-soft);
+}
+

@@ -231,8 +231,15 @@
                 this site - it is read out of the contract when you open the page,
                 then compared against the source of the function this page actually ran.
             </p>
-            <pre class="mt-6 max-h-96 overflow-auto hairline-card p-6 text-xs leading-relaxed"><code id="code" class="font-mono text-neutral-400">Reading from the contract…</code></pre>
+            <pre class="mt-6 max-h-96 overflow-auto hairline-card p-6 text-xs leading-relaxed"><code id="code" class="language-javascript font-mono text-neutral-400">Reading from the contract…</code></pre>
             <p id="code-status" class="mt-3 font-mono text-xs text-neutral-500"></p>
+            <!-- Revealed by play.js only once the contract has answered and the
+                 browser is known to support the Custom Highlight API. A control
+                 that cannot do anything is worse than no control, and until the
+                 chain read lands there is nothing under it but placeholder text. -->
+            <p class="mt-3">
+                <button id="syntax-toggle" type="button" hidden aria-pressed="false" class="ess-control hairline-card bg-black px-4 py-2 font-mono text-xs text-neutral-400 transition-opacity hover:opacity-80">highlight syntax</button>
+            </p>
 
             <p class="mt-6 font-mono text-xs text-neutral-500">
                 <a class="inline-block py-1 hover:text-white transition-colors" href="https://better-call.dev/mainnet/KT1CB4MYiAViCuXWBU961x7LjQXGeA8SnQwt" target="_blank" rel="noopener">contract KT1CB4M&hellip;SnQwt&nbsp;&#8599;</a>

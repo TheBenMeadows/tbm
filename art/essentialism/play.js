@@ -158,6 +158,70 @@ function exportPNG(svgEl, scale, name) {
   img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(str);
 }
 
+/* "highlight syntax" - opt-in colour for the contract listing.
+
+   The default is one flat value, and a visitor who never asks pays nothing for
+   the option: the highlighter and its grammar are fetched by the first click
+   and at no other time.
+
+   Colour is drawn with the CSS Custom Highlight API, which paints live Ranges
+   and never touches the DOM. That is what makes it usable on this block in
+   particular. The paragraph above the listing says the text is the bytes read
+   out of the contract, and the line below reports whether those bytes match the
+   function this page just ran - so code.textContent has to keep being exactly
+   what came off the chain. It is, in both states: the comparison, a reader's
+   selection and a copy-paste all see the same string highlighted or plain. A
+   highlighter that wrapped tokens in <span>s would have made the claim false,
+   which is the reason this page does not use one.
+
+   Importing microlighter highlights the page once as a side effect, so the
+   import IS the first paint. After that the ranges stay registered and the text
+   never changes again, so every later click only moves the attribute that
+   src/input.css keys its colours on. Nothing is recomputed.
+
+   Called from the contract read, never at load: until that resolves the block
+   holds placeholder text, and a control that would colour a loading message is
+   a control that lies about what it does. */
+function armSyntaxToggle(code) {
+  var btn = document.getElementById('syntax-toggle');
+  /* Baseline, but recent. Where the API is missing there is nothing to reveal:
+     an inert button reads as a broken page, an absent one reads as a page that
+     never offered it. */
+  if (!btn || !window.CSS || !CSS.highlights) return;
+  btn.hidden = false;
+
+  var loaded = false;
+
+  function on() {
+    code.setAttribute('data-syntax', 'on');
+    btn.setAttribute('aria-pressed', 'true');
+    btn.textContent = 'plain text';
+  }
+
+  btn.addEventListener('click', function () {
+    if (code.getAttribute('data-syntax') === 'on') {
+      code.removeAttribute('data-syntax');
+      btn.setAttribute('aria-pressed', 'false');
+      btn.textContent = 'highlight syntax';
+      return;
+    }
+    if (loaded) { on(); return; }
+
+    /* Absolute like every other asset reference on the site - the mirrors all
+       serve from a root, and a bare './' here would resolve against the
+       document rather than this script. */
+    btn.disabled = true;
+    import('/art/essentialism/syntax/microlighter.min.js')
+      .then(function () { loaded = true; btn.disabled = false; on(); })
+      .catch(function () {
+        /* Every mirror carries these two files, but a partial copy is a real
+           state to be in. Say so and stay out of the way; the code is already
+           readable, which was always the point. */
+        btn.textContent = 'syntax highlighter unavailable';
+      });
+  });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   var $ = function (id) { return document.getElementById(id); };
 
@@ -283,6 +347,8 @@ document.addEventListener('DOMContentLoaded', function () {
             : 'Mismatch: the code this page ran differs from generator v' + row.value.version + ' on Tezos. Trust the chain, not this page.';
           codeStatus.className = 'mt-3 font-mono text-xs ' + (match ? 'text-neutral-500' : 'text-red-400');
         }
+
+        armSyntaxToggle(code);
       })
       .catch(function () {
         code.textContent = 'Could not reach the chain indexer. The generator is readable on Tezos at KT1CB4MYiAViCuXWBU961x7LjQXGeA8SnQwt.';
