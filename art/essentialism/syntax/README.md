@@ -4,7 +4,7 @@
     grammars/javascript.js     copied from the package's dist/grammars/javascript.js
     LICENSE                    the package's MIT licence, unchanged
 
-These files draw the "highlight syntax" control on /art/essentialism/ and are
+These files colour the on-chain generator listing on /art/essentialism/ and are
 used nowhere else on the site.
 
 They are vendored rather than installed because the site travels as bytes. The
@@ -25,8 +25,8 @@ dropped.
 
 Importing `microlighter.min.js` highlights the page once as a side effect and
 leaves a `syntax-highlight` event listener behind for re-runs. That suits this
-page: the import happens on the first click of the control, so a visitor who
-never clicks fetches neither file.
+page, where the import is the whole of the call: `play.js` imports it once the
+contract read returns, and the listing does not change again afterwards.
 
 ## Colours live in src/input.css
 

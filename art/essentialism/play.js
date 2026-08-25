@@ -158,67 +158,34 @@ function exportPNG(svgEl, scale, name) {
   img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(str);
 }
 
-/* "highlight syntax" - opt-in colour for the contract listing.
+/* Colour for the contract listing, in the generator's own inks.
 
-   The default is one flat value, and a visitor who never asks pays nothing for
-   the option: the highlighter and its grammar are fetched by the first click
-   and at no other time.
-
-   Colour is drawn with the CSS Custom Highlight API, which paints live Ranges
-   and never touches the DOM. That is what makes it usable on this block in
-   particular. The paragraph above the listing says the text is the bytes read
-   out of the contract, and the line below reports whether those bytes match the
-   function this page just ran - so code.textContent has to keep being exactly
-   what came off the chain. It is, in both states: the comparison, a reader's
-   selection and a copy-paste all see the same string highlighted or plain. A
-   highlighter that wrapped tokens in <span>s would have made the claim false,
-   which is the reason this page does not use one.
+   Drawn with the CSS Custom Highlight API, which paints live Ranges and never
+   touches the DOM. That is what makes it usable on this block in particular.
+   The paragraph above the listing says the text is the bytes read out of the
+   contract, and the line below reports whether those bytes match the function
+   this page just ran - so code.textContent has to keep being exactly what came
+   off the chain. It is: the comparison, a reader's selection and a copy-paste
+   all see the string the contract returned. A highlighter that wrapped tokens
+   in <span>s would have made the claim false, which is the reason this page
+   does not use one.
 
    Importing microlighter highlights the page once as a side effect, so the
-   import IS the first paint. After that the ranges stay registered and the text
-   never changes again, so every later click only moves the attribute that
-   src/input.css keys its colours on. Nothing is recomputed.
+   import is the whole of the work. Called from the contract read rather than
+   at load, because until that resolves the block holds placeholder text and
+   there is nothing worth colouring. */
+function highlightListing() {
+  /* Baseline, but recent. Without the API there is nothing to paint, and no
+     reason to fetch the highlighter to discover that. */
+  if (!window.CSS || !CSS.highlights) return;
 
-   Called from the contract read, never at load: until that resolves the block
-   holds placeholder text, and a control that would colour a loading message is
-   a control that lies about what it does. */
-function armSyntaxToggle(code) {
-  var btn = document.getElementById('syntax-toggle');
-  /* Baseline, but recent. Where the API is missing there is nothing to reveal:
-     an inert button reads as a broken page, an absent one reads as a page that
-     never offered it. */
-  if (!btn || !window.CSS || !CSS.highlights) return;
-  btn.hidden = false;
-
-  var loaded = false;
-
-  function on() {
-    code.setAttribute('data-syntax', 'on');
-    btn.setAttribute('aria-pressed', 'true');
-    btn.textContent = 'plain text';
-  }
-
-  btn.addEventListener('click', function () {
-    if (code.getAttribute('data-syntax') === 'on') {
-      code.removeAttribute('data-syntax');
-      btn.setAttribute('aria-pressed', 'false');
-      btn.textContent = 'highlight syntax';
-      return;
-    }
-    if (loaded) { on(); return; }
-
-    /* Absolute like every other asset reference on the site - the mirrors all
-       serve from a root, and a bare './' here would resolve against the
-       document rather than this script. */
-    btn.disabled = true;
-    import('/art/essentialism/syntax/microlighter.min.js')
-      .then(function () { loaded = true; btn.disabled = false; on(); })
-      .catch(function () {
-        /* Every mirror carries these two files, but a partial copy is a real
-           state to be in. Say so and stay out of the way; the code is already
-           readable, which was always the point. */
-        btn.textContent = 'syntax highlighter unavailable';
-      });
+  /* Absolute like every other asset reference on the site - the mirrors all
+     serve from a root, and a bare './' here would resolve against the
+     document rather than this script. */
+  import('/art/essentialism/syntax/microlighter.min.js').catch(function () {
+    /* Every mirror carries the highlighter and its grammar, but a partial copy
+       is a real state to be in. The listing stays in one ink, which is still
+       the code, which was always the point. */
   });
 }
 
@@ -348,7 +315,7 @@ document.addEventListener('DOMContentLoaded', function () {
           codeStatus.className = 'mt-3 font-mono text-xs ' + (match ? 'text-neutral-500' : 'text-red-400');
         }
 
-        armSyntaxToggle(code);
+        highlightListing();
       })
       .catch(function () {
         code.textContent = 'Could not reach the chain indexer. The generator is readable on Tezos at KT1CB4MYiAViCuXWBU961x7LjQXGeA8SnQwt.';

@@ -666,8 +666,6 @@ main .post-heading + * {
 
 /* ------------------------------------------------------------------ */
 /* Syntax highlighting for the on-chain generator on /art/essentialism/.
-   Off unless the visitor asks for it: the block renders as one flat
-   value, and the control next to it sets data-syntax="on" here.
 
    Drawn with the CSS Custom Highlight API, which colours live Ranges
    rather than wrapping tokens in <span>s. That is the reason this
@@ -732,30 +730,30 @@ html.light {
     }
 }
 
-#code[data-syntax="on"]::highlight(keyword),
-#code[data-syntax="on"]::highlight(storage) {
+#code::highlight(keyword),
+#code::highlight(storage) {
     color: var(--syn-keyword);
 }
-#code[data-syntax="on"]::highlight(string),
-#code[data-syntax="on"]::highlight(regexp) {
+#code::highlight(string),
+#code::highlight(regexp) {
     color: var(--syn-string);
 }
-#code[data-syntax="on"]::highlight(numeric),
-#code[data-syntax="on"]::highlight(boolean),
-#code[data-syntax="on"]::highlight(constant) {
+#code::highlight(numeric),
+#code::highlight(boolean),
+#code::highlight(constant) {
     color: var(--syn-number);
 }
-#code[data-syntax="on"]::highlight(function),
-#code[data-syntax="on"]::highlight(support) {
+#code::highlight(function),
+#code::highlight(support) {
     color: var(--syn-function);
 }
-#code[data-syntax="on"]::highlight(property) {
+#code::highlight(property) {
     color: var(--syn-property);
 }
-#code[data-syntax="on"]::highlight(comment) {
+#code::highlight(comment) {
     color: var(--syn-comment);
 }
-#code[data-syntax="on"]::highlight(operator) {
+#code::highlight(operator) {
     color: var(--syn-operator);
 }
 
