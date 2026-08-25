@@ -30,9 +30,11 @@ never clicks fetches neither file.
 
 ## Colours live in src/input.css
 
-The package includes ten themes and none is used. The highlight colours come
-from the six role variables the rest of the site is drawn with, so the code
-block stays inside the palette and follows the light/dark control.
+The package includes ten themes and none is used. The highlight colours are
+the generator's own ink library, taken from `LIB` in `../essentialism.js`, so
+the listing is painted in the inks the code paints with. They are defined as
+`--syn-*` variables at the foot of `src/input.css` and follow the light/dark
+control like the rest of the site.
 
 ## Updating
 

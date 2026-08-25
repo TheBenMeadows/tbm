@@ -313,6 +313,9 @@ main .no-justify {
 /* Resolution mirrors the theme model: dark is canonical, the system   */
 /* preference is the silent default, html.light / html.dark (set by   */
 /* theme.js) force a mode.                                            */
+/* One component is exempt, and only one: the essentialism syntax      */
+/* highlighting at the foot of this file paints in that piece's own    */
+/* on-chain ink library. Its reasoning is written there.               */
 :root {
     --bg: #000000;
     --ink: #a3a3a3;
@@ -663,8 +666,8 @@ main .post-heading + * {
 
 /* ------------------------------------------------------------------ */
 /* Syntax highlighting for the on-chain generator on /art/essentialism/.
-   Off unless the visitor asks for it: the block ships as one flat value,
-   and the control next to it sets data-syntax="on" here.
+   Off unless the visitor asks for it: the block renders as one flat
+   value, and the control next to it sets data-syntax="on" here.
 
    Drawn with the CSS Custom Highlight API, which colours live Ranges
    rather than wrapping tokens in <span>s. That is the reason this
@@ -674,38 +677,85 @@ main .post-heading + * {
    copy and the comparison all read the same string highlighted or not.
    A span-injecting highlighter would have made the claim false.
 
-   Four values, no hue. The palette above is the whole palette, and red
-   is already spoken for by the mismatch state under the block, where it
-   means the chain and this page disagree. So structure is carried by
-   contrast alone, in four steps that mean something:
+   The one component on the site not drawn from the six roles above. Its
+   colours are the generator's own ink library, read out of the very code
+   this block is listing: LIB in art/essentialism/essentialism.js, plus
+   BONE. The listing is painted in the inks the listing paints with.
 
-       accent     keywords, storage   the skeleton
-       title      literals            the data
-       inherited  names               the vocabulary
-       ink-soft   comments, operators the glue
+       ink 2  #85dad9  tiffany blue from "together"   keywords, storage
+       ink 1  #dd68a4  pink from "together"           strings
+       BONE   #f3e7d4  svg noise workprint            numbers
+       ink 5  #87c2e4  background from "mr. blue sky" functions
+       ink 4  #36597d  dark blue from "overhead"      comments, dimmed
 
-   Both directions work, because every step is a role variable: brightest
-   on black, darkest on white.
+   Red is left alone throughout: it is spoken for by the mismatch state
+   under the block, where it means the chain and this page disagree.
 
-   Colour is all there is to work with here. Highlight pseudo-elements
-   accept a short list of properties — colour, background, decoration,
-   shadow — and font properties are not on it, since a highlight cannot
-   be allowed to change metrics and reflow the line under it. Italic
-   comments are not available at any price; do not add font-style below
-   expecting it to render. */
+   On white the light inks fall under 4.5:1, so each becomes the same hue
+   taken darker, and ink 4 is used at full strength rather than dimmed.
+   The comment and operator greys are tuned for contrast, not sampled -
+   they are the only values here with no counterpart in LIB.
+
+   Colour is all there is to work with. Highlight pseudo-elements accept
+   a short list of properties — colour, background, decoration, shadow —
+   and font properties are not on it, since a highlight cannot be allowed
+   to change metrics and reflow the line under it. Italic comments are
+   not available at any price; do not add font-style below expecting it
+   to render. */
+:root {
+    --syn-keyword: #85dad9;
+    --syn-string: #dd68a4;
+    --syn-number: #f3e7d4;
+    --syn-function: #87c2e4;
+    --syn-property: #8cadd7;
+    --syn-comment: #5f82a1;
+    --syn-operator: #6a7d90;
+}
+html.light {
+    --syn-keyword: #1f7a78;
+    --syn-string: #b0356e;
+    --syn-number: #8a6320;
+    --syn-function: #36597d;
+    --syn-property: #4a6d99;
+    --syn-comment: #6b7885;
+    --syn-operator: #6f7883;
+}
+@media (prefers-color-scheme: light) {
+    html:not(.dark) {
+        --syn-keyword: #1f7a78;
+        --syn-string: #b0356e;
+        --syn-number: #8a6320;
+        --syn-function: #36597d;
+        --syn-property: #4a6d99;
+        --syn-comment: #6b7885;
+        --syn-operator: #6f7883;
+    }
+}
+
 #code[data-syntax="on"]::highlight(keyword),
 #code[data-syntax="on"]::highlight(storage) {
-    color: var(--accent);
+    color: var(--syn-keyword);
 }
 #code[data-syntax="on"]::highlight(string),
-#code[data-syntax="on"]::highlight(regexp),
+#code[data-syntax="on"]::highlight(regexp) {
+    color: var(--syn-string);
+}
 #code[data-syntax="on"]::highlight(numeric),
 #code[data-syntax="on"]::highlight(boolean),
 #code[data-syntax="on"]::highlight(constant) {
-    color: var(--title);
+    color: var(--syn-number);
 }
-#code[data-syntax="on"]::highlight(comment),
+#code[data-syntax="on"]::highlight(function),
+#code[data-syntax="on"]::highlight(support) {
+    color: var(--syn-function);
+}
+#code[data-syntax="on"]::highlight(property) {
+    color: var(--syn-property);
+}
+#code[data-syntax="on"]::highlight(comment) {
+    color: var(--syn-comment);
+}
 #code[data-syntax="on"]::highlight(operator) {
-    color: var(--ink-soft);
+    color: var(--syn-operator);
 }
 
