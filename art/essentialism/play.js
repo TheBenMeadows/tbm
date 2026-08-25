@@ -158,6 +158,37 @@ function exportPNG(svgEl, scale, name) {
   img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(str);
 }
 
+/* Colour for the contract listing, in the generator's own inks.
+
+   Drawn with the CSS Custom Highlight API, which paints live Ranges and never
+   touches the DOM. That is what makes it usable on this block in particular.
+   The paragraph above the listing says the text is the bytes read out of the
+   contract, and the line below reports whether those bytes match the function
+   this page just ran - so code.textContent has to keep being exactly what came
+   off the chain. It is: the comparison, a reader's selection and a copy-paste
+   all see the string the contract returned. A highlighter that wrapped tokens
+   in <span>s would have made the claim false, which is the reason this page
+   does not use one.
+
+   Importing microlighter highlights the page once as a side effect, so the
+   import is the whole of the work. Called from the contract read rather than
+   at load, because until that resolves the block holds placeholder text and
+   there is nothing worth colouring. */
+function highlightListing() {
+  /* Baseline, but recent. Without the API there is nothing to paint, and no
+     reason to fetch the highlighter to discover that. */
+  if (!window.CSS || !CSS.highlights) return;
+
+  /* Absolute like every other asset reference on the site - the mirrors all
+     serve from a root, and a bare './' here would resolve against the
+     document rather than this script. */
+  import('/art/essentialism/syntax/microlighter.min.js').catch(function () {
+    /* Every mirror carries the highlighter and its grammar, but a partial copy
+       is a real state to be in. The listing stays in one ink, which is still
+       the code, which was always the point. */
+  });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   var $ = function (id) { return document.getElementById(id); };
 
@@ -283,6 +314,8 @@ document.addEventListener('DOMContentLoaded', function () {
             : 'Mismatch: the code this page ran differs from generator v' + row.value.version + ' on Tezos. Trust the chain, not this page.';
           codeStatus.className = 'mt-3 font-mono text-xs ' + (match ? 'text-neutral-500' : 'text-red-400');
         }
+
+        highlightListing();
       })
       .catch(function () {
         code.textContent = 'Could not reach the chain indexer. The generator is readable on Tezos at KT1CB4MYiAViCuXWBU961x7LjQXGeA8SnQwt.';
