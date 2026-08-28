@@ -10,6 +10,7 @@
   "scripts": {
     "build": "node scripts/build-blog.mjs && npx tailwindcss -i ./src/input.css -o ./output.css --minify && node scripts/build-search-index.mjs && node scripts/build-feed.mjs && node scripts/sync-readme-mirrors.mjs",
     "check:readme": "node scripts/sync-readme-mirrors.mjs --check",
+    "check:mirrors": "node scripts/check-mirrors-page.mjs",
     "check:figures": "node scripts/check-figures.mjs",
     "check:onchain": "node scripts/check-onchain-code.mjs",
     "optimize:icons": "npx svgo@3 -f icons -o icons --config svgo.config.mjs",
