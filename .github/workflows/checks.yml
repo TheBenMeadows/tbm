@@ -43,6 +43,9 @@ jobs:
       - name: Check the readme mirror table against mirrors.json
         run: npm run check:readme
 
+      - name: Check the mirrors page against mirrors.json
+        run: npm run check:mirrors
+
       # Ends in check-figures.mjs and check-onchain-code.mjs.
       - name: Build and run the build-time guards
         run: npm run build:netlify

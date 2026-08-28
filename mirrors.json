@@ -13,7 +13,11 @@
     "rewriting bytes in transit. Clients pick their own gateway. Name resolvers (eth.limo,",
     "sol.site, tez.page) are pointers to these same copies, not copies, so they are not here.",
     "",
-    "Keep in sync with mirrors/index.html when a surface is added or retired."
+    "Keep in sync with mirrors/index.html when a surface is added or retired. That page is",
+    "hand-written, not generated from this file -- its prose and card labels have no place in",
+    "signed data -- so `npm run check:mirrors` enforces the agreement and CI fails on drift.",
+    "It went unenforced until 2026-08-28, when the Netlify mirror moved here and the page",
+    "spent a merge still advertising the old address."
   ],
   "mirrors": [
     {
