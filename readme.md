@@ -231,7 +231,7 @@ manifest cannot disagree.
 | Network | Address |
 |---------|---------|
 | Web (primary) | `https://thebenmeadows.com/` |
-| Web | `https://thebenmeadows.netlify.app/` |
+| Web | `https://netlify.thebenmeadows.com/` |
 | Web | `https://tbm-linktree.pages.dev/` |
 | Web | `https://thebenmeadows.codeberg.page/` |
 | Web | `https://thebenmeadows.srht.site/` |
