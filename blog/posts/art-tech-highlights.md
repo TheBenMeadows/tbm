@@ -6,6 +6,7 @@ pin: 2
 tags: [Art, Blockchain, Technology]
 related: [podcasts-public-speaking]
 image: /blog/media/art-tech-highlights/1-enhanced-topaz-standard-v2-2x-cropped-2.webp
+image_alt: "A vast smooth monolith glowing orange and red, rising out of flat green farmland into a sky that grades from dusk pink to deep blue."
 description: "Introduction: I was exposed to art from a young age. My creative journey began with piano lessons and art classes, which my parents encouraged for both me and my siblings.…"
 ---
 
@@ -25,31 +26,31 @@ In the business world, I have had a successful career, mostly in the constructio
 
 [**1st NFT Minted**](https://opensea.io/assets/ethereum/0xabefbc9fd2f806065b4f3c237d4b59d9a97bcac7/10434): April 28, 2022 on Zora - Burned by sending to vitalik.eth on July 23, 2022 - Image taken with an iPhone in Tokyo circa 2009.
 
-![](/blog/media/art-tech-highlights/0-zora-tokyo09-minted-4-28-2022-burned.webp)
+![A broad, round-crowned tree in rust-coloured autumn leaf standing alone on a Tokyo park lawn, an elderly man walking the clipped hedge line in front of it and city towers in the haze behind.](/blog/media/art-tech-highlights/0-zora-tokyo09-minted-4-28-2022-burned.webp)
 
 ---
 
 **1st Public NFT Mint**: "Bear Market Blues" OE on November 10, 2022 via Manifold - [This thread on Twitter/X](https://x.com/TheBenMeadows/status/1723571100997861508) sums up the (still ongoing) project.
 
-![](/blog/media/art-tech-highlights/1-1-bear-market-blues-desert-sunset-11-10-2022-image.webp)
+![Deep red sand dunes curving into the distance beneath a butte, the sky banded from burning orange at the horizon up into a star-filled indigo.](/blog/media/art-tech-highlights/1-1-bear-market-blues-desert-sunset-11-10-2022-image.webp)
 
 ---
 
 **1st Collection Mint**: "Ceci n'est pas une tapis" (or, "This is not a rug") - December 2022 - [This thread on Twitter/X](https://x.com/TheBenMeadows/status/1601358904130080768) discusses the collection.
 
-![](/blog/media/art-tech-highlights/6-ceci-nest-pas-une-tapis-rug-monster-large.webp)
+![A patterned Persian rug rearing up off a wooden floor into an enormous fanged beast with its jaws wide open, while a man sits calmly on the same rug beside it, chin in hand.](/blog/media/art-tech-highlights/6-ceci-nest-pas-une-tapis-rug-monster-large.webp)
 
 ---
 
 **First Fully On-Chain Piece**: "together" - Minted May 2023 - Bought by the infamous ben.eth for 0.5 Ξ (private, off-chain sale) - The first mint to use [diid](https://x.com/0xdiid)'s efficax extension (after diid himself). One of the first fully on-chain mints to use [SSTORE2](https://x.com/0xdiid/status/1647985753463595013) to store data more efficiently on-chain.
 
-![](/blog/media/art-tech-highlights/together-promo.webp)
+![Three backpackers seen from behind, silhouetted in flat black against a posterised mountain range in hot pink and turquoise.](/blog/media/art-tech-highlights/together-promo.webp)
 
 ---
 
 **Highest Sale (0.69 Ξ)**: "[North of Eden](https://foundation.app/mint/eth/0x93ad4670D8Dd9FC3987EB296315827C3D138ADeA/1)" - Minted 1/1/2023 (1st Photo NFT) - Bought by [888 Inner Circle](https://twitter.com/888InnerCircle) 6/19/2023 - [Twitter/X Post](https://x.com/TheBenMeadows/status/1663311730632716288) - Taken with an iPhone camera in 2010.
 
-![](/blog/media/art-tech-highlights/1-2-decades-and-counting-north-of-eden-promo.webp)
+![A wide mountain valley photographed over dense pine forest, a turquoise lake along the base of the ridge and towering cumulus over the peaks.](/blog/media/art-tech-highlights/1-2-decades-and-counting-north-of-eden-promo.webp)
 
 ---
 
@@ -57,27 +58,27 @@ In the business world, I have had a successful career, mostly in the constructio
 
 - I consider the first ordinal (#57,395) to be an artist's proof. I did sell the ETH version as a 1/1 (since I have no plans to ever sell the BTC version). I also consider the ETH version to be definitive version, since it is higher quality. [Here](https://x.com/TheBenMeadows/status/1680387322226040832) is a post that discusses the shooting and editing process.
 
-![](/blog/media/art-tech-highlights/1-eye-in-the-sky.webp)
+![A white security camera mounted on the steel truss of a building, shot from below against a deep blue sky, with stage lights hanging along the beam.](/blog/media/art-tech-highlights/1-eye-in-the-sky.webp)
 
-![](/blog/media/art-tech-highlights/2-8-bit-future.gif)
+![The same security camera rendered as low-resolution pixel art in black on a cyan checkerboard.](/blog/media/art-tech-highlights/2-8-bit-future.gif)
 
 ---
 
 **Created a Way to Compress Vector Art on Bitcoin**: 10/6/2023 - [Twitter/X Thread](https://x.com/TheBenMeadows/status/1710390295899324609)
 
-![](/blog/media/art-tech-highlights/f7yg8hmasaaffnp.webp)
+![A red knitted balaclava on black, its eye and mouth openings drawn as black shapes with paint running down from them.](/blog/media/art-tech-highlights/f7yg8hmasaaffnp.webp)
 
 ---
 
 **1st Interactive Compressed Ordinal**: "Blush Heist" - 10/31/2023 - [Twitter/X Thread](https://x.com/TheBenMeadows/status/1719515510084366628)
 
-![](/blog/media/art-tech-highlights/f9zwffzaeaaarq0.webp)
+![The same dripping balaclava design in bright pink on black.](/blog/media/art-tech-highlights/f9zwffzaeaaarq0.webp)
 
 ---
 
 **1st Cross-Chain Collection (ETH, SOL, TEZ)**: "The Artist as Art" - December 2023 - [Twitter/X Thread](https://x.com/TheBenMeadows/status/1741623850516017279) - ETH piece still available.
 
-![](/blog/media/art-tech-highlights/1-eth-img-0940-grayscale-large-2.webp)
+![A black and white self-portrait shot from below: a fleece hat with tall pointed ears, wraparound sunglasses and a moulded respirator covering the lower face.](/blog/media/art-tech-highlights/1-eth-img-0940-grayscale-large-2.webp)
 
 ---
 
@@ -85,7 +86,7 @@ In the business world, I have had a successful career, mostly in the constructio
 
 I'm not sure how I feel about this being the piece [that got me into the 787 Update](https://x.com/FKA787/status/1746187235135717534).
 
-![](/blog/media/art-tech-highlights/gdp8m2pbaaaus9l.webp)
+![A monkey drawn in flat dark green on a cream background, sitting with its hands in its lap and its heavy-lidded eyes turned to the viewer.](/blog/media/art-tech-highlights/gdp8m2pbaaaus9l.webp)
 
 ---
 
@@ -154,7 +155,7 @@ Hosted by The Builders DAO & Artcrush Gallery
 
 [#DailyMuse](https://x.com/TheBenMeadows/status/1796946588566438054) - I've been created a piece daily for over four months.
 
-Prior to the #DailyMuse thread, I was creating and showing several unminted pieces each week. Here are a few of the posts: [1](https://x.com/TheBenMeadows/status/1718291806855860616), [2](https://x.com/TheBenMeadows/status/1723407553366053208), [3](https://x.com/TheBenMeadows/status/1738927654433390655)[](https://x.com/TheBenMeadows/status/1718291806855860616), [4](https://x.com/TheBenMeadows/status/1708247230602530816), [5](https://x.com/TheBenMeadows/status/1692327420328869904).
+Prior to the #DailyMuse thread, I was creating and showing several unminted pieces each week. Here are a few of the posts: [1](https://x.com/TheBenMeadows/status/1718291806855860616), [2](https://x.com/TheBenMeadows/status/1723407553366053208), [3](https://x.com/TheBenMeadows/status/1738927654433390655), [4](https://x.com/TheBenMeadows/status/1708247230602530816), [5](https://x.com/TheBenMeadows/status/1692327420328869904).
 
 ---
 
