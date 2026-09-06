@@ -62,9 +62,10 @@
                 internet's plumbing — an independent
                 <span class="text-white">autonomous system</span>: a registered
                 slice of the global routing table, run rather than rented. As of
-                August 2026 it is on the air: the IPv6 block is announced from
-                two places, signed, and reverse-DNS delegated. The routing and DNS
-                story will keep growing here.
+                September 2026 it is on the air and dual-stack: an IPv6 block
+                and an IPv4 block, both announced, signed where the registry allows
+                it, and reverse-DNS delegated for IPv6. The routing and DNS story
+                will keep growing here.
             </p>
             <hr class="center-rule" style="margin-top: 2.2rem; margin-bottom: 0" />
 
@@ -79,9 +80,15 @@
                     <span class="mt-2 block font-mono text-xl text-white break-words">2a06:9801:f11::/48</span>
                     <span class="mt-2 block font-mono text-xs text-neutral-500">65,536 &times; /64</span>
                 </div>
+                <a class="block hairline-card p-6 transition-opacity hover:opacity-80" href="https://bgp.tools/prefix/44.30.210.0/24" target="_blank" rel="noopener">
+                    <span class="block font-mono text-xs uppercase tracking-widest text-neutral-500">IPv4 allocation</span>
+                    <span class="mt-2 block font-mono text-xl text-white break-words">44.30.210.0/24</span>
+                    <span class="mt-2 block font-mono text-xs text-neutral-500">256 addresses &middot; 44Net &middot; bgp.tools&nbsp;↗</span>
+                </a>
                 <div class="hairline-card p-6">
                     <span class="block font-mono text-xs uppercase tracking-widest text-neutral-500">Registry</span>
                     <span class="mt-2 block font-mono text-xl text-white">RIPE NCC</span>
+                    <span class="mt-2 block font-mono text-xs text-neutral-500">IPv4 via ARDC (44Net)</span>
                 </div>
                 <a class="block hairline-card p-6 transition-opacity hover:opacity-80" href="https://bgp.tools/prefix/2a06:9801:f11::/48" target="_blank" rel="noopener">
                     <span class="block font-mono text-xs uppercase tracking-widest text-neutral-500">Status</span>
@@ -100,7 +107,7 @@
                 <div class="hairline-card p-6">
                     <span class="block font-mono text-xs uppercase tracking-widest text-neutral-500">Frankfurt</span>
                     <span class="mt-2 block font-mono text-base text-white">upstream AS209533</span>
-                    <span class="mt-2 block font-mono text-xs text-neutral-500">iFog &middot; live</span>
+                    <span class="mt-2 block font-mono text-xs text-neutral-500">iFog &middot; standby</span>
                 </div>
                 <div class="hairline-card p-6">
                     <span class="block font-mono text-xs uppercase tracking-widest text-neutral-500">Kansas City</span>
@@ -115,16 +122,19 @@
             </div>
             <p class="mt-4 text-sm text-neutral-500">
                 Three of the four are WireGuard tunnels to a friendly upstream; the
-                Manchester box is a native session. Fremont is the preferred door
-                for the Americas, the two iFog sessions announce with a longer path
-                and take over if it drops. The two routers that announce the block
-                also talk to each other over a private link, so the whole /48 stays
-                reachable no matter which door traffic comes in. A /56 of it is
-                routed home over WireGuard, so the LAN has real addresses too.
+                Manchester box is a native session. Los Angeles is the preferred
+                door, through Fremont; the other sites announce with a longer path so
+                they take over rather than compete. Manchester carries what it
+                announces over a private link back to Los Angeles &mdash; a site that
+                announces a block has to be able to forward traffic for it, or it
+                becomes a hole rather than a door. Frankfurt is on standby while its
+                host is unwell. A /56 of the IPv6 block is routed home over WireGuard,
+                so the LAN has real addresses too.
             </p>
 
             <h2 class="section-label" style="margin-top: 2.6rem">Running on it</h2>
             <ul class="mt-4 space-y-3 list-none">
+                <li><span class="text-white font-medium">IPv4</span>: <code class="font-mono text-sm">44.30.210.0/24</code> from <a class="underline decoration-neutral-600 underline-offset-4 hover:text-white" href="https://www.ardc.net/" target="_blank" rel="noopener">ARDC&nbsp;↗</a>, the amateur-radio 44Net space, announced from the same AS &mdash; so the network answers on the old internet as well as the new one.</li>
                 <li><span class="text-white font-medium">Anycast</span>: <code class="font-mono text-sm">2a06:9801:f11::a</code> is served from Frankfurt and Los Angeles at once; the first thing on it is <a class="underline decoration-neutral-600 underline-offset-4 hover:text-white" href="https://v6.thebenmeadows.com/">a mirror of this site&nbsp;↗</a> (IPv6 only).</li>
             </ul>
 
@@ -132,6 +142,7 @@
             <ul class="mt-4 space-y-3 list-none">
                 <li><span class="text-white font-medium">RPKI</span>: the prefix has a valid ROA for AS219158 (max length /48) — anything else claiming it is invalid.</li>
                 <li><span class="text-white font-medium">IRR</span>: <code class="font-mono text-sm">route6</code> and <code class="font-mono text-sm">as-set AS219158:AS-ALL</code> in the RIPE database.</li>
+                <li><span class="text-white font-medium">RPKI, IPv4</span>: none, and none is possible &mdash; 44Net is ARIN legacy space, which the registry does not issue RPKI certificates for. The IRR route object is the only origin proof, so some networks accept it and some do not.</li>
                 <li><span class="text-white font-medium">Reverse DNS</span>: the block's <code class="font-mono text-sm">ip6.arpa</code> zone is delegated and answers for the routers.</li>
                 <li><span class="text-white font-medium">PeeringDB</span>: <a class="underline decoration-neutral-600 underline-offset-4 hover:text-white" href="https://www.peeringdb.com/net/43274" target="_blank" rel="noopener">AS219158&nbsp;↗</a>, open peering policy.</li>
                 <li><span class="text-white font-medium">Looking glass</span>: see the /48 from hundreds of vantage points on the <a class="underline decoration-neutral-600 underline-offset-4 hover:text-white" href="https://lg.ring.nlnog.net/prefix?q=2a06:9801:f11::/48&amp;peer=all" target="_blank" rel="noopener">NLNOG RING looking glass&nbsp;↗</a>, or the origin's own view on <a class="underline decoration-neutral-600 underline-offset-4 hover:text-white" href="https://bgp.tools/prefix/2a06:9801:f11::/48" target="_blank" rel="noopener">bgp.tools&nbsp;↗</a>.</li>
@@ -139,7 +150,6 @@
 
             <h2 class="section-label" style="margin-top: 2.6rem">What's next</h2>
             <ul class="mt-4 space-y-3 list-none">
-                <li><span class="text-white font-medium">IPv4</span>: a small legacy block, so the network is reachable from everywhere, not just the IPv6 internet.</li>
                 <li><span class="text-white font-medium">DNS</span>: self-hosted authoritative name service on the allocation, starting with the reverse zone.</li>
             </ul>
             <p class="mt-6 text-sm text-neutral-500">Numbers on this page are checkable: the RIPE and bgp.tools links above read the live routing table, not this site.</p>
