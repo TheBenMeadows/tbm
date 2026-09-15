@@ -1,5 +1,5 @@
 {
-    "_comment": "Entries for /ai, rendered by scripts/build-ai.mjs. An entry earns its place by an outcome someone else can check: a change merged into a repository Ben does not own, a competition result, a published audit, a released tool. Work in progress does not qualify, and neither does a result that exists only in Ben's own notes. Entries describe what happened and never which model, agent or tool did it; scripts/check-ai-wins.mjs fails the build on a name in the title or summary, while `where` and link labels carry the venue's own name. Links are optional because some venues publish no permanent page, but a link that is present must be absolute https. Newest first is produced by the builder, so order here does not matter.",
+    "_comment": "Entries for /ai, rendered by scripts/build-ai.mjs. An entry earns its place by an outcome someone else can check: a change merged into a repository Ben does not own, a competition result, a published audit, a released tool. Work in progress does not qualify, and neither does a result that exists only in Ben's own notes. Entries describe what happened and never which model, agent or tool did it; scripts/check-ai-wins.mjs fails the build on a name in the title or summary, while `where` and link labels carry the venue's own name. Links are optional because some venues publish no permanent page, but a link that is present must be absolute https. Newest first is produced by the builder, so order here does not matter. `quotes` are third parties' words, copied verbatim from a public page (Ben, 2026-09-15): they may name whatever the author named, so the name check does not apply to them, and every quote must link to the page it was copied from.",
     "kinds": {
         "merged": "Merged upstream",
         "placement": "Competition",
@@ -25,11 +25,11 @@
             "kind": "placement",
             "title": "First prize in a $1,000 bug bounty",
             "where": "Superteam Earn",
-            "summary": "Ten bug reports filed against a trading app during its public bounty, against 23 submissions in total. First prize, 300 USDC. The sponsor publishes no winners page, so the checkable record is the talent profile and the reports themselves.",
+            "summary": "Ten bug reports filed against a trading app's new event-market integration during its public bounty, one of 75 submissions. First prize, the single critical-severity slot, 300 USDC. The listing names the winners and the sponsor's comment congratulates them.",
             "links": [
-                { "label": "the profile and its award", "url": "https://superteam.fun/earn/t/TheBenMeadows" },
-                { "label": "the listing", "url": "https://superteam.fun/earn/listing/dollar1000-usdc-manic-bug-bounty" },
-                { "label": "the ten reports", "url": "https://gist.github.com/TheBenMeadows/fdf0ceb1ad0f1896d31169421a10e5e3" }
+                { "label": "the listing and its winners", "url": "https://superteam.fun/earn/listing/dollar1000-usdc-manic-bug-bounty" },
+                { "label": "the ten reports", "url": "https://gist.github.com/TheBenMeadows/fdf0ceb1ad0f1896d31169421a10e5e3" },
+                { "label": "the profile", "url": "https://superteam.fun/earn/t/TheBenMeadows" }
             ]
         },
         {
@@ -166,6 +166,50 @@
                 { "label": "the verdict", "url": "https://github.com/OpenAgentsInc/openagents/issues/5476#issuecomment-4753188533" },
                 { "label": "the follow-up", "url": "https://github.com/OpenAgentsInc/openagents/issues/5476#issuecomment-4754062324" }
             ]
+        }
+    ],
+    "quotes": [
+        {
+            "date": "2026-09-15",
+            "quote": "Congratulations! @TheBenMeadows, @feyz, @jackbone22, @DuKDuE, @neonpilot, @M_Rish, @achwir, and @sus1lo have been announced as the winners!",
+            "who": "Javier Ruedas, Manic Trade, on the bounty listing",
+            "url": "https://superteam.fun/earn/listing/dollar1000-usdc-manic-bug-bounty"
+        },
+        {
+            "date": "2026-09-11",
+            "quote": "Thanks to @lathe-agent-oa (@TheBenMeadows) for #1085, the report that showed how layouts saved on macOS 26 were being discarded on 27, complete with the identifier pairs that made the fix possible.",
+            "who": "Thaw release notes, 3.0.0-alpha.2",
+            "url": "https://github.com/thaw-app/Thaw/releases/tag/3.0.0-alpha.2"
+        },
+        {
+            "date": "2026-08-29",
+            "quote": "Keychain migration no longer silently no-ops on Developer ID builds (#292, PR #302): the shipped builds lack the entitlement the data-protection keychain requires, so per-profile secrets were stranded in the cleartext plist despite the 3.2.0 migration. Unentitled-but-stably-signed builds now fall back to the file-based login keychain — thanks @lathe-agent-oa.",
+            "who": "Claude Usage Tracker release notes, v3.3.0",
+            "url": "https://github.com/hamed-elfayome/Claude-Usage-Tracker/releases/tag/v3.3.0"
+        },
+        {
+            "date": "2026-08-27",
+            "quote": "Merged, thanks for this. Nice work on the drift-check reasoning (writing amber/green explicitly rather than handing back to system) and the one-shot timer.",
+            "who": "kamenlevi, MagHue maintainer, on the pull request",
+            "url": "https://github.com/kamenlevi/MagHue/pull/3#issuecomment-5440769855"
+        },
+        {
+            "date": "2026-08-27",
+            "quote": "Thanks for the PR. I publish version 3.6.5 with this fix",
+            "who": "hzrd149, nsite-gateway maintainer, on the pull request",
+            "url": "https://github.com/hzrd149/nsite-gateway/pull/27#issuecomment-5438403993"
+        },
+        {
+            "date": "2026-06-11",
+            "quote": "By morning its reports were case law (#4744–#4746 cite them) and its audits were acceptance criteria on two issues.",
+            "who": "OpenAgents, strategy essay, section titled \"The Orrery Moment\"",
+            "url": "https://github.com/OpenAgentsInc/openagents/blob/b3bd0805/docs/tassadar/2026-06-11-autopilot-agentic-labor-market.md"
+        },
+        {
+            "date": "2026-06-11",
+            "quote": "This is exactly the adversarial-verification labor the research plan prices as \"the cheapest research spend in this lab,\" performed competently by a stranger's agent that had asked to be paid for it.",
+            "who": "OpenAgents, the same essay",
+            "url": "https://github.com/OpenAgentsInc/openagents/blob/b3bd0805/docs/tassadar/2026-06-11-autopilot-agentic-labor-market.md"
         }
     ]
 }

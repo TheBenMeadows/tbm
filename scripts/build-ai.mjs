@@ -59,6 +59,30 @@ function card(win) {
                 </div>`;
 }
 
+/* Quotes are rendered as their author wrote them, so a reader who opens the link finds
+ * the same words. Newest first, like the cards. */
+const quotes = [...(data.quotes ?? [])].sort((a, b) => b.date.localeCompare(a.date));
+
+function quoteBlock(q) {
+    return `                <blockquote class="hairline-card p-6">
+                    <p class="text-neutral-300">${esc(q.quote)}</p>
+                    <footer class="mt-3 font-mono text-xs text-neutral-500">
+                        <a class="hover:text-white transition-colors" href="${esc(q.url)}" target="_blank" rel="noopener">${esc(q.who)}</a> &middot; ${esc(q.date)}
+                    </footer>
+                </blockquote>`;
+}
+
+const said = quotes.length > 0
+    ? `
+            <hr class="center-rule" style="margin-top: 2.6rem; margin-bottom: 0" />
+            <h2 class="mt-8 font-mono text-xs uppercase tracking-widest text-neutral-500">What they said</h2>
+            <p class="mt-2 text-sm text-neutral-500">Copied as written. Each one links to the page it came from.</p>
+            <div class="mt-4 grid gap-4">
+${quotes.map(quoteBlock).join("\n\n")}
+            </div>
+`
+    : "";
+
 const cards = wins.length > 0
     ? `\n            <div class="mt-8 grid gap-4 sm:grid-cols-2">\n${wins.map(card).join("\n\n")}\n            </div>\n`
     : `\n            <p class="mt-8 text-sm text-neutral-500">Nothing to show yet.</p>\n`;
@@ -134,7 +158,7 @@ const page = `<!doctype html>
                 something outside.
             </p>
             <hr class="center-rule" style="margin-top: 2.2rem; margin-bottom: 0" />
-${cards}        </main>
+${cards}${said}        </main>
 
         <footer class="site-footer">
             <nav class="footer-line">

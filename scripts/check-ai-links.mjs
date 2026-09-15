@@ -18,7 +18,10 @@ const CI = process.argv.includes("--ci");
 const TIMEOUT_MS = 15000;
 
 const data = JSON.parse(readFileSync(FILE, "utf8"));
-const links = data.wins.flatMap((win) => (win.links ?? []).map((link) => ({ ...link, id: win.id })));
+const links = [
+    ...data.wins.flatMap((win) => (win.links ?? []).map((link) => ({ ...link, id: win.id }))),
+    ...(data.quotes ?? []).map((q, i) => ({ label: q.who, url: q.url, id: `quote-${i + 1}` })),
+];
 
 async function probe(url) {
     const control = new AbortController();

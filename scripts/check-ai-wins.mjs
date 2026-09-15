@@ -88,6 +88,23 @@ for (const [i, win] of (data.wins ?? []).entries()) {
     if (named) fail(where, `names a tool or agent ("${named[0]}"). The entry states the outcome; the linked page can name what it likes.`);
 }
 
+/* Quotes are other people's words, copied from a public page. They may name whatever
+ * their author named, so the NAMES check does not apply; what they must have is the
+ * page they came from, or a reader cannot check that the words are real. */
+if (!Array.isArray(data.quotes)) {
+    fail(FILE, "`quotes` must be an array, empty if there is nothing to quote");
+} else {
+    for (const [i, q] of data.quotes.entries()) {
+        const where = `${FILE} quotes[${i}]`;
+        for (const field of ["quote", "who"]) {
+            if (typeof q?.[field] !== "string" || q[field].trim() === "") fail(where, `\`${field}\` is required`);
+        }
+        if (!DATE_PATTERN.test(q?.date ?? "")) fail(where, "`date` must be YYYY-MM-DD");
+        else if (q.date > today) fail(where, `\`date\` "${q.date}" is in the future`);
+        if (typeof q?.url !== "string" || !q.url.startsWith("https://")) fail(where, "`url` must be the absolute https page the words were copied from");
+    }
+}
+
 if (errors.length > 0) {
     console.error(`ai wins           ${errors.length} problem(s) in ${FILE}:`);
     for (const e of errors) console.error(`  ${e}`);
