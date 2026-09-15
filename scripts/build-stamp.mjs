@@ -27,6 +27,7 @@ const PAGES = [
     "experiments/index.html",
     "projects/index.html",
     "infra/index.html",
+    "ai/index.html",
     "art/index.html",
     "art/essentialism/index.html",
     "search/index.html",

@@ -29,6 +29,7 @@ const PAGES = [
     { file: 'experiments/index.html', url: '/experiments/' },
     { file: 'projects/index.html', url: '/projects/' },
     { file: 'infra/index.html', url: '/infra/' },
+    { file: 'ai/index.html', url: '/ai/' },
     { file: 'art/index.html', url: '/art/' },
     { file: 'art/essentialism/index.html', url: '/art/essentialism/' },
     { file: 'archive/index.html', url: '/archive/' },

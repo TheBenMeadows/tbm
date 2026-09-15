@@ -21,12 +21,12 @@ pointing to Ben Meadows' sites, projects, and social profiles.
 It is a small static site: hand-written HTML styled with Tailwind, plus
 supporting pages — [`/mirrors/`](https://thebenmeadows.com/mirrors/),
 [`/tech/`](https://thebenmeadows.com/tech/), `/experiments/`, `/infra/`,
-`/art/` and [`/blog/`](https://thebenmeadows.com/blog/). The build compiles the
-CSS, the search index and the blog; there is no framework or client-side
-rendering.
+`/ai/`, `/art/` and [`/blog/`](https://thebenmeadows.com/blog/). The build
+compiles the CSS, the search index, the blog and the `/ai/` page; there is no
+framework or client-side rendering.
 
-Search is dependency-free on purpose. The corpus is about 90 KB across 23 pages
-and the index built from it about 96 KB — small enough to match in the browser
+Search is dependency-free on purpose. The corpus is about 98 KB across 24 pages
+and the index built from it about 106 KB — small enough to match in the browser
 without a search library. The usual pick, Pagefind, runs on WebAssembly, which
 under this site's `script-src 'self'` CSP would mean adding `'wasm-unsafe-eval'`.
 Instead `scripts/build-search-index.mjs` emits a JSON index at build time and
@@ -101,11 +101,11 @@ page and do count:
 
 `search-index.json` grows with every page in `scripts/build-search-index.mjs` and with
 every post under `blog/posts/`, but `search.js` fetches it on first search rather than
-on load, so it stays out of the measurement. It is 96 KB — nearly the entire budget on
+on load, so it stays out of the measurement. It is 106 KB — more than the entire budget on
 its own, most of it blog prose — so it must stay lazy. Fetching it on load would fail
-the build. It will outgrow the budget entirely as the blog does, which is survivable only because it
-is never part of a cold visit; the day it stops being lazy is the day it stops being
-affordable.
+the build. It has outgrown the budget already and will keep growing with the blog, which is
+survivable only because it is never part of a cold visit; the day it stops being lazy is
+the day it stops being affordable.
 
 The home page currently measures about 72 KB. `scripts/build-manifest.mjs` enforces the
 budget on every build and fails over it, so the number cannot drift unnoticed; to check
@@ -295,6 +295,7 @@ decisions behind it are at [`/tech/`](https://thebenmeadows.com/tech/).
 | `mirrors/`, `tech/` | the mirror list and the tech-stack colophon |
 | `profiles/` | every profile, one page — the footer's "All profiles" target |
 | `experiments/`, `infra/` | experiments gallery and the network/ASN colophon |
+| `ai/wins.json` | entries for `/ai/`; the page is generated from it by `scripts/build-ai.mjs` |
 | `search/` | the search page (`/search/?q=…`) |
 | `404.html` | not-found page (self-contained, inline styles) |
 | `src/input.css`, `tailwind.config.js` | Tailwind source + config |
