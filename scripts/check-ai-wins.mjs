@@ -25,6 +25,7 @@ const KIND_DESCRIPTIONS = {
     placement: "a competition or bounty result",
     audit: "a published audit or verification verdict",
     release: "a released tool with a live address",
+    milestone: "an arrival or moment a third party wrote down",
 };
 
 const NAMES = [
