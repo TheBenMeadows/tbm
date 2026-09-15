@@ -8,6 +8,18 @@
     },
     "wins": [
         {
+            "id": "kryptos-ctf",
+            "date": "2026-09-14",
+            "kind": "placement",
+            "title": "Eight of ten puzzles in a cryptography CTF",
+            "where": "Paradigm Kryptos CTF",
+            "summary": "Ten cipher puzzles of rising difficulty, $10,000 across ten prize pools. The first eight solved and accepted by the site's checker, the eighth on 2026-09-14. Rank 47 on the public board; the ninth and tenth stand unsolved by anyone.",
+            "links": [
+                { "label": "the leaderboard", "url": "https://paradigm.xyz/kryptos-ctf/leaderboard" },
+                { "label": "the puzzles", "url": "https://paradigm.xyz/kryptos-ctf" }
+            ]
+        },
+        {
             "id": "manic-bug-bounty",
             "date": "2026-09-15",
             "kind": "placement",
