@@ -123,12 +123,10 @@ const page = `<!doctype html>
         <main class="text-neutral-400 max-w-screen-md mx-auto px-6 pt-8 pb-12 leading-relaxed">
             <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">AI</h1>
             <p class="mt-4">
-                Ben works with AI assistance, and this is what has come of it away from
-                his own machines: a change merged into a repository he does not own, a
-                competition result, an audit published for other people to check, a tool
-                released at an address you can open. Each entry links to that record
-                where the venue keeps one. Some publish nothing permanent, and those
-                entries carry the date and the place instead.
+                Ben builds with AI. This page lists the results other people accepted:
+                fixes merged into projects he does not own, a bug bounty won, audits
+                posted in public, tools you can open. Each card links to the proof, or
+                gives the date and the place when the venue keeps none.
             </p>
             <p class="mt-4">
                 Artwork stays under <a class="underline decoration-neutral-600 underline-offset-4 hover:text-white transition-colors" href="/art/">Art</a>
