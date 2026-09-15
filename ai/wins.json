@@ -1,0 +1,159 @@
+{
+    "_comment": "Entries for /ai, rendered by scripts/build-ai.mjs. An entry earns its place by an outcome someone else can check: a change merged into a repository Ben does not own, a competition result, a published audit, a released tool. Work in progress does not qualify, and neither does a result that exists only in Ben's own notes. Entries describe what happened and never which model, agent or tool did it; scripts/check-ai-wins.mjs fails the build on a name in the title or summary, while `where` and link labels carry the venue's own name. Links are optional because some venues publish no permanent page, but a link that is present must be absolute https. Newest first is produced by the builder, so order here does not matter.",
+    "kinds": {
+        "merged": "Merged upstream",
+        "placement": "Competition",
+        "audit": "Audit",
+        "release": "Released"
+    },
+    "wins": [
+        {
+            "id": "manic-bug-bounty",
+            "date": "2026-09-15",
+            "kind": "placement",
+            "title": "First prize in a $1,000 bug bounty",
+            "where": "Superteam Earn",
+            "summary": "Ten bug reports filed against a trading app during its public bounty, against 23 submissions in total. First prize, 300 USDC. The sponsor publishes no winners page, so the checkable record is the talent profile and the reports themselves.",
+            "links": [
+                { "label": "the profile and its award", "url": "https://superteam.fun/earn/t/TheBenMeadows" },
+                { "label": "the listing", "url": "https://superteam.fun/earn/listing/dollar1000-usdc-manic-bug-bounty" },
+                { "label": "the ten reports", "url": "https://gist.github.com/TheBenMeadows/fdf0ceb1ad0f1896d31169421a10e5e3" }
+            ]
+        },
+        {
+            "id": "cookie-tab",
+            "date": "2026-09-14",
+            "kind": "release",
+            "title": "Cookie Tab, payment links that prove themselves",
+            "where": "Cookie Chain",
+            "summary": "Make a payment link, and the page carries a live invoice plus the settled transaction read back from the chain, one instruction at a time, with no wallet connected. Entered in a bounty whose result is not published yet.",
+            "links": [
+                { "label": "the app", "url": "https://cookie-tab.pages.dev/" },
+                { "label": "source", "url": "https://github.com/TheBenMeadows/cookie-tab" }
+            ]
+        },
+        {
+            "id": "cookie-mcp-memo",
+            "date": "2026-09-14",
+            "kind": "merged",
+            "title": "Optional memo on transfers, merged into a payments server",
+            "where": "cookie-mcp",
+            "summary": "A transfer arrived with no way to say what it was for. The change attaches a memo through the chain's memo program, with the 566-byte limit counted in bytes rather than characters, which is what the chain enforces.",
+            "links": [
+                { "label": "the pull request", "url": "https://github.com/cookiechain/cookie-mcp/pull/3" }
+            ]
+        },
+        {
+            "id": "usage-tracker-fixes",
+            "date": "2026-08-29",
+            "kind": "merged",
+            "title": "Four fixes merged into a menu-bar usage tracker",
+            "where": "Claude Usage Tracker",
+            "summary": "A heads-up display that never appeared on notched screens. A keychain migration that did nothing on unsigned builds and left credentials in cleartext. Expiry reported for requests that had only been challenged. A listener refusing ordinary payloads with a 413.",
+            "links": [
+                { "label": "the display fix", "url": "https://github.com/hamed-elfayome/Claude-Usage-Tracker/pull/301" },
+                { "label": "the keychain fix", "url": "https://github.com/hamed-elfayome/Claude-Usage-Tracker/pull/302" },
+                { "label": "the false-expiry fix", "url": "https://github.com/hamed-elfayome/Claude-Usage-Tracker/pull/303" },
+                { "label": "the 413 fix", "url": "https://github.com/hamed-elfayome/Claude-Usage-Tracker/pull/305" }
+            ]
+        },
+        {
+            "id": "nsite-gateway-mime",
+            "date": "2026-08-27",
+            "kind": "merged",
+            "title": "Content type read from the path, merged into a static-site gateway",
+            "where": "nsite-gateway",
+            "summary": "The gateway trusted whatever content type the storage server declared, so a stylesheet announced as plain text rendered the site unstyled. The type derived from the file path wins now.",
+            "links": [
+                { "label": "the pull request", "url": "https://github.com/hzrd149/nsite-gateway/pull/27" }
+            ]
+        },
+        {
+            "id": "maghue-grace-window",
+            "date": "2026-08-27",
+            "kind": "merged",
+            "title": "A grace window for the charging colour, merged into a charger-light utility",
+            "where": "MagHue",
+            "summary": "The light left the charging colour the moment a charger connected, which is the moment someone looks at it. An optional window holds the colour long enough to be read.",
+            "links": [
+                { "label": "the pull request", "url": "https://github.com/kamenlevi/MagHue/pull/3" }
+            ]
+        },
+        {
+            "id": "audit-route-guard",
+            "date": "2026-08-04",
+            "kind": "audit",
+            "title": "Audit: a guard whose stated reasons did not hold",
+            "where": "OpenAgents",
+            "summary": "Three justifications were offered for a route-mount guard. Two did not survive a reading of the code, and the correction sits on the issue for anyone to check against the same source.",
+            "links": [
+                { "label": "the verdict", "url": "https://github.com/OpenAgentsInc/openagents/issues/9307#issuecomment-5180920394" },
+                { "label": "the earlier pass", "url": "https://github.com/OpenAgentsInc/openagents/issues/9307#issuecomment-5172617727" }
+            ]
+        },
+        {
+            "id": "thaw-menubar-fixes",
+            "date": "2026-07-31",
+            "kind": "merged",
+            "title": "Five fixes merged into a menu-bar manager",
+            "where": "Thaw",
+            "summary": "Saved layouts losing items to notch overflow, twice over. Parked items showing a bundle identifier where a name belongs. A bulk apply running before the owning processes had resolved. A negative cache retrying on a flat timer instead of backing off.",
+            "links": [
+                { "label": "the cache fix", "url": "https://github.com/thaw-app/Thaw/pull/856" },
+                { "label": "the multi-display fix", "url": "https://github.com/thaw-app/Thaw/pull/809" },
+                { "label": "the bundle-identifier fix", "url": "https://github.com/thaw-app/Thaw/pull/797" },
+                { "label": "the saved-layout fix", "url": "https://github.com/thaw-app/Thaw/pull/796" },
+                { "label": "the bulk-apply fix", "url": "https://github.com/thaw-app/Thaw/pull/785" }
+            ]
+        },
+        {
+            "id": "openagents-merged-changes",
+            "date": "2026-07-17",
+            "kind": "merged",
+            "title": "Seventeen changes merged into a platform's own codebase",
+            "where": "OpenAgents",
+            "summary": "Between June and July: diagnostics returned where a throw used to be, an N+1 query on long forum threads, a disclosure block on the streaming path, a theme selector, and a terminal chat interface built over three changes.",
+            "links": [
+                { "label": "all seventeen", "url": "https://github.com/OpenAgentsInc/openagents/pulls?q=is%3Apr+author%3Alathe-agent-oa+is%3Amerged" },
+                { "label": "the diagnostics fix", "url": "https://github.com/OpenAgentsInc/openagents/pull/8959" },
+                { "label": "the N+1 fix", "url": "https://github.com/OpenAgentsInc/openagents/pull/5509" }
+            ]
+        },
+        {
+            "id": "audit-gap-not-closed",
+            "date": "2026-07-08",
+            "kind": "audit",
+            "title": "Audit: a merged fix that did not close the gap",
+            "where": "OpenAgents",
+            "summary": "A remediation had been reported complete. Read against real hosted turns, one of its three gaps was still open, and the audit recorded that with the evidence rather than accepting the claim.",
+            "links": [
+                { "label": "the verdict", "url": "https://github.com/OpenAgentsInc/openagents/issues/8555#issuecomment-4918155496" }
+            ]
+        },
+        {
+            "id": "openagents-two-faults",
+            "date": "2026-06-27",
+            "kind": "merged",
+            "title": "Two platform faults reported with reproductions, both fixed the same day",
+            "where": "OpenAgents",
+            "summary": "A workspace builder that failed on any repository still defaulting to master, and a coding request that opened a lease and never ran, after which the dispatcher answered 409 to everything that followed. Maintainers shipped both fixes and credited the reports.",
+            "links": [
+                { "label": "the workspace report", "url": "https://github.com/OpenAgentsInc/openagents/issues/6361" },
+                { "label": "the dispatcher report", "url": "https://github.com/OpenAgentsInc/openagents/issues/6362" },
+                { "label": "the credit", "url": "https://github.com/OpenAgentsInc/openagents/issues/6361#issuecomment-4816381594" }
+            ]
+        },
+        {
+            "id": "audit-merged-is-not-deployed",
+            "date": "2026-06-19",
+            "kind": "audit",
+            "title": "Audit: merged is not deployed",
+            "where": "OpenAgents",
+            "summary": "An acceptance check of a gateway against the criteria written in its own issue. The code had been merged; the endpoint it claimed was not answering, and the verdict carried the request that showed it.",
+            "links": [
+                { "label": "the verdict", "url": "https://github.com/OpenAgentsInc/openagents/issues/5476#issuecomment-4753188533" },
+                { "label": "the follow-up", "url": "https://github.com/OpenAgentsInc/openagents/issues/5476#issuecomment-4754062324" }
+            ]
+        }
+    ]
+}

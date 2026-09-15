@@ -22,6 +22,7 @@
 # remains the catch-all for every other file. Regenerate if a page is added:
 # the torrent's file list is the source of truth.
 /tbm/index.html  /  200
+/tbm/ai/index.html  /ai/  200
 /tbm/404.html  /404  200
 /tbm/archive/index.html  /archive/  200
 /tbm/art/index.html  /art/  200
