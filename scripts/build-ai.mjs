@@ -15,7 +15,7 @@ import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 
 const SITE = "https://thebenmeadows.com";
 const OUT = "ai";
-const TITLE = "AI · TheBenMeadows";
+const TITLE = "AI & Agents · TheBenMeadows";
 const DESCRIPTION = "Work done with AI assistance that someone else accepted: merged changes, competition results, published audits, released tools.";
 
 /* Dates render as the ISO string from the data file, never through a Date object:
@@ -145,7 +145,7 @@ const page = `<!doctype html>
             </nav>
         </header>
         <main class="text-neutral-400 max-w-screen-md mx-auto px-6 pt-8 pb-12 leading-relaxed">
-            <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">AI</h1>
+            <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">AI &amp; Agents</h1>
             <p class="mt-4">
                 Ben builds with AI. This page lists the results other people accepted:
                 fixes merged into projects he does not own, a bug bounty won, audits
