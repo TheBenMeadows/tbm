@@ -31,7 +31,7 @@ const SITE = "https://thebenmeadows.com";
  * would accept far more than this build knows how to render. If a post needs a
  * key that is not here, the build should fail loudly rather than drop it. */
 const KNOWN = new Set(["title", "subtitle", "date", "updated", "tags", "description", "image", "image_alt",
-                       "author", "pin", "related"]);
+                       "author", "pin", "related", "unlisted"]);
 
 function frontMatter(text, file) {
     if (!text.startsWith("---\n")) throw new Error(`build-blog: ${file} has no front matter`);
@@ -55,6 +55,18 @@ function frontMatter(text, file) {
                 throw new Error(`build-blog: ${file} pin must be a whole number from 1 up, got "${value}"`);
             }
             meta.pin = n;
+            continue;
+        }
+        /* An unlisted post is built at its URL and stamped, but kept out of the
+         * blog index, the feed and site search, and told to search engines as
+         * noindex. It exists for a superseded version of a post that the current
+         * one links to, so the old text stays readable at a stable address without
+         * competing with the new one anywhere the site lists posts. */
+        if (key === "unlisted") {
+            if (value !== "true" && value !== "false") {
+                throw new Error(`build-blog: ${file} unlisted must be true or false, got "${value}"`);
+            }
+            meta.unlisted = value === "true";
             continue;
         }
         if (value.startsWith('"')) value = JSON.parse(value);
@@ -437,7 +449,8 @@ ${post.seeAlso.map((r) =>
         imageAlt: post.image_alt,
         author: post.author,
         extraLinks: `        <meta property="og:type" content="article" />
-        <meta property="article:published_time" content="${post.date}" />`,
+        <meta property="article:published_time" content="${post.date}" />${post.unlisted ? `
+        <meta name="robots" content="noindex" />` : ""}`,
     }) + `        <main class="text-neutral-400 max-w-screen-md mx-auto px-6 pt-8 pb-12 leading-relaxed">
             <header class="post-head">
                 <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">${esc(post.title)}</h1>
@@ -659,8 +672,9 @@ for (const p of posts) {
     mkdirSync(dir, { recursive: true });
     writeFileSync(join(dir, "index.html"), postPage(p), "utf8");
 }
-writeFileSync(join(OUT, "index.html"), indexPage(posts), "utf8");
-writeFileSync(join(OUT, "feed.xml"), feed(posts), "utf8");
+const listed = posts.filter((p) => !p.unlisted);
+writeFileSync(join(OUT, "index.html"), indexPage(listed), "utf8");
+writeFileSync(join(OUT, "feed.xml"), feed(listed), "utf8");
 
 /* The page list the other builders consume. build-search-index.mjs indexes what
  * is named here and build-stamp.mjs stamps it, so a new post joins search and
@@ -668,7 +682,8 @@ writeFileSync(join(OUT, "feed.xml"), feed(posts), "utf8");
 writeFileSync(
     join(OUT, "pages.json"),
     JSON.stringify({ pages: [{ file: "blog/index.html", url: "/blog/" },
-                             ...posts.map((p) => ({ file: `blog/${p.slug}/index.html`, url: p.url }))] }, null, 2) + "\n",
+                             ...posts.map((p) => ({ file: `blog/${p.slug}/index.html`, url: p.url,
+                                                    ...(p.unlisted ? { unlisted: true } : {}) }))] }, null, 2) + "\n",
     "utf8"
 );
 
