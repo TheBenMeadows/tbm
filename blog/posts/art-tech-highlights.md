@@ -205,8 +205,8 @@ In the business world, I have had a successful career, mostly in the constructio
 
 - [NFT Pulp](https://x.com/NFT_pulp_) Twitter/X Thread - ["Creators of Metaverse" #11](https://x.com/NFT_pulp_/status/1780295388215550071) - 4/18/2023
 - Gamma - ["Pepe Culture and Digital Art"](https://blog.gamma.io/pepe-culture) - 2025
-- Steven Miller's *All Eyes on Art* - "1N5717U710N5" (May 2025), and "You Didn't Build That" in the [nftnow Collector's Digest](https://nftnow.com/art/all-eyes-on-art-upcoming-collections-to-watch-the-week-of-june-3-2025/) (June 2025)
-- [AZ Insider "Mission Monday"](https://x.com/TheBenMeadows/status/2063346187206627710) front-page interview (June 2026) - about the charity board I sit on
+- Steven Miller's *All Eyes on Art* - ["1N5717U710N5"](https://x.com/SteveMiller/status/1922106332746023267) (May 2025), and "You Didn't Build That" in the [nftnow Collector's Digest](https://nftnow.com/art/all-eyes-on-art-upcoming-collections-to-watch-the-week-of-june-3-2025/) (June 2025)
+- [AZ Insider "Mission Monday"](https://theazinsider.com/mission-monday-ben-meadows/) front-page interview (May 2026) - about the charity board I sit on
 
 ## Curator
 
