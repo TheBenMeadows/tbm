@@ -185,6 +185,16 @@ function imageSize(sitePath) {
         }
     }
     if (b.slice(0, 3).toString("latin1") === "GIF") return { w: b.readUInt16LE(6), h: b.readUInt16LE(8) };
+    /* An SVG has no pixel size; its viewBox gives the aspect ratio, which is all
+     * width and height are for here. An on-chain SVG is the artwork itself, so it
+     * is served as the file rather than rasterised, and animates inside <img>
+     * when it uses SMIL or CSS (script never runs there). */
+    if (file.endsWith(".svg")) {
+        const head = b.slice(0, 2048).toString("utf8");
+        const vb = head.match(/viewBox\s*=\s*["']\s*[-\d.]+[\s,]+[-\d.]+[\s,]+([\d.]+)[\s,]+([\d.]+)\s*["']/);
+        if (vb) return { w: Math.round(Number(vb[1])), h: Math.round(Number(vb[2])) };
+        throw new Error(`build-blog: ${sitePath} has no viewBox to size it by`);
+    }
     throw new Error(`build-blog: cannot read dimensions of ${sitePath}`);
 }
 
