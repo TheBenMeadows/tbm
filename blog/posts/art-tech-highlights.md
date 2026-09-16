@@ -21,7 +21,7 @@ In the business world, I have had a successful career, mostly in the constructio
 
 **An index of all my minted pieces used to live at index.thebenmeadows.com. The service behind it shut down; a [capture is kept here](/archive/), and current work is on [/art](/art/). My software has its own page at [/projects](/projects/), and [/ai](/ai/) keeps the record of what my AI-assisted work has produced.**
 
----
+## Highlights
 
 [**1st NFT Minted**](https://opensea.io/assets/ethereum/0xabefbc9fd2f806065b4f3c237d4b59d9a97bcac7/10434): April 28, 2022 on Zora - Burned by sending to vitalik.eth on July 23, 2022 - Image taken with an iPhone in Tokyo circa 2009.
 
@@ -65,7 +65,7 @@ In the business world, I have had a successful career, mostly in the constructio
 
 **Museum Collection**: "Where Are You Going?" - August 2023 - My submission to the [Museum of Crypto Art fundraiser](https://x.com/TheBenMeadows/status/1693990487689138658), with a [burn-to-redeem edition](https://x.com/TheBenMeadows/status/1697041270684946618) on Ethereum. It was really cool to be a part of that, and even better to learn later that the piece is now part of MOCA's permanent collection. 🙏
 
-![](/blog/media/art-tech-highlights/where-are-you-going.webp)
+!["Where Are You Going?"](/blog/media/art-tech-highlights/where-are-you-going.webp)
 
 ---
 
@@ -89,65 +89,67 @@ In the business world, I have had a successful career, mostly in the constructio
 
 **2nd Fully On-Chain Piece to Utilize SVGZ Compression**: "pickle" - January 2024 - The second mint to use diid's (then unreleased) new version of the efficax extension to utilize SVGZ compression (a technique I first outlined on BTC, and which diid then added to his ETH extension based on our discussions). [Twitter/X Thread](https://x.com/TheBenMeadows/status/1745851880025288838)
 
-![](/blog/media/art-tech-highlights/gdp8m2pbaaaus9l.webp)
+I'm not sure how I feel about this being the piece that got me into the 787 Update.
+
+![pickle, a fully on-chain SVGZ-compressed piece](/blog/media/art-tech-highlights/gdp8m2pbaaaus9l.webp)
 
 ---
 
-**1st Gamma Print**: "You Didn't Build That" - August 2024 - An edition of 21 on Bitcoin - [Twitter/X Post](https://x.com/TheBenMeadows/status/1825561688244199859) - A Pepe-themed meditation on what counts as "real" art in the AI age (the title comes from a 2012 campaign speech, and the idea is that no art is created ex nihilo). This one traveled: it was shown in Bali, at Bitcoin Unleashed in Amsterdam, and in Las Vegas during Bitcoin 2025. A [1/1 followed in June 2025](https://nftnow.com/art/all-eyes-on-art-upcoming-collections-to-watch-the-week-of-june-3-2025/) as a Gamma Original. Thank you to Gamma for the opportunity. 🙏
+**1st Gamma Print**: "You Didn't Build That" - August 2024 - An edition of 21 on Bitcoin - [Twitter/X Post](https://x.com/TheBenMeadows/status/1825561688244199859) - A Pepe piece about what counts as "real" art in the AI age (the title comes from a 2012 campaign speech, and the idea is that no art is created ex nihilo). This one traveled: it was shown in Bali, at Bitcoin Unleashed in Amsterdam, and in Las Vegas during Bitcoin 2025. A 1/1 followed in June 2025 as a Gamma Original ([listed in nftnow](https://nftnow.com/art/all-eyes-on-art-upcoming-collections-to-watch-the-week-of-june-3-2025/) that week). Thank you to Gamma for the opportunity. 🙏
 
-![](/blog/media/art-tech-highlights/you-didnt-build-that.webp)
+!["You Didn't Build That" - half portrait, half Pepe](/blog/media/art-tech-highlights/you-didnt-build-that.webp)
 
 ---
 
 **1st Piece on Abstract**: "Phthalo Tunnel" - February 2025 - An edition of 10 with The Builders DAO and Mintify - [Twitter/X Post](https://x.com/TheBenMeadows/status/1890088093925143010) - Shown at the Mob House Hotel in Paris that same month.
 
-![](/blog/media/art-tech-highlights/phthalo-tunnel.webp)
+!["Phthalo Tunnel"](/blog/media/art-tech-highlights/phthalo-tunnel.webp)
 
 ---
 
 **Gamma Prints, Round Two**: "1N5717U710N5 - Madison" - May 2025 - An edition of 7, [sold out in two days](https://x.com/TheBenMeadows/status/1924141953077416161). Then "0R4NG3 K1NG" - July 2025 - Another edition of 7, [released as a claim](https://x.com/TheBenMeadows/status/1941198580137771267) for collectors of my earlier prints (and sold out too). Fun fact: both my first ordinal and these prints are photographs. 🔥
 
-![](/blog/media/art-tech-highlights/1n5717u710n5-madison.webp)
+!["1N5717U710N5 - Madison", a Gamma Print](/blog/media/art-tech-highlights/1n5717u710n5-madison.webp)
 
-![](/blog/media/art-tech-highlights/0r4ng3-k1ng.webp)
+!["0R4NG3 K1NG", a Gamma Print](/blog/media/art-tech-highlights/0r4ng3-k1ng.webp)
 
 ---
 
-**First Fully On-Chain Tezos Piece**: "Leave the Light On" - June 2025 - 42.069 XTZ via ZeroContract - [Twitter/X Post](https://x.com/TheBenMeadows/status/1930688916879020529) - Shown in The Builders DAO's "Builders Hall" gallery, and collected within the week.
+**First Fully On-Chain Tezos Piece**: "Leave the Light On" - June 2025 - A 1/1 (42.069 XTZ) via ZeroContract - [Twitter/X Post](https://x.com/TheBenMeadows/status/1930688916879020529) - It hung in The Builders DAO's "Builders Hall" gallery and found a home within the week.
 
-![](/blog/media/art-tech-highlights/leave-the-light-on.webp)
+!["Leave the Light On", a fully on-chain Tezos piece](/blog/media/art-tech-highlights/leave-the-light-on.webp)
 
 ---
 
 **Continuum, The Forever Calendar**: June 2025 - Four of my pieces are among the 366 artworks in Gamma's [physical perpetual calendar](https://info.gamma.io/continuum-the-forever-calendar), made with 91 Gamma partner artists ([look what came in the mail!](https://x.com/TheBenMeadows/status/1930976840585478645)). The four were later shown at NFC Lisbon in June 2026.
 
-![](/blog/media/art-tech-highlights/continuum-calendar.webp)
+![The Continuum calendar open to January 27, one of my four days](/blog/media/art-tech-highlights/continuum-calendar.webp)
 
 ---
 
-**Collabs**: A fully on-chain [1/1 for PENG1's STATIX](https://x.com/TheBenMeadows/status/1943398756944351409) (July 2025), a [Bitcoin-orange 1/1 for Skullx](https://x.com/TheBenMeadows/status/1956387624303935874) (August 2025), and a piece in [Skullx: The Artist Series](https://x.com/TheBenMeadows/status/1964703684723671171) (September 2025).
+**Collabs**: Over the summer of 2025 I got to make a fully on-chain [1/1 for PENG1's STATIX](https://x.com/TheBenMeadows/status/1943398756944351409) (July) and a [Bitcoin-orange 1/1 for Skullx](https://x.com/TheBenMeadows/status/1956387624303935874) (August), plus another piece for [Skullx: The Artist Series](https://x.com/TheBenMeadows/status/1964703684723671171) in September. Thank you to both crews for having me. 🙏
 
-![](/blog/media/art-tech-highlights/statix.webp)
+![The STATIX 1/1, fully on-chain](/blog/media/art-tech-highlights/statix.webp)
 
-![](/blog/media/art-tech-highlights/skullx.webp)
+![The Skullx 1/1, in Bitcoin orange](/blog/media/art-tech-highlights/skullx.webp)
 
 ---
 
 **"The Controversial 'Sherman Horse Head' in Lincoln's Late Period: Studio Photograph, c. 1893"**: October 2025 - An edition of 7 on Tezos for The Builders DAO's "Collective Delusion", curated by jordigandul - [objkt](https://objkt.com/tokens/KT1CSPkrz8tW8uN6tMF6koVfz3YHeg1b2mLB/17) - Shown in Bologna, Italy the same month.
 
-![](/blog/media/art-tech-highlights/sherman-horse-head.webp)
+![The Sherman Horse Head piece, a studio photograph that never was](/blog/media/art-tech-highlights/sherman-horse-head.webp)
 
 ---
 
 **First Animated Fully On-Chain Piece on Ethereum**: "ursus" - December 2025 - Released as part of [COMPUTERBLOOD's POLAR DERIVATIVES open call](https://x.com/TheBenMeadows/status/2000962340658012599), and primarily inspired by Bo Bartlett's "Dominion". The glitch is an SVG filter chain (feTurbulence noise driving the distortion), and the SVG itself lives on-chain. X won't show an SVG, so I [built a small page](https://mdws.me/ursus.html) to display it properly inside the post. Auctioned on Manifold with a starting bid of 0.042069 ETH.
 
-![](/blog/media/art-tech-highlights/ursus.webp)
+![A still from "ursus"; the piece itself animates](/blog/media/art-tech-highlights/ursus.webp)
 
 ---
 
 **First Fully On-Chain Generative System**: "[essentialism](/art/essentialism/)" - July 31, 2026 - An edition of 44 on Tezos via [bootloader.art](https://bootloader.art/generator/svg-js/407), objkt's on-chain generative platform. The generator's source is stored in the contract and runs in the page - [its page here](/art/essentialism/) diffs it against the chain as you read. I kept a [working log](/blog/essentialism-the-working-log/) along the way.
 
-![](/blog/media/essentialism-the-working-log/card1-fade.webp)
+![One output of essentialism, its hidden grid fading](/blog/media/essentialism-the-working-log/card1-fade.webp)
 
 ---
 
@@ -157,7 +159,7 @@ In the business world, I have had a successful career, mostly in the constructio
 
 [1st Commission](https://opensea.io/collection/tbm-for-inpeak) (March 2023) - Commissioned by InPeak to create 23 unique pieces.
 
-1st FakeRareDecal (March 2023) - A collaboration with doomfuzz - created for the EVMavericks.
+[1st FakeRareDecal](https://x.com/fakeraredecal/status/1635963227342503939) (March 2023) - A collaboration with doomfuzz - created for the EVMavericks.
 
 ["Eye in the Sky" Collab with Monas](https://x.com/0xmonas/status/1744873525398188322) (March 2023) - Sold in October 2023.
 
@@ -165,7 +167,7 @@ In the business world, I have had a successful career, mostly in the constructio
 
 [Async Art "Forever Supper" Expansion Pack](https://x.com/AsyncArt/status/1663625726443003908) (May 2023) - Created an official expansion pack ("Neon Dream") in conjunction with InPeak.
 
-[Tezos Collection](https://x.com/TheBenMeadows/status/1668733127924252673) (7/13/2023) - Twelve abstract and glitch pieces.
+[Tezos Collection](https://x.com/TheBenMeadows/status/1668733127924252673) (6/13/2023) - Twelve abstract and glitch pieces.
 
 ["future imperfect"](https://x.com/TheBenMeadows/status/1680583938350415874) (7/16/2023) - 1st On-Chain Edition (ERC-1155) - At the time, there was no easy tooling to do this, so I had to figure everything out on my own (diid's efficax extension now makes this a point-and-click process). Also, my first bidders edition. Plus, a process post.
 
@@ -205,7 +207,7 @@ In the business world, I have had a successful career, mostly in the constructio
 
 - [NFT Pulp](https://x.com/NFT_pulp_) Twitter/X Thread - ["Creators of Metaverse" #11](https://x.com/NFT_pulp_/status/1780295388215550071) - 4/18/2023
 - Gamma - ["Pepe Culture and Digital Art"](https://blog.gamma.io/pepe-culture) - 2025
-- Steven Miller's *All Eyes on Art* - ["1N5717U710N5"](https://x.com/SteveMiller/status/1922106332746023267) (May 2025), and "You Didn't Build That" in the [nftnow Collector's Digest](https://nftnow.com/art/all-eyes-on-art-upcoming-collections-to-watch-the-week-of-june-3-2025/) (June 2025)
+- Steven Miller's *All Eyes on Art* - ["1N5717U710N5"](https://x.com/SteveMiller/status/1922106332746023267) (May 2025), and "You Didn't Build That" in [the nftnow edition](https://nftnow.com/art/all-eyes-on-art-upcoming-collections-to-watch-the-week-of-june-3-2025/) (June 2025)
 - [AZ Insider "Mission Monday"](https://theazinsider.com/mission-monday-ben-meadows/) front-page interview (May 2026) - about the charity board I sit on
 
 ## Curator
@@ -234,11 +236,11 @@ My own work is catalogued on [Raster](https://raster.art/artist/thebenmeadows).
 
 ## Software
 
-Since 2025, a lot of what I make ships as code, and [/projects](/projects/) has the list. A few favorites: [POAP Saver](/projects/poap-saver/) (built in a hurry when POAP shut down - my 357 badges and the full 190,153-event corpus are now on IPFS), [Squint](https://github.com/mdws-org/squint) (a macOS image optimizer that leaves your color profile alone), native Apple-silicon builds of three wallets I didn't want to see die (FreeWallet, Wowlet, Pepecoin Core), and [orthodoxprayers.net](https://orthodoxprayers.net/). I've also had fixes merged upstream into Thaw, nsite-gateway, MagHue, cookie-mcp, a usage tracker, and OpenAgents' own codebase - every one of them is linked from [/ai](/ai/).
+Since 2025, a lot of what I make is code, and [/projects](/projects/) has the list. A few favorites: [POAP Saver](/projects/poap-saver/) (built in a hurry when POAP shut down - my 357 badges and the full 190,153-event corpus are now on IPFS), [Squint](https://github.com/mdws-org/squint) (a macOS image optimizer that leaves your color profile alone), native Apple-silicon builds of three wallets I didn't want to see die (FreeWallet, Wowlet, Pepecoin Core), and [orthodoxprayers.net](https://orthodoxprayers.net/). A few of my fixes have also landed upstream in tools I use every day (Thaw, MagHue, nsite-gateway, cookie-mcp, and others) - all linked from [/ai](/ai/).
 
 ## AI & Agents
 
-I build with AI, and since June 2026 I've been running agents that work in public under their own names. [/ai](/ai/) keeps the receipts: merged upstream fixes, a first prize in a bug bounty, eight of ten puzzles in a cryptography CTF, published audits, and what the maintainers had to say. The story of the first agent (in its own words) is [here](/blog/my-owner-asked-me-to-write-this-post-receipts-attached/).
+I build with AI, and since June 2026 I've been running a few agents in public under their own names. [/ai](/ai/) has the receipts - fixes merged upstream, first place in a bug bounty, eight of ten puzzles in a cryptography CTF, a few published audits, and some kind words from maintainers. The story of the first agent (in its own words) is [here](/blog/my-owner-asked-me-to-write-this-post-receipts-attached/).
 
 ## Infrastructure
 
@@ -253,6 +255,10 @@ This site is served from an autonomous system I run myself - [AS219158](/infra/)
 **Podcasts, Twitter Spaces, Classes, Shows & Conferences** - I have been asked to speak at [various events](/blog/podcasts-public-speaking/) over the past several years.
 
 **Developer** - I have been hired to do both smart contract and other technical work for multiple projects on Ethereum and Bitcoin. Due to confidentiality issues, I cannot name most of the projects or artists involved.
+
+---
+
+If you'd like to talk about a commission, a show, a collab, or a piece of software, a DM on [X](https://x.com/TheBenMeadows) is the fastest way to reach me (or use the email link in the footer). 🙏
 
 ---
 
