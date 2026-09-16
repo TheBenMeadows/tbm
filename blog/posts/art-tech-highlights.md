@@ -11,7 +11,7 @@ description: "Introduction: I was exposed to art from a young age. My creative j
 
 **Introduction:** I was exposed to art from a young age. My creative journey began with piano lessons and art classes, which my parents encouraged for both me and my siblings. While painting and sculpting were never my strong suits, I found my passion in photography and music. In fact, my musical talent was recognized with a college scholarship offer to minor in piano/music.
 
-Photography quickly became one of my favorite artistic expressions. I started with film cameras and embraced digital photography in the late 90s. By the late 2000s, I began sporadically selling some of my photography.
+Photography quickly became one of my favorite artistic expressions. I started with film cameras and embraced digital photography in the late 90s. I sold my first photographs in 2016.
 
 Parallel to my artistic endeavors, I've been involved in the blockchain space since around 2011. My interest in NFTs was piqued in 2021, and by 2022, I was both buying NFTs and minting my own pieces. Most of my minted art consists of photography, which I like to enhance using modern tools (like interpolative upscaling algorithms), and AI-assisted pieces. I started exploring generative AI tools in mid-2022 (and taught a five-part class on the subject for InPeak in early 2023). My work includes fully on-chain pieces on Ethereum, Bitcoin and Tezos, where I have led with some notable technological innovations, and (as of 2026) a fully on-chain generative system. Additionally, I have experimented with both glitch and abstract elements in my art, continuously pushing the boundaries of my creative expression.
 
