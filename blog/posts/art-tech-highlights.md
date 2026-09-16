@@ -13,13 +13,13 @@ description: "Introduction: I was exposed to art from a young age. My creative j
 
 Photography quickly became one of my favorite artistic expressions. I started with film cameras and embraced digital photography in the late 90s. By the late 2000s, I began sporadically selling some of my photography.
 
-Parallel to my artistic endeavors, I've been involved in the blockchain space since around 2011. My interest in NFTs was piqued in 2021, and by 2022, I was both buying NFTs and minting my own pieces. Most of my minted art consists of photography, which I like to enhance using modern tools (like interpolative upscaling algorithms), and AI-assisted pieces. I started exploring generative AI tools in mid-2022 (and taught a five-part class on the subject for InPeak in early 2023). My work includes fully on-chain pieces on Ethereum, Bitcoin and Tezos, where I have led with some notable technological innovations, and since 2026 a fully on-chain generative system. Additionally, I have experimented with both glitch and abstract elements in my art, continuously pushing the boundaries of my creative expression.
+Parallel to my artistic endeavors, I've been involved in the blockchain space since around 2011. My interest in NFTs was piqued in 2021, and by 2022, I was both buying NFTs and minting my own pieces. Most of my minted art consists of photography, which I like to enhance using modern tools (like interpolative upscaling algorithms), and AI-assisted pieces. I started exploring generative AI tools in mid-2022 (and taught a five-part class on the subject for InPeak in early 2023). My work includes fully on-chain pieces on Ethereum, Bitcoin and Tezos, where I have led with some notable technological innovations, and (as of 2026) a fully on-chain generative system. Additionally, I have experimented with both glitch and abstract elements in my art, continuously pushing the boundaries of my creative expression.
 
 In the business world, I have had a successful career, mostly in the construction industry. I have owned and operated multiple companies, including as the vice president of one of the largest plumbing companies in Texas. I have a wide range of interesting licenses and certifications: everything from plumbing licenses in Arizona and Texas to technology certifications from Google and Harvard. I have consulted for Fortune 500 companies and sit on the board of an Arizona-based charity. For my day job, I work as a commercial roof consultant, which gives me the opportunity to take lots of photographs from on top of roofs in the Arizona desert.
 
 ---
 
-**An index of all my minted pieces used to live at index.thebenmeadows.com. The service behind it shut down; a [capture is kept here](/archive/), and current work is on [/art](/art/). The software side of this page has its own home at [/projects](/projects/), and the record of what my AI-assisted work has produced is at [/ai](/ai/).**
+**An index of all my minted pieces used to live at index.thebenmeadows.com. The service behind it shut down; a [capture is kept here](/archive/), and current work is on [/art](/art/). My software has its own page at [/projects](/projects/), and [/ai](/ai/) keeps the record of what my AI-assisted work has produced.**
 
 ---
 
@@ -47,7 +47,7 @@ In the business world, I have had a successful career, mostly in the constructio
 
 ---
 
-**Highest Sale (0.69 Ξ)**: "[North of Eden](https://opensea.io/collection/thebenmeadows-photography)" - Minted 1/1/2023 on Foundation (1st Photo NFT; Foundation itself shut down in April 2026) - Bought by [888 Inner Circle](https://twitter.com/888InnerCircle) 6/19/2023 - [Twitter/X Post](https://x.com/TheBenMeadows/status/1663311730632716288) - Taken with an iPhone camera in 2010.
+**Highest Sale (0.69 Ξ)**: "[North of Eden](https://opensea.io/collection/thebenmeadows-photography)" - Minted 1/1/2023 on Foundation (1st Photo NFT) - Bought by [888 Inner Circle](https://twitter.com/888InnerCircle) 6/19/2023 - [Twitter/X Post](https://x.com/TheBenMeadows/status/1663311730632716288) - Taken with an iPhone camera in 2010. (Foundation itself closed its doors in April 2026, so the link now points at the collection on OpenSea.)
 
 ![](/blog/media/art-tech-highlights/1-2-decades-and-counting-north-of-eden-promo.webp)
 
@@ -60,6 +60,12 @@ In the business world, I have had a successful career, mostly in the constructio
 ![](/blog/media/art-tech-highlights/1-eye-in-the-sky.webp)
 
 ![](/blog/media/art-tech-highlights/2-8-bit-future.gif)
+
+---
+
+**Museum Collection**: "Where Are You Going?" - August 2023 - My submission to the [Museum of Crypto Art fundraiser](https://x.com/TheBenMeadows/status/1693990487689138658), with a [burn-to-redeem edition](https://x.com/TheBenMeadows/status/1697041270684946618) on Ethereum. It was really cool to be a part of that, and even better to learn later that the piece is now part of MOCA's permanent collection. 🙏
+
+![](/blog/media/art-tech-highlights/where-are-you-going.webp)
 
 ---
 
@@ -87,25 +93,65 @@ In the business world, I have had a successful career, mostly in the constructio
 
 ---
 
-**Museum Collection**: "Where Are You Going?" - August 2023 - My submission to the [Museum of Crypto Art fundraiser](https://x.com/TheBenMeadows/status/1693990487689138658) (with a burn-to-redeem edition on Ethereum) is now part of MOCA's permanent collection.
+**1st Gamma Print**: "You Didn't Build That" - August 2024 - An edition of 21 on Bitcoin - [Twitter/X Post](https://x.com/TheBenMeadows/status/1825561688244199859) - A Pepe-themed meditation on what counts as "real" art in the AI age (the title comes from a 2012 campaign speech, and the idea is that no art is created ex nihilo). This one traveled: it was shown in Bali, at Bitcoin Unleashed in Amsterdam, and in Las Vegas during Bitcoin 2025. A [1/1 followed in June 2025](https://nftnow.com/art/all-eyes-on-art-upcoming-collections-to-watch-the-week-of-june-3-2025/) as a Gamma Original. Thank you to Gamma for the opportunity. 🙏
+
+![](/blog/media/art-tech-highlights/you-didnt-build-that.webp)
 
 ---
 
-**First Fully On-Chain Tezos Piece**: "Leave the Light On" - June 2025 - 42.069 XTZ via ZeroContract, shown in The Builders DAO's "Builders Hall" gallery - [Twitter/X Post](https://x.com/TheBenMeadows/status/1930688916879020529)
+**1st Piece on Abstract**: "Phthalo Tunnel" - February 2025 - An edition of 10 with The Builders DAO and Mintify - [Twitter/X Post](https://x.com/TheBenMeadows/status/1890088093925143010) - Shown at the Mob House Hotel in Paris that same month.
+
+![](/blog/media/art-tech-highlights/phthalo-tunnel.webp)
 
 ---
 
-**First Animated Fully On-Chain Piece on Ethereum**: "[ursus](https://x.com/TheBenMeadows/status/2000962340658012599)" - December 2025 - Released for COMPUTERBLOOD's POLAR DERIVATIVES open call, after Bo Bartlett's "Dominion". A glitch animation built from an SVG filter chain, with the SVG itself stored on-chain. X cannot show an SVG, so I [built a page](https://mdws.me/ursus.html) to display it inside the post. Auctioned on Manifold from 0.042069 Ξ.
+**Gamma Prints, Round Two**: "1N5717U710N5 - Madison" - May 2025 - An edition of 7, [sold out in two days](https://x.com/TheBenMeadows/status/1924141953077416161). Then "0R4NG3 K1NG" - July 2025 - Another edition of 7, [released as a claim](https://x.com/TheBenMeadows/status/1941198580137771267) for collectors of my earlier prints (and sold out too). Fun fact: both my first ordinal and these prints are photographs. 🔥
+
+![](/blog/media/art-tech-highlights/1n5717u710n5-madison.webp)
+
+![](/blog/media/art-tech-highlights/0r4ng3-k1ng.webp)
 
 ---
 
-**First Fully On-Chain Generative System**: "[essentialism](/art/essentialism/)" - July 31, 2026 - An edition of 44 on Tezos via [bootloader.art](https://bootloader.art/generator/svg-js/407), objkt's on-chain generative platform. The generator's source is stored in the contract and runs in the page; [the piece's page here](/art/essentialism/) diffs it against the chain as you read. There is also a [working log](/blog/essentialism-the-working-log/).
+**First Fully On-Chain Tezos Piece**: "Leave the Light On" - June 2025 - 42.069 XTZ via ZeroContract - [Twitter/X Post](https://x.com/TheBenMeadows/status/1930688916879020529) - Shown in The Builders DAO's "Builders Hall" gallery, and collected within the week.
+
+![](/blog/media/art-tech-highlights/leave-the-light-on.webp)
+
+---
+
+**Continuum, The Forever Calendar**: June 2025 - Four of my pieces are among the 366 artworks in Gamma's [physical perpetual calendar](https://info.gamma.io/continuum-the-forever-calendar), made with 91 Gamma partner artists ([look what came in the mail!](https://x.com/TheBenMeadows/status/1930976840585478645)). The four were later shown at NFC Lisbon in June 2026.
+
+![](/blog/media/art-tech-highlights/continuum-calendar.webp)
+
+---
+
+**Collabs**: A fully on-chain [1/1 for PENG1's STATIX](https://x.com/TheBenMeadows/status/1943398756944351409) (July 2025), a [Bitcoin-orange 1/1 for Skullx](https://x.com/TheBenMeadows/status/1956387624303935874) (August 2025), and a piece in [Skullx: The Artist Series](https://x.com/TheBenMeadows/status/1964703684723671171) (September 2025).
+
+![](/blog/media/art-tech-highlights/statix.webp)
+
+![](/blog/media/art-tech-highlights/skullx.webp)
+
+---
+
+**"The Controversial 'Sherman Horse Head' in Lincoln's Late Period: Studio Photograph, c. 1893"**: October 2025 - An edition of 7 on Tezos for The Builders DAO's "Collective Delusion", curated by jordigandul - [objkt](https://objkt.com/tokens/KT1CSPkrz8tW8uN6tMF6koVfz3YHeg1b2mLB/17) - Shown in Bologna, Italy the same month.
+
+![](/blog/media/art-tech-highlights/sherman-horse-head.webp)
+
+---
+
+**First Animated Fully On-Chain Piece on Ethereum**: "ursus" - December 2025 - Released as part of [COMPUTERBLOOD's POLAR DERIVATIVES open call](https://x.com/TheBenMeadows/status/2000962340658012599), and primarily inspired by Bo Bartlett's "Dominion". The glitch is an SVG filter chain (feTurbulence noise driving the distortion), and the SVG itself lives on-chain. X won't show an SVG, so I [built a small page](https://mdws.me/ursus.html) to display it properly inside the post. Auctioned on Manifold with a starting bid of 0.042069 ETH.
+
+![](/blog/media/art-tech-highlights/ursus.webp)
+
+---
+
+**First Fully On-Chain Generative System**: "[essentialism](/art/essentialism/)" - July 31, 2026 - An edition of 44 on Tezos via [bootloader.art](https://bootloader.art/generator/svg-js/407), objkt's on-chain generative platform. The generator's source is stored in the contract and runs in the page - [its page here](/art/essentialism/) diffs it against the chain as you read. I kept a [working log](/blog/essentialism-the-working-log/) along the way.
 
 ![](/blog/media/essentialism-the-working-log/card1-fade.webp)
 
 ---
 
-**More Pieces**
+## More Pieces
 
 ["D1CKPUNCH"](https://x.com/TheBenMeadows/status/1600880814031441920) (12/8/2022) - The only parody piece(s) I've released.
 
@@ -127,76 +173,52 @@ In the business world, I have had a successful career, mostly in the constructio
 
 [Part of The Builders DAO "Builders Box"](https://x.com/TheBenMeadows/status/1710421268917555433) (October 2023) - More info: [here](https://x.com/TheBuildersDao/status/1740308308530192776).
 
-"[Taste Over Tools"](https://x.com/TheBenMeadows/status/1729880200979353812) (11/29/2023) - My first Transient Labs contract.
+["Taste Over Tools"](https://x.com/TheBenMeadows/status/1729880200979353812) (11/29/2023) - My first Transient Labs contract.
 
-[1st Solana Editions](https://x.com/TheBenMeadows/status/1747292655699292417) (1/16/2024) - Released with The Builders DAO & Exchange Art
+[1st Solana Editions](https://x.com/TheBenMeadows/status/1747292655699292417) (1/16/2024) - Released with The Builders DAO & Exchange Art.
 
 ["Eccentrics"](https://x.com/TheBenMeadows/status/1774823806642885069) (Feb 2024) - My first collection on the L2 Base. More info: [here](https://farcaster.xyz/thebenmeadows.eth/0x7668a92c) and [here](https://farcaster.xyz/thebenmeadows.eth/0x17fa83fe).
 
 - The inspiration for this collection was an earlier (still minting) collection I released around Thanksgiving 2023 ("Nepe"). More info: [here](https://x.com/TheBenMeadows/status/1727539471841903037) and [here](https://x.com/TheBenMeadows/status/1729615994300022816).
 
-["You Didn't Build That"](https://x.com/TheBenMeadows/status/1825561688244199859) (August 2024) - My first Gamma Print, an edition of 21 on Bitcoin. A Pepe-themed piece on what counts as "real" art in the AI age. It went on to be shown in Bali, Amsterdam and Las Vegas, and a [1/1 followed in June 2025](https://nftnow.com/art/all-eyes-on-art-upcoming-collections-to-watch-the-week-of-june-3-2025/) as a Gamma Original.
+[Portraits I #45](https://x.com/TheBenMeadows/status/1990863009636376836) (November 2025) - Honored to be included in dotjiwa's "Portraits I" on Art Blocks.
 
-["Phthalo Tunnel"](https://x.com/TheBenMeadows/status/1890088093925143010) (February 2025) - An edition of 10 with The Builders DAO and Mintify; my first piece on Abstract. Shown at the Mob House Hotel in Paris.
-
-["1N5717U710N5 - Madison"](https://x.com/TheBenMeadows/status/1921649633274523855) (May 2025) - A Gamma Print of 7, sold out in two days.
-
-["0R4NG3 K1NG"](https://x.com/TheBenMeadows/status/1941198580137771267) (July 2025) - A Gamma Print of 7, released as a claim for collectors of my earlier prints. Sold out.
-
-[Continuum, The Forever Calendar](https://x.com/TheBenMeadows/status/1930976840585478645) (June 2025) - Four of the 366 artworks in Gamma's physical perpetual calendar, made with 91 Gamma partner artists.
-
-[Collab 1/1 for STATIX](https://x.com/TheBenMeadows/status/1943398756944351409) (July 2025) - Fully on-chain, for PENG1's STATIX.
-
-[Skullx 1/1](https://x.com/TheBenMeadows/status/1956387624303935874) (August 2025) - A Bitcoin-orange variant, followed by a piece in [Skullx: The Artist Series](https://x.com/TheBenMeadows/status/1964703684723671171) (September 2025).
-
-["The Controversial 'Sherman Horse Head' in Lincoln's Late Period: Studio Photograph, c. 1893"](https://objkt.com/tokens/KT1CSPkrz8tW8uN6tMF6koVfz3YHeg1b2mLB/17) (October 2025) - An edition of 7 on Tezos for The Builders DAO's "Collective Delusion", curated by jordigandul. Shown in Bologna.
-
-[Portraits I #45](https://x.com/TheBenMeadows/status/1990863009636376836) (November 2025) - Included in dotjiwa's "Portraits I" on Art Blocks.
-
-["Based Blue Death"](https://raster.art/artwork/2627676) (2024; published on Raster November 2025) - The subject of my essay [On Digital-First Art](/blog/on-digital-first-art/).
+["Based Blue Death"](https://raster.art/artwork/2627676) (2024; published on Raster November 2025) - The piece behind my essay [On Digital-First Art](/blog/on-digital-first-art/).
 
 ["The Porcine-Lupine Dialectic"](/experiments/porcine/) (February 2026) - A piece and write-up with Always Has Been.
 
----
+## Pieces Exhibited
 
-**Pieces Exhibited**
-
-- Barcelona - Mrs. Toolip Art Gallery, hosted by 888 Inner Circle (2023) - "The Slow Decay of Excess"
-- Florence - Dimensions DAO exhibition (January 2024) - "Passing Through"
-- Milan - "Unnatural Landscape"
-- Paris - "North of Eden" ([along with 9 other photos](https://drawlights.substack.com/p/communities-the-builders))
+- Barcelona, Spain - Mrs. Toolip Art Gallery, in conjunction with 888 Inner Circle (2023) - "The Slow Decay of Excess"
+- Florence, Italy - Dimensions DAO exhibition (January 2024) - "Passing Through"
+- Milan, Italy - "Unnatural Landscape"
+- Paris, France - "North of Eden" ([along with 9 other photos](https://drawlights.substack.com/p/communities-the-builders))
 - [Ghent, Belgium](https://x.com/TheBenMeadows/status/1816951373566738803) - Gentse Festival, hosted by The Builders DAO & Artcrush Gallery (July 2024) - "Arizona Twilight"
 - Scottsdale, Arizona - "In Fields of Color" & "Brighter Days"
-- Bali (August 2024) and [Bitcoin Unleashed, Amsterdam](https://x.com/TheBenMeadows/status/1845249648153547136) (October 2024) - "You Didn't Build That"
-- Paris - Mob House Hotel, The Builders DAO (February 2025) - "Phthalo Tunnel"
-- [Las Vegas](https://x.com/TheBenMeadows/status/1918772225177419908) - Gamma, Bitcoin 2025 week (May 2025) - "You Didn't Build That"
+- Bali, Indonesia (August 2024) and [Bitcoin Unleashed, Amsterdam](https://x.com/TheBenMeadows/status/1845249648153547136) (October 2024) - "You Didn't Build That"
+- Paris, France - Mob House Hotel, with The Builders DAO (February 2025) - "Phthalo Tunnel"
+- [Las Vegas](https://x.com/TheBenMeadows/status/1918772225177419908) - Gamma, during Bitcoin 2025 (May 2025) - "You Didn't Build That"
 - [Bologna, Italy](https://x.com/TheBenMeadows/status/1973492121593324011) - geavision & inkseart (October 2025) - "The Controversial 'Sherman Horse Head'…"
-- Lisbon, Portugal - NFC Lisbon, The Builders DAO in the inkseart lounge (June 2026) - my four pieces from Gamma's [Continuum](https://info.gamma.io/continuum-the-forever-calendar) calendar
+- Lisbon, Portugal - NFC Lisbon, with The Builders DAO in the inkseart lounge (June 2026) - my four pieces from Gamma's Continuum calendar
 
-**Featured**
+## Featured
 
 - [NFT Pulp](https://x.com/NFT_pulp_) Twitter/X Thread - ["Creators of Metaverse" #11](https://x.com/NFT_pulp_/status/1780295388215550071) - 4/18/2023
 - Gamma - ["Pepe Culture and Digital Art"](https://blog.gamma.io/pepe-culture) - 2025
-- Steven Miller's *All Eyes on Art* - "1N5717U710N5" (May 2025) and "You Didn't Build That" in the [nftnow Collector's Digest](https://nftnow.com/art/all-eyes-on-art-upcoming-collections-to-watch-the-week-of-june-3-2025/) (June 2025)
-- [AZ Insider "Mission Monday"](https://x.com/TheBenMeadows/status/2063346187206627710) front-page interview (June 2026) - on the charity board
+- Steven Miller's *All Eyes on Art* - "1N5717U710N5" (May 2025), and "You Didn't Build That" in the [nftnow Collector's Digest](https://nftnow.com/art/all-eyes-on-art-upcoming-collections-to-watch-the-week-of-june-3-2025/) (June 2025)
+- [AZ Insider "Mission Monday"](https://x.com/TheBenMeadows/status/2063346187206627710) front-page interview (June 2026) - about the charity board I sit on
 
----
+## Curator
 
-**Curator**
+I created [ABC Art World](https://web.archive.org/web/2024/https://abcartworld.com/) on Foundation in [June 2023](https://x.com/TheBenMeadows/status/1674177946343575552). We featured 23 great artists and did over 13 ETH in sales to 200+ collectors in under 12 months. It went on hold in February 2024 (market conditions and a lack of time), and ended for good when Foundation shut down in April 2026. Thank you to every artist and collector who was part of it. 🙏
 
-I created [ABC Art World](https://web.archive.org/web/2024/https://abcartworld.com/) on Foundation in [June 2023](https://x.com/TheBenMeadows/status/1674177946343575552): 23 creators, over 13 ETH in sales and 200+ collectors in under 12 months. On hold from February 2024, and ended for good when Foundation shut down in April 2026.
+I also helped curate [DAM PACK](https://x.com/TheBenMeadows/status/1973130076612075575) in September 2025.
 
-I also helped curate [DAM PACK](https://x.com/TheBenMeadows/status/1973130076612075575) (September 2025).
-
----
-
-**#DailyMuse**
+## #DailyMuse
 
 [A piece a day for six months in 2024](https://dailymuse.thebenmeadows.com), all unminted. Prior to the #DailyMuse thread, I was creating and showing several unminted pieces each week. Here are a few of the posts: [1](https://x.com/TheBenMeadows/status/1718291806855860616), [2](https://x.com/TheBenMeadows/status/1723407553366053208), [3](https://x.com/TheBenMeadows/status/1738927654433390655), [4](https://x.com/TheBenMeadows/status/1708247230602530816), [5](https://x.com/TheBenMeadows/status/1692327420328869904).
 
----
-
-**Collector**
+## Collector
 
 I've collected around two thousand pieces across ETH (L1 & L2s), BTC, SOL, TEZ, AVAX, etc.
 
@@ -210,27 +232,23 @@ I've collected around two thousand pieces across ETH (L1 & L2s), BTC, SOL, TEZ, 
 
 My own work is catalogued on [Raster](https://raster.art/artist/thebenmeadows).
 
----
+## Software
 
-**Software**
+Since 2025, a lot of what I make ships as code, and [/projects](/projects/) has the list. A few favorites: [POAP Saver](/projects/poap-saver/) (built in a hurry when POAP shut down - my 357 badges and the full 190,153-event corpus are now on IPFS), [Squint](https://github.com/mdws-org/squint) (a macOS image optimizer that leaves your color profile alone), native Apple-silicon builds of three wallets I didn't want to see die (FreeWallet, Wowlet, Pepecoin Core), and [orthodoxprayers.net](https://orthodoxprayers.net/). I've also had fixes merged upstream into Thaw, nsite-gateway, MagHue, cookie-mcp, a usage tracker, and OpenAgents' own codebase - every one of them is linked from [/ai](/ai/).
 
-Since 2025 most of what I build ships as code. [/projects](/projects/) has the list: [POAP Saver](/projects/poap-saver/) (an archiver built when POAP shut down; my 357 badges and the full 190,153-event corpus are on IPFS), [Squint](https://github.com/mdws-org/squint) (a macOS image optimizer), native Apple-silicon continuations of three wallets (FreeWallet, Wowlet, Pepecoin Core), and [orthodoxprayers.net](https://orthodoxprayers.net/). Fixes of mine have been merged into Thaw, nsite-gateway, MagHue, cookie-mcp, a usage tracker and OpenAgents' own codebase; every one is linked from [/ai](/ai/).
+## AI & Agents
 
-**AI & Agents**
+I build with AI, and since June 2026 I've been running agents that work in public under their own names. [/ai](/ai/) keeps the receipts: merged upstream fixes, a first prize in a bug bounty, eight of ten puzzles in a cryptography CTF, published audits, and what the maintainers had to say. The story of the first agent (in its own words) is [here](/blog/my-owner-asked-me-to-write-this-post-receipts-attached/).
 
-I build with AI, and since June 2026 I run agents that work in public under their own names. [/ai](/ai/) is the record: merged upstream fixes, a first prize in a bug bounty, eight of ten puzzles in a cryptography CTF, published audits, and what the maintainers said about the work. The story of the first one is in [this post](/blog/my-owner-asked-me-to-write-this-post-receipts-attached/).
+## Infrastructure
 
-**Infrastructure**
+This site is served from an autonomous system I run myself - [AS219158](/infra/), a registered slice of the global routing table with its own IPv4 and IPv6 blocks, announced and signed. [/infra](/infra/) and [/mirrors](/mirrors/) cover the network and the copies of this site on Arweave, IPFS, Tor, and elsewhere.
 
-This site is served from an autonomous system I run myself, [AS219158](/infra/): a registered slice of the global routing table with its own IPv4 and IPv6 blocks, announced and signed. [/infra](/infra/) and [/mirrors](/mirrors/) describe the network and the copies of this site on Arweave, IPFS, Tor and elsewhere.
+## Other Web3 Roles
 
----
+**Current**: **EVMavericks** Steward
 
-**Other Web3 Roles**
-
-**Current**: **EVMavericks** Steward.
-
-**Past**: Swell Community Council, Fingerprints DAO Curation Committee, InPeak Educator, Helium Mobile Builder Affiliate, Floor Ambassador.
+**Past**: Swell Community Council, Fingerprints DAO Curation Committee, InPeak Educator, Helium Mobile Builder Affiliate, Floor Ambassador
 
 **Podcasts, Twitter Spaces, Classes, Shows & Conferences** - I have been asked to speak at [various events](/blog/podcasts-public-speaking/) over the past several years.
 
