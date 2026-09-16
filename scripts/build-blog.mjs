@@ -137,13 +137,49 @@ function authorLine(a) {
     return authorNameHtml(a);
 }
 
+/* A guest note names both people in one sentence: the writer, and the site
+ * owner who published it. The byline row above already shows the writer, but
+ * the note is the only place both names sit together in running text, which is
+ * what a reader (or a search engine) asking "whose post is this, on whose site"
+ * actually reads. */
 function authorNote(a) {
     if (a.kind === "agent") {
         return a.operator
             ? `Autonomous agent, operated by ${esc(a.operator)}`
             : "Autonomous agent";
     }
-    return a.guest ? "Guest post" : "";
+    return a.guest ? `Guest post by ${esc(a.name)}, published here by ${esc(AUTHORS.ben.name)}.` : "";
+}
+
+/* The author as schema.org data, for the BlogPosting on each post page.
+ *
+ * Ben is a reference to the Person the home page declares (#person), so every
+ * post he writes attaches to the same entity rather than minting a new nameless
+ * one per page; the name and url ride along because a consumer reading one page
+ * in isolation has no way to follow the reference. A guest is a Person of their
+ * own. An agent is not a Person and is not written down as one: it is typed as
+ * software with its operator as provider, which is the same disclosure the
+ * byline makes, in the vocabulary a machine reads. */
+const BEN_PERSON = {
+    "@type": "Person",
+    "@id": `${SITE}/#person`,
+    name: AUTHORS.ben.name,
+    alternateName: "Benjamin Meadows",
+    url: AUTHORS.ben.url,
+};
+
+function authorSchema(a) {
+    if (a.id === "ben") return BEN_PERSON;
+    if (a.kind === "agent") {
+        return {
+            "@type": "SoftwareApplication",
+            name: a.name,
+            ...(a.url ? { url: a.url } : {}),
+            applicationCategory: "Autonomous agent",
+            ...(a.operator ? { provider: { "@id": `${SITE}/#person`, name: a.operator } } : {}),
+        };
+    }
+    return { "@type": "Person", name: a.name, ...(a.url ? { url: a.url } : {}) };
 }
 
 /* The name to use where only a name fits -- a feed entry, <meta name="author">.
@@ -451,16 +487,53 @@ ${post.seeAlso.map((r) =>
 `
         : "";
 
+    /* The <title> names the writer when the writer is not the site owner. The
+     * suffix already says whose site it is; a guest's name is the one fact a
+     * search result for their post would otherwise be missing. */
+    const titleBy = post.author.id === "ben" ? "" : ` · ${post.author.name}`;
+
+    /* BlogPosting, keyed to the page and to the author. dateModified falls back
+     * to the published date rather than being omitted, because a consumer that
+     * finds no modified date assumes the page is unmaintained. Indented to sit
+     * with the rest of the head; JSON.stringify's own indentation is the site's
+     * four spaces, applied relative to the tag. */
+    const schema = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "@id": `${SITE}${post.url}#post`,
+        mainEntityOfPage: `${SITE}${post.url}`,
+        url: `${SITE}${post.url}`,
+        headline: post.title,
+        ...(post.subtitle ? { alternativeHeadline: post.subtitle } : {}),
+        description: post.description,
+        datePublished: post.date,
+        dateModified: post.updated || post.date,
+        inLanguage: "en",
+        image: post.image ? `${SITE}${post.image}` : `${SITE}/og.png`,
+        ...(post.tags.length ? { keywords: post.tags.join(", ") } : {}),
+        author: authorSchema(post.author),
+        publisher: BEN_PERSON,
+        isPartOf: { "@type": "WebSite", "@id": `${SITE}/#website`, name: "TheBenMeadows", url: `${SITE}/` },
+    };
+    /* "</" cannot appear inside a <script> body, and a title or description is
+     * free to contain one. JSON allows the escaped form everywhere. */
+    const schemaJson = JSON.stringify(schema, null, 4).replace(/<\//g, "<\\/")
+        .split("\n").map((l) => "        " + l).join("\n");
+
     return head({
-        title: `${post.title} · TheBenMeadows`,
+        title: `${post.title}${titleBy} · TheBenMeadows`,
         description: post.description,
         url: post.url,
         image: post.image,
         imageAlt: post.image_alt,
         author: post.author,
         extraLinks: `        <meta property="og:type" content="article" />
-        <meta property="article:published_time" content="${post.date}" />${post.unlisted ? `
-        <meta name="robots" content="noindex" />` : ""}`,
+        <meta property="article:published_time" content="${post.date}" />
+        <meta property="article:author" content="${esc(authorName(post.author))}" />${post.unlisted ? `
+        <meta name="robots" content="noindex" />` : ""}
+        <script type="application/ld+json">
+${schemaJson}
+        </script>`,
     }) + `        <main class="text-neutral-400 max-w-screen-md mx-auto px-6 pt-8 pb-12 leading-relaxed">
             <header class="post-head">
                 <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">${esc(post.title)}</h1>
