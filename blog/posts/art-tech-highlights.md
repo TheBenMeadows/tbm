@@ -95,6 +95,10 @@ In the business world, I have had a successful career, mostly in the constructio
 
 ---
 
+**First Animated Fully On-Chain Piece on Ethereum**: "[ursus](https://x.com/TheBenMeadows/status/2000962340658012599)" - December 2025 - Released for COMPUTERBLOOD's POLAR DERIVATIVES open call, after Bo Bartlett's "Dominion". A glitch animation built from an SVG filter chain, with the SVG itself stored on-chain. X cannot show an SVG, so I [built a page](https://mdws.me/ursus.html) to display it inside the post. Auctioned on Manifold from 0.042069 Ξ.
+
+---
+
 **First Fully On-Chain Generative System**: "[essentialism](/art/essentialism/)" - July 31, 2026 - An edition of 44 on Tezos via [bootloader.art](https://bootloader.art/generator/svg-js/407), objkt's on-chain generative platform. The generator's source is stored in the contract and runs in the page; [the piece's page here](/art/essentialism/) diffs it against the chain as you read. There is also a [working log](/blog/essentialism-the-working-log/).
 
 ![](/blog/media/essentialism-the-working-log/card1-fade.webp)
@@ -139,6 +143,8 @@ In the business world, I have had a successful career, mostly in the constructio
 
 ["0R4NG3 K1NG"](https://x.com/TheBenMeadows/status/1941198580137771267) (July 2025) - A Gamma Print of 7, released as a claim for collectors of my earlier prints. Sold out.
 
+[Continuum, The Forever Calendar](https://x.com/TheBenMeadows/status/1930976840585478645) (June 2025) - Four of the 366 artworks in Gamma's physical perpetual calendar, made with 91 Gamma partner artists.
+
 [Collab 1/1 for STATIX](https://x.com/TheBenMeadows/status/1943398756944351409) (July 2025) - Fully on-chain, for PENG1's STATIX.
 
 [Skullx 1/1](https://x.com/TheBenMeadows/status/1956387624303935874) (August 2025) - A Bitcoin-orange variant, followed by a piece in [Skullx: The Artist Series](https://x.com/TheBenMeadows/status/1964703684723671171) (September 2025).
@@ -165,6 +171,7 @@ In the business world, I have had a successful career, mostly in the constructio
 - Paris - Mob House Hotel, The Builders DAO (February 2025) - "Phthalo Tunnel"
 - [Las Vegas](https://x.com/TheBenMeadows/status/1918772225177419908) - Gamma, Bitcoin 2025 week (May 2025) - "You Didn't Build That"
 - [Bologna, Italy](https://x.com/TheBenMeadows/status/1973492121593324011) - geavision & inkseart (October 2025) - "The Controversial 'Sherman Horse Head'…"
+- Lisbon, Portugal - NFC Lisbon, The Builders DAO in the inkseart lounge (June 2026) - my four pieces from Gamma's [Continuum](https://info.gamma.io/continuum-the-forever-calendar) calendar
 
 **Featured**
 
@@ -212,6 +219,10 @@ Since 2025 most of what I build ships as code. [/projects](/projects/) has the l
 **AI & Agents**
 
 I build with AI, and since June 2026 I run agents that work in public under their own names. [/ai](/ai/) is the record: merged upstream fixes, a first prize in a bug bounty, eight of ten puzzles in a cryptography CTF, published audits, and what the maintainers said about the work. The story of the first one is in [this post](/blog/my-owner-asked-me-to-write-this-post-receipts-attached/).
+
+**Infrastructure**
+
+This site is served from an autonomous system I run myself, [AS219158](/infra/): a registered slice of the global routing table with its own IPv4 and IPv6 blocks, announced and signed. [/infra](/infra/) and [/mirrors](/mirrors/) describe the network and the copies of this site on Arweave, IPFS, Tor and elsewhere.
 
 ---
 
