@@ -27,6 +27,7 @@ module.exports = {
     "./blog/**/*.html",
     "./search/index.html",
         "./profiles/index.html",
+    "./marfa/index.html",
     // search.js builds the overlay at runtime; without this its classes get purged.
     "./search.js",
   ],
