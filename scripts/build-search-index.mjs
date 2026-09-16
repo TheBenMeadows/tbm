@@ -50,7 +50,9 @@ const PAGES = [
 const blogPages = JSON.parse(
     await readFile(join(ROOT, 'blog', 'pages.json'), 'utf8')
 ).pages;
-PAGES.push(...blogPages);
+/* An unlisted post (a superseded version kept at its old address) is built and
+ * stamped but must not surface in search beside the version that replaced it. */
+PAGES.push(...blogPages.filter((p) => !p.unlisted));
 
 /* Every named entity the pages actually use. A missing one does not fail loudly:
  * it survives decoding and ships as visible markup inside a search result, which
