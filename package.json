@@ -8,7 +8,7 @@
     "tailwindcss": "^3.4.1"
   },
   "scripts": {
-    "build": "node scripts/build-blog.mjs && node scripts/check-ai-wins.mjs && node scripts/build-ai.mjs && npx tailwindcss -i ./src/input.css -o ./output.css --minify && node scripts/build-search-index.mjs && node scripts/build-feed.mjs && node scripts/sync-readme-mirrors.mjs",
+    "build": "node scripts/check-ai-wins.mjs && node scripts/build-ai.mjs && node scripts/build-blog.mjs && npx tailwindcss -i ./src/input.css -o ./output.css --minify && node scripts/build-search-index.mjs && node scripts/build-feed.mjs && node scripts/sync-readme-mirrors.mjs",
     "check:readme": "node scripts/sync-readme-mirrors.mjs --check",
     "check:mirrors": "node scripts/check-mirrors-page.mjs",
     "check:figures": "node scripts/check-figures.mjs",
