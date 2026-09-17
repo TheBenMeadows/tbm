@@ -54,6 +54,14 @@ const blogPages = JSON.parse(
  * stamped but must not surface in search beside the version that replaced it. */
 PAGES.push(...blogPages.filter((p) => !p.unlisted));
 
+/* Transcripts under /speaking/ are generated the same way by
+ * scripts/build-speaking.mjs, which runs right after build-blog. Same rule:
+ * missing is fatal. */
+const speakingPages = JSON.parse(
+    await readFile(join(ROOT, 'speaking', 'pages.json'), 'utf8')
+).pages;
+PAGES.push(...speakingPages);
+
 /* Every named entity the pages actually use. A missing one does not fail loudly:
  * it survives decoding and ships as visible markup inside a search result, which
  * is how '&middot;' reached the index the first time a home-page row carried one.
