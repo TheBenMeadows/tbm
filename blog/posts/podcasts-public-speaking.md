@@ -1,7 +1,7 @@
 ---
 title: "Podcasts & Public Speaking"
 date: 2024-05-26
-updated: 2026-06-12
+updated: 2026-09-16
 pin: 1
 tags: [Art, Blockchain, Podcasts, Technology]
 image: /blog/media/podcasts-public-speaking/feb-23-website-an-introduction-to-ai-art-1.webp
@@ -18,6 +18,17 @@ May 30, 2026 - Article by Alison Bailin Batz
 - [Read the Article](https://theazinsider.com/mission-monday-ben-meadows/)
 
 ![](/blog/media/podcasts-public-speaking/scr-20260606-lkme.webp)
+
+---
+
+**"THE WEB3 SUMMIT"**
+December 15-17, 2025 - X Live Broadcast, three days - Host: [The Digital Asset Museum](https://x.com/theDAMmuseum)
+
+Three days of artists, builders, collectors and traders, streamed live on X. I was on a panel each day, about fifteen minutes on mic per day: Day 1 alongside [Jared Paz](https://x.com/jared_poz) and [Woodificould](https://x.com/woodificouldart), and Day 3 with Jared, [IWannabee](https://x.com/IWannabeeNFT) and [SatoshisMom](https://x.com/SatoshisMom).
+
+- [Day 1 Recording](https://x.com/i/broadcasts/1OwGWeOVmBQxQ) (315 min. mark)
+- [Day 2 Recording](https://x.com/i/broadcasts/1OyJAjyLgOqxb) (252 min. mark)
+- [Day 3 Recording](https://x.com/i/broadcasts/1mrGmBvXzqqJy) (129 min. mark)
 
 ---
 
@@ -85,7 +96,7 @@ August 24, 2023 - X/Twitter Space - Host: [Pop Punk](https://twitter.com/CryptoP
 **"From Construction to Web3 Mastery"**
 June 2, 2023 - Live Interview - Host: [Ned](https://x.com/NedzzoneXR)
 
-- [Watch the Recording](https://www.youtube.com/live/MgBbICKbf_k?si=wj80G-UKhmvXwsv5)
+- [Watch the Recording](https://www.youtube.com/live/MgBbICKbf_k?si=wj80G-UKhmvXwsv5) (the full video has since been made private on YouTube)
 - [Clip](https://www.linkedin.com/feed/update/urn:li:activity:7070535820373331968/) "AI is a Lazy Term"
 
 ![G-Talk promotional card for the interview, captioned "G-Talk · Ben Meadows"](/blog/media/podcasts-public-speaking/fxnhjvuxoauogld.webp)
@@ -113,7 +124,7 @@ May 5, 2023 - X/Twitter Space - Host: [Zo World](https://x.com/The_Zo_World)
 **"Ethereum Shapella Network Upgrade Watch Party"**
 April 12, 2023 - YouTube Livestream - Host: [Ethereum](https://x.com/ethereum)
 
-To be fair, I didn't speak at all, but it was an honor to be "on-stage" with such an illustrious group of people.
+I was on the call for about two hours as one of roughly sixty people on stage. I did not present, but it was an honor to be there for it.
 
 - [Watch the Recording](https://www.youtube.com/live/BVq1pz3FrDo?si=QuYfuHlLI5E-Pgw8)
 
