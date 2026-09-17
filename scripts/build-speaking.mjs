@@ -186,7 +186,8 @@ function indexPage(items, registry) {
                 <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">Speaking</h1>
                 <p class="post-meta no-justify">Transcripts of talks, panels, podcasts and classes. Each one is diarized and speaker-labeled;
                     timestamps link into the page, and the audio is on IPFS. The list of appearances with context is on the
-                    <a class="${LINK}" href="/blog/podcasts-public-speaking/">Podcasts &amp; Public Speaking</a> post.</p>
+                    <a class="${LINK}" href="/blog/podcasts-public-speaking/">Podcasts &amp; Public Speaking</a> post.
+                    These pages are not in the site search box (it would grow it twenty-fold); use this list or a search engine.</p>
 ${root}            </header>
             <ul class="toc">
 ${rows}
