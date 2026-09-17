@@ -614,6 +614,23 @@ main .post-heading + * {
     border: 1px solid var(--rule);
     font-size: 0.8rem;
 }
+/* Transcript pages (/speaking/): each paragraph opens with a timestamp that is
+   its own anchor, then the speaker's name for a new turn. The CID beside the
+   audio link is for readers with their own IPFS node. */
+.transcript p { margin-top: 1rem; }
+.transcript .stamp {
+    font-variant-numeric: tabular-nums;
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    text-decoration: none;
+}
+.transcript .stamp:hover { color: var(--accent); }
+.transcript .speaker { color: var(--ink); }
+.cid {
+    font-size: 0.75rem;
+    word-break: break-all;
+    color: var(--ink-soft);
+}
 /* The table scrolls inside its own box. Letting it widen the column would put
    a horizontal scrollbar on the whole page on a phone. */
 .post-table-wrap {

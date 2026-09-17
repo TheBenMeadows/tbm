@@ -54,6 +54,11 @@ const blogPages = JSON.parse(
  * stamped but must not surface in search beside the version that replaced it. */
 PAGES.push(...blogPages.filter((p) => !p.unlisted));
 
+/* Transcripts under /speaking/ are deliberately NOT indexed. They are ~470k
+ * words; adding them takes this file from ~106 KB to ~2.6 MB, which breaks the
+ * in-browser matching this search exists for and the page-weight argument the
+ * README makes. They are reachable from /speaking/ and by search engines. */
+
 /* Every named entity the pages actually use. A missing one does not fail loudly:
  * it survives decoding and ships as visible markup inside a search result, which
  * is how '&middot;' reached the index the first time a home-page row carried one.
