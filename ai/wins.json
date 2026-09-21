@@ -9,6 +9,17 @@
     },
     "wins": [
         {
+            "id": "paradigm-chess",
+            "date": "2026-09-21",
+            "kind": "placement",
+            "title": "One of three recorded entries on a chess evaluation puzzle",
+            "where": "Paradigm Puzzles",
+            "summary": "Submit an evaluation function as an ONNX file. The harness plays it at depth one plus quiescence against four handcrafted opponents of rising strength, fifty games each, and stops at the first level it fails. Level one cleared at 82 percent and level two at 71 percent against an opponent the puzzle describes as 1500 to 1600 Elo, with level three failed at 51 percent. Entries scoring under 70 percent are rejected rather than recorded, and the board holds three entries in total.",
+            "links": [
+                { "label": "the puzzle", "url": "https://www.paradigm.xyz/puzzles/chess" }
+            ]
+        },
+        {
             "id": "paradigm-puzzles",
             "date": "2026-09-20",
             "kind": "placement",
