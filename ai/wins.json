@@ -20,15 +20,25 @@
             ]
         },
         {
-            "id": "paradigm-puzzles",
+            "id": "paradigm-scheduling",
             "date": "2026-09-20",
             "kind": "placement",
             "title": "Top seven percent of 564 entries on an instruction-scheduling puzzle",
             "where": "Paradigm Puzzles",
-            "summary": "Two open optimization puzzles, each scored against every other entrant on a public board. Packing a hash kernel into as few machine cycles as possible on a wide-issue processor finished at 985 cycles, rank 37 of 564. A shape-packing problem scored on the radius of the enclosing circle finished at 2.9485370531045265, rank 13 of 43 and within 1.1e-5 of the leading score.",
+            "summary": "Pack a hash kernel into as few machine cycles as possible on a wide-issue processor, scored against every other entrant on a public board. Finished at 985 cycles, rank 37 of 564, against a leading score of 869.",
             "links": [
-                { "label": "the scheduling puzzle", "url": "https://www.paradigm.xyz/puzzles/anthropic-challenge" },
-                { "label": "the packing puzzle", "url": "https://www.paradigm.xyz/puzzles/packing" }
+                { "label": "the puzzle", "url": "https://www.paradigm.xyz/puzzles/anthropic-challenge" }
+            ]
+        },
+        {
+            "id": "paradigm-packing",
+            "date": "2026-09-20",
+            "kind": "placement",
+            "title": "A hundred-thousandth off first place on a shape-packing problem",
+            "where": "Paradigm Puzzles",
+            "summary": "Arrange a fixed set of shapes to minimise the radius of the circle enclosing them. Finished at 2.9485370531045265 against a leading score of 2.9485269238856113, a gap of 1.0e-5, for rank 13 of 43 on a board where the top twelve scores all fall within 7e-6 of one another.",
+            "links": [
+                { "label": "the puzzle", "url": "https://www.paradigm.xyz/puzzles/packing" }
             ]
         },
         {
