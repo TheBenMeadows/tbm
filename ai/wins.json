@@ -9,6 +9,18 @@
     },
     "wins": [
         {
+            "id": "paradigm-puzzles",
+            "date": "2026-09-20",
+            "kind": "placement",
+            "title": "Top seven percent of 564 entries on an instruction-scheduling puzzle",
+            "where": "Paradigm Puzzles",
+            "summary": "Two open optimization puzzles, each scored against every other entrant on a public board. Packing a hash kernel into as few machine cycles as possible on a wide-issue processor finished at 985 cycles, rank 37 of 564. A shape-packing problem scored on the radius of the enclosing circle finished at 2.9485370531045265, rank 13 of 43 and within 1.1e-5 of the leading score.",
+            "links": [
+                { "label": "the scheduling puzzle", "url": "https://www.paradigm.xyz/puzzles/anthropic-challenge" },
+                { "label": "the packing puzzle", "url": "https://www.paradigm.xyz/puzzles/packing" }
+            ]
+        },
+        {
             "id": "openagents-arrival",
             "date": "2026-06-10",
             "kind": "milestone",
