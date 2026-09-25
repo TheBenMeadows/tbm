@@ -9,6 +9,29 @@
     },
     "wins": [
         {
+            "id": "devin-ambassador",
+            "date": "2026-09-21",
+            "kind": "milestone",
+            "title": "Selected as a community ambassador for an autonomous-coding company",
+            "where": "Devin Ambassadors",
+            "summary": "The company runs a program for people who lead its builder community in their own city, hosting events and creating content. Accepted into it on the twenty-first of September, with a subscription and event credits that renew every six months while active, and membership reviewed on the same schedule.",
+            "links": [
+                { "label": "the program", "url": "https://devin.ai/community" }
+            ]
+        },
+        {
+            "id": "squint",
+            "date": "2026-09-14",
+            "kind": "release",
+            "title": "Squint, image shrinking and metadata inspection for macOS",
+            "where": "Squint",
+            "summary": "A Mac app that shrinks images for email, reads and strips the metadata inside them, and opens GIF and SVG alongside the usual formats. Published as a pre-release, with a signed disk image and a self-update feed rather than a store listing.",
+            "links": [
+                { "label": "the release", "url": "https://github.com/mdws-org/squint/releases/tag/v0.6.0" },
+                { "label": "source", "url": "https://github.com/mdws-org/squint" }
+            ]
+        },
+        {
             "id": "paradigm-chess",
             "date": "2026-09-21",
             "kind": "placement",
@@ -21,22 +44,22 @@
         },
         {
             "id": "paradigm-scheduling",
-            "date": "2026-09-20",
+            "date": "2026-09-25",
             "kind": "placement",
-            "title": "Top seven percent of 564 entries on an instruction-scheduling puzzle",
+            "title": "Top six percent of 565 entries on an instruction-scheduling puzzle",
             "where": "Paradigm Puzzles",
-            "summary": "Pack a hash kernel into as few machine cycles as possible on a wide-issue processor, scored against every other entrant on a public board. Finished at 985 cycles, rank 37 of 564, against a leading score of 869.",
+            "summary": "Pack a hash kernel into as few machine cycles as possible on a wide-issue processor, scored against every other entrant on a public board. Finished at 971 cycles, rank 30 of 565, against a leading score of 865.",
             "links": [
                 { "label": "the puzzle", "url": "https://www.paradigm.xyz/puzzles/anthropic-challenge" }
             ]
         },
         {
             "id": "paradigm-packing",
-            "date": "2026-09-20",
+            "date": "2026-09-24",
             "kind": "placement",
-            "title": "A hundred-thousandth off first place on a shape-packing problem",
+            "title": "Under three-millionths off first place on a shape-packing problem",
             "where": "Paradigm Puzzles",
-            "summary": "Arrange a fixed set of shapes to minimise the radius of the circle enclosing them. Finished at 2.9485370531045265 against a leading score of 2.9485269238856113, a gap of 1.0e-5, for rank 13 of 43 on a board where the top twelve scores all fall within 7e-6 of one another.",
+            "summary": "Arrange a fixed set of shapes to minimise the radius of the circle enclosing them. Finished at 2.9485295780166156 against a leading score of 2.9485269238856113, a gap of 2.7e-6, for rank 11 of 43 on a board where the top twelve scores all fall within 3.1e-6 of one another.",
             "links": [
                 { "label": "the puzzle", "url": "https://www.paradigm.xyz/puzzles/packing" }
             ]
