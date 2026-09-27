@@ -1,6 +1,5 @@
 ---
 title: "Bitcoin Ordinals: SVG vs SVGZ"
-subtitle: "Adapted from my X thread of October 6, 2023"
 date: 2023-10-06
 updated: 2026-09-27
 tags: [Blockchain, Technology, Art]
