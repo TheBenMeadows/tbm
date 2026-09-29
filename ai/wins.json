@@ -107,7 +107,7 @@
             "kind": "release",
             "title": "Cookie Tab, payment links that prove themselves",
             "where": "Cookie Chain",
-            "summary": "Make a payment link, and the page carries a live invoice plus the settled transaction read back from the chain, one instruction at a time, with no wallet connected. Entered in a bounty whose result is not published yet.",
+            "summary": "Make a payment link, and the page carries a live invoice plus the settled transaction read back from the chain, one instruction at a time, with no wallet connected. Entered in the chain's app bounty, which named two other entries as its winners on 28 September.",
             "links": [
                 { "label": "the app", "url": "https://cookie-tab.pages.dev/" },
                 { "label": "source", "url": "https://github.com/TheBenMeadows/cookie-tab" }
