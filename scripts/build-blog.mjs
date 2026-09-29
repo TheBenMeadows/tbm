@@ -346,8 +346,7 @@ const FOOTER = `        <footer class="site-footer">
                 <span aria-hidden="true">&middot;</span>
                 <a href="/infra/">Infra</a>
             </nav>
-        </footer>
-        <script src="/email.js"></script>`;
+        </footer>`;
 
 function head({ title, description, url, image, imageAlt, author, extraLinks = "" }) {
     const img = image ? SITE + image : `${SITE}/og.png`;

@@ -1,9 +1,9 @@
 ---
 title: "Intro to AI Art \u2014 Lesson 2: Creating AI Art"
 date: 2023-03-09
-source: "InPeak webinar (Dropbox)"
+source: "InPeak webinar"
 speakers: ["Ben", "Speaker 0", "Speaker 2", "Speaker 3", "Speaker 4", "Speaker 5"]
-origin: "Dropbox: Portfolio/InPeak - AI Class/To Share/InPeak - Lesson 2 - Creating AI Art - 3.9.2023.mp4"
+origin: ""
 audio_cid: "bafybeieem46ay7wxjukm7d54f37epgdevxvfbsowcg4uhxmfhszbzc4nzq"
 minutes: 78.1
 ---

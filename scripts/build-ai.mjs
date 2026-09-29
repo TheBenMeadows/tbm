@@ -32,7 +32,7 @@ const data = JSON.parse(readFileSync(`${OUT}/wins.json`, "utf8"));
 /* Newest first, and ties broken by id so two entries sharing a date keep the same
  * order on every host. A build that reordered cards would report mirror drift that
  * does not exist. */
-const wins = [...data.wins].sort((a, b) => (b.date.localeCompare(a.date) || a.id.localeCompare(b.id)));
+const wins = [...data.wins].sort((a, b) => (a.date !== b.date ? (a.date < b.date ? 1 : -1) : a.id < b.id ? -1 : 1));
 
 function linkRow(links) {
     if (links.length === 0) return "";
@@ -61,7 +61,7 @@ function card(win) {
 
 /* Quotes are rendered as their author wrote them, so a reader who opens the link finds
  * the same words. Newest first, like the cards. */
-const quotes = [...(data.quotes ?? [])].sort((a, b) => b.date.localeCompare(a.date));
+const quotes = [...(data.quotes ?? [])].sort((a, b) => (a.date === b.date ? 0 : a.date < b.date ? 1 : -1));
 
 function quoteBlock(q) {
     return `                <blockquote class="hairline-card p-6">
@@ -180,7 +180,6 @@ ${cards}${said}        </main>
                 <a href="/infra/">Infra</a>
             </nav>
         </footer>
-        <script src="/email.js"></script>
     </body>
 </html>
 `;

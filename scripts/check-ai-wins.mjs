@@ -52,6 +52,12 @@ for (const kind of Object.keys(KIND_DESCRIPTIONS)) {
 }
 
 const today = new Date().toISOString().slice(0, 10);
+/* Date.parse accepts 2026-02-30 and rolls it into March, so a date is real only
+ * if it comes back unchanged. */
+const realDate = (d) => {
+    const t = Date.parse(`${d}T00:00:00Z`);
+    return !Number.isNaN(t) && new Date(t).toISOString().slice(0, 10) === d;
+};
 const seen = new Set();
 
 for (const [i, win] of (data.wins ?? []).entries()) {
@@ -62,7 +68,7 @@ for (const [i, win] of (data.wins ?? []).entries()) {
     else seen.add(win.id);
 
     if (!DATE_PATTERN.test(win?.date ?? "")) fail(where, "`date` must be YYYY-MM-DD");
-    else if (Number.isNaN(Date.parse(`${win.date}T00:00:00Z`))) fail(where, `\`date\` "${win.date}" is not a real date`);
+    else if (!realDate(win.date)) fail(where, `\`date\` "${win.date}" is not a real date`);
     else if (win.date > today) fail(where, `\`date\` "${win.date}" is in the future; an entry is added after the outcome, not before`);
 
     if (!data.kinds?.[win?.kind]) fail(where, `\`kind\` "${win?.kind}" is not one of: ${Object.keys(data.kinds ?? {}).join(", ")}`);
@@ -101,6 +107,7 @@ if (!Array.isArray(data.quotes)) {
             if (typeof q?.[field] !== "string" || q[field].trim() === "") fail(where, `\`${field}\` is required`);
         }
         if (!DATE_PATTERN.test(q?.date ?? "")) fail(where, "`date` must be YYYY-MM-DD");
+        else if (!realDate(q.date)) fail(where, `\`date\` "${q.date}" is not a real date`);
         else if (q.date > today) fail(where, `\`date\` "${q.date}" is in the future`);
         if (typeof q?.url !== "string" || !q.url.startsWith("https://")) fail(where, "`url` must be the absolute https page the words were copied from");
     }

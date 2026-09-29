@@ -1,9 +1,9 @@
 ---
 title: "Intro to AI Art \u2014 Lesson 3: Tools & Workflows (Part 1)"
 date: 2023-03-29
-source: "InPeak webinar (Dropbox)"
+source: "InPeak webinar"
 speakers: ["Ben", "Speaker 1", "Speaker 2", "Speaker 3"]
-origin: "Dropbox: Portfolio/InPeak - AI Class/To Share/InPeak - Lesson 3 - Basic Tools - Part 1 - 3.29.2023.mp4"
+origin: ""
 audio_cid: "bafybeiedufjyckoja4oudqhlq4d6u2afgal3jekbziybwyfsrrckidpcg4"
 minutes: 63.4
 ---

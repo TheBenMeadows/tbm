@@ -1,9 +1,9 @@
 ---
 title: "AI: Tools & Art \u2014 Zo World interview edit"
 date: 2023-05-05
-source: "Zo World X Space, edited (Dropbox)"
+source: "Zo World X Space, edited"
 speakers: ["Ben", "Zo World host", "Speaker 1", "Speaker 2"]
-origin: "Dropbox: Portfolio/Podcasts, et al/ZoWorld Twitter Interview - 5.5.2023 (Compressed).mp3"
+origin: ""
 audio_cid: "bafybeiefvwqexhiqzpjdx6btltkjebypvtdq6m7g2eo2oak3uonu6fwssq"
 minutes: 69.9
 ---

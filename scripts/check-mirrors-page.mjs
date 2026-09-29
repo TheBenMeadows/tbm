@@ -54,7 +54,14 @@ function needle(address) {
 const mirrors = JSON.parse(readFileSync(MIRRORS, "utf8")).mirrors;
 const page = readFileSync(PAGE, "utf8");
 
-const missing = mirrors.filter((m) => !page.includes(needle(m.address)));
+// ssh://text@host:2222 is shown as `ssh -p 2222 text@host`; the host alone would
+// pass even after the port moved, so an address with a port needs it on the page.
+function portShown(address) {
+    const port = address.match(/^[a-z]+:\/\/[^/]*:(\d+)(\/|$)/);
+    return !port || new RegExp(`(-p |:)${port[1]}\\b`).test(page);
+}
+
+const missing = mirrors.filter((m) => !page.includes(needle(m.address)) || !portShown(m.address));
 
 if (missing.length > 0) {
     console.error(`mirrors page      ${missing.length} address(es) in ${MIRRORS} are absent from ${PAGE}:`);
