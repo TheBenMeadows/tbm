@@ -25,7 +25,7 @@
             "kind": "release",
             "title": "Squint, image shrinking and metadata inspection for macOS",
             "where": "Squint",
-            "summary": "A Mac app that shrinks images for email, reads and strips the metadata inside them, and opens GIF and SVG alongside the usual formats. Published as a pre-release, with a signed disk image and a self-update feed rather than a store listing.",
+            "summary": "A Mac app that shrinks images for email, reads and strips the metadata inside them, and opens GIF and SVG alongside the usual formats. Published as a pre-release, with a disk image and a self-update feed rather than a store listing.",
             "links": [
                 { "label": "the release", "url": "https://github.com/mdws-org/squint/releases/tag/v0.6.0" },
                 { "label": "source", "url": "https://github.com/mdws-org/squint" }

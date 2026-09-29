@@ -1,9 +1,9 @@
 ---
 title: "AI: Tools & Art \u2014 Zo World X Space (combined)"
 date: 2023-05-05
-source: "Zo World X Space (Dropbox)"
+source: "Zo World X Space"
 speakers: ["Ben", "Zo World host", "Speaker 1", "Speaker 2"]
-origin: "Dropbox: Portfolio/Podcasts, et al/ZoWorld Twitter Space 5.5.2023 - Combined.mp3"
+origin: ""
 audio_cid: "bafybeicn6lqk3ukxqx4b2twvwic23lhmp6zvrzz7q3lsjagofi63qxiwvy"
 minutes: 82.4
 ---

@@ -1,9 +1,9 @@
 ---
 title: "InPeak educator profile (promo spot)"
 date: 2023-05-08
-source: "InPeak (Dropbox)"
+source: "InPeak"
 speakers: ["Ben"]
-origin: "Dropbox: TheBenMeadows - InPeak.mp4"
+origin: ""
 audio_cid: "bafybeieiwyoeyquvxlq3kjcer7lk2hkranv4kc73jf3i7lwgokx2j5gec4"
 minutes: 0.7
 ---

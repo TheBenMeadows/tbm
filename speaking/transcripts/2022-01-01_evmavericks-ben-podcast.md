@@ -1,9 +1,9 @@
 ---
 title: "EVMavericks Podcast \u2014 Ben Meadows"
 date: 2022-01-01
-source: "EVMavericks podcast (Dropbox)"
+source: "EVMavericks podcast"
 speakers: ["Ben", "Speaker 0", "Speaker 2"]
-origin: "Dropbox: Portfolio/Podcasts, et al/EVMavericks - Ben Podcast.mp3"
+origin: ""
 audio_cid: "bafybeiffcly2xivxbf5zx27pmlrfahtmtjwhomqqspi6d6zmb2ho6l5a4m"
 minutes: 67.5
 ---

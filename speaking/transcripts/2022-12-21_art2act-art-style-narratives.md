@@ -1,9 +1,9 @@
 ---
 title: "Exploring Art Style Narratives in Web3 \u2014 Collectors & Artists Views"
 date: 2022-12-21
-source: "art2act X Space (Dropbox)"
+source: "art2act X Space"
 speakers: ["Ben", "Ricardo", "Speaker 0", "Speaker 1", "Speaker 10", "Speaker 11", "Speaker 12", "Speaker 2", "Speaker 3", "Speaker 4", "Speaker 5", "Speaker 8", "Speaker 9"]
-origin: "Dropbox: Portfolio/Podcasts, et al/Art2Act Twitter Space.mp3"
+origin: ""
 audio_cid: "bafybeib27nyrsyggsnj6s5nel5yllpze2sjy5p7hskpct3ejasoyvpcfq4"
 minutes: 118.7
 ---

@@ -24,8 +24,8 @@
     var ARTROOT = 'Qmcub76vVUS1vY9MsAw3XgRhpe85G5JMAAMvg6nnf8FLTw';
     var SOURCES = [
         'https://poap-mirror.bemeadows.workers.dev/corpus/img/',
-        'https://ipfs.io/ipfs/' + ARTROOT + '/',
-        'https://dweb.link/ipfs/' + ARTROOT + '/',
+        'https://vps3.mdws.me/ipfs/' + ARTROOT + '/',
+        'https://ipfs.filebase.io/ipfs/' + ARTROOT + '/',
     ];
 
     function verify(url, want, img, poster, note) {
@@ -231,7 +231,7 @@
             '<div><b>original image (POAP-hosted)</b> <span class="dead">' + esc(p.src) + '</span></div>' +
             '<div><b>original sha256</b> ' + esc(p.sha || 'n/a') + '</div>' +
             (p.e != null
-                ? '<div><b>archived image (IPFS)</b> <a href="https://ipfs.io/ipfs/' +
+                ? '<div><b>archived image (IPFS)</b> <a href="https://vps3.mdws.me/ipfs/' +
                   ARTROOT + '/' + p.e + '" target="_blank" rel="noopener">' +
                   ARTROOT.slice(0, 14) + '&hellip;/' + p.e + '</a></div>'
                 : '') +

@@ -1,9 +1,9 @@
 ---
 title: "Lions Layer: TheBenMeadows"
 date: 2022-10-01
-source: "EVMavericks podcast (Dropbox)"
+source: "EVMavericks podcast"
 speakers: ["Ben", "Speaker 1", "Speaker 2"]
-origin: "Dropbox: Portfolio/Podcasts, et al/EVMavericks Lions Layer - Ben Guest.wav"
+origin: ""
 audio_cid: "bafybeigsochzyzy6cfqxjsrf2djc42awkwym7fb6kp5etuxjoz2z6gihwm"
 minutes: 67.1
 ---

@@ -21,6 +21,9 @@ const PAGES = [
     // new post is stamped without an edit here. Reading it from the source tree
     // rather than dist keeps this the same one list every builder consumes.
     ...JSON.parse(readFileSync(join("blog", "pages.json"), "utf8")).pages.map((p) => p.file),
+    ...JSON.parse(readFileSync(join("speaking", "pages.json"), "utf8")).pages.map((p) => p.file),
+    "speaking/index.html",
+    "marfa/index.html",
     "index.html",
     "mirrors/index.html",
     "tech/index.html",

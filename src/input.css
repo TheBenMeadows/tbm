@@ -733,7 +733,7 @@ html.light {
     --syn-function: #36597d;
     --syn-property: #4a6d99;
     --syn-comment: #6b7885;
-    --syn-operator: #6f7883;
+    --syn-operator: #6d7681;
 }
 @media (prefers-color-scheme: light) {
     html:not(.dark) {
@@ -743,7 +743,7 @@ html.light {
         --syn-function: #36597d;
         --syn-property: #4a6d99;
         --syn-comment: #6b7885;
-        --syn-operator: #6f7883;
+        --syn-operator: #6d7681;
     }
 }
 

@@ -157,7 +157,7 @@ Hosted by The Builders DAO & Artcrush Gallery
 
 [#DailyMuse](https://x.com/TheBenMeadows/status/1796946588566438054) - I've been created a piece daily for over four months.
 
-Prior to the #DailyMuse thread, I was creating and showing several unminted pieces each week. Here are a few of the posts: [1](https://x.com/TheBenMeadows/status/1718291806855860616), [2](https://x.com/TheBenMeadows/status/1723407553366053208), [3](https://x.com/TheBenMeadows/status/1738927654433390655)[](https://x.com/TheBenMeadows/status/1718291806855860616), [4](https://x.com/TheBenMeadows/status/1708247230602530816), [5](https://x.com/TheBenMeadows/status/1692327420328869904).
+Prior to the #DailyMuse thread, I was creating and showing several unminted pieces each week. Here are a few of the posts: [1](https://x.com/TheBenMeadows/status/1718291806855860616), [2](https://x.com/TheBenMeadows/status/1723407553366053208), [3](https://x.com/TheBenMeadows/status/1738927654433390655), [4](https://x.com/TheBenMeadows/status/1708247230602530816), [5](https://x.com/TheBenMeadows/status/1692327420328869904).
 
 ---
 
