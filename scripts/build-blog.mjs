@@ -164,6 +164,21 @@ function authorUri(a) {
 /* ------------------------------------------------------------------ */
 /* image dimensions                                                     */
 
+/* Indents rendered post HTML to sit inside the page template. Lines inside a
+ * <pre> are left alone: there the whitespace is content, and indenting them
+ * shifts every line of a code block after the first. */
+function indentOutsidePre(html, pad) {
+    let inPre = false;
+    return html.split("\n").map((l) => {
+        const out = l && !inPre ? pad + l : l;
+        const opens = (l.match(/<pre[\s>]/g) ?? []).length;
+        const closes = (l.match(/<\/pre>/g) ?? []).length;
+        if (opens > closes) inPre = true;
+        else if (closes > opens) inPre = false;
+        return out;
+    }).join("\n");
+}
+
 /* Every hand-written page sets width and height on its images so the column does
  * not reflow as they load. Generated pages have to do the same, and the only
  * place the size exists is the file, so read it out of the header rather than
@@ -331,8 +346,7 @@ const FOOTER = `        <footer class="site-footer">
                 <span aria-hidden="true">&middot;</span>
                 <a href="/infra/">Infra</a>
             </nav>
-        </footer>
-        <script src="/email.js"></script>`;
+        </footer>`;
 
 function head({ title, description, url, image, imageAlt, author, extraLinks = "" }) {
     const img = image ? SITE + image : `${SITE}/og.png`;
@@ -591,7 +605,7 @@ const posts = files.map((file) => {
         slug,
         url: `/blog/${slug}/`,
         markdown: body,
-        html: marked.parse(body).split("\n").map((l) => (l ? "            " + l : l)).join("\n"),
+        html: indentOutsidePre(marked.parse(body), "            "),
         imageSize: meta.image ? imageSize(meta.image) : null,
     };
 });

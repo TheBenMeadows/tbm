@@ -1,9 +1,9 @@
 ---
 title: "Collectors Who Create"
 date: 2023-08-24
-source: "Pop Punk X Space (Dropbox)"
+source: "Pop Punk X Space"
 speakers: ["Ben", "Pop", "Sarah", "Speaker 1", "Speaker 2", "Speaker 5", "Speaker 6"]
-origin: "Dropbox: Portfolio/Podcasts, et al/Pop Punk Spaces - August 2023.mp3"
+origin: ""
 audio_cid: "bafybeihmia55lvd5upizfqsuivylv74hlx5xgi37rzwnj3ziwwkyvr3f4i"
 minutes: 94.2
 ---

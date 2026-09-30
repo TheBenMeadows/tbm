@@ -1,9 +1,9 @@
 ---
 title: "Intro to AI Art \u2014 Lesson 5: Getting Familiar with GAN"
 date: 2023-04-27
-source: "InPeak webinar (Dropbox)"
+source: "InPeak webinar"
 speakers: ["Ben", "Speaker 0", "Speaker 1", "Speaker 2"]
-origin: "Dropbox: Portfolio/InPeak - AI Class/To Share/InPeak - Lesson 5 - Getting Familiar with GAN - 4.27.2023.mp4"
+origin: ""
 audio_cid: "bafybeibscmspzsilcsdgm6vjxd3w4ez4l4tgwqto4bjpj5g6acpp453eqm"
 minutes: 69.5
 ---

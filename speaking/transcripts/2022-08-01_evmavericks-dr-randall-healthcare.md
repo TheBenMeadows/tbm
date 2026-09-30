@@ -1,9 +1,9 @@
 ---
 title: "Blockchains & Healthcare (w/ Dr. Randall)"
 date: 2022-08-01
-source: "EVMavericks podcast (Dropbox)"
+source: "EVMavericks podcast"
 speakers: ["Ben", "Speaker 0", "Speaker 2", "Speaker 3", "Speaker 4", "Speaker 5"]
-origin: "Dropbox: Portfolio/Podcasts, et al/EVMavericks - Dr Randall Podcast.mp3"
+origin: ""
 audio_cid: "bafybeiativdv2mu2htry47vnwr7nbvlx3p7y2gjwtkxbzdqvoeydvehtae"
 minutes: 67.3
 ---

@@ -1,9 +1,9 @@
 ---
 title: "Dynamic Blueprints: Pushing the Limits of NFT Collaboration"
 date: 2023-05-24
-source: "InPeak x Async Art webinar (Dropbox)"
+source: "InPeak x Async Art webinar"
 speakers: ["Ben", "Speaker 0", "Speaker 1", "Speaker 3", "Speaker 4", "Speaker 5"]
-origin: "Dropbox: Portfolio/Podcasts, et al/InPeak - Async Art - dynamic-blueprints_1684960719.mp4"
+origin: ""
 audio_cid: "bafybeici66do7drbrjmnlm2t64b2wejafusjktwqjx3knxh2ekfoewinlu"
 minutes: 62.2
 ---

@@ -25,7 +25,7 @@ supporting pages — [`/mirrors/`](https://thebenmeadows.com/mirrors/),
 compiles the CSS, the search index, the blog and the `/ai/` page; there is no
 framework or client-side rendering.
 
-Search is dependency-free on purpose. The corpus is about 98 KB across 25 pages
+Search is dependency-free on purpose. The corpus is about 98 KB across 26 pages
 and the index built from it about 117 KB — small enough to match in the browser
 without a search library. The usual pick, Pagefind, runs on WebAssembly, which
 under this site's `script-src 'self'` CSP would mean adding `'wasm-unsafe-eval'`.
@@ -303,7 +303,6 @@ decisions behind it are at [`/tech/`](https://thebenmeadows.com/tech/).
 | `svgo.config.mjs` | optimizer settings for `icons/` — run `npm run optimize:icons` after adding one |
 | `favicon/`, `me.png` | icons and profile image |
 | `readme-header-*.png` | the header above — keyed out of `og.png` by `scripts/make-readme-header.py`, one variant per theme; repo-only, never shipped |
-| `email.js` | re-sets the contact address on pages cached before it moved into the markup |
 | `theme.js` | three-state theme control (system / light / dark) |
 | `search.js` | search overlay + `/search/` page; fetches the index on first use |
 | `scripts/build-search-index.mjs` | builds `search-index.json` from the pages at build time |

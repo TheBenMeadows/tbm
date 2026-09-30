@@ -25,7 +25,7 @@
             "kind": "release",
             "title": "Squint, image shrinking and metadata inspection for macOS",
             "where": "Squint",
-            "summary": "A Mac app that shrinks images for email, reads and strips the metadata inside them, and opens GIF and SVG alongside the usual formats. Published as a pre-release, with a signed disk image and a self-update feed rather than a store listing.",
+            "summary": "A Mac app that shrinks images for email, reads and strips the metadata inside them, and opens GIF and SVG alongside the usual formats. Published as a pre-release, with a disk image and a self-update feed rather than a store listing.",
             "links": [
                 { "label": "the release", "url": "https://github.com/mdws-org/squint/releases/tag/v0.6.0" },
                 { "label": "source", "url": "https://github.com/mdws-org/squint" }
@@ -107,7 +107,7 @@
             "kind": "release",
             "title": "Cookie Tab, payment links that prove themselves",
             "where": "Cookie Chain",
-            "summary": "Make a payment link, and the page carries a live invoice plus the settled transaction read back from the chain, one instruction at a time, with no wallet connected. Entered in a bounty whose result is not published yet.",
+            "summary": "Make a payment link, and the page carries a live invoice plus the settled transaction read back from the chain, one instruction at a time, with no wallet connected. Entered in the chain's app bounty, which named two other entries as its winners on 28 September.",
             "links": [
                 { "label": "the app", "url": "https://cookie-tab.pages.dev/" },
                 { "label": "source", "url": "https://github.com/TheBenMeadows/cookie-tab" }

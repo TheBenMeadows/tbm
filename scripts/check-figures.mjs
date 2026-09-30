@@ -36,7 +36,7 @@ const indexKB = statSync(join(DIST, "search-index.json")).size / 1024;
 const versionedCss = readdirSync(DIST).find((f) => /^output-[0-9a-f]{8}\.css$/.test(f));
 if (!versionedCss) throw new Error("check-figures: no output-<hash>.css in dist");
 const homepageKB =
-    ["index.html", versionedCss, "theme.js", "search.js", "email.js",
+    ["index.html", versionedCss, "theme.js", "search.js",
      "fonts/publicsans-v1.woff2", "me.webp"]
         .reduce((n, f) => n + statSync(join(DIST, f)).size, 0) / 1024;
 
