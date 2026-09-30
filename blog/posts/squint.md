@@ -1,27 +1,40 @@
 ---
-title: "Squint 0.9.0"
+title: "Squint"
 date: 2026-09-30
 tags: [Photography, Technology]
 related: [/projects/]
 image: /blog/media/squint/profile-split.webp
 image_alt: "One photo split down the middle. Left: ICC color profile kept. Right: profile dropped."
-description: "One iPhone photo through ImageOptim and through Squint 0.9.0: 400,965 bytes with no color profile and no HDR gain map, against 735,751 bytes with both."
+description: "Squint is a free Mac app that makes photos and PDFs smaller from the Finder right-click menu, keeps their colors right, and removes where they were taken. Version 0.9.0 keeps the HDR in iPhone photos."
 ---
 
-One 4032x3024 Display P3 photo from an iPhone, on an M1. ImageOptim in lossy mode at its author's default quality of 74.5 wrote 400,965 bytes, SSIMULACRA2 76.95. Squint 0.9.0 in fast mode wrote 735,751 bytes, SSIMULACRA2 79.14. The difference is what each file still has: ImageOptim's has no color profile and no HDR gain map, and Squint's has both. With the gain map dropped, the way Squint handled this photo before 0.9.0, it wrote 401,879 bytes at 76.95, the same size and score as ImageOptim plus 914 bytes for the Display P3 profile.
+Squint is a free, open-source Mac app that makes images smaller. Right-click a photo in Finder, pick what you want done, and the file is replaced or a copy appears beside it. It reads JPEG, PNG, HEIC, AVIF, WebP, SVG, TIFF, GIF and PDF.
 
-Roof photos go into my reports and emails every day, and for years ImageOptim was what shrank them. Its interaction model is right and I copied it: drop files on a window, or right-click them in Finder, and they get smaller. Three things it does not do: it cannot write WebP or AVIF; it produces exactly one output per input, because its job model tracks a single result per file, so there is no "smaller copy beside the original"; and its quality is one fixed number applied to every image. One thing it does that I did not want: with strip-metadata on, it passes `-copy none` to jpegtran and `--strip-all` to jpegoptim, and both drop every marker, the ICC profile included. Those photos are Display P3 out of an iPhone, and every one of them came back flatter than it went in.
+The right-click menu has six entries:
 
-That profile is what the picture at the top of this post is about. An iPhone shoots in Display P3 and tags each photo with an ICC profile. ImageOptim's "strip metadata" option removes every marker in the file, including that one, and a viewer that finds no profile assumes sRGB and displays the colors pulled in toward the smaller gamut. The photo is one file split down the middle, profile kept on the left and dropped on the right; mean saturation (HSV, averaged over the frame) is 22% lower on the right. Location and camera data live in EXIF and XMP. The profile is a separate ICC segment. Squint removes the first and leaves the second, in every mode.
+- **Shrink** makes the file smaller and replaces it.
+- **Shrink for Email** writes a 2048-pixel copy beside the original, small enough to attach about thirty to one email.
+- **Shrink for Social** writes a 1440-pixel copy for posting.
+- **Shrink to a Quality Target** finds the smallest file that still looks the same to the eye, and replaces it.
+- **Convert to AVIF** writes an AVIF copy beside the original.
+- **Remove Location Data** takes out the GPS position, the camera and the date, and leaves the picture untouched.
 
-The other difference is the quality setting. Most optimizers apply one number to every image. Squint encodes each image at a candidate quality, scores it against the original with SSIMULACRA2, and narrows to the smallest file that still meets the target (default 80; 70 is general web, 90 is visually lossless). A flat screenshot and a noisy photograph end at different encoder settings. If no smaller file meets the target, the original is left as it is; nothing Squint writes is larger than what it read.
+Dropping files on the Squint window does the same six things.
 
 ![Finder with a JPEG selected and the Services submenu open, showing the six Squint entries](/blog/media/squint/finder-services-menu.webp)
 
-It is used from the right-click menu in Finder, six entries, each shown only when every selected file is a type that entry accepts. Shrink is one encode at a fixed quality, in place; the replacement goes through FileManager.replaceItemAt, so Finder tags and the creation date survive. Shrink to a Quality Target is the search above, in place. Shrink for Email and Shrink for Social write a copy beside the original at 2048 px or 1440 px on the long edge, as name-email.jpg or name-social.jpg; Nostr clients do not recompress uploads, so the social copy is the file that gets served. Remove Location Data strips EXIF, XMP and the other metadata segments without re-encoding, and takes HEIC, AVIF, WebP, TIFF, GIF and PDF as well. Convert to AVIF writes name.avif beside the original at full resolution, searched to the target; the encode goes through Image I/O because no pure-Rust AVIF encoder can embed an ICC profile. The window has a picker with the same six, for files dropped on it instead.
+Two things set it apart from other optimizers. It keeps the color profile. iPhone photos are shot in Display P3, a wider range of color than most images use, and an optimizer that strips the profile makes them look washed out; ImageOptim does exactly that when it strips metadata. The photo at the top of this post is one picture split down the middle, with the profile kept on the left and dropped on the right. Location and camera data still go.
+
+It also picks the quality for each image instead of using one setting for all of them. It scores every attempt against the original with a perceptual metric (SSIMULACRA2) and keeps the smallest file that still meets the target, so a flat screenshot and a noisy photo end up at different settings. It never writes a file bigger than the one it started with.
 
 ![The Squint window after a run: a JPEG shrunk 70% in place, a PDF shrunk 81%, a HEIC and a PNG converted to AVIF with their scores, and a JPEG with its location data removed](/blog/media/squint/squint-window.webp)
 
-0.9.0 is the version that went out today. Shrink and Shrink to a Quality Target now keep an iPhone photo's HDR gain map when they replace the file. macOS only decodes a gain map next to a picture its own encoder wrote, so for those photos the system encoder writes the file instead of mozjpeg, which costs about 30% at the same score. Shrink for Email and Shrink for Social still drop the map; the original beside them keeps it. Since 0.8, Shrink and Shrink to a Quality Target also take a PDF: the image XObjects inside the document are decoded, re-encoded at the entry's setting, downscaled to 150 dpi where they exceed it, and written back, and the document is rewritten in place. Fax-coded, JPEG 2000 and CMYK images inside a PDF are left as they are. AVIF output reached Finder in the same release. Builds are signed with a Developer ID and notarized from 0.7.1 on. Apple silicon only, macOS 14 or later; there is no Intel build, and no lossy WebP, since the only pure-Rust WebP encoder is lossless and lossy would mean a C dependency.
+**0.9.0**
 
-Rust engine, SwiftUI shell, GPL-3, Sparkle for updates. [Source and README](https://github.com/mdws-org/squint), [download](https://github.com/mdws-org/squint/releases/latest), or `brew install mdws-org/tap/squint`. Bug reports and measurements go to the GitHub issues; a claim in the README is checked with the corpus runner in tools/ before it goes in, and a counter-measurement filed the same way gets the same treatment.
+The version that went out today keeps the HDR in iPhone photos. A recent iPhone photo carries a second, hidden image (a gain map) that tells an HDR screen how much brighter to show each part of the picture. Until now Shrink dropped it: the photo still opened, but looked flat on the screen it was taken for. Shrink and Shrink to a Quality Target now keep it. macOS only reads a gain map next to a picture its own encoder wrote, so those photos come out about 30% bigger than they would without it. The email and social copies still leave it out, since they are made to be sent, and the original beside them keeps it.
+
+Measured on one iPhone photo: ImageOptim wrote 400,965 bytes with no color profile and no HDR. Squint 0.9.0 wrote 735,751 bytes, scored a little higher on SSIMULACRA2 (79.14 against 76.95), and kept both.
+
+0.9.0 also adds the six entries to the window's picker.
+
+Apple silicon, macOS 14 or later, signed and notarized, and it updates itself. The engine is Rust and the app is SwiftUI, GPL-3. [Download](https://github.com/mdws-org/squint/releases/latest), `brew install mdws-org/tap/squint`, or read the [source](https://github.com/mdws-org/squint). Bug reports go to the GitHub issues.
