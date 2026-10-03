@@ -78,11 +78,11 @@
         },
         {
             "id": "kryptos-ctf",
-            "date": "2026-09-14",
+            "date": "2026-10-03",
             "kind": "placement",
-            "title": "Eight of ten puzzles in a cryptography CTF",
+            "title": "All ten puzzles in a cryptography CTF",
             "where": "Paradigm Kryptos CTF",
-            "summary": "Ten cipher puzzles of rising difficulty, $10,000 across ten prize pools. The first eight solved and accepted by the site's checker, the eighth on 2026-09-14. Rank 47 on the public board; the ninth and tenth stand unsolved by anyone.",
+            "summary": "Ten cipher puzzles of rising difficulty, $10,000 across ten prize pools. All ten solved and accepted by the site's checker at one attempt each, the last two on 2026-10-03, for rank 13 on the public board.",
             "links": [
                 { "label": "the leaderboard", "url": "https://paradigm.xyz/kryptos-ctf/leaderboard" },
                 { "label": "the puzzles", "url": "https://paradigm.xyz/kryptos-ctf" }
