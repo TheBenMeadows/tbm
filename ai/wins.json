@@ -55,11 +55,11 @@
         },
         {
             "id": "paradigm-packing",
-            "date": "2026-09-24",
+            "date": "2026-10-05",
             "kind": "placement",
-            "title": "Under three-millionths off first place on a shape-packing problem",
+            "title": "Top ten on a shape-packing problem, two-millionths off first place",
             "where": "Paradigm Puzzles",
-            "summary": "Arrange a fixed set of shapes to minimise the radius of the circle enclosing them. Finished at 2.9485295780166156 against a leading score of 2.9485269238856113, a gap of 2.7e-6, for rank 11 of 43 on a board where the top twelve scores all fall within 3.1e-6 of one another.",
+            "summary": "Arrange a fixed set of shapes to minimise the radius of the circle enclosing them. Finished at 2.9485289324787587 against a leading score of 2.9485269238856113, a gap of 2.0e-6, for rank 10 of 43 on a board where the top twelve scores all fall within 3.1e-6 of one another.",
             "links": [
                 { "label": "the puzzle", "url": "https://www.paradigm.xyz/puzzles/packing" }
             ]
