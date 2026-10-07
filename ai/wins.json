@@ -9,6 +9,19 @@
     },
     "wins": [
         {
+            "id": "nnw-prayer-book",
+            "date": "2026-10-06",
+            "kind": "release",
+            "title": "Prayer Book, a theme for the NetNewsWire feed reader",
+            "where": "NetNewsWire Themes",
+            "summary": "A reading theme for iOS and Mac that sets every article the way OrthodoxPrayers.net sets a prayer: EB Garamond on parchment by day and a dark page at night, red links and labels, and a red capital opening each article. Released on GitHub and listed in the community theme catalog, which validates each package before it appears.",
+            "links": [
+                { "label": "the catalog", "url": "https://dave-atx.github.io/nnw-theme-marketplace/" },
+                { "label": "the release", "url": "https://github.com/mdws-org/nnw-prayer-book/releases/latest" },
+                { "label": "source", "url": "https://github.com/mdws-org/nnw-prayer-book" }
+            ]
+        },
+        {
             "id": "devin-ambassador",
             "date": "2026-09-21",
             "kind": "milestone",
