@@ -462,9 +462,9 @@ html.dark #theme-toggle::before { content: "Light"; }
     background: transparent;
 }
 
-/* The Squint card's figure (/projects/squint-prints/). Plates are filled, so
+/* Card figures (/hairline/, mounted by /hairline/mount.js). Plates are filled, so
    --hairline-plate must equal the page background in each theme. */
-.squint-figure {
+.hl-figure {
     position: relative;
     max-width: 22rem;
     --hairline-plate: #000000;
@@ -473,13 +473,13 @@ html.dark #theme-toggle::before { content: "Light"; }
     --hairline-mid: #404040;
     --hairline-lo: #262626;
 }
-.squint-figure-read {
+.hl-read {
     position: absolute;
     top: 0;
     right: 0;
 }
 @media (prefers-color-scheme: light) {
-    html:not(.dark) .squint-figure {
+    html:not(.dark) .hl-figure {
         --hairline-plate: #ffffff;
         --hairline-hi: #52525b;
         --hairline-edge: #a1a1aa;
@@ -487,7 +487,7 @@ html.dark #theme-toggle::before { content: "Light"; }
         --hairline-lo: #e4e4e7;
     }
 }
-html.light .squint-figure {
+html.light .hl-figure {
     --hairline-plate: #ffffff;
     --hairline-hi: #52525b;
     --hairline-edge: #a1a1aa;
