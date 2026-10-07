@@ -462,6 +462,39 @@ html.dark #theme-toggle::before { content: "Light"; }
     background: transparent;
 }
 
+/* The Squint card's figure (/projects/squint-prints/). Plates are filled, so
+   --hairline-plate must equal the page background in each theme. */
+.squint-figure {
+    position: relative;
+    max-width: 22rem;
+    --hairline-plate: #000000;
+    --hairline-hi: #a3a3a3;
+    --hairline-edge: #525252;
+    --hairline-mid: #404040;
+    --hairline-lo: #262626;
+}
+.squint-figure-read {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+@media (prefers-color-scheme: light) {
+    html:not(.dark) .squint-figure {
+        --hairline-plate: #ffffff;
+        --hairline-hi: #52525b;
+        --hairline-edge: #a1a1aa;
+        --hairline-mid: #d4d4d8;
+        --hairline-lo: #e4e4e7;
+    }
+}
+html.light .squint-figure {
+    --hairline-plate: #ffffff;
+    --hairline-hi: #52525b;
+    --hairline-edge: #a1a1aa;
+    --hairline-mid: #d4d4d8;
+    --hairline-lo: #e4e4e7;
+}
+
 /* The card's title is its link. A card is a container, not a button: anchoring
    the title is what a printed index does, and it gives the entry one honest
    destination — copyable, keyboard-reachable, and announced by name rather than
