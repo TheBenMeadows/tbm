@@ -1,5 +1,6 @@
 /* Renders blog/posts/*.md into the same page vocabulary as the hand-written
- * pages: blog/<slug>/index.html, the blog/ index, and blog/feed.xml.
+ * pages: blog/<slug>/index.html, the blog/ index, blog/feed.xml and
+ * blog/sitemap.xml.
  *
  * Generated HTML is never committed. It is written into the working tree beside
  * the hand-written pages and gitignored, exactly like output.css and
@@ -424,6 +425,67 @@ function longDate(iso) {
     return `${MONTHS[Number(m) - 1]} ${Number(d)}, ${y}`;
 }
 
+/* ------------------------------------------------------------------ */
+/* structured data                                                      */
+
+/* The home page declares Ben as a Person at this @id, so a post he wrote points
+ * at that node instead of restating him, and every post joins the same graph. */
+const PERSON_ID = `${SITE}/#person`;
+const BLOG_ID = `${SITE}/blog/#blog`;
+
+/* Inline JSON-LD is data, not script, so script-src 'self' does not block it. A
+ * "</script>" inside a title would still end the element early, so every "<" is
+ * written as its JSON escape. */
+function jsonLd(obj) {
+    const json = JSON.stringify(obj, null, 4).replace(/</g, "\\u003c");
+    return `        <script type="application/ld+json">\n${json.replace(/^/gm, "        ")}\n        </script>`;
+}
+
+/* An agent is not typed as a Person. schema.org expects a Person or an
+ * Organization as author, but claiming either would put the exact confusion
+ * blog/authors.json exists to prevent into the one place machines read first. */
+function authorSchema(a) {
+    if (a.id === "ben") return { "@id": PERSON_ID };
+    const node = { "@type": a.kind === "agent" ? "SoftwareApplication" : "Person", name: authorName(a) };
+    if (a.url) node.url = a.url;
+    return node;
+}
+
+function postSchema(post) {
+    const node = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "@id": `${SITE}${post.url}#article`,
+        headline: post.title,
+        description: post.description,
+        url: `${SITE}${post.url}`,
+        mainEntityOfPage: `${SITE}${post.url}`,
+        datePublished: post.date,
+        dateModified: post.updated || post.date,
+        author: authorSchema(post.author),
+        publisher: { "@id": PERSON_ID },
+        image: SITE + (post.image || "/og.png"),
+        inLanguage: "en",
+    };
+    if (post.tags.length) node.keywords = post.tags;
+    /* An unlisted post is not presented as part of the blog anywhere else, so it
+     * does not claim membership here either. */
+    if (!post.unlisted) node.isPartOf = { "@id": BLOG_ID };
+    return node;
+}
+
+function blogSchema(posts) {
+    return {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "@id": BLOG_ID,
+        name: "TheBenMeadows — Blog",
+        url: `${SITE}/blog/`,
+        author: { "@id": PERSON_ID },
+        blogPost: posts.map((p) => ({ "@id": `${SITE}${p.url}#article` })),
+    };
+}
+
 function postPage(post) {
     /* Author leads the byline. It is the first thing that has to be true about a
      * post, and it used to be absent entirely -- a post Orrery wrote carried the
@@ -473,8 +535,10 @@ ${post.seeAlso.map((r) =>
         imageAlt: post.image_alt,
         author: post.author,
         extraLinks: `        <meta property="og:type" content="article" />
-        <meta property="article:published_time" content="${post.date}" />${post.unlisted ? `
-        <meta name="robots" content="noindex" />` : ""}`,
+        <meta property="article:published_time" content="${post.date}" />${post.updated ? `
+        <meta property="article:modified_time" content="${post.updated}" />` : ""}${post.unlisted ? `
+        <meta name="robots" content="noindex" />` : ""}
+${jsonLd(postSchema(post))}`,
     }) + `        <main class="text-neutral-400 max-w-screen-md mx-auto px-6 pt-8 pb-12 leading-relaxed">
             <header class="post-head">
                 <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">${esc(post.title)}</h1>
@@ -520,6 +584,7 @@ ${list.map(row).join("\n")}
         title: "Blog · TheBenMeadows",
         description: "Longer writing about art and technology, by Ben Meadows.",
         url: "/blog/",
+        extraLinks: jsonLd(blogSchema(posts)),
     }) + `        <main class="text-neutral-400 max-w-screen-md mx-auto px-6 pt-8 pb-12 leading-relaxed">
             <h1 class="text-white text-3xl font-bold text-center" style="letter-spacing: -0.025em">Blog</h1>
             <p class="mt-4">
@@ -564,6 +629,18 @@ function feed(posts) {
                `</author>`;
     };
 
+    /* The full post goes in <content>, lead image first, so a reader can be read
+     * in without opening the page. Site-relative links and images are made
+     * absolute: a feed reader resolves them against the feed, or not at all, and
+     * xml:base is honoured too unevenly to rely on. */
+    const absolute = (html) => html.replace(/(\s(?:src|href)=")\//g, `$1${SITE}/`);
+    const content = (p) => {
+        const lead = p.image
+            ? `<img src="${esc(p.image)}" alt="${esc(p.image_alt || "")}" width="${p.imageSize.w}" height="${p.imageSize.h}" />\n`
+            : "";
+        return esc(absolute(lead + p.html));
+    };
+
     const entries = byDate.map((p) => `    <entry>
         <title>${esc(p.title)}</title>
         <link rel="alternate" type="text/html" href="${SITE}${p.url}" />
@@ -572,6 +649,7 @@ ${authorTag(p.author)}
         <updated>${p.updated || p.date}T00:00:00Z</updated>
         <published>${p.date}T00:00:00Z</published>
         <summary>${esc(p.description)}</summary>
+        <content type="html">${content(p)}</content>
     </entry>`).join("\n");
 
     return `<?xml version="1.0" encoding="utf-8"?>
@@ -585,6 +663,25 @@ ${authorTag(p.author)}
     <author><name>Ben Meadows</name></author>
 ${entries}
 </feed>
+`;
+}
+
+/* The blog's own sitemap, named in robots.txt beside the hand-kept root one. A
+ * sitemap may only list URLs under its own directory, which is why it lives at
+ * /blog/ rather than being merged into the root file -- and generating it is the
+ * point: the hand-kept list is how posts went missing from it. Unlisted posts
+ * are noindex, so they are left out. */
+function sitemap(posts) {
+    const url = (loc, date) => `<url>
+  <loc>${SITE}${loc}</loc>
+  <lastmod>${date}T00:00:00+00:00</lastmod>
+</url>`;
+    const latest = posts.reduce((d, p) => ((p.updated || p.date) > d ? p.updated || p.date : d), "");
+    const rows = [url("/blog/", latest), ...posts.map((p) => url(p.url, p.updated || p.date))];
+    return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${rows.join("\n")}
+</urlset>
 `;
 }
 
@@ -699,6 +796,7 @@ for (const p of posts) {
 const listed = posts.filter((p) => !p.unlisted);
 writeFileSync(join(OUT, "index.html"), indexPage(listed), "utf8");
 writeFileSync(join(OUT, "feed.xml"), feed(listed), "utf8");
+writeFileSync(join(OUT, "sitemap.xml"), sitemap(listed), "utf8");
 
 /* The page list the other builders consume. build-search-index.mjs indexes what
  * is named here and build-stamp.mjs stamps it, so a new post joins search and
