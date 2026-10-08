@@ -640,12 +640,18 @@ main .post-heading + * {
     border-left: 2px solid var(--rule);
     color: var(--ink-soft);
 }
+/* No syntax colouring, so a code block ships nothing beyond this stylesheet.
+   Code is set a step brighter than body copy so it reads as the literal text,
+   with room between lines for symbols to separate. */
 .post-code {
     margin: 1.6rem 0;
     padding: 1rem;
     overflow-x: auto;
     border: 1px solid var(--rule);
     font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--title);
+    tab-size: 4;
 }
 /* Transcript pages (/speaking/): each paragraph opens with a timestamp that is
    its own anchor, then the speaker's name for a new turn. The CID beside the
