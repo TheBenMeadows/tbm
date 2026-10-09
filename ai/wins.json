@@ -9,6 +9,19 @@
     },
     "wins": [
         {
+            "id": "ar-io-deploy-credit-share",
+            "date": "2026-10-09",
+            "kind": "merged",
+            "title": "Shared credits refused by a permaweb deploy tool, reported and fixed",
+            "where": "ar-io-deploy",
+            "summary": "A deploy wallet funded only by a credit-share approval was turned away with zero credits available, because the pre-flight check read the wallet's own balance instead of the balance it could spend. The report carried the measured balances and the exact price quote. The maintainer confirmed the cause, pointed to the release that counts shared credits, and merged a regression test for the reported case.",
+            "links": [
+                { "label": "the report", "url": "https://github.com/ar-io/ar-io-deploy/issues/17" },
+                { "label": "the credit", "url": "https://github.com/ar-io/ar-io-deploy/issues/17#issuecomment-6074488502" },
+                { "label": "the regression test", "url": "https://github.com/ar-io/ar-io-deploy/pull/33" }
+            ]
+        },
+        {
             "id": "nnw-prayer-book",
             "date": "2026-10-06",
             "kind": "release",
@@ -251,6 +264,12 @@
         }
     ],
     "quotes": [
+        {
+            "date": "2026-10-09",
+            "quote": "Thanks for the detailed report: the measurements made this quick to confirm.",
+            "who": "vilenarios, ar-io-deploy maintainer, on the issue",
+            "url": "https://github.com/ar-io/ar-io-deploy/issues/17#issuecomment-6074488502"
+        },
         {
             "date": "2026-09-15",
             "quote": "Congratulations! @TheBenMeadows, @feyz, @jackbone22, @DuKDuE, @neonpilot, @M_Rish, @achwir, and @sus1lo have been announced as the winners!",
