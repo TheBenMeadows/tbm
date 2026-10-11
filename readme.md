@@ -107,7 +107,7 @@ the build. It has outgrown the budget already and will keep growing with the blo
 survivable only because it is never part of a cold visit; the day it stops being lazy is
 the day it stops being affordable.
 
-The home page currently measures about 72 KB. `scripts/build-manifest.mjs` enforces the
+The home page currently measures about 80 KB. `scripts/build-manifest.mjs` enforces the
 budget on every build and fails over it, so the number cannot drift unnoticed; to check
 it independently, run a
 [DebugBear page-weight scan](https://www.debugbear.com/test/page-size-checker).

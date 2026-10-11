@@ -1,6 +1,11 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
+  // Emits every hover: utility inside @media (hover: hover) and (pointer: fine),
+  // so a tap on a touch screen does not leave the hover style stuck on.
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   // Scope scanning to the files actually served — avoids pulling class names
   // from node_modules/ and old template experiments into the built CSS.
   content: [
