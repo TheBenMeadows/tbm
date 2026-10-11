@@ -61,7 +61,7 @@ function openModal(row) {
   h.innerHTML = '<h3 class="text-white text-xl font-bold">essentialism #' + ed + '</h3>';
   var x = document.createElement('button');
   x.type = 'button'; x.textContent = 'close';
-  x.className = 'rounded-lg bg-black px-3 py-1 font-mono text-xs text-neutral-400 transition-opacity hover:opacity-80';
+  x.className = 'min-h-11 rounded-lg bg-black px-3 py-1 font-mono text-xs text-neutral-400 transition-opacity hover:opacity-80';
   x.addEventListener('click', close);
   h.appendChild(x); box.appendChild(h);
 

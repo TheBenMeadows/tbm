@@ -81,9 +81,21 @@ a {
     border: 0;
     padding: 0;
     cursor: pointer;
+    position: relative;
 }
-.running-head a:hover,
-.running-head button:hover { color: var(--accent); }
+/* The labels are about 17px tall; this invisible box makes each one a 44px target. */
+.running-head a::after,
+.running-head button::after {
+    content: "";
+    position: absolute;
+    inset: min(0px, (100% - 44px) / 2);
+}
+.running-head a:active,
+.running-head button:active { color: var(--accent); }
+@media (hover: hover) and (pointer: fine) {
+    .running-head a:hover,
+    .running-head button:hover { color: var(--accent); }
+}
 /* The theme control names the mode a tap switches TO; the label lives in CSS
    so it is right pre-paint and with JS off. Works under both the current
    3-state /theme.js and the redesign's 2-state one. */
@@ -136,6 +148,7 @@ h1 {
     background: transparent;
     border: 1px solid var(--rule);
     color: var(--ink);
+    min-height: 2.75rem;
     padding: 7px 13px;
     font: inherit;
     font-size: 0.85rem;
@@ -161,8 +174,17 @@ h1 {
     margin-top: 0.45rem;
 }
 .site-footer .footer-line:first-child { margin-top: 0; }
-.site-footer a { color: inherit; text-decoration: none; }
-.site-footer a:hover { color: var(--accent); }
+.site-footer a { position: relative; color: inherit; text-decoration: none; }
+/* The footer type is 0.7rem; this invisible box makes each link a 44px target. */
+.site-footer a::after {
+    content: "";
+    position: absolute;
+    inset: min(0px, (100% - 44px) / 2);
+}
+.site-footer a:active { color: var(--accent); }
+@media (hover: hover) and (pointer: fine) {
+    .site-footer a:hover { color: var(--accent); }
+}
 .site-footer .provenance {
     max-width: 44em;
     margin: 0 auto 1.4rem;
@@ -277,6 +299,8 @@ dialog h2 {
 }
 .close {
     float: right;
+    min-width: 44px;
+    min-height: 44px;
     background: none;
     border: 0;
     color: var(--ink);
@@ -292,6 +316,11 @@ footer {
 footer a {
     text-decoration: none;
 }
-footer a:hover {
+footer a:active {
     color: var(--accent);
+}
+@media (hover: hover) and (pointer: fine) {
+    footer a:hover {
+        color: var(--accent);
+    }
 }

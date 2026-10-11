@@ -36,7 +36,8 @@
         /* The removed outline had no replacement, so all ten sliders lost their
            focus ring. The track is 2px tall, which also made the element box
            2px tall: the thumb is drawn outside it. Both are fixed here. */
-        input[type=range]:focus-visible {
+        input[type=range]:focus-visible,
+        select:focus-visible {
             outline: 2px solid #ffffff;
             outline-offset: 4px;
         }
@@ -46,11 +47,24 @@
         }
 
         .lock-btn {
+            position: relative;
             min-width: 24px;
             min-height: 24px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
+        }
+
+        /* Invisible box that grows the 24px lock and Randomize buttons to 44px targets. */
+        .lock-btn::after,
+        #btn-random::after {
+            content: "";
+            position: absolute;
+            inset: min(0px, (100% - 44px) / 2);
+        }
+
+        #btn-random {
+            position: relative;
         }
 
         .lock-btn:focus-visible {
@@ -69,8 +83,13 @@
             background: #333; 
             border-radius: 3px;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555; 
+        ::-webkit-scrollbar-thumb:active {
+            background: #555;
+        }
+        @media (hover: hover) and (pointer: fine) {
+            ::-webkit-scrollbar-thumb:hover {
+                background: #555;
+            }
         }
 
         body {
@@ -248,7 +267,7 @@
                         </button>
                     </div>
                 </div>
-                <select id="line-type" aria-label="Line type" class="w-full bg-[#222] text-gray-300 text-xs p-2 rounded-sm outline-none border border-[#404040]">
+                <select id="line-type" aria-label="Line type" class="w-full bg-[#222] text-gray-300 text-xs p-2 rounded-sm border border-[#404040]">
                     <option value="solid">Solid</option>
                     <option value="dashed">Dashed</option>
                 </select>
@@ -285,14 +304,14 @@
                 Generate System
             </button>
             <div class="flex gap-2 mt-3">
-                <button id="btn-save-png" class="w-1/2 border border-[#333] text-gray-400 py-2 text-xs font-bold tracking-widest hover:text-white hover:border-white transition-colors uppercase">
+                <button id="btn-save-png" class="w-1/2 min-h-11 border border-[#333] text-gray-400 py-2 text-xs font-bold tracking-widest hover:text-white hover:border-white transition-colors uppercase">
                     Save PNG
                 </button>
-                <button id="btn-save-svg" class="w-1/2 border border-[#333] text-gray-400 py-2 text-xs font-bold tracking-widest hover:text-white hover:border-white transition-colors uppercase">
+                <button id="btn-save-svg" class="w-1/2 min-h-11 border border-[#333] text-gray-400 py-2 text-xs font-bold tracking-widest hover:text-white hover:border-white transition-colors uppercase">
                     Save SVG
                 </button>
             </div>
-             <button id="btn-reset" class="w-full mt-2 border border-[#333] text-gray-500 py-2 text-[10px] font-bold tracking-widest hover:text-white hover:border-white transition-colors uppercase">
+             <button id="btn-reset" class="w-full min-h-11 mt-2 border border-[#333] text-gray-500 py-2 text-[10px] font-bold tracking-widest hover:text-white hover:border-white transition-colors uppercase">
                 Reset All
             </button>
         </div>
