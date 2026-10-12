@@ -14,8 +14,9 @@
             "kind": "release",
             "title": "Emoji Fix, a browser extension for emoji that Chromium draws blank on the Mac",
             "where": "Emoji Fix",
-            "summary": "On some Macs, Brave and other Chromium browsers reserve the space for each Apple emoji and draw nothing, while Safari draws the same characters normally; a fresh browser profile shows it too, so the cause sits outside the browser's settings. The extension bundles Google's Noto Color Emoji and applies it to emoji only, including inside X's chat and reaction picker, where a font loaded from a CDN is blocked. Before release it went through a security and bug review, published in the repository with a regression page for each fix.",
+            "summary": "On some Macs, Brave and other Chromium browsers reserve the space for each Apple emoji and draw nothing, while Safari draws the same characters normally; a fresh browser profile shows it too, so the cause sits outside the browser's settings. The extension bundles Google's Noto Color Emoji and applies it to emoji only, including inside X's chat and reaction picker, where a font loaded from a CDN is blocked. Before release it went through a security and bug review, published in the repository with a regression page for each fix. On 2026-10-12 it passed Google's review and went live in the Chrome Web Store.",
             "links": [
+                { "label": "the Chrome Web Store listing", "url": "https://chromewebstore.google.com/detail/emoji-fix/pgjaolgpjogppmhdadddafkfcbnndeam" },
                 { "label": "the release", "url": "https://github.com/mdws-org/emoji-fix/releases/tag/v1.3.0" },
                 { "label": "the review", "url": "https://github.com/mdws-org/emoji-fix/blob/main/review/synthesis-r1.md" }
             ]
