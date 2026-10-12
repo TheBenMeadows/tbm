@@ -58,5 +58,5 @@ jobs:
           echo "551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb  gitleaks.tgz" | sha256sum -c -
           tar -xzf gitleaks.tgz gitleaks
           ./gitleaks git --no-banner --redact
-      - name: npm audit (runtime dependencies, high and critical advisories)
-        run: npm audit --omit=dev --audit-level=high
+      - name: npm audit (high and critical advisories)
+        run: npm audit --audit-level=high

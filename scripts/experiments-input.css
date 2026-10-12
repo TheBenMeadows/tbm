@@ -1,6 +1,6 @@
 /* Input for scripts/build-experiments-css.mjs -- per-page Tailwind for the
    ported single-file experiments. Kept out of experiments/ so build inputs
-   never ship in dist. */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+   never ship in dist. The script appends one @source line per file of the page
+   it is building, so each stylesheet holds only that page's utilities. */
+@import "tailwindcss" source(none);
+@import "../src/tailwind.css";

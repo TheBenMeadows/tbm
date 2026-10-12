@@ -179,7 +179,7 @@ function page(t, root) {
         : "";
     const who = `                <p class="post-meta no-justify">Speakers: Ben${others.length ? ", " + others.map(esc).join(", ") : ""}</p>\n`;
     return head({ title: `${t.title} · Transcript · TheBenMeadows`, description: t.description, url: t.url })
-        + `        <main class="text-neutral-400 max-w-screen-md mx-auto px-6 pt-8 pb-12 leading-relaxed transcript">
+        + `        <main class="text-neutral-400 max-w-(--breakpoint-md) mx-auto px-6 pt-8 pb-12 leading-relaxed transcript">
             <header class="post-head">
                 <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">${esc(t.title)}</h1>
                 <p class="post-meta no-justify">${meta.join("&nbsp;&middot; ")}</p>
@@ -205,7 +205,7 @@ function indexPage(items, registry) {
         title: "Speaking · Transcripts · TheBenMeadows",
         description: "Speaker-labeled transcripts of Ben Meadows's podcasts, X Spaces, panels and classes, 2022 onward, with the audio on IPFS.",
         url: "/speaking/",
-    }) + `        <main class="text-neutral-400 max-w-screen-md mx-auto px-6 pt-8 pb-12 leading-relaxed">
+    }) + `        <main class="text-neutral-400 max-w-(--breakpoint-md) mx-auto px-6 pt-8 pb-12 leading-relaxed">
             <header class="post-head">
                 <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">Speaking</h1>
                 <p class="post-meta no-justify">Transcripts of talks, panels, podcasts and classes. Each one is diarized and speaker-labeled;

@@ -94,7 +94,7 @@ re-measure on their own schedules, so the sizes they list lag this repo.
 New subpages are not measured, but three home-page assets are shared with every other
 page and do count:
 
-- `output.css` is a single Tailwind build over the content list in `tailwind.config.js`.
+- `output.css` is a single Tailwind build over the `@source` list in `src/input.css`.
   A new page that uses utility classes not already present grows it, and the home page
   pays for that.
 - `theme.js` and `search.js` are shared but fixed in size.
@@ -107,7 +107,7 @@ the build. It has outgrown the budget already and will keep growing with the blo
 survivable only because it is never part of a cold visit; the day it stops being lazy is
 the day it stops being affordable.
 
-The home page currently measures about 80 KB. `scripts/build-manifest.mjs` enforces the
+The home page currently measures about 86 KB. `scripts/build-manifest.mjs` enforces the
 budget on every build and fails over it, so the number cannot drift unnoticed; to check
 it independently, run a
 [DebugBear page-weight scan](https://www.debugbear.com/test/page-size-checker).
@@ -298,7 +298,7 @@ decisions behind it are at [`/tech/`](https://thebenmeadows.com/tech/).
 | `ai/wins.json` | entries for `/ai/`; the page is generated from it by `scripts/build-ai.mjs` |
 | `search/` | the search page (`/search/?q=…`) |
 | `404.html` | not-found page (self-contained, inline styles) |
-| `src/input.css`, `tailwind.config.js` | Tailwind source + config |
+| `src/input.css`, `src/tailwind.css` | Tailwind source + settings shared with the experiment stylesheets |
 | `icons/` | social SVGs — repo-only since the typographic redesign; the site ships no icons |
 | `svgo.config.mjs` | optimizer settings for `icons/` — run `npm run optimize:icons` after adding one |
 | `favicon/`, `me.png` | icons and profile image |

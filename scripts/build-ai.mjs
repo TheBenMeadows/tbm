@@ -144,7 +144,7 @@ const page = `<!doctype html>
                 <button id="theme-toggle" type="button" aria-label="Switch theme"></button>
             </nav>
         </header>
-        <main class="text-neutral-400 max-w-screen-md mx-auto px-6 pt-8 pb-12 leading-relaxed">
+        <main class="text-neutral-400 max-w-(--breakpoint-md) mx-auto px-6 pt-8 pb-12 leading-relaxed">
             <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">AI &amp; Agents</h1>
             <p class="mt-4">
                 Ben builds with AI. This page lists the results other people accepted:

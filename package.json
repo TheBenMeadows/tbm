@@ -4,7 +4,7 @@
   "description": "Source for thebenmeadows.com \u2014 a static personal link hub (HTML + Tailwind).",
   "private": true,
   "scripts": {
-    "build": "node scripts/check-ai-wins.mjs && node scripts/build-ai.mjs && node scripts/build-speaking.mjs && node scripts/build-blog.mjs && npx tailwindcss -i ./src/input.css -o ./output.css --minify && node scripts/build-search-index.mjs && node scripts/build-feed.mjs && node scripts/sync-readme-mirrors.mjs",
+    "build": "node scripts/check-ai-wins.mjs && node scripts/build-ai.mjs && node scripts/build-speaking.mjs && node scripts/build-blog.mjs && npx @tailwindcss/cli -i ./src/input.css -o ./output.css --minify && node scripts/build-search-index.mjs && node scripts/build-feed.mjs && node scripts/sync-readme-mirrors.mjs",
     "check:readme": "node scripts/sync-readme-mirrors.mjs --check",
     "check:mirrors": "node scripts/check-mirrors-page.mjs",
     "check:figures": "node scripts/check-figures.mjs",
@@ -17,7 +17,13 @@
     "build:blog": "node scripts/build-blog.mjs"
   },
   "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
     "marked": "^16.4.2",
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "^4.3.3"
+  },
+  "overrides": {
+    "@tailwindcss/cli": {
+      "@parcel/watcher": "~2.5.6"
+    }
   }
 }
