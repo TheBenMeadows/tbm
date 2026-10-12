@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "Source for thebenmeadows.com \u2014 a static personal link hub (HTML + Tailwind).",
   "private": true,
-  "dependencies": {
-    "marked": "^16.4.2",
-    "tailwindcss": "^3.4.1"
-  },
   "scripts": {
     "build": "node scripts/check-ai-wins.mjs && node scripts/build-ai.mjs && node scripts/build-speaking.mjs && node scripts/build-blog.mjs && npx tailwindcss -i ./src/input.css -o ./output.css --minify && node scripts/build-search-index.mjs && node scripts/build-feed.mjs && node scripts/sync-readme-mirrors.mjs",
     "check:readme": "node scripts/sync-readme-mirrors.mjs --check",
@@ -19,5 +15,9 @@
     "build:netlify": "npm run build && rm -rf dist && mkdir dist && cp index.html 404.html output.css theme.js search.js search-index.json me.png me.webp og.png robots.txt sitemap.xml feed.xml rss.xml _headers _redirects dist/ && cp -R favicon fonts .well-known commitments mirrors tech experiments infra ai art essentialism search projects hairline profiles marfa archive blog speaking dist/ && node scripts/version-css.mjs && node scripts/build-stamp.mjs && node scripts/build-manifest.mjs && node scripts/build-torrent.mjs && node scripts/check-figures.mjs && node scripts/check-onchain-code.mjs",
     "build:experiments": "node scripts/build-experiments-css.mjs",
     "build:blog": "node scripts/build-blog.mjs"
+  },
+  "devDependencies": {
+    "marked": "^16.4.2",
+    "tailwindcss": "^3.4.1"
   }
 }
