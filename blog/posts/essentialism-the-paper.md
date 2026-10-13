@@ -10,8 +10,6 @@ description: "Every essentialism token prints a memory percentage. I measured wh
 
 Every token of [essentialism](/art/essentialism/) prints a "memory" percentage in its trait line: how strongly that edition samples the photograph embedded in the code. It is 100% on edition 1 and falls about two points per edition to 12% on edition 44. I had never checked what that number leaves of the photograph in the finished drawing, so I rendered 1,000 seeds at all 44 editions (44,000 renders) with a byte-identical copy of the generator stored on Tezos, and measured it in two places: the darkness field the dots sample, and the ink of the dots themselves.
 
-![Correlation with the photograph by edition, for the field, the drawn dots of both photographs, and the control](/blog/media/essentialism-the-paper/curve.webp)
-
 **The curve**
 
 The field loses 0.06 of its correlation with the tree over the first 22 editions and 0.43 between editions 34 and 44. That shape comes from the mix and says nothing about memory. The photograph's weight falls in a straight line while the noise weight rises, and a mix like that holds until the two contribute equal spread, which for the tree happens at edition 33.5. A formula with two measured variances reproduces the field curve to within 0.010 for the tree and 0.021 for the sky.
