@@ -539,7 +539,7 @@ ${post.seeAlso.map((r) =>
         <meta property="article:modified_time" content="${post.updated}" />` : ""}${post.unlisted ? `
         <meta name="robots" content="noindex" />` : ""}
 ${jsonLd(postSchema(post))}`,
-    }) + `        <main class="text-neutral-400 max-w-screen-md mx-auto px-6 pt-8 pb-12 leading-relaxed">
+    }) + `        <main class="text-neutral-400 max-w-(--breakpoint-md) mx-auto px-6 pt-8 pb-12 leading-relaxed">
             <header class="post-head">
                 <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">${esc(post.title)}</h1>
 ${subLine}                <p class="post-meta no-justify">${meta.join(SEP)}</p>
@@ -585,7 +585,7 @@ ${list.map(row).join("\n")}
         description: "Longer writing about art and technology, by Ben Meadows.",
         url: "/blog/",
         extraLinks: jsonLd(blogSchema(posts)),
-    }) + `        <main class="text-neutral-400 max-w-screen-md mx-auto px-6 pt-8 pb-12 leading-relaxed">
+    }) + `        <main class="text-neutral-400 max-w-(--breakpoint-md) mx-auto px-6 pt-8 pb-12 leading-relaxed">
             <h1 class="text-white text-3xl font-bold text-center" style="letter-spacing: -0.025em">Blog</h1>
             <p class="mt-4">
                 Longer writing about art and technology. These

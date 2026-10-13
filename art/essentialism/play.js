@@ -53,7 +53,7 @@ function openModal(row) {
   back.setAttribute('aria-label', 'essentialism #' + ed + ' details');
 
   var box = document.createElement('div');
-  box.className = 'mx-auto my-8 max-w-screen-md rounded-xl bg-zinc-800 p-6 text-neutral-400';
+  box.className = 'mx-auto my-8 max-w-(--breakpoint-md) rounded-xl bg-zinc-800 p-6 text-neutral-400';
   box.addEventListener('click', function (e) { e.stopPropagation(); });
 
   var h = document.createElement('div');
@@ -71,7 +71,7 @@ function openModal(row) {
   box.appendChild(img);
 
   var tl = document.createElement('p');
-  tl.className = 'mt-4 font-mono text-xs text-neutral-400 break-words';
+  tl.className = 'mt-4 font-mono text-xs text-neutral-400 wrap-break-word';
   if (artifactSeed !== null) {
     tl.textContent = traitsOf(render(artifactSeed, ed));
   } else if (meta.artifactUri) {
