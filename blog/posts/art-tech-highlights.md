@@ -147,7 +147,7 @@ I'm not sure how I feel about this being the piece that got me into the 787 Upda
 
 ---
 
-**My First Animated Fully On-Chain Piece on Ethereum**: "ursus" - December 2025 - Released as part of [COMPUTERBLOOD's POLAR DERIVATIVES open call](https://x.com/TheBenMeadows/status/2000962340658012599), and primarily inspired by Bo Bartlett's "Dominion". The glitch is an SVG filter chain (feTurbulence noise driving the distortion), and the SVG itself lives on-chain. X won't show an SVG, so I [built a small page](https://mdws.me/ursus.html) to display it properly inside the post. Auctioned on Manifold with a starting bid of 0.042069 ETH.
+**My First Animated Fully On-Chain Piece on Ethereum**: "ursus" - December 2025 - Released as part of [COMPUTERBLOOD's POLAR DERIVATIVES open call](https://x.com/TheBenMeadows/status/2000962340658012599), and primarily inspired by Bo Bartlett's "Dominion". The glitch is an SVG filter chain (feTurbulence noise driving the distortion), and the SVG itself lives on-chain. X won't show an SVG, so I [built a small page](https://mdws.me/ursus.html) to display it properly inside the post. Listed for [auction on Manifold](https://manifold.xyz/@thebenmeadows-c36dad91/id/4125286640) with a starting bid of 0.042069 ETH. I [wrote up how the glitch works](/blog/ursus/), including why it repeats every 28 seconds.
 
 !["ursus", the on-chain SVG itself, animating](/blog/media/art-tech-highlights/ursus.svg)
 
