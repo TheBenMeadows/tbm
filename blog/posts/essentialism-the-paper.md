@@ -34,4 +34,4 @@ For each token the chain also stores its edition number and the entropy drawn at
 
 Claude drafted the port, the measurement scripts and the text of the paper under my direction. Eight models reviewed the drafts, and every measurable defect they reported was reproduced or refuted by a script before it changed the paper; its last section names them.
 
-The paper is [here as a PDF](/art/essentialism/essentialism-preprint.pdf) and archived at [doi.org/10.5281/zenodo.23333266](https://doi.org/10.5281/zenodo.23333266), with the code and data at [github.com/TheBenMeadows/essentialism-preprint](https://github.com/TheBenMeadows/essentialism-preprint). Corrections go to that repository's issues.
+The paper is [here as a PDF](/papers/essentialism/essentialism-preprint.pdf) and archived at [doi.org/10.5281/zenodo.23333266](https://doi.org/10.5281/zenodo.23333266), with the code and data at [github.com/TheBenMeadows/essentialism-preprint](https://github.com/TheBenMeadows/essentialism-preprint). Corrections go to that repository's issues.

@@ -2,6 +2,9 @@
 /experiments/prayers  https://orthodoxprayers.net/  301
 /experiments/prayers/*  https://orthodoxprayers.net/:splat  301
 
+# The essentialism preprint PDF moved beside its abstract page (2026-10-15).
+/art/essentialism/essentialism-preprint.pdf  /papers/essentialism/essentialism-preprint.pdf  301
+
 # BitTorrent webseed (BEP 19). A multi-file torrent's webseed URL is built as
 # <url-list><name>/<path>, so a client fetching this site's torrent asks for
 # /tbm/index.html, /tbm/favicon/favicon.ico and so on. The site is served at the
