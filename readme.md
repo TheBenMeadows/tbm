@@ -21,12 +21,12 @@ pointing to Ben Meadows' sites, projects, and social profiles.
 It is a small static site: hand-written HTML styled with Tailwind, plus
 supporting pages — [`/mirrors/`](https://thebenmeadows.com/mirrors/),
 [`/tech/`](https://thebenmeadows.com/tech/), `/experiments/`, `/infra/`,
-`/ai/`, `/art/` and [`/blog/`](https://thebenmeadows.com/blog/). The build
+`/ai/`, `/papers/`, `/art/` and [`/blog/`](https://thebenmeadows.com/blog/). The build
 compiles the CSS, the search index, the blog and the `/ai/` page; there is no
 framework or client-side rendering.
 
-Search is dependency-free on purpose. The corpus is about 128 KB across 29 pages
-and the index built from it about 137 KB — small enough to match in the browser
+Search is dependency-free on purpose. The corpus is about 134 KB across 32 pages
+and the index built from it about 143 KB — small enough to match in the browser
 without a search library. The usual pick, Pagefind, runs on WebAssembly, which
 under this site's `script-src 'self'` CSP would mean adding `'wasm-unsafe-eval'`.
 Instead `scripts/build-search-index.mjs` emits a JSON index at build time and
@@ -101,7 +101,7 @@ page and do count:
 
 `search-index.json` grows with every page in `scripts/build-search-index.mjs` and with
 every post under `blog/posts/`, but `search.js` fetches it on first search rather than
-on load, so it stays out of the measurement. It is 137 KB — more than the entire budget on
+on load, so it stays out of the measurement. It is 143 KB — more than the entire budget on
 its own, most of it blog prose — so it must stay lazy. Fetching it on load would fail
 the build. It has outgrown the budget already and will keep growing with the blog, which is
 survivable only because it is never part of a cold visit; the day it stops being lazy is
@@ -296,6 +296,7 @@ decisions behind it are at [`/tech/`](https://thebenmeadows.com/tech/).
 | `profiles/` | every profile, one page — the footer's "All profiles" target |
 | `experiments/`, `infra/` | experiments gallery and the network/ASN colophon |
 | `ai/wins.json` | entries for `/ai/`; the page is generated from it by `scripts/build-ai.mjs` |
+| `papers/` | preprints: an index plus one page per paper with Google Scholar `citation_*` tags; each PDF sits beside its page, byte-identical to the Zenodo file |
 | `search/` | the search page (`/search/?q=…`) |
 | `404.html` | not-found page (self-contained, inline styles) |
 | `src/input.css`, `src/tailwind.css` | Tailwind source + settings shared with the experiment stylesheets |
