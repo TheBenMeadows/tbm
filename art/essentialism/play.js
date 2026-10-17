@@ -15,6 +15,8 @@ var NS = 'http://www.w3.org/2000/svg';
 var EDITIONS = 44, W = 750, H = 1000;
 var TZKT = 'https://api.tzkt.io/v1/bigmaps/771409/keys?value.generator_id=407&select=key,value&limit=60';
 var META = 'https://api.tzkt.io/v1/tokens?contract=KT1CB4MYiAViCuXWBU961x7LjQXGeA8SnQwt&select=tokenId,metadata&tokenId.in=';
+/* every version of a token's metadata record; a regenerated token's earlier version still runs */
+var HISTORY = 'https://api.tzkt.io/v1/bigmaps/771410/keys/';
 var GENERATOR = 'https://api.tzkt.io/v1/bigmaps/771404/keys/407';
 var THUMB = 'https://media.bootloader.art/svg-js/v1/thumbnail/';
 var TOKEN = 'https://bootloader.art/token/svg-js/';
@@ -75,7 +77,21 @@ function openModal(row) {
   if (artifactSeed !== null) {
     tl.textContent = traitsOf(render(artifactSeed, ed));
   } else if (meta.artifactUri) {
-    tl.textContent = 'This token was regenerated, and its stored artifact records the seed as raw bytes rather than a number, so its trait line cannot be computed from chain data. Reported as bootloader-monorepo#30.';
+    /* regenerate_token stores the seed as raw bytes (bootloader-monorepo#30), so the current
+       artifact is not a program. The version the mint wrote is still in the block history. */
+    tl.textContent = 'Reading the version of this token that the mint wrote…';
+    fetch(HISTORY + id + '/updates').then(function (r) { return r.json(); }).then(function (ups) {
+      var v = null;
+      ups.forEach(function (u) {
+        var ti = u.value && u.value.token_info;
+        var s = ti && ti.artifactUri ? seedFromArtifact(ti.artifactUri) : null;
+        if (s !== null && s !== 0n) v = { seed: s, level: u.level };
+      });
+      if (!v) throw new Error('no runnable version');
+      tl.textContent = traitsOf(render(v.seed, ed)) + ' (from the artifact the mint wrote at block ' + v.level + '; a later regeneration stored the seed as raw bytes, bootloader-monorepo#30)';
+    }).catch(function () {
+      tl.textContent = 'This token was regenerated, and its current artifact records the seed as raw bytes rather than a number, so its trait line cannot be computed from the current record. Reported as bootloader-monorepo#30.';
+    });
   } else {
     tl.textContent = 'Loading token metadata from the chain…';
   }
