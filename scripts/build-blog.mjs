@@ -18,6 +18,7 @@ import { readFileSync, writeFileSync, readdirSync, mkdirSync, rmSync, existsSync
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { marked } from "marked";
+import { checkHref } from "./lib/href.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const POSTS = join(ROOT, "blog", "posts");
@@ -228,6 +229,7 @@ const RENDERER = {
     /* Links keep the site's one link style, and anything leaving the site is
      * marked the way the hand-written pages mark it. */
     link({ href, title, tokens }) {
+        checkHref(href, "build-blog");
         const text = this.parser.parseInline(tokens);
         const external = /^https?:\/\//.test(href) && !href.startsWith(SITE);
         const t = title ? ` title="${esc(title)}"` : "";
