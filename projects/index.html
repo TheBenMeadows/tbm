@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="Software Ben Meadows builds and maintains - an Orthodox prayer book for the browser, and native Apple silicon builds of open-source wallets." />
+        <meta name="description" content="Software Ben Meadows builds and maintains - an Orthodox prayer book for the browser, its NetNewsWire theme, and native Apple silicon builds of open-source wallets." />
         <meta name="color-scheme" content="dark light" />
         <link rel="canonical" href="https://thebenmeadows.com/projects/" />
         <link rel="alternate" type="application/atom+xml" title="Site releases" href="/feed.xml" />
@@ -12,7 +12,7 @@
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="TheBenMeadows" />
         <meta property="og:title" content="Projects · TheBenMeadows" />
-        <meta property="og:description" content="Software Ben Meadows builds and maintains - an Orthodox prayer book for the browser, and native Apple silicon builds of open-source wallets." />
+        <meta property="og:description" content="Software Ben Meadows builds and maintains - an Orthodox prayer book for the browser, its NetNewsWire theme, and native Apple silicon builds of open-source wallets." />
         <meta property="og:url" content="https://thebenmeadows.com/projects/" />
         <meta property="og:image" content="https://thebenmeadows.com/og.png" />
         <meta property="og:image:type" content="image/png" />
@@ -22,7 +22,7 @@
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Projects · TheBenMeadows" />
-        <meta name="twitter:description" content="Software Ben Meadows builds and maintains - an Orthodox prayer book for the browser, and native Apple silicon builds of open-source wallets." />
+        <meta name="twitter:description" content="Software Ben Meadows builds and maintains - an Orthodox prayer book for the browser, its NetNewsWire theme, and native Apple silicon builds of open-source wallets." />
         <meta name="twitter:image" content="https://thebenmeadows.com/og.png" />
 
         <title>Projects · TheBenMeadows</title>
@@ -55,7 +55,7 @@
                 <button id="theme-toggle" type="button" aria-label="Switch theme"></button>
             </nav>
         </header>
-        <main class="text-neutral-400 max-w-screen-md mx-auto px-6 pt-8 pb-12 leading-relaxed">
+        <main class="text-neutral-400 max-w-(--breakpoint-md) mx-auto px-6 pt-8 pb-12 leading-relaxed">
             <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">Projects</h1>
             <p class="mt-4">
                 Software I build and maintain. The wallets are continuations of
@@ -67,15 +67,16 @@
             <div class="mt-8 grid gap-4 sm:grid-cols-2">
                 <div class="hairline-card p-6">
                     <div class="flex items-center justify-between font-mono text-xs">
-                        <span class="uppercase tracking-widest text-neutral-500">Prayer Book</span>
+                        <span class="uppercase tracking-widest text-neutral-500">Reader Theme</span>
                         <span class="text-neutral-600">01</span>
                     </div>
-                    <h2 class="card-title mt-3 text-xl font-bold text-white"><a href="https://orthodoxprayers.net/" target="_blank" rel="noopener">Orthodox Prayers</a></h2>
-                    <p class="mt-2 text-sm text-neutral-400">An Orthodox prayer book for the browser: morning prayers, the Hours, and the complete Psalter in twenty kathismata. Set like the printed books, and readable offline once opened.</p>
-                    <div class="mt-3 font-mono text-xs uppercase tracking-widest text-neutral-500">Web &middot; installs to home screen</div>
+                    <h2 class="card-title mt-3 text-xl font-bold text-white"><a href="https://github.com/mdws-org/nnw-prayer-book" target="_blank" rel="noopener">Prayer Book for NetNewsWire</a></h2>
+                    <p class="mt-2 text-sm text-neutral-400">The Orthodox Prayers page as a theme for the NetNewsWire feed reader: EB Garamond, parchment by day and vigil by night, red for links and labels, and a red capital opening each article. Justified and hyphenated, on the phone too.</p>
+                    <div class="mt-3 font-mono text-xs uppercase tracking-widest text-neutral-500">iOS &middot; iPadOS &middot; macOS</div>
                     <div class="mt-3 flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs">
-                        <a class="text-neutral-400 hover:text-white transition-colors" href="https://orthodoxprayers.net/" target="_blank" rel="noopener">orthodoxprayers.net</a>
-                        <a class="text-neutral-400 hover:text-white transition-colors" href="https://github.com/mdws-org/orthodoxprayers" target="_blank" rel="noopener">source</a>
+                        <a class="text-neutral-400 hover:text-white transition-colors" href="netnewswire://theme/add?url=https://github.com/mdws-org/nnw-prayer-book/releases/latest/download/Prayer.Book.nnwtheme.zip">add to NetNewsWire</a>
+                        <a class="text-neutral-400 hover:text-white transition-colors" href="https://github.com/mdws-org/nnw-prayer-book/releases/latest" target="_blank" rel="noopener">download</a>
+                        <a class="text-neutral-400 hover:text-white transition-colors" href="https://github.com/mdws-org/nnw-prayer-book" target="_blank" rel="noopener">source</a>
                     </div>
                 </div>
 
@@ -121,8 +122,45 @@
 
                 <div class="hairline-card p-6">
                     <div class="flex items-center justify-between font-mono text-xs">
-                        <span class="uppercase tracking-widest text-neutral-500">Archive Tool</span>
+                        <span class="uppercase tracking-widest text-neutral-500">Browser Extension</span>
                         <span class="text-neutral-600">05</span>
+                    </div>
+                    <h2 class="card-title mt-3 text-xl font-bold text-white"><a href="https://github.com/mdws-org/emoji-fix" target="_blank" rel="noopener">Emoji Fix</a></h2>
+                    <p class="mt-2 text-sm text-neutral-400">On some Macs, Brave and other Chromium browsers draw every Apple emoji as blank space while Safari draws them fine. This bundles Google's Noto Color Emoji and applies it to emoji only, including inside X's chat and reaction picker, where a font from a CDN is blocked.</p>
+                    <div class="mt-3 font-mono text-xs uppercase tracking-widest text-neutral-500">Brave &middot; Chromium 119+ &middot; macOS</div>
+                    <div class="mt-3 flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs">
+                        <a class="text-neutral-400 hover:text-white transition-colors" href="https://chromewebstore.google.com/detail/emoji-fix/pgjaolgpjogppmhdadddafkfcbnndeam" target="_blank" rel="noopener">chrome web store</a>
+                        <a class="text-neutral-400 hover:text-white transition-colors" href="https://github.com/mdws-org/emoji-fix/releases/latest" target="_blank" rel="noopener">download</a>
+                        <a class="text-neutral-400 hover:text-white transition-colors" href="https://github.com/mdws-org/emoji-fix" target="_blank" rel="noopener">source</a>
+                    </div>
+                </div>
+
+                <div class="hairline-card p-6">
+                    <div class="flex items-center justify-between font-mono text-xs">
+                        <span class="uppercase tracking-widest text-neutral-500">Prayer Book</span>
+                        <span class="text-neutral-600">06</span>
+                    </div>
+                    <div class="hl-figure mt-4">
+                        <div data-hl="prayers"></div>
+                        <span class="hl-read font-mono text-xs text-neutral-500" aria-hidden="true">rest</span>
+                    </div>
+                    <h2 class="card-title mt-3 text-xl font-bold text-white"><a href="https://orthodoxprayers.net/" target="_blank" rel="noopener">Orthodox Prayers</a></h2>
+                    <p class="mt-2 text-sm text-neutral-400">An Orthodox prayer book for the browser: morning prayers, the Hours, and the complete Psalter in twenty kathismata. Set like the printed books, and readable offline once opened.</p>
+                    <div class="mt-3 font-mono text-xs uppercase tracking-widest text-neutral-500">Web &middot; installs to home screen</div>
+                    <div class="mt-3 flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs">
+                        <a class="text-neutral-400 hover:text-white transition-colors" href="https://orthodoxprayers.net/" target="_blank" rel="noopener">orthodoxprayers.net</a>
+                        <a class="text-neutral-400 hover:text-white transition-colors" href="https://github.com/mdws-org/orthodoxprayers" target="_blank" rel="noopener">source</a>
+                    </div>
+                </div>
+
+                <div class="hairline-card p-6">
+                    <div class="flex items-center justify-between font-mono text-xs">
+                        <span class="uppercase tracking-widest text-neutral-500">Archive Tool</span>
+                        <span class="text-neutral-600">07</span>
+                    </div>
+                    <div class="hl-figure mt-4">
+                        <div data-hl="badges"></div>
+                        <span class="hl-read font-mono text-xs text-neutral-500" aria-hidden="true">rest</span>
                     </div>
                     <h2 class="card-title mt-3 text-xl font-bold text-white"><a href="/projects/poap-saver/">POAP Saver</a></h2>
                     <p class="mt-2 text-sm text-neutral-400">POAP shut down, and every badge's artwork lives on servers that will not outlast it. This saves what your badges point at (metadata, images, hashes) as one zip with an offline gallery. Runs in the browser; nothing is uploaded, no wallet connection.</p>
@@ -136,12 +174,17 @@
                 <div class="hairline-card p-6">
                     <div class="flex items-center justify-between font-mono text-xs">
                         <span class="uppercase tracking-widest text-neutral-500">Image Optimizer</span>
-                        <span class="text-neutral-600">06</span>
+                        <span class="text-neutral-600">08</span>
+                    </div>
+                    <div class="hl-figure mt-4">
+                        <div data-hl="prints"></div>
+                        <span class="hl-read font-mono text-xs text-neutral-500" aria-hidden="true">rest</span>
                     </div>
                     <h2 class="card-title mt-3 text-xl font-bold text-white"><a href="https://github.com/mdws-org/squint" target="_blank" rel="noopener">Squint</a></h2>
-                    <p class="mt-2 text-sm text-neutral-400">ImageOptim has gone years without a real update. It also strips the colour profile from every photograph it touches, so pictures from a modern phone come out desaturated. Squint aims at a perceptual quality target and leaves the profile alone. Location and camera data are dropped.</p>
-                    <div class="mt-3 font-mono text-xs uppercase tracking-widest text-neutral-500">macOS ARM64 &middot; in development</div>
+                    <p class="mt-2 text-sm text-neutral-400">ImageOptim strips the colour profile from every photograph it touches, so pictures from a modern phone come out desaturated. Squint aims at a perceptual quality target and leaves the profile alone. Location and camera data are dropped. Six Finder entries, in place or beside the original; JPEG, PNG, HEIC, AVIF, WebP, SVG and PDF in, JPEG, PNG and AVIF out.</p>
+                    <div class="mt-3 font-mono text-xs uppercase tracking-widest text-neutral-500">macOS 14+ &middot; Apple silicon &middot; signed and notarized</div>
                     <div class="mt-3 flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs">
+                        <a class="text-neutral-400 hover:text-white transition-colors" href="https://github.com/mdws-org/squint/releases/latest" target="_blank" rel="noopener">download</a>
                         <a class="text-neutral-400 hover:text-white transition-colors" href="https://github.com/mdws-org/squint" target="_blank" rel="noopener">source</a>
                     </div>
                 </div>
@@ -168,6 +211,10 @@
                 <a href="/infra/">Infra</a>
             </nav>
         </footer>
-        <script src="/email.js"></script>
+        <script src="/hairline/kernel.js"></script>
+        <script src="/hairline/mount.js"></script>
+        <script type="module" src="/hairline/prayers.js"></script>
+        <script type="module" src="/hairline/badges.js"></script>
+        <script type="module" src="/hairline/prints.js"></script>
     </body>
 </html>

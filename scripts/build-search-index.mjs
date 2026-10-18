@@ -24,11 +24,16 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const PAGES = [
     { file: 'index.html', url: '/' },
     { file: 'profiles/index.html', url: '/profiles/' },
+    { file: 'marfa/index.html', url: '/marfa/' },
     { file: 'mirrors/index.html', url: '/mirrors/' },
     { file: 'tech/index.html', url: '/tech/' },
     { file: 'experiments/index.html', url: '/experiments/' },
     { file: 'projects/index.html', url: '/projects/' },
     { file: 'infra/index.html', url: '/infra/' },
+    { file: 'ai/index.html', url: '/ai/' },
+    { file: 'papers/index.html', url: '/papers/' },
+    { file: 'papers/essentialism/index.html', url: '/papers/essentialism/' },
+    { file: 'papers/rrf-score-ceiling/index.html', url: '/papers/rrf-score-ceiling/' },
     { file: 'art/index.html', url: '/art/' },
     { file: 'art/essentialism/index.html', url: '/art/essentialism/' },
     { file: 'archive/index.html', url: '/archive/' },
@@ -48,7 +53,14 @@ const PAGES = [
 const blogPages = JSON.parse(
     await readFile(join(ROOT, 'blog', 'pages.json'), 'utf8')
 ).pages;
-PAGES.push(...blogPages);
+/* An unlisted post (a superseded version kept at its old address) is built and
+ * stamped but must not surface in search beside the version that replaced it. */
+PAGES.push(...blogPages.filter((p) => !p.unlisted));
+
+/* Transcripts under /speaking/ are deliberately NOT indexed. They are ~470k
+ * words; adding them takes this file from ~106 KB to ~2.6 MB, which breaks the
+ * in-browser matching this search exists for and the page-weight argument the
+ * README makes. They are reachable from /speaking/ and by search engines. */
 
 /* Every named entity the pages actually use. A missing one does not fail loudly:
  * it survives decoding and ships as visible markup inside a search result, which
