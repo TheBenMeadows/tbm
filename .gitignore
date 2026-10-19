@@ -26,3 +26,6 @@ ai/index.html
 # embedded repo, so `git add -A` would otherwise stage a handful of bogus
 # gitlink entries rather than any real content.
 .claude/
+
+# scratch sites the tests build and remove
+.test-site-*/
