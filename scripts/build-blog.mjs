@@ -789,6 +789,20 @@ for (const p of posts) {
     }
 }
 
+/* Remove what an earlier run generated, as listed in its pages.json, so a
+ * renamed or deleted post does not stay published by a builder that keeps its
+ * checkout between runs (generated folders are gitignored, and a hard reset
+ * leaves them). Only blog/<slug>/index.html entries name a folder; media/ and
+ * posts/ are never listed, and are refused here as well. */
+if (existsSync(join(OUT, "pages.json"))) {
+    for (const page of JSON.parse(readFileSync(join(OUT, "pages.json"), "utf8")).pages) {
+        const [top, slug, file, ...rest] = page.file.split("/");
+        if (top !== "blog" || file !== "index.html" || rest.length) continue;
+        if (!/^[a-z0-9][a-z0-9-]*$/.test(slug) || slug === "media" || slug === "posts") continue;
+        rmSync(join(OUT, slug), { recursive: true, force: true });
+    }
+}
+
 for (const p of posts) {
     const dir = join(OUT, p.slug);
     rmSync(dir, { recursive: true, force: true });
