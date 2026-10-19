@@ -141,6 +141,7 @@
             <h2 class="section-label" style="margin-top: 2.6rem">Hygiene</h2>
             <ul class="mt-4 space-y-3 list-none">
                 <li><span class="text-white font-medium">RPKI</span>: the prefix has a valid ROA for AS219158 (max length /48) — anything else claiming it is invalid.</li>
+                <li><span class="text-white font-medium">ASPA</span>: AS219158 lists its three upstreams (AS209533, AS209735, AS212895) in RPKI, so a path that shows it behind any other network is flagged as a leak.</li>
                 <li><span class="text-white font-medium">IRR</span>: <code class="font-mono text-sm">route6</code> and <code class="font-mono text-sm">as-set AS219158:AS-ALL</code> in the RIPE database.</li>
                 <li><span class="text-white font-medium">RPKI, IPv4</span>: none, and none is possible &mdash; 44Net is ARIN legacy space, which the registry does not issue RPKI certificates for. The IRR route object is the only origin proof, so some networks accept it and some do not.</li>
                 <li><span class="text-white font-medium">Reverse DNS</span>: the block's <code class="font-mono text-sm">ip6.arpa</code> zone is delegated and answers for the routers.</li>
