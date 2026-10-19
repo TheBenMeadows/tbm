@@ -621,6 +621,22 @@ html.light .hl-figure {
    main, so it picks up the same justification and hyphenation as every other
    page. What is here is only what a post has and a hand-written page does
    not — a byline, in-flow images, headings inside the body, and a table. */
+
+/* A post page sets its own measure. The site column (48rem) carries short pages
+   and index rows; a 2,000-word post set in it runs 97 characters to the line
+   (Public Sans averages 0.461em per character over the posts, from the font's
+   advance widths), past the 45-75 that long reading wants. 36.5rem less the
+   1.5rem padding each side is a 536px column: 68 characters at 17px. Title,
+   byline, figures, headings and the see-also rows all share it -- one measure
+   on the page, as everywhere else on the site; only the width and the body size
+   differ from a hand-written page. Leading comes down a step with the shorter
+   line. */
+main.post-main {
+    max-width: 36.5rem;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+}
+
 .post-meta {
     margin-top: 0.6rem;
     font-size: 0.72rem;

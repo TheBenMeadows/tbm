@@ -541,7 +541,7 @@ ${post.seeAlso.map((r) =>
         <meta property="article:modified_time" content="${post.updated}" />` : ""}${post.unlisted ? `
         <meta name="robots" content="noindex" />` : ""}
 ${jsonLd(postSchema(post))}`,
-    }) + `        <main class="text-neutral-400 max-w-(--breakpoint-md) mx-auto px-6 pt-8 pb-12 leading-relaxed">
+    }) + `        <main class="post-main text-neutral-400 mx-auto px-6 pt-8 pb-12">
             <header class="post-head">
                 <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">${esc(post.title)}</h1>
 ${subLine}                <p class="post-meta no-justify">${meta.join(SEP)}</p>
