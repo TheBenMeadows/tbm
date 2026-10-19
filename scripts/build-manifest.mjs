@@ -186,7 +186,7 @@ console.log(
         throw new Error("build-manifest: no output-<hash>.css in dist — did version-css.mjs run?");
     }
     const critical = [
-        "index.html", versionedCss, "theme.js", "search.js", "email.js",
+        "index.html", versionedCss, "theme.js", "search.js",
         "fonts/publicsans-v1.woff2", "me.webp",
     ];
     let total = 0;

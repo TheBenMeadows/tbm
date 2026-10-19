@@ -1,7 +1,7 @@
 ---
 title: "essentialism: the working log"
 date: 2026-07-31
-updated: 2026-08-01
+updated: 2026-08-26
 tags: [AI, Art, Technology]
 related: [/art/essentialism/]
 image: /blog/media/essentialism-the-working-log/card1-fade.webp
@@ -20,21 +20,21 @@ The sketches are still public on my p5.js editor account, timestamps intact:
 - [365 Days of TBM V1](https://editor.p5js.org/TheBenMeadows/sketches/xoJLN_mTE)
 - [365 Days of TBM V3 (Dot Size, Random Img)](https://editor.p5js.org/TheBenMeadows/sketches/xWZgZaDJN)
 
-Read the code and the seams show. Two functions are defined twice, with the earlier versions left sitting above the later ones — those are the tutorial's successive stages, stacked in one file because I never deleted a step once it was superseded. A stray `line()` call in the middle of the dot loop is left over the same way. The images are loaded into variables called `eye1, eye2, eye3`, names carried over from an abandoned sketch, even though they hold a cartoon, a glacier, and a photo from Tokyo. And the sketch titled "Dot Size" calls `noise(50, 100)` as if it took a range, which p5's `noise()` does not. It returns a constant, so the dot-size variation the title promises never actually ran.
+Read the code and the seams show. Two functions are defined twice, with the earlier versions left sitting above the later ones — those are the tutorial's successive stages, stacked in one file because I never deleted a step once it was superseded. A stray `line()` call in the middle of the dot loop is left over the same way. The images are loaded into variables called `eye1, eye2, eye3`, names carried over from an abandoned sketch, even though they hold a cartoon, a glacier, and a photo from Tokyo. And the sketch titled "Dot Size, Random Img" calls `noise(50, 100)` as if it took a range, which p5's `noise()` does not. It returns a value between 0 and 1, the same one for the whole run, so instead of dots between 50 and 100 pixels the sketch drew specks smaller than a pixel. The variation the title promises never ran.
 
 That bug sat there for four years. It is fixed in the on-chain version, which means the piece finally does what I meant it to do in 2022.
 
 ## December 2022
 
-One month later, ChatGPT arrived and I did what everyone did. Four sketches on my account from December 10, 2022 are labeled "ChatGPT" in the title. They read differently from anything else on the account: a comment above nearly every line restating the line, immaculate parallel naming, and a call to `moveTo()`, which is not a p5 function at all. Tidy, confident code with invented parts. My own files from that autumn are the opposite kind of mess — half-deleted stages and leftover names from other projects.
+One month later, ChatGPT arrived and I did what everyone did. Five sketches on my account from December 10, 2022 are labeled "ChatGPT" in the title. They read differently from anything else on the account: a comment above nearly every line restating the line, immaculate parallel naming, and a call to `moveTo()`, which is not a p5 function at all. Tidy, confident code with invented parts. My own files from that autumn are the opposite kind of mess — half-deleted stages and leftover names from other projects.
 
-There is a fifth sketch from that week, "GPT Sketch (Human Replica)," which I want to credit properly: it is not mine and not ChatGPT's. It is [morejpeg's](https://www.youtube.com/watch?v=zesUGFM1uog) hand-written replica of a ChatGPT sketch, from his video "Competing with ChatGPT." A human racing to reproduce the machine, in December 2022. I saved a copy the same day I tweeted that I was using ChatGPT to learn p5.js.
+There is one more sketch from that week, "GPT Sketch (Human Replica)," which I want to credit properly: it is not mine and not ChatGPT's. It is [morejpeg's](https://www.youtube.com/watch?v=zesUGFM1uog) hand-written replica of a ChatGPT sketch, from his video "Competing with ChatGPT." A human racing to reproduce the machine, in December 2022. I saved a copy the same day I tweeted that I was using ChatGPT to learn p5.js.
 
 ## July 2026
 
 This month I ported the 2022 sketch to bootloader's SVG-JS runtime with Claude. The constraint is severe and useful: the whole generator lives on-chain in under 24 KB, with no external files. No external files means no photograph, and the photograph was the sketch's whole color engine.
 
-The answer came out of my own folders. I keep a palette file of colors sampled from my earlier on-chain works, so the port paints with those five inks instead of reading a photo. And the photographs came back in a reduced form: two of them, converted to 28×38 grids of grey, about a kilobyte each, embedded in the code. Both are photographs I minted on Ethereum in 2023. One is "Blue Tree"; the tree itself was removed after a storm that December, so the picture outlived its subject. The other is "Natural Gradient," an unedited sky whose full resolution is stored permanently on Arweave. The originals are not going anywhere. The editions are what forgets.
+The answer came out of my own folders. I keep a palette file of colors sampled from my earlier on-chain works, so the port paints with those five inks instead of reading a photo. And the photographs came back in a reduced form: two of them, converted to 28×38 grids of grey, about a kilobyte each, embedded in the code. Both are photographs I minted on Ethereum in 2023. One is "Blue Tree"; the tree itself was removed after a storm that December, so the picture outlived its subject. The other is "Natural Gradient," an unedited sky whose full resolution is stored permanently on Arweave. The originals are not going anywhere. The editions do the forgetting.
 
 Each of the 44 editions samples its grid at lower strength than the one before. Edition 1 is nearly the photograph. Edition 44 is mostly grain. The memory percentage is written into every token.
 
@@ -70,3 +70,5 @@ Claude did the porting work. The runtime translation, the noise function, the gr
 I brought the 2022 sketch, took the photographs it remembers, sampled the inks it paints with, and made every call above. The column structure survives unchanged in the on-chain code, along with the dot spacing constant and the 2022 variable names, and that structure is Andy Haskell's. What sits on top of it is mine: the two grids, the decay across the run, the ink library, and the texture.
 
 Everything above can be checked, which is most of why I wrote it down. Andy Haskell's tutorial is public and dated January 2022. My sketches are still on the p5.js editor with their timestamps and their bugs intact. The 2026 code is [on-chain](https://better-call.dev/mainnet/KT1CB4MYiAViCuXWBU961x7LjQXGeA8SnQwt) and printed in full on the mint page. I would rather you verify any of it than take my word for it.
+
+Corrected August 26, 2026: an audit against my own p5.js account caught two errors here. The ChatGPT sketch count is five, not four, and the `noise(50, 100)` bug lives in "Dot Size, Random Img," not the sketch titled "Dot Size," which uses `random(50, 100)` correctly. The account was right; now the post is too.

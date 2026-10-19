@@ -1,5 +1,6 @@
 /* Renders blog/posts/*.md into the same page vocabulary as the hand-written
- * pages: blog/<slug>/index.html, the blog/ index, and blog/feed.xml.
+ * pages: blog/<slug>/index.html, the blog/ index, blog/feed.xml and
+ * blog/sitemap.xml.
  *
  * Generated HTML is never committed. It is written into the working tree beside
  * the hand-written pages and gitignored, exactly like output.css and
@@ -17,6 +18,7 @@ import { readFileSync, writeFileSync, readdirSync, mkdirSync, rmSync, existsSync
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { marked } from "marked";
+import { checkHref } from "./lib/href.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const POSTS = join(ROOT, "blog", "posts");
@@ -31,7 +33,7 @@ const SITE = "https://thebenmeadows.com";
  * would accept far more than this build knows how to render. If a post needs a
  * key that is not here, the build should fail loudly rather than drop it. */
 const KNOWN = new Set(["title", "subtitle", "date", "updated", "tags", "description", "image", "image_alt",
-                       "author", "pin", "related"]);
+                       "author", "pin", "related", "unlisted"]);
 
 function frontMatter(text, file) {
     if (!text.startsWith("---\n")) throw new Error(`build-blog: ${file} has no front matter`);
@@ -55,6 +57,18 @@ function frontMatter(text, file) {
                 throw new Error(`build-blog: ${file} pin must be a whole number from 1 up, got "${value}"`);
             }
             meta.pin = n;
+            continue;
+        }
+        /* An unlisted post is built at its URL and stamped, but kept out of the
+         * blog index, the feed and site search, and told to search engines as
+         * noindex. It exists for a superseded version of a post that the current
+         * one links to, so the old text stays readable at a stable address without
+         * competing with the new one anywhere the site lists posts. */
+        if (key === "unlisted") {
+            if (value !== "true" && value !== "false") {
+                throw new Error(`build-blog: ${file} unlisted must be true or false, got "${value}"`);
+            }
+            meta.unlisted = value === "true";
             continue;
         }
         if (value.startsWith('"')) value = JSON.parse(value);
@@ -152,6 +166,21 @@ function authorUri(a) {
 /* ------------------------------------------------------------------ */
 /* image dimensions                                                     */
 
+/* Indents rendered post HTML to sit inside the page template. Lines inside a
+ * <pre> are left alone: there the whitespace is content, and indenting them
+ * shifts every line of a code block after the first. */
+function indentOutsidePre(html, pad) {
+    let inPre = false;
+    return html.split("\n").map((l) => {
+        const out = l && !inPre ? pad + l : l;
+        const opens = (l.match(/<pre[\s>]/g) ?? []).length;
+        const closes = (l.match(/<\/pre>/g) ?? []).length;
+        if (opens > closes) inPre = true;
+        else if (closes > opens) inPre = false;
+        return out;
+    }).join("\n");
+}
+
 /* Every hand-written page sets width and height on its images so the column does
  * not reflow as they load. Generated pages have to do the same, and the only
  * place the size exists is the file, so read it out of the header rather than
@@ -173,6 +202,16 @@ function imageSize(sitePath) {
         }
     }
     if (b.slice(0, 3).toString("latin1") === "GIF") return { w: b.readUInt16LE(6), h: b.readUInt16LE(8) };
+    /* An SVG has no pixel size; its viewBox gives the aspect ratio, which is all
+     * width and height are for here. An on-chain SVG is the artwork itself, so it
+     * is served as the file rather than rasterised, and animates inside <img>
+     * when it uses SMIL or CSS (script never runs there). */
+    if (file.endsWith(".svg")) {
+        const head = b.slice(0, 2048).toString("utf8");
+        const vb = head.match(/viewBox\s*=\s*["']\s*[-\d.]+[\s,]+[-\d.]+[\s,]+([\d.]+)[\s,]+([\d.]+)\s*["']/);
+        if (vb) return { w: Math.round(Number(vb[1])), h: Math.round(Number(vb[2])) };
+        throw new Error(`build-blog: ${sitePath} has no viewBox to size it by`);
+    }
     throw new Error(`build-blog: cannot read dimensions of ${sitePath}`);
 }
 
@@ -190,6 +229,7 @@ const RENDERER = {
     /* Links keep the site's one link style, and anything leaving the site is
      * marked the way the hand-written pages mark it. */
     link({ href, title, tokens }) {
+        checkHref(href, "build-blog");
         const text = this.parser.parseInline(tokens);
         const external = /^https?:\/\//.test(href) && !href.startsWith(SITE);
         const t = title ? ` title="${esc(title)}"` : "";
@@ -309,8 +349,7 @@ const FOOTER = `        <footer class="site-footer">
                 <span aria-hidden="true">&middot;</span>
                 <a href="/infra/">Infra</a>
             </nav>
-        </footer>
-        <script src="/email.js"></script>`;
+        </footer>`;
 
 function head({ title, description, url, image, imageAlt, author, extraLinks = "" }) {
     const img = image ? SITE + image : `${SITE}/og.png`;
@@ -388,6 +427,67 @@ function longDate(iso) {
     return `${MONTHS[Number(m) - 1]} ${Number(d)}, ${y}`;
 }
 
+/* ------------------------------------------------------------------ */
+/* structured data                                                      */
+
+/* The home page declares Ben as a Person at this @id, so a post he wrote points
+ * at that node instead of restating him, and every post joins the same graph. */
+const PERSON_ID = `${SITE}/#person`;
+const BLOG_ID = `${SITE}/blog/#blog`;
+
+/* Inline JSON-LD is data, not script, so script-src 'self' does not block it. A
+ * "</script>" inside a title would still end the element early, so every "<" is
+ * written as its JSON escape. */
+function jsonLd(obj) {
+    const json = JSON.stringify(obj, null, 4).replace(/</g, "\\u003c");
+    return `        <script type="application/ld+json">\n${json.replace(/^/gm, "        ")}\n        </script>`;
+}
+
+/* An agent is not typed as a Person. schema.org expects a Person or an
+ * Organization as author, but claiming either would put the exact confusion
+ * blog/authors.json exists to prevent into the one place machines read first. */
+function authorSchema(a) {
+    if (a.id === "ben") return { "@id": PERSON_ID };
+    const node = { "@type": a.kind === "agent" ? "SoftwareApplication" : "Person", name: authorName(a) };
+    if (a.url) node.url = a.url;
+    return node;
+}
+
+function postSchema(post) {
+    const node = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "@id": `${SITE}${post.url}#article`,
+        headline: post.title,
+        description: post.description,
+        url: `${SITE}${post.url}`,
+        mainEntityOfPage: `${SITE}${post.url}`,
+        datePublished: post.date,
+        dateModified: post.updated || post.date,
+        author: authorSchema(post.author),
+        publisher: { "@id": PERSON_ID },
+        image: SITE + (post.image || "/og.png"),
+        inLanguage: "en",
+    };
+    if (post.tags.length) node.keywords = post.tags;
+    /* An unlisted post is not presented as part of the blog anywhere else, so it
+     * does not claim membership here either. */
+    if (!post.unlisted) node.isPartOf = { "@id": BLOG_ID };
+    return node;
+}
+
+function blogSchema(posts) {
+    return {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "@id": BLOG_ID,
+        name: "TheBenMeadows — Blog",
+        url: `${SITE}/blog/`,
+        author: { "@id": PERSON_ID },
+        blogPost: posts.map((p) => ({ "@id": `${SITE}${p.url}#article` })),
+    };
+}
+
 function postPage(post) {
     /* Author leads the byline. It is the first thing that has to be true about a
      * post, and it used to be absent entirely -- a post Orrery wrote carried the
@@ -437,8 +537,11 @@ ${post.seeAlso.map((r) =>
         imageAlt: post.image_alt,
         author: post.author,
         extraLinks: `        <meta property="og:type" content="article" />
-        <meta property="article:published_time" content="${post.date}" />`,
-    }) + `        <main class="text-neutral-400 max-w-screen-md mx-auto px-6 pt-8 pb-12 leading-relaxed">
+        <meta property="article:published_time" content="${post.date}" />${post.updated ? `
+        <meta property="article:modified_time" content="${post.updated}" />` : ""}${post.unlisted ? `
+        <meta name="robots" content="noindex" />` : ""}
+${jsonLd(postSchema(post))}`,
+    }) + `        <main class="text-neutral-400 max-w-(--breakpoint-md) mx-auto px-6 pt-8 pb-12 leading-relaxed">
             <header class="post-head">
                 <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">${esc(post.title)}</h1>
 ${subLine}                <p class="post-meta no-justify">${meta.join(SEP)}</p>
@@ -483,7 +586,8 @@ ${list.map(row).join("\n")}
         title: "Blog · TheBenMeadows",
         description: "Longer writing about art and technology, by Ben Meadows.",
         url: "/blog/",
-    }) + `        <main class="text-neutral-400 max-w-screen-md mx-auto px-6 pt-8 pb-12 leading-relaxed">
+        extraLinks: jsonLd(blogSchema(posts)),
+    }) + `        <main class="text-neutral-400 max-w-(--breakpoint-md) mx-auto px-6 pt-8 pb-12 leading-relaxed">
             <h1 class="text-white text-3xl font-bold text-center" style="letter-spacing: -0.025em">Blog</h1>
             <p class="mt-4">
                 Longer writing about art and technology. These
@@ -527,6 +631,18 @@ function feed(posts) {
                `</author>`;
     };
 
+    /* The full post goes in <content>, lead image first, so a reader can be read
+     * in without opening the page. Site-relative links and images are made
+     * absolute: a feed reader resolves them against the feed, or not at all, and
+     * xml:base is honoured too unevenly to rely on. */
+    const absolute = (html) => html.replace(/(\s(?:src|href)=")\//g, `$1${SITE}/`);
+    const content = (p) => {
+        const lead = p.image
+            ? `<img src="${esc(p.image)}" alt="${esc(p.image_alt || "")}" width="${p.imageSize.w}" height="${p.imageSize.h}" />\n`
+            : "";
+        return esc(absolute(lead + p.html));
+    };
+
     const entries = byDate.map((p) => `    <entry>
         <title>${esc(p.title)}</title>
         <link rel="alternate" type="text/html" href="${SITE}${p.url}" />
@@ -535,6 +651,7 @@ ${authorTag(p.author)}
         <updated>${p.updated || p.date}T00:00:00Z</updated>
         <published>${p.date}T00:00:00Z</published>
         <summary>${esc(p.description)}</summary>
+        <content type="html">${content(p)}</content>
     </entry>`).join("\n");
 
     return `<?xml version="1.0" encoding="utf-8"?>
@@ -548,6 +665,25 @@ ${authorTag(p.author)}
     <author><name>Ben Meadows</name></author>
 ${entries}
 </feed>
+`;
+}
+
+/* The blog's own sitemap, named in robots.txt beside the hand-kept root one. A
+ * sitemap may only list URLs under its own directory, which is why it lives at
+ * /blog/ rather than being merged into the root file -- and generating it is the
+ * point: the hand-kept list is how posts went missing from it. Unlisted posts
+ * are noindex, so they are left out. */
+function sitemap(posts) {
+    const url = (loc, date) => `<url>
+  <loc>${SITE}${loc}</loc>
+  <lastmod>${date}T00:00:00+00:00</lastmod>
+</url>`;
+    const latest = posts.reduce((d, p) => ((p.updated || p.date) > d ? p.updated || p.date : d), "");
+    const rows = [url("/blog/", latest), ...posts.map((p) => url(p.url, p.updated || p.date))];
+    return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${rows.join("\n")}
+</urlset>
 `;
 }
 
@@ -568,7 +704,7 @@ const posts = files.map((file) => {
         slug,
         url: `/blog/${slug}/`,
         markdown: body,
-        html: marked.parse(body).split("\n").map((l) => (l ? "            " + l : l)).join("\n"),
+        html: indentOutsidePre(marked.parse(body), "            "),
         imageSize: meta.image ? imageSize(meta.image) : null,
     };
 });
@@ -653,14 +789,30 @@ for (const p of posts) {
     }
 }
 
+/* Remove what an earlier run generated, as listed in its pages.json, so a
+ * renamed or deleted post does not stay published by a builder that keeps its
+ * checkout between runs (generated folders are gitignored, and a hard reset
+ * leaves them). Only blog/<slug>/index.html entries name a folder; media/ and
+ * posts/ are never listed, and are refused here as well. */
+if (existsSync(join(OUT, "pages.json"))) {
+    for (const page of JSON.parse(readFileSync(join(OUT, "pages.json"), "utf8")).pages) {
+        const [top, slug, file, ...rest] = page.file.split("/");
+        if (top !== "blog" || file !== "index.html" || rest.length) continue;
+        if (!/^[a-z0-9][a-z0-9-]*$/.test(slug) || slug === "media" || slug === "posts") continue;
+        rmSync(join(OUT, slug), { recursive: true, force: true });
+    }
+}
+
 for (const p of posts) {
     const dir = join(OUT, p.slug);
     rmSync(dir, { recursive: true, force: true });
     mkdirSync(dir, { recursive: true });
     writeFileSync(join(dir, "index.html"), postPage(p), "utf8");
 }
-writeFileSync(join(OUT, "index.html"), indexPage(posts), "utf8");
-writeFileSync(join(OUT, "feed.xml"), feed(posts), "utf8");
+const listed = posts.filter((p) => !p.unlisted);
+writeFileSync(join(OUT, "index.html"), indexPage(listed), "utf8");
+writeFileSync(join(OUT, "feed.xml"), feed(listed), "utf8");
+writeFileSync(join(OUT, "sitemap.xml"), sitemap(listed), "utf8");
 
 /* The page list the other builders consume. build-search-index.mjs indexes what
  * is named here and build-stamp.mjs stamps it, so a new post joins search and
@@ -668,7 +820,8 @@ writeFileSync(join(OUT, "feed.xml"), feed(posts), "utf8");
 writeFileSync(
     join(OUT, "pages.json"),
     JSON.stringify({ pages: [{ file: "blog/index.html", url: "/blog/" },
-                             ...posts.map((p) => ({ file: `blog/${p.slug}/index.html`, url: p.url }))] }, null, 2) + "\n",
+                             ...posts.map((p) => ({ file: `blog/${p.slug}/index.html`, url: p.url,
+                                                    ...(p.unlisted ? { unlisted: true } : {}) }))] }, null, 2) + "\n",
     "utf8"
 );
 

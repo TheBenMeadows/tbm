@@ -15,6 +15,8 @@ var NS = 'http://www.w3.org/2000/svg';
 var EDITIONS = 44, W = 750, H = 1000;
 var TZKT = 'https://api.tzkt.io/v1/bigmaps/771409/keys?value.generator_id=407&select=key,value&limit=60';
 var META = 'https://api.tzkt.io/v1/tokens?contract=KT1CB4MYiAViCuXWBU961x7LjQXGeA8SnQwt&select=tokenId,metadata&tokenId.in=';
+/* every version of a token's metadata record; a regenerated token's earlier version still runs */
+var HISTORY = 'https://api.tzkt.io/v1/bigmaps/771410/keys/';
 var GENERATOR = 'https://api.tzkt.io/v1/bigmaps/771404/keys/407';
 var THUMB = 'https://media.bootloader.art/svg-js/v1/thumbnail/';
 var TOKEN = 'https://bootloader.art/token/svg-js/';
@@ -53,7 +55,7 @@ function openModal(row) {
   back.setAttribute('aria-label', 'essentialism #' + ed + ' details');
 
   var box = document.createElement('div');
-  box.className = 'mx-auto my-8 max-w-screen-md rounded-xl bg-zinc-800 p-6 text-neutral-400';
+  box.className = 'mx-auto my-8 max-w-(--breakpoint-md) rounded-xl bg-zinc-800 p-6 text-neutral-400';
   box.addEventListener('click', function (e) { e.stopPropagation(); });
 
   var h = document.createElement('div');
@@ -61,7 +63,7 @@ function openModal(row) {
   h.innerHTML = '<h3 class="text-white text-xl font-bold">essentialism #' + ed + '</h3>';
   var x = document.createElement('button');
   x.type = 'button'; x.textContent = 'close';
-  x.className = 'rounded-lg bg-black px-3 py-1 font-mono text-xs text-neutral-400 transition-opacity hover:opacity-80';
+  x.className = 'min-h-11 rounded-lg bg-black px-3 py-1 font-mono text-xs text-neutral-400 transition-opacity hover:opacity-80';
   x.addEventListener('click', close);
   h.appendChild(x); box.appendChild(h);
 
@@ -71,11 +73,25 @@ function openModal(row) {
   box.appendChild(img);
 
   var tl = document.createElement('p');
-  tl.className = 'mt-4 font-mono text-xs text-neutral-400 break-words';
+  tl.className = 'mt-4 font-mono text-xs text-neutral-400 wrap-break-word';
   if (artifactSeed !== null) {
     tl.textContent = traitsOf(render(artifactSeed, ed));
   } else if (meta.artifactUri) {
-    tl.textContent = 'This token was regenerated, and its stored artifact records the seed as raw bytes rather than a number, so its trait line cannot be computed from chain data. Reported as bootloader-monorepo#30.';
+    /* regenerate_token stores the seed as raw bytes (bootloader-monorepo#30), so the current
+       artifact is not a program. The version the mint wrote is still in the block history. */
+    tl.textContent = 'Reading the version of this token that the mint wrote…';
+    fetch(HISTORY + id + '/updates').then(function (r) { return r.json(); }).then(function (ups) {
+      var v = null;
+      ups.forEach(function (u) {
+        var ti = u.value && u.value.token_info;
+        var s = ti && ti.artifactUri ? seedFromArtifact(ti.artifactUri) : null;
+        if (s !== null && s !== 0n) v = { seed: s, level: u.level };
+      });
+      if (!v) throw new Error('no runnable version');
+      tl.textContent = traitsOf(render(v.seed, ed)) + ' (from the artifact the mint wrote at block ' + v.level + '; a later regeneration stored the seed as raw bytes, bootloader-monorepo#30)';
+    }).catch(function () {
+      tl.textContent = 'This token was regenerated, and its current artifact records the seed as raw bytes rather than a number, so its trait line cannot be computed from the current record. Reported as bootloader-monorepo#30.';
+    });
   } else {
     tl.textContent = 'Loading token metadata from the chain…';
   }
@@ -156,6 +172,37 @@ function exportPNG(svgEl, scale, name) {
   };
   img.onerror = function () { alert('Export failed in this browser. The SVG download always works.'); };
   img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(str);
+}
+
+/* Colour for the contract listing, in the generator's own inks.
+
+   Drawn with the CSS Custom Highlight API, which paints live Ranges and never
+   touches the DOM. That is what makes it usable on this block in particular.
+   The paragraph above the listing says the text is the bytes read out of the
+   contract, and the line below reports whether those bytes match the function
+   this page just ran - so code.textContent has to keep being exactly what came
+   off the chain. It is: the comparison, a reader's selection and a copy-paste
+   all see the string the contract returned. A highlighter that wrapped tokens
+   in <span>s would have made the claim false, which is the reason this page
+   does not use one.
+
+   Importing microlighter highlights the page once as a side effect, so the
+   import is the whole of the work. Called from the contract read rather than
+   at load, because until that resolves the block holds placeholder text and
+   there is nothing worth colouring. */
+function highlightListing() {
+  /* Baseline, but recent. Without the API there is nothing to paint, and no
+     reason to fetch the highlighter to discover that. */
+  if (!window.CSS || !CSS.highlights) return;
+
+  /* Absolute like every other asset reference on the site - the mirrors all
+     serve from a root, and a bare './' here would resolve against the
+     document rather than this script. */
+  import('/art/essentialism/syntax/microlighter.min.js').catch(function () {
+    /* Every mirror carries the highlighter and its grammar, but a partial copy
+       is a real state to be in. The listing stays in one ink, which is still
+       the code, which was always the point. */
+  });
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -283,6 +330,8 @@ document.addEventListener('DOMContentLoaded', function () {
             : 'Mismatch: the code this page ran differs from generator v' + row.value.version + ' on Tezos. Trust the chain, not this page.';
           codeStatus.className = 'mt-3 font-mono text-xs ' + (match ? 'text-neutral-500' : 'text-red-400');
         }
+
+        highlightListing();
       })
       .catch(function () {
         code.textContent = 'Could not reach the chain indexer. The generator is readable on Tezos at KT1CB4MYiAViCuXWBU961x7LjQXGeA8SnQwt.';

@@ -1,0 +1,242 @@
+{
+ "root": "bafybeie4uhgbv36g7u7qhljmhwptcr4jcc66e5vjd2veww427buww26h7q",
+ "added": "2026-09-17",
+ "node": "ryzen kubo 0.43 (12D3KooWFvXQm9PgsCHWLzjH9VGczYsjqKYaiEjGWKXKr5Fn4cAY)",
+ "encoding": "opus 64 kbps mono",
+ "dirs": {
+  "audio": "bafybeih4h6rczcxx25debou6nxxehqpemywsvb4b6ab5igspiwzxemgmwy",
+  "transcripts": "bafybeiax5yietyxhkjftvmstcheb6ssrdjvurviewlmn6uai6rxztzkac4"
+ },
+ "audio": {
+  "2022-01-01_evmavericks-ben-podcast": {
+   "cid": "bafybeiffcly2xivxbf5zx27pmlrfahtmtjwhomqqspi6d6zmb2ho6l5a4m",
+   "bytes": 37505423
+  },
+  "2022-08-01_evmavericks-dr-randall-healthcare": {
+   "cid": "bafybeiativdv2mu2htry47vnwr7nbvlx3p7y2gjwtkxbzdqvoeydvehtae",
+   "bytes": 36368463
+  },
+  "2022-10-01_evmavericks-lions-layer": {
+   "cid": "bafybeigsochzyzy6cfqxjsrf2djc42awkwym7fb6kp5etuxjoz2z6gihwm",
+   "bytes": 37383058
+  },
+  "2022-12-21_art2act-art-style-narratives": {
+   "cid": "bafybeib27nyrsyggsnj6s5nel5yllpze2sjy5p7hskpct3ejasoyvpcfq4",
+   "bytes": 66920914
+  },
+  "2023-02-23_inpeak-lesson-1-intro-ai-art": {
+   "cid": "bafybeihp4kfh2x3gvm7m4xva3c2hl7d5t2rfffx6phxoyrmozkg5riwyq4",
+   "bytes": 36116507
+  },
+  "2023-03-09_inpeak-lesson-2-creating-ai-art": {
+   "cid": "bafybeieem46ay7wxjukm7d54f37epgdevxvfbsowcg4uhxmfhszbzc4nzq",
+   "bytes": 39719798
+  },
+  "2023-03-15_web3gala-clip-a": {
+   "cid": "bafybeid2zjzjg3vfgpahqvvp2a6ngz6j4l4mfjsa5zmeidvicox5vhsmwi",
+   "bytes": 1742055
+  },
+  "2023-03-15_web3gala-clip-b": {
+   "cid": "bafybeihdfehs42bf2idlth4f7tuxypv73pbvq3qe54xeofzup3wsjs7qyy",
+   "bytes": 2854841
+  },
+  "2023-03-29_inpeak-lesson-3-basic-tools-p1": {
+   "cid": "bafybeiedufjyckoja4oudqhlq4d6u2afgal3jekbziybwyfsrrckidpcg4",
+   "bytes": 32578727
+  },
+  "2023-04-13_inpeak-lesson-4-basic-tools-p2": {
+   "cid": "bafybeifdztuhco3srcmdj3vex334eq2edxez5perke7iw6fr7to7gdjkym",
+   "bytes": 25023641
+  },
+  "2023-04-27_inpeak-lesson-5-gan": {
+   "cid": "bafybeibscmspzsilcsdgm6vjxd3w4ez4l4tgwqto4bjpj5g6acpp453eqm",
+   "bytes": 35683983
+  },
+  "2023-05-05_zoworld-ai-interview-edit": {
+   "cid": "bafybeiefvwqexhiqzpjdx6btltkjebypvtdq6m7g2eo2oak3uonu6fwssq",
+   "bytes": 42161268
+  },
+  "2023-05-05_zoworld-ai-tools-and-art-space": {
+   "cid": "bafybeicn6lqk3ukxqx4b2twvwic23lhmp6zvrzz7q3lsjagofi63qxiwvy",
+   "bytes": 43051982
+  },
+  "2023-05-08_inpeak-thebenmeadows-profile": {
+   "cid": "bafybeieiwyoeyquvxlq3kjcer7lk2hkranv4kc73jf3i7lwgokx2j5gec4",
+   "bytes": 355132
+  },
+  "2023-05-24_inpeak-async-dynamic-blueprints": {
+   "cid": "bafybeici66do7drbrjmnlm2t64b2wejafusjktwqjx3knxh2ekfoewinlu",
+   "bytes": 31961523
+  },
+  "2023-06-02_ned-ai-is-a-lazy-term-clip": {
+   "cid": "bafybeihcv2tdlhg4gl3b3zugi76symqj6ax47oardwq52sxwdauar5yq5u",
+   "bytes": 520836
+  },
+  "2023-08-24_poppunk-collectors-who-create": {
+   "cid": "bafybeihmia55lvd5upizfqsuivylv74hlx5xgi37rzwnj3ziwwkyvr3f4i",
+   "bytes": 52355868
+  },
+  "2023-11-07_poppunk-bear-market-learnings": {
+   "cid": "bafybeidues4req64ph3qhgq2ymwxjx33ohxqxpp3udfvyjlhdbelz4674i",
+   "bytes": 39528921
+  },
+  "2023-11-13_buildersdao-full-onchain": {
+   "cid": "bafybeighuzr2qnyrgjs3rrmr5xy2ogoue6ldm3dlptahtgy6jn34ms3whq",
+   "bytes": 45934758
+  },
+  "2023-12-15_themiracle-onchain-nfts": {
+   "cid": "bafybeibiafwg6qa2ramescobatafvqyglenikuln6uptlkwnyzc7lqnnpe",
+   "bytes": 59062775
+  },
+  "2024-01-16_exchangeart-solana": {
+   "cid": "bafybeibuv57dj2lenzgniom6hjhmswvs3eas2c6pacvyr3yr4krf5emnr4",
+   "bytes": 65569678
+  },
+  "2024-04-15_buildersdao-l2-vs-l1": {
+   "cid": "bafybeib4mr2bkni5ydpxkdckyr2odtmlnxotsiblnk2ouiajqc4gqyi4xa",
+   "bytes": 58317575
+  },
+  "2024-05-01_arbitrum-transient-labs": {
+   "cid": "bafybeigzqcyke4je54b2zxr4yf6rej2u6oj7iof4w2prl7s4thdvboco3y",
+   "bytes": 38284295
+  },
+  "2024-07-18_buildersdao-btc-ordinals": {
+   "cid": "bafybeifa6y7zhllm2xkeyalrcgahvju24miyh5227ym3qkg7bc3qp5bbhy",
+   "bytes": 43071462
+  },
+  "2025-06-03_color-commentary-ep70": {
+   "cid": "bafybeic2jw4tdeoqi3lsf3iijqfsptuij4xiljc2rq5nzijd742um7h7g4",
+   "bytes": 92190341
+  },
+  "2025-12-15_dam-web3-summit-d1": {
+   "cid": "bafybeigqffe7pieqreqwxjjwkipxhrxxnqd2tsw77nmygiv235fcihwwwy",
+   "bytes": 206693267
+  },
+  "2025-12-16_dam-web3-summit-d2": {
+   "cid": "bafybeihe65aggzwpgo4weth6ffhsdr3lmrg33yumm5kaq5dpst4zqydct4",
+   "bytes": 199743184
+  },
+  "2025-12-17_dam-web3-summit-d3": {
+   "cid": "bafybeidravrqxjh2ibmymnv4rfr7nzjrkeqt6eylhqkuvz6r33yxiraxjm",
+   "bytes": 203798990
+  }
+ },
+ "transcripts": {
+  "2022-01-01_evmavericks-ben-podcast": {
+   "cid": "bafkreibixynux4aikfs46zqpztoyfz6y73erq4l6uhxinnflfe27fd4com",
+   "bytes": 67052
+  },
+  "2022-08-01_evmavericks-dr-randall-healthcare": {
+   "cid": "bafkreigbgqadwj4wh4fxk7bsnfp3j2jii342buebsfxg4fdm2jduoildxu",
+   "bytes": 53697
+  },
+  "2022-10-01_evmavericks-lions-layer": {
+   "cid": "bafkreict25zphiselnxncwhetejtegwggt6uwoigza32wpdzfvjw75gcei",
+   "bytes": 66593
+  },
+  "2022-12-21_art2act-art-style-narratives": {
+   "cid": "bafkreiafilpttwrcl2u35vb4x2luvtihwscujrdjtnfereli75a7wyqdpq",
+   "bytes": 100682
+  },
+  "2023-02-23_inpeak-lesson-1-intro-ai-art": {
+   "cid": "bafkreieifjw5ervus7yvqomg2b66nhqv5xmdili3b7f2kgwmon3wpgujqq",
+   "bytes": 64899
+  },
+  "2023-03-09_inpeak-lesson-2-creating-ai-art": {
+   "cid": "bafkreidtxdp7gi5cprmnpbxvh26m4lo7iwlsx44tugbrtwolznfjedi5n4",
+   "bytes": 71907
+  },
+  "2023-03-15_web3gala-clip-a": {
+   "cid": "bafkreicte7odmlee3m3iagpucry76orssxtxn3bsnvkcgxvn7ppp2hrode",
+   "bytes": 2689
+  },
+  "2023-03-15_web3gala-clip-b": {
+   "cid": "bafkreibpwngw7qivj4u4mfpiacpcgee32byrziwxwun3uis7xabceufnhy",
+   "bytes": 4055
+  },
+  "2023-03-29_inpeak-lesson-3-basic-tools-p1": {
+   "cid": "bafkreibvvegsq6uzczudazfwbk36rz6o23bwegfmv3jebk4voovylvcxm4",
+   "bytes": 57698
+  },
+  "2023-04-13_inpeak-lesson-4-basic-tools-p2": {
+   "cid": "bafkreicyongotohezdzajqfkiomjdbqz3b2r5nfxqt6uw6mrynp3unucwa",
+   "bytes": 43234
+  },
+  "2023-04-27_inpeak-lesson-5-gan": {
+   "cid": "bafkreicvy7iskpqh7ifutisug4wshixzqfdrqfoyzv35au4ptv7hn2yx3q",
+   "bytes": 62802
+  },
+  "2023-05-05_zoworld-ai-interview-edit": {
+   "cid": "bafkreiag5tr7qc3tlivk4s3jajjjygjunwbjncawwpk3e3gyrdhjadzu4u",
+   "bytes": 64113
+  },
+  "2023-05-05_zoworld-ai-tools-and-art-space": {
+   "cid": "bafkreicd5rg7udxzkjabrbaid5ak7qmc7j44anokcdvkn25uml6ef5cifu",
+   "bytes": 68769
+  },
+  "2023-05-08_inpeak-thebenmeadows-profile": {
+   "cid": "bafkreihlswe4zbedwjbhsqacuf5podidubcndfu7bsazrenvwajugj43hy",
+   "bytes": 667
+  },
+  "2023-05-24_inpeak-async-dynamic-blueprints": {
+   "cid": "bafkreida7st4gijqfmyxyj4tdv6enrwimkewoba7gga5p4kqzocfcuczt4",
+   "bytes": 57391
+  },
+  "2023-06-02_ned-ai-is-a-lazy-term-clip": {
+   "cid": "bafkreigd7l3b6elz2b7cu5sqz557l4tur5z2tg6i7qsapnw2smsc2m2xnu",
+   "bytes": 1212
+  },
+  "2023-08-24_poppunk-collectors-who-create": {
+   "cid": "bafkreidsht3p4h75gnipfybktwy3bpsq3vpqv3w6mseykgtb7wzg4ezxcu",
+   "bytes": 92805
+  },
+  "2023-11-07_poppunk-bear-market-learnings": {
+   "cid": "bafkreigpozdytfhdsgoriuqa6e5zmsd2x7kgy2r2xpns6psayivdjgkcz4",
+   "bytes": 71297
+  },
+  "2023-11-13_buildersdao-full-onchain": {
+   "cid": "bafkreidjodt6bizqhymy2avx3ccsgvppdtcrxihvjbbe4b4tjuurpfobye",
+   "bytes": 77825
+  },
+  "2023-12-15_themiracle-onchain-nfts": {
+   "cid": "bafkreigtjrbckc7t225eqr4d3mokxsd4c4lpv2c63nyvbre352i3jwvtgu",
+   "bytes": 96191
+  },
+  "2024-01-16_exchangeart-solana": {
+   "cid": "bafkreic6t6ssh6tbfm74awodshlatht3zbyaao6p34fjrobduba3j2y7la",
+   "bytes": 95630
+  },
+  "2024-04-15_buildersdao-l2-vs-l1": {
+   "cid": "bafkreidzugx25ja4si5eotz2vc26vp74eatf6vixg5lyumbvqrshazg34y",
+   "bytes": 80295
+  },
+  "2024-05-01_arbitrum-transient-labs": {
+   "cid": "bafkreig425kckhl2e7h3ge63alspm4s5pypjhkr6cfnrow5wyz4bjc4prq",
+   "bytes": 59600
+  },
+  "2024-07-18_buildersdao-btc-ordinals": {
+   "cid": "bafkreic2tyy5hhwkzdvruilir3uiquvbdfhjoaptk2srmupmxlimt7l6rq",
+   "bytes": 65782
+  },
+  "2025-06-03_color-commentary-ep70": {
+   "cid": "bafkreiakiurlsunnxd3qghiv2ehktxaqz7uta6zyp6uxbznvlgzu75antm",
+   "bytes": 177453
+  },
+  "2025-12-15_dam-web3-summit-d1": {
+   "cid": "bafybeifj7segvadlvqdhhw6b6lksrc6xdwkeix4k44cc3bcchwnltio5xq",
+   "bytes": 353509
+  },
+  "2025-12-16_dam-web3-summit-d2": {
+   "cid": "bafybeied6celhxelzlnktrz54us2ob3yclhqfo4zxvaolvjs4egvmwg3pi",
+   "bytes": 321863
+  },
+  "2025-12-17_dam-web3-summit-d3": {
+   "cid": "bafybeicvtqz4a5h23dhd5mt2bxhcapd7xum45r4nzqzf3uhleka6shzp7u",
+   "bytes": 344527
+  }
+ },
+ "manifest": {
+  "cid": "bafkreihcsan7jcfyx3ihwkafco64evghdvyrfls5ebuozub6nl2ebkknca",
+  "bytes": 8264
+ }
+}

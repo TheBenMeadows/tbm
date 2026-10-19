@@ -1,7 +1,7 @@
 ---
 title: "Podcasts & Public Speaking"
 date: 2024-05-26
-updated: 2026-06-12
+updated: 2026-09-29
 pin: 1
 tags: [Art, Blockchain, Podcasts, Technology]
 image: /blog/media/podcasts-public-speaking/feb-23-website-an-introduction-to-ai-art-1.webp
@@ -9,7 +9,7 @@ image_alt: "Title card reading \"An Introduction to AI Art\" beside an engraved-
 description: "Introduction: Below is a non-exhaustive list of Twitter Spaces, podcasts, classes, and events I have spoken at in the past few years."
 ---
 
-**Introduction:** Below is a non-exhaustive list of Twitter Spaces, podcasts, classes, and events I have spoken at in the past few years.
+**Introduction:** Below is a non-exhaustive list of Twitter Spaces, podcasts, classes, and events I have spoken at in the past few years. Full transcripts (with the audio) for many of them are on the [Speaking](/speaking/) page.
 
 ---
 
@@ -18,16 +18,27 @@ May 30, 2026 - Article by Alison Bailin Batz
 
 - [Read the Article](https://theazinsider.com/mission-monday-ben-meadows/)
 
-![The AZ Insider article page headed “#Mission Monday — Ben Meadows”, with a photograph of Ben in sunglasses and a diamond-print t-shirt against a clear blue sky.](/blog/media/podcasts-public-speaking/scr-20260606-lkme.webp)
+![The AZ Insider article page headed "#Mission Monday - Ben Meadows", with a photograph of Ben in sunglasses and a diamond-print t-shirt against a clear blue sky.](/blog/media/podcasts-public-speaking/scr-20260606-lkme.webp)
+
+---
+
+**"THE WEB3 SUMMIT"**
+December 15-17, 2025 - X Live Broadcast, three days - Host: [The Digital Asset Museum](https://x.com/theDAMmuseum)
+
+Three days of artists, builders, collectors and traders, streamed live on X. I was on a panel each day, about fifteen minutes on mic per day: Day 1 alongside [Jared Paz](https://x.com/jared_poz) and [Woodificould](https://x.com/woodificouldart), and Day 3 with Jared, [IWannabee](https://x.com/IWannabeeNFT) and [SatoshisMom](https://x.com/SatoshisMom).
+
+- [Day 1 Recording](https://x.com/i/broadcasts/1OwGWeOVmBQxQ) (315 min. mark)
+- [Day 2 Recording](https://x.com/i/broadcasts/1OyJAjyLgOqxb) (252 min. mark)
+- [Day 3 Recording](https://x.com/i/broadcasts/1mrGmBvXzqqJy) (129 min. mark)
 
 ---
 
 **"Color Commentary x Blu Node 🎨 Recapping Last Week's WILD B25"**
-June 3, 2025 - X/Twitter Space - Hosts: [Steven Miller](https://x.com/SteveMiller_PHX) & [Blutoshi](https://x.com/Blutoshi)
+June 3, 2025 - X/Twitter Space - Hosts: [Steven Miller](https://x.com/SteveMiller) & [Blutoshi](https://x.com/Blutoshi)
 
-- [Listen to the Recording on X](https://x.com/SteveMiller_PHX/status/1929963267109290092) (97 min. mark)
+- [Listen to the Recording on X](https://x.com/SteveMiller/status/1929963267109290092) (97 min. mark)
 
-![A Color Commentary stream still titled “Bitcoin 2025 Las Vegas — The Final Recap”, listing Donny Clutterbuck, Violetta Zironi and Ben Meadows, with the two hosts on camera at the right.](/blog/media/podcasts-public-speaking/screenshot-2025-06-03-at-3-40-09-pm.webp)
+![A Color Commentary stream still titled "Bitcoin 2025 Las Vegas - The Final Recap", listing Donny Clutterbuck, Violetta Zironi and Ben Meadows, with the two hosts on camera at the right.](/blog/media/podcasts-public-speaking/screenshot-2025-06-03-at-3-40-09-pm.webp)
 
 ---
 
@@ -36,7 +47,7 @@ July 18, 2024 - X/Twitter Space - Host: [TheBuildersDAO](https://x.com/TheBuilde
 
 - [Listen to the Recording on X](https://x.com/TheBuildersDao/status/1813936742334099811)
 
-![Promo card for Builders Talk EP7, “Ordinals & Open Call Winner”, listing guests Ben, CyberSea and Carolevy under The Builders DAO logo.](/blog/media/podcasts-public-speaking/builders-talk-ep7-btc-ordinals.webp)
+![Promo card for Builders Talk EP7, "Ordinals & Open Call Winner", listing guests Ben, CyberSea and Carolevy under The Builders DAO logo.](/blog/media/podcasts-public-speaking/builders-talk-ep7-btc-ordinals.webp)
 
 ---
 
@@ -47,16 +58,16 @@ April 15, 2024 - X/Twitter Space - Host: [TheBuildersDAO](https://x.com/TheBuild
 - [Listen to the Podcast on Spotify](https://open.spotify.com/episode/619oZ3MjhT97YH8BJnYLr3)
 - [Further reading](https://x.com/TheBenMeadows/status/1779918681109311658) (post by TheBenMeadows)
 
-![Promo card in blue for “Blockchain Layers: L2 vs L1, plus Builders DAO Base Drop” on April 15th, with hosts Fabio Antenore, Charlie and Flavio Acri and guests Ben and Gebelia.](/blog/media/podcasts-public-speaking/glmpr7wxmaabjwg.webp)
+![Promo card in blue for "Blockchain Layers: L2 vs L1, plus Builders DAO Base Drop" on April 15th, with hosts Fabio Antenore, Charlie and Flavio Acri and guests Ben and Gebelia.](/blog/media/podcasts-public-speaking/glmpr7wxmaabjwg.webp)
 
 ---
 
 **"Smart Contracts & Fully On-Chain NFTs: Breaking Down the Basics"**
-December 21, 2023 - Host: [theMiracle](https://x.com/themiracle_io)
+December 21, 2023 - Host: [theMiracle](https://x.com/themiracle)
 
-- [Listen to the Recording](https://x.com/themiracle_io/status/1737845182882828320)
+- [Listen to the Recording](https://x.com/themiracle/status/1737845182882828320)
 
-![Promo card for an X Space, “Smart Contracts & Fully On-Chain NFTs: Breaking Down the Basics”, Thursday December 21, listing Gebelia, Chainleft and Ben Meadows as guest speakers.](/blog/media/podcasts-public-speaking/gbzs77xwkaefwlw.webp)
+![Promo card for an X Space, "Smart Contracts & Fully On-Chain NFTs: Breaking Down the Basics", Thursday December 21, listing Gebelia, Chainleft and Ben Meadows as guest speakers.](/blog/media/podcasts-public-speaking/gbzs77xwkaefwlw.webp)
 
 ---
 
@@ -65,7 +76,7 @@ November 20, 2023 - X/Twitter Space - Host: [TheBuildersDAO](https://x.com/TheBu
 
 - [Listen to the Recording](https://x.com/TheBuildersDao/status/1726631561121165766)
 
-![Promo card for an Express Talk titled “Full Onchain NFTs” on 20 November, a large chain graphic on black, with ol1y and TheBenMeadows listed as guests.](/blog/media/podcasts-public-speaking/f-co4vjw0aakvzw.webp)
+![Promo card for an Express Talk titled "Full Onchain NFTs" on 20 November, a large chain graphic on black, with ol1y and TheBenMeadows listed as guests.](/blog/media/podcasts-public-speaking/f-co4vjw0aakvzw.webp)
 
 ---
 
@@ -84,9 +95,9 @@ August 24, 2023 - X/Twitter Space - Host: [Pop Punk](https://twitter.com/CryptoP
 ---
 
 **"From Construction to Web3 Mastery"**
-June 2, 2023 - Live Interview - Host: [Ned](https://x.com/NedzzoneXR)
+June 2, 2023 - Live Interview - Host: Ned
 
-- [Watch the Recording](https://www.youtube.com/live/MgBbICKbf_k?si=wj80G-UKhmvXwsv5)
+- [Watch the Recording](https://www.youtube.com/live/MgBbICKbf_k?si=wj80G-UKhmvXwsv5) (the full video has since been made private on YouTube)
 - [Clip](https://www.linkedin.com/feed/update/urn:li:activity:7070535820373331968/) "AI is a Lazy Term"
 
 ![G-Talk promotional card for the interview, captioned "G-Talk · Ben Meadows"](/blog/media/podcasts-public-speaking/fxnhjvuxoauogld.webp)
@@ -94,11 +105,11 @@ June 2, 2023 - Live Interview - Host: [Ned](https://x.com/NedzzoneXR)
 ---
 
 **"Dynamic Blueprints: Pushing the Limits of NFT Collaboration"**
-May 24, 2023 - Live Webinar - Hosts: [InPeak](https://x.com/inpeakxyz) & [Async Art](https://x.com/AsyncArt)
+May 24, 2023 - Live Webinar - Hosts: [InPeak](https://web.archive.org/web/20240913102540/https://twitter.com/inpeakxyz) & [Async Art](https://x.com/AsyncArt)
 
-- [Watch the Recording](https://www.inpeak.xyz/channels/inpeak/event/dynamic-blueprints)
+- [Transcript and audio](/speaking/2023-05-24_inpeak-async-dynamic-blueprints/)
 
-![An Async Art post announcing a free Forever Supper claim of “Neon Dreams” by TheBenMeadows, above the piece itself: a glitched landscape of a towering cloud and waterfall in saturated yellow, magenta and green.](/blog/media/podcasts-public-speaking/async-art-forever-supper.webp)
+![An Async Art post announcing a free Forever Supper claim of "Neon Dreams" by TheBenMeadows, above the piece itself: a glitched landscape of a towering cloud and waterfall in saturated yellow, magenta and green.](/blog/media/podcasts-public-speaking/async-art-forever-supper.webp)
 
 ---
 
@@ -107,51 +118,51 @@ May 5, 2023 - X/Twitter Space - Host: [Zo World](https://x.com/The_Zo_World)
 
 - Listen to the Recording ([Part 1](https://x.com/The_Zo_World/status/1653815574479388673), [Part 2](https://x.com/The_Zo_World/status/1654522342767497216))
 
-![Promo card for The Zo Show episode “AI: Tools & Art” with special guest @TheBenMeadows, Friday 5th May, an engraved-style portrait at the centre.](/blog/media/podcasts-public-speaking/fvoh5iuaaaa7ddh.webp)
+![Promo card for The Zo Show episode "AI: Tools & Art" with special guest @TheBenMeadows, Friday 5th May, an engraved-style portrait at the center.](/blog/media/podcasts-public-speaking/fvoh5iuaaaa7ddh.webp)
 
 ---
 
 **"Ethereum Shapella Network Upgrade Watch Party"**
 April 12, 2023 - YouTube Livestream - Host: [Ethereum](https://x.com/ethereum)
 
-To be fair, I didn't speak at all, but it was an honor to be "on-stage" with such an illustrious group of people.
+I was on the call for about two hours as one of roughly sixty people on stage. I did not present, but it was an honor to be there for it.
 
 - [Watch the Recording](https://www.youtube.com/live/BVq1pz3FrDo?si=QuYfuHlLI5E-Pgw8)
 
-![A YouTube page for Ethereum’s “Shapella Watch Party” showing a grid of about thirty participants on video call, with Benjamin Meadows circled in red.](/blog/media/podcasts-public-speaking/screenshot-2023-04-12-at-2-48-30-pm.webp)
+![A YouTube page for Ethereum's "Shapella Watch Party" showing a grid of about thirty participants on video call, with Benjamin Meadows circled in red.](/blog/media/podcasts-public-speaking/screenshot-2023-04-12-at-2-48-30-pm.webp)
 
 ---
 
 **"Web3 Gala and the Launch of Circle of Trust"**
-March 15, 2023 - Live Panel Discussion - Host: [Evenness](https://x.com/EvennessRocks)
+March 15, 2023 - Live Panel Discussion - Host: Evenness
 
 - [Watch the Recording](https://www.youtube.com/watch?v=ozLKNPhI0x0)
 - [Clip](https://www.linkedin.com/feed/update/urn:li:activity:7042008782406635520?utm_source=share&utm_medium=member_desktop) "So, What's Web3 Exactly?"
 - [Clip](https://www.linkedin.com/feed/update/urn:li:activity:7043640165210198016?utm_source=share&utm_medium=member_desktop) "About Generative AI"
 
-![Gold-on-black promo card for the Evenness Web3 Gala, “Step Into The Future”, March 1st on UN Zero Discrimination Day, naming Benjamin Meadows as guest speaker.](/blog/media/podcasts-public-speaking/step-into-the-future-evenness-web3-gala-benmeadows-1.webp)
+![Gold-on-black promo card for the Evenness Web3 Gala, "Step Into The Future", March 1st on UN Zero Discrimination Day, naming Benjamin Meadows as guest speaker.](/blog/media/podcasts-public-speaking/step-into-the-future-evenness-web3-gala-benmeadows-1.webp)
 
 ---
 
 **"Introduction to AI Art: A 5-Part Series"**
-February - April 2023 - Live Webinar - Host: [InPeak](https://x.com/inpeakxyz)
+February - April 2023 - Live Webinar - Host: [InPeak](https://web.archive.org/web/20240913102540/https://twitter.com/inpeakxyz)
 
-- [Lesson 1 - An Introduction to AI Art](https://www.inpeak.xyz/event/ai-art)
-- [Lesson 2 - Basic Tools for Creating AI Art](https://www.inpeak.xyz/event/creating-ai-art)
-- [Lesson 3 - Tools & Workflows for AI Art (Part 1)](https://www.inpeak.xyz/event/ai-art-pt1)
-- [Lesson 4 - Tools & Workflows for AI Art (Part 2)](https://www.inpeak.xyz/event/ai-art-2)
-- [Lesson 5 - Getting Familiar with GAN](https://www.inpeak.xyz/event/gan)
+- [Lesson 1 - An Introduction to AI Art](/speaking/2023-02-23_inpeak-lesson-1-intro-ai-art/)
+- [Lesson 2 - Basic Tools for Creating AI Art](/speaking/2023-03-09_inpeak-lesson-2-creating-ai-art/)
+- [Lesson 3 - Tools & Workflows for AI Art (Part 1)](/speaking/2023-03-29_inpeak-lesson-3-basic-tools-p1/)
+- [Lesson 4 - Tools & Workflows for AI Art (Part 2)](/speaking/2023-04-13_inpeak-lesson-4-basic-tools-p2/)
+- [Lesson 5 - Getting Familiar with GAN](/speaking/2023-04-27_inpeak-lesson-5-gan/)
 - [Lesson PDFs and Resources](https://github.com/TheBenMeadows/Web3/tree/main/InPeak) (GitHub Repo)
 - [Further reading](https://x.com/TheBenMeadows/status/1651740075213082625) (post by TheBenMeadows)
 
-![INPEAK promo card for “An Introduction to AI Art” on 23 February 2023, an engraved-style portrait of Ben over a night city skyline.](/blog/media/podcasts-public-speaking/feb-23-an-introduction-to-ai-art-ad.webp)
+![INPEAK promo card for "An Introduction to AI Art" on 23 February 2023, an engraved-style portrait of Ben over a night city skyline.](/blog/media/podcasts-public-speaking/feb-23-an-introduction-to-ai-art-ad.webp)
 
 ---
 
 **"Exploring Art Style Narratives in Web3 - Collectors & Artists Views"**
-December 21, 2022 - X/Twitter Space - Host: [art2act](https://x.com/art2actofficial)
+December 21, 2022 - X/Twitter Space - Host: [art2act](https://web.archive.org/web/20230126152343/https://twitter.com/art2actofficial)
 
-- [Listen to the Recording](https://x.com/art2actofficial/status/1605593943415980032)
+- [Transcript and audio](/speaking/2022-12-21_art2act-art-style-narratives/)
 
 ---
 
@@ -183,7 +194,7 @@ In May 2019, as a featured conference speaker, I gave a 90-minute presentation o
 
 This conference brought together some of the largest specialty contracting companies in the country to talk about best practices related to technology, and was a great opportunity for me to share what I had learned while running the Technology Department for a medium-sized company for several years.
 
-- [Presentation & Resources](bit.ly/MayCCA)
+- [Presentation & Resources](https://bit.ly/MayCCA)
 
 ---
 

@@ -21,12 +21,12 @@ pointing to Ben Meadows' sites, projects, and social profiles.
 It is a small static site: hand-written HTML styled with Tailwind, plus
 supporting pages — [`/mirrors/`](https://thebenmeadows.com/mirrors/),
 [`/tech/`](https://thebenmeadows.com/tech/), `/experiments/`, `/infra/`,
-`/art/` and [`/blog/`](https://thebenmeadows.com/blog/). The build compiles the
-CSS, the search index and the blog; there is no framework or client-side
-rendering.
+`/ai/`, `/papers/`, `/art/` and [`/blog/`](https://thebenmeadows.com/blog/). The build
+compiles the CSS, the search index, the blog and the `/ai/` page; there is no
+framework or client-side rendering.
 
-Search is dependency-free on purpose. The corpus is about 90 KB across 23 pages
-and the index built from it about 96 KB — small enough to match in the browser
+Search is dependency-free on purpose. The corpus is about 134 KB across 32 pages
+and the index built from it about 143 KB — small enough to match in the browser
 without a search library. The usual pick, Pagefind, runs on WebAssembly, which
 under this site's `script-src 'self'` CSP would mean adding `'wasm-unsafe-eval'`.
 Instead `scripts/build-search-index.mjs` emits a JSON index at build time and
@@ -94,20 +94,20 @@ re-measure on their own schedules, so the sizes they list lag this repo.
 New subpages are not measured, but three home-page assets are shared with every other
 page and do count:
 
-- `output.css` is a single Tailwind build over the content list in `tailwind.config.js`.
+- `output.css` is a single Tailwind build over the `@source` list in `src/input.css`.
   A new page that uses utility classes not already present grows it, and the home page
   pays for that.
 - `theme.js` and `search.js` are shared but fixed in size.
 
 `search-index.json` grows with every page in `scripts/build-search-index.mjs` and with
 every post under `blog/posts/`, but `search.js` fetches it on first search rather than
-on load, so it stays out of the measurement. It is 96 KB — nearly the entire budget on
+on load, so it stays out of the measurement. It is 143 KB — more than the entire budget on
 its own, most of it blog prose — so it must stay lazy. Fetching it on load would fail
-the build. It will outgrow the budget entirely as the blog does, which is survivable only because it
-is never part of a cold visit; the day it stops being lazy is the day it stops being
-affordable.
+the build. It has outgrown the budget already and will keep growing with the blog, which is
+survivable only because it is never part of a cold visit; the day it stops being lazy is
+the day it stops being affordable.
 
-The home page currently measures about 72 KB. `scripts/build-manifest.mjs` enforces the
+The home page currently measures about 86 KB. `scripts/build-manifest.mjs` enforces the
 budget on every build and fails over it, so the number cannot drift unnoticed; to check
 it independently, run a
 [DebugBear page-weight scan](https://www.debugbear.com/test/page-size-checker).
@@ -231,7 +231,7 @@ manifest cannot disagree.
 | Network | Address |
 |---------|---------|
 | Web (primary) | `https://thebenmeadows.com/` |
-| Web | `https://thebenmeadows.netlify.app/` |
+| Web | `https://netlify.thebenmeadows.com/` |
 | Web | `https://tbm-linktree.pages.dev/` |
 | Web | `https://thebenmeadows.codeberg.page/` |
 | Web | `https://thebenmeadows.srht.site/` |
@@ -295,14 +295,15 @@ decisions behind it are at [`/tech/`](https://thebenmeadows.com/tech/).
 | `mirrors/`, `tech/` | the mirror list and the tech-stack colophon |
 | `profiles/` | every profile, one page — the footer's "All profiles" target |
 | `experiments/`, `infra/` | experiments gallery and the network/ASN colophon |
+| `ai/wins.json` | entries for `/ai/`; the page is generated from it by `scripts/build-ai.mjs` |
+| `papers/` | preprints: an index plus one page per paper with Google Scholar `citation_*` tags; each PDF sits beside its page (the one copy on the site), byte-identical to the Zenodo file |
 | `search/` | the search page (`/search/?q=…`) |
 | `404.html` | not-found page (self-contained, inline styles) |
-| `src/input.css`, `tailwind.config.js` | Tailwind source + config |
+| `src/input.css`, `src/tailwind.css` | Tailwind source + settings shared with the experiment stylesheets |
 | `icons/` | social SVGs — repo-only since the typographic redesign; the site ships no icons |
 | `svgo.config.mjs` | optimizer settings for `icons/` — run `npm run optimize:icons` after adding one |
 | `favicon/`, `me.png` | icons and profile image |
 | `readme-header-*.png` | the header above — keyed out of `og.png` by `scripts/make-readme-header.py`, one variant per theme; repo-only, never shipped |
-| `email.js` | re-sets the contact address on pages cached before it moved into the markup |
 | `theme.js` | three-state theme control (system / light / dark) |
 | `search.js` | search overlay + `/search/` page; fetches the index on first use |
 | `scripts/build-search-index.mjs` | builds `search-index.json` from the pages at build time |
