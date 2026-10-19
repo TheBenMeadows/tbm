@@ -9,6 +9,45 @@
     },
     "wins": [
         {
+            "id": "emoji-fix",
+            "date": "2026-10-09",
+            "kind": "release",
+            "title": "Emoji Fix, a browser extension for emoji that Chromium draws blank on the Mac",
+            "where": "Emoji Fix",
+            "summary": "On some Macs, Brave and other Chromium browsers reserve the space for each Apple emoji and draw nothing, while Safari draws the same characters normally; a fresh browser profile shows it too, so the cause sits outside the browser's settings. The extension bundles Google's Noto Color Emoji and applies it to emoji only, including inside X's chat and reaction picker, where a font loaded from a CDN is blocked. Before release it went through a security and bug review, published in the repository with a regression page for each fix. On 2026-10-12 it passed Google's review and went live in the Chrome Web Store.",
+            "links": [
+                { "label": "the Chrome Web Store listing", "url": "https://chromewebstore.google.com/detail/emoji-fix/pgjaolgpjogppmhdadddafkfcbnndeam" },
+                { "label": "the release", "url": "https://github.com/mdws-org/emoji-fix/releases/tag/v1.3.0" },
+                { "label": "the review", "url": "https://github.com/mdws-org/emoji-fix/blob/main/review/synthesis-r1.md" }
+            ]
+        },
+        {
+            "id": "ar-io-deploy-credit-share",
+            "date": "2026-10-09",
+            "kind": "merged",
+            "title": "Shared credits refused by a permaweb deploy tool, reported and fixed",
+            "where": "ar-io-deploy",
+            "summary": "A deploy wallet funded only by a credit-share approval was turned away with zero credits available, because the pre-flight check read the wallet's own balance instead of the balance it could spend. The report carried the measured balances and the exact price quote. The maintainer confirmed the cause, pointed to the release that counts shared credits, and merged a regression test for the reported case.",
+            "links": [
+                { "label": "the report", "url": "https://github.com/ar-io/ar-io-deploy/issues/17" },
+                { "label": "the credit", "url": "https://github.com/ar-io/ar-io-deploy/issues/17#issuecomment-6074488502" },
+                { "label": "the regression test", "url": "https://github.com/ar-io/ar-io-deploy/pull/33" }
+            ]
+        },
+        {
+            "id": "nnw-prayer-book",
+            "date": "2026-10-06",
+            "kind": "release",
+            "title": "Prayer Book, a theme for the NetNewsWire feed reader",
+            "where": "NetNewsWire Themes",
+            "summary": "A reading theme for iOS and Mac that sets every article the way OrthodoxPrayers.net sets a prayer: EB Garamond on parchment by day and a dark page at night, red links and labels, and a red capital opening each article. Released on GitHub and listed in the community theme catalog, which validates each package before it appears.",
+            "links": [
+                { "label": "the catalog", "url": "https://dave-atx.github.io/nnw-theme-marketplace/" },
+                { "label": "the release", "url": "https://github.com/mdws-org/nnw-prayer-book/releases/latest" },
+                { "label": "source", "url": "https://github.com/mdws-org/nnw-prayer-book" }
+            ]
+        },
+        {
             "id": "devin-ambassador",
             "date": "2026-09-21",
             "kind": "milestone",
@@ -238,6 +277,12 @@
         }
     ],
     "quotes": [
+        {
+            "date": "2026-10-09",
+            "quote": "Thanks for the detailed report: the measurements made this quick to confirm.",
+            "who": "vilenarios, ar-io-deploy maintainer, on the issue",
+            "url": "https://github.com/ar-io/ar-io-deploy/issues/17#issuecomment-6074488502"
+        },
         {
             "date": "2026-09-15",
             "quote": "Congratulations! @TheBenMeadows, @feyz, @jackbone22, @DuKDuE, @neonpilot, @M_Rish, @achwir, and @sus1lo have been announced as the winners!",

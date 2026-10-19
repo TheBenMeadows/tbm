@@ -55,7 +55,7 @@
                 <button id="theme-toggle" type="button" aria-label="Switch theme"></button>
             </nav>
         </header>
-        <main class="text-neutral-400 max-w-screen-md mx-auto px-6 pt-8 pb-12 leading-relaxed">
+        <main class="text-neutral-400 max-w-(--breakpoint-md) mx-auto px-6 pt-8 pb-12 leading-relaxed">
             <h1 class="text-white text-3xl font-bold text-center" style="letter-spacing: -0.025em">Infra</h1>
             <p class="mt-4">
                 Beyond the pages themselves, Ben runs his own corner of the
@@ -72,17 +72,17 @@
             <div class="mt-8 grid gap-3 sm:grid-cols-2">
                 <a class="block hairline-card p-6 transition-opacity hover:opacity-80" href="https://stat.ripe.net/AS219158" target="_blank" rel="noopener">
                     <span class="block font-mono text-xs uppercase tracking-widest text-neutral-500">Autonomous System</span>
-                    <span class="mt-2 block font-mono text-xl text-white break-words">AS219158</span>
+                    <span class="mt-2 block font-mono text-xl text-white wrap-break-word">AS219158</span>
                     <span class="mt-2 block font-mono text-xs text-neutral-500">stat.ripe.net&nbsp;↗</span>
                 </a>
                 <div class="hairline-card p-6">
                     <span class="block font-mono text-xs uppercase tracking-widest text-neutral-500">IPv6 allocation</span>
-                    <span class="mt-2 block font-mono text-xl text-white break-words">2a06:9801:f11::/48</span>
+                    <span class="mt-2 block font-mono text-xl text-white wrap-break-word">2a06:9801:f11::/48</span>
                     <span class="mt-2 block font-mono text-xs text-neutral-500">65,536 &times; /64</span>
                 </div>
                 <a class="block hairline-card p-6 transition-opacity hover:opacity-80" href="https://bgp.tools/prefix/44.30.210.0/24" target="_blank" rel="noopener">
                     <span class="block font-mono text-xs uppercase tracking-widest text-neutral-500">IPv4 allocation</span>
-                    <span class="mt-2 block font-mono text-xl text-white break-words">44.30.210.0/24</span>
+                    <span class="mt-2 block font-mono text-xl text-white wrap-break-word">44.30.210.0/24</span>
                     <span class="mt-2 block font-mono text-xs text-neutral-500">256 addresses &middot; 44Net &middot; bgp.tools&nbsp;↗</span>
                 </a>
                 <div class="hairline-card p-6">
@@ -141,6 +141,7 @@
             <h2 class="section-label" style="margin-top: 2.6rem">Hygiene</h2>
             <ul class="mt-4 space-y-3 list-none">
                 <li><span class="text-white font-medium">RPKI</span>: the prefix has a valid ROA for AS219158 (max length /48) — anything else claiming it is invalid.</li>
+                <li><span class="text-white font-medium">ASPA</span>: AS219158 lists its three upstreams (AS209533, AS209735, AS212895) in RPKI, so a path that shows it behind any other network is flagged as a leak.</li>
                 <li><span class="text-white font-medium">IRR</span>: <code class="font-mono text-sm">route6</code> and <code class="font-mono text-sm">as-set AS219158:AS-ALL</code> in the RIPE database.</li>
                 <li><span class="text-white font-medium">RPKI, IPv4</span>: none, and none is possible &mdash; 44Net is ARIN legacy space, which the registry does not issue RPKI certificates for. The IRR route object is the only origin proof, so some networks accept it and some do not.</li>
                 <li><span class="text-white font-medium">Reverse DNS</span>: the block's <code class="font-mono text-sm">ip6.arpa</code> zone is delegated and answers for the routers.</li>

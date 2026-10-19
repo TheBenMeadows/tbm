@@ -354,6 +354,15 @@
         });
     }
 
+    // A preview URL is also a link, so its blob must never carry a type the
+    // browser runs as a page (text/html, image/svg+xml) in this origin. Raster
+    // images keep their type; anything else is plain bytes.
+    function previewType(ctype) {
+        var raster = ['image/png', 'image/jpeg', 'image/gif', 'image/webp', 'image/avif'];
+        var base = (ctype || '').split(';')[0].trim().toLowerCase();
+        return raster.indexOf(base) >= 0 ? base : 'application/octet-stream';
+    }
+
     function extFor(ctype, url) {
         var map = { 'image/png': '.png', 'image/gif': '.gif', 'image/jpeg': '.jpg',
                     'image/webp': '.webp', 'image/svg+xml': '.svg' };
@@ -393,7 +402,7 @@
             var row = {
                 c: tok.chain, t: String(tok.id), e: eventIdFrom(tok.uri),
                 n: meta.name || 'POAP', d: (meta.description || '').trim(),
-                y: meta.year || null, img: null, sha: null,
+                y: Number(meta.year) || null, img: null, sha: null,
                 uri: tok.uri, src: imgUrl || null,
             };
             rows.push(row);
@@ -435,7 +444,7 @@
                         row.img = dir + fname;
                         row.sha = sha;
                         row.preview = URL.createObjectURL(
-                            new Blob([bytes], { type: ctype || 'image/png' }));
+                            new Blob([bytes], { type: previewType(ctype) }));
                     });
                 });
             });
@@ -528,22 +537,9 @@
                     rows.forEach(function (p) {
                         if (p.preview) stalePreviews.push(p.preview);
                     });
-                    /* preview holds page-lifetime blob: URLs - meaningless
-                       inside the archive, so strip before serializing. */
-                    var clean = rows.map(function (p) {
-                        var c = {}, k;
-                        for (k in p) if (k !== 'preview') c[k] = p[k];
-                        return c;
-                    });
-                    /* "</" must not appear inside the gallery's inline
-                       <script>: metadata is third-party text and "</script>"
-                       in it would end the element. Function replacement also
-                       keeps $-patterns in metadata literal. */
-                    var data = JSON.stringify(clean).replace(/<\//g, '<\\/');
-                    var gallery = tpl
-                        .replace(/__ADDRESS__/g, address)
-                        .replace(/__COUNT__/g, String(clean.length))
-                        .replace('__DATA__', function () { return data; });
+                    var filled = window.poapGallery(tpl, address, rows);
+                    var clean = filled.clean;
+                    var gallery = filled.html;
                     files.push({ name: 'index.html',
                                  data: new TextEncoder().encode(gallery) });
                     files.push({ name: 'manifest.json',
@@ -789,7 +785,7 @@
                             y: meta.year || null, sha: sha, uri: null,
                             src: meta.image_url || meta.image || null,
                             preview: URL.createObjectURL(
-                                new Blob([bytes], { type: ctype || 'image/png' })),
+                                new Blob([bytes], { type: previewType(ctype) })),
                         };
                         stalePreviews.push(row.preview);
                         showPreview([row]);

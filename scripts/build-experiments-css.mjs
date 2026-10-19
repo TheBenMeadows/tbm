@@ -11,7 +11,8 @@
 // The main site stylesheet (output.css) is untouched: sharing it would impose
 // the site theme on pages whose whole point is to look like themselves.
 
-import { execSync } from "node:child_process";
+import { execFileSync } from "node:child_process";
+import { readFileSync, rmSync, writeFileSync } from "node:fs";
 
 const PAGES = {
     pendulum: ["index.html", "app.js"],
@@ -20,11 +21,24 @@ const PAGES = {
     // etherhoo uses no Tailwind -- its styling is entirely its own <style> block.
 };
 
+// Tailwind 4 takes its sources from the stylesheet, not the command line, so each
+// page gets a throwaway input next to the shared one: the shared input plus one
+// @source line per file of that page. It sits in scripts/ so the relative paths
+// in the shared input still resolve.
+const shared = readFileSync("./scripts/experiments-input.css", "utf8");
+
 for (const [page, files] of Object.entries(PAGES)) {
-    const content = files.map((f) => `./experiments/${page}/${f}`).join(",");
-    execSync(
-        `npx tailwindcss -i ./scripts/experiments-input.css -o ./experiments/${page}/style.css --content "${content}" --minify`,
-        { stdio: "inherit" },
-    );
+    const input = `./scripts/.experiments-${page}.css`;
+    const sources = files.map((f) => `@source "../experiments/${page}/${f}";`).join("\n");
+    writeFileSync(input, `${shared}\n${sources}\n`);
+    try {
+        execFileSync(
+            "npx",
+            ["@tailwindcss/cli", "-i", input, "-o", `./experiments/${page}/style.css`, "--minify"],
+            { stdio: "inherit" },
+        );
+    } finally {
+        rmSync(input, { force: true });
+    }
     console.log(`built experiments/${page}/style.css`);
 }
