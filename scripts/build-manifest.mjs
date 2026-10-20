@@ -165,6 +165,32 @@ console.log(
                 glued.join(" | "),
             );
         }
+        // Guard: every built page offers Tor Browser its onion copy. Pages are
+        // listed one by one (each points at its own onion path), so a new post or
+        // section would otherwise ship without a rule and nothing would say so.
+        // A page is covered by an exact "/path/" block or a "/prefix/*" splat
+        // block that carries Onion-Location.
+        const exact = new Set();
+        const splats = [];
+        let block = null;
+        for (const line of raw.split("\n")) {
+            if (line.startsWith("/")) block = line.trim();
+            else if (!line.trim()) block = null;
+            else if (block && /^  Onion-Location: /.test(line)) {
+                if (block.endsWith("*")) splats.push(block.slice(0, -1));
+                else exact.add(block);
+            }
+        }
+        const pages = sortedKeys
+            .filter((k) => k === "index.html" || k.endsWith("/index.html"))
+            .map((k) => "/" + k.slice(0, -"index.html".length));
+        const uncovered = pages.filter((p) => !exact.has(p) && !splats.some((s) => p.startsWith(s)));
+        if (uncovered.length) {
+            throw new Error(
+                `build-manifest: ${headersPath} has no Onion-Location rule for these ` +
+                `built pages; add a block for each: ${uncovered.join(", ")}`,
+            );
+        }
     }
 }
 

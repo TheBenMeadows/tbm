@@ -115,7 +115,7 @@ it independently, run a
 ## Deploy
 
 - **Primary:** Cloudflare Pages, connected to this repo's `main`. Each push runs
-  `npm run build` and publishes the folder.
+  `npm run build:netlify` and publishes `dist/`.
 - **Netlify:** `netlify.toml` runs the same build (`npm run build:netlify`,
   which assembles a clean `dist/`), for use as a second host.
 - **Codeberg Pages** and **sourcehut pages**: a machine of mine rebuilds from
