@@ -59,8 +59,9 @@
             zip: the archive plus a gallery page that works offline, forever.
             Nothing is uploaded, and no wallet connection is ever asked for
             &mdash; an address is all it needs.</p>
-            <p>The archive behind this page is complete to 19 August 2026: every
-            POAP event that existed when the crawl ran - 197,577 of them - was
+            <p>The archive behind this page is complete to 19 October 2026 (the
+            August crawl plus the twelve drops POAP issued in September): every
+            POAP event that existed - 197,589 of them - was
             saved, verified byte-for-byte, and published to IPFS, with a
             <a href="https://github.com/mdws-org/poap-saver/tree/main/registry/corpus">public
             registry</a> mapping each event to its content address so anyone
@@ -95,9 +96,9 @@
             <a href="https://github.com/mdws-org/poap-saver/tree/main/registry/corpus" target="_blank" rel="noopener">registry</a>
             explains how to mirror the whole archive.
             The roots, in case only this page survives:
-            <code>bafybeickz3h6wnxdwsxeoixj3pxk24fnczqeymuqh7h7xge7iaownd4b3i</code>
+            <code>bafybeiccw6agfdwyezhaossnesw2ftzsycf3d6tljgkh4qdxy547twzi5y</code>
             (artwork),
-            <code>bafybeiglmxn6ta7bt76p5ed6mnmek4m4uvmftonxjqe6zemp6j73qzwwuu</code>
+            <code>bafybeif5yj2ywl3eci7dvsvisvqybjjglgujrkvofh2i4u4wasvslktnoe</code>
             (metadata). The collection that started this is at
             <a href="/experiments/poap-vault/">/experiments/poap-vault/</a>.</p>
             <section class="mirror">
@@ -112,15 +113,15 @@
                 when that person stops paying attention, not usually when
                 hardware fails.</p>
                 <p>If you already run IPFS, one command changes it. Pin the
-                metadata first: 145 MB, all 197,577 events, and the only copy of
+                metadata first: 145 MB, all 197,589 events, and the only copy of
                 their names, dates and descriptions that does not depend on
                 POAP's last server staying up. The registry records every hash,
                 but a hash is not a name. The thumbnails are 4.4 GB and keep the
                 archive browsable, not just intact. The artwork is 194 GB, so
                 pin that when you have the disk.</p>
-<pre><code>ipfs pin add bafybeiglmxn6ta7bt76p5ed6mnmek4m4uvmftonxjqe6zemp6j73qzwwuu   # metadata, 145 MB
-ipfs pin add bafybeia3q5zqbjdhzdmdny3vzoc6gddjn4tsi22p6jd2lsx3rcm362gin4   # thumbnails, 4.4 GB
-ipfs pin add bafybeickz3h6wnxdwsxeoixj3pxk24fnczqeymuqh7h7xge7iaownd4b3i   # artwork, 194 GB</code></pre>
+<pre><code>ipfs pin add bafybeif5yj2ywl3eci7dvsvisvqybjjglgujrkvofh2i4u4wasvslktnoe   # metadata, 145 MB
+ipfs pin add bafybeidyhc2wvzhuvvcvzvsm5cca3jdj32ev4aejaveav4bxvmeddmucke   # thumbnails, 4.4 GB
+ipfs pin add bafybeiccw6agfdwyezhaossnesw2ftzsycf3d6tljgkh4qdxy547twzi5y   # artwork, 194 GB</code></pre>
                 <p class="fine">Nothing here asks for money. The archive runs
                 on a machine at home, a server, a few dollars a month of object
                 storage, and a domain. What it needs is other
