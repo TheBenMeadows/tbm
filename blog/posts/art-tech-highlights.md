@@ -203,8 +203,8 @@ I'm not sure how I feel about this being the piece that got me into the 787 Upda
 - [Las Vegas](https://x.com/TheBenMeadows/status/1918772225177419908) - Gamma, during Bitcoin 2025 (May 2025) - "You Didn't Build That"
 - [Bologna, Italy](https://x.com/TheBenMeadows/status/1973492121593324011) - geavision & inkseart (October 2025) - "The Controversial 'Sherman Horse Head'…"
 - Lisbon, Portugal - NFC Lisbon, with The Builders DAO in the inkseart lounge (June 2026) - my four pieces from Gamma's Continuum calendar
-- [Marfa, Texas](/marfa/) - Plastic Cactus, during Art Blocks Weekend (October 2026) - "[essentialism](/art/essentialism/)" and "hollerith" (deployed via ABX)
-- Marfa, Texas - [Marfa Vibes](https://x.com/paperbuddha/status/2111169377429025161), in "Desert Proving Ground", curated by Steven Miller, during Art Blocks Weekend (October 2026) - a preview of "imprint" (posters [here](https://x.com/SteveMiller/status/2112055954627813716) and [here](https://x.com/SteveMiller/status/2112055971719860554))
+- [Marfa, Texas](/marfa/) - Plastic Cactus, during Art Blocks Weekend (October 2026) - "[essentialism](/art/essentialism/)" and "[hollerith](https://art.thebenmeadows.com/forthcoming/hollerith/)" (deployed via ABX)
+- Marfa, Texas - [Marfa Vibes](https://x.com/paperbuddha/status/2111169377429025161), in "Desert Proving Ground", curated by Steven Miller, during Art Blocks Weekend (October 2026) - a preview of "[imprint](https://art.thebenmeadows.com/forthcoming/imprint/)" (posters [here](https://x.com/SteveMiller/status/2112055954627813716) and [here](https://x.com/SteveMiller/status/2112055971719860554))
 
 ## Featured
 
