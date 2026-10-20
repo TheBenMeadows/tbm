@@ -177,6 +177,10 @@
   Cache-Control: public, max-age=0, must-revalidate
   Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/marfa/
 
+/marfa/available/
+  Cache-Control: public, max-age=0, must-revalidate
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/marfa/available/
+
 # The index and one page per talk. One splat rule only: a separate /speaking/
 # rule would stack with it and Cloudflare would join the two Onion-Location
 # values into one comma-separated header.
