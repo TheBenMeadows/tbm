@@ -24,6 +24,7 @@ const PAGES = [
     ...JSON.parse(readFileSync(join("speaking", "pages.json"), "utf8")).pages.map((p) => p.file),
     "speaking/index.html",
     "marfa/index.html",
+    "marfa/available/index.html",
     "index.html",
     "mirrors/index.html",
     "tech/index.html",
