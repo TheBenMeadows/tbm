@@ -46,6 +46,7 @@
         <link rel="stylesheet" href="/output.css" />
         <script src="/theme.js"></script>
         <script src="/search.js" defer></script>
+        <script src="/marfa/available/zoom.js" defer></script>
         <style>
             .works {
                 display: grid;
@@ -73,9 +74,51 @@
             .works .title {
                 display: block;
             }
-            .works a {
+            .works figcaption a {
                 display: inline-block;
                 padding-block: 0.4rem;
+            }
+            .works a.zoom {
+                display: block;
+                cursor: zoom-in;
+            }
+            #zoom {
+                width: 100%;
+                height: 100%;
+                max-width: none;
+                max-height: none;
+                margin: 0;
+                padding: 1rem;
+                border: 0;
+                background: #000;
+                cursor: zoom-out;
+            }
+            #zoom::backdrop {
+                background: transparent;
+            }
+            #zoom img {
+                display: block;
+                width: auto;
+                height: auto;
+                max-width: 100%;
+                max-height: 100%;
+                margin: auto;
+                position: relative;
+                top: 50%;
+                translate: 0 -50%;
+            }
+            #zoom form {
+                position: fixed;
+                top: 0.75rem;
+                right: 1rem;
+            }
+            #zoom button {
+                padding: 0.5rem 0.75rem;
+                color: #fff;
+                background: rgb(0 0 0 / 0.6);
+                border: 1px solid rgb(255 255 255 / 0.3);
+                font-size: 0.875rem;
+                cursor: pointer;
             }
         </style>
     </head>
@@ -102,22 +145,22 @@
             <h2 class="section-label" style="margin-top: 2.6rem">For sale now</h2>
             <div class="works wide">
                 <figure>
-                    <img src="/marfa/available/ursus.webp" width="800" height="436" loading="lazy" decoding="async" alt="ursus: a roaring polar bear on broken ice, smeared by bands of green, pink and blue glitch" />
+                    <a class="zoom" href="/marfa/available/ursus-lg.webp" aria-label="Enlarge ursus"><img src="/marfa/available/ursus.webp" width="800" height="436" loading="lazy" decoding="async" alt="ursus: a roaring polar bear on broken ice, smeared by bands of green, pink and blue glitch" /></a>
                     <figcaption>
                         <span class="title text-white">ursus, 2025</span>
                         1/1. My first animated, fully on-chain piece on Ethereum,
                         made for COMPUTERBLOOD&rsquo;s POLAR DERIVATIVES open call.
                         Reserve auction: bidding starts at 0.042069 ETH and runs for
                         a day from the first bid.<br />
-                        <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://manifold.xyz/@thebenmeadows-c36dad91/id/4125286640" target="_blank" rel="noopener">Bid on Manifold</a>
+                        <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://manifold.xyz/@thebenmeadows-c36dad91/id/4125286640" target="_blank" rel="noopener">Bid on Manifold</a> <span aria-hidden="true">&middot;</span> <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://art.thebenmeadows.com/works/eth/0x11376b018c990a1066879275f8be50acef498dad/9/" target="_blank" rel="noopener">Details</a>
                     </figcaption>
                 </figure>
                 <figure>
-                    <img src="/marfa/available/talk-to-the-duck.svg" width="1024" height="1024" loading="lazy" decoding="async" alt="talk to the duck: a green rubber duck with a Pepe face on a white ground" />
+                    <a class="zoom" href="/marfa/available/talk-to-the-duck.svg" aria-label="Enlarge talk to the duck"><img src="/marfa/available/talk-to-the-duck.svg" width="1024" height="1024" loading="lazy" decoding="async" alt="talk to the duck: a green rubber duck with a Pepe face on a white ground" /></a>
                     <figcaption>
                         <span class="title text-white">talk to the duck, 2023</span>
                         Fully on-chain edition of 12 on Ethereum, 0.0169 ETH each.<br />
-                        <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://gallery.manifold.xyz/the-duck" target="_blank" rel="noopener">Buy on Manifold</a>
+                        <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://gallery.manifold.xyz/the-duck" target="_blank" rel="noopener">Buy on Manifold</a> <span aria-hidden="true">&middot;</span> <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://art.thebenmeadows.com/works/eth/0x7a92d5b26625b2722f27eb1fbf4ec9f3c4e08a6c/2/" target="_blank" rel="noopener">Details</a>
                     </figcaption>
                 </figure>
             </div>
@@ -131,72 +174,68 @@
             <h3 class="text-white" style="margin-top: 1.8rem">Photography</h3>
             <div class="works">
                 <figure>
-                    <img src="/marfa/available/looking.webp" width="800" height="600" loading="lazy" decoding="async" alt="Looking: a rooftop of white tension rods and cables below office towers under a blue sky" />
-                    <figcaption><span class="title text-white">Looking, 2023</span><a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="mailto:steam-gab-shape@duck.com?subject=Offer%3A%20Looking">Make an offer</a></figcaption>
+                    <a class="zoom" href="/marfa/available/looking-lg.webp" aria-label="Enlarge Looking"><img src="/marfa/available/looking.webp" width="800" height="600" loading="lazy" decoding="async" alt="Looking: a rooftop of white tension rods and cables below office towers under a blue sky" /></a>
+                    <figcaption><span class="title text-white">Looking, 2023</span><a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="mailto:steam-gab-shape@duck.com?subject=Offer%3A%20Looking">Make an offer</a> <span aria-hidden="true">&middot;</span> <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://art.thebenmeadows.com/works/eth/0x93ad4670d8dd9fc3987eb296315827c3d138adea/3/" target="_blank" rel="noopener">Details</a></figcaption>
                 </figure>
                 <figure>
-                    <img src="/marfa/available/natural-gradient.webp" width="800" height="1066" loading="lazy" decoding="async" alt="Natural Gradient: a clear sky fading from deep blue to pale blue" />
-                    <figcaption><span class="title text-white">Natural Gradient, 2023</span><a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="mailto:steam-gab-shape@duck.com?subject=Offer%3A%20Natural%20Gradient">Make an offer</a></figcaption>
+                    <a class="zoom" href="/marfa/available/arizona-twilight-lg.webp" aria-label="Enlarge Arizona Twilight"><img src="/marfa/available/arizona-twilight.webp" width="800" height="1066" loading="lazy" decoding="async" alt="Arizona Twilight: a towering pink cloud over dark trees and streetlights at dusk" /></a>
+                    <figcaption><span class="title text-white">Arizona Twilight, 2024</span><a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="mailto:steam-gab-shape@duck.com?subject=Offer%3A%20Arizona%20Twilight">Make an offer</a> <span aria-hidden="true">&middot;</span> <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://art.thebenmeadows.com/works/eth/0x805732808bd9fbd6521067d266be3e23ed614aec/1/" target="_blank" rel="noopener">Details</a></figcaption>
                 </figure>
                 <figure>
-                    <img src="/marfa/available/arizona-twilight.webp" width="800" height="1066" loading="lazy" decoding="async" alt="Arizona Twilight: a towering pink cloud over dark trees and streetlights at dusk" />
-                    <figcaption><span class="title text-white">Arizona Twilight, 2024</span><a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="mailto:steam-gab-shape@duck.com?subject=Offer%3A%20Arizona%20Twilight">Make an offer</a></figcaption>
+                    <a class="zoom" href="/marfa/available/august-blues-lg.webp" aria-label="Enlarge August Blues"><img src="/marfa/available/august-blues.webp" width="800" height="600" loading="lazy" decoding="async" alt="August Blues: white umbrellas and wrought-iron tables on a patio under a blue sky" /></a>
+                    <figcaption><span class="title text-white">August Blues, 2024</span><a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="mailto:steam-gab-shape@duck.com?subject=Offer%3A%20August%20Blues">Make an offer</a> <span aria-hidden="true">&middot;</span> <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://art.thebenmeadows.com/works/eth/0x805732808bd9fbd6521067d266be3e23ed614aec/2/" target="_blank" rel="noopener">Details</a></figcaption>
                 </figure>
                 <figure>
-                    <img src="/marfa/available/august-blues.webp" width="800" height="600" loading="lazy" decoding="async" alt="August Blues: white umbrellas and wrought-iron tables on a patio under a blue sky" />
-                    <figcaption><span class="title text-white">August Blues, 2024</span><a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="mailto:steam-gab-shape@duck.com?subject=Offer%3A%20August%20Blues">Make an offer</a></figcaption>
-                </figure>
-                <figure>
-                    <img src="/marfa/available/reaching.webp" width="800" height="1066" loading="lazy" decoding="async" alt="Reaching: bare branches and a streetlight against a grey evening sky with a small moon" />
-                    <figcaption><span class="title text-white">Reaching, 2024</span><a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="mailto:steam-gab-shape@duck.com?subject=Offer%3A%20Reaching">Make an offer</a></figcaption>
+                    <a class="zoom" href="/marfa/available/reaching-lg.webp" aria-label="Enlarge Reaching"><img src="/marfa/available/reaching.webp" width="800" height="1066" loading="lazy" decoding="async" alt="Reaching: bare branches and a streetlight against a grey evening sky with a small moon" /></a>
+                    <figcaption><span class="title text-white">Reaching, 2024</span><a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="mailto:steam-gab-shape@duck.com?subject=Offer%3A%20Reaching">Make an offer</a> <span aria-hidden="true">&middot;</span> <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://art.thebenmeadows.com/works/eth/0x805732808bd9fbd6521067d266be3e23ed614aec/3/" target="_blank" rel="noopener">Details</a></figcaption>
                 </figure>
             </div>
 
             <h3 class="text-white" style="margin-top: 1.8rem">On-chain</h3>
             <div class="works">
                 <figure>
-                    <img src="/marfa/available/entropy.svg" width="744" height="744" loading="lazy" decoding="async" alt="entropy: rows of cream tiles, a few slipping out of line, on a dark ground" />
-                    <figcaption><span class="title text-white">entropy, 2024</span><a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="mailto:steam-gab-shape@duck.com?subject=Offer%3A%20entropy">Make an offer</a></figcaption>
+                    <a class="zoom" href="/marfa/available/entropy.svg" aria-label="Enlarge entropy"><img src="/marfa/available/entropy.svg" width="744" height="744" loading="lazy" decoding="async" alt="entropy: rows of cream tiles, a few slipping out of line, on a dark ground" /></a>
+                    <figcaption><span class="title text-white">entropy, 2024</span><a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="mailto:steam-gab-shape@duck.com?subject=Offer%3A%20entropy">Make an offer</a> <span aria-hidden="true">&middot;</span> <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://art.thebenmeadows.com/works/eth/0x11376b018c990a1066879275f8be50acef498dad/8/" target="_blank" rel="noopener">Details</a></figcaption>
                 </figure>
             </div>
 
             <h3 class="text-white" style="margin-top: 1.8rem">Acheiropoieta</h3>
             <div class="works">
                 <figure>
-                    <img src="/marfa/available/hopeful-desolation.webp" width="800" height="1372" loading="lazy" decoding="async" alt="Hopeful Desolation: desert buttes and a canyon floor under a dark sky, cut by glitch bands" />
-                    <figcaption><span class="title text-white">Hopeful Desolation, 2024</span><a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="mailto:steam-gab-shape@duck.com?subject=Offer%3A%20Hopeful%20Desolation">Make an offer</a></figcaption>
+                    <a class="zoom" href="/marfa/available/hopeful-desolation-lg.webp" aria-label="Enlarge Hopeful Desolation"><img src="/marfa/available/hopeful-desolation.webp" width="800" height="1372" loading="lazy" decoding="async" alt="Hopeful Desolation: desert buttes and a canyon floor under a dark sky, cut by glitch bands" /></a>
+                    <figcaption><span class="title text-white">Hopeful Desolation, 2024</span><a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="mailto:steam-gab-shape@duck.com?subject=Offer%3A%20Hopeful%20Desolation">Make an offer</a> <span aria-hidden="true">&middot;</span> <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://art.thebenmeadows.com/works/eth/0xd410f741eb6f1f26796dc7629c2cf039ff975fdd/37/" target="_blank" rel="noopener">Details</a></figcaption>
                 </figure>
                 <figure>
-                    <img src="/marfa/available/passing-through.webp" width="800" height="800" loading="lazy" decoding="async" alt="Passing Through: a lone figure walking down a hazy pink and blue street" />
-                    <figcaption><span class="title text-white">Passing Through, 2024</span><a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="mailto:steam-gab-shape@duck.com?subject=Offer%3A%20Passing%20Through">Make an offer</a></figcaption>
+                    <a class="zoom" href="/marfa/available/passing-through-lg.webp" aria-label="Enlarge Passing Through"><img src="/marfa/available/passing-through.webp" width="800" height="800" loading="lazy" decoding="async" alt="Passing Through: a lone figure walking down a hazy pink and blue street" /></a>
+                    <figcaption><span class="title text-white">Passing Through, 2024</span><a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="mailto:steam-gab-shape@duck.com?subject=Offer%3A%20Passing%20Through">Make an offer</a> <span aria-hidden="true">&middot;</span> <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://art.thebenmeadows.com/works/eth/0xd410f741eb6f1f26796dc7629c2cf039ff975fdd/36/" target="_blank" rel="noopener">Details</a></figcaption>
                 </figure>
                 <figure>
-                    <img src="/marfa/available/summers-end.webp" width="800" height="444" loading="lazy" decoding="async" alt="Summer&rsquo;s End: a small figure under a sweep of rainbow light in a dark sky" />
-                    <figcaption><span class="title text-white">Summer&rsquo;s End, 2023</span><a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="mailto:steam-gab-shape@duck.com?subject=Offer%3A%20Summer%27s%20End">Make an offer</a></figcaption>
+                    <a class="zoom" href="/marfa/available/summers-end-lg.webp" aria-label="Enlarge Summer&rsquo;s End"><img src="/marfa/available/summers-end.webp" width="800" height="444" loading="lazy" decoding="async" alt="Summer&rsquo;s End: a small figure under a sweep of rainbow light in a dark sky" /></a>
+                    <figcaption><span class="title text-white">Summer&rsquo;s End, 2023</span><a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="mailto:steam-gab-shape@duck.com?subject=Offer%3A%20Summer%27s%20End">Make an offer</a> <span aria-hidden="true">&middot;</span> <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://art.thebenmeadows.com/works/eth/0xd410f741eb6f1f26796dc7629c2cf039ff975fdd/34/" target="_blank" rel="noopener">Details</a></figcaption>
                 </figure>
                 <figure>
-                    <img src="/marfa/available/thanksgiving-in-hell.webp" width="800" height="800" loading="lazy" decoding="async" alt="Thanksgiving in Hell: ghoulish diners crowded around a feast table, in black and white" />
-                    <figcaption><span class="title text-white">Thanksgiving in Hell, 2023</span><a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="mailto:steam-gab-shape@duck.com?subject=Offer%3A%20Thanksgiving%20in%20Hell">Make an offer</a></figcaption>
+                    <a class="zoom" href="/marfa/available/thanksgiving-in-hell-lg.webp" aria-label="Enlarge Thanksgiving in Hell"><img src="/marfa/available/thanksgiving-in-hell.webp" width="800" height="800" loading="lazy" decoding="async" alt="Thanksgiving in Hell: ghoulish diners crowded around a feast table, in black and white" /></a>
+                    <figcaption><span class="title text-white">Thanksgiving in Hell, 2023</span><a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="mailto:steam-gab-shape@duck.com?subject=Offer%3A%20Thanksgiving%20in%20Hell">Make an offer</a> <span aria-hidden="true">&middot;</span> <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://art.thebenmeadows.com/works/eth/0xd410f741eb6f1f26796dc7629c2cf039ff975fdd/35/" target="_blank" rel="noopener">Details</a></figcaption>
                 </figure>
                 <figure>
-                    <img src="/marfa/available/slow-decay-of-excess.webp" width="750" height="750" loading="lazy" decoding="async" alt="The Slow Decay of Excess: a heaped still life of citrus, grapes and meat on a dark ground" />
-                    <figcaption><span class="title text-white">The Slow Decay of Excess, 2023</span><a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="mailto:steam-gab-shape@duck.com?subject=Offer%3A%20The%20Slow%20Decay%20of%20Excess">Make an offer</a></figcaption>
+                    <a class="zoom" href="/marfa/available/slow-decay-of-excess.webp" aria-label="Enlarge The Slow Decay of Excess"><img src="/marfa/available/slow-decay-of-excess.webp" width="750" height="750" loading="lazy" decoding="async" alt="The Slow Decay of Excess: a heaped still life of citrus, grapes and meat on a dark ground" /></a>
+                    <figcaption><span class="title text-white">The Slow Decay of Excess, 2023</span><a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="mailto:steam-gab-shape@duck.com?subject=Offer%3A%20The%20Slow%20Decay%20of%20Excess">Make an offer</a> <span aria-hidden="true">&middot;</span> <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://art.thebenmeadows.com/works/eth/0xd410f741eb6f1f26796dc7629c2cf039ff975fdd/30/" target="_blank" rel="noopener">Details</a></figcaption>
                 </figure>
                 <figure>
-                    <img src="/marfa/available/world-crab.webp" width="800" height="800" loading="lazy" decoding="async" alt="World Crab: an iridescent crab with a skull-like shell on black" />
-                    <figcaption><span class="title text-white">World Crab, 2022</span><a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="mailto:steam-gab-shape@duck.com?subject=Offer%3A%20World%20Crab">Make an offer</a></figcaption>
+                    <a class="zoom" href="/marfa/available/world-crab-lg.webp" aria-label="Enlarge World Crab"><img src="/marfa/available/world-crab.webp" width="800" height="800" loading="lazy" decoding="async" alt="World Crab: an iridescent crab with a skull-like shell on black" /></a>
+                    <figcaption><span class="title text-white">World Crab, 2022</span><a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="mailto:steam-gab-shape@duck.com?subject=Offer%3A%20World%20Crab">Make an offer</a> <span aria-hidden="true">&middot;</span> <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://art.thebenmeadows.com/works/eth/0xd410f741eb6f1f26796dc7629c2cf039ff975fdd/3/" target="_blank" rel="noopener">Details</a></figcaption>
                 </figure>
             </div>
 
             <h3 class="text-white" style="margin-top: 1.8rem">Taste Over Tools</h3>
             <div class="works">
                 <figure>
-                    <img src="/marfa/available/tower-on-the-lake.webp" width="800" height="582" loading="lazy" decoding="async" alt="Tower on the Lake: a stone tower across a lake under a cloudy sky" />
-                    <figcaption><span class="title text-white">Tower on the Lake, 2023</span><a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="mailto:steam-gab-shape@duck.com?subject=Offer%3A%20Tower%20on%20the%20Lake">Make an offer</a></figcaption>
+                    <a class="zoom" href="/marfa/available/tower-on-the-lake-lg.webp" aria-label="Enlarge Tower on the Lake"><img src="/marfa/available/tower-on-the-lake.webp" width="800" height="582" loading="lazy" decoding="async" alt="Tower on the Lake: a stone tower across a lake under a cloudy sky" /></a>
+                    <figcaption><span class="title text-white">Tower on the Lake, 2023</span><a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="mailto:steam-gab-shape@duck.com?subject=Offer%3A%20Tower%20on%20the%20Lake">Make an offer</a> <span aria-hidden="true">&middot;</span> <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://art.thebenmeadows.com/works/eth/0x0f2d4704837eccd292b6be5889f306fb5fbb8cd1/1/" target="_blank" rel="noopener">Details</a></figcaption>
                 </figure>
                 <figure>
-                    <img src="/marfa/available/artist-as-art.webp" width="800" height="1066" loading="lazy" decoding="async" alt="The Artist as Art: a black and white portrait in a beanie with ears, sunglasses and a respirator" />
-                    <figcaption><span class="title text-white">The Artist as Art, 2023</span><a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="mailto:steam-gab-shape@duck.com?subject=Offer%3A%20The%20Artist%20as%20Art">Make an offer</a></figcaption>
+                    <a class="zoom" href="/marfa/available/artist-as-art-lg.webp" aria-label="Enlarge The Artist as Art"><img src="/marfa/available/artist-as-art.webp" width="800" height="1066" loading="lazy" decoding="async" alt="The Artist as Art: a black and white portrait in a beanie with ears, sunglasses and a respirator" /></a>
+                    <figcaption><span class="title text-white">The Artist as Art, 2023</span><a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="mailto:steam-gab-shape@duck.com?subject=Offer%3A%20The%20Artist%20as%20Art">Make an offer</a> <span aria-hidden="true">&middot;</span> <a class="text-white underline underline-offset-4 decoration-neutral-600 transition-opacity hover:opacity-70" href="https://art.thebenmeadows.com/works/eth/0x0f2d4704837eccd292b6be5889f306fb5fbb8cd1/2/" target="_blank" rel="noopener">Details</a></figcaption>
                 </figure>
             </div>
 
@@ -212,6 +251,10 @@
                 <li><a href="/marfa/">Marfa<span class="who">the two shows, 22 to 24 October</span></a></li>
                 <li><a href="/art/">Art<span class="who">everything with a page</span></a></li>
             </ul>
+            <dialog id="zoom" aria-label="Enlarged image">
+                <form method="dialog"><button type="submit">Close</button></form>
+                <img alt="" />
+            </dialog>
         </main>
 
         <footer class="site-footer">
