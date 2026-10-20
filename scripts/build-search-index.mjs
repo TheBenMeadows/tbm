@@ -25,6 +25,7 @@ const PAGES = [
     { file: 'index.html', url: '/' },
     { file: 'profiles/index.html', url: '/profiles/' },
     { file: 'marfa/index.html', url: '/marfa/' },
+    { file: 'marfa/available/index.html', url: '/marfa/available/' },
     { file: 'mirrors/index.html', url: '/mirrors/' },
     { file: 'tech/index.html', url: '/tech/' },
     { file: 'experiments/index.html', url: '/experiments/' },
