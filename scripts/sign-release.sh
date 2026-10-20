@@ -104,15 +104,16 @@ fi
 # 0 -- "it ran" reported as "the signature published".
 EVENT_ERR=$(mktemp)
 trap 'rm -f "$EVENT_ERR"' EXIT
-set +o pipefail
+# Under set -e a bare EVENT=$(nak ...) that fails exits the script on that line,
+# before the message below and with the EXIT trap deleting nak's stderr; the
+# `|| NAK_STATUS=$?` form keeps the shell running so the failure is reported.
+NAK_STATUS=0
 EVENT=$(nak event \
     -c "$CONTENT" \
     -k 30078 \
     -d "thebenmeadows.com" \
     -t "t=site-release" \
-    $RELAYS 2>"$EVENT_ERR")
-NAK_STATUS=$?
-set -o pipefail
+    $RELAYS 2>"$EVENT_ERR") || NAK_STATUS=$?
 
 if [ "$NAK_STATUS" -ne 0 ]; then
     echo "sign-release: nak exited $NAK_STATUS; the release event did not publish." >&2
