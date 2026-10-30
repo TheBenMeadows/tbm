@@ -80,6 +80,9 @@ function mount({ stage, svg, read }, value) {
     return P(x + du * R2 + t * R2, y - du * R2 + t * R2, z + w);
   }
 
+  const REST = 4; // the bird on the tallest post carries the rest mark
+  let act = -1, layout = 1, step = 2;
+
   /** Where bird b is at t of its hop, from its old post to its new one, and how high. */
   function pose(b, t) {
     const x = lerp(px(b.from), px(b.at), t), y = lerp(py(b.from), py(b.at), t);
@@ -106,6 +109,7 @@ function mount({ stage, svg, read }, value) {
     }
     // A bird nearer the viewer is painted after a farther one.
     order.sort((a, c) => a[0] - c[0]).forEach(([, b]) => flock.appendChild(b.g));
+    if (!moving && act < 0) for (const b of birds) b.face.classList.toggle("hi", b.at === REST);
     return moving;
   }
 
@@ -116,11 +120,9 @@ function mount({ stage, svg, read }, value) {
   const centres = POSTS.map((p, i) => P(px(i), py(i), 4 + p.h)[0]);
   const hit = ([sx]) => centres.reduce((best, c, i) => (Math.abs(c - sx) < Math.abs(centres[best] - sx) ? i : best), 0);
 
-  const REST = 4; // the bird on the tallest post carries the rest mark
-  let act = -1, layout = 1, step = 2;
   function mark(i) {
     posts.forEach((el, k) => el.sil.classList.toggle("hi", k === i));
-    for (const b of birds) b.face.classList.toggle("hi", i < 0 && b.at === REST);
+    if (i >= 0) for (const b of birds) b.face.classList.remove("hi");
   }
 
   /** Pointing reshuffles the whole flock once; moving between posts only moves the bright edge. */
@@ -128,13 +130,15 @@ function mount({ stage, svg, read }, value) {
     if (a === act) return;
     const wasRest = act < 0;
     act = a;
-    if (a >= 0 && wasRest) {
-      const now = performance.now();
+    const now = performance.now();
+    // A flock still in the air finishes its hop before it can be sent again.
+    const settled = birds.every((b) => tdone(b.tw, now));
+    if (a >= 0 && wasRest && settled) {
       layout += 1;
       step = step === 2 ? 3 : 2;
       for (const b of birds) {
         b.from = b.at;
-        b.at = (b.at * step + 1) % N;
+        b.at = (b.at + step) % N; // a rotation: every bird lands on a different post
         b.tw = tween(0);
         tset(b.tw, 1, now, Math.abs(b.from - a) * 45);
       }

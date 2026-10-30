@@ -27,6 +27,7 @@
     let have = new Set(); // "sid:bid" pairs the wallet holds a token for
     let account = null; // address whose pairs are shown
     let accountLabel = ''; // "name.eth → " when the address came from ENS
+    let selection = 0; // bumps on every new address, so only the latest lookup lands
     let connected = null; // wallet that can send
     let lastBlock = 0;
     let fee = 0n;
@@ -34,8 +35,9 @@
     let pending = null; // "sid:bid" while a send is open
     let busy = false;
 
+    const timeout = () => (AbortSignal.timeout ? AbortSignal.timeout(10000) : undefined);
     async function rpc(method, params) {
-        const r = await fetch(RPC, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ jsonrpc: '2.0', id: 1, method, params }) });
+        const r = await fetch(RPC, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ jsonrpc: '2.0', id: 1, method, params }), signal: timeout() });
         const j = await r.json();
         if (j.error) { const err = new Error(j.error.message); err.data = j.error.data; throw err; }
         return j.result;
@@ -44,12 +46,12 @@
     const ens = window.makeEnsResolver((to, data) => rpc('eth_call', [{ to, data }, 'latest']), window.keccak256);
     async function rpcBatch(calls) {
         const body = calls.map((c, i) => ({ jsonrpc: '2.0', id: i, method: c[0], params: c[1] }));
-        const r = await fetch(RPC, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) });
+        const r = await fetch(RPC, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body), signal: timeout() });
         const j = await r.json();
         if (!Array.isArray(j)) throw new Error('unexpected RPC reply');
         return calls.map((_, i) => {
-            const x = j.find((y) => y.id === i) || {};
-            if (x.error) throw new Error(x.error.message);
+            const x = j.find((y) => y.id === i);
+            if (!x || x.error || x.result == null) throw new Error((x && x.error && x.error.message) || 'missing result ' + i);
             return x.result;
         });
     }
@@ -92,7 +94,7 @@
     const sanctName = (sid) => names[1000 + sid] || 'Sanctuary #' + sid;
 
     // One balanceOfBatch over every enabled pair. Token id = (sanctuary - 1) * 100 + bird.
-    async function loadHave(addr) {
+    async function readHave(addr) {
         const ids = [];
         for (const s of sanctuaries) for (let b = 1; b <= 100; b++) ids.push((s - 1) * 100 + b);
         const n = ids.length;
@@ -105,7 +107,7 @@
         ids.forEach((id, i) => {
             if (word(r, 2 + i) > 0n) next.add((Math.floor((id - 1) / 100) + 1) + ':' + (((id - 1) % 100) + 1));
         });
-        have = next;
+        return next;
     }
 
     function renderGrid() {
@@ -221,17 +223,22 @@
     }
 
     async function setAccount(input) {
-        let addr = input, label = '';
-        if (!/^0x[0-9a-fA-F]{40}$/.test(addr)) {
+        const gen = ++selection;
+        let addr = input.trim(), label = '';
+        if (!/^0x[0-9a-f]{40}$/i.test(addr)) {
             if (!/\.[a-zA-Z]/.test(addr)) { $('progress').textContent = 'Enter a 0x address or an ENS name.'; return; }
             $('progress').textContent = 'Resolving ' + addr + '…';
-            try { addr = await ens.resolve(addr); } catch (e) { $('progress').textContent = e.message; return; }
+            try { addr = await ens.resolve(addr); } catch (e) { if (gen === selection) $('progress').textContent = e.message; return; }
             label = input.trim().toLowerCase() + ' → ';
         }
+        if (gen !== selection) return;
+        $('progress').textContent = 'Loading…';
+        let held;
+        try { held = await readHave(addr.toLowerCase()); } catch (e) { if (gen === selection) $('progress').textContent = 'Could not read holdings: ' + e.message; return; }
+        if (gen !== selection) return;
         account = addr.toLowerCase();
         accountLabel = label;
-        $('progress').textContent = 'Loading…';
-        try { await loadHave(account); } catch (e) { $('progress').textContent = 'Could not read holdings: ' + e.message; return; }
+        have = held;
         renderGrid();
         lastBlock = 0;
         tick();
@@ -264,7 +271,13 @@
             const data = SEL.observe + pad(sid) + pad(bid) + pad(maxFee);
             const hash = await window.ethereum.request({ method: 'eth_sendTransaction', params: [{ from: connected, to: OBS, value: '0x' + maxFee.toString(16), data }] });
             $('progress').textContent = 'Sent ' + hash.slice(0, 10) + '…. The grid refreshes in about half a minute.';
-            setTimeout(() => { pending = null; setAccount(account); }, 30000);
+            const gen = selection;
+            setTimeout(async () => {
+                pending = null;
+                try { const held = await readHave(account); if (gen === selection) { have = held; renderGrid(); } } catch (e) { /* keep the last grid */ }
+                lastBlock = 0;
+                tick();
+            }, 30000);
         } catch (e) {
             pending = null;
             lastBlock = 0;

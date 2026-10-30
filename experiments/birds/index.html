@@ -70,7 +70,7 @@
                 <section class="panel">
                     <h2>After an observation in the next block</h2>
                     <ul id="next" class="slots"></ul>
-                    <p class="note">Recomputed every block. A bird holder moving a bird by hand can change this.</p>
+                    <p class="note">Recomputed every block. It holds for an observation that lands in the next block; a bird holder can still move a bird by hand after it lands.</p>
                 </section>
             </div>
             <p id="progress" class="progress"></p>
@@ -82,7 +82,7 @@
             </section>
         </main>
         <footer class="site-footer">
-            <p class="provenance">Reads the chain through a public Ethereum node. Progress counts the observation tokens a wallet holds, so a pair sold or sent away shows as needed and a pair bought shows as held, although birds.app only credits pairs a wallet observed itself. Holds no keys; observations are sent by your own wallet. An independent tool, not affiliated with Birds.</p>
+            <p class="provenance">Reads the chain through a public Ethereum node. A name stored off chain is looked up through its own gateway (Coinbase for .base.eth names) or ENS Labs', which see the name and your IP address, not your wallet. Progress counts the observation tokens a wallet holds, so a pair sold or sent away shows as needed and a pair bought shows as held, although birds.app only credits pairs a wallet observed itself. Holds no keys; observations are sent by your own wallet. An independent tool, not affiliated with Birds.</p>
             <nav class="footer-line">
                 <a class="js-email" rel="nofollow" href="mailto:steam-gab-shape@duck.com">Email</a>
                 <span aria-hidden="true">&middot;</span>
