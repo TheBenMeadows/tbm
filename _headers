@@ -169,6 +169,10 @@
   Cache-Control: public, max-age=0, must-revalidate
   Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/experiments/dls/
 
+/experiments/birds/
+  Cache-Control: public, max-age=0, must-revalidate
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/experiments/birds/
+
 /ai/
   Cache-Control: public, max-age=0, must-revalidate
   Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/ai/
@@ -305,6 +309,15 @@
   Cache-Control: public, max-age=3600
 
 /experiments/poap-vault/style.css
+  Cache-Control: public, max-age=3600
+
+/experiments/birds/app.js
+  Cache-Control: public, max-age=3600
+
+/experiments/birds/keccak.js
+  Cache-Control: public, max-age=3600
+
+/experiments/birds/style.css
   Cache-Control: public, max-age=3600
 
 /projects/poap-saver/app.js

@@ -40,6 +40,7 @@ const PAGES = [
     { file: 'archive/index.html', url: '/archive/' },
     { file: 'experiments/pendulum/index.html', url: '/experiments/pendulum/' },
     { file: 'experiments/porcine/index.html', url: '/experiments/porcine/' },
+    { file: 'experiments/birds/index.html', url: '/experiments/birds/' },
     { file: 'experiments/etherhoo/index.html', url: '/experiments/etherhoo/' },
     { file: 'experiments/dls/index.html', url: '/experiments/dls/' },
     { file: 'experiments/poap-vault/index.html', url: '/experiments/poap-vault/' },

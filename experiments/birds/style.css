@@ -1,0 +1,218 @@
+/* birds — standalone styling (experiments carry their own styles).
+   The color roles mirror src/input.css from the typographic redesign. Resolution matches
+   the site theme model: dark canonical, system preference the silent default,
+   html.light / html.dark (set by /theme.js) force a mode. */
+@font-face {
+    font-family: 'Public Sans';
+    src: url("../poap-vault/publicsans.woff2") format('woff2');
+    font-weight: 100 900;
+    font-display: swap;
+}
+:root {
+    --bg: #000000;
+    --ink: #a3a3a3;
+    --ink-soft: #737373;
+    --title: #d4d4d4;
+    --rule: #27272a;
+    --accent: #ffffff;
+}
+@media (prefers-color-scheme: light) {
+    html:not(.dark) {
+        --bg: #ffffff;
+            --ink: #52525b;
+        --ink-soft: #71717a;
+        --title: #3f3f46;
+        --rule: #e4e4e7;
+        --accent: #000000;
+    }
+}
+html.light {
+    --bg: #ffffff;
+    --ink: #52525b;
+    --ink-soft: #71717a;
+    --title: #3f3f46;
+    --rule: #e4e4e7;
+    --accent: #000000;
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Public Sans', system-ui, sans-serif;
+    line-height: 1.55;
+}
+a {
+    color: inherit;
+}
+
+/* Running head — mirrors the site-wide pattern from the redesign: label left,
+   controls right, one hairline, static not sticky. This page is wider than the
+   768px prose pages, so the head follows the gallery width. */
+.running-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 1.3rem 20px 0;
+}
+.running-head .rh-left,
+.running-head .rh-right {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.8rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+}
+.running-head .rh-left { flex: 1 1 auto; }
+.running-head .rh-right { flex: 0 0 auto; padding-left: 1rem; text-align: right; }
+.running-head a,
+.running-head button {
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    color: inherit;
+    text-decoration: none;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    position: relative;
+}
+/* The labels are about 17px tall; this invisible box makes each one a 44px target. */
+.running-head a::after,
+.running-head button::after {
+    content: "";
+    position: absolute;
+    inset: min(0px, (100% - 44px) / 2);
+}
+.running-head a:active,
+.running-head button:active { color: var(--accent); }
+@media (hover: hover) and (pointer: fine) {
+    .running-head a:hover,
+    .running-head button:hover { color: var(--accent); }
+}
+/* The theme control names the mode a tap switches TO; the label lives in CSS
+   so it is right pre-paint and with JS off. Works under both the current
+   3-state /theme.js and the redesign's 2-state one. */
+#theme-toggle::before { content: "Light"; }
+html.light #theme-toggle::before { content: "Dark"; }
+@media (prefers-color-scheme: light) {
+    html:not(.dark) #theme-toggle::before { content: "Dark"; }
+}
+html.dark #theme-toggle::before { content: "Light"; }
+
+.head,
+main,
+footer {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+h1 {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 1.9rem;
+    margin: 18px 0 8px;
+}
+.sub {
+    max-width: 64ch;
+    margin: 0 0 10px;
+}
+.meta {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    margin: 0;
+}
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin: 26px 0 0;
+    padding: 0;
+}
+.controls input {
+    background: transparent;
+    border: 1px solid var(--rule);
+    color: var(--ink);
+    padding: 9px 13px;
+    font: inherit;
+    width: 230px;
+}
+.chip {
+    background: transparent;
+    border: 1px solid var(--rule);
+    color: var(--ink);
+    min-height: 2.75rem;
+    padding: 7px 13px;
+    font: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+.chip.on {
+    color: var(--accent);
+    border-color: var(--ink);
+}
+.controls + .controls {
+    margin-top: 10px;
+}
+.site-footer {
+    text-align: center;
+    color: var(--ink-soft);
+    padding: 2.4rem 20px 2.2rem;
+    font-size: 0.8rem;
+}
+.site-footer .footer-line {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-top: 0.45rem;
+}
+.site-footer .footer-line:first-child { margin-top: 0; }
+.site-footer a { position: relative; color: inherit; text-decoration: none; }
+/* The footer type is 0.7rem; this invisible box makes each link a 44px target. */
+.site-footer a::after {
+    content: "";
+    position: absolute;
+    inset: min(0px, (100% - 44px) / 2);
+}
+.site-footer a:active { color: var(--accent); }
+@media (hover: hover) and (pointer: fine) {
+    .site-footer a:hover { color: var(--accent); }
+}
+.site-footer .provenance {
+    max-width: 44em;
+    margin: 0 auto 1.4rem;
+}
+
+/* Birds planner */
+.status, .progress { font-size: 0.8rem; color: var(--ink-soft); margin: 0.6rem 0 0; }
+.panels { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 24px; margin-top: 1.6rem; }
+.panel h2 { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-soft); font-weight: 500; margin: 0 0 0.6rem; border-bottom: 1px solid var(--rule); padding-bottom: 0.5rem; }
+.panel p.note { font-size: 0.75rem; color: var(--ink-soft); margin: 0.6rem 0 0; }
+.slots { list-style: none; margin: 0; padding: 0; }
+.slots li { display: flex; align-items: center; gap: 10px; padding: 0.45rem 0; border-bottom: 1px solid var(--rule); font-size: 0.9rem; min-height: 44px; }
+.slots .where { flex: 0 0 42%; color: var(--ink-soft); }
+.slots .who { flex: 1 1 auto; color: var(--title); }
+.slots .tag { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); }
+.slots li.new .who, .slots li.new .tag { color: var(--accent); font-weight: 600; }
+.slots li.empty .who { font-style: italic; }
+.slots .chip { min-height: 32px; }
+#grid { margin-top: 1rem; }
+.row { display: flex; align-items: center; gap: 12px; margin: 6px 0; }
+.row-label { flex: 0 0 9.5rem; font-size: 0.72rem; color: var(--ink-soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cells { display: grid; grid-template-columns: repeat(50, minmax(0, 1fr)); gap: 2px; flex: 1 1 auto; min-width: 0; }
+.cells i { display: block; aspect-ratio: 1; background: var(--rule); }
+.cells i.got { background: var(--accent); }
+.explain { max-width: 68ch; font-size: 0.9rem; margin-top: 2.4rem; }
+.explain h2 { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-soft); font-weight: 500; }
+.explain code { font-size: 0.82em; }
+@media (max-width: 560px) {
+    .row { flex-direction: column; align-items: stretch; gap: 4px; }
+    .row-label { flex: none; }
+}
