@@ -3,6 +3,8 @@ title: "Birds Planner"
 date: 2026-10-30
 tags: [Art, Technology]
 related: [/experiments/birds/]
+image: /blog/media/birds-planner/marfa-night.webp
+image_alt: "Birds in Marfa at night: a bird on a large screen in a field, lit through fog by orange lights along the ground, people standing around it"
 description: "How the sanctuary layout in Birds by Jules and Mungi is chosen, why it can be computed one block ahead, and what that means for the cost of observing all 500 bird and sanctuary pairs."
 ---
 
@@ -42,6 +44,8 @@ With prediction, the duplicates go away:
 Rule 1 cannot buy a duplicate by accident: `observe` takes the bird you expect to see and reverts if a different one is there. Rule 2 is what keeps it moving - the next observation always has something to take, so the chain never stalls and every fee buys a new pair. From my 5 pairs that is 495 fees plus gas (500 from an empty wallet). The contract's 10-second cooldown between observations never gets in the way, since blocks are 12 seconds apart. The catch is timing: the transaction has to land in the exact block you computed for, which a normal wallet cannot do. A Flashbots bundle can target one block and is dropped if it misses, so a miss costs nothing and you try again on the next block. A miss also happens when someone else's observation lands earlier in the same block, because the cooldown then rejects yours. In a 200-run simulation using the real formula this took a median of about 950 blocks, a little over 3 hours, and about 6 to 8 hours if half the bundles miss.
 
 Two smaller savings are left after that. Sending from a plain wallet costs about 150,000 gas per observation; routing through a delegated smart account (so the credit lands on a main wallet without its key ever touching a server) costs about 390,000, which works out to roughly $15 versus $45 for a whole set at today's gas. And nothing is gained by buying observations on the secondary market: the floor is around 0.0016 ETH, more than three times the fee, and birds.app counts pairs you observed yourself.
+
+![Birds in Marfa at sunset: people gathered on a rise outside Marfa beside a metal barn, the sun breaking through a band of cloud](/blog/media/birds-planner/marfa-sunset.webp)
 
 **The planner**
 
