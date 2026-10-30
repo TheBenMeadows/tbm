@@ -66,8 +66,24 @@
             <div class="mt-8 grid gap-4 sm:grid-cols-2">
                 <div class="hairline-card p-6">
                     <div class="flex items-center justify-between font-mono text-xs">
-                        <span class="uppercase tracking-widest text-neutral-500">Generative</span>
+                        <span class="uppercase tracking-widest text-neutral-500">Tool</span>
                         <span class="text-neutral-600">01</span>
+                    </div>
+                    <div class="hl-figure mt-4">
+                        <div data-hl="birds" data-rest="perched"></div>
+                        <span class="hl-read font-mono text-xs text-neutral-500" aria-hidden="true">perched</span>
+                    </div>
+                    <h2 class="card-title mt-3 text-xl font-bold text-white"><a href="/experiments/birds/">Birds Planner</a></h2>
+                    <p class="mt-2 text-sm text-neutral-400">Birds by Jules and Mungi reshuffles all five sanctuaries with every observation, and the next arrangement can be read one block ahead. Shows which of the 500 pairs a wallet still needs, who is in each sanctuary now, and who arrives next.</p>
+                    <div class="mt-4 flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs">
+                        <a class="text-neutral-400 hover:text-white transition-colors" href="/experiments/birds/">/experiments/birds/</a>
+                    </div>
+                </div>
+
+                <div class="hairline-card p-6">
+                    <div class="flex items-center justify-between font-mono text-xs">
+                        <span class="uppercase tracking-widest text-neutral-500">Generative</span>
+                        <span class="text-neutral-600">02</span>
                     </div>
                     <div class="hl-figure mt-4">
                         <div data-hl="pendulum"></div>
@@ -83,7 +99,7 @@
                 <div class="hairline-card p-6">
                     <div class="flex items-center justify-between font-mono text-xs">
                         <span class="uppercase tracking-widest text-neutral-500">Tool</span>
-                        <span class="text-neutral-600">02</span>
+                        <span class="text-neutral-600">03</span>
                     </div>
                     <div class="hl-figure mt-4">
                         <div data-hl="tab2" data-rest="open"></div>
@@ -94,21 +110,6 @@
                     <div class="mt-4 flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs">
                         <a class="text-neutral-400 hover:text-white transition-colors" href="https://cookie-tab.pages.dev/" target="_blank" rel="noopener">cookie-tab.pages.dev</a>
                         <a class="text-neutral-400 hover:text-white transition-colors" href="https://github.com/TheBenMeadows/cookie-tab" target="_blank" rel="noopener">source</a>
-                    </div>
-                </div>
-                <div class="hairline-card p-6">
-                    <div class="flex items-center justify-between font-mono text-xs">
-                        <span class="uppercase tracking-widest text-neutral-500">Tool</span>
-                        <span class="text-neutral-600">03</span>
-                    </div>
-                    <div class="hl-figure mt-4">
-                        <div data-hl="birds" data-rest="perched"></div>
-                        <span class="hl-read font-mono text-xs text-neutral-500" aria-hidden="true">perched</span>
-                    </div>
-                    <h2 class="card-title mt-3 text-xl font-bold text-white"><a href="/experiments/birds/">Birds Planner</a></h2>
-                    <p class="mt-2 text-sm text-neutral-400">Birds by Jules and Mungi reshuffles all five sanctuaries with every observation, and the next arrangement can be read one block ahead. Shows which of the 500 pairs a wallet still needs, who is in each sanctuary now, and who arrives next.</p>
-                    <div class="mt-4 flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs">
-                        <a class="text-neutral-400 hover:text-white transition-colors" href="/experiments/birds/">/experiments/birds/</a>
                     </div>
                 </div>
 
@@ -185,8 +186,8 @@
         </footer>
         <script src="/hairline/kernel.js"></script>
         <script src="/hairline/mount.js"></script>
+        <script type="module" src="/hairline/birds.js"></script>
         <script type="module" src="/hairline/pendulum.js"></script>
         <script type="module" src="/hairline/tab2.js"></script>
-        <script type="module" src="/hairline/birds.js"></script>
     </body>
 </html>
