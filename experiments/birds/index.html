@@ -37,6 +37,7 @@
         <link rel="stylesheet" href="style.css" />
         <script src="/theme.js"></script>
         <script src="keccak.js" defer></script>
+        <script src="ens.js" defer></script>
         <script src="app.js" defer></script>
     </head>
     <body>
@@ -55,7 +56,7 @@
         </header>
         <main>
             <div class="controls">
-                <input id="addr" type="text" placeholder="0x&hellip; wallet address" aria-label="Wallet address" autocomplete="off" spellcheck="false" />
+                <input id="addr" type="text" placeholder="0x&hellip; address or name.eth" aria-label="Wallet address or ENS name" autocomplete="off" spellcheck="false" />
                 <button id="load" class="chip" type="button">Show</button>
                 <button id="connect" class="chip" type="button">Connect wallet</button>
             </div>

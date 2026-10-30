@@ -26,6 +26,7 @@
     let sanctuaries = [1, 2, 3, 4, 5]; // replaced by the enabled set on load
     let have = new Set(); // "sid:bid" pairs the wallet holds a token for
     let account = null; // address whose pairs are shown
+    let accountLabel = ''; // "name.eth → " when the address came from ENS
     let connected = null; // wallet that can send
     let lastBlock = 0;
     let fee = 0n;
@@ -36,9 +37,11 @@
     async function rpc(method, params) {
         const r = await fetch(RPC, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ jsonrpc: '2.0', id: 1, method, params }) });
         const j = await r.json();
-        if (j.error) throw new Error(j.error.message);
+        if (j.error) { const err = new Error(j.error.message); err.data = j.error.data; throw err; }
         return j.result;
     }
+    // ENS v1 + v2 names, through the Universal Resolver (ens.js).
+    const ens = window.makeEnsResolver((to, data) => rpc('eth_call', [{ to, data }, 'latest']), window.keccak256);
     async function rpcBatch(calls) {
         const body = calls.map((c, i) => ({ jsonrpc: '2.0', id: i, method: c[0], params: c[1] }));
         const r = await fetch(RPC, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) });
@@ -128,7 +131,7 @@
             g.appendChild(row);
         }
         $('progress').textContent = account
-            ? short(account) + ' holds ' + have.size + ' of the ' + sanctuaries.length * 100 + ' observation pairs'
+            ? accountLabel + short(account) + ' holds ' + have.size + ' of the ' + sanctuaries.length * 100 + ' observation pairs'
             : 'Enter an address to see its progress.';
     }
 
@@ -217,9 +220,16 @@
         }
     }
 
-    async function setAccount(addr) {
-        if (!/^0x[0-9a-fA-F]{40}$/.test(addr)) { $('progress').textContent = 'That is not an Ethereum address.'; return; }
+    async function setAccount(input) {
+        let addr = input, label = '';
+        if (!/^0x[0-9a-fA-F]{40}$/.test(addr)) {
+            if (!/\.[a-zA-Z]/.test(addr)) { $('progress').textContent = 'Enter a 0x address or an ENS name.'; return; }
+            $('progress').textContent = 'Resolving ' + addr + '…';
+            try { addr = await ens.resolve(addr); } catch (e) { $('progress').textContent = e.message; return; }
+            label = input.trim().toLowerCase() + ' → ';
+        }
         account = addr.toLowerCase();
+        accountLabel = label;
         $('progress').textContent = 'Loading…';
         try { await loadHave(account); } catch (e) { $('progress').textContent = 'Could not read holdings: ' + e.message; return; }
         renderGrid();
