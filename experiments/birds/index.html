@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="A planner for Birds by Jules and Mungi: which bird and sanctuary pairs a wallet still needs, who is in each sanctuary now, and who arrives if an observation lands in the next block." />
+        <meta name="color-scheme" content="dark light" />
+        <meta http-equiv="content-language" content="en-us" />
+        <link rel="canonical" href="https://thebenmeadows.com/experiments/birds/" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="TheBenMeadows" />
+        <meta property="og:title" content="Birds Planner &middot; TheBenMeadows" />
+        <meta property="og:description" content="Which Birds pairs a wallet still needs, who is in each sanctuary now, and who arrives after the next observation." />
+        <meta property="og:url" content="https://thebenmeadows.com/experiments/birds/" />
+        <meta property="og:image" content="https://thebenmeadows.com/og.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="TheBenMeadows &middot; thebenmeadows.com" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Birds Planner &middot; TheBenMeadows" />
+        <meta name="twitter:description" content="Which Birds pairs a wallet still needs, who is in each sanctuary now, and who arrives after the next observation." />
+        <meta name="twitter:image" content="https://thebenmeadows.com/og.png" />
+
+        <title>Birds Planner &middot; TheBenMeadows</title>
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000" />
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+
+        <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+
+        <link rel="preload" href="../poap-vault/publicsans.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="stylesheet" href="style.css" />
+        <script src="/theme.js"></script>
+        <script src="keccak.js" defer></script>
+        <script src="ens.js" defer></script>
+        <script src="app.js" defer></script>
+    </head>
+    <body>
+        <header class="running-head">
+            <span class="rh-left"><a href="/">Index</a></span>
+            <nav class="rh-right">
+                <a href="/experiments/">Experiments</a>
+                <span aria-hidden="true">&nbsp;&middot;&nbsp;</span>
+                <button id="theme-toggle" type="button"></button>
+            </nav>
+        </header>
+        <header class="head">
+            <h1>Birds Planner</h1>
+            <p class="sub"><a href="https://birds.app" target="_blank" rel="noopener">Birds</a> by Jules and Mungi is a network of 100 birds moving between home, five sanctuaries and away. Observing a bird in a sanctuary mints a record of that pair, and there are 500 pairs. Every observation also moves the whole world: the layout of all five sanctuaries is redrawn at once. This page shows which pairs a wallet still needs, who is in each sanctuary right now, and who will be there if an observation lands in the next block.</p>
+            <p class="meta">Birds 0x75de&hellip;1A8C &middot; Observations 0xCF24&hellip;bEB45 &middot; Ethereum</p>
+        </header>
+        <main>
+            <div class="controls">
+                <input id="addr" type="text" placeholder="0x&hellip; address or name.eth" aria-label="Wallet address or ENS name" autocomplete="off" spellcheck="false" />
+                <button id="load" class="chip" type="button">Show</button>
+                <button id="connect" class="chip" type="button">Connect wallet</button>
+            </div>
+            <p id="status" class="status">Reading the chain&hellip;</p>
+            <div class="panels">
+                <section class="panel">
+                    <h2>In the sanctuaries now</h2>
+                    <ul id="now" class="slots"></ul>
+                    <p class="note">A connected wallet can observe a pair it still needs. Each observation pays the artists&rsquo; fee, about one dollar.</p>
+                </section>
+                <section class="panel">
+                    <h2>After an observation in the next block</h2>
+                    <ul id="next" class="slots"></ul>
+                    <p class="note">Recomputed every block. It holds for an observation that lands in the next block; a bird holder can still move a bird by hand after it lands.</p>
+                </section>
+            </div>
+            <p id="progress" class="progress"></p>
+            <div id="grid" aria-label="Observed pairs: one row per sanctuary, one square per bird"></div>
+            <section class="explain">
+                <h2>How the forecast works</h2>
+                <p>Each observation starts a new epoch with a seed of <code>keccak256(previous block hash, observations contract, epoch)</code>. The seed picks one of 2,800 orderings of the 100 birds: a multiplier from a fixed list of 28 values and an offset from 100. Sanctuary <em>n</em> takes slot 29&nbsp;+&nbsp;<em>n</em> of that ordering. The previous block&rsquo;s hash is public before the next block is built, so the arrangement an observation will produce is known one block in advance. Checked against the last 400 observations on chain: 399 of them have a following observation to compare with, and all 399 matched.</p>
+                <p>That makes a full set possible with no wasted observations: send only into a block whose arrangement still holds a pair you need. A browser wallet cannot pick its block, so on this page the forecast is a guide rather than a guarantee.</p>
+            </section>
+        </main>
+        <footer class="site-footer">
+            <p class="provenance">Reads the chain through a public Ethereum node. A name stored off chain is looked up through its own gateway (Coinbase for .base.eth names) or ENS Labs', which see the name and your IP address, not your wallet. Progress counts the observation tokens a wallet holds, so a pair sold or sent away shows as needed and a pair bought shows as held, although birds.app only credits pairs a wallet observed itself. Holds no keys; observations are sent by your own wallet. An independent tool, not affiliated with Birds.</p>
+            <nav class="footer-line">
+                <a class="js-email" rel="nofollow" href="mailto:steam-gab-shape@duck.com">Email</a>
+                <span aria-hidden="true">&middot;</span>
+                <a href="https://x.com/thebenmeadows" target="_blank" rel="me noopener">X</a>
+                <span aria-hidden="true">&middot;</span>
+                <a href="https://primal.net/p/npub1wldqfuy0yge4fvxukdm43gze2ral9dnp5avlps5a6t8q0vyv2nds84nq29" target="_blank" rel="me noopener">Nostr</a>
+                <span aria-hidden="true">&middot;</span>
+                <a href="/profiles/">All profiles &rarr;</a>
+            </nav>
+            <nav class="footer-line">
+                <a href="https://github.com/TheBenMeadows/tbm" target="_blank" rel="noopener">Source</a>
+                <span aria-hidden="true">&middot;</span>
+                <a href="/mirrors/">Mirrors</a>
+                <span aria-hidden="true">&middot;</span>
+                <a href="/tech/">Tech&nbsp;Stack</a>
+                <span aria-hidden="true">&middot;</span>
+                <a href="/infra/">Infra</a>
+            </nav>
+        </footer>
+        <script src="/email.js"></script>
+    </body>
+</html>
