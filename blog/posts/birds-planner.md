@@ -30,6 +30,8 @@ So there are only 2,800 possible layouts, and the five sanctuary birds always st
 
 The first input is what makes this predictable. `blockhash(N - 1)` is public as soon as block N - 1 lands, about 12 seconds before block N is built. The other two inputs are a constant and a counter. So for any block, the layout an observation would produce in the next block can be computed before sending anything. I checked this against the last 400 observations on-chain: 399 of them have a following observation to compare against, and the formula predicted the bird in all 399.
 
+![Birds in Marfa at sunset: people gathered on a rise outside Marfa beside a metal barn, the sun breaking through a band of cloud](/blog/media/birds-planner/marfa-sunset.webp)
+
 **What it costs to collect all 500**
 
 Every pair has to be observed once, and the contract bounds the fee between 0.0001 and 0.01 ETH, so a full set costs at least 500 fees - about $500 at today's fee. Gas is small at current prices: about 150,000 gas per observation, a few cents at 0.1 gwei.
@@ -46,8 +48,6 @@ Rule 1 cannot buy a duplicate by accident: `observe` takes the bird you expect t
 The catch is timing: the transaction has to land in the exact block you computed for, which a normal wallet cannot do. A Flashbots bundle can target one block and is dropped if it misses, so a miss costs nothing and you try again on the next block. A miss also happens when someone else's observation lands earlier in the same block, because the cooldown then rejects yours. In a 200-run simulation using the real formula and starting from 5 pairs, this took a median of about 950 blocks, a little over 3 hours, and about 6 to 8 hours if half the bundles miss. That is a simulation, not a run I have done.
 
 Two smaller points on cost. Calling `observe` from a plain wallet uses about 150,000 gas; going through a delegated smart account uses about 390,000, which is roughly $15 versus $40 for a whole set at 0.1 gwei. And at a secondary floor of around 0.0016 ETH, more than three times the fee, buying a pair costs more than observing it, and birds.app shows only the pairs a wallet observed itself.
-
-![Birds in Marfa at sunset: people gathered on a rise outside Marfa beside a metal barn, the sun breaking through a band of cloud](/blog/media/birds-planner/marfa-sunset.webp)
 
 **The planner**
 
