@@ -57,4 +57,4 @@ Before this, the tool for collecting was [Bird Watcher](https://www.bird-watcher
 
 Birds Planner works the other way round. It runs nothing on your behalf, so there is nothing to deploy or fund and no LINK to keep topped up. What it adds is the next layout before it happens, which is the piece a zero-waste run needs when the game is quiet, and progress for any address or ENS name, with observations sent from your own wallet so the credit stays there.
 
-Corrections and measurements go to the [tbm issues](https://github.com/TheBenMeadows/tbm/issues).
+Please submit any corrections, comments, or measurements [here](https://github.com/TheBenMeadows/tbm/issues).
