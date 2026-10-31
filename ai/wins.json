@@ -2,6 +2,7 @@
     "_comment": "Entries for /ai, rendered by scripts/build-ai.mjs. An entry earns its place by an outcome someone else can check: a change merged into a repository Ben does not own, a competition result, a published audit, a released tool. Work in progress does not qualify, and neither does a result that exists only in Ben's own notes. Entries describe what happened and never which model, agent or tool did it; scripts/check-ai-wins.mjs fails the build on a name in the title or summary, while `where` and link labels carry the venue's own name. Links are optional because some venues publish no permanent page, but a link that is present must be absolute https. Newest first is produced by the builder, so order here does not matter. `quotes` are third parties' words, copied verbatim from a public page (Ben, 2026-09-15): they may name whatever the author named, so the name check does not apply to them, and every quote must link to the page it was copied from.",
     "kinds": {
         "merged": "Merged upstream",
+        "reported": "Reported, fixed upstream",
         "placement": "Competition",
         "audit": "Audit",
         "release": "Released",
@@ -9,19 +10,32 @@
     },
     "wins": [
         {
+            "id": "openagents-audits",
+            "date": "2026-08-04",
+            "kind": "audit",
+            "title": "Three audits of a platform's claimed fixes, posted on its own issues",
+            "where": "OpenAgents",
+            "summary": "Each one checked a claim on the platform's issue tracker against the code or the running service: a merged gateway whose endpoint was not answering (2026-06-19), a fix reported complete with one of its three gaps still open (2026-07-08), and a guard where two of the three stated reasons did not hold in the code (2026-08-04). Each verdict carries its evidence on the issue.",
+            "links": [
+                { "label": "verdict: gateway not deployed", "url": "https://github.com/OpenAgentsInc/openagents/issues/5476#issuecomment-4753188533" },
+                { "label": "verdict: gap still open", "url": "https://github.com/OpenAgentsInc/openagents/issues/8555#issuecomment-4918155496" },
+                { "label": "verdict: guard reasons", "url": "https://github.com/OpenAgentsInc/openagents/issues/9307#issuecomment-5180920394" }
+            ]
+        },
+        {
             "id": "bouchaudy-typex-p1-p2",
             "date": "2026-10-30",
             "kind": "placement",
             "title": "TypeX cipher challenge: first solver listed for Problem 1, and Problem 2 solved",
             "where": "J.-F. Bouchaudy's cipher machine challenges",
-            "summary": "Problems 1 and 2 of the TypeX challenge. For the first, a simulator built from the setter's manual and key table recovered settings that re-encrypt the 889-letter message exactly; the second was read back from a printout left stuck in figures mode. The setter confirmed both by email and added them to the solver table on 29 and 30 October; for Problem 1 it is the first solver the table lists.",
+            "summary": "Problems 1 and 2 of the TypeX challenge. For the first, a simulator built from the setter's manual and key table recovered settings that re-encrypt the 889-letter message exactly; the second was read back from a printout left stuck in figures mode. The setter confirmed both by email and added them to the solver table on 2026-10-29 and 2026-10-30; for Problem 1 it is the first solver the table lists.",
             "links": [
                 { "label": "the solver table, archived", "url": "https://web.archive.org/web/20261031150148/http://www.jfbouch.fr/crypto/challenges/TYPEX/index.html" }
             ]
         },
         {
             "id": "emoji-fix",
-            "date": "2026-10-09",
+            "date": "2026-10-12",
             "kind": "release",
             "title": "Emoji Fix, a browser extension for emoji that Chromium draws blank on the Mac",
             "where": "Emoji Fix",
@@ -35,7 +49,7 @@
         {
             "id": "ar-io-deploy-credit-share",
             "date": "2026-10-09",
-            "kind": "merged",
+            "kind": "reported",
             "title": "Shared credits refused by a permaweb deploy tool, reported and fixed",
             "where": "ar-io-deploy",
             "summary": "A deploy wallet funded only by a credit-share approval was turned away with zero credits available, because the pre-flight check read the wallet's own balance instead of the balance it could spend. The report carried the measured balances and the exact price quote. The maintainer confirmed the cause, pointed to the release that counts shared credits, and merged a regression test for the reported case.",
@@ -64,7 +78,7 @@
             "kind": "milestone",
             "title": "Selected as a community ambassador for an autonomous-coding company",
             "where": "Devin Ambassadors",
-            "summary": "The company runs a program for people who lead its builder community in their own city, hosting events and creating content. Accepted into it on the twenty-first of September, with a subscription and event credits that renew every six months while active, and membership reviewed on the same schedule.",
+            "summary": "The company runs a program for people who lead its builder community in their own city, hosting events and creating content. Accepted into it on 2026-09-21, with a subscription and event credits that renew every six months while active, and membership reviewed on the same schedule.",
             "links": [
                 { "label": "the program", "url": "https://devin.ai/community" }
             ]
@@ -109,7 +123,7 @@
             "kind": "placement",
             "title": "Top ten on a shape-packing problem, two-millionths off first place",
             "where": "Paradigm Puzzles",
-            "summary": "Arrange a fixed set of shapes to minimise the radius of the circle enclosing them. Finished at 2.9485289324787587 against a leading score of 2.9485269238856113, a gap of 2.0e-6, for rank 10 of 43 on a board where the top twelve scores all fall within 3.1e-6 of one another.",
+            "summary": "Arrange a fixed set of shapes to minimize the radius of the circle enclosing them. Finished at 2.9485289324787587 against a leading score of 2.9485269238856113, a gap of 2.0e-6, for rank 10 of 43 on a board where the top twelve scores all fall within 3.1e-6 of one another.",
             "links": [
                 { "label": "the puzzle", "url": "https://www.paradigm.xyz/puzzles/packing" }
             ]
@@ -120,7 +134,7 @@
             "kind": "milestone",
             "title": "Paid within 36 minutes of joining, and in the company's strategy essay by morning",
             "where": "OpenAgents",
-            "summary": "Ben's verifier joined the OpenAgents forum on June 10 at 21:22 UTC and was paid 36 minutes later. The next morning the company's strategy essay opened with a section named after it, using the arrival as proof that outside supply had shown up.",
+            "summary": "Ben's verifier joined the OpenAgents forum on 2026-06-10 at 21:22 UTC and was paid 36 minutes later. The next morning the company's strategy essay opened with a section named after it, using the arrival as proof that outside supply had shown up.",
             "links": [
                 { "label": "the essay", "url": "https://github.com/OpenAgentsInc/openagents/blob/b3bd0805/docs/tassadar/2026-06-11-autopilot-agentic-labor-market.md" },
                 { "label": "the account, with receipts", "url": "https://thebenmeadows.com/blog/my-owner-asked-me-to-write-this-post-receipts-attached/" }
@@ -128,11 +142,12 @@
         },
         {
             "id": "kryptos-ctf",
+            "pin": 3,
             "date": "2026-10-03",
             "kind": "placement",
-            "title": "All ten puzzles in a cryptography CTF",
+            "title": "All ten puzzles of a cryptography CTF solved, rank 13 on the public board",
             "where": "Paradigm Kryptos CTF",
-            "summary": "Ten cipher puzzles of rising difficulty, $10,000 across ten prize pools. All ten solved and accepted by the site's checker at one attempt each, the last two on 2026-10-03, for rank 13 on the public board.",
+            "summary": "Ten cipher puzzles of rising difficulty. All ten solved and accepted by the site's checker at one attempt each, the last two on 2026-10-03, for rank 13 on the public board.",
             "links": [
                 { "label": "the leaderboard", "url": "https://paradigm.xyz/kryptos-ctf/leaderboard" },
                 { "label": "the puzzles", "url": "https://paradigm.xyz/kryptos-ctf" }
@@ -140,6 +155,7 @@
         },
         {
             "id": "manic-bug-bounty",
+            "pin": 1,
             "date": "2026-09-15",
             "kind": "placement",
             "title": "First prize in a $1,000 bug bounty",
@@ -149,18 +165,6 @@
                 { "label": "the listing and its winners", "url": "https://superteam.fun/earn/listing/dollar1000-usdc-manic-bug-bounty" },
                 { "label": "the ten reports", "url": "https://gist.github.com/TheBenMeadows/fdf0ceb1ad0f1896d31169421a10e5e3" },
                 { "label": "the profile", "url": "https://superteam.fun/earn/t/TheBenMeadows" }
-            ]
-        },
-        {
-            "id": "cookie-tab",
-            "date": "2026-09-14",
-            "kind": "release",
-            "title": "Cookie Tab, payment links that prove themselves",
-            "where": "Cookie Chain",
-            "summary": "Make a payment link, and the page carries a live invoice plus the settled transaction read back from the chain, one instruction at a time, with no wallet connected. Entered in the chain's app bounty, which named two other entries as its winners on 28 September.",
-            "links": [
-                { "label": "the app", "url": "https://cookie-tab.pages.dev/" },
-                { "label": "source", "url": "https://github.com/TheBenMeadows/cookie-tab" }
             ]
         },
         {
@@ -180,7 +184,7 @@
             "kind": "merged",
             "title": "Four fixes merged into a menu-bar usage tracker",
             "where": "Claude Usage Tracker",
-            "summary": "A heads-up display that never appeared on notched screens. A keychain migration that did nothing on unsigned builds and left credentials in cleartext. Expiry reported for requests that had only been challenged. A listener refusing ordinary payloads with a 413.",
+            "summary": "A heads-up display that never appeared on notched screens. A keychain migration that did nothing on signed builds lacking the keychain entitlement, and left credentials in cleartext. Expiry reported for requests that had only been challenged. A listener refusing ordinary payloads with a 413.",
             "links": [
                 { "label": "the display fix", "url": "https://github.com/hamed-elfayome/Claude-Usage-Tracker/pull/301" },
                 { "label": "the keychain fix", "url": "https://github.com/hamed-elfayome/Claude-Usage-Tracker/pull/302" },
@@ -203,23 +207,11 @@
             "id": "maghue-grace-window",
             "date": "2026-08-27",
             "kind": "merged",
-            "title": "A grace window for the charging colour, merged into a charger-light utility",
+            "title": "A grace window for the charging color, merged into a charger-light utility",
             "where": "MagHue",
-            "summary": "The light left the charging colour the moment a charger connected, which is the moment someone looks at it. An optional window holds the colour long enough to be read.",
+            "summary": "The light left the charging color the moment a charger connected, which is the moment someone looks at it. An optional window holds the color long enough to be read.",
             "links": [
                 { "label": "the pull request", "url": "https://github.com/kamenlevi/MagHue/pull/3" }
-            ]
-        },
-        {
-            "id": "audit-route-guard",
-            "date": "2026-08-04",
-            "kind": "audit",
-            "title": "Audit: a guard whose stated reasons did not hold",
-            "where": "OpenAgents",
-            "summary": "Three justifications were offered for a route-mount guard. Two did not survive a reading of the code, and the correction sits on the issue for anyone to check against the same source.",
-            "links": [
-                { "label": "the verdict", "url": "https://github.com/OpenAgentsInc/openagents/issues/9307#issuecomment-5180920394" },
-                { "label": "the earlier pass", "url": "https://github.com/OpenAgentsInc/openagents/issues/9307#issuecomment-5172617727" }
             ]
         },
         {
@@ -239,32 +231,22 @@
         },
         {
             "id": "openagents-merged-changes",
+            "pin": 2,
             "date": "2026-07-17",
             "kind": "merged",
             "title": "Seventeen changes merged into a platform's own codebase",
             "where": "OpenAgents",
             "summary": "Between June and July: diagnostics returned where a throw used to be, an N+1 query on long forum threads, a disclosure block on the streaming path, a theme selector, and a terminal chat interface built over three changes.",
             "links": [
-                { "label": "all seventeen", "url": "https://github.com/OpenAgentsInc/openagents/pulls?q=is%3Apr+author%3Alathe-agent-oa+is%3Amerged" },
+                { "label": "all seventeen, June to July", "url": "https://github.com/OpenAgentsInc/openagents/pulls?q=is%3Apr+author%3Alathe-agent-oa+is%3Amerged+merged%3A%3C%3D2026-07-31" },
                 { "label": "the diagnostics fix", "url": "https://github.com/OpenAgentsInc/openagents/pull/8959" },
                 { "label": "the N+1 fix", "url": "https://github.com/OpenAgentsInc/openagents/pull/5509" }
             ]
         },
         {
-            "id": "audit-gap-not-closed",
-            "date": "2026-07-08",
-            "kind": "audit",
-            "title": "Audit: a merged fix that did not close the gap",
-            "where": "OpenAgents",
-            "summary": "A remediation had been reported complete. Read against real hosted turns, one of its three gaps was still open, and the audit recorded that with the evidence rather than accepting the claim.",
-            "links": [
-                { "label": "the verdict", "url": "https://github.com/OpenAgentsInc/openagents/issues/8555#issuecomment-4918155496" }
-            ]
-        },
-        {
             "id": "openagents-two-faults",
             "date": "2026-06-27",
-            "kind": "merged",
+            "kind": "reported",
             "title": "Two platform faults reported with reproductions, both fixed the same day",
             "where": "OpenAgents",
             "summary": "A workspace builder that failed on any repository still defaulting to master, and a coding request that opened a lease and never ran, after which the dispatcher answered 409 to everything that followed. Maintainers shipped both fixes and credited the reports.",
@@ -272,18 +254,6 @@
                 { "label": "the workspace report", "url": "https://github.com/OpenAgentsInc/openagents/issues/6361" },
                 { "label": "the dispatcher report", "url": "https://github.com/OpenAgentsInc/openagents/issues/6362" },
                 { "label": "the credit", "url": "https://github.com/OpenAgentsInc/openagents/issues/6361#issuecomment-4816381594" }
-            ]
-        },
-        {
-            "id": "audit-merged-is-not-deployed",
-            "date": "2026-06-19",
-            "kind": "audit",
-            "title": "Audit: merged is not deployed",
-            "where": "OpenAgents",
-            "summary": "An acceptance check of a gateway against the criteria written in its own issue. The code had been merged; the endpoint it claimed was not answering, and the verdict carried the request that showed it.",
-            "links": [
-                { "label": "the verdict", "url": "https://github.com/OpenAgentsInc/openagents/issues/5476#issuecomment-4753188533" },
-                { "label": "the follow-up", "url": "https://github.com/OpenAgentsInc/openagents/issues/5476#issuecomment-4754062324" }
             ]
         }
     ],
