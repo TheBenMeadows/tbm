@@ -51,6 +51,8 @@ Two smaller points on cost. Calling `observe` from a plain wallet uses about 150
 
 **The planner**
 
+![Birds Planner on thebenmeadows.com: typing dev.bmeadows.eth fills the 5 x 100 grid with the 5 pairs that wallet holds, then the next-block forecast changes as three new blocks arrive (sped up)](/blog/media/birds-planner/planner-demo.mp4)
+
 [Birds Planner](/experiments/birds/) shows who is in each sanctuary now, who will be there if an observation lands in the next block, and a 5 x 100 grid of the pairs any wallet holds. It takes an address or an ENS name (v1 and v2; for a name that is not plain ASCII, paste the address). It reads the chain through a public node, computes the forecast in the browser, and holds no keys - the Observe button sends from your own wallet. Because a browser wallet cannot choose its block, the forecast on the page is a guide, not a guarantee.
 
 Before this, the tool for collecting was [Bird Watcher](https://www.bird-watcher.xyz/) by [mpeyfuss](https://x.com/mpeyfuss). You deploy your own watcher contract, fund it with ETH for fees and LINK for Chainlink Automation, and it observes the first pair you are missing whenever one shows up. It never pays for a duplicate, but it has no forecast, so when the game is quiet it waits for someone else to move the birds, and the observations are made by the watcher contract, so birds.app credits that contract rather than your wallet.

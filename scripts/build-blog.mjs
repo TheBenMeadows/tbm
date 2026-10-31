@@ -239,6 +239,16 @@ const RENDERER = {
 
     /* A post image is a block, full column width, lazy below the fold. */
     image({ href, text }) {
+        /* A short screen recording: an image line pointing at an .mp4 renders as a
+         * muted looping video, sized and postered by the .webp of the same name.
+         * Markdown only, so the raw-HTML escape below still holds. Controls stay
+         * on so the motion can be paused. */
+        if (/\.mp4$/i.test(href)) {
+            const poster = href.replace(/\.mp4$/i, ".webp");
+            const { w, h } = imageSize(poster);
+            if (!existsSync(join(ROOT, href.replace(/^\//, "")))) throw new Error(`build-blog: video not found: ${href}`);
+            return `<video class="post-image" src="${esc(href)}" poster="${esc(poster)}" width="${w}" height="${h}" autoplay muted loop playsinline controls preload="metadata" aria-label="${esc(text || "")}"></video>`;
+        }
         const { w, h } = imageSize(href);
         return `<img class="post-image" src="${esc(href)}" alt="${esc(text || "")}" width="${w}" height="${h}" loading="lazy" decoding="async" />`;
     },
@@ -247,7 +257,7 @@ const RENDERER = {
      * and a paragraph holding nothing but an image is not body copy, so unwrap it. */
     paragraph({ tokens }) {
         const inner = this.parser.parseInline(tokens).trim();
-        if (/^<img class="post-image"[^>]*\/>$/.test(inner)) return inner + "\n";
+        if (/^<img class="post-image"[^>]*\/>$/.test(inner) || /^<video class="post-image"[^>]*><\/video>$/.test(inner)) return inner + "\n";
         return `<p class="mt-4">${inner}</p>\n`;
     },
 
