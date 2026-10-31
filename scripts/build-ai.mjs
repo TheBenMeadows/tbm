@@ -16,7 +16,7 @@ import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 const SITE = "https://thebenmeadows.com";
 const OUT = "ai";
 const TITLE = "AI & Agents · TheBenMeadows";
-const DESCRIPTION = "Work done with AI assistance that someone else accepted: merged changes, competition results, published audits, released tools.";
+const DESCRIPTION = "Outcomes someone else recorded: changes merged into other projects, competition and bug-bounty results, published audits, released tools.";
 
 /* Dates render as the ISO string from the data file, never through a Date object:
  * parsing "2026-09-14" and formatting it back runs through the builder's timezone, and
@@ -29,10 +29,19 @@ const esc = (s) => s
 
 const data = JSON.parse(readFileSync(`${OUT}/wins.json`, "utf8"));
 
-/* Newest first, and ties broken by id so two entries sharing a date keep the same
- * order on every host. A build that reordered cards would report mirror drift that
- * does not exist. */
-const wins = [...data.wins].sort((a, b) => (a.date !== b.date ? (a.date < b.date ? 1 : -1) : a.id < b.id ? -1 : 1));
+/* Entries with a `pin` (1, 2, 3...) lead the page in pin order. The rest are grouped by
+ * kind in GROUPS order, newest first inside each group, ties broken by id so two
+ * entries sharing a date keep the same order on every host. A build that reordered
+ * cards would report mirror drift that does not exist. */
+const GROUPS = ["merged", "reported", "placement", "audit", "release", "milestone"];
+const byDate = (a, b) => (a.date !== b.date ? (a.date < b.date ? 1 : -1) : a.id < b.id ? -1 : 1);
+const pinned = data.wins.filter((w) => Number.isInteger(w.pin)).sort((a, b) => a.pin - b.pin);
+const rest = data.wins.filter((w) => !Number.isInteger(w.pin));
+const kindOrder = (k) => (GROUPS.includes(k) ? GROUPS.indexOf(k) : GROUPS.length);
+const groups = [...new Set(rest.map((w) => w.kind))]
+    .sort((a, b) => kindOrder(a) - kindOrder(b))
+    .map((kind) => ({ kind, wins: rest.filter((w) => w.kind === kind).sort(byDate) }));
+const wins = [...pinned, ...groups.flatMap((g) => g.wins)];
 
 function linkRow(links) {
     if (links.length === 0) return "";
@@ -60,8 +69,12 @@ function card(win) {
 }
 
 /* Quotes are rendered as their author wrote them, so a reader who opens the link finds
- * the same words. Newest first, like the cards. */
-const quotes = [...(data.quotes ?? [])].sort((a, b) => (a.date === b.date ? 0 : a.date < b.date ? 1 : -1));
+ * the same words. Newest first; quotes sharing a date keep their order in the data
+ * file, where a follow-on quote ("the same essay") sits after the one it follows. */
+const quotes = (data.quotes ?? [])
+    .map((q, i) => ({ q, i }))
+    .sort((a, b) => (a.q.date !== b.q.date ? (a.q.date < b.q.date ? 1 : -1) : a.i - b.i))
+    .map(({ q }) => q);
 
 function quoteBlock(q) {
     return `                <blockquote class="hairline-card p-6">
@@ -83,8 +96,13 @@ ${quotes.map(quoteBlock).join("\n\n")}
 `
     : "";
 
+const section = (heading, list, first) => `
+            <h2 class="${first ? "mt-8" : "mt-10"} font-mono text-xs uppercase tracking-widest text-neutral-500">${esc(heading)}</h2>
+            <div class="mt-4 grid gap-4 sm:grid-cols-2">\n${list.map(card).join("\n\n")}\n            </div>\n`;
+
 const cards = wins.length > 0
-    ? `\n            <div class="mt-8 grid gap-4 sm:grid-cols-2">\n${wins.map(card).join("\n\n")}\n            </div>\n`
+    ? (pinned.length > 0 ? section("Selected", pinned, true) : "") +
+      groups.map((g, i) => section(data.kinds[g.kind], g.wins, pinned.length === 0 && i === 0)).join("")
     : `\n            <p class="mt-8 text-sm text-neutral-500">Nothing to show yet.</p>\n`;
 
 const page = `<!doctype html>
@@ -147,15 +165,15 @@ const page = `<!doctype html>
         <main class="text-neutral-400 max-w-(--breakpoint-md) mx-auto px-6 pt-8 pb-12 leading-relaxed">
             <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">AI &amp; Agents</h1>
             <p class="mt-4">
-                Ben builds with AI. This page lists the results other people accepted:
-                fixes merged into projects he does not own, a bug bounty won, audits
-                posted in public, tools you can open. Each card links to the proof, or
-                gives the date and the place when the venue keeps none.
+                Ben builds with AI. Every card here is an outcome someone else recorded:
+                changes merged into projects he does not own, faults he reported that
+                maintainers fixed, competition and bug-bounty results, published audits,
+                and released tools. Each card links to the record. The strongest three
+                come first; the rest are grouped by kind, newest first.
             </p>
             <p class="mt-4">
                 Artwork stays under <a class="underline decoration-neutral-600 underline-offset-4 hover:text-white transition-colors" href="/art/">Art</a>
-                whatever the process behind it, and reaches this page only by winning
-                something outside.
+                and appears here only when it wins something outside.
             </p>
             <hr class="center-rule" style="margin-top: 2.2rem; margin-bottom: 0" />
 ${cards}${said}        </main>
