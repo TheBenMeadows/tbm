@@ -15,7 +15,9 @@
             "title": "Two TypeX cipher challenges solved and listed by the setter",
             "where": "J.-F. Bouchaudy's cipher machine challenges",
             "summary": "Problems 1 and 2 of the TypeX challenge. For the first, a simulator built from the setter's manual and key table recovered settings that re-encrypt the 889-letter message exactly; the second was read back from a printout left stuck in figures mode. The setter confirmed both by email and added them to the solver table on 29 and 30 October.",
-            "links": []
+            "links": [
+                { "label": "the solver table, archived", "url": "https://web.archive.org/web/20261031150148/http://www.jfbouch.fr/crypto/challenges/TYPEX/index.html" }
+            ]
         },
         {
             "id": "emoji-fix",
