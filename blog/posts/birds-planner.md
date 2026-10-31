@@ -8,7 +8,7 @@ image_alt: "Birds in Marfa at night: a bird on a large screen in a field, lit th
 description: "How the sanctuary layout in Birds by Jules and Mungi is chosen, why it can be computed one block ahead, and what that means for the cost of observing all 500 bird and sanctuary pairs."
 ---
 
-As of October 29, 13 of the 933 wallets that have observed [Birds](https://birds.app) by Jules and Mungi have all 500 pairs, and two of them got there in exactly 500 observations, without a single duplicate. They did it in May and June, when other people were observing every few minutes. Doing the same now that the game is quiet comes down to how the contract picks the next layout.
+As of October 29, 13 of the 933 wallets that have observed [Birds](https://birds.app) by [Jules](https://x.com/nicedayJules) and [Mungi](https://x.com/mungimungimungi) have all 500 pairs, and two of them got there in exactly 500 observations, without a single duplicate. They did it in May and June, when other people were observing every few minutes. Doing the same now that the game is quiet comes down to how the contract picks the next layout.
 
 **What an observation is**
 
