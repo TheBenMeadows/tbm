@@ -12,7 +12,7 @@ As of October 29, 13 of the 933 wallets that have observed [Birds](https://birds
 
 **What an observation is**
 
-There are 100 birds and five sanctuaries. Observing the bird currently sitting in a sanctuary costs a fee (0.00044 ETH today; the artists keep it near $1) and mints an ERC-1155 for that pair, so a full set is 5 x 100 = 500 tokens. Every successful observation also moves the world: the contract starts a new epoch and redraws the layout of all five sanctuaries, not just the one you observed.
+There are 100 birds and five sanctuaries. Observing the bird currently sitting in a sanctuary costs a fee (0.00044 ETH today, around $1) and mints an ERC-1155 for that pair, so a full set is 5 x 100 = 500 tokens. Every successful observation also moves the world: the contract starts a new epoch and redraws the layout of all five sanctuaries, not just the one you observed.
 
 **How the next layout is picked**
 
@@ -28,11 +28,11 @@ and builds the whole layout from the first two bytes of that seed. It is an affi
 
 So there are only 2,800 possible layouts, and the five sanctuary birds always step by the same amount, `a⁻¹`, counting around 100. The comment in the contract says this was chosen on purpose: it is much cheaper than a full Fisher-Yates shuffle and still looks random.
 
-The first input is what makes this predictable. `blockhash(N - 1)` is public as soon as block N - 1 lands, about 12 seconds before block N is built. The other two inputs are a constant and a counter. So for any block, the layout an observation would produce in the next block can be computed before sending anything. I checked this against the last 400 observations on chain: 399 of them have a following observation to compare against, and the formula predicted the bird in all 399.
+The first input is what makes this predictable. `blockhash(N - 1)` is public as soon as block N - 1 lands, about 12 seconds before block N is built. The other two inputs are a constant and a counter. So for any block, the layout an observation would produce in the next block can be computed before sending anything. I checked this against the last 400 observations on-chain: 399 of them have a following observation to compare against, and the formula predicted the bird in all 399.
 
 **What it costs to collect all 500**
 
-Every pair has to be observed once, and the contract bounds the fee between 0.0001 and 0.01 ETH, so a full set costs at least 500 fees - about $500 while the fee stays near $1. Gas is small at current prices: about 150,000 gas per observation, a few cents at 0.1 gwei.
+Every pair has to be observed once, and the contract bounds the fee between 0.0001 and 0.01 ETH, so a full set costs at least 500 fees - about $500 at today's fee. Gas is small at current prices: about 150,000 gas per observation, a few cents at 0.1 gwei.
 
 Without prediction, the cost depends on how busy the game is. When the five birds in front of you are all pairs you already hold, the only way to move them (short of a Bird holder moving one by hand) is to observe one anyway, which pays a fee for a duplicate. When I measured on October 29 there had been 4 observations in the previous 19 hours, so waiting for other people to reshuffle could take a long time. I simulated 300 runs of collecting from 5 pairs to 500, drawing each layout at random: the median was about 940 observations, roughly 445 of them duplicates, so about $940.
 
@@ -53,6 +53,8 @@ Two smaller points on cost. Calling `observe` from a plain wallet uses about 150
 
 [Birds Planner](/experiments/birds/) shows who is in each sanctuary now, who will be there if an observation lands in the next block, and a 5 x 100 grid of the pairs any wallet holds. It takes an address or an ENS name (v1 and v2; for a name that is not plain ASCII, paste the address). It reads the chain through a public node, computes the forecast in the browser, and holds no keys - the Observe button sends from your own wallet. Because a browser wallet cannot choose its block, the forecast on the page is a guide, not a guarantee.
 
-There is already a Chainlink-based bot for this, [Bird Watcher](https://www.bird-watcher.xyz/) by mpeyfuss, which observes the first eligible pair whenever one appears. It never pays for a duplicate, but it does not use the forecast either, so when the game is quiet it waits for someone else to move the birds.
+Before this, the tool for collecting was [Bird Watcher](https://www.bird-watcher.xyz/) by mpeyfuss. You deploy your own watcher contract, fund it with ETH for fees and LINK for Chainlink Automation, and it observes the first pair you are missing whenever one shows up. It never pays for a duplicate, but it has no forecast, so when the game is quiet it waits for someone else to move the birds, and the observations are made by the watcher contract, so birds.app credits that contract rather than your wallet.
+
+Birds Planner works the other way round. It runs nothing on your behalf, so there is nothing to deploy or fund and no LINK to keep topped up. What it adds is the next layout before it happens, which is the piece a zero-waste run needs when the game is quiet, and progress for any address or ENS name, with observations sent from your own wallet so the credit stays there.
 
 Corrections and measurements go to the [tbm issues](https://github.com/TheBenMeadows/tbm/issues).
