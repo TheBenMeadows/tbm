@@ -22,6 +22,7 @@ import { readFileSync } from "node:fs";
 const FILE = "ai/wins.json";
 const KIND_DESCRIPTIONS = {
     merged: "a change merged into a repository Ben does not own",
+    reported: "a fault Ben reported that the maintainer fixed and credited",
     placement: "a competition or bounty result",
     audit: "a published audit or verification verdict",
     release: "a released tool with a live address",
