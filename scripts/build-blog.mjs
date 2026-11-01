@@ -139,6 +139,16 @@ function authorLine(a) {
     return authorNameHtml(a);
 }
 
+/* The byline is also the post's p-author h-card. Its name is implied from the
+ * text, so the card names whoever wrote the post and never the site owner by
+ * default. An off-site author's link carries u-url; an author whose page is this
+ * site has no link in the byline, so the url rides on an empty <data>. */
+function authorCardHtml(a) {
+    const name = authorNameHtml(a).replace('class="post-author-link"', 'class="post-author-link u-url"');
+    const url = a.url && a.url.startsWith(SITE) ? `<data class="u-url" value="${esc(a.url)}"></data>` : "";
+    return `<span class="post-author p-author h-card">${name}${url}</span>`;
+}
+
 function authorNote(a) {
     if (a.kind === "agent") {
         return a.operator
@@ -508,9 +518,9 @@ function postPage(post) {
      * rather than trailing the dates: together they overran the measure, and the
      * break landed between "TECHNOLOGY" and the separator in front of it. */
     const SEP = "&nbsp;&middot; ";
-    const meta = [`<span class="post-author">${authorLine(post.author)}</span>`,
-                  `<time datetime="${post.date}">${longDate(post.date)}</time>`];
-    if (post.updated) meta.push(`updated ${longDate(post.updated)}`);
+    const meta = [authorCardHtml(post.author),
+                  `<time class="dt-published" datetime="${post.date}">${longDate(post.date)}</time>`];
+    if (post.updated) meta.push(`updated <time class="dt-updated" datetime="${post.updated}">${longDate(post.updated)}</time>`);
 
     /* A subtitle belongs to the title, not to the body. Set as its own line in
      * the header rather than as a first paragraph, which is where it landed
@@ -539,6 +549,13 @@ ${post.seeAlso.map((r) =>
 `
         : "";
 
+    /* The post is an h-entry (microformats2), so a page that receives a
+     * webmention from it can read the title, date, author and body without
+     * guessing. The permalink and the description have no visible element of
+     * their own here, so they ride on empty <data> elements. e-content is the
+     * one wrapper: the body has to sit in a single element for a parser to
+     * take it as the content, and src/input.css gives main > .e-content the
+     * same body-copy rules as main. */
     return head({
         title: `${post.title} · TheBenMeadows`,
         description: post.description,
@@ -551,12 +568,14 @@ ${post.seeAlso.map((r) =>
         <meta property="article:modified_time" content="${post.updated}" />` : ""}${post.unlisted ? `
         <meta name="robots" content="noindex" />` : ""}
 ${jsonLd(postSchema(post))}`,
-    }) + `        <main class="text-neutral-400 max-w-(--breakpoint-md) mx-auto px-6 pt-8 pb-12 leading-relaxed">
+    }) + `        <main class="h-entry text-neutral-400 max-w-(--breakpoint-md) mx-auto px-6 pt-8 pb-12 leading-relaxed">
             <header class="post-head">
-                <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">${esc(post.title)}</h1>
-${subLine}                <p class="post-meta no-justify">${meta.join(SEP)}</p>
+                <h1 class="p-name text-white text-3xl font-bold" style="letter-spacing: -0.025em">${esc(post.title)}</h1>
+${subLine}                <p class="post-meta no-justify"><data class="u-url u-uid" value="${SITE}${post.url}"></data><data class="p-summary" value="${esc(post.description)}"></data>${meta.join(SEP)}</p>
 ${noteLine}${tagLine}            </header>
-${lead}${post.html}            <hr class="center-rule" style="margin-top: 2.6rem" />
+            <div class="e-content">
+${lead}${post.html}            </div>
+            <hr class="center-rule" style="margin-top: 2.6rem" />
 ${seeAlso}            <p class="post-meta no-justify" style="text-align: center">
                 <a class="${LINK}" href="/blog/">All posts</a>
             </p>

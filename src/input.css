@@ -330,13 +330,21 @@ html.light .ess-control { background-color: #e4e4e7; color: #3f3f46; }
    enough to justify well. */
 main > p,
 main > ul > li,
-main > ol > li {
+main > ol > li,
+main > .e-content > p,
+main > .e-content > ul > li,
+main > .e-content > ol > li {
     hyphens: auto;
 }
 
+/* A blog post's body sits in one .e-content element (its h-entry content), so
+   each rule here names that level as well as main itself. */
 main > p:not(.no-justify),
 main > ul > li:not(.no-justify),
-main > ol > li:not(.no-justify) {
+main > ol > li:not(.no-justify),
+main > .e-content > p:not(.no-justify),
+main > .e-content > ul > li:not(.no-justify),
+main > .e-content > ol > li:not(.no-justify) {
     text-align: justify;
     text-justify: inter-word;
 }
@@ -354,6 +362,7 @@ main > ol > li:not(.no-justify) {
    justification leaves alone anyway. Mark the exceptions that are really
    exceptions and let the rest set consistently. */
 main > p.font-mono,
+main > .e-content > p.font-mono,
 main .no-justify {
     text-align: left;
 }
