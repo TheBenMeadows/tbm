@@ -52,7 +52,7 @@
         <header class="head">
             <h1>Birds Planner</h1>
             <p class="sub"><a href="https://birds.app" target="_blank" rel="noopener">Birds</a> by Jules and Mungi is a network of 100 birds moving between home, five sanctuaries and away. Observing a bird in a sanctuary mints a record of that pair, and there are 500 pairs. Every observation also moves the whole world: the layout of all five sanctuaries is redrawn at once. This page shows which pairs a wallet still needs, who is in each sanctuary right now, and who will be there if an observation lands in the next block.</p>
-            <p class="meta">Birds 0x75de&hellip;1A8C &middot; Observations 0xCF24&hellip;bEB45 &middot; Ethereum</p>
+            <p class="meta"><span>Birds 0x75de&hellip;1A8C</span> &middot; <span>Observations 0xCF24&hellip;bEB45</span> &middot; <span>Ethereum</span></p>
         </header>
         <main>
             <div class="controls">
@@ -73,11 +73,16 @@
                     <p class="note">Recomputed every block. It holds for an observation that lands in the next block; bird home collectors and sanctuary holders can still move birds by hand after it lands.</p>
                 </section>
             </div>
-            <p id="progress" class="progress"></p>
-            <div id="grid" aria-label="Observed pairs: one row per sanctuary, one square per bird"></div>
+            <section class="collection">
+                <h2>Observed pairs</h2>
+                <p id="progress" class="progress"></p>
+                <div id="grid" aria-label="Observed pairs: one row per sanctuary, one square per bird"></div>
+            </section>
             <section class="explain">
                 <h2>How the forecast works</h2>
-                <p>Each observation starts a new epoch with a seed of <code>keccak256(previous block hash, observations contract, epoch)</code>. The seed picks one of 2,800 orderings of the 100 birds: a multiplier from a fixed list of 28 values and an offset from 100. Sanctuary <em>n</em> takes slot 29&nbsp;+&nbsp;<em>n</em> of that ordering. The previous block&rsquo;s hash is public before the next block is built, so the arrangement an observation will produce is known one block in advance. Checked against the last 400 observations on chain: each one&rsquo;s <code>ObservationRecorded</code> event records the bird that landed next, and the formula matched all 400.</p>
+                <p>Each observation starts a new epoch with the seed</p>
+                <p class="formula"><code>keccak256(previous block hash, observations contract, epoch)</code></p>
+                <p>The seed picks one of 2,800 orderings of the 100 birds: a multiplier from a fixed list of 28 values and an offset from 100. Sanctuary <em>n</em> takes slot&nbsp;29&nbsp;+&nbsp;<em>n</em> of that ordering. The previous block&rsquo;s hash is public before the next block is built, so the arrangement an observation will produce is known one block in advance. Checked against the last 400 observations on chain: each one&rsquo;s <code>ObservationRecorded</code> event records the bird that landed next, and the formula matched all 400.</p>
                 <p>That makes a full set possible with no wasted observations: send only into a block whose arrangement still holds a pair you need. A browser wallet cannot pick its block, so on this page the forecast is a guide rather than a guarantee.</p>
                 <p>The formula, the on-chain check and the cost simulations are in <a href="https://github.com/TheBenMeadows/birds-forecast" target="_blank" rel="noopener">birds-forecast</a>; the full write-up is on <a href="/blog/birds-planner/">the blog</a>.</p>
             </section>
