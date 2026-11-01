@@ -49,13 +49,13 @@ a {
 }
 
 /* Running head — mirrors the site-wide pattern from the redesign: label left,
-   controls right, one hairline, static not sticky. This page is wider than the
-   768px prose pages, so the head follows the gallery width. */
+   controls right, one hairline, static not sticky. The page uses the site's 768px
+   prose column throughout. */
 .running-head {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
-    max-width: 1080px;
+    max-width: 768px;
     margin: 0 auto;
     padding: 1.3rem 20px 0;
 }
@@ -109,7 +109,7 @@ html.dark #theme-toggle::before { content: "Light"; }
 .head,
 main,
 footer {
-    max-width: 1080px;
+    max-width: 768px;
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -120,11 +120,10 @@ h1 {
     margin: 18px 0 8px;
 }
 .sub {
-    max-width: 64ch;
     margin: 0 0 10px;
 }
 .meta {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--ink-soft);
     margin: 0;
 }
@@ -136,13 +135,16 @@ h1 {
     margin: 26px 0 0;
     padding: 0;
 }
+.meta span { white-space: nowrap; }
 .controls input {
     background: transparent;
     border: 1px solid var(--rule);
     color: var(--ink);
-    padding: 9px 13px;
+    min-height: 2.75rem;
+    padding: 7px 13px;
     font: inherit;
-    width: 230px;
+    font-size: 0.85rem;
+    width: 260px;
 }
 .chip {
     background: transparent;
@@ -158,18 +160,14 @@ h1 {
     color: var(--accent);
     border-color: var(--ink);
 }
-.controls + .controls {
-    margin-top: 10px;
-}
 .site-footer {
-    text-align: center;
     color: var(--ink-soft);
     padding: 2.4rem 20px 2.2rem;
     font-size: 0.8rem;
 }
 .site-footer .footer-line {
-    font-size: 0.7rem;
-    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     margin-top: 0.45rem;
 }
@@ -186,33 +184,38 @@ h1 {
     .site-footer a:hover { color: var(--accent); }
 }
 .site-footer .provenance {
-    max-width: 44em;
-    margin: 0 auto 1.4rem;
+    border-top: 1px solid var(--rule);
+    padding-top: 1.2rem;
+    margin: 0 0 1.4rem;
 }
 
 /* Birds planner */
-.status, .progress { font-size: 0.8rem; color: var(--ink-soft); margin: 0.6rem 0 0; }
+.status, .progress, .panel p.note { font-size: 0.8rem; color: var(--ink-soft); margin: 0.6rem 0 0; }
 .panels { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 24px; margin-top: 1.6rem; }
-.panel h2 { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-soft); font-weight: 500; margin: 0 0 0.6rem; border-bottom: 1px solid var(--rule); padding-bottom: 0.5rem; }
-.panel p.note { font-size: 0.75rem; color: var(--ink-soft); margin: 0.6rem 0 0; }
+main h2 { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-soft); font-weight: 500; margin: 0 0 0.6rem; border-bottom: 1px solid var(--rule); padding-bottom: 0.5rem; }
 .slots { list-style: none; margin: 0; padding: 0; }
 .slots li { display: flex; align-items: center; gap: 10px; padding: 0.45rem 0; border-bottom: 1px solid var(--rule); font-size: 0.9rem; min-height: 44px; }
-.slots .where { flex: 0 0 42%; color: var(--ink-soft); }
+.slots .where { flex: 0 0 10.5rem; color: var(--ink-soft); white-space: nowrap; }
 .slots .who { flex: 1 1 auto; color: var(--title); }
-.slots .tag { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); }
+.slots .tag { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); }
 .slots li.new .who, .slots li.new .tag { color: var(--accent); font-weight: 600; }
 .slots li.empty .who { font-style: italic; }
 .slots .chip { min-height: 32px; }
-#grid { margin-top: 1rem; }
-.row { display: flex; align-items: center; gap: 12px; margin: 6px 0; }
-.row-label { flex: 0 0 9.5rem; font-size: 0.72rem; color: var(--ink-soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.collection, .explain { margin-top: 2.4rem; }
+.collection .progress { margin-top: 0; }
+#grid { margin-top: 0.8rem; }
+.row { display: flex; align-items: center; gap: 10px; margin: 10px 0; }
+.row-label { flex: 0 0 10.5rem; font-size: 0.8rem; color: var(--ink-soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .cells { display: grid; grid-template-columns: repeat(50, minmax(0, 1fr)); gap: 2px; flex: 1 1 auto; min-width: 0; }
 .cells i { display: block; aspect-ratio: 1; background: var(--rule); }
 .cells i.got { background: var(--accent); }
-.explain { max-width: 68ch; font-size: 0.9rem; margin-top: 2.4rem; }
-.explain h2 { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-soft); font-weight: 500; }
-.explain code { font-size: 0.82em; }
+.explain code { font-size: 0.88em; color: var(--title); }
+.explain .formula { overflow-wrap: anywhere; }
 @media (max-width: 560px) {
+    .controls input { flex: 1 1 100%; width: auto; }
+    .controls .chip { flex: 1 1 calc(50% - 4px); }
     .row { flex-direction: column; align-items: stretch; gap: 4px; }
     .row-label { flex: none; }
+    .cells { grid-template-columns: repeat(25, minmax(0, 1fr)); }
+    main h2 { letter-spacing: 0.14em; }
 }
