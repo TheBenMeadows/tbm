@@ -12,7 +12,7 @@ As of October 29, 13 of the 933 wallets that have observed [Birds](https://birds
 
 **What an observation is**
 
-There are 100 birds and five sanctuaries. Observing the bird currently sitting in a sanctuary costs a fee (0.00044 ETH today, around $1) and mints an ERC-1155 for that pair, so a full set is 5 x 100 = 500 tokens. Every successful observation also moves the world: the contract starts a new epoch and redraws the layout of all five sanctuaries, not just the one you observed.
+There are 100 birds and five sanctuaries. Observing the bird currently sitting in a sanctuary costs a fee (0.00044 ETH today, around $1) and mints an ERC-1155 for that pair, so a full set is 5 x 100 = 500 tokens. Every successful observation also moves the world: the contract starts a new epoch and redraws the layout of all five sanctuaries, not just the one you observed. The game also has an end: after 1,000,000 observations every bird departs for good, and nobody can observe them after that. There had been about 20,300 by October 31.
 
 **How the next layout is picked**
 
@@ -36,7 +36,7 @@ The first input is what makes this predictable. `blockhash(N - 1)` is public as 
 
 Every pair has to be observed once, and the contract bounds the fee between 0.0001 and 0.01 ETH, so a full set costs at least 500 fees - about $500 at today's fee. Gas is small at current prices: about 150,000 gas per observation, a few cents at 0.1 gwei.
 
-Without prediction, the cost depends on how busy the game is. When the five birds in front of you are all pairs you already hold, the only way to move them (short of a Bird holder moving one by hand) is to observe one anyway, which pays a fee for a duplicate. When I measured on October 29 there had been 4 observations in the previous 19 hours, so waiting for other people to reshuffle could take a long time. I simulated 300 runs of collecting from 5 pairs to 500, drawing layouts the way the contract does: the median was about 950 observations, roughly 460 of them duplicates, so about $950.
+Without prediction, the cost depends on how busy the game is. When the five birds in front of you are all pairs you already hold, the only way to move them (short of a bird home collector or a sanctuary holder moving one by hand) is to observe one anyway, which pays a fee for a duplicate. When I measured on October 29 there had been 4 observations in the previous 19 hours, so waiting for other people to reshuffle could take a long time. I simulated 300 runs of collecting from 5 pairs to 500, drawing layouts the way the contract does: the median was about 950 observations, roughly 460 of them duplicates, so about $950.
 
 With prediction, the duplicates go away:
 
