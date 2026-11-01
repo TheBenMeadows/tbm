@@ -190,6 +190,7 @@ h1 {
 
 /* Birds planner */
 .status, .progress, .panel p.note { font-size: 0.8rem; color: var(--ink-soft); margin: 0.6rem 0 0; }
+.status.upgraded { color: var(--accent); }
 .panels { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 24px; margin-top: 1.6rem; }
 main h2 { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-soft); font-weight: 500; margin: 0 0 0.6rem; border-bottom: 1px solid var(--rule); padding-bottom: 0.5rem; }
 .slots { list-style: none; margin: 0; padding: 0; }
