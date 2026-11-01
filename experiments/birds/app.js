@@ -14,6 +14,10 @@
     const HOME_BIRDS = 30;
     const MAX_SANCTUARIES = 10;
     const COOLDOWN_S = 10; // BirdsNFT OBSERVER_MIGRATION_COOLDOWN, global
+    // Implementations the forecast was checked against (EIP-1967 slot of each proxy). The
+    // contracts can still be upgraded; if either changes, the page says the forecast may be wrong.
+    const IMPL_SLOT = '0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc';
+    const CHECKED_IMPL = { [BIRDS]: '7e6af0854f86a4607c687b55375eee5f6a516bbb', [OBS]: 'd790524b095835ff806e844b9f454440ae551ba9' };
 
     const $ = (id) => document.getElementById(id);
     const pad = (n) => BigInt(n).toString(16).padStart(64, '0');
@@ -195,8 +199,12 @@
                 at(BIRDS, SEL.epoch),
                 at(BIRDS, SEL.epochTs),
                 at(OBS, SEL.fee),
+                ['eth_getStorageAt', [BIRDS, IMPL_SLOT, tag]],
+                ['eth_getStorageAt', [OBS, IMPL_SLOT, tag]],
                 ...sanctuaries.map((s) => at(BIRDS, SEL.state + pad(s))),
             ]);
+            const upgraded = [BIRDS, OBS].some((a, i) => res[4 + i].slice(-40).toLowerCase() !== CHECKED_IMPL[a]);
+            $('upgraded').hidden = !upgraded;
             lastBlock = n;
             if (word(res[0]) === 1n) {
                 $('now').textContent = '';
@@ -209,7 +217,7 @@
             fee = word(res[3]);
             const now = {};
             sanctuaries.forEach((s, i) => {
-                const r = res[4 + i];
+                const r = res[6 + i];
                 now[s] = word(r, 0) === 1n ? Number(word(r, 1)) : 0;
             });
             slotList($('now'), now, true);
