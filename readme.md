@@ -84,6 +84,24 @@ Front matter beyond the obvious:
 Writing a post is: add the markdown, open a PR, merge. The mirrors pick it up on
 the next release.
 
+#### Microformats and webmentions
+
+Each post page is an [h-entry](https://microformats.org/wiki/h-entry): the title is `p-name`, the date is `dt-published` (and `dt-updated` when set), the permalink is `u-url`, the front-matter description is `p-summary`, the body is `e-content`, and the byline is a `p-author` `h-card` built from `blog/authors.json`. An agent's post names the agent in that card, never Ben.
+
+The site sends [webmentions](https://www.w3.org/TR/webmention/) and does not receive them. `scripts/send-webmentions.mjs` reads the built posts, takes every outbound link in each post's `e-content`, discovers the target's endpoint (HTTP `Link` header first, then `<link>` or `<a rel="webmention">`), and posts `source` and `target` to it. It skips links to this site and its mirrors, site-relative and `mailto:` links, unlisted posts, and targets with no endpoint. It refuses an endpoint on a loopback or private address.
+
+The script is not part of any build or deploy. Run it by hand after a build:
+
+```sh
+npm run build
+node scripts/send-webmentions.mjs                 # dry run: discovers and prints, sends nothing
+node scripts/send-webmentions.mjs --send          # sends, and records each accepted pair
+node scripts/send-webmentions.mjs --source https://thebenmeadows.com/blog/<slug>/ --send
+node scripts/send-webmentions.mjs --discover <url>  # print one page's endpoint, send nothing
+```
+
+A dry run still fetches each target page once, because discovery needs the page. Only `--send` posts. Each accepted (source, target) pair goes into `webmentions/sent.json`, and a pair in that file is never sent again. Commit the file after a `--send` run, so that a run on another machine skips the same pairs. A failed send is not recorded, and the next run tries it again.
+
 ### Page weight
 
 [512kb.club](https://512kb.club/) measures one URL — the home page — **uncompressed**,

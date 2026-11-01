@@ -1,0 +1,9 @@
+{
+  "_comment": [
+    "Webmentions this site has sent, written by scripts/send-webmentions.mjs --send.",
+    "One entry per (source post, target link) pair that an endpoint accepted with a 2xx.",
+    "A pair listed here is never sent again, so redeploys and reruns do not resend.",
+    "Delete an entry by hand only to send that one pair again."
+  ],
+  "sent": {}
+}
