@@ -28,7 +28,7 @@ and builds the whole layout from the first two bytes of that seed. It is an affi
 
 So there are only 2,800 possible layouts, and the five sanctuary birds always step by the same amount, `a⁻¹`, counting around 100. The comment in the contract says this was chosen on purpose: it is much cheaper than a full Fisher-Yates shuffle and still looks random.
 
-The first input is what makes this predictable. `blockhash(N - 1)` is public as soon as block N - 1 lands, about 12 seconds before block N is built. The other two inputs are a constant and a counter. So for any block, the layout an observation would produce in the next block can be computed before sending anything. I checked this against the last 400 observations on-chain: 399 of them have a following observation to compare against, and the formula predicted the bird in all 399.
+The first input is what makes this predictable. `blockhash(N - 1)` is public as soon as block N - 1 lands, about 12 seconds before block N is built. The other two inputs are a constant and a counter. So for any block, the layout an observation would produce in the next block can be computed before sending anything. I checked this against the last 400 observations on-chain: each one's `ObservationRecorded` event records the bird that landed next in the sanctuary, and the formula matched all 400.
 
 ![Birds in Marfa at sunset: people gathered on a rise outside Marfa beside a metal barn, the sun breaking through a band of cloud](/blog/media/birds-planner/marfa-sunset.webp)
 
@@ -36,7 +36,7 @@ The first input is what makes this predictable. `blockhash(N - 1)` is public as 
 
 Every pair has to be observed once, and the contract bounds the fee between 0.0001 and 0.01 ETH, so a full set costs at least 500 fees - about $500 at today's fee. Gas is small at current prices: about 150,000 gas per observation, a few cents at 0.1 gwei.
 
-Without prediction, the cost depends on how busy the game is. When the five birds in front of you are all pairs you already hold, the only way to move them (short of a Bird holder moving one by hand) is to observe one anyway, which pays a fee for a duplicate. When I measured on October 29 there had been 4 observations in the previous 19 hours, so waiting for other people to reshuffle could take a long time. I simulated 300 runs of collecting from 5 pairs to 500, drawing each layout at random: the median was about 940 observations, roughly 445 of them duplicates, so about $940.
+Without prediction, the cost depends on how busy the game is. When the five birds in front of you are all pairs you already hold, the only way to move them (short of a Bird holder moving one by hand) is to observe one anyway, which pays a fee for a duplicate. When I measured on October 29 there had been 4 observations in the previous 19 hours, so waiting for other people to reshuffle could take a long time. I simulated 300 runs of collecting from 5 pairs to 500, drawing layouts the way the contract does: the median was about 950 observations, roughly 460 of them duplicates, so about $950.
 
 With prediction, the duplicates go away:
 
@@ -45,7 +45,7 @@ With prediction, the duplicates go away:
 
 Rule 1 cannot buy a duplicate by accident: `observe` takes the bird you expect to see and reverts if a different one is there. Rule 2 keeps it moving: the next observation always has something to take, so the chain never stalls and every fee buys a new pair. From my 5 pairs that is 495 fees plus gas (500 from an empty wallet). The contract's 10-second cooldown between observations never gets in the way, since blocks are 12 seconds apart.
 
-The catch is timing: the transaction has to land in the exact block you computed for, which a normal wallet cannot do. A Flashbots bundle can target one block and is dropped if it misses, so a miss costs nothing and you try again on the next block. A miss also happens when someone else's observation lands earlier in the same block, because the cooldown then rejects yours. In a 200-run simulation using the real formula and starting from 5 pairs, this took a median of about 950 blocks, a little over 3 hours, and about 6 to 8 hours if half the bundles miss. That is a simulation, not a run I have done.
+The catch is timing: the transaction has to land in the exact block you computed for, which a normal wallet cannot do. A Flashbots bundle can target one block and is dropped if it misses, so a miss costs nothing and you try again on the next block. A miss also happens when someone else's observation lands earlier in the same block, because the cooldown then rejects yours. In 300 simulated runs starting from 5 pairs, this took a median of about 935 blocks, a little over 3 hours, or about 6 hours if half the bundles miss. That is a simulation, not a run I have done. The formula, the on-chain check and both simulations are in [birds-forecast](https://github.com/TheBenMeadows/birds-forecast) for anyone who wants to rerun them.
 
 Two smaller points on cost. Calling `observe` from a plain wallet uses about 150,000 gas; going through a delegated smart account uses about 390,000, which is roughly $15 versus $40 for a whole set at 0.1 gwei. And at a secondary floor of around 0.0016 ETH, more than three times the fee, buying a pair costs more than observing it, and birds.app shows only the pairs a wallet observed itself.
 
