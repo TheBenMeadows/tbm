@@ -23,6 +23,18 @@
             ]
         },
         {
+            "id": "cohn-grassmannian-731",
+            "date": "2026-11-03",
+            "kind": "placement",
+            "title": "Grassmannian packings table: 731 records improved",
+            "where": "Henry Cohn's table of Grassmannian packings",
+            "summary": "Explicit packings for 731 rows of the table, each beating the listed squared chordal distance by at least 1e-7, with every value recomputed in exact rational arithmetic. 553 of the rows date from the 1996-97 tables and 170 from entries added in 2025 and 2026; the largest gains are in 12 dimensions, where 87 to 89 lines reach 8/9. Henry Cohn added all 731 to the table by 2026-11-03, each citing the packing-records data set.",
+            "links": [
+                { "label": "the table", "url": "https://cohn.mit.edu/grassmannian/" },
+                { "label": "packing-records data set", "url": "https://doi.org/10.5281/zenodo.23906182" }
+            ]
+        },
+        {
             "id": "bouchaudy-typex-p1-p2",
             "date": "2026-10-30",
             "kind": "placement",
