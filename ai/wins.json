@@ -37,6 +37,7 @@
         },
         {
             "id": "bouchaudy-typex-p1-p2",
+            "pin": 2,
             "date": "2026-10-30",
             "kind": "placement",
             "title": "TypeX cipher challenge: first solver listed for Problem 1, and Problem 2 solved",
@@ -155,7 +156,6 @@
         },
         {
             "id": "kryptos-ctf",
-            "pin": 4,
             "date": "2026-10-03",
             "kind": "placement",
             "title": "All ten puzzles of a cryptography CTF solved, rank 13 on the public board",
@@ -168,7 +168,7 @@
         },
         {
             "id": "manic-bug-bounty",
-            "pin": 2,
+            "pin": 3,
             "date": "2026-09-15",
             "kind": "placement",
             "title": "First prize in a $1,000 bug bounty",
@@ -244,7 +244,7 @@
         },
         {
             "id": "openagents-merged-changes",
-            "pin": 3,
+            "pin": 4,
             "date": "2026-07-17",
             "kind": "merged",
             "title": "Seventeen changes merged into a platform's own codebase",
