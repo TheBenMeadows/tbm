@@ -1,5 +1,7 @@
-# Refresh /news once a day. scripts/fetch-news.mjs reads GitHub releases, Zenodo
-# and the experiment pages' first commits into news/sources.json; build-news then
+# Refresh /news once a day. scripts/fetch-news.mjs reads GitHub releases, Zenodo,
+# the experiment pages' first commits, and each finished week of merged pull
+# requests on the sites listed in news/entries.json (a model writes that week's
+# line, or declines) into news/sources.json; build-news then
 # rewrites the home page's newest-three block. When either changed, the result is
 # committed to main, and that push is what makes Cloudflare Pages and Netlify
 # rebuild: both build /news from the same committed data, so they cannot disagree.
@@ -36,9 +38,18 @@ jobs:
         with:
           node-version: 22
 
+      # Only this job needs the SDK, so it stays out of package.json and the lock
+      # file that every host build installs from. Pinned exactly; .npmrc keeps
+      # install scripts off.
+      - name: Install the Anthropic SDK
+        run: npm install --no-save --no-audit --no-fund @anthropic-ai/sdk@1.1.0
+
+      # Without the secret the site weeks are skipped and retried on a later run;
+      # releases, Zenodo and experiments still refresh.
       - name: Fetch sources
         env:
           GITHUB_TOKEN: ${{ github.token }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node scripts/fetch-news.mjs
 
       - name: Rebuild the home page block

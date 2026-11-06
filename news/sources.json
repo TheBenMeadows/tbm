@@ -71,7 +71,7 @@
       "name": "2026.10.20-cecbff1",
       "date": "2026-10-20",
       "url": "https://github.com/TheBenMeadows/tbm/releases/tag/2026.10.20-cecbff1",
-      "notes": "Arweave `fwnDnJG9TrghAlIVYd32IYDejgJpa1i7Y-p2gF23YJo` — `ar://thebenmeadows`\nManifest sha256 `251ca46af1becc53c7390f5937d29c48564ac11e6421b43a2b5d67edc451e73c`, signed to Nostr and anchored with OpenTimestamps.\n\nThe continuous mirrors (Cloudflare, Netlify, onion, i2p) already track `main`; this release is what the pinned surfaces — Arweave, IPNS, and the Nostr nsite — now serve.\n\nAssets:\n\n`tbm-2026.10.20-cecbff1.zim` is the whole site as a single offline archive: open it in [Kiwix](https://kiwix.org/) with no network at all.\n\n`tbm-2026.10.20-cecbff1.bundle` is the full git history in one file: `git clone tbm-2026.10.20-cecbff1.bundle tbm`.\n\n`tbm-2026.10.20-cecbff1.torrent` is trackerless with an HTTP webseed, so the swarm stays reachable if this origin does not.\n\n`tbm-2026.10.20-cecbff1-manifest.json` and `tbm-2026.10.20-cecbff1-manifest.json.ots` verify the Bitcoin anchor on their own: put both in one directory and run `ots verify tbm-2026.10.20-cecbff1-manifest.json.ots`.\n\n`tbm-2026.10.20-cecbff1-SHA256SUMS.txt` covers every asset above. Download them into one directory and run `shasum -a 256 -c tbm-2026.10.20-cecbff1-SHA256SUMS.txt`. It does not cover the Source code (zip/tar.gz) links, which GitHub regenerates on demand."
+      "notes": "Arweave `fwnDnJG9TrghAlIVYd32IYDejgJpa1i7Y-p2gF23YJo` — `ar://thebenmeadows`\nManifest sha256 `251ca46af1becc53c7390f5937d29c48564ac11e6421b43a2b5d67edc451e73c`, signed to Nostr and anchored with OpenTimestamps.\n\nThe continuous mirrors (Cloudflare, Netlify, onion, i2p) already track `main`; this release is what the pinned surfaces — Arweave, IPNS, and the Nostr nsite — now serve.\n\nAssets:\n\n`tbm-2026.10.20-cecbff1.zim` is the whole site as a single offline archive: open it in [Kiwix](https://kiwix.org/) with no network at all.\n\n`tbm-2026.10.20-cecbff1.bundle` is the full git history in one file: `git clone tbm-2026.10.20-cecbff1.bundle tbm`.\n\n`tbm-2026.10.20-cecbff1.torrent` is trackerless with an HTTP webseed, so the swarm stays reachable if this origin does not.\n\n`tbm-2026.10.20-cecbff1-manifest.json` and `tbm-2026.10.20-cecbff1-manifest.json.ots` verify the Bitcoin anchor on their own: put both in one directory and run `ots verify tbm-2026.10.20-cecbff1-manifest.json.ots`.\n\n`tbm-2026.10.20-cecbff1-SHA256SUMS.txt` covers every asset above. Download them into one directory and run `shasum -a 256 -c tbm-2026.10.20-cecbff1-SHA256SUMS.txt`. It does not cover the Source code (zip/tar.gz"
     },
     {
       "repo": "mdws-org/squint",
@@ -79,7 +79,7 @@
       "name": "Squint 0.9.5",
       "date": "2026-10-20",
       "url": "https://github.com/mdws-org/squint/releases/tag/v0.9.5",
-      "notes": "Remove Location Data now cleans a raw file's embedded preview instead of refusing the file.\n\nRaw previews. A raw file carries an embedded preview, a JPEG with metadata of its own: an iPhone ProRAW file's preview keeps the GPS position, the phone, the lens and the capture time. 0.9.4 refused such a file. Its preview is now cleaned where it lies: the EXIF keeps only the orientation the preview is shown by, the XMP, comments and other metadata segments are zeroed, and nothing in the file moves. An HDR gain map in the preview keeps its rendering parameters, under the rule Remove Location Data already applies to a photograph's gain map, so the preview keeps its HDR. iPhone ProRAW and Ricoh GR II files now strip.\n\nIf you stripped iPhone ProRAW or other raw files with Squint 0.9.3 or earlier, strip them again: those versions reported them clean while their previews still held the location.\n\nStill refused: a preview whose gain map's XMP holds more than its rendering parameters, with the message \"this file's embedded preview has a gain map whose XMP holds more than its rendering parameters; the file was not changed\", and previews laid out in a way that cannot be cleaned safely.\n\nChanges: #126.\n\nApple silicon, macOS 14 or later. Signed and notarized.\n\nSHA-256\n```\nf67c89b6d9eb90f1cfbe2160138dc4d7d56167061020f23da1062ce7d0a94e98  Squint-0.9.5.dmg\n38e301e62b701dd036c0d9814f63fbf4c02be8822522a9cfbf9da87aea4f3361  Squint-0.9.5.zip\n```\n"
+      "notes": "Remove Location Data now cleans a raw file's embedded preview instead of refusing the file.\n\nRaw previews. A raw file carries an embedded preview, a JPEG with metadata of its own: an iPhone ProRAW file's preview keeps the GPS position, the phone, the lens and the capture time. 0.9.4 refused such a file. Its preview is now cleaned where it lies: the EXIF keeps only the orientation the preview is shown by, the XMP, comments and other metadata segments are zeroed, and nothing in the file moves. An HDR gain map in the preview keeps its rendering parameters, under the rule Remove Location Data already applies to a photograph's gain map, so the preview keeps its HDR. iPhone ProRAW and Ricoh GR II files now strip.\n\nIf you stripped iPhone ProRAW or other raw files with Squint 0.9.3 or earlier, strip them again: those versions reported them clean while their previews still held the location.\n\nStill refused: a preview whose gain map's XMP holds more than its rendering parameters, with the message \"this file's embedded preview has a gain map whose XMP holds more than its rendering parameters; the file was not changed\", and previews laid out in a way that cannot be cleaned safely.\n\nChanges: #1"
     },
     {
       "repo": "mdws-org/squint",
@@ -95,7 +95,7 @@
       "name": "Squint 0.9.3",
       "date": "2026-10-19",
       "url": "https://github.com/mdws-org/squint/releases/tag/v0.9.3",
-      "notes": "This release closes four gaps in Remove Location Data that the 0.9.2 review found but left for later.\n\nGeoTIFF. A GeoTIFF's georeferencing survived a strip: tie points, pixel scale, transformation matrix and GeoKeys, and also RPC coefficients (whose offsets are the scene centre in degrees), the older Intergraph matrix and GDAL's metadata XML. All of them are now removed, as is a DNG preview's date. The picture is unchanged.\n\nRaw files. A DNG keeps its raw image and previews in sub-directories, and their own tags were never read, so a camera, a date or an original file name written there stayed. Every sub-directory is now stripped, and its pixels are protected like any page's. A file whose directories overlap, or that names one directory in two roles, is refused rather than half stripped. On full-size Pentax and Nikon raws the sensor data comes back byte for byte.\n\nSigned PDFs. A digitally signed PDF is now refused in every mode with its own message, because any change breaks the signature, which names the signer, the place and the time. A signature from an earlier revision that the document no longer uses is removed instead of refusing the file, and Reader's usage-rights signature, which names no person, is dropped so that Reader does not warn about it.\n\nPDF attachments. Files attached to a PDF are kept as they are, and the row now says so, for example \"1 attached file kept unread\". A PDF with nothing else to remove now says it carries attached files, instead of \"nothing to remove\".\n\nChanges: #117, #118, #119, #120.\n\nApple silicon, macOS 14 or later. Signed and notarized.\n\nSHA-256\n```\nbb2c50b6d199964adcf56efa7d18e88968f26ca84f36c07ac1e0d5a38eddf6da  Squint-0.9.3.dmg\n915dbe94c40d32c20b8fdb649d0a21fcc79d31814a0b010c7bf8487b25aa4d0a  Squint-0.9.3.zip\n```\n"
+      "notes": "This release closes four gaps in Remove Location Data that the 0.9.2 review found but left for later.\n\nGeoTIFF. A GeoTIFF's georeferencing survived a strip: tie points, pixel scale, transformation matrix and GeoKeys, and also RPC coefficients (whose offsets are the scene centre in degrees), the older Intergraph matrix and GDAL's metadata XML. All of them are now removed, as is a DNG preview's date. The picture is unchanged.\n\nRaw files. A DNG keeps its raw image and previews in sub-directories, and their own tags were never read, so a camera, a date or an original file name written there stayed. Every sub-directory is now stripped, and its pixels are protected like any page's. A file whose directories overlap, or that names one directory in two roles, is refused rather than half stripped. On full-size Pentax and Nikon raws the sensor data comes back byte for byte.\n\nSigned PDFs. A digitally signed PDF is now refused in every mode with its own message, because any change breaks the signature, which names the signer, the place and the time. A signature from an earlier revision that the document no longer uses is removed instead of refusing the file, and Reader's usage-rights signature,"
     },
     {
       "repo": "mdws-org/squint",
@@ -103,7 +103,7 @@
       "name": "Squint 0.9.4",
       "date": "2026-10-19",
       "url": "https://github.com/mdws-org/squint/releases/tag/v0.9.4",
-      "notes": "This release closes ways in which Remove Location Data reported a raw file or TIFF clean while identifying data remained in it, found by a review of 0.9.3 against 176 real raw files.\n\nRaw previews. A raw file carries an embedded preview, which is a JPEG with metadata of its own. An iPhone ProRAW file's preview keeps the GPS position, the phone, the lens and the capture time, and Remove Location Data removed everything else and reported the file clean. Such a file is now refused with its own message, \"this file's embedded preview carries location or camera data that Strip cannot remove yet\", and is not changed. A later release will clean the preview itself. Previews holding only what a decoder needs, as on most cameras, strip as before.\n\nSamsung raw files. Samsung's NX cameras from 2014 on point their previews' resolution at the camera's name, model or capture date. Those bytes were left, most of the date included on an NX1. They are now removed; the resolution they shared is printing density, which no pixel depends on.\n\nHidden metadata. A tag's data that lay under the pixels, the colour profile or data the file keeps could not be removed and stayed in a file reported clean; such a file is now refused. A GPS directory hanging off the Exif directory is now removed, a value running past the end of the file is removed up to the end, and text written in Exif 3.0's UTF-8 form is removed like any other.\n\nChanges: #123.\n\nApple silicon, macOS 14 or later. Signed and notarized.\n\nSHA-256\n```\n0012b9279569bdf4e6f97e56bd1474fa3d1cf0ee2ccec1a08a49cda48a452b4b  Squint-0.9.4.dmg\n89e943cd3ade1fe731231960e86dfdcb52585f7a79ffa8e4e9684b550c46ed45  Squint-0.9.4.zip\n```\n"
+      "notes": "This release closes ways in which Remove Location Data reported a raw file or TIFF clean while identifying data remained in it, found by a review of 0.9.3 against 176 real raw files.\n\nRaw previews. A raw file carries an embedded preview, which is a JPEG with metadata of its own. An iPhone ProRAW file's preview keeps the GPS position, the phone, the lens and the capture time, and Remove Location Data removed everything else and reported the file clean. Such a file is now refused with its own message, \"this file's embedded preview carries location or camera data that Strip cannot remove yet\", and is not changed. A later release will clean the preview itself. Previews holding only what a decoder needs, as on most cameras, strip as before.\n\nSamsung raw files. Samsung's NX cameras from 2014 on point their previews' resolution at the camera's name, model or capture date. Those bytes were left, most of the date included on an NX1. They are now removed; the resolution they shared is printing density, which no pixel depends on.\n\nHidden metadata. A tag's data that lay under the pixels, the colour profile or data the file keeps could not be removed and stayed in a file reported clean; such a "
     },
     {
       "repo": "mdws-org/squint",
@@ -111,7 +111,7 @@
       "name": "Squint 0.9.2",
       "date": "2026-10-18",
       "url": "https://github.com/mdws-org/squint/releases/tag/v0.9.2",
-      "notes": "This release closes ways in which Remove Location Data left identifying metadata in a file while reporting it removed, found by two code audits and an outside review.\n\nJPEG. A progressive JPEG may carry XMP or comment segments between its scans, and they survived; one holding a thumbnail could also cut the picture short. They are now removed and the scans kept whole. Adobe's colour-transform segment, which a CMYK JPEG needs to render with the right colours, is kept, and only when it is exactly that segment.\n\nHDR gain maps. A gain map's own XMP was copied back whole, so a location written there survived. It is now kept only when it holds nothing but the parameters a renderer reads; a gain map whose XMP holds those and anything else is refused rather than written back without them. iPhone and Ultra HDR photographs strip exactly as before.\n\nPDF. The JPEG pictures inside a PDF kept their EXIF, GPS included, also when stored under an ASCII or Flate filter. Comment authors and dates, private editing data and the file ID survived, as did an old cross-reference stream carrying the author. All of these are removed; form-field names are kept, because a form is filled and read by them. A PDF whose picture cannot be read through is refused.\n\nTIFF. Pages after the eighth were left untouched, and several identity tags were not removed: IPTC inside Photoshop's resources, Windows title and author, the original capture time, the maker note, camera owner, body and lens serial numbers, and a DNG's embedded original raw file. Every page is now stripped, and the bytes a removed tag leaves behind are cleared.\n\nHEIF and AVIF. C2PA content credentials and a sequence's movie metadata and capture times are removed.\n\nA Strip that would make a file larger now says so, instead of reporting that there was nothing to remove.\n\nChanges: #105, #106, #107, #108, #109, #110, #111, #112, #113, and #114, which installs the Mac App Store edition under its own name.\n\nApple silicon, macOS 14 or later. Signed and notarized.\n\nSHA-256\n```\n210201e14ee9926b2e8d8a83d69ce58ae0649a721a0cf64aa6d76a99b7f6af6e  Squint-0.9.2.dmg\n4da717a32d07f32e917717e0053c14cf55b52e296e119b5547b2a3940359de83  Squint-0.9.2.zip\n```\n"
+      "notes": "This release closes ways in which Remove Location Data left identifying metadata in a file while reporting it removed, found by two code audits and an outside review.\n\nJPEG. A progressive JPEG may carry XMP or comment segments between its scans, and they survived; one holding a thumbnail could also cut the picture short. They are now removed and the scans kept whole. Adobe's colour-transform segment, which a CMYK JPEG needs to render with the right colours, is kept, and only when it is exactly that segment.\n\nHDR gain maps. A gain map's own XMP was copied back whole, so a location written there survived. It is now kept only when it holds nothing but the parameters a renderer reads; a gain map whose XMP holds those and anything else is refused rather than written back without them. iPhone and Ultra HDR photographs strip exactly as before.\n\nPDF. The JPEG pictures inside a PDF kept their EXIF, GPS included, also when stored under an ASCII or Flate filter. Comment authors and dates, private editing data and the file ID survived, as did an old cross-reference stream carrying the author. All of these are removed; form-field names are kept, because a form is filled and read by them. A PDF "
     },
     {
       "repo": "TheBenMeadows/tbm",
@@ -143,7 +143,7 @@
       "name": "0.9.1",
       "date": "2026-10-13",
       "url": "https://github.com/mdws-org/squint/releases/tag/v0.9.1",
-      "notes": "Remove Location Data on a HEIC now leaves a valid, empty EXIF block where the old one was. It used to fill that block with zeros. Pillow then refused the stripped file's metadata as \"not a TIFF file\", and on photographs from older iPhones the HDR range came out smaller: Apple keeps the strength of the gain map in two maker-note values inside EXIF, and without them Image I/O reported 3.48 of headroom where the original had 8.00 (iPhone 14 Pro Max), 6.91 (iPhone 15 Pro) and 4.00 (iPhone 12). The new block holds those two values and nothing else, so the location, camera and date are still removed and the headroom is unchanged. An XMP packet is kept only when everything in it describes the gain map or the segmentation matte. Any other XMP packet is emptied.\n\nRemove Location Data on a file that has nothing to remove says so, and leaves the file alone. It used to report that the result would be no smaller than the original, which is the message for a size search. A second Remove Location Data on the same HEIC is now one of those cases.\n\nA HEIC whose item index declares several extents with no field widths is refused. Such an index describes no location for the item, and walking it on a file of a few kilobytes took hundreds of megabytes.\n\nA treatment that replaces the original now writes its temporary file in the folder macOS provides for replacing a file, rather than beside the original. The file's Finder tags, creation date and permissions are kept as before.\n\nThe command line reports the quality of the file it wrote, and marks only that probe as chosen.\n\nChanges: #94, #95, #96, #97, #98, and #99, which adds the build target for a Mac App Store edition.\n\nApple silicon, macOS 14 or later. Signed and notarized.\n\nSHA-256\n```\n1d0a05128f001b99a47dfe9500952124f29dd8982187cc3574357e4c465acf50  Squint-0.9.1.dmg\ne9e4ca338c7dfa28939f02bd8ce79f8978dd18d68d202aeb4de6e0c34eccb3d9  Squint-0.9.1.zip\n```\n"
+      "notes": "Remove Location Data on a HEIC now leaves a valid, empty EXIF block where the old one was. It used to fill that block with zeros. Pillow then refused the stripped file's metadata as \"not a TIFF file\", and on photographs from older iPhones the HDR range came out smaller: Apple keeps the strength of the gain map in two maker-note values inside EXIF, and without them Image I/O reported 3.48 of headroom where the original had 8.00 (iPhone 14 Pro Max), 6.91 (iPhone 15 Pro) and 4.00 (iPhone 12). The new block holds those two values and nothing else, so the location, camera and date are still removed and the headroom is unchanged. An XMP packet is kept only when everything in it describes the gain map or the segmentation matte. Any other XMP packet is emptied.\n\nRemove Location Data on a file that has nothing to remove says so, and leaves the file alone. It used to report that the result would be no smaller than the original, which is the message for a size search. A second Remove Location Data on the same HEIC is now one of those cases.\n\nA HEIC whose item index declares several extents with no field widths is refused. Such an index describes no location for the item, and walking it on a f"
     },
     {
       "repo": "mdws-org/wowlet",
@@ -175,7 +175,7 @@
       "name": "Emoji Fix 1.3.0",
       "date": "2026-10-09",
       "url": "https://github.com/mdws-org/emoji-fix/releases/tag/v1.3.0",
-      "notes": "Emoji Fix draws emoji with a bundled Noto Color Emoji font on Macs where Brave and other Chromium browsers draw Apple Color Emoji as blank space. It works on X, including the chat and the reaction picker.\n\nTo install, unzip `emoji-fix-1.3.0.zip`, open `brave://extensions`, turn on Developer mode, click Load unpacked, and select the unzipped folder.\n\nChanges since the first public commit (1.2.0), from a security and bug review recorded in `review/`:\n\n- Flags, keycaps and skin-tone modifiers are detected. Text symbols such as the trademark sign and check marks are no longer replaced with emoji glyphs.\n- In rich-text editors the font is set on the editing host, so the style does not enter the edited document.\n- The fix survives element reuse by frameworks, page `!important` font rules and replacement of the page body, and covers inputs, SVG text, text directly in shadow roots, and `srcdoc` frames.\n- The font loads through a per-session URL, so pages cannot probe for the extension by a fixed ID.\n- The shadow-root hook returns the native result unchanged if its notification fails.\n\nRequires Chromium 119 or later. SHA-256 of the zip: `60247efb588504e148924283ed2fe5cfd83a30727c714c27b821f3d6767dfbb4`.\n"
+      "notes": "Emoji Fix draws emoji with a bundled Noto Color Emoji font on Macs where Brave and other Chromium browsers draw Apple Color Emoji as blank space. It works on X, including the chat and the reaction picker.\n\nTo install, unzip `emoji-fix-1.3.0.zip`, open `brave://extensions`, turn on Developer mode, click Load unpacked, and select the unzipped folder.\n\nChanges since the first public commit (1.2.0), from a security and bug review recorded in `review/`:\n\n- Flags, keycaps and skin-tone modifiers are detected. Text symbols such as the trademark sign and check marks are no longer replaced with emoji glyphs.\n- In rich-text editors the font is set on the editing host, so the style does not enter the edited document.\n- The fix survives element reuse by frameworks, page `!important` font rules and replacement of the page body, and covers inputs, SVG text, text directly in shadow roots, and `srcdoc` frames.\n- The font loads through a per-session URL, so pages cannot probe for the extension by a fixed ID.\n- The shadow-root hook returns the native result unchanged if its notification fails.\n\nRequires Chromium 119 or later. SHA-256 of the zip: `60247efb588504e148924283ed2fe5cfd83a30727c714c27b821f"
     },
     {
       "repo": "mdws-org/emoji-fix",
@@ -207,7 +207,7 @@
       "name": "0.9.0",
       "date": "2026-09-30",
       "url": "https://github.com/mdws-org/squint/releases/tag/v0.9.0",
-      "notes": "Shrink and Shrink to a Quality Target now keep an iPhone photograph's HDR gain map when they replace the file. Until now they dropped it and said so: the photograph still opened and looked right on an ordinary display, but it looked flat on the display it was taken for. macOS will only decode a gain map beside a picture its own encoder wrote, so for a photograph that has one, the system encoder writes the file and the map is copied across from the original. That costs about 30% more bytes than Squint's usual encoder at the same score, and it is used only when there is a map to keep. Measured on an iPhone 12 portrait: 3,995 KB to 1,505 KB with Shrink, the HDR headroom 4.00 before and after, and no location, camera or date left in the file.\n\nShrink for Email and Shrink for Social still drop the map. They make a smaller copy to send, and the original beside them keeps its range.\n\nThe window's picker now offers all six treatments the Finder entries do: Shrink, Email, Social, Quality, AVIF and Strip. A photo can be dropped on the window and sent through any of them, which matters in folders where Finder shows no Services entries.\n\nChanges: #88.\n\nApple silicon, macOS 14 or later. Signed and notarized.\n\nSHA-256\n```\ne10de19f9563127c7ab0220bd6fbccdd096dde16b54d4ed12e8f72fd18e983e6  Squint-0.9.0.dmg\nb549a99d7e773bf84d563bee9ed084995de1d73271bc8281a02b38339493c7a3  Squint-0.9.0.zip\n```\n"
+      "notes": "Shrink and Shrink to a Quality Target now keep an iPhone photograph's HDR gain map when they replace the file. Until now they dropped it and said so: the photograph still opened and looked right on an ordinary display, but it looked flat on the display it was taken for. macOS will only decode a gain map beside a picture its own encoder wrote, so for a photograph that has one, the system encoder writes the file and the map is copied across from the original. That costs about 30% more bytes than Squint's usual encoder at the same score, and it is used only when there is a map to keep. Measured on an iPhone 12 portrait: 3,995 KB to 1,505 KB with Shrink, the HDR headroom 4.00 before and after, and no location, camera or date left in the file.\n\nShrink for Email and Shrink for Social still drop the map. They make a smaller copy to send, and the original beside them keeps its range.\n\nThe window's picker now offers all six treatments the Finder entries do: Shrink, Email, Social, Quality, AVIF and Strip. A photo can be dropped on the window and sent through any of them, which matters in folders where Finder shows no Services entries.\n\nChanges: #88.\n\nApple silicon, macOS 14 or later. Signed "
     },
     {
       "repo": "TheBenMeadows/tbm",
@@ -223,7 +223,7 @@
       "name": "0.8.2",
       "date": "2026-09-27",
       "url": "https://github.com/mdws-org/squint/releases/tag/v0.8.2",
-      "notes": "The application has its own icon: an almost-closed eye, replacing the placeholder.\n\nRemove Location Data could stall on a hostile TIFF. A forty-byte file declaring an entry count in the billions made the directory walk run once per declared entry, which took tens of seconds, although every read past the end of the file failed. The count is now bounded by what the file holds. A second defect, in the same walker, let the engine's internal count of bytes destroyed exceed the size of the file when a directory chain looped back on itself; the application only uses that count to decide whether anything was removed, so nothing visible changed. Neither defect read or wrote outside the file. Both were found by fuzzing.\n\nThe repository now has a `SECURITY.md`, with a private way to report a defect, and `docs/VERIFY.md`, which shows how to check with ExifTool what each mode removes and keeps. Every parser in the engine is fuzzed on each change and weekly.\n\nChanges: #82, #83, #84.\n\nApple silicon, macOS 14 or later. Signed and notarized.\n\nSHA-256\n```\nc96ce52785f09c8e3db887fb906bdc2ae4adb458b05daeb55e97d85f5d1800d5  Squint-0.8.2.dmg\nd7daf9547f936d2cd32a3d43007894cfb7087aefc10f7bb8d1aa0e28437021e6  Squint-0.8.2.zip\n```\n"
+      "notes": "The application has its own icon: an almost-closed eye, replacing the placeholder.\n\nRemove Location Data could stall on a hostile TIFF. A forty-byte file declaring an entry count in the billions made the directory walk run once per declared entry, which took tens of seconds, although every read past the end of the file failed. The count is now bounded by what the file holds. A second defect, in the same walker, let the engine's internal count of bytes destroyed exceed the size of the file when a directory chain looped back on itself; the application only uses that count to decide whether anything was removed, so nothing visible changed. Neither defect read or wrote outside the file. Both were found by fuzzing.\n\nThe repository now has a `SECURITY.md`, with a private way to report a defect, and `docs/VERIFY.md`, which shows how to check with ExifTool what each mode removes and keeps. Every parser in the engine is fuzzed on each change and weekly.\n\nChanges: #82, #83, #84.\n\nApple silicon, macOS 14 or later. Signed and notarized.\n\nSHA-256\n```\nc96ce52785f09c8e3db887fb906bdc2ae4adb458b05daeb55e97d85f5d1800d5  Squint-0.8.2.dmg\nd7daf9547f936d2cd32a3d43007894cfb7087aefc10f7bb8d1aa0e28437021e"
     },
     {
       "repo": "mdws-org/squint",
@@ -247,7 +247,7 @@
       "name": "0.7.1",
       "date": "2026-09-26",
       "url": "https://github.com/mdws-org/squint/releases/tag/v0.7.1",
-      "notes": "The same Squint as 0.7.0, signed with a Developer ID and notarized by Apple. It opens on first launch like any other application: no Privacy & Security detour, no **Open Anyway**.\n\nNothing in the engine or the application changed. The version exists because a signed and notarized build is a different set of bytes from the one already published as 0.7.0, whose archives, hashes and update signature stay exactly as they were.\n\nWhat the signature covers: the application, the Sparkle framework, and each of the five pieces nested inside it — the two XPC services, `Autoupdate`, `Updater.app` and the framework binary — every one signed individually with the hardened runtime and a timestamp, then verified as a whole before submission. The notary ticket is stapled to the bundle, so Gatekeeper's answer does not depend on reaching Apple.\n\nThis is also the first update Sparkle delivers across a change of signing identity. Every earlier build was ad-hoc signed; this one carries a team. Sparkle permits that transition when the update's EdDSA signature is intact, which it is — the same key has signed every archive since 0.4.0. The build stays marked pre-release until an installed 0.6.0 or 0.7.0 has taken this update through **Squint → Check for Updates** and come up running; then the flag comes off.\n\nChanges: #73.\n\nRequires macOS 14.\n\nSHA-256\n```\n750126a5736992e1e95aefdc4e02fa9e4e6d6598d68cc52759401fd406cbe3f7  Squint-0.7.1.dmg\n58d5a6c32c874af412f92e0e59851bca5345fd97352dfd7b04d256f0502acf52  Squint-0.7.1.zip\n```\n"
+      "notes": "The same Squint as 0.7.0, signed with a Developer ID and notarized by Apple. It opens on first launch like any other application: no Privacy & Security detour, no **Open Anyway**.\n\nNothing in the engine or the application changed. The version exists because a signed and notarized build is a different set of bytes from the one already published as 0.7.0, whose archives, hashes and update signature stay exactly as they were.\n\nWhat the signature covers: the application, the Sparkle framework, and each of the five pieces nested inside it — the two XPC services, `Autoupdate`, `Updater.app` and the framework binary — every one signed individually with the hardened runtime and a timestamp, then verified as a whole before submission. The notary ticket is stapled to the bundle, so Gatekeeper's answer does not depend on reaching Apple.\n\nThis is also the first update Sparkle delivers across a change of signing identity. Every earlier build was ad-hoc signed; this one carries a team. Sparkle permits that transition when the update's EdDSA signature is intact, which it is — the same key has signed every archive since 0.4.0. The build stays marked pre-release until an installed 0.6.0 or 0.7.0 ha"
     },
     {
       "repo": "mdws-org/squint",
@@ -255,7 +255,7 @@
       "name": "0.8.0",
       "date": "2026-09-26",
       "url": "https://github.com/mdws-org/squint/releases/tag/v0.8.0",
-      "notes": "Two things the command line could do reach the Finder menu.\n\n**A PDF goes through Shrink and Shrink to a Quality Target.** The pictures inside it are re-encoded, any above 150 dpi on the page are downscaled to it, the document's own record of who wrote it and with what is dropped, and the file is rewritten in place. A fax-coded page, a JPEG 2000 image or a CMYK image inside it is left exactly as it was. Measured on a 665 KB PDF wrapping one photograph: 124 KB through Shrink, 165 KB through the quality target.\n\n**Squint: Convert to AVIF** is a new entry. It takes a JPEG, PNG, HEIC, WebP or SVG and writes `name.avif` beside it, at the picture's own size, searched to the quality target the way the Quality entry is; the original is not touched. Measured: a 662 KB JPEG became a 262 KB AVIF, a 7.8 MB PNG a 506 KB one, a 340 KB HEIC a 108 KB one, all at their source dimensions. An AVIF handed to it is refused rather than written over.\n\nThe C interface gains `squint_optimize_as`, which names the output format; a code it does not know is refused rather than read as JPEG. The application now decides from the bytes of a result, not from what was asked for, whether it may replace the original: only a file of the same kind ever does.\n\nChanges: #77.\n\nApple silicon, macOS 14 or later. Signed and notarized.\n\nSHA-256\n```\n53431584b7b4460858d8a3789112bd05d64d20c2307b084280c8287247b818af  Squint-0.8.0.dmg\n50c57f0e5e80ee70c1af82600910d7aec0afa358a811883f7e2f156cae085fb6  Squint-0.8.0.zip\n```\n"
+      "notes": "Two things the command line could do reach the Finder menu.\n\n**A PDF goes through Shrink and Shrink to a Quality Target.** The pictures inside it are re-encoded, any above 150 dpi on the page are downscaled to it, the document's own record of who wrote it and with what is dropped, and the file is rewritten in place. A fax-coded page, a JPEG 2000 image or a CMYK image inside it is left exactly as it was. Measured on a 665 KB PDF wrapping one photograph: 124 KB through Shrink, 165 KB through the quality target.\n\n**Squint: Convert to AVIF** is a new entry. It takes a JPEG, PNG, HEIC, WebP or SVG and writes `name.avif` beside it, at the picture's own size, searched to the quality target the way the Quality entry is; the original is not touched. Measured: a 662 KB JPEG became a 262 KB AVIF, a 7.8 MB PNG a 506 KB one, a 340 KB HEIC a 108 KB one, all at their source dimensions. An AVIF handed to it is refused rather than written over.\n\nThe C interface gains `squint_optimize_as`, which names the output format; a code it does not know is refused rather than read as JPEG. The application now decides from the bytes of a result, not from what was asked for, whether it may replace the original:"
     },
     {
       "repo": "mdws-org/squint",
@@ -271,7 +271,7 @@
       "name": "FreeWallet 2.1.0",
       "date": "2026-09-25",
       "url": "https://github.com/mdws-org/freewallet-desktop/releases/tag/v2.1.0",
-      "notes": "\nFirst release of the fork. Apple Silicon only. The bundle has an ad-hoc signature, so follow the Open Anyway steps in the README to open it.\n\n### Wallet encryption\n\n- The wallet is encrypted at rest with a PBKDF2-derived key (SHA-256, 310,000 iterations, per-wallet salt) and a stored verifier. The password itself is no longer stored in any form. The previous format derived its key with one round of MD5 and kept the password beside the ciphertext, which allowed an offline guess-check with no work factor.\n- A wallet password is required. A new or changed password must have at least 12 characters, including a number.\n- An existing wallet is re-encrypted the first time it is unlocked after installing this build. A wallet that already had a password keeps it, even a shorter one. A wallet that had none must choose one. The previous copy is retained until that unlock succeeds, and if the re-encrypted copy is damaged before then, the wallet is rebuilt from the retained copy.\n- The password can be changed under Settings, on the Wallet tab. The change asks for the current password.\n- The application never opens a wallet without the password, and a damaged wallet record can no longer lead to the create-wallet screen.\n\n### Auto-BTCpay\n\n- Auto-BTCpay keeps a copy of the wallet seed and imported keys in the application's session memory for as long as it is enabled, including when the wallet is locked, until Auto-BTCpay is disabled, the wallet is logged out, or the application is closed. The order form states this where auto-pay is chosen, and so does the dialog that asks for the password at launch.\n- Disabling Auto-BTCpay from that dialog now disables it for every order and discards the copy. Before, the button only closed the dialog.\n- A manually paid order no longer leaves a copy of the seed in session memory.\n- During an automatic payment for a locked wallet, every other action now sees a locked wallet. Before, the interface treated the wallet as unlocked for the length of the network call.\n- The password and payment prompts related to BTCpay wait until any open password dialog has been answered instead of opening on top of it.\n\n### Interface security\n\n- Data rendered in the interface is escaped. The fixes cover the high-severity CodeQL findings for cross-site scripting, sanitization, URL scheme checks and regular-expression denial of service.\n- Media embedded from token descriptions is limited to an allowlist of hosts and loaded in a sandboxed frame.\n- The application page declares a Content-Security-Policy that pins a hash for every inline script and allows no other inline or evaluated script.\n\n### Build\n\n- Native Apple Silicon build on NW.js 0.92.0. The Intel bundle can be built with `node build.js --all` but is not tested or published.\n- The application contains its runtime dependencies only. Build tooling is no longer bundled.\n- Continuous integration builds the bundle on every push, verifies its identity, contents and signature, runs the wallet tests, and attaches a disk image to the run. A `v*` tag publishes that image as a release.\n\n"
+      "notes": "\nFirst release of the fork. Apple Silicon only. The bundle has an ad-hoc signature, so follow the Open Anyway steps in the README to open it.\n\n### Wallet encryption\n\n- The wallet is encrypted at rest with a PBKDF2-derived key (SHA-256, 310,000 iterations, per-wallet salt) and a stored verifier. The password itself is no longer stored in any form. The previous format derived its key with one round of MD5 and kept the password beside the ciphertext, which allowed an offline guess-check with no work factor.\n- A wallet password is required. A new or changed password must have at least 12 characters, including a number.\n- An existing wallet is re-encrypted the first time it is unlocked after installing this build. A wallet that already had a password keeps it, even a shorter one. A wallet that had none must choose one. The previous copy is retained until that unlock succeeds, and if the re-encrypted copy is damaged before then, the wallet is rebuilt from the retained copy.\n- The password can be changed under Settings, on the Wallet tab. The change asks for the current password.\n- The application never opens a wallet without the password, and a damaged wallet record can no longer lead to"
     },
     {
       "repo": "TheBenMeadows/tbm",
@@ -484,6 +484,144 @@
     {
       "slug": "porcine",
       "date": "2026-08-02"
+    }
+  ],
+  "siteWeeks": [
+    {
+      "repo": "mdws-org/orthodoxprayers",
+      "week": "2026-10-26",
+      "date": "2026-11-01",
+      "announce": true,
+      "title": "Prayers now print cleanly on paper",
+      "summary": "Printed services now come out in black on white with red rubrics, book-style paragraphs, page numbers and no screen controls, and prayers no longer split awkwardly."
+    },
+    {
+      "repo": "mdws-org/poap-saver",
+      "week": "2026-10-26",
+      "date": "2026-10-31",
+      "announce": true,
+      "title": "ENS names resolve on the new registry",
+      "summary": "ENS names, including names migrated to the new registry and Base names, now resolve correctly, with clearer messages when a name cannot be found."
+    },
+    {
+      "repo": "TheBenMeadows/benjaminmeadows.com",
+      "week": "2026-10-19",
+      "date": "2026-10-20",
+      "announce": true,
+      "title": "Credential links to public license registries",
+      "summary": "Two plumbing credentials, the Arizona contractor license and the Texas journeyman license, now link to the public registries that confirm them."
+    },
+    {
+      "repo": "mdws-org/everybadge",
+      "week": "2026-10-19",
+      "date": "2026-10-22",
+      "announce": true,
+      "title": "Country filter, mint counts and description search",
+      "summary": "The archive now covers drops through October 2026, with a country filter, a most-minted sort, mint counts, typo-tolerant search and description search."
+    },
+    {
+      "repo": "mdws-org/orthodoxprayers",
+      "week": "2026-10-19",
+      "date": "2026-10-19",
+      "announce": false,
+      "title": "",
+      "summary": ""
+    },
+    {
+      "repo": "mdws-org/poap-saver",
+      "week": "2026-10-19",
+      "date": "2026-10-20",
+      "announce": true,
+      "title": "Twelve September 2026 drops added to archive",
+      "summary": "The archive now holds 197,589 events, including twelve September 2026 drops, with artwork and metadata served from new October roots."
+    },
+    {
+      "repo": "TheBenMeadows/benjaminmeadows.com",
+      "week": "2026-10-12",
+      "date": "2026-10-17",
+      "announce": false,
+      "title": "",
+      "summary": ""
+    },
+    {
+      "repo": "mdws-org/orthodoxprayers",
+      "week": "2026-10-12",
+      "date": "2026-10-14",
+      "announce": false,
+      "title": "",
+      "summary": ""
+    },
+    {
+      "repo": "mdws-org/poap-saver",
+      "week": "2026-10-12",
+      "date": "2026-10-14",
+      "announce": false,
+      "title": "",
+      "summary": ""
+    },
+    {
+      "repo": "mdws-org/orthodoxprayers",
+      "week": "2026-10-05",
+      "date": "2026-10-11",
+      "announce": true,
+      "title": "The Typika added",
+      "summary": "The Typika now has its own page, set word for word from a printed Reader's Service booklet, with the Beatitudes and Psalm 33 in Hapgood's translation."
+    },
+    {
+      "repo": "mdws-org/poap-saver",
+      "week": "2026-09-28",
+      "date": "2026-09-29",
+      "announce": true,
+      "title": "Talk recordings streamed and image loading restored",
+      "summary": "Recordings from the speaking archive can now be streamed and seeked, and POAP images load again after two public IPFS gateways stopped working."
+    },
+    {
+      "repo": "mdws-org/orthodoxprayers",
+      "week": "2026-09-21",
+      "date": "2026-09-27",
+      "announce": true,
+      "title": "Compline, Communion prayers and evening rule added",
+      "summary": "The full evening rule, Compline, the Three Canons, and the prayers before and after Holy Communion are now on the site, with grouped contents."
+    },
+    {
+      "repo": "mdws-org/poap-saver",
+      "week": "2026-08-17",
+      "date": "2026-08-19",
+      "announce": false,
+      "title": "",
+      "summary": ""
+    },
+    {
+      "repo": "mdws-org/orthodoxprayers",
+      "week": "2026-08-10",
+      "date": "2026-08-13",
+      "announce": true,
+      "title": "Random icon on the Not Found page",
+      "summary": "The Not Found page now shows one of fourteen spot illustrations, crosses, stars and a seraph, chosen at random on each visit, and the app icon has been redrawn."
+    },
+    {
+      "repo": "mdws-org/poap-saver",
+      "week": "2026-08-10",
+      "date": "2026-08-12",
+      "announce": true,
+      "title": "Archive grows by 7,424 recovered events",
+      "summary": "The archive now holds 197,577 events after a crawl past the old ceiling, and the browsing grid loads small thumbnails instead of full originals."
+    },
+    {
+      "repo": "mdws-org/orthodoxprayers",
+      "week": "2026-08-03",
+      "date": "2026-08-09",
+      "announce": true,
+      "title": "Full morning rule and evening prayers added",
+      "summary": "The complete morning rule now has its own page, joined by evening prayers, table prayers, the Commemoration, and the prayers after every kathisma."
+    },
+    {
+      "repo": "mdws-org/poap-saver",
+      "week": "2026-08-03",
+      "date": "2026-08-09",
+      "announce": true,
+      "title": "Browsable gallery and event lookup added",
+      "summary": "Rescued badges now appear in a browsable gallery, events can be looked up by ID with download links, and a readout shows which events the archive covers."
     }
   ]
 }

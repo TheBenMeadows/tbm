@@ -1,8 +1,41 @@
 {
-  "_comment": "Hand-kept half of /news, rendered with news/sources.json by scripts/build-news.mjs. `entries` holds what no API reports: site launches and redesigns, art. `skip` hides a repo's releases from the page. `projects` names a repo on the page (the repo name otherwise). `overrides` replaces the line taken from a release's notes, keyed owner/repo@tag. Lines are short and plain, no first person; the build fails on a tool or agent name in a title or summary, as /ai does.",
+  "_comment": "Hand-kept half of /news, rendered with news/sources.json by scripts/build-news.mjs. `entries` holds what nothing reports on its own: site launches and redesigns, art. `sites` lists the site repos whose finished weeks of merged pull requests become entries automatically (scripts/fetch-news.mjs), each from its `since` date. `hide` removes any entry by id. `skip` hides a repo's releases. `projects` names a repo on the page (the repo name otherwise). `overrides` replaces the line taken from a release's notes, keyed owner/repo@tag. Lines are short and plain, no first person; the build drops or fails on a tool or agent name in a title or summary, as /ai does.",
   "skip": [
     "TheBenMeadows/tbm"
   ],
+  "hide": [],
+  "sites": {
+    "mdws-org/orthodoxprayers": {
+      "project": "OrthodoxPrayers.net",
+      "url": "https://orthodoxprayers.net/",
+      "since": "2026-08-03"
+    },
+    "mdws-org/everybadge": {
+      "project": "everybadge.org",
+      "url": "https://everybadge.org/",
+      "since": "2026-10-20"
+    },
+    "mdws-org/abx-explorer": {
+      "project": "ABX explorer",
+      "url": "https://abx.thebenmeadows.com/",
+      "since": "2026-11-06"
+    },
+    "TheBenMeadows/benjaminmeadows.com": {
+      "project": "benjaminmeadows.com",
+      "url": "https://benjaminmeadows.com/",
+      "since": "2026-10-17"
+    },
+    "mdws-org/poap-saver": {
+      "project": "POAP Saver",
+      "url": "https://thebenmeadows.com/projects/poap-saver/",
+      "since": "2026-08-04"
+    },
+    "TheBenMeadows/horcrux": {
+      "project": "#DailyMuse",
+      "url": "https://dailymuse.thebenmeadows.com/",
+      "since": "2024-07-16"
+    }
+  },
   "projects": {
     "mdws-org/squint": {
       "name": "Squint",

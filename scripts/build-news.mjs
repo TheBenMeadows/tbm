@@ -2,8 +2,9 @@
  *
  *   news/sources.json   GitHub releases, Zenodo records, experiment first-commit dates
  *                       (fetched daily by scripts/fetch-news.mjs and committed)
- *   news/entries.json   hand-kept: site launches and redesigns, art, the skip list,
- *                       project names and text overrides
+ *   news/sources.json   also: one model-written line per site per finished week
+ *   news/entries.json   hand-kept: site launches and redesigns, art, the site list,
+ *                       the hide and skip lists, project names and text overrides
  *   blog/posts/*.md     listed posts
  *   ai/wins.json        the outcomes /ai shows
  *   experiments/<x>/    each page's own <title> and description
@@ -80,6 +81,12 @@ function validate(hand) {
     const fail = (where, msg) => errors.push(`${where}: ${msg}`);
     if (!Array.isArray(hand.entries)) fail("news/entries.json", "`entries` must be an array");
     if (!Array.isArray(hand.skip)) fail("news/entries.json", "`skip` must be an array of owner/repo");
+    if (!Array.isArray(hand.hide ?? [])) fail("news/entries.json", "`hide` must be an array of entry ids");
+    for (const [repo, site] of Object.entries(hand.sites ?? {})) {
+        const where = `news/entries.json sites["${repo}"]`;
+        if (!site?.project || !site?.url?.startsWith("https://")) fail(where, "needs `project` and an absolute https `url`");
+        if (site?.since && !realDate(site.since)) fail(where, "`since` must be a real YYYY-MM-DD");
+    }
     const seen = new Set();
     (hand.entries ?? []).forEach((e, i) => checkEntry(e, i, seen, fail));
     for (const [key, text] of Object.entries(hand.overrides ?? {})) {
@@ -259,6 +266,30 @@ function experimentEntries(sources) {
                 summary: description,
             };
         });
+}
+
+/* A site's finished week, as the model wrote it in scripts/fetch-news.mjs. A line
+ * that still names a tool or agent is dropped, as an automatic release line is. */
+function siteWeekEntries(sources, hand) {
+    return (sources.siteWeeks ?? []).filter((w) => w.announce).flatMap((w) => {
+        const site = hand.sites?.[w.repo];
+        if (!site) return [];
+        const named = `${w.title} ${w.summary}`.match(NAME_PATTERN);
+        if (named) {
+            console.warn(`news              ${w.repo} week ${w.week}: names "${named[0]}"; left out`);
+            return [];
+        }
+        return [{
+            id: `site-${w.repo.split("/")[1].toLowerCase().replace(/[^a-z0-9]+/g, "-")}-${w.week}`,
+            date: w.date,
+            kind: "site",
+            project: site.project,
+            projectUrl: site.url,
+            title: w.title,
+            url: site.url,
+            summary: w.summary,
+        }];
+    });
 }
 
 function handEntries(hand) {
@@ -469,8 +500,9 @@ const all = [
     ...postEntries(),
     ...winEntries(),
     ...experimentEntries(sources),
+    ...siteWeekEntries(sources, hand),
     ...handEntries(hand),
-].sort((a, b) => (a.date !== b.date ? (a.date < b.date ? 1 : -1) : a.id < b.id ? -1 : 1));
+].filter((e) => !(hand.hide ?? []).includes(e.id)).sort((a, b) => (a.date !== b.date ? (a.date < b.date ? 1 : -1) : a.id < b.id ? -1 : 1));
 
 const ids = new Set();
 for (const e of all) {
