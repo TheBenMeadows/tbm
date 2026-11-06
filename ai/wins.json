@@ -24,6 +24,7 @@
         },
         {
             "id": "cohn-grassmannian-731",
+            "pin": 1,
             "date": "2026-11-03",
             "kind": "placement",
             "title": "Grassmannian packings table: 747 records improved",
@@ -154,7 +155,7 @@
         },
         {
             "id": "kryptos-ctf",
-            "pin": 3,
+            "pin": 4,
             "date": "2026-10-03",
             "kind": "placement",
             "title": "All ten puzzles of a cryptography CTF solved, rank 13 on the public board",
@@ -167,7 +168,7 @@
         },
         {
             "id": "manic-bug-bounty",
-            "pin": 1,
+            "pin": 2,
             "date": "2026-09-15",
             "kind": "placement",
             "title": "First prize in a $1,000 bug bounty",
@@ -243,7 +244,7 @@
         },
         {
             "id": "openagents-merged-changes",
-            "pin": 2,
+            "pin": 3,
             "date": "2026-07-17",
             "kind": "merged",
             "title": "Seventeen changes merged into a platform's own codebase",
