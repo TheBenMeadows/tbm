@@ -1,0 +1,8 @@
+{
+  "name": "tbm-news-refresh",
+  "private": true,
+  "description": "Dependencies of scripts/fetch-news.mjs, installed only by .github/workflows/news-refresh.yml so the site's own build never contains them.",
+  "dependencies": {
+    "@anthropic-ai/sdk": "1.1.0"
+  }
+}

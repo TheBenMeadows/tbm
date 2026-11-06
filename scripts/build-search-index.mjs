@@ -32,6 +32,7 @@ const PAGES = [
     { file: 'projects/index.html', url: '/projects/' },
     { file: 'infra/index.html', url: '/infra/' },
     { file: 'ai/index.html', url: '/ai/' },
+    { file: 'news/index.html', url: '/news/' },
     { file: 'papers/index.html', url: '/papers/' },
     { file: 'papers/essentialism/index.html', url: '/papers/essentialism/' },
     { file: 'papers/rrf-score-ceiling/index.html', url: '/papers/rrf-score-ceiling/' },

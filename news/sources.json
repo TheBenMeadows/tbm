@@ -1,0 +1,1181 @@
+{
+  "_comment": "Written by scripts/fetch-news.mjs (daily, .github/workflows/news-refresh.yml). Do not edit by hand: hand-written entries, the skip and hide lists and text overrides live in news/entries.json.",
+  "releases": [
+    {
+      "repo": "mdws-org/nnw-prayer-book",
+      "tag": "v1.3.0",
+      "name": "v1.3.0",
+      "date": "2026-11-06",
+      "published": "2026-11-06T16:29:19Z",
+      "url": "https://github.com/mdws-org/nnw-prayer-book/releases/tag/v1.3.0",
+      "notes": "Theme release v1.3.0."
+    },
+    {
+      "repo": "mdws-org/freewallet-desktop",
+      "tag": "v2.1.2",
+      "name": "FreeWallet 2.1.2",
+      "date": "2026-11-03",
+      "published": "2026-11-03T00:32:30Z",
+      "url": "https://github.com/mdws-org/freewallet-desktop/releases/tag/v2.1.2",
+      "notes": "\nThe first release signed with a Developer ID and notarized by Apple. Gatekeeper opens it without the Open Anyway steps. Apple Silicon only.\n\n- The application is signed with the hardened runtime. NW.js needs two entitlements under it, `com.apple.security.cs.allow-jit` and `com.apple.security.cs.allow-unsigned-executable-memory`, which are applied to the main executable and to each helper application.\n- After a page reload, bitcore loads again instead of failing with \"More than one instance of bitcore-lib found\", which left key derivation broken until the application was restarted.\n- Asset artwork, audio and video fall back to the first listed entry when the preferred formats are missing. Before, the fallback produced nothing.\n\n"
+    },
+    {
+      "repo": "mdws-org/squint",
+      "tag": "v0.9.8",
+      "name": "Squint 0.9.8",
+      "date": "2026-11-02",
+      "published": "2026-11-02T03:24:08Z",
+      "url": "https://github.com/mdws-org/squint/releases/tag/v0.9.8",
+      "notes": "Remove Location Data now removes data hidden after the loop count or colour profile in a GIF, and in a TIFF directory that only the Exif directory links to. It refuses a HEIC or AVIF whose item index sits outside its metadata box or lists an item twice, and a GIF whose colour profile is malformed.\n\nThe engine also gains seven safety lints, enforced in CI, and two fixes: the buffer returned over the C interface is now freed the way it was allocated, and encoding an image whose pixel count disagrees with its size returns an error instead of reading past the buffer.\n\nChanges: #136, #138, #139.\n\nApple silicon, macOS 14 or later. Signed and notarized.\n\nSHA-256\n```\n1611b62f5fc56435de53a0148cb9ee233ea9cdb638365e32146b66fb395f1de5  Squint-0.9.8.dmg\n1cd76f50b764c7a8b2e5d4f0061d06270a6eaf9313ee286022c7b8b727e8be12  Squint-0.9.8.zip\n```\n"
+    },
+    {
+      "repo": "TheBenMeadows/tbm",
+      "tag": "2026.11.01",
+      "name": "2026.11.01",
+      "date": "2026-11-01",
+      "published": "2026-11-01T20:38:41Z",
+      "url": "https://github.com/TheBenMeadows/tbm/releases/tag/2026.11.01",
+      "notes": "Arweave `sBJFWaho9a6S-pepcK9TJlWiHMkJI1v0lkiDIlLjWNU` — `ar://thebenmeadows`\nManifest sha256 `ba9ca020d82174ff7b7a745fd10f89ce9e7aab3fbd05c8dc0f3e543da573b8b5`, signed to Nostr and anchored with OpenTimestamps.\n\nThe continuous mirrors (Cloudflare, Netlify, onion, i2p) already track `main`; this release is what the pinned surfaces — Arweave, IPNS, and the Nostr nsite — now serve.\n\nAssets:\n\n`tbm-2026.11.01.zim` is the whole site as a single offline archive: open it in [Kiwix](https://kiwix.org/) with no network at all.\n\n`tbm-2026.11.01.bundle` is the full git history in one file: `git clone tbm-2026.11.01.bundle tbm`.\n\n`tbm-2026.11.01.torrent` is trackerless with an HTTP webseed, so the swarm stays reachable if this origin does not.\n\n`tbm-2026.11.01-manifest.json` and `tbm-2026.11.01-manifest.json.ots` verify the Bitcoin anchor on their own: put both in one directory and run `ots verify tbm-2026.11.01-manifest.json.ots`.\n\n`tbm-2026.11.01-SHA256SUMS.txt` covers every asset above. Download them into one directory and run `shasum -a 256 -c tbm-2026.11.01-SHA256SUMS.txt`. It does not cover the Source code (zip/tar.gz) links, which GitHub regenerates on demand."
+    },
+    {
+      "repo": "mdws-org/nnw-prayer-book",
+      "tag": "v1.2.0",
+      "name": "v1.2.0",
+      "date": "2026-11-01",
+      "published": "2026-11-01T20:12:48Z",
+      "url": "https://github.com/mdws-org/nnw-prayer-book/releases/tag/v1.2.0",
+      "notes": "Theme release v1.2.0."
+    },
+    {
+      "repo": "TheBenMeadows/tbm",
+      "tag": "2026.10.29",
+      "name": "2026.10.29",
+      "date": "2026-10-29",
+      "published": "2026-10-29T16:39:03Z",
+      "url": "https://github.com/TheBenMeadows/tbm/releases/tag/2026.10.29",
+      "notes": "Arweave `wZXmrzP4tIlKtHAQmo8fMTZefxF49WP7mlfwsy8hbN0` — `ar://thebenmeadows`\nManifest sha256 `fa84da10e351e91d5a218d36870d30ee9d8b51073dc8080917992c2029135341`, signed to Nostr and anchored with OpenTimestamps.\n\nThe continuous mirrors (Cloudflare, Netlify, onion, i2p) already track `main`; this release is what the pinned surfaces — Arweave, IPNS, and the Nostr nsite — now serve.\n\nAssets:\n\n`tbm-2026.10.29.zim` is the whole site as a single offline archive: open it in [Kiwix](https://kiwix.org/) with no network at all.\n\n`tbm-2026.10.29.bundle` is the full git history in one file: `git clone tbm-2026.10.29.bundle tbm`.\n\n`tbm-2026.10.29.torrent` is trackerless with an HTTP webseed, so the swarm stays reachable if this origin does not.\n\n`tbm-2026.10.29-manifest.json` and `tbm-2026.10.29-manifest.json.ots` verify the Bitcoin anchor on their own: put both in one directory and run `ots verify tbm-2026.10.29-manifest.json.ots`.\n\n`tbm-2026.10.29-SHA256SUMS.txt` covers every asset above. Download them into one directory and run `shasum -a 256 -c tbm-2026.10.29-SHA256SUMS.txt`. It does not cover the Source code (zip/tar.gz) links, which GitHub regenerates on demand."
+    },
+    {
+      "repo": "mdws-org/squint",
+      "tag": "v0.9.7",
+      "name": "Squint 0.9.7",
+      "date": "2026-10-24",
+      "published": "2026-10-24T13:58:04Z",
+      "url": "https://github.com/mdws-org/squint/releases/tag/v0.9.7",
+      "notes": "Window › Squint (Command-0) brings the window back after it is closed, and so does a click on the Dock icon.\n\nSquint keeps running when its window is closed, because the Finder services work without one. Until now nothing reopened the window except quitting and launching the app again. The Mac App Store review of the store edition found this, and 0.9.7 is the build sent back to it.\n\nChanges: #134.\n\nApple silicon, macOS 14 or later. Signed and notarized.\n\nSHA-256\n```\nb52b3b76c1f6965c4ff4b5d58e10d3ce53d63cce2c7c4c0e68302a11f882b906  Squint-0.9.7.dmg\n0fbefbfc47997629309308b488dfb40f1da5471a36ae05f0ae914d293310b4b3  Squint-0.9.7.zip\n```\n"
+    },
+    {
+      "repo": "TheBenMeadows/tbm",
+      "tag": "2026.10.20",
+      "name": "2026.10.20",
+      "date": "2026-10-20",
+      "published": "2026-10-20T13:51:11Z",
+      "url": "https://github.com/TheBenMeadows/tbm/releases/tag/2026.10.20",
+      "notes": "Arweave `NYd2QR9Biag-MbTAHLx8ak-qZwIdD0Sahv0tZZx8SXk` — `ar://thebenmeadows`\nManifest sha256 `a59b7eb9f82cb28b1ad22b1272e5a08850995b19688c35d6ec19261e35f234b1`, signed to Nostr and anchored with OpenTimestamps.\n\nThe continuous mirrors (Cloudflare, Netlify, onion, i2p) already track `main`; this release is what the pinned surfaces — Arweave, IPNS, and the Nostr nsite — now serve.\n\nAssets:\n\n`tbm-2026.10.20.zim` is the whole site as a single offline archive: open it in [Kiwix](https://kiwix.org/) with no network at all.\n\n`tbm-2026.10.20.bundle` is the full git history in one file: `git clone tbm-2026.10.20.bundle tbm`.\n\n`tbm-2026.10.20.torrent` is trackerless with an HTTP webseed, so the swarm stays reachable if this origin does not.\n\n`tbm-2026.10.20-manifest.json` and `tbm-2026.10.20-manifest.json.ots` verify the Bitcoin anchor on their own: put both in one directory and run `ots verify tbm-2026.10.20-manifest.json.ots`.\n\n`tbm-2026.10.20-SHA256SUMS.txt` covers every asset above. Download them into one directory and run `shasum -a 256 -c tbm-2026.10.20-SHA256SUMS.txt`. It does not cover the Source code (zip/tar.gz) links, which GitHub regenerates on demand."
+    },
+    {
+      "repo": "TheBenMeadows/tbm",
+      "tag": "2026.10.20-cecbff1",
+      "name": "2026.10.20-cecbff1",
+      "date": "2026-10-20",
+      "published": "2026-10-20T22:19:30Z",
+      "url": "https://github.com/TheBenMeadows/tbm/releases/tag/2026.10.20-cecbff1",
+      "notes": "Arweave `fwnDnJG9TrghAlIVYd32IYDejgJpa1i7Y-p2gF23YJo` — `ar://thebenmeadows`\nManifest sha256 `251ca46af1becc53c7390f5937d29c48564ac11e6421b43a2b5d67edc451e73c`, signed to Nostr and anchored with OpenTimestamps.\n\nThe continuous mirrors (Cloudflare, Netlify, onion, i2p) already track `main`; this release is what the pinned surfaces — Arweave, IPNS, and the Nostr nsite — now serve.\n\nAssets:\n\n`tbm-2026.10.20-cecbff1.zim` is the whole site as a single offline archive: open it in [Kiwix](https://kiwix.org/) with no network at all.\n\n`tbm-2026.10.20-cecbff1.bundle` is the full git history in one file: `git clone tbm-2026.10.20-cecbff1.bundle tbm`.\n\n`tbm-2026.10.20-cecbff1.torrent` is trackerless with an HTTP webseed, so the swarm stays reachable if this origin does not.\n\n`tbm-2026.10.20-cecbff1-manifest.json` and `tbm-2026.10.20-cecbff1-manifest.json.ots` verify the Bitcoin anchor on their own: put both in one directory and run `ots verify tbm-2026.10.20-cecbff1-manifest.json.ots`.\n\n`tbm-2026.10.20-cecbff1-SHA256SUMS.txt` covers every asset above. Download them into one directory and run `shasum -a 256 -c tbm-2026.10.20-cecbff1-SHA256SUMS.txt`. It does not cover the Source code (zip/tar.gz"
+    },
+    {
+      "repo": "mdws-org/squint",
+      "tag": "v0.9.5",
+      "name": "Squint 0.9.5",
+      "date": "2026-10-20",
+      "published": "2026-10-20T14:03:40Z",
+      "url": "https://github.com/mdws-org/squint/releases/tag/v0.9.5",
+      "notes": "Remove Location Data now cleans a raw file's embedded preview instead of refusing the file.\n\nRaw previews. A raw file carries an embedded preview, a JPEG with metadata of its own: an iPhone ProRAW file's preview keeps the GPS position, the phone, the lens and the capture time. 0.9.4 refused such a file. Its preview is now cleaned where it lies: the EXIF keeps only the orientation the preview is shown by, the XMP, comments and other metadata segments are zeroed, and nothing in the file moves. An HDR gain map in the preview keeps its rendering parameters, under the rule Remove Location Data already applies to a photograph's gain map, so the preview keeps its HDR. iPhone ProRAW and Ricoh GR II files now strip.\n\nIf you stripped iPhone ProRAW or other raw files with Squint 0.9.3 or earlier, strip them again: those versions reported them clean while their previews still held the location.\n\nStill refused: a preview whose gain map's XMP holds more than its rendering parameters, with the message \"this file's embedded preview has a gain map whose XMP holds more than its rendering parameters; the file was not changed\", and previews laid out in a way that cannot be cleaned safely.\n\nChanges: #1"
+    },
+    {
+      "repo": "mdws-org/squint",
+      "tag": "v0.9.6",
+      "name": "Squint 0.9.6",
+      "date": "2026-10-20",
+      "published": "2026-10-20T15:34:21Z",
+      "url": "https://github.com/mdws-org/squint/releases/tag/v0.9.6",
+      "notes": "Remove Location Data now strips a raw file it used to refuse, and removes the time of day a cinema camera's DNG records.\n\nBlackmagic DNGs. A Blackmagic Pocket Cinema Camera 6K Pro DNG links its first image to its own Exif data, so the same data was reached both as an image and as metadata, and Remove Location Data refused the file. That link is now cut, the Exif data is removed, and the file strips.\n\nTime codes. A cinema camera's DNG records the time of day each frame was shot, in its TimeCodes tag. It is now removed with the capture date. If you stripped cinema camera DNGs with Squint 0.9.5 or earlier, strip them again: those versions kept the time code.\n\nChanges: #129.\n\nApple silicon, macOS 14 or later. Signed and notarized.\n\nSHA-256\n```\n3dcffa0c3b19f0c0445ad6c517e70a0607a0ea86f9cd8946eda7c14c23b5d1b6  Squint-0.9.6.dmg\n07674f1e147374a3ddd58003e52a67a7bac90dbf1f21a526efd5cc5de4a5d586  Squint-0.9.6.zip\n```\n"
+    },
+    {
+      "repo": "mdws-org/squint",
+      "tag": "v0.9.3",
+      "name": "Squint 0.9.3",
+      "date": "2026-10-19",
+      "published": "2026-10-19T15:47:40Z",
+      "url": "https://github.com/mdws-org/squint/releases/tag/v0.9.3",
+      "notes": "This release closes four gaps in Remove Location Data that the 0.9.2 review found but left for later.\n\nGeoTIFF. A GeoTIFF's georeferencing survived a strip: tie points, pixel scale, transformation matrix and GeoKeys, and also RPC coefficients (whose offsets are the scene centre in degrees), the older Intergraph matrix and GDAL's metadata XML. All of them are now removed, as is a DNG preview's date. The picture is unchanged.\n\nRaw files. A DNG keeps its raw image and previews in sub-directories, and their own tags were never read, so a camera, a date or an original file name written there stayed. Every sub-directory is now stripped, and its pixels are protected like any page's. A file whose directories overlap, or that names one directory in two roles, is refused rather than half stripped. On full-size Pentax and Nikon raws the sensor data comes back byte for byte.\n\nSigned PDFs. A digitally signed PDF is now refused in every mode with its own message, because any change breaks the signature, which names the signer, the place and the time. A signature from an earlier revision that the document no longer uses is removed instead of refusing the file, and Reader's usage-rights signature,"
+    },
+    {
+      "repo": "mdws-org/squint",
+      "tag": "v0.9.4",
+      "name": "Squint 0.9.4",
+      "date": "2026-10-19",
+      "published": "2026-10-19T20:54:13Z",
+      "url": "https://github.com/mdws-org/squint/releases/tag/v0.9.4",
+      "notes": "This release closes ways in which Remove Location Data reported a raw file or TIFF clean while identifying data remained in it, found by a review of 0.9.3 against 176 real raw files.\n\nRaw previews. A raw file carries an embedded preview, which is a JPEG with metadata of its own. An iPhone ProRAW file's preview keeps the GPS position, the phone, the lens and the capture time, and Remove Location Data removed everything else and reported the file clean. Such a file is now refused with its own message, \"this file's embedded preview carries location or camera data that Strip cannot remove yet\", and is not changed. A later release will clean the preview itself. Previews holding only what a decoder needs, as on most cameras, strip as before.\n\nSamsung raw files. Samsung's NX cameras from 2014 on point their previews' resolution at the camera's name, model or capture date. Those bytes were left, most of the date included on an NX1. They are now removed; the resolution they shared is printing density, which no pixel depends on.\n\nHidden metadata. A tag's data that lay under the pixels, the colour profile or data the file keeps could not be removed and stayed in a file reported clean; such a "
+    },
+    {
+      "repo": "mdws-org/squint",
+      "tag": "v0.9.2",
+      "name": "Squint 0.9.2",
+      "date": "2026-10-18",
+      "published": "2026-10-18T15:29:15Z",
+      "url": "https://github.com/mdws-org/squint/releases/tag/v0.9.2",
+      "notes": "This release closes ways in which Remove Location Data left identifying metadata in a file while reporting it removed, found by two code audits and an outside review.\n\nJPEG. A progressive JPEG may carry XMP or comment segments between its scans, and they survived; one holding a thumbnail could also cut the picture short. They are now removed and the scans kept whole. Adobe's colour-transform segment, which a CMYK JPEG needs to render with the right colours, is kept, and only when it is exactly that segment.\n\nHDR gain maps. A gain map's own XMP was copied back whole, so a location written there survived. It is now kept only when it holds nothing but the parameters a renderer reads; a gain map whose XMP holds those and anything else is refused rather than written back without them. iPhone and Ultra HDR photographs strip exactly as before.\n\nPDF. The JPEG pictures inside a PDF kept their EXIF, GPS included, also when stored under an ASCII or Flate filter. Comment authors and dates, private editing data and the file ID survived, as did an old cross-reference stream carrying the author. All of these are removed; form-field names are kept, because a form is filled and read by them. A PDF "
+    },
+    {
+      "repo": "TheBenMeadows/tbm",
+      "tag": "2026.10.16",
+      "name": "2026.10.16",
+      "date": "2026-10-16",
+      "published": "2026-10-16T16:49:34Z",
+      "url": "https://github.com/TheBenMeadows/tbm/releases/tag/2026.10.16",
+      "notes": "Arweave `t_PswapFb_DXPyFB3FzEwLo5-38F7gua4957G4vIxZ8` — `ar://thebenmeadows`\nManifest sha256 `a77f58354e161117464dc9b8ae74faa864ecf80914a2ff56330f0af349df7f0f`, signed to Nostr and anchored with OpenTimestamps.\n\nThe continuous mirrors (Cloudflare, Netlify, onion, i2p) already track `main`; this release is what the pinned surfaces — Arweave, IPNS, and the Nostr nsite — now serve.\n\nAssets:\n\n`tbm-2026.10.16.zim` is the whole site as a single offline archive: open it in [Kiwix](https://kiwix.org/) with no network at all.\n\n`tbm-2026.10.16.bundle` is the full git history in one file: `git clone tbm-2026.10.16.bundle tbm`.\n\n`tbm-2026.10.16.torrent` is trackerless with an HTTP webseed, so the swarm stays reachable if this origin does not.\n\n`tbm-2026.10.16-manifest.json` and `tbm-2026.10.16-manifest.json.ots` verify the Bitcoin anchor on their own: put both in one directory and run `ots verify tbm-2026.10.16-manifest.json.ots`.\n\n`tbm-2026.10.16-SHA256SUMS.txt` covers every asset above. Download them into one directory and run `shasum -a 256 -c tbm-2026.10.16-SHA256SUMS.txt`. It does not cover the Source code (zip/tar.gz) links, which GitHub regenerates on demand."
+    },
+    {
+      "repo": "TheBenMeadows/tbm",
+      "tag": "2026.10.14",
+      "name": "2026.10.14",
+      "date": "2026-10-14",
+      "published": "2026-10-14T16:08:22Z",
+      "url": "https://github.com/TheBenMeadows/tbm/releases/tag/2026.10.14",
+      "notes": "Arweave `GAxbLQIbLROFxMSwdyPMMkqCSZQoM5eOMAcYzTwJ_Jo` — `ar://thebenmeadows`\nManifest sha256 `f1016ca0b194e16676ede8fe6f94eb73ed7eeb1d45678a51264f33161933a4a0`, signed to Nostr and anchored with OpenTimestamps.\n\nThe continuous mirrors (Cloudflare, Netlify, onion, i2p) already track `main`; this release is what the pinned surfaces — Arweave, IPNS, and the Nostr nsite — now serve.\n\nAssets:\n\n`tbm-2026.10.14.zim` is the whole site as a single offline archive: open it in [Kiwix](https://kiwix.org/) with no network at all.\n\n`tbm-2026.10.14.bundle` is the full git history in one file: `git clone tbm-2026.10.14.bundle tbm`.\n\n`tbm-2026.10.14.torrent` is trackerless with an HTTP webseed, so the swarm stays reachable if this origin does not.\n\n`tbm-2026.10.14-manifest.json` and `tbm-2026.10.14-manifest.json.ots` verify the Bitcoin anchor on their own: put both in one directory and run `ots verify tbm-2026.10.14-manifest.json.ots`.\n\n`tbm-2026.10.14-SHA256SUMS.txt` covers every asset above. Download them into one directory and run `shasum -a 256 -c tbm-2026.10.14-SHA256SUMS.txt`. It does not cover the Source code (zip/tar.gz) links, which GitHub regenerates on demand."
+    },
+    {
+      "repo": "mdws-org/pepecoin",
+      "tag": "v1.1.0-mdws.1",
+      "name": "Pepecoin-Qt 1.1.0-mdws.1",
+      "date": "2026-10-13",
+      "published": "2026-10-13T05:51:55Z",
+      "url": "https://github.com/mdws-org/pepecoin/releases/tag/v1.1.0-mdws.1",
+      "notes": "Pepecoin-Qt 1.1.0 for macOS on Apple Silicon, built by CI from `2fa18e36`. The first release of this fork. The dmg is signed with a Developer ID (Benjamin Meadows, team CY9SLX2KFM) and notarized by Apple, so Gatekeeper opens it without a warning. Drag the app to your Applications folder before you open it.\n\nUpstream Pepecoin Core has no Apple Silicon build, so this fork builds `Pepecoin-Qt` natively for arm64 (#1, #2). CI checks that the bundle is arm64, that its Berkeley DB version keeps `wallet.dat` compatible, and that it does not load a library from outside the bundle other than the system frameworks (#4).\n\nSHA-256 of `Pepecoin-Qt-1.1.0-arm64.dmg`: `a44d5bfcf459e46b634cdf5ec92bb475b9a8d001e5d76280b083ee9b3c9514b4`\n"
+    },
+    {
+      "repo": "mdws-org/squint",
+      "tag": "v0.9.1",
+      "name": "0.9.1",
+      "date": "2026-10-13",
+      "published": "2026-10-13T05:59:13Z",
+      "url": "https://github.com/mdws-org/squint/releases/tag/v0.9.1",
+      "notes": "Remove Location Data on a HEIC now leaves a valid, empty EXIF block where the old one was. It used to fill that block with zeros. Pillow then refused the stripped file's metadata as \"not a TIFF file\", and on photographs from older iPhones the HDR range came out smaller: Apple keeps the strength of the gain map in two maker-note values inside EXIF, and without them Image I/O reported 3.48 of headroom where the original had 8.00 (iPhone 14 Pro Max), 6.91 (iPhone 15 Pro) and 4.00 (iPhone 12). The new block holds those two values and nothing else, so the location, camera and date are still removed and the headroom is unchanged. An XMP packet is kept only when everything in it describes the gain map or the segmentation matte. Any other XMP packet is emptied.\n\nRemove Location Data on a file that has nothing to remove says so, and leaves the file alone. It used to report that the result would be no smaller than the original, which is the message for a size search. A second Remove Location Data on the same HEIC is now one of those cases.\n\nA HEIC whose item index declares several extents with no field widths is refused. Such an index describes no location for the item, and walking it on a f"
+    },
+    {
+      "repo": "mdws-org/wowlet",
+      "tag": "v5.0.3-mdws.1",
+      "name": "wowlet 5.0.3-mdws.1",
+      "date": "2026-10-13",
+      "published": "2026-10-13T15:24:36Z",
+      "url": "https://github.com/mdws-org/wowlet/releases/tag/v5.0.3-mdws.1",
+      "notes": "wowlet 5.0.3 for macOS on Apple Silicon, built by CI from `13896d52`. The first release of this fork. The dmg is signed with a Developer ID (Benjamin Meadows, team CY9SLX2KFM) and notarized by Apple, so Gatekeeper opens it without a warning. Drag the app to your Applications folder before you open it.\n\nChanges from upstream wownero/wowlet:\n\n- wowlet and Feather Wallet run together. wowlet used Feather's single-instance lock and Tor port, so whichever wallet started second exited (#8). Its managed Tor daemon now listens on port 19460.\n- The app has its own bundle identifier, `org.wownero.wowlet`, and no longer replaces an installed Feather Wallet (#2).\n- New 16-word polyseed wallets use the Wownero coin ID, so seeds from official Wownero tools restore (#3).\n- The wallet connects to a local node on port 34568 if one is running, and otherwise to a public Wownero node over its bundled Tor.\n\nSHA-256 of `wowlet-5.0.3-arm64.dmg`: `eaf3a4a331dae4f5ce0a7e432c70ca96a9f6d8d2aeca5bc540d6b0617d93fbb0`\n"
+    },
+    {
+      "repo": "mdws-org/emoji-fix",
+      "tag": "v1.3.2",
+      "name": "Emoji Fix 1.3.2",
+      "date": "2026-10-12",
+      "published": "2026-10-12T16:00:23Z",
+      "url": "https://github.com/mdws-org/emoji-fix/releases/tag/v1.3.2",
+      "notes": "Emoji Fix 1.3.2 draws emoji in rich-text editors whose content sets its own inline `font-family`. Outlook on the web wraps each compose paragraph in such a `<div>`, which overrides the font the extension sets on the editing host, so emoji typed or pasted into an Outlook message stayed blank. That content now gets a stylesheet rule matching its inline declaration, and the edited markup is still not changed. The README now links the Chrome Web Store listing.\n\nInstall from the Chrome Web Store: https://chromewebstore.google.com/detail/emoji-fix/pgjaolgpjogppmhdadddafkfcbnndeam\n\nTo install from this release, unzip `emoji-fix-1.3.2.zip`, open `brave://extensions`, turn on Developer mode, click Load unpacked, and select the unzipped folder.\n\nRequires Chromium 119 or later. SHA-256 of the zip: `ca9470d3cb058cec7854001c67c7840008634950674de3706ae1ebf136f641ad`.\n"
+    },
+    {
+      "repo": "mdws-org/emoji-fix",
+      "tag": "v1.4.0",
+      "name": "Emoji Fix 1.4.0",
+      "date": "2026-10-12",
+      "published": "2026-10-12T22:33:17Z",
+      "url": "https://github.com/mdws-org/emoji-fix/releases/tag/v1.4.0",
+      "notes": "Emoji Fix 1.4.0 adds a per-site off switch and stops running inside anti-bot challenge frames. In 1.3.2 its page script replaced a built-in browser function inside Cloudflare Turnstile's frame; Turnstile read that as tampering and failed verification. 1.4.0 skips the frames of Cloudflare Turnstile, hCaptcha, reCAPTCHA and Arkose Labs.\n\nClick the toolbar button to turn Emoji Fix off or on for the current site. The tab reloads, and the button shows an \"off\" badge wherever it is off.\n\nNew permissions: `scripting` and `storage`. Access to all sites, which the content scripts already had, is now declared in `host_permissions`. The only stored data is the list of sites where it is off.\n\nInstall from the Chrome Web Store: https://chromewebstore.google.com/detail/emoji-fix/pgjaolgpjogppmhdadddafkfcbnndeam (the store copy updates to 1.4.0 after Google's review).\n\nTo install from this release, unzip `emoji-fix-1.4.0.zip`, open `brave://extensions`, turn on Developer mode, click Load unpacked, and select the unzipped folder.\n\nRequires Chromium 119 or later. SHA-256 of the zip: `50ebfa4838768a4c439f23c04e545864ee21128c4d847a3e1a71967406cb1417`.\n"
+    },
+    {
+      "repo": "mdws-org/emoji-fix",
+      "tag": "v1.3.0",
+      "name": "Emoji Fix 1.3.0",
+      "date": "2026-10-09",
+      "published": "2026-10-09T14:49:37Z",
+      "url": "https://github.com/mdws-org/emoji-fix/releases/tag/v1.3.0",
+      "notes": "Emoji Fix draws emoji with a bundled Noto Color Emoji font on Macs where Brave and other Chromium browsers draw Apple Color Emoji as blank space. It works on X, including the chat and the reaction picker.\n\nTo install, unzip `emoji-fix-1.3.0.zip`, open `brave://extensions`, turn on Developer mode, click Load unpacked, and select the unzipped folder.\n\nChanges since the first public commit (1.2.0), from a security and bug review recorded in `review/`:\n\n- Flags, keycaps and skin-tone modifiers are detected. Text symbols such as the trademark sign and check marks are no longer replaced with emoji glyphs.\n- In rich-text editors the font is set on the editing host, so the style does not enter the edited document.\n- The fix survives element reuse by frameworks, page `!important` font rules and replacement of the page body, and covers inputs, SVG text, text directly in shadow roots, and `srcdoc` frames.\n- The font loads through a per-session URL, so pages cannot probe for the extension by a fixed ID.\n- The shadow-root hook returns the native result unchanged if its notification fails.\n\nRequires Chromium 119 or later. SHA-256 of the zip: `60247efb588504e148924283ed2fe5cfd83a30727c714c27b821f"
+    },
+    {
+      "repo": "mdws-org/emoji-fix",
+      "tag": "v1.3.1",
+      "name": "Emoji Fix 1.3.1",
+      "date": "2026-10-09",
+      "published": "2026-10-09T17:42:10Z",
+      "url": "https://github.com/mdws-org/emoji-fix/releases/tag/v1.3.1",
+      "notes": "Emoji Fix 1.3.1 changes only the 128 px icon: the artwork is now 96 px with 16 px of transparent padding, as the Chrome Web Store requires. The extension code is the same as 1.3.0. The repository adds `store/` with the Chrome Web Store listing text, screenshots and promo tile.\n\nTo install, unzip `emoji-fix-1.3.1.zip`, open `brave://extensions`, turn on Developer mode, click Load unpacked, and select the unzipped folder.\n\nRequires Chromium 119 or later. SHA-256 of the zip: `4495f1b4e9d6c65c8ae9cefa04a417a84e704c0c46288bcbfd75c752cb293ff0`.\n"
+    },
+    {
+      "repo": "mdws-org/nnw-prayer-book",
+      "tag": "v1.0.0",
+      "name": "v1.0.0",
+      "date": "2026-10-06",
+      "published": "2026-10-06T16:18:13Z",
+      "url": "https://github.com/mdws-org/nnw-prayer-book/releases/tag/v1.0.0",
+      "notes": "Theme release v1.0.0."
+    },
+    {
+      "repo": "mdws-org/nnw-prayer-book",
+      "tag": "v1.1.0",
+      "name": "v1.1.0",
+      "date": "2026-10-06",
+      "published": "2026-10-06T17:00:00Z",
+      "url": "https://github.com/mdws-org/nnw-prayer-book/releases/tag/v1.1.0",
+      "notes": "Theme release v1.1.0."
+    },
+    {
+      "repo": "mdws-org/squint",
+      "tag": "v0.9.0",
+      "name": "0.9.0",
+      "date": "2026-09-30",
+      "published": "2026-09-30T04:31:28Z",
+      "url": "https://github.com/mdws-org/squint/releases/tag/v0.9.0",
+      "notes": "Shrink and Shrink to a Quality Target now keep an iPhone photograph's HDR gain map when they replace the file. Until now they dropped it and said so: the photograph still opened and looked right on an ordinary display, but it looked flat on the display it was taken for. macOS will only decode a gain map beside a picture its own encoder wrote, so for a photograph that has one, the system encoder writes the file and the map is copied across from the original. That costs about 30% more bytes than Squint's usual encoder at the same score, and it is used only when there is a map to keep. Measured on an iPhone 12 portrait: 3,995 KB to 1,505 KB with Shrink, the HDR headroom 4.00 before and after, and no location, camera or date left in the file.\n\nShrink for Email and Shrink for Social still drop the map. They make a smaller copy to send, and the original beside them keeps its range.\n\nThe window's picker now offers all six treatments the Finder entries do: Shrink, Email, Social, Quality, AVIF and Strip. A photo can be dropped on the window and sent through any of them, which matters in folders where Finder shows no Services entries.\n\nChanges: #88.\n\nApple silicon, macOS 14 or later. Signed "
+    },
+    {
+      "repo": "TheBenMeadows/tbm",
+      "tag": "2026.09.29",
+      "name": "2026.09.29",
+      "date": "2026-09-29",
+      "published": "2026-09-29T18:19:58Z",
+      "url": "https://github.com/TheBenMeadows/tbm/releases/tag/2026.09.29",
+      "notes": "Arweave `LGpQTxXkHeJr_giT7i5HxTajuzz7qClsMpkx7SFecxY` — `ar://thebenmeadows`\nManifest sha256 `c4fcd6ec140426906a29ca1542ac5315d113dbb9b558239b5b38f2be0d325cc0`, signed to Nostr and anchored with OpenTimestamps.\n\nThe continuous mirrors (Cloudflare, Netlify, onion, i2p) already track `main`; this release is what the pinned surfaces — Arweave, IPNS, and the Nostr nsite — now serve.\n\nAssets:\n\n`tbm-2026.09.29.zim` is the whole site as a single offline archive: open it in [Kiwix](https://kiwix.org/) with no network at all.\n\n`tbm-2026.09.29.bundle` is the full git history in one file: `git clone tbm-2026.09.29.bundle tbm`.\n\n`tbm-2026.09.29.torrent` is trackerless with an HTTP webseed, so the swarm stays reachable if this origin does not.\n\n`tbm-2026.09.29-manifest.json` and `tbm-2026.09.29-manifest.json.ots` verify the Bitcoin anchor on their own: put both in one directory and run `ots verify tbm-2026.09.29-manifest.json.ots`.\n\n`tbm-2026.09.29-SHA256SUMS.txt` covers every asset above. Download them into one directory and run `shasum -a 256 -c tbm-2026.09.29-SHA256SUMS.txt`. It does not cover the Source code (zip/tar.gz) links, which GitHub regenerates on demand."
+    },
+    {
+      "repo": "mdws-org/squint",
+      "tag": "v0.8.2",
+      "name": "0.8.2",
+      "date": "2026-09-27",
+      "published": "2026-09-27T14:58:31Z",
+      "url": "https://github.com/mdws-org/squint/releases/tag/v0.8.2",
+      "notes": "The application has its own icon: an almost-closed eye, replacing the placeholder.\n\nRemove Location Data could stall on a hostile TIFF. A forty-byte file declaring an entry count in the billions made the directory walk run once per declared entry, which took tens of seconds, although every read past the end of the file failed. The count is now bounded by what the file holds. A second defect, in the same walker, let the engine's internal count of bytes destroyed exceed the size of the file when a directory chain looped back on itself; the application only uses that count to decide whether anything was removed, so nothing visible changed. Neither defect read or wrote outside the file. Both were found by fuzzing.\n\nThe repository now has a `SECURITY.md`, with a private way to report a defect, and `docs/VERIFY.md`, which shows how to check with ExifTool what each mode removes and keeps. Every parser in the engine is fuzzed on each change and weekly.\n\nChanges: #82, #83, #84.\n\nApple silicon, macOS 14 or later. Signed and notarized.\n\nSHA-256\n```\nc96ce52785f09c8e3db887fb906bdc2ae4adb458b05daeb55e97d85f5d1800d5  Squint-0.8.2.dmg\nd7daf9547f936d2cd32a3d43007894cfb7087aefc10f7bb8d1aa0e28437021e"
+    },
+    {
+      "repo": "mdws-org/squint",
+      "tag": "v0.8.3",
+      "name": "0.8.3",
+      "date": "2026-09-27",
+      "published": "2026-09-27T21:50:51Z",
+      "url": "https://github.com/mdws-org/squint/releases/tag/v0.8.3",
+      "notes": "The icon loses the dark rim around its tile, which read as a drawn border in the Dock. The slate tile now runs to the edge; the eye is unchanged.\n\nThe HEIF and AVIF walker no longer panics on a malformed item table. An `iloc` box of exactly eight bytes that declared version 2 made the walk read its four-byte item count past the end of the box. The engine caught the panic and failed that one file with an error, so the application did not crash and no file was changed, but a panic reachable from a file is a defect. The box is now refused before it is read. Found by the fuzzing added in 0.8.2.\n\nChanges: #86.\n\nApple silicon, macOS 14 or later. Signed and notarized.\n\nSHA-256\n```\n84c934bd336933da55af4d48bc8f7ea9e7363338951f900cae862f56221d28be  Squint-0.8.3.dmg\n01130e0d7a85e4978c8b21b4b450947a8318e48c91cfefb086daa63f15f92664  Squint-0.8.3.zip\n```\n"
+    },
+    {
+      "repo": "mdws-org/freewallet-desktop",
+      "tag": "v2.1.1",
+      "name": "FreeWallet 2.1.1",
+      "date": "2026-09-26",
+      "published": "2026-09-26T00:15:59Z",
+      "url": "https://github.com/mdws-org/freewallet-desktop/releases/tag/v2.1.1",
+      "notes": "\nSame code as 2.1.0 plus the in-app update check for this fork. Apple Silicon only; the bundle has an ad-hoc signature, so follow the Open Anyway steps in the README to open it.\n\n- The update check reads this fork's latest GitHub release instead of upstream's version file, and Download Now opens that release's page. A user-initiated check that cannot reach the release list now says so.\n- A 2.1.0 install still checks upstream, so it does not learn about this release from inside the application. Download it from the releases page.\n\n"
+    },
+    {
+      "repo": "mdws-org/squint",
+      "tag": "v0.7.1",
+      "name": "0.7.1",
+      "date": "2026-09-26",
+      "published": "2026-09-26T16:49:23Z",
+      "url": "https://github.com/mdws-org/squint/releases/tag/v0.7.1",
+      "notes": "The same Squint as 0.7.0, signed with a Developer ID and notarized by Apple. It opens on first launch like any other application: no Privacy & Security detour, no **Open Anyway**.\n\nNothing in the engine or the application changed. The version exists because a signed and notarized build is a different set of bytes from the one already published as 0.7.0, whose archives, hashes and update signature stay exactly as they were.\n\nWhat the signature covers: the application, the Sparkle framework, and each of the five pieces nested inside it — the two XPC services, `Autoupdate`, `Updater.app` and the framework binary — every one signed individually with the hardened runtime and a timestamp, then verified as a whole before submission. The notary ticket is stapled to the bundle, so Gatekeeper's answer does not depend on reaching Apple.\n\nThis is also the first update Sparkle delivers across a change of signing identity. Every earlier build was ad-hoc signed; this one carries a team. Sparkle permits that transition when the update's EdDSA signature is intact, which it is — the same key has signed every archive since 0.4.0. The build stays marked pre-release until an installed 0.6.0 or 0.7.0 ha"
+    },
+    {
+      "repo": "mdws-org/squint",
+      "tag": "v0.8.0",
+      "name": "0.8.0",
+      "date": "2026-09-26",
+      "published": "2026-09-26T22:26:01Z",
+      "url": "https://github.com/mdws-org/squint/releases/tag/v0.8.0",
+      "notes": "Two things the command line could do reach the Finder menu.\n\n**A PDF goes through Shrink and Shrink to a Quality Target.** The pictures inside it are re-encoded, any above 150 dpi on the page are downscaled to it, the document's own record of who wrote it and with what is dropped, and the file is rewritten in place. A fax-coded page, a JPEG 2000 image or a CMYK image inside it is left exactly as it was. Measured on a 665 KB PDF wrapping one photograph: 124 KB through Shrink, 165 KB through the quality target.\n\n**Squint: Convert to AVIF** is a new entry. It takes a JPEG, PNG, HEIC, WebP or SVG and writes `name.avif` beside it, at the picture's own size, searched to the quality target the way the Quality entry is; the original is not touched. Measured: a 662 KB JPEG became a 262 KB AVIF, a 7.8 MB PNG a 506 KB one, a 340 KB HEIC a 108 KB one, all at their source dimensions. An AVIF handed to it is refused rather than written over.\n\nThe C interface gains `squint_optimize_as`, which names the output format; a code it does not know is refused rather than read as JPEG. The application now decides from the bytes of a result, not from what was asked for, whether it may replace the original:"
+    },
+    {
+      "repo": "mdws-org/squint",
+      "tag": "v0.8.1",
+      "name": "0.8.1",
+      "date": "2026-09-26",
+      "published": "2026-09-26T23:28:22Z",
+      "url": "https://github.com/mdws-org/squint/releases/tag/v0.8.1",
+      "notes": "A row in the window now moves to its result the moment the work finishes.\n\nThrough 0.8.0 a row showed \"working\" after its file was done, and kept showing it until another file was added. The list drew each row from a plain reference to its job, so it redrew when a job was added or cleared but not when a job's own state changed. Each row now observes its job. Verified through the Finder path: one JPEG through Shrink, nothing else added, and the row read its result as soon as the file was written.\n\nThe drop prompt names PDF, which the in-place modes have accepted since 0.8.0.\n\nChanges: #79.\n\nApple silicon, macOS 14 or later. Signed and notarized.\n\nSHA-256\n```\n570cd6478fa86f4a49cf7d383cf6fd986f38e04b7b2493a3afbf2fc30cf8beb4  Squint-0.8.1.dmg\nf2860003d5e588bb732ff1c4089e806571d13341b56af7899812b0f47658ebd1  Squint-0.8.1.zip\n```\n"
+    },
+    {
+      "repo": "mdws-org/freewallet-desktop",
+      "tag": "v2.1.0",
+      "name": "FreeWallet 2.1.0",
+      "date": "2026-09-25",
+      "published": "2026-09-25T23:39:38Z",
+      "url": "https://github.com/mdws-org/freewallet-desktop/releases/tag/v2.1.0",
+      "notes": "\nFirst release of the fork. Apple Silicon only. The bundle has an ad-hoc signature, so follow the Open Anyway steps in the README to open it.\n\n### Wallet encryption\n\n- The wallet is encrypted at rest with a PBKDF2-derived key (SHA-256, 310,000 iterations, per-wallet salt) and a stored verifier. The password itself is no longer stored in any form. The previous format derived its key with one round of MD5 and kept the password beside the ciphertext, which allowed an offline guess-check with no work factor.\n- A wallet password is required. A new or changed password must have at least 12 characters, including a number.\n- An existing wallet is re-encrypted the first time it is unlocked after installing this build. A wallet that already had a password keeps it, even a shorter one. A wallet that had none must choose one. The previous copy is retained until that unlock succeeds, and if the re-encrypted copy is damaged before then, the wallet is rebuilt from the retained copy.\n- The password can be changed under Settings, on the Wallet tab. The change asks for the current password.\n- The application never opens a wallet without the password, and a damaged wallet record can no longer lead to"
+    },
+    {
+      "repo": "TheBenMeadows/tbm",
+      "tag": "2026.09.16",
+      "name": "2026.09.16",
+      "date": "2026-09-16",
+      "published": "2026-09-16T03:44:52Z",
+      "url": "https://github.com/TheBenMeadows/tbm/releases/tag/2026.09.16",
+      "notes": "Arweave `QNrgZZypbCvxdmAuDUBfC5u2_i6P8itebu6wkFSaa8c` — `ar://thebenmeadows`\nManifest sha256 `ae29bfdb02997b40b4a3249dba8d1e6eafea55fe329b96189986d890c39ec71f`, signed to Nostr and anchored with OpenTimestamps.\n\nThe continuous mirrors (Cloudflare, Netlify, onion, i2p) already track `main`; this release is what the pinned surfaces — Arweave, IPNS, and the Nostr nsite — now serve.\n\nAssets:\n\n`tbm-2026.09.16.zim` is the whole site as a single offline archive: open it in [Kiwix](https://kiwix.org/) with no network at all.\n\n`tbm-2026.09.16.bundle` is the full git history in one file: `git clone tbm-2026.09.16.bundle tbm`.\n\n`tbm-2026.09.16.torrent` is trackerless with an HTTP webseed, so the swarm stays reachable if this origin does not.\n\n`tbm-2026.09.16-manifest.json` and `tbm-2026.09.16-manifest.json.ots` verify the Bitcoin anchor on their own: put both in one directory and run `ots verify tbm-2026.09.16-manifest.json.ots`.\n\n`tbm-2026.09.16-SHA256SUMS.txt` covers every asset above. Download them into one directory and run `shasum -a 256 -c tbm-2026.09.16-SHA256SUMS.txt`. It does not cover the Source code (zip/tar.gz) links, which GitHub regenerates on demand."
+    },
+    {
+      "repo": "TheBenMeadows/tbm",
+      "tag": "2026.09.15",
+      "name": "2026.09.15",
+      "date": "2026-09-15",
+      "published": "2026-09-15T22:23:10Z",
+      "url": "https://github.com/TheBenMeadows/tbm/releases/tag/2026.09.15",
+      "notes": "Arweave `e9M4GAnILPWsMhast-xqmvo4kSycbiW8lZVbtL_eyXc` — `ar://thebenmeadows`\nManifest sha256 `caa61d78e0063926bd756951f481836ad532b65d2c9d99e71ccd14b8b6876f79`, signed to Nostr and anchored with OpenTimestamps.\n\nThe continuous mirrors (Cloudflare, Netlify, onion, i2p) already track `main`; this release is what the pinned surfaces — Arweave, IPNS, and the Nostr nsite — now serve.\n\nAssets:\n\n`tbm-2026.09.15.zim` is the whole site as a single offline archive: open it in [Kiwix](https://kiwix.org/) with no network at all.\n\n`tbm-2026.09.15.bundle` is the full git history in one file: `git clone tbm-2026.09.15.bundle tbm`.\n\n`tbm-2026.09.15.torrent` is trackerless with an HTTP webseed, so the swarm stays reachable if this origin does not.\n\n`tbm-2026.09.15-manifest.json` and `tbm-2026.09.15-manifest.json.ots` verify the Bitcoin anchor on their own: put both in one directory and run `ots verify tbm-2026.09.15-manifest.json.ots`.\n\n`tbm-2026.09.15-SHA256SUMS.txt` covers every asset above. Download them into one directory and run `shasum -a 256 -c tbm-2026.09.15-SHA256SUMS.txt`. It does not cover the Source code (zip/tar.gz) links, which GitHub regenerates on demand."
+    },
+    {
+      "repo": "TheBenMeadows/tbm",
+      "tag": "2026.09.12",
+      "name": "2026.09.12",
+      "date": "2026-09-12",
+      "published": "2026-09-12T15:06:48Z",
+      "url": "https://github.com/TheBenMeadows/tbm/releases/tag/2026.09.12",
+      "notes": "Arweave `Irw8RsS7YE6e20Ojsea62GSmQ07Bxe99W5zf8oFNXvE` — `ar://thebenmeadows`\nManifest sha256 `6668561bf4520abf935facdcbbb2a3cb1181a0074ca25cf2c6a684a04cb94a42`, signed to Nostr and anchored with OpenTimestamps.\n\nThe continuous mirrors (Cloudflare, Netlify, onion, i2p) already track `main`; this release is what the pinned surfaces — Arweave, IPNS, and the Nostr nsite — now serve.\n\nAssets:\n\n`tbm-2026.09.12.zim` is the whole site as a single offline archive: open it in [Kiwix](https://kiwix.org/) with no network at all.\n\n`tbm-2026.09.12.bundle` is the full git history in one file: `git clone tbm-2026.09.12.bundle tbm`.\n\n`tbm-2026.09.12.torrent` is trackerless with an HTTP webseed, so the swarm stays reachable if this origin does not.\n\n`tbm-2026.09.12-manifest.json` and `tbm-2026.09.12-manifest.json.ots` verify the Bitcoin anchor on their own: put both in one directory and run `ots verify tbm-2026.09.12-manifest.json.ots`.\n\n`tbm-2026.09.12-SHA256SUMS.txt` covers every asset above. Download them into one directory and run `shasum -a 256 -c tbm-2026.09.12-SHA256SUMS.txt`. It does not cover the Source code (zip/tar.gz) links, which GitHub regenerates on demand."
+    },
+    {
+      "repo": "TheBenMeadows/tbm",
+      "tag": "2026.09.11",
+      "name": "2026.09.11",
+      "date": "2026-09-11",
+      "published": "2026-09-11T23:37:24Z",
+      "url": "https://github.com/TheBenMeadows/tbm/releases/tag/2026.09.11",
+      "notes": "Arweave `YxoF0sU23ZjTzLkyNDYgqYoRAYRLmIRxvJB9pk-eHDI` — `ar://thebenmeadows`\nManifest sha256 `40d9ea3ff480bb89e0c76123ee9c587f4375361ceaf0ee5ab7e9cd67733cecb7`, signed to Nostr and anchored with OpenTimestamps.\n\nThe continuous mirrors (Cloudflare, Netlify, onion, i2p) already track `main`; this release is what the pinned surfaces — Arweave, IPNS, and the Nostr nsite — now serve.\n\nAssets:\n\n`tbm-2026.09.11.zim` is the whole site as a single offline archive: open it in [Kiwix](https://kiwix.org/) with no network at all.\n\n`tbm-2026.09.11.bundle` is the full git history in one file: `git clone tbm-2026.09.11.bundle tbm`.\n\n`tbm-2026.09.11.torrent` is trackerless with an HTTP webseed, so the swarm stays reachable if this origin does not.\n\n`tbm-2026.09.11-manifest.json` and `tbm-2026.09.11-manifest.json.ots` verify the Bitcoin anchor on their own: put both in one directory and run `ots verify tbm-2026.09.11-manifest.json.ots`.\n\n`tbm-2026.09.11-SHA256SUMS.txt` covers every asset above. Download them into one directory and run `shasum -a 256 -c tbm-2026.09.11-SHA256SUMS.txt`. It does not cover the Source code (zip/tar.gz) links, which GitHub regenerates on demand."
+    },
+    {
+      "repo": "TheBenMeadows/tbm",
+      "tag": "2026.08.26",
+      "name": "2026.08.26",
+      "date": "2026-08-26",
+      "published": "2026-08-26T23:14:41Z",
+      "url": "https://github.com/TheBenMeadows/tbm/releases/tag/2026.08.26",
+      "notes": "Arweave `d8sc3sB3Z-G2gjdVEvZg-lzg1CcT_h3uscJkwOWnaes` — `ar://thebenmeadows`\nManifest sha256 `71eeefa8aa9a942dd24721f9c383e893a16cd9efe20613909d02d71f8c52c25c`, signed to Nostr and anchored with OpenTimestamps.\n\nThe continuous mirrors (Cloudflare, Netlify, onion, i2p) already track `main`; this release is what the pinned surfaces — Arweave, IPNS, and the Nostr nsite — now serve.\n\nAssets:\n\n`tbm-2026.08.26.zim` is the whole site as a single offline archive: open it in [Kiwix](https://kiwix.org/) with no network at all.\n\n`tbm-2026.08.26.bundle` is the full git history in one file: `git clone tbm-2026.08.26.bundle tbm`.\n\n`tbm-2026.08.26.torrent` is trackerless with an HTTP webseed, so the swarm stays reachable if this origin does not.\n\n`tbm-2026.08.26-manifest.json` and `tbm-2026.08.26-manifest.json.ots` verify the Bitcoin anchor on their own: put both in one directory and run `ots verify tbm-2026.08.26-manifest.json.ots`.\n\n`tbm-2026.08.26-SHA256SUMS.txt` covers every asset above. Download them into one directory and run `shasum -a 256 -c tbm-2026.08.26-SHA256SUMS.txt`. It does not cover the Source code (zip/tar.gz) links, which GitHub regenerates on demand."
+    },
+    {
+      "repo": "TheBenMeadows/tbm",
+      "tag": "2026.08.25",
+      "name": "2026.08.25",
+      "date": "2026-08-25",
+      "published": "2026-08-25T23:10:41Z",
+      "url": "https://github.com/TheBenMeadows/tbm/releases/tag/2026.08.25",
+      "notes": "Arweave `AtKok7QykqN_XZSp7O0DPgbyLui6pAWKglu2RZD4CSU` — `ar://thebenmeadows`\nManifest sha256 `2b001ac88130f32e03a29defde21dc9e261f363558d7b217a553b14c50ab22e6`, signed to Nostr and anchored with OpenTimestamps.\n\nThe continuous mirrors (Cloudflare, Netlify, onion, i2p) already track `main`; this release is what the pinned surfaces — Arweave, IPNS, and the Nostr nsite — now serve.\n\nAssets:\n\n`tbm-2026.08.25.zim` is the whole site as a single offline archive: open it in [Kiwix](https://kiwix.org/) with no network at all.\n\n`tbm-2026.08.25.bundle` is the full git history in one file: `git clone tbm-2026.08.25.bundle tbm`.\n\n`tbm-2026.08.25.torrent` is trackerless with an HTTP webseed, so the swarm stays reachable if this origin does not.\n\n`tbm-2026.08.25-manifest.json` and `tbm-2026.08.25-manifest.json.ots` verify the Bitcoin anchor on their own: put both in one directory and run `ots verify tbm-2026.08.25-manifest.json.ots`.\n\n`tbm-2026.08.25-SHA256SUMS.txt` covers every asset above. Download them into one directory and run `shasum -a 256 -c tbm-2026.08.25-SHA256SUMS.txt`. It does not cover the Source code (zip/tar.gz) links, which GitHub regenerates on demand."
+    },
+    {
+      "repo": "TheBenMeadows/tbm",
+      "tag": "2026.08.19",
+      "name": "2026.08.19",
+      "date": "2026-08-19",
+      "published": "2026-08-19T19:04:39Z",
+      "url": "https://github.com/TheBenMeadows/tbm/releases/tag/2026.08.19",
+      "notes": "Arweave `nd6Eps2EvoRQDMXw3pdQCzEaLsXF00eR0zZd5qCJI_A` — `ar://thebenmeadows`\nManifest sha256 `c80c39dfc97b33360e13ba4e48e35a3a8568dc648a5ffaa44a2a6400afdb5399`, signed to Nostr and anchored with OpenTimestamps.\n\nThe continuous mirrors (Cloudflare, Netlify, onion, i2p) already track `main`; this release is what the pinned surfaces — Arweave, IPNS, and the Nostr nsite — now serve.\n\nAssets:\n\n`tbm-2026.08.19.zim` is the whole site as a single offline archive: open it in [Kiwix](https://kiwix.org/) with no network at all.\n\n`tbm-2026.08.19.bundle` is the full git history in one file: `git clone tbm-2026.08.19.bundle tbm`.\n\n`tbm-2026.08.19.torrent` is trackerless with an HTTP webseed, so the swarm stays reachable if this origin does not.\n\n`tbm-2026.08.19-manifest.json` and `tbm-2026.08.19-manifest.json.ots` verify the Bitcoin anchor on their own: put both in one directory and run `ots verify tbm-2026.08.19-manifest.json.ots`.\n\n`tbm-2026.08.19-SHA256SUMS.txt` covers every asset above. Download them into one directory and run `shasum -a 256 -c tbm-2026.08.19-SHA256SUMS.txt`. It does not cover the Source code (zip/tar.gz) links, which GitHub regenerates on demand."
+    },
+    {
+      "repo": "TheBenMeadows/tbm",
+      "tag": "2026.08.18",
+      "name": "2026.08.18",
+      "date": "2026-08-18",
+      "published": "2026-08-18T18:34:55Z",
+      "url": "https://github.com/TheBenMeadows/tbm/releases/tag/2026.08.18",
+      "notes": "Arweave `bDbvhYF3ANarZtc6e89M7p-EYuuIn50wWzqsxwQC3ok` — `ar://thebenmeadows`\nManifest sha256 `e99d182b5b927a4418655da729b82a636a6d435c2f8ccd6f9a08232ce5fe2f32`, signed to Nostr and anchored with OpenTimestamps.\n\nThe continuous mirrors (Cloudflare, Netlify, onion, i2p) already track `main`; this release is what the pinned surfaces — Arweave, IPNS, and the Nostr nsite — now serve.\n\nAssets:\n\n`tbm-2026.08.18.zim` is the whole site as a single offline archive: open it in [Kiwix](https://kiwix.org/) with no network at all.\n\n`tbm-2026.08.18.bundle` is the full git history in one file: `git clone tbm-2026.08.18.bundle tbm`.\n\n`tbm-2026.08.18.torrent` is trackerless with an HTTP webseed, so the swarm stays reachable if this origin does not.\n\n`tbm-2026.08.18-manifest.json` and `tbm-2026.08.18-manifest.json.ots` verify the Bitcoin anchor on their own: put both in one directory and run `ots verify tbm-2026.08.18-manifest.json.ots`.\n\n`tbm-2026.08.18-SHA256SUMS.txt` covers every asset above. Download them into one directory and run `shasum -a 256 -c tbm-2026.08.18-SHA256SUMS.txt`. It does not cover the Source code (zip/tar.gz) links, which GitHub regenerates on demand."
+    },
+    {
+      "repo": "TheBenMeadows/tbm",
+      "tag": "2026.08.15",
+      "name": "2026.08.15",
+      "date": "2026-08-15",
+      "published": "2026-08-15T15:16:25Z",
+      "url": "https://github.com/TheBenMeadows/tbm/releases/tag/2026.08.15",
+      "notes": "Arweave `MOSCTzVzO7xtzWin2W38ZATXSao2ySAMbppx0BV_dR4` — `ar://thebenmeadows`\nManifest sha256 `7e418c078e64bec263dbb874734be0450a09236e1986167198927b6f4427164f`, signed to Nostr and anchored with OpenTimestamps.\n\nThe continuous mirrors (Cloudflare, Netlify, onion, i2p) already track `main`; this release is what the pinned surfaces — Arweave, IPNS, and the Nostr nsite — now serve.\n\n`tbm-2026.08.15.zim` is the whole site as a single offline archive: open it in [Kiwix](https://kiwix.org/) with no network at all."
+    },
+    {
+      "repo": "TheBenMeadows/tbm",
+      "tag": "2026.08.13",
+      "name": "2026.08.13",
+      "date": "2026-08-13",
+      "published": "2026-08-13T22:22:35Z",
+      "url": "https://github.com/TheBenMeadows/tbm/releases/tag/2026.08.13",
+      "notes": "Arweave `MZPEkJ-C_5RhLcn6ZTsSqSYbjYfUHvHly2pAfejTavU` — `ar://thebenmeadows`\nManifest sha256 `7ab137cf6c576b0159aa93f0d1218887bf38c06a9fe2debefd754eefc524caaa`, signed to Nostr and anchored with OpenTimestamps.\n\nThe continuous mirrors (Cloudflare, Netlify, onion, i2p) already track `main`; this release is what the pinned surfaces — Arweave, IPNS, and the Nostr nsite — now serve.\n\n`tbm-2026.08.13.zim` is the whole site as a single offline archive: open it in [Kiwix](https://kiwix.org/) with no network at all."
+    },
+    {
+      "repo": "TheBenMeadows/tbm",
+      "tag": "2026.08.13-ca04423",
+      "name": "2026.08.13-ca04423",
+      "date": "2026-08-13",
+      "published": "2026-08-13T22:56:22Z",
+      "url": "https://github.com/TheBenMeadows/tbm/releases/tag/2026.08.13-ca04423",
+      "notes": "Arweave `vfw2zLzWNLxdm-c9FE7VaHrALgMsHtI_pl70SKGy_wE` — `ar://thebenmeadows`\nManifest sha256 `0db802fb8ad64bac7607f2b0a0dea4c30b4c1872f09f8aa4116a08d54d1b9bc9`, signed to Nostr and anchored with OpenTimestamps.\n\nThe continuous mirrors (Cloudflare, Netlify, onion, i2p) already track `main`; this release is what the pinned surfaces — Arweave, IPNS, and the Nostr nsite — now serve.\n\n`tbm-2026.08.13-ca04423.zim` is the whole site as a single offline archive: open it in [Kiwix](https://kiwix.org/) with no network at all."
+    },
+    {
+      "repo": "TheBenMeadows/tbm",
+      "tag": "2026.08.12",
+      "name": "2026.08.12",
+      "date": "2026-08-12",
+      "published": "2026-08-12T20:55:45Z",
+      "url": "https://github.com/TheBenMeadows/tbm/releases/tag/2026.08.12",
+      "notes": "Arweave `7dQW9vm6AwazKxPvve1XsmezFZIMW8T_esp41LhAR_M` — `ar://thebenmeadows`\nManifest sha256 `cf8b4718d7592c4003e48d459f6b0d5cec60806ee1c6b6852788497ab4a67b3a`, signed to Nostr and anchored with OpenTimestamps.\n\nThe continuous mirrors (Cloudflare, Netlify, onion, i2p) already track `main`; this release is what the pinned surfaces — Arweave, IPNS, and the Nostr nsite — now serve.\n\n`tbm-2026.08.12.zim` is the whole site as a single offline archive: open it in [Kiwix](https://kiwix.org/) with no network at all."
+    },
+    {
+      "repo": "TheBenMeadows/tbm",
+      "tag": "2026.08.12-3618747",
+      "name": "2026.08.12-3618747",
+      "date": "2026-08-12",
+      "published": "2026-08-12T22:29:08Z",
+      "url": "https://github.com/TheBenMeadows/tbm/releases/tag/2026.08.12-3618747",
+      "notes": "Arweave `bSIej9srro0OPvldLngtnyejiSIbpewn7zO50zrKYck` — `ar://thebenmeadows`\nManifest sha256 `84bb0c3dbeecb1bc5e56c99bed84e42887ef776abc0fc9183c5bd775789647b1`, signed to Nostr and anchored with OpenTimestamps.\n\nThe continuous mirrors (Cloudflare, Netlify, onion, i2p) already track `main`; this release is what the pinned surfaces — Arweave, IPNS, and the Nostr nsite — now serve.\n\n`tbm-2026.08.12-3618747.zim` is the whole site as a single offline archive: open it in [Kiwix](https://kiwix.org/) with no network at all."
+    },
+    {
+      "repo": "TheBenMeadows/tbm",
+      "tag": "2026.08.06",
+      "name": "2026.08.06",
+      "date": "2026-08-06",
+      "published": "2026-08-06T23:42:55Z",
+      "url": "https://github.com/TheBenMeadows/tbm/releases/tag/2026.08.06",
+      "notes": "Arweave `NJa3D9C1mwPpsVd1Jh_b5pc3QLZzfFmdTf-kWlWG-po` — `ar://thebenmeadows`\nManifest sha256 `2703000903b906fc0f4ffa6b1f598a3e850dcc5d7dc670ee19857ddbe7c10521`, signed to Nostr and anchored with OpenTimestamps.\n\nThe continuous mirrors (Cloudflare, Netlify, onion, i2p) already track `main`; this release is what the pinned surfaces — Arweave, IPNS, and the Nostr nsite — now serve."
+    },
+    {
+      "repo": "TheBenMeadows/tbm",
+      "tag": "2026.08.03",
+      "name": "2026.08.03",
+      "date": "2026-08-03",
+      "published": "2026-08-03T23:10:26Z",
+      "url": "https://github.com/TheBenMeadows/tbm/releases/tag/2026.08.03",
+      "notes": "Arweave `7hmuwebYbHiky3qPwQ5QY9BWyyScmkAs0tSZBgdm8Y0` — `ar://thebenmeadows`\nManifest sha256 `7ad0a74f93986ffe09b4b322d9b8788a68cc4f8df92414f15598faf00bd88123`, signed to Nostr and anchored with OpenTimestamps.\n\nThe continuous mirrors (Cloudflare, Netlify, onion, i2p) already track `main`; this release is what the pinned surfaces — Arweave, IPNS, and the Nostr nsite — now serve.\n\nFirst tagged release. Earlier releases exist as proofs in `commitments/` but were cut before tagging was part of the release script."
+    }
+  ],
+  "zenodo": [
+    {
+      "concept": "23906181",
+      "title": "packing-records: candidate improvements to five record tables for packing and energy problems",
+      "version": "1.2.1",
+      "type": "dataset",
+      "date": "2026-11-06",
+      "url": "https://doi.org/10.5281/zenodo.24012352"
+    },
+    {
+      "concept": "23906181",
+      "title": "packing-records: candidate improvements to five record tables for packing and energy problems",
+      "version": "1.2.0",
+      "type": "dataset",
+      "date": "2026-11-04",
+      "url": "https://doi.org/10.5281/zenodo.23951681"
+    },
+    {
+      "concept": "23331138",
+      "title": "The 1/k Ceiling in Reciprocal Rank Fusion: A Zero-Overlap Test for Hybrid Retrieval",
+      "version": "2",
+      "type": "publication",
+      "date": "2026-11-03",
+      "url": "https://doi.org/10.5281/zenodo.23920744"
+    },
+    {
+      "concept": "23906181",
+      "title": "packing-records: candidate improvements to four packing record tables",
+      "version": "1.1.0",
+      "type": "dataset",
+      "date": "2026-11-03",
+      "url": "https://doi.org/10.5281/zenodo.23931937"
+    },
+    {
+      "concept": "23906181",
+      "title": "packing-records: candidate improvements to four packing record tables",
+      "version": "1.0.0",
+      "type": "dataset",
+      "date": "2026-11-02",
+      "url": "https://doi.org/10.5281/zenodo.23906182"
+    },
+    {
+      "concept": "23333265",
+      "title": "essentialism: An On-Chain Generative Work That Forgets Two Photographs",
+      "version": "1.0.1",
+      "type": "publication",
+      "date": "2026-10-17",
+      "url": "https://doi.org/10.5281/zenodo.23443132"
+    },
+    {
+      "concept": "23333265",
+      "title": "essentialism: An On-Chain Generative Work That Forgets Two Photographs",
+      "version": "1.0.0",
+      "type": "publication",
+      "date": "2026-10-13",
+      "url": "https://doi.org/10.5281/zenodo.23333266"
+    },
+    {
+      "concept": "23331138",
+      "title": "A Score Ceiling in Reciprocal Rank Fusion Detects Zero Overlap, and Found a Dead Retriever",
+      "version": "",
+      "type": "publication",
+      "date": "2026-10-12",
+      "url": "https://doi.org/10.5281/zenodo.23331139"
+    }
+  ],
+  "experiments": [
+    {
+      "slug": "birds",
+      "date": "2026-10-30"
+    },
+    {
+      "slug": "dls",
+      "date": "2026-08-02"
+    },
+    {
+      "slug": "etherhoo",
+      "date": "2026-08-02"
+    },
+    {
+      "slug": "pendulum",
+      "date": "2026-08-02"
+    },
+    {
+      "slug": "poap-vault",
+      "date": "2026-08-04"
+    },
+    {
+      "slug": "porcine",
+      "date": "2026-08-02"
+    }
+  ],
+  "outside": {
+    "pulls": [
+      {
+        "repo": "cookiechain/cookie-mcp",
+        "number": 3,
+        "title": "transfer: optional memo via the SPL Memo program",
+        "url": "https://github.com/cookiechain/cookie-mcp/pull/3",
+        "date": "2026-09-14",
+        "accepted": true
+      },
+      {
+        "repo": "hamed-elfayome/Claude-Usage-Tracker",
+        "number": 301,
+        "title": "fix: present Notch HUD on the built-in notched display, not the primary display (#294)",
+        "url": "https://github.com/hamed-elfayome/Claude-Usage-Tracker/pull/301",
+        "date": "2026-08-29",
+        "accepted": true
+      },
+      {
+        "repo": "hamed-elfayome/Claude-Usage-Tracker",
+        "number": 302,
+        "title": "fix: keychain migration silently no-ops on unentitled builds, leaving credentials in cleartext (#292)",
+        "url": "https://github.com/hamed-elfayome/Claude-Usage-Tracker/pull/302",
+        "date": "2026-08-29",
+        "accepted": true
+      },
+      {
+        "repo": "hamed-elfayome/Claude-Usage-Tracker",
+        "number": 303,
+        "title": "fix: false 'credentials expired' (E3000) from Cloudflare-challenged requests (#277)",
+        "url": "https://github.com/hamed-elfayome/Claude-Usage-Tracker/pull/303",
+        "date": "2026-08-29",
+        "accepted": true
+      },
+      {
+        "repo": "hamed-elfayome/Claude-Usage-Tracker",
+        "number": 305,
+        "title": "fix(notch): stop returning 413 for ordinary hook payloads; bound the listener",
+        "url": "https://github.com/hamed-elfayome/Claude-Usage-Tracker/pull/305",
+        "date": "2026-08-29",
+        "accepted": true
+      },
+      {
+        "repo": "hzrd149/nsite-gateway",
+        "number": 27,
+        "title": "fix: prefer path-derived MIME type over the blossom server's content-type header",
+        "url": "https://github.com/hzrd149/nsite-gateway/pull/27",
+        "date": "2026-08-27",
+        "accepted": true
+      },
+      {
+        "repo": "kamenlevi/MagHue",
+        "number": 3,
+        "title": "Optional grace window: show the charging colour briefly after connect",
+        "url": "https://github.com/kamenlevi/MagHue/pull/3",
+        "date": "2026-08-27",
+        "accepted": true
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 876,
+        "title": "fix(menubar): refuse the saved-layout bulk apply while the dividers are collapsed",
+        "url": "https://github.com/thaw-app/Thaw/pull/876",
+        "date": "2026-08-04",
+        "accepted": true
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 856,
+        "title": "fix(menubar): back off negative-cache TTL instead of flat 60s",
+        "url": "https://github.com/thaw-app/Thaw/pull/856",
+        "date": "2026-07-31",
+        "accepted": true
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 785,
+        "title": "fix(menubar): skip saved-layout bulk apply while sourcePIDs are unresolved",
+        "url": "https://github.com/thaw-app/Thaw/pull/785",
+        "date": "2026-07-23",
+        "accepted": false
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 796,
+        "title": "fix(menubar): don't persist notch-overflow ejections into the saved layout",
+        "url": "https://github.com/thaw-app/Thaw/pull/796",
+        "date": "2026-07-23",
+        "accepted": false
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 797,
+        "title": "fix(service): resolve parked items whose title is their bundle identifier",
+        "url": "https://github.com/thaw-app/Thaw/pull/797",
+        "date": "2026-07-23",
+        "accepted": false
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 809,
+        "title": "fix(menubar): only run notch overflow on the main display",
+        "url": "https://github.com/thaw-app/Thaw/pull/809",
+        "date": "2026-07-23",
+        "accepted": false
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8959,
+        "title": "fix(fast-follow-spec): return diagnostics instead of throwing on non-array path fields (#8958)",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/8959",
+        "date": "2026-07-17",
+        "accepted": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8496,
+        "title": "feat(khala-code-desktop): TUI saved-prompt library (Warp Workflows analog)",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/8496",
+        "date": "2026-07-06",
+        "accepted": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8221,
+        "title": "feat(khala-code-desktop): TUI mode — terminal chat over the same Codex harness",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/8221",
+        "date": "2026-07-03",
+        "accepted": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8260,
+        "title": "feat(khala-code-desktop): TUI ergonomics — one-shot argv, single-prompt piping, honest usage, tool-activity + spinner/resume",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/8260",
+        "date": "2026-07-03",
+        "accepted": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 6024,
+        "title": "feat(inference): emit openagents disclosure block on the streaming (SSE) path",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/6024",
+        "date": "2026-06-22",
+        "accepted": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 5534,
+        "title": "fix(autopilot-control-protocol): typecheck to zero (NodeNext extensions + tail) and fence into check:deploy",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/5534",
+        "date": "2026-06-20",
+        "accepted": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 5535,
+        "title": "feat(nostr): outage-coordination fallback drill smoke + evidence (DE-8, #5531)",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/5535",
+        "date": "2026-06-20",
+        "accepted": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 5536,
+        "title": "fix(pylon): surface MDK wallet daemon port conflict with actionable MDK_WALLET_PORT guidance (#5505)",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/5536",
+        "date": "2026-06-20",
+        "accepted": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 5538,
+        "title": "feat(markets): signature usage metering — clear signature_monetization metering blocker (DE-6 #5529)",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/5538",
+        "date": "2026-06-20",
+        "accepted": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 5544,
+        "title": "feat(sites): flag-gated site page form-capture route mount — DE-9 #5532",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/5544",
+        "date": "2026-06-20",
+        "accepted": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 5546,
+        "title": "feat(pylon): safe public multi-earning-node projection clears safe_public_projection_missing (#5527)",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/5546",
+        "date": "2026-06-20",
+        "accepted": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 5548,
+        "title": "fix(sites): restore SITE_FORM_CAPTURE_ENABLED + form-capture route mount silently reverted by #5546",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/5548",
+        "date": "2026-06-20",
+        "accepted": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 5560,
+        "title": "DE-9 #5532: omni client-delivery business-object projection (flag-gated INERT)",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/5560",
+        "date": "2026-06-20",
+        "accepted": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 5741,
+        "title": "fix(ui): un-break the Tailwind UI coverage test on clean checkouts + gate packages/ui",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/5741",
+        "date": "2026-06-20",
+        "accepted": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 5448,
+        "title": "refactor(api): dedup inline HTTP method guards in training-run-window-routes",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/5448",
+        "date": "2026-06-19",
+        "accepted": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 5473,
+        "title": "feat(forum): add light/dark theme selector",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/5473",
+        "date": "2026-06-19",
+        "accepted": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 5509,
+        "title": "perf(forum): batch per-post tip-recipient-readiness (fix N+1 on large threads)",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/5509",
+        "date": "2026-06-19",
+        "accepted": true
+      }
+    ],
+    "issues": [
+      {
+        "repo": "ar-io/ar-io-deploy",
+        "number": 17,
+        "title": "Deploy fails when credits come from a Turbo credit share approval (checks owned winc, not effectiveBalance)",
+        "url": "https://github.com/ar-io/ar-io-deploy/issues/17",
+        "date": "2026-10-09",
+        "fixed": true
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 1084,
+        "title": "3.0.0-alpha.1: menu bar ordering degrades silently on macOS 27 without Full Disk Access; bootstrap reports `permissions state = hasAll`",
+        "url": "https://github.com/thaw-app/Thaw/issues/1084",
+        "date": "2026-09-11",
+        "fixed": true
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 1085,
+        "title": "3.0.0-alpha.1: pre-macOS-27 saved layouts do not resolve, and `applySavedLayout` reports the order already matches",
+        "url": "https://github.com/thaw-app/Thaw/issues/1085",
+        "date": "2026-09-11",
+        "fixed": true
+      },
+      {
+        "repo": "hzrd149/nsite-gateway",
+        "number": 28,
+        "title": "TimeoutOverflowWarning hot loop fills the disk (~107 KB/s of logs, 16 GB syslog)",
+        "url": "https://github.com/hzrd149/nsite-gateway/issues/28",
+        "date": "2026-08-29",
+        "fixed": true
+      },
+      {
+        "repo": "kamenlevi/MagHue",
+        "number": 2,
+        "title": "Root helper restores charge limits from a user-writable path",
+        "url": "https://github.com/kamenlevi/MagHue/issues/2",
+        "date": "2026-08-23",
+        "fixed": true
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 868,
+        "title": "[Bug] Hidden section collapses to zero width after docking to an external main display with a notched secondary",
+        "url": "https://github.com/thaw-app/Thaw/issues/868",
+        "date": "2026-08-15",
+        "fixed": true
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 885,
+        "title": "[Bug] Hidden section order is permuted by a bulk apply while its membership stays correct",
+        "url": "https://github.com/thaw-app/Thaw/issues/885",
+        "date": "2026-08-15",
+        "fixed": true
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 890,
+        "title": "[Bug] Section divider preferred positions can never be written: ControlItemDefaults setter discards preflightSetup and resetChevronPositions",
+        "url": "https://github.com/thaw-app/Thaw/issues/890",
+        "date": "2026-08-15",
+        "fixed": true
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 895,
+        "title": "[Bug] ControlItemPair strategy-4 pairing flaps between scans and a divider drag on a stale pairing corrupts the saved layout",
+        "url": "https://github.com/thaw-app/Thaw/issues/895",
+        "date": "2026-08-15",
+        "fixed": true
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 900,
+        "title": "[Bug] Item moves fail with EventError.cannotComplete, so the notch overflow rebalance re-dispatches forever and the layout never converges",
+        "url": "https://github.com/thaw-app/Thaw/issues/900",
+        "date": "2026-08-15",
+        "fixed": true
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 905,
+        "title": "[Bug] Third-party item refused as immovable with no diagnostic, while macOS reports it identically to movable items",
+        "url": "https://github.com/thaw-app/Thaw/issues/905",
+        "date": "2026-08-15",
+        "fixed": true
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 784,
+        "title": "applySavedLayout dispatches bulk apply while sourcePIDs are unresolved (XPC failure) — menu bar items scramble",
+        "url": "https://github.com/thaw-app/Thaw/issues/784",
+        "date": "2026-07-30",
+        "fixed": true
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 790,
+        "title": "Notch-overflow ejection is persisted into the saved layout — items stay hidden on non-notched displays",
+        "url": "https://github.com/thaw-app/Thaw/issues/790",
+        "date": "2026-07-30",
+        "fixed": true
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 795,
+        "title": "Parked (off-screen) items whose title is their bundle identifier are unresolvable — one-way door into the hidden section",
+        "url": "https://github.com/thaw-app/Thaw/issues/795",
+        "date": "2026-07-30",
+        "fixed": true
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 808,
+        "title": "Notch overflow runs against a notched secondary display — items ejected from the main display's layout",
+        "url": "https://github.com/thaw-app/Thaw/issues/808",
+        "date": "2026-07-24",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 9003,
+        "title": "Full Auto continuation refused for any non-default Codex model (stale CodexModelSchema gate) — rc.20/rc.21 regression",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/9003",
+        "date": "2026-07-19",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8958,
+        "title": "fast-follow-spec: parseFastFollow throws uncaught TypeError instead of a diagnostic when a path-list field is not an array",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/8958",
+        "date": "2026-07-17",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8960,
+        "title": "desktop: typecheck fails on main — 14 errors after required thread `status` landed in khala-sync-client (cc34cc5c) without desktop reconciliation",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/8960",
+        "date": "2026-07-17",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8983,
+        "title": "Desktop dev-mode testing session: default Codex model unusable on first run, Settings account-check stuck, Settings nav no-op (+ minors)",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/8983",
+        "date": "2026-07-17",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8814,
+        "title": "openagents.com serves a \"be right back\" placeholder (HTTP 200) on all routes — forum unreachable, no tracking issue",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/8814",
+        "date": "2026-07-14",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8569,
+        "title": "GCP migration orphan: /api/public/pylon-stats returns available:false — relation \"pylon_api_registrations\" does not exist in Cloud SQL",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/8569",
+        "date": "2026-07-08",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8534,
+        "title": "Forum user-profile pages broken after GCP migration: /forum/u/<id>/<slug> redirects to home, /api/forum/users/* 404s",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/8534",
+        "date": "2026-07-07",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8495,
+        "title": "khala-code-desktop TUI: saved-prompt library (/save /prompts /run) — Warp Workflows analog",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/8495",
+        "date": "2026-07-06",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8497,
+        "title": "DX: stale workspace links produce spurious typecheck errors (TS2339/TS2307) until bun install after a branch switch",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/8497",
+        "date": "2026-07-06",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8529,
+        "title": "openagents.com public API: sustained 503 (Cloudflare 1102 / Worker resource-limit) — multi-hour outage 2026-07-06",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/8529",
+        "date": "2026-07-06",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8230,
+        "title": "khala-code-desktop: hidden Codex models (\"Codex Auto Review\") leak into the Settings model picker",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/8230",
+        "date": "2026-07-03",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8231,
+        "title": "khala-code-desktop: assistant reply renders twice in the transcript (Claude lane)",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/8231",
+        "date": "2026-07-03",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8232,
+        "title": "khala-code-desktop: Claude lane inherits the user's global Claude Code context (home reuse)",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/8232",
+        "date": "2026-07-03",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8233,
+        "title": "khala-code-desktop: History lists the entire user-home Codex/Claude session store (incl. headless automation) with undismissable error rows",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/8233",
+        "date": "2026-07-03",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 6444,
+        "title": "khala spawn: misleading \"Could not reach Khala\" error masks server-side failure (CLI v0.1.20)",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/6444",
+        "date": "2026-06-28",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 6361,
+        "title": "Khala coding-delegation: workspace materializer fails on master-default repos (branch_fetch_failed)",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/6361",
+        "date": "2026-06-27",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 6362,
+        "title": "Khala coding-delegation: khala request creates a lease but never auto-executes; maxInflight=1 dispatch gate then 409s all further coding requests",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/6362",
+        "date": "2026-06-27",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 6047,
+        "title": "Verse-in-isolation: generalize the pixel-proof render gate so every scene capture asserts non-blank, not just crackling-arc",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/6047",
+        "date": "2026-06-24",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 6218,
+        "title": "Gym route boundary: pin and regression-test the `/gym` document gate (only `/gym/oss` admitted; bare `/gym` + deeper/unknown segments redirect)",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/6218",
+        "date": "2026-06-24",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 5556,
+        "title": "Remaining NodeNext typecheck debt: apps/pylon (365) + apps/autopilot-desktop (509) red and out of check:deploy",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/5556",
+        "date": "2026-06-21",
+        "fixed": true
+      },
+      {
+        "repo": "aapatre/Automatic-Udemy-Course-Enroller-GET-PAID-UDEMY-COURSES-for-FREE",
+        "number": 357,
+        "title": "[BUG] Firefox - AttributeError: 'WebDriver' object has no attribute 'execute_cdp_cmd'",
+        "url": "https://github.com/aapatre/Automatic-Udemy-Course-Enroller-GET-PAID-UDEMY-COURSES-for-FREE/issues/357",
+        "date": "2022-05-12",
+        "fixed": true
+      }
+    ]
+  },
+  "siteWeeks": [
+    {
+      "repo": "mdws-org/orthodoxprayers",
+      "week": "2026-10-26",
+      "date": "2026-11-01",
+      "announce": true,
+      "title": "Prayers now print cleanly on paper",
+      "summary": "Printed services now come out in black on white with red rubrics, book-style paragraphs, page numbers and no screen controls, and prayers no longer split awkwardly."
+    },
+    {
+      "repo": "mdws-org/poap-saver",
+      "week": "2026-10-26",
+      "date": "2026-10-31",
+      "announce": true,
+      "title": "ENS names resolve on the new registry",
+      "summary": "ENS names, including names migrated to the new registry and Base names, now resolve correctly, with clearer messages when a name cannot be found."
+    },
+    {
+      "repo": "TheBenMeadows/benjaminmeadows.com",
+      "week": "2026-10-19",
+      "date": "2026-10-20",
+      "announce": true,
+      "title": "Credential links to public license registries",
+      "summary": "Two plumbing credentials, the Arizona contractor license and the Texas journeyman license, now link to the public registries that confirm them."
+    },
+    {
+      "repo": "mdws-org/orthodoxprayers",
+      "week": "2026-10-19",
+      "date": "2026-10-19",
+      "pulls": [
+        46
+      ],
+      "announce": false,
+      "title": "",
+      "summary": ""
+    },
+    {
+      "repo": "mdws-org/poap-saver",
+      "week": "2026-10-19",
+      "date": "2026-10-20",
+      "announce": true,
+      "title": "Twelve September 2026 drops added to archive",
+      "summary": "The archive now holds 197,589 events, including twelve September 2026 drops, with artwork and metadata served from new October roots."
+    },
+    {
+      "repo": "mdws-org/orthodoxprayers",
+      "week": "2026-10-12",
+      "date": "2026-10-14",
+      "announce": false,
+      "title": "",
+      "summary": ""
+    },
+    {
+      "repo": "mdws-org/poap-saver",
+      "week": "2026-10-12",
+      "date": "2026-10-14",
+      "announce": false,
+      "title": "",
+      "summary": ""
+    },
+    {
+      "repo": "mdws-org/orthodoxprayers",
+      "week": "2026-10-05",
+      "date": "2026-10-11",
+      "announce": true,
+      "title": "The Typika added",
+      "summary": "The Typika now has its own page, set word for word from a printed Reader's Service booklet, with the Beatitudes and Psalm 33 in Hapgood's translation."
+    },
+    {
+      "repo": "mdws-org/poap-saver",
+      "week": "2026-09-28",
+      "date": "2026-09-29",
+      "announce": true,
+      "title": "Talk recordings streamed and image loading restored",
+      "summary": "Recordings from the speaking archive can now be streamed and seeked, and POAP images load again after two public IPFS gateways stopped working."
+    },
+    {
+      "repo": "mdws-org/orthodoxprayers",
+      "week": "2026-09-21",
+      "date": "2026-09-27",
+      "announce": true,
+      "title": "Compline, Communion prayers and evening rule added",
+      "summary": "The full evening rule, Compline, the Three Canons, and the prayers before and after Holy Communion are now on the site, with grouped contents."
+    },
+    {
+      "repo": "mdws-org/poap-saver",
+      "week": "2026-08-17",
+      "date": "2026-08-19",
+      "announce": false,
+      "title": "",
+      "summary": ""
+    },
+    {
+      "repo": "mdws-org/orthodoxprayers",
+      "week": "2026-08-10",
+      "date": "2026-08-13",
+      "announce": true,
+      "title": "Random icon on the Not Found page",
+      "summary": "The Not Found page now shows one of fourteen spot illustrations, crosses, stars and a seraph, chosen at random on each visit, and the app icon has been redrawn."
+    },
+    {
+      "repo": "mdws-org/poap-saver",
+      "week": "2026-08-10",
+      "date": "2026-08-12",
+      "announce": true,
+      "title": "Archive grows by 7,424 recovered events",
+      "summary": "The archive now holds 197,577 events after a crawl past the old ceiling, and the browsing grid loads small thumbnails instead of full originals."
+    }
+  ]
+}
