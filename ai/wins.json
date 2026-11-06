@@ -26,9 +26,9 @@
             "id": "cohn-grassmannian-731",
             "date": "2026-11-03",
             "kind": "placement",
-            "title": "Grassmannian packings table: 731 records improved",
+            "title": "Grassmannian packings table: 747 records improved",
             "where": "Henry Cohn's table of Grassmannian packings",
-            "summary": "Explicit packings for 731 rows of the table, each beating the listed squared chordal distance by at least 1e-7, with every value recomputed in exact rational arithmetic. 553 of the rows date from the 1996-97 tables and 170 from entries added in 2025 and 2026; the largest gains are in 12 dimensions, where 87 to 89 lines reach 8/9. Henry Cohn added all 731 to the table by 2026-11-03, each citing the packing-records data set.",
+            "summary": "Explicit packings for 747 rows of the table, with every value recomputed in exact rational arithmetic. The first 731 each beat the listed squared chordal distance by at least 1e-7; 553 of them date from the 1996-97 tables and 170 from entries added in 2025 and 2026, and the largest gains are in 12 dimensions, where 87 to 89 lines reach 8/9. The other 16 beat the listed value in its last printed digit, after the table's keeper asked for improvements of any size. Henry Cohn added all 747 to the table by 2026-11-05, citing two versions of the packing-records data set.",
             "links": [
                 { "label": "the table", "url": "https://cohn.mit.edu/grassmannian/" },
                 { "label": "packing-records data set", "url": "https://doi.org/10.5281/zenodo.23906182" }
@@ -131,11 +131,11 @@
         },
         {
             "id": "paradigm-packing",
-            "date": "2026-10-05",
+            "date": "2026-11-04",
             "kind": "placement",
-            "title": "Top ten on a shape-packing problem, two-millionths off first place",
+            "title": "Rank 8 on a shape-packing problem, 4.4e-7 off first place",
             "where": "Paradigm Puzzles",
-            "summary": "Arrange a fixed set of shapes to minimize the radius of the circle enclosing them. Finished at 2.9485289324787587 against a leading score of 2.9485269238856113, a gap of 2.0e-6, for rank 10 of 43 on a board where the top twelve scores all fall within 3.1e-6 of one another.",
+            "summary": "Arrange a fixed set of shapes to minimize the radius of the circle enclosing them. Reached 2.948527364112592 against a leading score of 2.9485269238856113, a gap of 4.4e-7, for rank 8 of 44, up from rank 10 on 2026-10-05.",
             "links": [
                 { "label": "the puzzle", "url": "https://www.paradigm.xyz/puzzles/packing" }
             ]
