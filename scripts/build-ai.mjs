@@ -57,7 +57,7 @@ function card(win) {
         ? `<a href="${esc(primary.url)}" target="_blank" rel="noopener">${esc(win.title)}</a>`
         : esc(win.title);
 
-    return `                <div class="hairline-card p-6">
+    return `                <div id="${esc(win.id)}" class="hairline-card p-6">
                     <div class="flex items-center justify-between font-mono text-xs">
                         <span class="uppercase tracking-widest text-neutral-500">${esc(data.kinds[win.kind])}</span>
                         <span class="text-neutral-600">${esc(win.date)}</span>

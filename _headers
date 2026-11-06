@@ -49,6 +49,10 @@
   Content-Type: application/rss+xml; charset=utf-8
   Cache-Control: public, max-age=3600
 
+/news/feed.xml
+  Content-Type: application/atom+xml; charset=utf-8
+  Cache-Control: public, max-age=3600
+
 /.well-known/nostr.json
   Access-Control-Allow-Origin: *
 
@@ -180,6 +184,10 @@
 /ai/
   Cache-Control: public, max-age=0, must-revalidate
   Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/ai/
+
+/news/
+  Cache-Control: public, max-age=0, must-revalidate
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/news/
 
 /marfa/
   Cache-Control: public, max-age=0, must-revalidate

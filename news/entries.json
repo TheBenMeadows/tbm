@@ -1,0 +1,165 @@
+{
+  "_comment": "Hand-kept half of /news, rendered with news/sources.json by scripts/build-news.mjs. `entries` holds what nothing reports on its own: site launches and redesigns, art. `sites` lists the site repos whose finished weeks of merged pull requests become entries automatically (scripts/fetch-news.mjs), each from the week after its `since` (launch) date; only pull requests opened by an account in `siteAuthors` are read. `outsideAuthors` are the accounts whose pull requests merged, and issues fixed, in repos outside the two orgs become Contribution entries; `outsideSkip` lists indexes that only list this site's own work. `hide` removes any entry by id. `skip` hides a repo's releases. `projects` names a repo on the page (the repo name otherwise). `overrides` replaces the line taken from a release's notes, keyed owner/repo@tag. Lines are short and plain, no first person; the build drops or fails on a tool or agent name in a title or summary, as /ai does.",
+  "skip": [
+    "TheBenMeadows/tbm"
+  ],
+  "hide": [],
+  "sites": {
+    "mdws-org/orthodoxprayers": {
+      "project": "OrthodoxPrayers.net",
+      "url": "https://orthodoxprayers.net/",
+      "since": "2026-08-03"
+    },
+    "mdws-org/everybadge": {
+      "project": "everybadge.org",
+      "url": "https://everybadge.org/",
+      "since": "2026-10-20"
+    },
+    "mdws-org/abx-explorer": {
+      "project": "ABX explorer",
+      "url": "https://abx.thebenmeadows.com/",
+      "since": "2026-11-06"
+    },
+    "TheBenMeadows/benjaminmeadows.com": {
+      "project": "benjaminmeadows.com",
+      "url": "https://benjaminmeadows.com/",
+      "since": "2026-10-17"
+    },
+    "mdws-org/poap-saver": {
+      "project": "POAP Saver",
+      "url": "https://thebenmeadows.com/projects/poap-saver/",
+      "since": "2026-08-04"
+    },
+    "TheBenMeadows/horcrux": {
+      "project": "#DailyMuse",
+      "url": "https://dailymuse.thebenmeadows.com/",
+      "since": "2024-07-16"
+    }
+  },
+  "siteAuthors": [
+    "TheBenMeadows",
+    "lathe-agent-oa"
+  ],
+  "outsideAuthors": [
+    "TheBenMeadows",
+    "lathe-agent-oa"
+  ],
+  "outsideSkip": [
+    "MarginaliaSearch/submit-site-to-marginalia-search",
+    "ordinals-wallet/ordinals-collections",
+    "cookiechain/superteam-hackathon-submissions"
+  ],
+  "projects": {
+    "mdws-org/squint": {
+      "name": "Squint",
+      "url": "https://github.com/mdws-org/squint"
+    },
+    "mdws-org/nnw-prayer-book": {
+      "name": "Prayer Book",
+      "url": "https://github.com/mdws-org/nnw-prayer-book"
+    },
+    "mdws-org/emoji-fix": {
+      "name": "Emoji Fix",
+      "url": "https://github.com/mdws-org/emoji-fix"
+    },
+    "mdws-org/freewallet-desktop": {
+      "name": "FreeWallet",
+      "url": "https://github.com/mdws-org/freewallet-desktop"
+    },
+    "mdws-org/wowlet": {
+      "name": "Wowlet",
+      "url": "https://github.com/mdws-org/wowlet"
+    },
+    "mdws-org/pepecoin": {
+      "name": "Pepecoin",
+      "url": "https://github.com/mdws-org/pepecoin"
+    }
+  },
+  "overrides": {
+    "mdws-org/emoji-fix@v1.3.1": "First release: draws emoji with a bundled Noto Color Emoji font on Macs where Brave and other Chromium browsers draw them as blank space.",
+    "mdws-org/emoji-fix@v1.4.0": "Adds a per-site off switch, and stops running inside the challenge frames sites use to screen visitors.",
+    "mdws-org/freewallet-desktop@v2.1.1": "First release of the fork, for Apple Silicon, with an in-app update check.",
+    "mdws-org/nnw-prayer-book@v1.0.0": "First release: EB Garamond, parchment by day and vigil by night, rubric-red links and a red drop cap.",
+    "mdws-org/nnw-prayer-book@v1.1.0": "First release, with a 42em column and larger Mac text sizes: EB Garamond, parchment by day and vigil by night, rubric-red links.",
+    "mdws-org/nnw-prayer-book@v1.2.0": "Hacker News link lines are set ragged instead of justified, and hover styles apply only where a pointer can hover.",
+    "mdws-org/nnw-prayer-book@v1.3.0": "Hides the dark-mode switches some sites leave in Reader View, and keeps small icons at text size.",
+    "mdws-org/pepecoin@v1.1.0-mdws.1": "First release of the fork: Pepecoin-Qt 1.1.0 for macOS on Apple Silicon, signed with a Developer ID.",
+    "mdws-org/squint@v0.8.3": "Signed and notarized by Apple, PDFs and the Finder menu reach Shrink, rows update as each file finishes, and the app gets its own icon.",
+    "mdws-org/squint@v0.9.7": "Remove Location Data handles GeoTIFFs, raw previews and Blackmagic DNGs, and the window comes back after it is closed.",
+    "mdws-org/wowlet@v5.0.3-mdws.1": "First release of the fork: wowlet 5.0.3 for macOS on Apple Silicon, signed with a Developer ID."
+  },
+  "entries": [
+    {
+      "id": "abx-explorer-launch",
+      "date": "2026-11-06",
+      "kind": "site",
+      "project": "ABX explorer",
+      "title": "abx.thebenmeadows.com launches",
+      "summary": "Every collection deployed with ABX, the open protocol from Art Blocks, read from the chain.",
+      "url": "https://abx.thebenmeadows.com/"
+    },
+    {
+      "id": "everybadge-launch",
+      "date": "2026-10-20",
+      "kind": "site",
+      "project": "everybadge.org",
+      "title": "everybadge.org launches",
+      "summary": "Every POAP event the archive captured, with names, dates and artwork, browsable by anyone.",
+      "url": "https://everybadge.org/"
+    },
+    {
+      "id": "art-site-launch",
+      "date": "2026-10-20",
+      "kind": "art",
+      "project": "art.thebenmeadows.com",
+      "title": "art.thebenmeadows.com relaunches",
+      "summary": "Every work TheBenMeadows has minted, read from the chain, with every file archived.",
+      "url": "https://art.thebenmeadows.com/"
+    },
+    {
+      "id": "benjaminmeadows-com-launch",
+      "date": "2026-10-17",
+      "kind": "site",
+      "project": "benjaminmeadows.com",
+      "title": "benjaminmeadows.com launches",
+      "summary": "Operations and sales: waterworks distribution, trade contracting and commercial construction.",
+      "url": "https://benjaminmeadows.com/"
+    },
+    {
+      "id": "poap-saver-launch",
+      "date": "2026-08-04",
+      "kind": "site",
+      "project": "POAP Saver",
+      "title": "POAP Saver",
+      "summary": "Archives the metadata and artwork a POAP points at, before it disappears. A command-line tool and an in-browser rescuer.",
+      "url": "https://thebenmeadows.com/projects/poap-saver/"
+    },
+    {
+      "id": "orthodoxprayers-launch",
+      "date": "2026-08-03",
+      "kind": "site",
+      "project": "OrthodoxPrayers.net",
+      "title": "OrthodoxPrayers.net launches",
+      "summary": "An Orthodox prayer book for the browser, set like the printed books and readable offline.",
+      "url": "https://orthodoxprayers.net/"
+    },
+    {
+      "id": "dailymuse-launch",
+      "date": "2024-07-16",
+      "kind": "art",
+      "project": "#DailyMuse",
+      "title": "The #DailyMuse gallery",
+      "summary": "dailymuse.thebenmeadows.com collects the #DailyMuse series in one place.",
+      "url": "https://dailymuse.thebenmeadows.com/"
+    },
+    {
+      "id": "bentheroofer-launch",
+      "date": "2024-04-19",
+      "kind": "site",
+      "project": "bentheroofer.com",
+      "title": "bentheroofer.com launches",
+      "summary": "Project management and estimating, from 15 years in roofing.",
+      "url": "https://bentheroofer.com/"
+    }
+  ]
+}

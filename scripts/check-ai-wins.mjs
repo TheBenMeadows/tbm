@@ -18,6 +18,7 @@
  *   node scripts/check-ai-wins.mjs     exit 1 and name every offending entry
  */
 import { readFileSync } from "node:fs";
+import { NAME_PATTERN } from "./lib/names.mjs";
 
 const FILE = "ai/wins.json";
 const KIND_DESCRIPTIONS = {
@@ -29,13 +30,6 @@ const KIND_DESCRIPTIONS = {
     milestone: "an arrival or moment a third party wrote down",
 };
 
-const NAMES = [
-    "orrery", "lathe", "claude", "anthropic", "openai", "chatgpt", "gpt",
-    "gemini", "deepseek", "devin", "codex", "copilot", "cursor", "llama",
-    "kimi", "grok", "qwen", "sonnet", "opus", "haiku", "fable",
-    "agent", "agents", "bot", "llm", "ai",
-];
-const NAME_PATTERN = new RegExp(`\\b(${NAMES.join("|")})\\b`, "i");
 
 const ID_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
