@@ -37,7 +37,8 @@
     }
   },
   "siteAuthors": [
-    "TheBenMeadows"
+    "TheBenMeadows",
+    "lathe-agent-oa"
   ],
   "projects": {
     "mdws-org/squint": {
@@ -150,15 +151,6 @@
       "title": "bentheroofer.com launches",
       "summary": "Project management and estimating, from 15 years in roofing.",
       "url": "https://bentheroofer.com/"
-    },
-    {
-      "id": "dangartgroup-launch",
-      "date": "2011-02-01",
-      "kind": "site",
-      "project": "dangartgroup.com",
-      "title": "dangartgroup.com launches",
-      "summary": "The site for Dangart Group, a plumbing company.",
-      "url": "https://dangartgroup.com/"
     }
   ]
 }
