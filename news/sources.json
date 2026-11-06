@@ -1065,14 +1065,6 @@
       "summary": "Two plumbing credentials, the Arizona contractor license and the Texas journeyman license, now link to the public registries that confirm them."
     },
     {
-      "repo": "mdws-org/everybadge",
-      "week": "2026-10-19",
-      "date": "2026-10-22",
-      "announce": true,
-      "title": "Country filter, mint counts and description search",
-      "summary": "The archive now covers drops through October 2026, with a country filter, a most-minted sort, mint counts, typo-tolerant search and description search."
-    },
-    {
       "repo": "mdws-org/orthodoxprayers",
       "week": "2026-10-19",
       "date": "2026-10-19",
@@ -1090,14 +1082,6 @@
       "announce": true,
       "title": "Twelve September 2026 drops added to archive",
       "summary": "The archive now holds 197,589 events, including twelve September 2026 drops, with artwork and metadata served from new October roots."
-    },
-    {
-      "repo": "TheBenMeadows/benjaminmeadows.com",
-      "week": "2026-10-12",
-      "date": "2026-10-17",
-      "announce": false,
-      "title": "",
-      "summary": ""
     },
     {
       "repo": "mdws-org/orthodoxprayers",
@@ -1162,22 +1146,6 @@
       "announce": true,
       "title": "Archive grows by 7,424 recovered events",
       "summary": "The archive now holds 197,577 events after a crawl past the old ceiling, and the browsing grid loads small thumbnails instead of full originals."
-    },
-    {
-      "repo": "mdws-org/orthodoxprayers",
-      "week": "2026-08-03",
-      "date": "2026-08-09",
-      "announce": true,
-      "title": "Full morning rule and evening prayers added",
-      "summary": "The complete morning rule now has its own page, joined by evening prayers, table prayers, the Commemoration, and the prayers after every kathisma."
-    },
-    {
-      "repo": "mdws-org/poap-saver",
-      "week": "2026-08-03",
-      "date": "2026-08-09",
-      "announce": true,
-      "title": "Browsable gallery and event lookup added",
-      "summary": "Rescued badges now appear in a browsable gallery, events can be looked up by ID with download links, and a readout shows which events the archive covers."
     }
   ]
 }

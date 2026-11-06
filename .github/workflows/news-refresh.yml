@@ -109,10 +109,31 @@ jobs:
           name: news-refresh
           path: ${{ runner.temp }}/out
 
+      # Only the data comes from the fetch job; the home page block is rebuilt here on
+      # top of current main, so a change made to index.html in between is kept.
+      - name: Set up Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+
+      - name: Close superseded refresh pull requests
+        run: |
+          gh pr list --state open --json number,headRefName \
+            --jq '.[] | select(.headRefName | startswith("news-refresh/")) | .number' |
+          while read -r n; do
+            gh pr close "$n" --delete-branch --comment "Superseded by run ${{ github.run_id }}."
+          done
+
       - name: Open the pull request
+        id: pr
         run: |
           cp "$RUNNER_TEMP/out/sources.json" news/sources.json
-          cp "$RUNNER_TEMP/out/index.html" index.html
+          node scripts/build-news.mjs
+          if git diff --quiet -- news/sources.json index.html; then
+            echo "main already has this data"
+            echo "opened=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
           git switch -c "$BRANCH"
           git add news/sources.json index.html
           git -c user.name="github-actions[bot]" \
@@ -122,27 +143,54 @@ jobs:
           gh pr create --base main --head "$BRANCH" \
             --title "Refresh news sources" \
             --body "Daily refresh of news/sources.json and the home page News block by .github/workflows/news-refresh.yml (run ${{ github.run_id }}). Merged automatically once the build check passes."
+          echo "opened=true" >> "$GITHUB_OUTPUT"
 
-      # Up to two attempts: if main moves while the check runs, the ruleset's
-      # up-to-date rule refuses the merge, so the branch is updated and checked again.
+      # The check is dispatched (this token's pushes start no workflow) and the run
+      # is found by the branch's head commit, so a slow-to-appear run or a run for an
+      # earlier commit is never the one watched. If main moved, the branch is updated
+      # once and checked again. The branch itself is deleted on merge by the repo
+      # setting; a branch left by a failure is closed by the next run.
       - name: Check and merge
+        if: steps.pr.outputs.opened == 'true'
         run: |
-          for attempt in 1 2; do
-            gh workflow run checks.yml --ref "$BRANCH"
-            sleep 15
-            run_id=$(gh run list --workflow checks.yml --branch "$BRANCH" --event workflow_dispatch \
-                       --limit 1 --json databaseId --jq '.[0].databaseId')
+          set +e
+          check() {
+            sha=$(gh api "repos/$GITHUB_REPOSITORY/branches/$BRANCH" --jq .commit.sha)
+            gh workflow run checks.yml --ref "$BRANCH" || return 1
+            run_id=""
+            for _ in $(seq 1 30); do
+              sleep 10
+              run_id=$(gh run list --workflow checks.yml --branch "$BRANCH" --event workflow_dispatch \
+                         --json databaseId,headSha --jq "map(select(.headSha == \"$sha\")) | .[0].databaseId // empty")
+              [ -n "$run_id" ] && break
+            done
+            [ -n "$run_id" ] || { echo "::error::the dispatched check run never appeared"; return 1; }
             gh run watch "$run_id" --exit-status
-            if gh pr merge "$BRANCH" --squash --delete-branch; then
-              exit 0
+          }
+          for attempt in 1 2; do
+            if ! check; then
+              echo "::error::the build check did not pass on attempt $attempt"
+              exit 1
             fi
-            gh pr update-branch "$BRANCH"
+            if gh pr merge "$BRANCH" --squash; then
+              merged=1
+              break
+            fi
+            state=$(gh pr view "$BRANCH" --json mergeStateStatus --jq .mergeStateStatus)
+            if [ "$state" != "BEHIND" ] || ! gh pr update-branch "$BRANCH"; then
+              break
+            fi
           done
-          echo "::error::the refresh pull request could not be merged; it is left open"
-          exit 1
+          if [ "${merged:-0}" != 1 ]; then
+            echo "::error::the refresh pull request could not be merged; it is left open and the next run closes it"
+            exit 1
+          fi
 
+      # After the hosts have had time to rebuild, so the hub fetches the new feed.
       - name: Ping the WebSub hub
+        if: steps.pr.outputs.opened == 'true'
         run: |
+          sleep 300
           curl -sS -m 30 --retry 2 -o /dev/null -w "%{http_code} hub ping\n" \
             -d "hub.mode=publish" --data-urlencode "hub.url=https://thebenmeadows.com/news/feed.xml" \
             "https://pubsubhubbub.appspot.com/" || true
@@ -161,7 +209,9 @@ jobs:
 
       - name: Fail on fetch problems
         run: |
+          # Problem text comes from APIs and the model, so "::" is broken up before it
+          # is printed, or a message could issue workflow commands of its own.
           if [ -s out/news-problems.txt ]; then
-            while IFS= read -r line; do echo "::error::$line"; done < out/news-problems.txt
+            sed 's/::/: :/g' out/news-problems.txt | while IFS= read -r line; do echo "::error::$line"; done
             exit 1
           fi

@@ -197,12 +197,6 @@ function groupBy(items, key) {
     return [...groups.values()];
 }
 
-function weekStartOf(date) {
-    const d = new Date(`${date}T00:00:00Z`);
-    d.setUTCDate(d.getUTCDate() - ((d.getUTCDay() + 6) % 7));
-    return d.toISOString().slice(0, 10);
-}
-
 /* Ids name what an entry IS (a repo's week, a record's week), not its newest member,
  * so a second release in the same week updates the entry instead of replacing it in
  * every feed reader. */
@@ -286,10 +280,18 @@ function postEntries() {
     });
 }
 
-/* Every GitHub item an /ai result links to, without its #fragment. */
+/* A GitHub pull request or issue URL reduced to the item itself (no fragment, query,
+ * trailing slash or /files-style subpage), so /ai links and search results compare. */
+function itemUrl(url) {
+    const u = String(url).split(/[#?]/)[0].replace(/\/+$/, "");
+    const m = u.match(/^(https:\/\/github\.com\/[^/]+\/[^/]+\/(?:pull|issues)\/\d+)/);
+    return m ? m[1] : u;
+}
+
+/* Every GitHub item an /ai result links to. */
 function winLinks() {
     const data = JSON.parse(read("ai/wins.json"));
-    return new Set(data.wins.flatMap((w) => w.links.map((l) => l.url.split("#")[0])));
+    return new Set(data.wins.flatMap((w) => (w.links ?? []).map((l) => itemUrl(l.url))));
 }
 
 function winEntries() {
@@ -343,8 +345,6 @@ function siteWeekEntries(sources, hand) {
     return (sources.siteWeeks ?? []).filter((w) => w.announce).flatMap((w) => {
         const site = hand.sites?.[w.repo];
         if (!site) return [];
-        /* The launch week belongs to the site's hand-written launch entry. */
-        if (site.since && w.week <= weekStartOf(site.since)) return [];
         const named = `${w.title} ${w.summary}`.match(NAME_PATTERN);
         if (named) {
             console.warn(`news              ${w.repo} week ${w.week}: names "${named[0]}"; left out`);
@@ -371,7 +371,8 @@ const count = (n, one, many) => `${NUMBERS[n] ?? n} ${n === 1 ? one : many}`;
 /* An upstream title as a sentence: no "fix(scope):" or "[Bug]" prefix, capitalised,
  * cut at a word near 160 characters. */
 const cleanTitle = (t) => {
-    let s = plain(t).replace(/^(\[[^\]]*\]\s*)+/, "").replace(/^[a-z]+(\([^)]*\))?!?:\s*/i, "");
+    let s = plain(t).replace(/^(\[[^\]]*\]\s*)+/, "")
+        .replace(/^(?:fix|feat|perf|refactor|chore|docs|test|tests|build|ci|style|revert)(\([^)]*\))?!?:\s*/i, "");
     if (s.length > 160) s = `${s.slice(0, 160).replace(/\s+\S*$/, "")}…`;
     return s.charAt(0).toUpperCase() + s.slice(1);
 };
@@ -381,9 +382,13 @@ function outsideEntries(sources, winLinks) {
     const items = [
         ...(o.pulls ?? []).map((x) => ({ ...x, type: "pull" })),
         ...(o.issues ?? []).filter((x) => x.fixed).map((x) => ({ ...x, type: "issue" })),
-    ].filter((x) => !winLinks.has(x.url) && realDate(x.date));
-    return groupBy(items, (x) => `${x.repo} ${isoWeek(x.date)}`).map((group) => {
-        const list = [...group].sort((a, b) => (a.date !== b.date ? (a.date < b.date ? 1 : -1) : a.url < b.url ? -1 : 1));
+    ].filter((x) => !winLinks.has(itemUrl(x.url)) && realDate(x.date));
+    /* A merged pull request usually closes the issue it fixes, on the same day: that is
+     * one piece of work, counted once, as the change. */
+    const pullDays = new Set(items.filter((x) => x.type === "pull").map((x) => `${x.repo} ${x.date}`));
+    const counted = items.filter((x) => x.type === "pull" || !pullDays.has(`${x.repo} ${x.date}`));
+    return groupBy(counted, (x) => `${x.repo} ${isoWeek(x.date)}`).map((group) => {
+        const list = [...group].sort((a, b) => (a.date !== b.date ? (a.date < b.date ? 1 : -1) : b.number - a.number));
         const newest = list[0];
         const nPulls = list.filter((x) => x.type === "pull").length;
         const nIssues = list.length - nPulls;
@@ -391,8 +396,8 @@ function outsideEntries(sources, winLinks) {
         if (nPulls) parts.push(`${count(nPulls, "change", "changes")} merged`);
         if (nIssues) parts.push(`${parts.length ? count(nIssues, "reported fault", "reported faults").toLowerCase() : count(nIssues, "reported fault", "reported faults")} fixed`);
         let summary = cleanTitle(newest.title);
-        if (list.length > 1) summary = `${summary}, and ${list.length - 1} more.`;
-        else if (!/[.!?]$/.test(summary)) summary = `${summary}.`;
+        if (summary && list.length > 1) summary = `${summary.replace(/[.!?]$/, "")}, and ${list.length - 1} more.`;
+        else if (summary && !/[.!?]$/.test(summary)) summary = `${summary}.`;
         if (NAME_PATTERN.test(summary)) summary = "";
         return {
             id: `outside-${slug(newest.repo)}-${isoWeek(newest.date).toLowerCase()}`,

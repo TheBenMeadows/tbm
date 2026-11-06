@@ -50,18 +50,33 @@ class HttpError extends Error {
     constructor(status, url) { super(`${status} for ${url}`); this.status = status; }
 }
 
-/* One retry on a 5xx, 429 or network error; 30 s per attempt so a stalled socket
- * cannot hold the job (and the next day's queued run) for hours. */
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/* How long a rate-limited response asks to wait, if it says (GitHub answers a primary
+ * or secondary limit with 403 or 429 and these headers). */
+function rateLimitWait(res) {
+    const after = Number(res.headers.get("retry-after"));
+    if (after > 0) return after * 1000;
+    if (res.headers.get("x-ratelimit-remaining") === "0") {
+        return Math.max(0, Number(res.headers.get("x-ratelimit-reset")) * 1000 - Date.now()) + 1000;
+    }
+    return 0;
+}
+
+/* One retry on a 5xx, a rate limit that resets within 90 s, or a network error; 30 s
+ * per attempt so a stalled socket cannot hold the job for hours. */
 async function getJson(url, h = headers) {
     for (let attempt = 0; ; attempt++) {
         try {
             const res = await fetch(url, { headers: h, signal: AbortSignal.timeout(30_000) });
             if (res.ok) return res.json();
-            if (attempt === 0 && (res.status >= 500 || res.status === 429)) { await new Promise((r) => setTimeout(r, 5000)); continue; }
+            const wait = rateLimitWait(res);
+            if (attempt === 0 && (res.status === 403 || res.status === 429) && wait > 0 && wait <= 90_000) { await sleep(wait); continue; }
+            if (attempt === 0 && (res.status >= 500 || res.status === 429)) { await sleep(5000); continue; }
             throw new HttpError(res.status, url);
         } catch (err) {
             if (err instanceof HttpError || attempt > 0) throw err;
-            await new Promise((r) => setTimeout(r, 5000));
+            await sleep(5000);
         }
     }
 }
@@ -90,12 +105,20 @@ async function publicRepos(owner) {
     }
 }
 
-async function releases() {
+async function releases(prev) {
     const out = [];
     for (const owner of ORGS) {
         const repos = (await publicRepos(owner)).filter((r) => !r.private && !r.fork && !r.archived);
         for (const repo of repos) {
-            for (const r of await ghAll(`/repos/${repo.full_name}/releases`)) {
+            let list;
+            try {
+                list = await ghAll(`/repos/${repo.full_name}/releases`);
+            } catch (err) {
+                problem(`${repo.full_name} releases: ${err.message}; its committed releases are kept`);
+                out.push(...(prev ?? []).filter((r) => r.repo === repo.full_name));
+                continue;
+            }
+            for (const r of list) {
                 if (r.draft || r.prerelease || !r.published_at) continue;
                 out.push({
                     repo: repo.full_name,
@@ -142,7 +165,7 @@ function experiments() {
     return readdirSync(dir, { withFileTypes: true })
         .filter((d) => d.isDirectory() && existsSync(join(dir, d.name, "index.html")))
         .map((d) => {
-            const dates = execFileSync("git", ["log", "--diff-filter=A", "--format=%cs", "--", `experiments/${d.name}/index.html`],
+            const dates = execFileSync("git", ["log", "--diff-filter=A", "--follow", "--format=%cs", "--", `experiments/${d.name}/index.html`],
                 { cwd: ROOT, encoding: "utf8" }).trim().split("\n").filter(Boolean);
             return { slug: d.name, date: dates.at(-1) };
         })
@@ -198,17 +221,32 @@ function weekStart(date) {
 /* Merged pull requests into the default branch since `since`, through the search API:
  * it filters by merge date server-side, so a site's whole history is not paged daily,
  * and its order (created, ascending) does not shift while it is walked. */
+/* Search allows 30 requests a minute; every search call goes through this. Results
+ * come newest first, so if a query ever passes the 1,000-result cap it is the oldest
+ * items that are cut, and that is reported. */
+let lastSearch = 0;
+async function searchAll(q) {
+    const items = [];
+    for (let page = 1; page <= 10; page++) {
+        const wait = lastSearch + 2100 - Date.now();
+        if (wait > 0) await sleep(wait);
+        lastSearch = Date.now();
+        const data = await getJson(`https://api.github.com/search/issues?q=${encodeURIComponent(q)}&sort=created&order=desc&per_page=100&page=${page}`);
+        items.push(...data.items);
+        if (data.items.length < 100) return items;
+    }
+    problem(`search "${q}" passed 1,000 results; older items are not included`);
+    return items;
+}
+
 async function mergedPulls(repo, since, authors) {
     const { default_branch } = await getJson(`https://api.github.com/repos/${repo}`);
-    const q = encodeURIComponent(`repo:${repo} is:pr is:merged base:${default_branch} merged:>=${since}`);
     const out = [];
-    for (let page = 1; page <= 10; page++) {
-        const data = await getJson(`https://api.github.com/search/issues?q=${q}&sort=created&order=asc&per_page=100&page=${page}`);
-        out.push(...data.items);
-        if (data.items.length < 100) break;
+    for (const author of authors) {
+        out.push(...await searchAll(`repo:${repo} is:pr is:merged base:${default_branch} author:${author} merged:>=${since}`));
     }
     return out
-        .filter((p) => p.pull_request?.merged_at && authors.includes(p.user?.login))
+        .filter((p) => p.pull_request?.merged_at)
         .map((p) => ({ number: p.number, date: p.pull_request.merged_at.slice(0, 10), title: p.title, body: (p.body || "").slice(0, 1500) }));
 }
 
@@ -217,7 +255,7 @@ async function mergedPulls(repo, since, authors) {
 function invalid(a) {
     if (typeof a?.announce !== "boolean") return "announce is not a boolean";
     if (!a.announce) return "";
-    const bad = /https?:|www\.|[<>]|[\u0000-\u001F]/;
+    const bad = /https?:|www\.|[<>]|[\u0000-\u001F\u2013\u2014]/;
     if (typeof a.title !== "string" || a.title.length < 3 || a.title.length > 80 || bad.test(a.title)) return `title rejected: ${JSON.stringify(a.title)}`;
     if (typeof a.summary !== "string" || a.summary.length < 20 || a.summary.length > 200 || bad.test(a.summary)) return `summary rejected: ${JSON.stringify(a.summary)}`;
     return "";
@@ -252,6 +290,7 @@ async function anthropicClient() {
 }
 
 const MAX_TRIES = 3;
+const MODEL_BUDGET_MS = 12 * 60_000;
 
 async function siteWeeks(sites, authors, prevWeeks) {
     const stored = new Map(prevWeeks.map((w) => [`${w.repo} ${w.week}`, w]));
@@ -263,6 +302,7 @@ async function siteWeeks(sites, authors, prevWeeks) {
         problem(`the model client did not load (${err.message}); site weeks wait for a later run`);
     }
     let calls = 0;
+    const deadline = Date.now() + MODEL_BUDGET_MS;
     for (const [repo, site] of Object.entries(sites)) {
         let pulls;
         try {
@@ -284,7 +324,7 @@ async function siteWeeks(sites, authors, prevWeeks) {
             const prev = stored.get(key);
             if (prev && !(prev.note?.startsWith("failed") && (prev.tries ?? 0) < MAX_TRIES)) continue;
             if (!client) { problem(`${key}: no ANTHROPIC_API_KEY; left for a later run`); continue; }
-            if (calls >= MAX_CALLS) { problem(`${key}: ${MAX_CALLS} model calls this run; left for the next`); continue; }
+            if (calls >= MAX_CALLS || Date.now() > deadline) { problem(`${key}: model budget for this run used; left for the next`); continue; }
             calls++;
             const base = { repo, week, date: weekPulls.map((p) => p.date).sort().at(-1), pulls: weekPulls.map((p) => p.number) };
             try {
@@ -310,40 +350,38 @@ async function siteWeeks(sites, authors, prevWeeks) {
  * requests their maintainers merged, and issues closed as completed by someone other
  * than the filer (a maintainer, or a merge they made). Repos in `outsideSkip` (indexes
  * that only list this site's own work) are left out. Titles are the authors' own. */
-const OUTSIDE_SCOPE = "-user:TheBenMeadows -org:mdws-org";
-
-async function searchAll(q) {
-    const items = [];
-    for (let page = 1; page <= 10; page++) {
-        const data = await getJson(`https://api.github.com/search/issues?q=${encodeURIComponent(q)}&sort=created&order=asc&per_page=100&page=${page}`);
-        items.push(...data.items);
-        if (data.items.length < 100) break;
-    }
-    return items;
-}
+const OWN_SCOPE = "-user:TheBenMeadows -org:mdws-org";
+const MAX_ISSUE_LOOKUPS = 60;
 
 const repoOf = (item) => item.repository_url.replace("https://api.github.com/repos/", "");
 
 async function outside(authors, skip, prev) {
     const skipped = new Set(skip.map((r) => r.toLowerCase()));
     const known = new Map((prev?.issues ?? []).map((i) => [i.url, i]));
+    const scope = `${OWN_SCOPE} ${authors.map((a) => `-user:${a}`).join(" ")}`;
     const pulls = [];
     const issues = [];
+    let lookups = 0;
     for (const author of authors) {
-        for (const p of await searchAll(`is:pr is:merged author:${author} ${OUTSIDE_SCOPE}`)) {
+        for (const p of await searchAll(`is:pr is:merged author:${author} ${scope}`)) {
             if (skipped.has(repoOf(p).toLowerCase()) || !p.pull_request?.merged_at) continue;
             pulls.push({ repo: repoOf(p), number: p.number, title: p.title, url: p.html_url, date: p.pull_request.merged_at.slice(0, 10) });
         }
-        for (const i of await searchAll(`is:issue is:closed reason:completed author:${author} ${OUTSIDE_SCOPE}`)) {
+        for (const i of await searchAll(`is:issue is:closed reason:completed author:${author} ${scope}`)) {
             if (skipped.has(repoOf(i).toLowerCase())) continue;
-            /* Closed issues stay closed, so who closed one is looked up once and kept. */
-            let entry = known.get(i.html_url);
-            if (!entry) {
+            const facts = { repo: repoOf(i), number: i.number, title: i.title, url: i.html_url, date: i.closed_at.slice(0, 10) };
+            /* Who closed an issue is looked up once per closing: a reopened and
+             * re-closed issue has a new closed date and is looked up again. */
+            const seen = known.get(i.html_url);
+            if (seen && seen.date === facts.date && typeof seen.fixed === "boolean") { issues.push({ ...facts, fixed: seen.fixed }); continue; }
+            if (lookups >= MAX_ISSUE_LOOKUPS) { problem(`${i.html_url}: lookup cap reached; left for the next run`); continue; }
+            lookups++;
+            try {
                 const full = await getJson(i.url);
-                entry = { repo: repoOf(i), number: i.number, title: i.title, url: i.html_url, date: i.closed_at.slice(0, 10),
-                    fixed: Boolean(full.closed_by?.login) && full.closed_by.login !== author };
+                issues.push({ ...facts, fixed: Boolean(full.closed_by?.login) && full.closed_by.login !== author });
+            } catch (err) {
+                problem(`${i.html_url}: ${err.message}; left for the next run`);
             }
-            issues.push(entry);
         }
     }
     const order = (a, b) => (a.date !== b.date ? (a.date < b.date ? 1 : -1) : a.url < b.url ? -1 : a.url > b.url ? 1 : 0);
@@ -367,7 +405,7 @@ async function section(name, fn) {
 
 const sources = {
     _comment: "Written by scripts/fetch-news.mjs (daily, .github/workflows/news-refresh.yml). Do not edit by hand: hand-written entries, the skip and hide lists and text overrides live in news/entries.json.",
-    releases: await section("releases", releases),
+    releases: await section("releases", () => releases(prevSources.releases)),
     zenodo: await section("zenodo", zenodo),
     experiments: await section("experiments", experiments),
     outside: await section("outside", () => outside(hand.outsideAuthors ?? [], hand.outsideSkip ?? [], prevSources.outside)),
