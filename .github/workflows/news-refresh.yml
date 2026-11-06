@@ -1,0 +1,57 @@
+# Refresh /news once a day. scripts/fetch-news.mjs reads GitHub releases, Zenodo
+# and the experiment pages' first commits into news/sources.json; build-news then
+# rewrites the home page's newest-three block. When either changed, the result is
+# committed to main, and that push is what makes Cloudflare Pages and Netlify
+# rebuild: both build /news from the same committed data, so they cannot disagree.
+#
+# A day with nothing new commits nothing. A failed fetch exits before writing,
+# so the committed copy stays as the last good one.
+name: Refresh news
+
+on:
+  schedule:
+    - cron: "17 13 * * *" # 06:17 Phoenix
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: news-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          # fetch-news.mjs dates each experiment by the commit that added it.
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+
+      - name: Fetch sources
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/fetch-news.mjs
+
+      - name: Rebuild the home page block
+        run: node scripts/build-news.mjs
+
+      - name: Commit if anything changed
+        run: |
+          git add news/sources.json index.html
+          if git diff --cached --quiet; then
+            echo "nothing new"
+            exit 0
+          fi
+          git -c user.name="github-actions[bot]" \
+              -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+              commit -m "Refresh news sources"
+          git push origin HEAD:main

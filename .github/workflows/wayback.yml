@@ -39,7 +39,8 @@ jobs:
         run: |
           for feed in \
             "https://thebenmeadows.com/feed.xml" \
-            "https://thebenmeadows.com/rss.xml"; do
+            "https://thebenmeadows.com/rss.xml" \
+            "https://thebenmeadows.com/news/feed.xml"; do
             curl -sS -m 30 --retry 2 -o /dev/null \
               -w "%{http_code} hub ping $feed\n" \
               -d "hub.mode=publish" --data-urlencode "hub.url=$feed" \

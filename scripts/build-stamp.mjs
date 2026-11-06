@@ -32,6 +32,7 @@ const PAGES = [
     "projects/index.html",
     "infra/index.html",
     "ai/index.html",
+    "news/index.html",
     "papers/index.html",
     "papers/essentialism/index.html",
     "papers/rrf-score-ceiling/index.html",
