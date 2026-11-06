@@ -34,7 +34,10 @@ const HOME_COUNT = 3;
 const FEED_COUNT = 50;
 
 const read = (p) => readFileSync(join(ROOT, p), "utf8");
+/* XML 1.0 forbids C0 controls other than tab, newline and carriage return; one in a
+ * release note would make the whole feed unparseable, so they are dropped here. */
 const esc = (s) => String(s)
+    .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\uFFFE\uFFFF]/g, "")
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
@@ -113,16 +116,39 @@ const plain = (s) => s
     .replace(/\s+/g, " ")
     .trim();
 
-const SKIP_LINE = /^(#|\||```|<!--|>|full changelog|what's changed|\*\*full changelog)/i;
+const SKIP_LINE = /^(#|\||<!--|>|full changelog|what's changed|\*\*full changelog)/i;
+const ABBREV = /\b(?:e\.g|i\.e|etc|vs|approx|no|st|mr|mrs|dr)\.$/i;
+
+/* Prose lines only: fenced code and the inside of multi-line HTML comments are skipped,
+ * so an install command or a hidden note is never published as the summary. */
+function proseLines(notes) {
+    const out = [];
+    let fence = false, comment = false;
+    for (const raw of (notes ?? "").split("\n")) {
+        const l = raw.trim();
+        if (l.startsWith("```")) { fence = !fence; continue; }
+        if (fence) continue;
+        if (comment) { if (l.includes("-->")) comment = false; continue; }
+        if (l.startsWith("<!--") && !l.includes("-->")) { comment = true; continue; }
+        out.push(l);
+    }
+    return out;
+}
+
+function firstSentence(text) {
+    const re = /[.!?](?=\s+[A-Z(]|$)/g;
+    for (let m; (m = re.exec(text)); ) {
+        if (!ABBREV.test(text.slice(0, m.index + 1))) return text.slice(0, m.index + 1);
+    }
+    return text;
+}
 
 /* The first sentence of the first prose line, cut at a word near 220 characters. */
 function firstLine(notes) {
-    const line = (notes ?? "").split("\n").map((l) => l.trim())
-        .find((l) => l && !SKIP_LINE.test(l) && plain(l).length > 12);
+    const line = proseLines(notes).find((l) => l && !SKIP_LINE.test(l) && plain(l).length > 12);
     if (!line) return "";
     const text = plain(line);
-    const m = text.match(/^.+?[.!?](?=\s+[A-Z(]|$)/);
-    const sentence = m ? m[0] : text;
+    const sentence = firstSentence(text);
     if (sentence.length <= 220) return sentence;
     return `${sentence.slice(0, 220).replace(/\s+\S*$/, "")}…`;
 }
@@ -140,8 +166,25 @@ function isoWeek(date) {
     return `${year}-W${String(week).padStart(2, "0")}`;
 }
 
-const byNewest = (a, b) => (a.date !== b.date ? (a.date < b.date ? 1 : -1)
-    : b.tag.localeCompare(a.tag, "en", { numeric: true }));
+/* Versions compare chunk by chunk, digits as numbers and the rest by code unit, so the
+ * order cannot depend on the ICU data of whichever host builds; localeCompare could. */
+function versionCompare(a, b) {
+    const ca = String(a).match(/\d+|\D+/g) ?? [];
+    const cb = String(b).match(/\d+|\D+/g) ?? [];
+    for (let i = 0; i < Math.max(ca.length, cb.length); i++) {
+        const x = ca[i] ?? "", y = cb[i] ?? "";
+        if (x === y) continue;
+        const nx = /^\d+$/.test(x), ny = /^\d+$/.test(y);
+        if (nx && ny && Number(x) !== Number(y)) return Number(x) - Number(y);
+        return x < y ? -1 : 1;
+    }
+    return 0;
+}
+const byNewest = (a, b) => {
+    const ta = a.published ?? a.date, tb = b.published ?? b.date;
+    if (ta !== tb) return ta < tb ? 1 : -1;
+    return versionCompare(b.tag, a.tag) || (a.url < b.url ? -1 : a.url > b.url ? 1 : 0);
+};
 
 function groupBy(items, key) {
     const groups = new Map();
@@ -152,6 +195,17 @@ function groupBy(items, key) {
     }
     return [...groups.values()];
 }
+
+function weekStartOf(date) {
+    const d = new Date(`${date}T00:00:00Z`);
+    d.setUTCDate(d.getUTCDate() - ((d.getUTCDay() + 6) % 7));
+    return d.toISOString().slice(0, 10);
+}
+
+/* Ids name what an entry IS (a repo's week, a record's week), not its newest member,
+ * so a second release in the same week updates the entry instead of replacing it in
+ * every feed reader. */
+const slug = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
 const version = (tag) => tag.replace(/^v(?=\d)/, "");
 
@@ -171,7 +225,7 @@ function releaseEntries(sources, hand) {
             summary = "";
         }
         return {
-            id: `${newest.repo.replace("/", "-").toLowerCase()}-${newest.tag}`.replace(/[^a-z0-9.-]/gi, "-"),
+            id: `release-${slug(newest.repo)}-${isoWeek(newest.date).toLowerCase()}`,
             date: newest.date,
             kind: "release",
             project: project.name,
@@ -183,16 +237,24 @@ function releaseEntries(sources, hand) {
     });
 }
 
+/* Zenodo accepts partial dates ("2026", "2026-11"); the week and month math needs a
+ * full day, so such a record waits until it has one rather than breaking the build. */
 function zenodoEntries(sources) {
-    return groupBy(sources.zenodo, (z) => `${z.concept} ${isoWeek(z.date)}`).map((group) => {
-        const list = [...group].sort((a, b) => (a.date !== b.date ? (a.date < b.date ? 1 : -1) : b.version.localeCompare(a.version, "en", { numeric: true })));
+    const dated = sources.zenodo.filter((z) => {
+        if (realDate(z.date)) return true;
+        console.warn(`news              zenodo ${z.url}: date "${z.date}" is not YYYY-MM-DD; left out`);
+        return false;
+    });
+    return groupBy(dated, (z) => `${z.concept} ${isoWeek(z.date)}`).map((group) => {
+        const list = [...group].sort((a, b) => (a.date !== b.date ? (a.date < b.date ? 1 : -1)
+            : versionCompare(b.version, a.version) || (a.url < b.url ? -1 : a.url > b.url ? 1 : 0)));
         const newest = list[0];
         const versions = list.map((z) => z.version).filter(Boolean);
         const summary = versions.length === 0 ? "Published on Zenodo."
             : versions.length === 1 ? `Version ${versions[0]} on Zenodo.`
             : `Versions ${versions.at(-1)} to ${versions[0]} on Zenodo.`;
         return {
-            id: `zenodo-${newest.url.split(".").at(-1)}`,
+            id: `zenodo-${slug(newest.concept)}-${isoWeek(newest.date).toLowerCase()}`,
             date: newest.date,
             kind: newest.type === "publication" ? "paper" : "data",
             project: "Zenodo",
@@ -274,13 +336,15 @@ function siteWeekEntries(sources, hand) {
     return (sources.siteWeeks ?? []).filter((w) => w.announce).flatMap((w) => {
         const site = hand.sites?.[w.repo];
         if (!site) return [];
+        /* The launch week belongs to the site's hand-written launch entry. */
+        if (site.since && w.week <= weekStartOf(site.since)) return [];
         const named = `${w.title} ${w.summary}`.match(NAME_PATTERN);
         if (named) {
             console.warn(`news              ${w.repo} week ${w.week}: names "${named[0]}"; left out`);
             return [];
         }
         return [{
-            id: `site-${w.repo.split("/")[1].toLowerCase().replace(/[^a-z0-9]+/g, "-")}-${w.week}`,
+            id: `site-${slug(w.repo)}-${w.week}`,
             date: w.date,
             kind: "site",
             project: site.project,
@@ -503,6 +567,8 @@ const all = [
     ...siteWeekEntries(sources, hand),
     ...handEntries(hand),
 ].filter((e) => !(hand.hide ?? []).includes(e.id)).sort((a, b) => (a.date !== b.date ? (a.date < b.date ? 1 : -1) : a.id < b.id ? -1 : 1));
+
+if (all.length === 0) throw new Error("build-news: no entries at all; refusing to write an empty page and feed");
 
 const ids = new Set();
 for (const e of all) {

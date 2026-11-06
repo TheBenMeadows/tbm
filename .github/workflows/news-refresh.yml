@@ -1,13 +1,18 @@
-# Refresh /news once a day. scripts/fetch-news.mjs reads GitHub releases, Zenodo,
-# the experiment pages' first commits, and each finished week of merged pull
-# requests on the sites listed in news/entries.json (a model writes that week's
-# line, or declines) into news/sources.json; build-news then
-# rewrites the home page's newest-three block. When either changed, the result is
-# committed to main, and that push is what makes Cloudflare Pages and Netlify
-# rebuild: both build /news from the same committed data, so they cannot disagree.
+# Refresh /news once a day.
 #
-# A day with nothing new commits nothing. A failed fetch exits before writing,
-# so the committed copy stays as the last good one.
+# fetch (read-only token, plus the model key): scripts/fetch-news.mjs reads GitHub
+# releases, Zenodo, the experiment pages' first commits, and each finished week of
+# merged pull requests on the sites in news/entries.json (a model writes that week's
+# line, or declines) into news/sources.json; build-news rewrites the home page block.
+#
+# publish (write token, no model key): when either file changed, open a pull request
+# with them, run checks.yml on it (the protect-main ruleset requires its `build`
+# check, and pushes made with this token start no workflow by themselves, so the
+# run is dispatched), and squash-merge it once green. The merge is what makes
+# Cloudflare Pages and Netlify rebuild, both from the same committed data.
+#
+# report: a fetch problem (an API down, a refused or failed week) does not stop the
+# rest from publishing, but it turns the run red so it is seen.
 name: Refresh news
 
 on:
@@ -22,47 +27,141 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  refresh:
+  fetch:
+    # A manual run started from another branch must not refresh from that branch.
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions:
-      contents: write
+      contents: read
+    outputs:
+      changed: ${{ steps.diff.outputs.changed }}
     steps:
-      - name: Check out
+      - name: Check out main
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
+          ref: main
           # fetch-news.mjs dates each experiment by the commit that added it.
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Set up Node
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 22
 
-      # Only this job needs the SDK, so it stays out of package.json and the lock
-      # file that every host build installs from. Pinned exactly; .npmrc keeps
-      # install scripts off.
-      - name: Install the Anthropic SDK
-        run: npm install --no-save --no-audit --no-fund @anthropic-ai/sdk@1.1.0
+      # The SDK has its own lock file under tools/news-refresh/, so the site's own
+      # package.json and lock, which every host build installs, never contain it.
+      - name: Install the refresh job's dependencies
+        run: npm ci --prefix tools/news-refresh --no-audit --no-fund
 
-      # Without the secret the site weeks are skipped and retried on a later run;
-      # releases, Zenodo and experiments still refresh.
       - name: Fetch sources
         env:
           GITHUB_TOKEN: ${{ github.token }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          NEWS_PROBLEMS: ${{ runner.temp }}/news-problems.txt
         run: node scripts/fetch-news.mjs
 
       - name: Rebuild the home page block
         run: node scripts/build-news.mjs
 
-      - name: Commit if anything changed
+      - name: Note what changed
+        id: diff
         run: |
-          git add news/sources.json index.html
-          if git diff --cached --quiet; then
-            echo "nothing new"
-            exit 0
+          if git diff --quiet -- news/sources.json index.html; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
+          mkdir -p "$RUNNER_TEMP/out"
+          cp news/sources.json index.html "$RUNNER_TEMP/out/"
+          touch "$RUNNER_TEMP/news-problems.txt"
+          cp "$RUNNER_TEMP/news-problems.txt" "$RUNNER_TEMP/out/"
+
+      - name: Keep the result for the next jobs
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: news-refresh
+          path: ${{ runner.temp }}/out/
+          retention-days: 7
+
+  publish:
+    needs: fetch
+    if: needs.fetch.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      BRANCH: news-refresh/${{ github.run_id }}
+    steps:
+      - name: Check out main
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: main
+
+      - name: Get the refreshed files
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: news-refresh
+          path: ${{ runner.temp }}/out
+
+      - name: Open the pull request
+        run: |
+          cp "$RUNNER_TEMP/out/sources.json" news/sources.json
+          cp "$RUNNER_TEMP/out/index.html" index.html
+          git switch -c "$BRANCH"
+          git add news/sources.json index.html
           git -c user.name="github-actions[bot]" \
               -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
               commit -m "Refresh news sources"
-          git push origin HEAD:main
+          git push origin "$BRANCH"
+          gh pr create --base main --head "$BRANCH" \
+            --title "Refresh news sources" \
+            --body "Daily refresh of news/sources.json and the home page News block by .github/workflows/news-refresh.yml (run ${{ github.run_id }}). Merged automatically once the build check passes."
+
+      # Up to two attempts: if main moves while the check runs, the ruleset's
+      # up-to-date rule refuses the merge, so the branch is updated and checked again.
+      - name: Check and merge
+        run: |
+          for attempt in 1 2; do
+            gh workflow run checks.yml --ref "$BRANCH"
+            sleep 15
+            run_id=$(gh run list --workflow checks.yml --branch "$BRANCH" --event workflow_dispatch \
+                       --limit 1 --json databaseId --jq '.[0].databaseId')
+            gh run watch "$run_id" --exit-status
+            if gh pr merge "$BRANCH" --squash --delete-branch; then
+              exit 0
+            fi
+            gh pr update-branch "$BRANCH"
+          done
+          echo "::error::the refresh pull request could not be merged; it is left open"
+          exit 1
+
+      - name: Ping the WebSub hub
+        run: |
+          curl -sS -m 30 --retry 2 -o /dev/null -w "%{http_code} hub ping\n" \
+            -d "hub.mode=publish" --data-urlencode "hub.url=https://thebenmeadows.com/news/feed.xml" \
+            "https://pubsubhubbub.appspot.com/" || true
+
+  report:
+    needs: [fetch, publish]
+    if: always() && needs.fetch.result == 'success'
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - name: Get the refreshed files
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: news-refresh
+          path: out
+
+      - name: Fail on fetch problems
+        run: |
+          if [ -s out/news-problems.txt ]; then
+            while IFS= read -r line; do echo "::error::$line"; done < out/news-problems.txt
+            exit 1
+          fi
