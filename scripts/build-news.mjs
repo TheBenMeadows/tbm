@@ -52,6 +52,7 @@ const KINDS = {
     post: "Post",
     experiment: "Experiment",
     win: "Result",
+    outside: "Contribution",
 };
 
 /* ------------------------------------------------------------------ */
@@ -285,6 +286,12 @@ function postEntries() {
     });
 }
 
+/* Every GitHub item an /ai result links to, without its #fragment. */
+function winLinks() {
+    const data = JSON.parse(read("ai/wins.json"));
+    return new Set(data.wins.flatMap((w) => w.links.map((l) => l.url.split("#")[0])));
+}
+
 function winEntries() {
     const data = JSON.parse(read("ai/wins.json"));
     return data.wins.map((w) => ({
@@ -353,6 +360,50 @@ function siteWeekEntries(sources, hand) {
             url: site.url,
             summary: w.summary,
         }];
+    });
+}
+
+/* Work merged or fixed in other people's projects, one entry per project per week.
+ * An item an /ai result already links to is left to that result, so the same work
+ * does not appear twice. The project is named; who did the work is not. */
+const NUMBERS = ["No", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"];
+const count = (n, one, many) => `${NUMBERS[n] ?? n} ${n === 1 ? one : many}`;
+/* An upstream title as a sentence: no "fix(scope):" or "[Bug]" prefix, capitalised,
+ * cut at a word near 160 characters. */
+const cleanTitle = (t) => {
+    let s = plain(t).replace(/^(\[[^\]]*\]\s*)+/, "").replace(/^[a-z]+(\([^)]*\))?!?:\s*/i, "");
+    if (s.length > 160) s = `${s.slice(0, 160).replace(/\s+\S*$/, "")}…`;
+    return s.charAt(0).toUpperCase() + s.slice(1);
+};
+
+function outsideEntries(sources, winLinks) {
+    const o = sources.outside ?? {};
+    const items = [
+        ...(o.pulls ?? []).map((x) => ({ ...x, type: "pull" })),
+        ...(o.issues ?? []).filter((x) => x.fixed).map((x) => ({ ...x, type: "issue" })),
+    ].filter((x) => !winLinks.has(x.url) && realDate(x.date));
+    return groupBy(items, (x) => `${x.repo} ${isoWeek(x.date)}`).map((group) => {
+        const list = [...group].sort((a, b) => (a.date !== b.date ? (a.date < b.date ? 1 : -1) : a.url < b.url ? -1 : 1));
+        const newest = list[0];
+        const nPulls = list.filter((x) => x.type === "pull").length;
+        const nIssues = list.length - nPulls;
+        const parts = [];
+        if (nPulls) parts.push(`${count(nPulls, "change", "changes")} merged`);
+        if (nIssues) parts.push(`${parts.length ? count(nIssues, "reported fault", "reported faults").toLowerCase() : count(nIssues, "reported fault", "reported faults")} fixed`);
+        let summary = cleanTitle(newest.title);
+        if (list.length > 1) summary = `${summary}, and ${list.length - 1} more.`;
+        else if (!/[.!?]$/.test(summary)) summary = `${summary}.`;
+        if (NAME_PATTERN.test(summary)) summary = "";
+        return {
+            id: `outside-${slug(newest.repo)}-${isoWeek(newest.date).toLowerCase()}`,
+            date: newest.date,
+            kind: "outside",
+            project: newest.repo.split("/")[1],
+            projectUrl: `https://github.com/${newest.repo}`,
+            title: parts.join(", "),
+            url: newest.url,
+            summary,
+        };
     });
 }
 
@@ -565,6 +616,7 @@ const all = [
     ...winEntries(),
     ...experimentEntries(sources),
     ...siteWeekEntries(sources, hand),
+    ...outsideEntries(sources, winLinks()),
     ...handEntries(hand),
 ].filter((e) => !(hand.hide ?? []).includes(e.id)).sort((a, b) => (a.date !== b.date ? (a.date < b.date ? 1 : -1) : a.id < b.id ? -1 : 1));
 

@@ -12,6 +12,8 @@
  *     so un-skipping it needs no refetch)
  *   - Zenodo records and versions under the credit name
  *   - the commit that first added each /experiments/<slug>/index.html
+ *   - pull requests merged, and issues fixed, in repos outside the two orgs for the
+ *     accounts in news/entries.json `outsideAuthors`
  *   - one line per finished week of merged pull requests for each repo in
  *     news/entries.json `sites`, written by a model (ANTHROPIC_API_KEY), or a stored
  *     "nothing to announce"; each week is asked once
@@ -302,6 +304,53 @@ async function siteWeeks(sites, authors, prevWeeks) {
 }
 
 /* ------------------------------------------------------------------ */
+/* outside work: merged PRs and fixed issues in repos outside the orgs  */
+
+/* Outcomes in other people's projects, by the accounts in `outsideAuthors`: pull
+ * requests their maintainers merged, and issues closed as completed by someone other
+ * than the filer (a maintainer, or a merge they made). Repos in `outsideSkip` (indexes
+ * that only list this site's own work) are left out. Titles are the authors' own. */
+const OUTSIDE_SCOPE = "-user:TheBenMeadows -org:mdws-org";
+
+async function searchAll(q) {
+    const items = [];
+    for (let page = 1; page <= 10; page++) {
+        const data = await getJson(`https://api.github.com/search/issues?q=${encodeURIComponent(q)}&sort=created&order=asc&per_page=100&page=${page}`);
+        items.push(...data.items);
+        if (data.items.length < 100) break;
+    }
+    return items;
+}
+
+const repoOf = (item) => item.repository_url.replace("https://api.github.com/repos/", "");
+
+async function outside(authors, skip, prev) {
+    const skipped = new Set(skip.map((r) => r.toLowerCase()));
+    const known = new Map((prev?.issues ?? []).map((i) => [i.url, i]));
+    const pulls = [];
+    const issues = [];
+    for (const author of authors) {
+        for (const p of await searchAll(`is:pr is:merged author:${author} ${OUTSIDE_SCOPE}`)) {
+            if (skipped.has(repoOf(p).toLowerCase()) || !p.pull_request?.merged_at) continue;
+            pulls.push({ repo: repoOf(p), number: p.number, title: p.title, url: p.html_url, date: p.pull_request.merged_at.slice(0, 10) });
+        }
+        for (const i of await searchAll(`is:issue is:closed reason:completed author:${author} ${OUTSIDE_SCOPE}`)) {
+            if (skipped.has(repoOf(i).toLowerCase())) continue;
+            /* Closed issues stay closed, so who closed one is looked up once and kept. */
+            let entry = known.get(i.html_url);
+            if (!entry) {
+                const full = await getJson(i.url);
+                entry = { repo: repoOf(i), number: i.number, title: i.title, url: i.html_url, date: i.closed_at.slice(0, 10),
+                    fixed: Boolean(full.closed_by?.login) && full.closed_by.login !== author };
+            }
+            issues.push(entry);
+        }
+    }
+    const order = (a, b) => (a.date !== b.date ? (a.date < b.date ? 1 : -1) : a.url < b.url ? -1 : a.url > b.url ? 1 : 0);
+    return { pulls: pulls.sort(order), issues: issues.sort(order) };
+}
+
+/* ------------------------------------------------------------------ */
 /* run                                                                  */
 
 const hand = JSON.parse(readFileSync(join(ROOT, "news", "entries.json"), "utf8"));
@@ -321,6 +370,7 @@ const sources = {
     releases: await section("releases", releases),
     zenodo: await section("zenodo", zenodo),
     experiments: await section("experiments", experiments),
+    outside: await section("outside", () => outside(hand.outsideAuthors ?? [], hand.outsideSkip ?? [], prevSources.outside)),
     siteWeeks: await siteWeeks(hand.sites ?? {}, hand.siteAuthors ?? [], prevSources.siteWeeks ?? []),
 };
 

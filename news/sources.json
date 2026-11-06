@@ -535,6 +535,510 @@
       "date": "2026-08-02"
     }
   ],
+  "outside": {
+    "pulls": [
+      {
+        "repo": "cookiechain/cookie-mcp",
+        "number": 3,
+        "title": "transfer: optional memo via the SPL Memo program",
+        "url": "https://github.com/cookiechain/cookie-mcp/pull/3",
+        "date": "2026-09-14"
+      },
+      {
+        "repo": "hamed-elfayome/Claude-Usage-Tracker",
+        "number": 301,
+        "title": "fix: present Notch HUD on the built-in notched display, not the primary display (#294)",
+        "url": "https://github.com/hamed-elfayome/Claude-Usage-Tracker/pull/301",
+        "date": "2026-08-29"
+      },
+      {
+        "repo": "hamed-elfayome/Claude-Usage-Tracker",
+        "number": 302,
+        "title": "fix: keychain migration silently no-ops on unentitled builds, leaving credentials in cleartext (#292)",
+        "url": "https://github.com/hamed-elfayome/Claude-Usage-Tracker/pull/302",
+        "date": "2026-08-29"
+      },
+      {
+        "repo": "hamed-elfayome/Claude-Usage-Tracker",
+        "number": 303,
+        "title": "fix: false 'credentials expired' (E3000) from Cloudflare-challenged requests (#277)",
+        "url": "https://github.com/hamed-elfayome/Claude-Usage-Tracker/pull/303",
+        "date": "2026-08-29"
+      },
+      {
+        "repo": "hamed-elfayome/Claude-Usage-Tracker",
+        "number": 305,
+        "title": "fix(notch): stop returning 413 for ordinary hook payloads; bound the listener",
+        "url": "https://github.com/hamed-elfayome/Claude-Usage-Tracker/pull/305",
+        "date": "2026-08-29"
+      },
+      {
+        "repo": "hzrd149/nsite-gateway",
+        "number": 27,
+        "title": "fix: prefer path-derived MIME type over the blossom server's content-type header",
+        "url": "https://github.com/hzrd149/nsite-gateway/pull/27",
+        "date": "2026-08-27"
+      },
+      {
+        "repo": "kamenlevi/MagHue",
+        "number": 3,
+        "title": "Optional grace window: show the charging colour briefly after connect",
+        "url": "https://github.com/kamenlevi/MagHue/pull/3",
+        "date": "2026-08-27"
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 876,
+        "title": "fix(menubar): refuse the saved-layout bulk apply while the dividers are collapsed",
+        "url": "https://github.com/thaw-app/Thaw/pull/876",
+        "date": "2026-08-04"
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 856,
+        "title": "fix(menubar): back off negative-cache TTL instead of flat 60s",
+        "url": "https://github.com/thaw-app/Thaw/pull/856",
+        "date": "2026-07-31"
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 785,
+        "title": "fix(menubar): skip saved-layout bulk apply while sourcePIDs are unresolved",
+        "url": "https://github.com/thaw-app/Thaw/pull/785",
+        "date": "2026-07-23"
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 796,
+        "title": "fix(menubar): don't persist notch-overflow ejections into the saved layout",
+        "url": "https://github.com/thaw-app/Thaw/pull/796",
+        "date": "2026-07-23"
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 797,
+        "title": "fix(service): resolve parked items whose title is their bundle identifier",
+        "url": "https://github.com/thaw-app/Thaw/pull/797",
+        "date": "2026-07-23"
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 809,
+        "title": "fix(menubar): only run notch overflow on the main display",
+        "url": "https://github.com/thaw-app/Thaw/pull/809",
+        "date": "2026-07-23"
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8959,
+        "title": "fix(fast-follow-spec): return diagnostics instead of throwing on non-array path fields (#8958)",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/8959",
+        "date": "2026-07-17"
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8496,
+        "title": "feat(khala-code-desktop): TUI saved-prompt library (Warp Workflows analog)",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/8496",
+        "date": "2026-07-06"
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8221,
+        "title": "feat(khala-code-desktop): TUI mode — terminal chat over the same Codex harness",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/8221",
+        "date": "2026-07-03"
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8260,
+        "title": "feat(khala-code-desktop): TUI ergonomics — one-shot argv, single-prompt piping, honest usage, tool-activity + spinner/resume",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/8260",
+        "date": "2026-07-03"
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 6024,
+        "title": "feat(inference): emit openagents disclosure block on the streaming (SSE) path",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/6024",
+        "date": "2026-06-22"
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 5534,
+        "title": "fix(autopilot-control-protocol): typecheck to zero (NodeNext extensions + tail) and fence into check:deploy",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/5534",
+        "date": "2026-06-20"
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 5535,
+        "title": "feat(nostr): outage-coordination fallback drill smoke + evidence (DE-8, #5531)",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/5535",
+        "date": "2026-06-20"
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 5536,
+        "title": "fix(pylon): surface MDK wallet daemon port conflict with actionable MDK_WALLET_PORT guidance (#5505)",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/5536",
+        "date": "2026-06-20"
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 5538,
+        "title": "feat(markets): signature usage metering — clear signature_monetization metering blocker (DE-6 #5529)",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/5538",
+        "date": "2026-06-20"
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 5544,
+        "title": "feat(sites): flag-gated site page form-capture route mount — DE-9 #5532",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/5544",
+        "date": "2026-06-20"
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 5546,
+        "title": "feat(pylon): safe public multi-earning-node projection clears safe_public_projection_missing (#5527)",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/5546",
+        "date": "2026-06-20"
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 5548,
+        "title": "fix(sites): restore SITE_FORM_CAPTURE_ENABLED + form-capture route mount silently reverted by #5546",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/5548",
+        "date": "2026-06-20"
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 5560,
+        "title": "DE-9 #5532: omni client-delivery business-object projection (flag-gated INERT)",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/5560",
+        "date": "2026-06-20"
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 5741,
+        "title": "fix(ui): un-break the Tailwind UI coverage test on clean checkouts + gate packages/ui",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/5741",
+        "date": "2026-06-20"
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 5448,
+        "title": "refactor(api): dedup inline HTTP method guards in training-run-window-routes",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/5448",
+        "date": "2026-06-19"
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 5473,
+        "title": "feat(forum): add light/dark theme selector",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/5473",
+        "date": "2026-06-19"
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 5509,
+        "title": "perf(forum): batch per-post tip-recipient-readiness (fix N+1 on large threads)",
+        "url": "https://github.com/OpenAgentsInc/openagents/pull/5509",
+        "date": "2026-06-19"
+      }
+    ],
+    "issues": [
+      {
+        "repo": "ar-io/ar-io-deploy",
+        "number": 17,
+        "title": "Deploy fails when credits come from a Turbo credit share approval (checks owned winc, not effectiveBalance)",
+        "url": "https://github.com/ar-io/ar-io-deploy/issues/17",
+        "date": "2026-10-09",
+        "fixed": true
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 1084,
+        "title": "3.0.0-alpha.1: menu bar ordering degrades silently on macOS 27 without Full Disk Access; bootstrap reports `permissions state = hasAll`",
+        "url": "https://github.com/thaw-app/Thaw/issues/1084",
+        "date": "2026-09-11",
+        "fixed": true
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 1085,
+        "title": "3.0.0-alpha.1: pre-macOS-27 saved layouts do not resolve, and `applySavedLayout` reports the order already matches",
+        "url": "https://github.com/thaw-app/Thaw/issues/1085",
+        "date": "2026-09-11",
+        "fixed": true
+      },
+      {
+        "repo": "hzrd149/nsite-gateway",
+        "number": 28,
+        "title": "TimeoutOverflowWarning hot loop fills the disk (~107 KB/s of logs, 16 GB syslog)",
+        "url": "https://github.com/hzrd149/nsite-gateway/issues/28",
+        "date": "2026-08-29",
+        "fixed": true
+      },
+      {
+        "repo": "kamenlevi/MagHue",
+        "number": 2,
+        "title": "Root helper restores charge limits from a user-writable path",
+        "url": "https://github.com/kamenlevi/MagHue/issues/2",
+        "date": "2026-08-23",
+        "fixed": true
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 868,
+        "title": "[Bug] Hidden section collapses to zero width after docking to an external main display with a notched secondary",
+        "url": "https://github.com/thaw-app/Thaw/issues/868",
+        "date": "2026-08-15",
+        "fixed": true
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 885,
+        "title": "[Bug] Hidden section order is permuted by a bulk apply while its membership stays correct",
+        "url": "https://github.com/thaw-app/Thaw/issues/885",
+        "date": "2026-08-15",
+        "fixed": true
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 890,
+        "title": "[Bug] Section divider preferred positions can never be written: ControlItemDefaults setter discards preflightSetup and resetChevronPositions",
+        "url": "https://github.com/thaw-app/Thaw/issues/890",
+        "date": "2026-08-15",
+        "fixed": true
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 895,
+        "title": "[Bug] ControlItemPair strategy-4 pairing flaps between scans and a divider drag on a stale pairing corrupts the saved layout",
+        "url": "https://github.com/thaw-app/Thaw/issues/895",
+        "date": "2026-08-15",
+        "fixed": true
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 900,
+        "title": "[Bug] Item moves fail with EventError.cannotComplete, so the notch overflow rebalance re-dispatches forever and the layout never converges",
+        "url": "https://github.com/thaw-app/Thaw/issues/900",
+        "date": "2026-08-15",
+        "fixed": true
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 905,
+        "title": "[Bug] Third-party item refused as immovable with no diagnostic, while macOS reports it identically to movable items",
+        "url": "https://github.com/thaw-app/Thaw/issues/905",
+        "date": "2026-08-15",
+        "fixed": true
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 784,
+        "title": "applySavedLayout dispatches bulk apply while sourcePIDs are unresolved (XPC failure) — menu bar items scramble",
+        "url": "https://github.com/thaw-app/Thaw/issues/784",
+        "date": "2026-07-30",
+        "fixed": true
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 790,
+        "title": "Notch-overflow ejection is persisted into the saved layout — items stay hidden on non-notched displays",
+        "url": "https://github.com/thaw-app/Thaw/issues/790",
+        "date": "2026-07-30",
+        "fixed": true
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 795,
+        "title": "Parked (off-screen) items whose title is their bundle identifier are unresolvable — one-way door into the hidden section",
+        "url": "https://github.com/thaw-app/Thaw/issues/795",
+        "date": "2026-07-30",
+        "fixed": true
+      },
+      {
+        "repo": "thaw-app/Thaw",
+        "number": 808,
+        "title": "Notch overflow runs against a notched secondary display — items ejected from the main display's layout",
+        "url": "https://github.com/thaw-app/Thaw/issues/808",
+        "date": "2026-07-24",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 9003,
+        "title": "Full Auto continuation refused for any non-default Codex model (stale CodexModelSchema gate) — rc.20/rc.21 regression",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/9003",
+        "date": "2026-07-19",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8958,
+        "title": "fast-follow-spec: parseFastFollow throws uncaught TypeError instead of a diagnostic when a path-list field is not an array",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/8958",
+        "date": "2026-07-17",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8960,
+        "title": "desktop: typecheck fails on main — 14 errors after required thread `status` landed in khala-sync-client (cc34cc5c) without desktop reconciliation",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/8960",
+        "date": "2026-07-17",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8983,
+        "title": "Desktop dev-mode testing session: default Codex model unusable on first run, Settings account-check stuck, Settings nav no-op (+ minors)",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/8983",
+        "date": "2026-07-17",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8814,
+        "title": "openagents.com serves a \"be right back\" placeholder (HTTP 200) on all routes — forum unreachable, no tracking issue",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/8814",
+        "date": "2026-07-14",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8569,
+        "title": "GCP migration orphan: /api/public/pylon-stats returns available:false — relation \"pylon_api_registrations\" does not exist in Cloud SQL",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/8569",
+        "date": "2026-07-08",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8534,
+        "title": "Forum user-profile pages broken after GCP migration: /forum/u/<id>/<slug> redirects to home, /api/forum/users/* 404s",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/8534",
+        "date": "2026-07-07",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8495,
+        "title": "khala-code-desktop TUI: saved-prompt library (/save /prompts /run) — Warp Workflows analog",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/8495",
+        "date": "2026-07-06",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8497,
+        "title": "DX: stale workspace links produce spurious typecheck errors (TS2339/TS2307) until bun install after a branch switch",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/8497",
+        "date": "2026-07-06",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8529,
+        "title": "openagents.com public API: sustained 503 (Cloudflare 1102 / Worker resource-limit) — multi-hour outage 2026-07-06",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/8529",
+        "date": "2026-07-06",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8230,
+        "title": "khala-code-desktop: hidden Codex models (\"Codex Auto Review\") leak into the Settings model picker",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/8230",
+        "date": "2026-07-03",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8231,
+        "title": "khala-code-desktop: assistant reply renders twice in the transcript (Claude lane)",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/8231",
+        "date": "2026-07-03",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8232,
+        "title": "khala-code-desktop: Claude lane inherits the user's global Claude Code context (home reuse)",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/8232",
+        "date": "2026-07-03",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 8233,
+        "title": "khala-code-desktop: History lists the entire user-home Codex/Claude session store (incl. headless automation) with undismissable error rows",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/8233",
+        "date": "2026-07-03",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 6444,
+        "title": "khala spawn: misleading \"Could not reach Khala\" error masks server-side failure (CLI v0.1.20)",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/6444",
+        "date": "2026-06-28",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 6361,
+        "title": "Khala coding-delegation: workspace materializer fails on master-default repos (branch_fetch_failed)",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/6361",
+        "date": "2026-06-27",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 6362,
+        "title": "Khala coding-delegation: khala request creates a lease but never auto-executes; maxInflight=1 dispatch gate then 409s all further coding requests",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/6362",
+        "date": "2026-06-27",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 6047,
+        "title": "Verse-in-isolation: generalize the pixel-proof render gate so every scene capture asserts non-blank, not just crackling-arc",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/6047",
+        "date": "2026-06-24",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 6218,
+        "title": "Gym route boundary: pin and regression-test the `/gym` document gate (only `/gym/oss` admitted; bare `/gym` + deeper/unknown segments redirect)",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/6218",
+        "date": "2026-06-24",
+        "fixed": true
+      },
+      {
+        "repo": "OpenAgentsInc/openagents",
+        "number": 5556,
+        "title": "Remaining NodeNext typecheck debt: apps/pylon (365) + apps/autopilot-desktop (509) red and out of check:deploy",
+        "url": "https://github.com/OpenAgentsInc/openagents/issues/5556",
+        "date": "2026-06-21",
+        "fixed": true
+      },
+      {
+        "repo": "aapatre/Automatic-Udemy-Course-Enroller-GET-PAID-UDEMY-COURSES-for-FREE",
+        "number": 357,
+        "title": "[BUG] Firefox - AttributeError: 'WebDriver' object has no attribute 'execute_cdp_cmd'",
+        "url": "https://github.com/aapatre/Automatic-Udemy-Course-Enroller-GET-PAID-UDEMY-COURSES-for-FREE/issues/357",
+        "date": "2022-05-12",
+        "fixed": true
+      }
+    ]
+  },
   "siteWeeks": [
     {
       "repo": "mdws-org/orthodoxprayers",
