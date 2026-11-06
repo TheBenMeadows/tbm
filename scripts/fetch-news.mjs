@@ -358,6 +358,7 @@ const repoOf = (item) => item.repository_url.replace("https://api.github.com/rep
 async function outside(authors, skip, prev) {
     const skipped = new Set(skip.map((r) => r.toLowerCase()));
     const known = new Map((prev?.issues ?? []).map((i) => [i.url, i]));
+    const knownPulls = new Map((prev?.pulls ?? []).map((x) => [x.url, x]));
     const scope = `${OWN_SCOPE} ${authors.map((a) => `-user:${a}`).join(" ")}`;
     const pulls = [];
     const issues = [];
@@ -365,7 +366,21 @@ async function outside(authors, skip, prev) {
     for (const author of authors) {
         for (const p of await searchAll(`is:pr is:merged author:${author} ${scope}`)) {
             if (skipped.has(repoOf(p).toLowerCase()) || !p.pull_request?.merged_at) continue;
-            pulls.push({ repo: repoOf(p), number: p.number, title: p.title, url: p.html_url, date: p.pull_request.merged_at.slice(0, 10) });
+            const facts = { repo: repoOf(p), number: p.number, title: p.title, url: p.html_url, date: p.pull_request.merged_at.slice(0, 10) };
+            /* A contribution is a merge by someone else into the project's default
+             * branch: a self-merge or a merge into a side branch does not count. Merges
+             * do not change, so this is looked up once and kept. */
+            const seen = knownPulls.get(p.html_url);
+            if (seen && typeof seen.accepted === "boolean") { pulls.push({ ...facts, accepted: seen.accepted }); continue; }
+            if (lookups >= MAX_ISSUE_LOOKUPS) { problem(`${p.html_url}: lookup cap reached; left for the next run`); continue; }
+            lookups++;
+            try {
+                const full = await getJson(p.pull_request.url);
+                const accepted = full.base?.ref === full.base?.repo?.default_branch && Boolean(full.merged_by?.login) && full.merged_by.login !== author;
+                pulls.push({ ...facts, accepted });
+            } catch (err) {
+                problem(`${p.html_url}: ${err.message}; left for the next run`);
+            }
         }
         for (const i of await searchAll(`is:issue is:closed reason:completed author:${author} ${scope}`)) {
             if (skipped.has(repoOf(i).toLowerCase())) continue;

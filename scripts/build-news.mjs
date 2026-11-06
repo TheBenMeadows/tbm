@@ -380,7 +380,7 @@ const cleanTitle = (t) => {
 function outsideEntries(sources, winLinks) {
     const o = sources.outside ?? {};
     const items = [
-        ...(o.pulls ?? []).map((x) => ({ ...x, type: "pull" })),
+        ...(o.pulls ?? []).filter((x) => x.accepted !== false).map((x) => ({ ...x, type: "pull" })),
         ...(o.issues ?? []).filter((x) => x.fixed).map((x) => ({ ...x, type: "issue" })),
     ].filter((x) => !winLinks.has(itemUrl(x.url)) && realDate(x.date));
     /* A merged pull request usually closes the issue it fixes, on the same day: that is

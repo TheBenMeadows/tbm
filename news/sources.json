@@ -542,210 +542,240 @@
         "number": 3,
         "title": "transfer: optional memo via the SPL Memo program",
         "url": "https://github.com/cookiechain/cookie-mcp/pull/3",
-        "date": "2026-09-14"
+        "date": "2026-09-14",
+        "accepted": true
       },
       {
         "repo": "hamed-elfayome/Claude-Usage-Tracker",
         "number": 301,
         "title": "fix: present Notch HUD on the built-in notched display, not the primary display (#294)",
         "url": "https://github.com/hamed-elfayome/Claude-Usage-Tracker/pull/301",
-        "date": "2026-08-29"
+        "date": "2026-08-29",
+        "accepted": true
       },
       {
         "repo": "hamed-elfayome/Claude-Usage-Tracker",
         "number": 302,
         "title": "fix: keychain migration silently no-ops on unentitled builds, leaving credentials in cleartext (#292)",
         "url": "https://github.com/hamed-elfayome/Claude-Usage-Tracker/pull/302",
-        "date": "2026-08-29"
+        "date": "2026-08-29",
+        "accepted": true
       },
       {
         "repo": "hamed-elfayome/Claude-Usage-Tracker",
         "number": 303,
         "title": "fix: false 'credentials expired' (E3000) from Cloudflare-challenged requests (#277)",
         "url": "https://github.com/hamed-elfayome/Claude-Usage-Tracker/pull/303",
-        "date": "2026-08-29"
+        "date": "2026-08-29",
+        "accepted": true
       },
       {
         "repo": "hamed-elfayome/Claude-Usage-Tracker",
         "number": 305,
         "title": "fix(notch): stop returning 413 for ordinary hook payloads; bound the listener",
         "url": "https://github.com/hamed-elfayome/Claude-Usage-Tracker/pull/305",
-        "date": "2026-08-29"
+        "date": "2026-08-29",
+        "accepted": true
       },
       {
         "repo": "hzrd149/nsite-gateway",
         "number": 27,
         "title": "fix: prefer path-derived MIME type over the blossom server's content-type header",
         "url": "https://github.com/hzrd149/nsite-gateway/pull/27",
-        "date": "2026-08-27"
+        "date": "2026-08-27",
+        "accepted": true
       },
       {
         "repo": "kamenlevi/MagHue",
         "number": 3,
         "title": "Optional grace window: show the charging colour briefly after connect",
         "url": "https://github.com/kamenlevi/MagHue/pull/3",
-        "date": "2026-08-27"
+        "date": "2026-08-27",
+        "accepted": true
       },
       {
         "repo": "thaw-app/Thaw",
         "number": 876,
         "title": "fix(menubar): refuse the saved-layout bulk apply while the dividers are collapsed",
         "url": "https://github.com/thaw-app/Thaw/pull/876",
-        "date": "2026-08-04"
+        "date": "2026-08-04",
+        "accepted": true
       },
       {
         "repo": "thaw-app/Thaw",
         "number": 856,
         "title": "fix(menubar): back off negative-cache TTL instead of flat 60s",
         "url": "https://github.com/thaw-app/Thaw/pull/856",
-        "date": "2026-07-31"
+        "date": "2026-07-31",
+        "accepted": true
       },
       {
         "repo": "thaw-app/Thaw",
         "number": 785,
         "title": "fix(menubar): skip saved-layout bulk apply while sourcePIDs are unresolved",
         "url": "https://github.com/thaw-app/Thaw/pull/785",
-        "date": "2026-07-23"
+        "date": "2026-07-23",
+        "accepted": false
       },
       {
         "repo": "thaw-app/Thaw",
         "number": 796,
         "title": "fix(menubar): don't persist notch-overflow ejections into the saved layout",
         "url": "https://github.com/thaw-app/Thaw/pull/796",
-        "date": "2026-07-23"
+        "date": "2026-07-23",
+        "accepted": false
       },
       {
         "repo": "thaw-app/Thaw",
         "number": 797,
         "title": "fix(service): resolve parked items whose title is their bundle identifier",
         "url": "https://github.com/thaw-app/Thaw/pull/797",
-        "date": "2026-07-23"
+        "date": "2026-07-23",
+        "accepted": false
       },
       {
         "repo": "thaw-app/Thaw",
         "number": 809,
         "title": "fix(menubar): only run notch overflow on the main display",
         "url": "https://github.com/thaw-app/Thaw/pull/809",
-        "date": "2026-07-23"
+        "date": "2026-07-23",
+        "accepted": false
       },
       {
         "repo": "OpenAgentsInc/openagents",
         "number": 8959,
         "title": "fix(fast-follow-spec): return diagnostics instead of throwing on non-array path fields (#8958)",
         "url": "https://github.com/OpenAgentsInc/openagents/pull/8959",
-        "date": "2026-07-17"
+        "date": "2026-07-17",
+        "accepted": true
       },
       {
         "repo": "OpenAgentsInc/openagents",
         "number": 8496,
         "title": "feat(khala-code-desktop): TUI saved-prompt library (Warp Workflows analog)",
         "url": "https://github.com/OpenAgentsInc/openagents/pull/8496",
-        "date": "2026-07-06"
+        "date": "2026-07-06",
+        "accepted": true
       },
       {
         "repo": "OpenAgentsInc/openagents",
         "number": 8221,
         "title": "feat(khala-code-desktop): TUI mode — terminal chat over the same Codex harness",
         "url": "https://github.com/OpenAgentsInc/openagents/pull/8221",
-        "date": "2026-07-03"
+        "date": "2026-07-03",
+        "accepted": true
       },
       {
         "repo": "OpenAgentsInc/openagents",
         "number": 8260,
         "title": "feat(khala-code-desktop): TUI ergonomics — one-shot argv, single-prompt piping, honest usage, tool-activity + spinner/resume",
         "url": "https://github.com/OpenAgentsInc/openagents/pull/8260",
-        "date": "2026-07-03"
+        "date": "2026-07-03",
+        "accepted": true
       },
       {
         "repo": "OpenAgentsInc/openagents",
         "number": 6024,
         "title": "feat(inference): emit openagents disclosure block on the streaming (SSE) path",
         "url": "https://github.com/OpenAgentsInc/openagents/pull/6024",
-        "date": "2026-06-22"
+        "date": "2026-06-22",
+        "accepted": true
       },
       {
         "repo": "OpenAgentsInc/openagents",
         "number": 5534,
         "title": "fix(autopilot-control-protocol): typecheck to zero (NodeNext extensions + tail) and fence into check:deploy",
         "url": "https://github.com/OpenAgentsInc/openagents/pull/5534",
-        "date": "2026-06-20"
+        "date": "2026-06-20",
+        "accepted": true
       },
       {
         "repo": "OpenAgentsInc/openagents",
         "number": 5535,
         "title": "feat(nostr): outage-coordination fallback drill smoke + evidence (DE-8, #5531)",
         "url": "https://github.com/OpenAgentsInc/openagents/pull/5535",
-        "date": "2026-06-20"
+        "date": "2026-06-20",
+        "accepted": true
       },
       {
         "repo": "OpenAgentsInc/openagents",
         "number": 5536,
         "title": "fix(pylon): surface MDK wallet daemon port conflict with actionable MDK_WALLET_PORT guidance (#5505)",
         "url": "https://github.com/OpenAgentsInc/openagents/pull/5536",
-        "date": "2026-06-20"
+        "date": "2026-06-20",
+        "accepted": true
       },
       {
         "repo": "OpenAgentsInc/openagents",
         "number": 5538,
         "title": "feat(markets): signature usage metering — clear signature_monetization metering blocker (DE-6 #5529)",
         "url": "https://github.com/OpenAgentsInc/openagents/pull/5538",
-        "date": "2026-06-20"
+        "date": "2026-06-20",
+        "accepted": true
       },
       {
         "repo": "OpenAgentsInc/openagents",
         "number": 5544,
         "title": "feat(sites): flag-gated site page form-capture route mount — DE-9 #5532",
         "url": "https://github.com/OpenAgentsInc/openagents/pull/5544",
-        "date": "2026-06-20"
+        "date": "2026-06-20",
+        "accepted": true
       },
       {
         "repo": "OpenAgentsInc/openagents",
         "number": 5546,
         "title": "feat(pylon): safe public multi-earning-node projection clears safe_public_projection_missing (#5527)",
         "url": "https://github.com/OpenAgentsInc/openagents/pull/5546",
-        "date": "2026-06-20"
+        "date": "2026-06-20",
+        "accepted": true
       },
       {
         "repo": "OpenAgentsInc/openagents",
         "number": 5548,
         "title": "fix(sites): restore SITE_FORM_CAPTURE_ENABLED + form-capture route mount silently reverted by #5546",
         "url": "https://github.com/OpenAgentsInc/openagents/pull/5548",
-        "date": "2026-06-20"
+        "date": "2026-06-20",
+        "accepted": true
       },
       {
         "repo": "OpenAgentsInc/openagents",
         "number": 5560,
         "title": "DE-9 #5532: omni client-delivery business-object projection (flag-gated INERT)",
         "url": "https://github.com/OpenAgentsInc/openagents/pull/5560",
-        "date": "2026-06-20"
+        "date": "2026-06-20",
+        "accepted": true
       },
       {
         "repo": "OpenAgentsInc/openagents",
         "number": 5741,
         "title": "fix(ui): un-break the Tailwind UI coverage test on clean checkouts + gate packages/ui",
         "url": "https://github.com/OpenAgentsInc/openagents/pull/5741",
-        "date": "2026-06-20"
+        "date": "2026-06-20",
+        "accepted": true
       },
       {
         "repo": "OpenAgentsInc/openagents",
         "number": 5448,
         "title": "refactor(api): dedup inline HTTP method guards in training-run-window-routes",
         "url": "https://github.com/OpenAgentsInc/openagents/pull/5448",
-        "date": "2026-06-19"
+        "date": "2026-06-19",
+        "accepted": true
       },
       {
         "repo": "OpenAgentsInc/openagents",
         "number": 5473,
         "title": "feat(forum): add light/dark theme selector",
         "url": "https://github.com/OpenAgentsInc/openagents/pull/5473",
-        "date": "2026-06-19"
+        "date": "2026-06-19",
+        "accepted": true
       },
       {
         "repo": "OpenAgentsInc/openagents",
         "number": 5509,
         "title": "perf(forum): batch per-post tip-recipient-readiness (fix N+1 on large threads)",
         "url": "https://github.com/OpenAgentsInc/openagents/pull/5509",
-        "date": "2026-06-19"
+        "date": "2026-06-19",
+        "accepted": true
       }
     ],
     "issues": [
