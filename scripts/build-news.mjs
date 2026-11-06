@@ -394,7 +394,7 @@ function outsideEntries(sources, winLinks) {
         const nIssues = list.length - nPulls;
         const parts = [];
         if (nPulls) parts.push(`${count(nPulls, "change", "changes")} merged`);
-        if (nIssues) parts.push(`${parts.length ? count(nIssues, "reported fault", "reported faults").toLowerCase() : count(nIssues, "reported fault", "reported faults")} fixed`);
+        if (nIssues) parts.push(`${parts.length ? count(nIssues, "reported issue", "reported issues").toLowerCase() : count(nIssues, "reported issue", "reported issues")} resolved`);
         let summary = cleanTitle(newest.title);
         if (summary && list.length > 1) summary = `${summary.replace(/[.!?]$/, "")}, and ${list.length - 1} more.`;
         else if (summary && !/[.!?]$/.test(summary)) summary = `${summary}.`;
@@ -587,7 +587,9 @@ const HOME_START = "<!-- news:start -->";
 const HOME_END = "<!-- news:end -->";
 
 function homeBlock(all) {
-    const rows = all.slice(0, HOME_COUNT).map((e) =>
+    /* The home page leads with this site's own work; contributions to other projects
+     * stay on /news and in the feed. */
+    const rows = all.filter((e) => e.kind !== "outside").slice(0, HOME_COUNT).map((e) =>
         `                <li class="no-justify"><a href="${esc(local(e.url))}"${ext(e.url)}><span class="lede">${esc(e.title)}<span class="marks">${esc(KINDS[e.kind])} &middot; ${shortDate(e.date)}</span></span><span class="who">${esc(e.project)}</span></a></li>`);
     rows.push(`                <li><a href="/news/">All news<span class="who">releases, launches &amp; papers</span></a></li>`);
     return `${HOME_START}
