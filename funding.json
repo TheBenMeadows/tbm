@@ -57,7 +57,7 @@
                 "guid": "ethereum",
                 "type": "other",
                 "address": "0x8Fe141A1Fe4747d0C42C51d24C6FD0545b1e9dd1",
-                "description": "Ethereum, Base and other EVM chains (ETH or USDC), tips.thebenmeadows.eth."
+                "description": "Ethereum, Base and other EVM chains (ETH or USDC)."
             },
             {
                 "guid": "monero",

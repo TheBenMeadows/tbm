@@ -21,7 +21,7 @@ Nothing on this site is paywalled. If you or the person you work for found somet
 - [GitHub Sponsors](https://github.com/sponsors/TheBenMeadows)
 - [Ko-fi](https://ko-fi.com/thebenmeadows)
 - [Patreon](https://www.patreon.com/thebenmeadows)
-- Ethereum, Base and other EVM chains (ETH, USDC): tips.thebenmeadows.eth = 0x8Fe141A1Fe4747d0C42C51d24C6FD0545b1e9dd1
+- Ethereum, Base and other EVM chains (ETH, USDC): 0x8Fe141A1Fe4747d0C42C51d24C6FD0545b1e9dd1
 - Monero (XMR): 86F6fY2jL8PDSdvBu7LjiuKb7Xgw1oRVrVAYroVjtRjRMpGnebWaRo2LnV7PouL8oHXyM42cjLjYCfkEFv8FromwNPCrUaA
 - Tezos (XTZ): thebenmeadows.tez = tz1d6Vh4PPBs9siz63MhCFZ6EaqujYxto2AL
 - Solana (SOL): thebenmeadows.sol = 3q3WJEr9tH98v6s2SBWfmsQNVXCPS42DbVkNZk9EKmhr
