@@ -311,7 +311,7 @@ decisions behind it are at [`/tech/`](https://thebenmeadows.com/tech/).
 |------|------------|
 | `index.html` | the home page (link hub) |
 | `mirrors/`, `tech/` | the mirror list and the tech-stack colophon |
-| `profiles/` | every profile, one page — the footer's "All profiles" target |
+| `profiles/` | every profile, one page — the footer's "All" target |
 | `experiments/`, `infra/` | experiments gallery and the network/ASN colophon |
 | `ai/wins.json` | entries for `/ai/`; the page is generated from it by `scripts/build-ai.mjs` |
 | `papers/` | preprints: an index plus one page per paper with Google Scholar `citation_*` tags; each PDF sits beside its page (the one copy on the site), byte-identical to the Zenodo file |
