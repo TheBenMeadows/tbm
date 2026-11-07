@@ -10,7 +10,7 @@ description: "In October I minted hollerith, a punch card for everyone I met in 
 
 In October I minted [hollerith](https://hollerith.thebenmeadows.com/) as an ABX code series on Ethereum. ABX is the open protocol Art Blocks released this year for deploying collections, with the same factory contracts at the same addresses on every chain it supports. The piece is a punch card in IBM 029 Hollerith code, one card for every person I met in Marfa. ABX stores the program on chain, and a Solidity contract draws each card from it. No server is involved in a card. 126 cards exist as I write this, most of them minted by the visitors themselves from their phones. A typical claim cost about 0.0002 ETH of gas at the 0.3 gwei cap the show key ran under.
 
-I built three more things with Claude Code between November 5 and 7.
+I built three more things between November 5 and 7.
 
 **ABX Explorer.** [abx.thebenmeadows.com](https://abx.thebenmeadows.com/) is a static page. A Cloudflare Worker reads the six ABX factory contracts' Deployed events every 15 minutes and writes the directory the page renders, so every collection the factories deployed on Ethereum, Base, Arbitrum and Robinhood Chain is listed: 78 as I write this. Names and images are read from each collection's own `contractURI()` and `tokenURI()` data URIs and supply from the contracts, so a collection that never registered with Art Blocks' resolver is listed like any other. Once an hour the Worker also writes a news feed from the ABX changelogs. The news is written by a machine. The page labels it that way, and every entry carries a link to what it was written from.
 
