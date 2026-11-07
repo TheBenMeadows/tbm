@@ -5,10 +5,10 @@ tags: [Art, Blockchain, Technology]
 related: [/marfa/]
 image: /blog/media/abx-explorer-abx-fs-find3r-fork/hollerith-card.webp
 image_alt: "hollerith card no. 1: an IBM 5081-style punch card reading I MET THEBENMEADOWS, with one hole per meeting and the holder's hole ringed."
-description: "In October I minted hollerith, a punch card for everyone I met at Plastic Cactus in Marfa, as an ABX code series on Ethereum. This is what I built around ABX in the days after."
+description: "In October I minted hollerith, a punch card for everyone I met in Marfa, as an ABX code series on Ethereum. This is what I built on ABX in the days after."
 ---
 
-In October I minted [hollerith](https://hollerith.thebenmeadows.com/) as an ABX code series on Ethereum. ABX is the open protocol Art Blocks released this year for deploying collections, with the same factory contracts at the same addresses on every chain it supports. The piece is a punch card in IBM 029 Hollerith code, one card for every person I met at Plastic Cactus in Marfa. ABX stores the program on chain, and a Solidity contract draws each card from it. No server is involved in a card. 126 cards exist as I write this, most of them minted by the visitors themselves from their phones. A typical claim cost about 0.0002 ETH of gas at the 0.3 gwei cap the show key ran under.
+In October I minted [hollerith](https://hollerith.thebenmeadows.com/) as an ABX code series on Ethereum. ABX is the open protocol Art Blocks released this year for deploying collections, with the same factory contracts at the same addresses on every chain it supports. The piece is a punch card in IBM 029 Hollerith code, one card for every person I met in Marfa. ABX stores the program on chain, and a Solidity contract draws each card from it. No server is involved in a card. 126 cards exist as I write this, most of them minted by the visitors themselves from their phones. A typical claim cost about 0.0002 ETH of gas at the 0.3 gwei cap the show key ran under.
 
 I built three more things with Claude Code between November 5 and 7.
 
