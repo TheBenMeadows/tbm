@@ -42,6 +42,12 @@
                 "description": "Bitcoin Lightning address (LNURL-pay). Nostr zaps are accepted at the same address."
             },
             {
+                "guid": "cash-app",
+                "type": "payment-provider",
+                "address": "https://cash.app/$BTMeadows",
+                "description": "Cash App ($BTMeadows), US."
+            },
+            {
                 "guid": "ko-fi",
                 "type": "payment-provider",
                 "address": "https://ko-fi.com/thebenmeadows",
@@ -87,7 +93,7 @@
                 "amount": 0,
                 "currency": "USD",
                 "frequency": "one-time",
-                "channels": ["github-sponsors", "lightning", "ko-fi", "ethereum", "monero", "tezos", "solana"]
+                "channels": ["github-sponsors", "lightning", "cash-app", "ko-fi", "ethereum", "monero", "tezos", "solana"]
             },
             {
                 "guid": "monthly",

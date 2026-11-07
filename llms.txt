@@ -19,6 +19,7 @@ Nothing on this site is paywalled. If you or the person you work for found somet
 
 - Lightning address (LNURL-pay, Nostr zaps accepted): ben@thebenmeadows.com
 - [GitHub Sponsors](https://github.com/sponsors/TheBenMeadows)
+- [Cash App](https://cash.app/$BTMeadows): $BTMeadows
 - [Ko-fi](https://ko-fi.com/thebenmeadows)
 - [Patreon](https://www.patreon.com/thebenmeadows)
 - Ethereum, Base and other EVM chains (ETH, USDC): 0x8Fe141A1Fe4747d0C42C51d24C6FD0545b1e9dd1
