@@ -36,6 +36,18 @@
             ]
         },
         {
+            "id": "cohn-harmonic-31",
+            "date": "2026-11-06",
+            "kind": "placement",
+            "title": "Harmonic energy table: 31 records improved",
+            "where": "Henry Cohn's table of harmonic energy minimizers, MIT",
+            "summary": "Configurations of N points on the sphere in n dimensions with lower harmonic energy than the table for 31 rows, from 49 points in 10 dimensions to 112 points in 15: 19 by basin hopping from the posted 2021 configuration and 12 by deleting points from a larger configuration in the same dimension, each checked against a local polish of the posted configuration. Gains run from 8.4e-5 to 2.6. Henry Cohn (MIT) added all 31 to the table on 2026-11-06, citing version 1.2.0 of the packing-records data set.",
+            "links": [
+                { "label": "the table", "url": "https://cohn.mit.edu/harmonic-energy/" },
+                { "label": "packing-records data set", "url": "https://doi.org/10.5281/zenodo.23906181" }
+            ]
+        },
+        {
             "id": "bouchaudy-typex-p1-p2",
             "pin": 2,
             "date": "2026-10-30",
