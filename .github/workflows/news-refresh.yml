@@ -62,8 +62,9 @@ jobs:
           NEWS_PROBLEMS: ${{ runner.temp }}/news-problems.txt
         run: node scripts/fetch-news.mjs
 
+      # The only clock read: NEWS_AS_OF ages old entries out of the home page block.
       - name: Rebuild the home page block
-        run: node scripts/build-news.mjs
+        run: NEWS_AS_OF="$(date -u +%F)" node scripts/build-news.mjs
 
       - name: Note what changed
         id: diff
@@ -128,7 +129,7 @@ jobs:
         id: pr
         run: |
           cp "$RUNNER_TEMP/out/sources.json" news/sources.json
-          node scripts/build-news.mjs
+          NEWS_AS_OF="$(date -u +%F)" node scripts/build-news.mjs
           if git diff --quiet -- news/sources.json index.html; then
             echo "main already has this data"
             echo "opened=false" >> "$GITHUB_OUTPUT"

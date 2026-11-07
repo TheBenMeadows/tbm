@@ -9,8 +9,8 @@
  *   ai/wins.json        the outcomes /ai shows
  *   experiments/<x>/    each page's own <title> and description
  *
- * Writes news/index.html, news/feed.xml (Atom), and the three newest entries into the
- * marked block on the home page.
+ * Writes news/index.html, news/feed.xml (Atom), and up to three entries from the last
+ * 30 days into the marked block on the home page.
  *
  * DETERMINISM IS THE CONTRACT, as in build-blog.mjs: output derives from tracked files
  * only, never the clock or the network, so both hosts and every mirror serve the same
@@ -31,6 +31,7 @@ const SITE = "https://thebenmeadows.com";
 const TITLE = "News · TheBenMeadows";
 const DESCRIPTION = "What shipped, newest first: releases, site launches, papers, posts, experiments and outside results.";
 const HOME_COUNT = 3;
+const HOME_DAYS = 30;
 const FEED_COUNT = 50;
 
 const read = (p) => readFileSync(join(ROOT, p), "utf8");
@@ -582,30 +583,52 @@ ${entries}
 
 /* The newest entries on the home page, between two markers in index.html. The block
  * is rewritten in place, so the committed home page and the served one match once a
- * build has run and its result is committed. */
-const HOME_START = "<!-- news:start -->";
+ * build has run and its result is committed.
+ *
+ * The block shows at most HOME_COUNT entries from the HOME_DAYS days up to its as-of
+ * date, so a quiet month empties it instead of leaving old news on the home page. The
+ * as-of date lives in the start marker, which keeps the build clock-free: hosts and
+ * local builds reuse the committed date and rebuild the same bytes. Only the daily
+ * refresh passes today's date (NEWS_AS_OF), and the marker moves only when that changes
+ * which rows show, so most days produce no diff. A marker without a date means no
+ * window. */
+const HOME_START_RE = /<!-- news:start(?: as-of=(\d{4}-\d{2}-\d{2}))? -->/;
 const HOME_END = "<!-- news:end -->";
 
-function homeBlock(all) {
+const daysBefore = (iso, n) => new Date(Date.parse(`${iso}T00:00:00Z`) - n * 86400000).toISOString().slice(0, 10);
+
+function homeRows(all, asOf) {
     /* The home page leads with this site's own work; contributions to other projects
      * stay on /news and in the feed. */
-    const rows = all.filter((e) => e.kind !== "outside").slice(0, HOME_COUNT).map((e) =>
+    const from = asOf ? daysBefore(asOf, HOME_DAYS) : "";
+    return all.filter((e) => e.kind !== "outside" && e.date > from).slice(0, HOME_COUNT).map((e) =>
         `                <li class="no-justify"><a href="${esc(local(e.url))}"${ext(e.url)}><span class="lede">${esc(e.title)}<span class="marks">${esc(KINDS[e.kind])} &middot; ${shortDate(e.date)}</span></span><span class="who">${esc(e.project)}</span></a></li>`);
-    rows.push(`                <li><a href="/news/">All news<span class="who">releases, launches &amp; papers</span></a></li>`);
-    return `${HOME_START}
+}
+
+function homeBlock(rows, asOf) {
+    return `<!-- news:start${asOf ? ` as-of=${asOf}` : ""} -->
             <h2 class="section-label">News</h2>
             <ul class="toc">
-${rows.join("\n")}
+${[...rows, `                <li><a href="/news/">All news<span class="who">releases, launches &amp; papers</span></a></li>`].join("\n")}
             </ul>
             ${HOME_END}`;
 }
 
 function writeHome(all) {
     const html = read("index.html");
-    const a = html.indexOf(HOME_START);
+    const m = HOME_START_RE.exec(html);
     const b = html.indexOf(HOME_END);
-    if (a === -1 || b < a) throw new Error("build-news: index.html has no <!-- news:start --> ... <!-- news:end --> block");
-    const next = html.slice(0, a) + homeBlock(all) + html.slice(b + HOME_END.length);
+    if (!m || b < m.index) throw new Error("build-news: index.html has no <!-- news:start --> ... <!-- news:end --> block");
+    const committed = m[1];
+    const today = process.env.NEWS_AS_OF;
+    if (today && !realDate(today)) throw new Error("build-news: NEWS_AS_OF must be a real YYYY-MM-DD");
+    let asOf = committed;
+    let rows = homeRows(all, committed);
+    if (today && today > (committed ?? "")) {
+        const fresh = homeRows(all, today);
+        if (fresh.join("\n") !== rows.join("\n")) [asOf, rows] = [today, fresh];
+    }
+    const next = html.slice(0, m.index) + homeBlock(rows, asOf) + html.slice(b + HOME_END.length);
     if (next !== html) writeFileSync(join(ROOT, "index.html"), next, "utf8");
 }
 
