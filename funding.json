@@ -1,0 +1,81 @@
+{
+    "$schema": "https://fundingjson.org/schema/v1.1.0.json",
+    "version": "v1.1.0",
+    "entity": {
+        "type": "individual",
+        "role": "owner",
+        "name": "Benjamin Meadows",
+        "email": "steam-gab-shape@duck.com",
+        "description": "Benjamin Meadows (TheBenMeadows) - artist and independent developer. Open-source tools, preprints and on-chain art.",
+        "webpageUrl": {
+            "url": "https://thebenmeadows.com/"
+        }
+    },
+    "projects": [
+        {
+            "guid": "tbm",
+            "name": "thebenmeadows.com",
+            "description": "Source for thebenmeadows.com: a static personal site with its build scripts, mirrored to several forges and archives.",
+            "webpageUrl": {
+                "url": "https://thebenmeadows.com/"
+            },
+            "repositoryUrl": {
+                "url": "https://github.com/TheBenMeadows/tbm",
+                "wellKnown": "https://github.com/TheBenMeadows/tbm/blob/main/.well-known/funding-manifest-urls"
+            },
+            "licenses": ["spdx:MIT"],
+            "tags": ["web", "static-site"]
+        }
+    ],
+    "funding": {
+        "channels": [
+            {
+                "guid": "github-sponsors",
+                "type": "payment-provider",
+                "address": "https://github.com/sponsors/TheBenMeadows",
+                "description": "Monthly or one-time sponsorship through GitHub."
+            },
+            {
+                "guid": "lightning",
+                "type": "other",
+                "address": "ben@thebenmeadows.com",
+                "description": "Bitcoin Lightning address (LNURL-pay). Nostr zaps are accepted at the same address."
+            },
+            {
+                "guid": "ko-fi",
+                "type": "payment-provider",
+                "address": "https://ko-fi.com/thebenmeadows",
+                "description": "One-time or monthly support through Ko-fi."
+            },
+            {
+                "guid": "patreon",
+                "type": "payment-provider",
+                "address": "https://www.patreon.com/thebenmeadows",
+                "description": "Monthly membership through Patreon."
+            }
+        ],
+        "plans": [
+            {
+                "guid": "one-time",
+                "status": "active",
+                "name": "One-time support",
+                "description": "Any amount, once.",
+                "amount": 0,
+                "currency": "USD",
+                "frequency": "one-time",
+                "channels": ["github-sponsors", "lightning", "ko-fi"]
+            },
+            {
+                "guid": "monthly",
+                "status": "active",
+                "name": "Monthly support",
+                "description": "Any amount, every month.",
+                "amount": 0,
+                "currency": "USD",
+                "frequency": "monthly",
+                "channels": ["github-sponsors", "ko-fi", "patreon"]
+            }
+        ],
+        "history": []
+    }
+}

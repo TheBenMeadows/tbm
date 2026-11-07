@@ -24,6 +24,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const PAGES = [
     { file: 'index.html', url: '/' },
     { file: 'profiles/index.html', url: '/profiles/' },
+    { file: 'support/index.html', url: '/support/' },
     { file: 'marfa/index.html', url: '/marfa/' },
     { file: 'marfa/available/index.html', url: '/marfa/available/' },
     { file: 'mirrors/index.html', url: '/mirrors/' },
