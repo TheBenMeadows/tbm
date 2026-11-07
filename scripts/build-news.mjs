@@ -586,7 +586,8 @@ ${entries}
  * build has run and its result is committed.
  *
  * The block shows at most HOME_COUNT entries from the HOME_DAYS days up to its as-of
- * date, so a quiet month empties it instead of leaving old news on the home page. The
+ * date, so a quiet month hides the section instead of leaving old news on the home
+ * page; /news stays linked from the Writing section below it. The
  * as-of date lives in the start marker, which keeps the build clock-free: hosts and
  * local builds reuse the committed date and rebuild the same bytes. Only the daily
  * refresh passes today's date (NEWS_AS_OF), and the marker moves only when that changes
@@ -606,7 +607,10 @@ function homeRows(all, asOf) {
 }
 
 function homeBlock(rows, asOf) {
-    return `<!-- news:start${asOf ? ` as-of=${asOf}` : ""} -->
+    const start = `<!-- news:start${asOf ? ` as-of=${asOf}` : ""} -->`;
+    if (rows.length === 0) return `${start}
+            ${HOME_END}`;
+    return `${start}
             <h2 class="section-label">News</h2>
             <ul class="toc">
 ${[...rows, `                <li><a href="/news/">All news<span class="who">releases, launches &amp; papers</span></a></li>`].join("\n")}
