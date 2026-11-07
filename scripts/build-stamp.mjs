@@ -40,6 +40,7 @@ const PAGES = [
     "art/essentialism/index.html",
     "search/index.html",
     "profiles/index.html",
+    "support/index.html",
     "archive/index.html",
 ];
 

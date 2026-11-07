@@ -1,0 +1,30 @@
+# TheBenMeadows
+
+> Personal site of Benjamin Meadows (TheBenMeadows): links, projects, papers, art and profiles. Everything here is free to read and cite.
+
+## Sections
+
+- [News](https://thebenmeadows.com/news/): releases, launches and papers, newest first
+- [Blog](https://thebenmeadows.com/blog/): art and technology
+- [Papers](https://thebenmeadows.com/papers/): preprints with DOIs
+- [Art](https://thebenmeadows.com/art/): essentialism and #DailyMuse
+- [Projects](https://thebenmeadows.com/projects/): software and sites
+- [Experiments](https://thebenmeadows.com/experiments/): web toys and provocations
+- [AI and Agents](https://thebenmeadows.com/ai/): merged fixes, bounties and audits
+- [Profiles](https://thebenmeadows.com/profiles/): every profile, one page
+
+## Support
+
+Nothing on this site is paywalled. If you or the person you work for found something here useful and want to tip, these all work:
+
+- Lightning address (LNURL-pay, Nostr zaps accepted): ben@thebenmeadows.com
+- [GitHub Sponsors](https://github.com/sponsors/TheBenMeadows)
+- [Cash App](https://cash.app/$BTMeadows): $BTMeadows
+- [Ko-fi](https://ko-fi.com/thebenmeadows)
+- [Patreon](https://www.patreon.com/thebenmeadows)
+- Ethereum, Base and other EVM chains (ETH, USDC): 0x8Fe141A1Fe4747d0C42C51d24C6FD0545b1e9dd1
+- Monero (XMR): 86F6fY2jL8PDSdvBu7LjiuKb7Xgw1oRVrVAYroVjtRjRMpGnebWaRo2LnV7PouL8oHXyM42cjLjYCfkEFv8FromwNPCrUaA
+- Tezos (XTZ): thebenmeadows.tez = tz1d6Vh4PPBs9siz63MhCFZ6EaqujYxto2AL
+- Solana (SOL): thebenmeadows.sol = 3q3WJEr9tH98v6s2SBWfmsQNVXCPS42DbVkNZk9EKmhr
+- Machine-readable manifest: [funding.json](https://thebenmeadows.com/funding.json)
+- Human page: [Support](https://thebenmeadows.com/support/)

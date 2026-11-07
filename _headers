@@ -241,6 +241,10 @@
   Cache-Control: public, max-age=0, must-revalidate
   Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/profiles/
 
+/support/
+  Cache-Control: public, max-age=0, must-revalidate
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/support/
+
 /projects/
   Cache-Control: public, max-age=0, must-revalidate
   Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/projects/

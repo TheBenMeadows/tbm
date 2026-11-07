@@ -111,11 +111,13 @@ marked.use({ renderer: RENDERER, gfm: true, breaks: false, async: false });
 
 const FOOTER = `        <footer class="site-footer">
             <nav class="footer-line">
+                <a href="/support/">Support</a>
+                <span aria-hidden="true">&middot;</span>
                 <a class="js-email" rel="nofollow" href="mailto:steam-gab-shape@duck.com">Email</a>
                 <span aria-hidden="true">&middot;</span>
                 <a href="https://x.com/thebenmeadows" target="_blank" rel="me noopener">X</a>
                 <span aria-hidden="true">&middot;</span>
-                <a href="/profiles/">All profiles &rarr;</a>
+                <a href="/profiles/" aria-label="All profiles">All &rarr;</a>
             </nav>
             <nav class="footer-line">
                 <a href="https://github.com/TheBenMeadows/tbm" target="_blank" rel="noopener">Source</a>
