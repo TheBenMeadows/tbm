@@ -291,6 +291,8 @@ marked.use({ renderer: RENDERER, gfm: true, breaks: true, async: false });
 
 const FOOTER = `        <footer class="site-footer">
             <nav class="footer-line">
+                <a href="/support/">Support</a>
+                <span aria-hidden="true">&middot;</span>
                 <a class="js-email" rel="nofollow" href="mailto:steam-gab-shape@duck.com">Email</a>
                 <span aria-hidden="true">&middot;</span>
                 <a href="https://x.com/thebenmeadows" target="_blank" rel="me noopener">X</a>
@@ -307,8 +309,6 @@ const FOOTER = `        <footer class="site-footer">
                 <a href="/tech/">Tech&nbsp;Stack</a>
                 <span aria-hidden="true">&middot;</span>
                 <a href="/infra/">Infra</a>
-                <span aria-hidden="true">&middot;</span>
-                <a href="/support/">Support</a>
             </nav>
         </footer>`;
 
