@@ -54,6 +54,12 @@
                 "description": "Monthly membership through Patreon."
             },
             {
+                "guid": "ethereum",
+                "type": "other",
+                "address": "0x8Fe141A1Fe4747d0C42C51d24C6FD0545b1e9dd1",
+                "description": "Ethereum, Base and other EVM chains (ETH or USDC), tips.thebenmeadows.eth."
+            },
+            {
                 "guid": "monero",
                 "type": "other",
                 "address": "86F6fY2jL8PDSdvBu7LjiuKb7Xgw1oRVrVAYroVjtRjRMpGnebWaRo2LnV7PouL8oHXyM42cjLjYCfkEFv8FromwNPCrUaA",
@@ -81,7 +87,7 @@
                 "amount": 0,
                 "currency": "USD",
                 "frequency": "one-time",
-                "channels": ["github-sponsors", "lightning", "ko-fi", "monero", "tezos", "solana"]
+                "channels": ["github-sponsors", "lightning", "ko-fi", "ethereum", "monero", "tezos", "solana"]
             },
             {
                 "guid": "monthly",
