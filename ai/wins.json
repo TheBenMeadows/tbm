@@ -15,7 +15,7 @@
             "kind": "placement",
             "title": "Lagrange Bend hidden objects: DDUST #361 won by room 237",
             "where": "Lagrange Bend by jiwa, Art Blocks Studio, Ethereum",
-            "summary": "Lagrange Bend has 400 rooms and hid seven objects in them. An object goes to the room whose ghost dies at a hidden death count: the 20-death range is published, the count is not. Room 237 won the sixth object, DDUST #361 by jiwa, inside the 1180-1199 range on 2026-11-07. Other rooms won the first five. The award, the claim and the transfer to thebenmeadows.eth are Ethereum transactions.",
+            "summary": "Lagrange Bend has 400 rooms and hid seven objects in them. An object goes to the room whose ghost dies at a hidden death count: the 20-death range is published, the count is not. Room 237 won the sixth object, DDUST #361 by jiwa, inside the 1180-1199 range on 2026-11-07. Ben's three rooms were played by a program that ran every visit through a simulation before sending it. Other rooms won the first five. The award, the claim and the transfer to thebenmeadows.eth are Ethereum transactions.",
             "links": [
                 { "label": "DDUST #361 on Art Blocks", "url": "https://www.artblocks.io/token/1/0x00000053a75735169ad44f6760c11f3d3d3b3544/361" },
                 { "label": "claim transaction", "url": "https://etherscan.io/tx/0x7014eff47edd6d5205f30a969e9488eaea2feec55b41e31c70e933e59762a58b" }
