@@ -52,6 +52,24 @@
                 "type": "payment-provider",
                 "address": "https://www.patreon.com/thebenmeadows",
                 "description": "Monthly membership through Patreon."
+            },
+            {
+                "guid": "monero",
+                "type": "other",
+                "address": "86F6fY2jL8PDSdvBu7LjiuKb7Xgw1oRVrVAYroVjtRjRMpGnebWaRo2LnV7PouL8oHXyM42cjLjYCfkEFv8FromwNPCrUaA",
+                "description": "Monero (XMR) subaddress."
+            },
+            {
+                "guid": "tezos",
+                "type": "other",
+                "address": "tz1d6Vh4PPBs9siz63MhCFZ6EaqujYxto2AL",
+                "description": "Tezos (XTZ), thebenmeadows.tez."
+            },
+            {
+                "guid": "solana",
+                "type": "other",
+                "address": "3q3WJEr9tH98v6s2SBWfmsQNVXCPS42DbVkNZk9EKmhr",
+                "description": "Solana (SOL), thebenmeadows.sol."
             }
         ],
         "plans": [
@@ -63,7 +81,7 @@
                 "amount": 0,
                 "currency": "USD",
                 "frequency": "one-time",
-                "channels": ["github-sponsors", "lightning", "ko-fi"]
+                "channels": ["github-sponsors", "lightning", "ko-fi", "monero", "tezos", "solana"]
             },
             {
                 "guid": "monthly",
