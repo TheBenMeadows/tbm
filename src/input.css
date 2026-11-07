@@ -506,7 +506,7 @@ html.dark #theme-toggle::before { content: "Light"; }
 
    The row is baseline-aligned, so the title and the right-hand annotation stay
    on one line and the markers hang beneath without pushing anything down. */
-.toc .lede { display: block; }
+.toc .lede { display: block; min-width: 55%; }
 .toc .marks {
     display: block;
     margin-top: 0.3rem;
@@ -519,17 +519,21 @@ html.dark #theme-toggle::before { content: "Light"; }
 /* The loudest ink in either theme, because "new" is the whole point of saying it. */
 .toc .marks .new { color: var(--accent); }
 
+/* A long annotation wraps right-aligned inside the space the title leaves;
+   the title keeps at least 55% of the row. */
 .toc .who {
     color: var(--ink-soft);
     font-size: 0.68rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    white-space: nowrap;
+    text-align: right;
+    hyphens: manual;
     transition: color 0.15s;
 }
 @media (max-width: 540px) {
     .toc a { flex-direction: column; align-items: flex-start; gap: 0.15rem; }
-    .toc .who { white-space: normal; }
+    .toc .lede { min-width: 0; }
+    .toc .who { text-align: left; }
 }
 
 /* Hairline card: the box idiom of the subpage grids, translated — no fill,
