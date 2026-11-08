@@ -10,6 +10,18 @@
     },
     "wins": [
         {
+            "id": "packomania-scu-239",
+            "date": "2026-11-08",
+            "kind": "placement",
+            "title": "Spheres in a cube table: 239 records improved",
+            "where": "Eckard Specht's Packomania table of equal spheres in a cube",
+            "summary": "Packings of N equal spheres in a unit cube with a larger radius than the table listed, for 239 values of N from 135 to 981, each checked in exact arithmetic. Every file beats the table's radius for N and for every larger N, a local polish of the posted packing, and the best radius in the Moki & Julio collection, each by at least 1e-7. Gains run from 1.1e-7 to 4.7e-4, with a median of 1.5e-5. Eckard Specht (Otto von Guericke University Magdeburg) put all 239 in the table on 2026-11-08, citing the packing-records data set.",
+            "links": [
+                { "label": "the table", "url": "https://packomania.com/scu/scu.html" },
+                { "label": "packing-records data set", "url": "https://doi.org/10.5281/zenodo.23906181" }
+            ]
+        },
+        {
             "id": "v3r1t4s-spherical-31-64",
             "date": "2026-11-07",
             "kind": "merged",
