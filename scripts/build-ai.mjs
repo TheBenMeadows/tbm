@@ -153,7 +153,7 @@ const page = `<!doctype html>
         <script src="/theme.js"></script>
         <script src="/search.js" defer></script>
     </head>
-    <body id="top" class="bg-black">
+    <body id="top" class="bg-black read">
         <header class="running-head">
             <span class="rh-left"><a href="/">Index</a></span>
             <nav class="rh-right">
