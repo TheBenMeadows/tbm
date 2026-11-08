@@ -11,7 +11,7 @@
 // "Body copy" is the same set input.css styles as body copy: direct <p> and
 // <li> children of <main> and of a post's .e-content. Card text, labels and
 // metadata are nested deeper and are not measured; data-measure-skip marks a
-// direct child that is not prose (a block of wallet addresses).
+// direct child that is not prose.
 //
 // Runs from dist/ after build:netlify. Chrome comes from CHROME_PATH, or the
 // copy GitHub's ubuntu runners ship at /usr/bin/google-chrome.

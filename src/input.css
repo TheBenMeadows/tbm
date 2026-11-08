@@ -549,6 +549,36 @@ html.dark #theme-toggle::before { content: "Light"; }
     hyphens: manual;
     transition: color 0.15s;
 }
+/* Wallet addresses on /support/: a label in the .who style over the address
+   in monospace. An address is copied character for character, so it never
+   hyphenates and breaks anywhere rather than at a hyphen it does not contain.
+   The block and the note under it run the list's full width and sit on the
+   same inset as the list's row text, so every left edge on the page lines up. */
+.addresses,
+.addresses-note {
+    margin: 1.9rem 0 0;
+    padding: 0 0.4rem;
+    text-align: left;
+}
+.addresses dt {
+    color: var(--ink-soft);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-top: 1.1rem;
+}
+.addresses dt:first-child { margin-top: 0; }
+.addresses dd {
+    margin: 0.3rem 0 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+    word-break: break-all;
+    hyphens: none;
+    user-select: all;
+}
+
 @media (max-width: 540px) {
     .toc a { flex-direction: column; align-items: flex-start; gap: 0.15rem; }
     .toc .lede { min-width: 0; }
