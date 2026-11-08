@@ -10,6 +10,18 @@
     },
     "wins": [
         {
+            "id": "v3r1t4s-spherical-31-64",
+            "date": "2026-11-07",
+            "kind": "merged",
+            "title": "V3R1T4S: a better spherical code for 64 points in 31 dimensions",
+            "where": "V3R1T4S (elder-plinius), known-knowns/spherical-codes-cohn-table",
+            "summary": "64 unit vectors in R^31 whose largest pairwise cosine is 0.0303197333750, below the 0.030322662292 that spherical-codes.org lists for (31, 64) by 2.93e-6, on a row not marked optimal. The package carries the vectors, a checker written from the definition and the table snapshot. The maintainers confirmed the value with their own exact checker, found that the code differs from the posted one, and merged it on 2026-11-07.",
+            "links": [
+                { "label": "the pull request", "url": "https://github.com/elder-plinius/V3R1T4S/pull/893" },
+                { "label": "the table", "url": "https://spherical-codes.org/" }
+            ]
+        },
+        {
             "id": "lagrange-bend-ddust-361",
             "date": "2026-11-07",
             "kind": "placement",
