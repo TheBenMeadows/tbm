@@ -312,7 +312,7 @@ const FOOTER = `        <footer class="site-footer">
             </nav>
         </footer>`;
 
-function head({ title, description, url, image, imageAlt, author, extraLinks = "" }) {
+function head({ title, description, url, image, imageAlt, author, extraLinks = "", read = false }) {
     const img = image ? SITE + image : `${SITE}/og.png`;
     const alt = imageAlt || "TheBenMeadows · thebenmeadows.com";
     /* The index has no single author; a post does, and it is whoever wrote that
@@ -365,7 +365,7 @@ ${extraLinks}
         <script src="/theme.js"></script>
         <script src="/search.js" defer></script>
     </head>
-    <body id="top" class="bg-black">
+    <body id="top" class="bg-black${read ? " read" : ""}">
         <header class="running-head">
             <span class="rh-left"><a href="/">Index</a>&nbsp;&middot;&nbsp;<a href="/blog/">Blog</a></span>
             <nav class="rh-right">
@@ -498,6 +498,7 @@ ${post.seeAlso.map((r) =>
      * take it as the content, and src/input.css gives main > .e-content the
      * same body-copy rules as main. */
     return head({
+        read: true,
         title: `${post.title} · TheBenMeadows`,
         description: post.description,
         url: post.url,
@@ -553,6 +554,7 @@ ${list.map(row).join("\n")}
 `;
 
     return head({
+        read: true,
         title: "Blog · TheBenMeadows",
         description: "Longer writing about art and technology, by Ben Meadows.",
         url: "/blog/",

@@ -129,7 +129,7 @@ const FOOTER = `        <footer class="site-footer">
         </footer>
 `;
 
-function head({ title, description, url }) {
+function head({ title, description, url, read = false }) {
     return `<!doctype html>
 <html lang="en">
     <head>
@@ -148,7 +148,7 @@ function head({ title, description, url }) {
         <script src="/theme.js"></script>
         <script src="/search.js" defer></script>
     </head>
-    <body id="top" class="bg-black">
+    <body id="top" class="bg-black${read ? " read" : ""}">
         <header class="running-head">
             <span class="rh-left"><a href="/">Index</a>&nbsp;&middot;&nbsp;<a href="/speaking/">Speaking</a></span>
             <nav class="rh-right">
@@ -180,7 +180,7 @@ function page(t, root) {
         ? `                <p class="post-meta no-justify"><a class="${LINK}" href="${esc(t.origin)}" rel="noopener">Original recording</a></p>\n`
         : "";
     const who = `                <p class="post-meta no-justify">Speakers: Ben${others.length ? ", " + others.map(esc).join(", ") : ""}</p>\n`;
-    return head({ title: `${t.title} · Transcript · TheBenMeadows`, description: t.description, url: t.url })
+    return head({ read: true, title: `${t.title} · Transcript · TheBenMeadows`, description: t.description, url: t.url })
         + `        <main class="text-neutral-400 max-w-(--breakpoint-md) mx-auto px-6 pt-8 pb-12 leading-relaxed transcript">
             <header class="post-head">
                 <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">${esc(t.title)}</h1>
@@ -203,7 +203,7 @@ function indexPage(items, registry) {
     ).join("\n");
     const root = `            <p class="post-meta no-justify">The whole archive -- audio and these transcripts -- is one IPFS directory:
                 <a class="${LINK}" href="${AUDIO_SW}${registry.root}/">browse</a> &nbsp;&middot;&nbsp; <code class="cid">ipfs://${registry.root}</code></p>\n`;
-    return head({
+    return head({ read: true,
         title: "Speaking · Transcripts · TheBenMeadows",
         description: "Speaker-labeled transcripts of Ben Meadows's podcasts, X Spaces, panels and classes, 2022 onward, with the audio on IPFS.",
         url: "/speaking/",

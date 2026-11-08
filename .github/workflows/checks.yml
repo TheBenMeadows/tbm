@@ -50,6 +50,11 @@ jobs:
       - name: Build and run the build-time guards
         run: npm run build:netlify
 
+      # Renders dist/ in the runner's preinstalled Chrome and fails on body
+      # copy past 75 characters a line, under 16px, or justified on a phone.
+      - name: Line length and body size (check-measure)
+        run: npm run check:measure
+
       - name: css-touch-lint (hover, focus ring, :invalid, Tailwind flag, input size)
         run: python3 scripts/css-touch-lint.py
       - name: gitleaks (secrets in the pushed commits)
