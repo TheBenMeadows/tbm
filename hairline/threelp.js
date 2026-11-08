@@ -8,15 +8,15 @@
  * pointer. The houses differ only in their walls: straw (wavy courses),
  * sticks (upright stick lines) and brick (mortar courses, staggered joints).
  * The brick house carries the one bright edge throughout. Pointing at the
- * bench: the head lowers until the muzzle points down the bench, the jaw
- * opens, and the huff leaves the mouth as hairline arcs,
+ * bench: it holds the howl, the jaw opens a little wider, and the huff
+ * leaves the raised muzzle as hairline arcs that curve down the bench,
  * two for each house; the straw house leans downwind and folds flat, its roof
  * dropping onto its walls, then the stick house does the same; brick holds.
- * Leaving raises the head to the howl and stands the houses back up. The read-out counts what
+ * Leaving closes the jaw and stands the houses back up. The read-out counts what
  * stands. The slider is the stagger between houses, in ms.
  *
  * The pattern: discrete items, as Riffle. One 700ms tween per house fold, per
- * huff and one for the head and jaw; the stagger is the house's distance from the mouth.
+ * huff and one for the jaw; the stagger is the house's distance from the mouth.
  * The hit test is the outline of the REST bench, houses and wolf, read once.
  */
 const {
@@ -33,7 +33,7 @@ const WOLF = [[15, 0, 0.8], [13.5, 15, 3], [15.5, 22, 6], [12.5, 30, 4],
   [17, 31.5, 2], [25, 32.6, 0.8], [18, 34.2, 0.4], [26.8, 34.6, 0.8], [26.8, 36.8, 1], [16, 38.5, 3], [10, 40, 1.5], [1.5, 46, 0.7], [3, 38.5, 2], [1, 35, 4],
   [-6, 26, 6], [-14, 12, 6], [-13, 5, 2], [-16, 4, 1.5], [-25, 6.5, 4], [-33, 5, 2], [-34.5, 1.5, 1.5], [-28, 0.2, 2], [-16, 0, 1.5], [4, 0, 1], [4.5, 2.6, 1.5],
   [7.5, 5, 2], [9.5, 0, 0.8]];
-const HEAD = [4, 13], JP = 6, NECK = [6, 30], EYE = [14.5, 36.6], WS = 0.78, HOWL = 58, MOUTH = [21.8, 26.8];
+const HEAD = [4, 13], JP = 6, NECK = [6, 30], EYE = [14.5, 36.6], WS = 0.78, HOWL = 58, MOUTH = [10.4, 38.6];
 const W2 = (u, v) => [(u + v) * R2, (v - u) * R2];
 const spin = (ring) => ring.map((q) => ({ u: (q.u + q.v) * R2, v: (q.v - q.u) * R2, nu: (q.nu + q.nv) * R2, nv: (q.nv - q.nu) * R2 }));
 
@@ -84,8 +84,10 @@ function mount({ stage, svg, read }, value) {
   /** One huff at progress p: two arcs leaving the mouth; the later two travel on, over the fallen straw, to the sticks. */
   function huff(H, p) {
     if (p < 0.002 || p > 0.995) return "";
-    const far = H.i > 1, cu = MOUTH[0] + (far ? lerp(0, 27, p) : 0), r = lerp(3, far ? 9 : 7, p);
-    return [r, r - 3.2].filter((rr) => rr > 1).map((rr) => open(Array.from({ length: 9 }, (_, j) => { const a = rad(-42 + j * 10.5); return WP(cu + rr * Math.cos(a), MOUTH[1] + 1 + rr * Math.sin(a), TH / 2); }))).join(" ");
+    const [m, c, e] = H.i > 1 ? [MOUTH, [34, 44], [52, 16]] : [MOUTH, [17, 36], [21, 16]];
+    const at2 = (t) => [0, 1].map((k) => (1 - t) * (1 - t) * m[k] + 2 * (1 - t) * t * c[k] + t * t * e[k]);
+    const [cu, cw] = at2(p), [nu, nw] = at2(Math.min(1, p + 0.02)), th = Math.atan2(nw - cw, nu - cu) || 0, r = lerp(2.5, 6.5, p);
+    return [r, r - 2.6].filter((rr) => rr > 1).map((rr) => open(Array.from({ length: 9 }, (_, j) => { const a = th + rad(-40 + j * 10); return WP(cu + rr * Math.cos(a), cw + rr * Math.sin(a), TH / 2); }))).join(" ");
   }
   const jawT = tween(0);
   let jawDrawn = NaN;
@@ -129,7 +131,7 @@ function mount({ stage, svg, read }, value) {
   function draw(now) {
     let moving = !tdone(jawT, now), standing = 3;
     const j = tval(jawT, now);
-    if (j !== jawDrawn) { jawDrawn = j; wolf(lerp(HOWL, -4, j), lerp(3, 20, ss((j - 0.55) / 0.45))); }
+    if (j !== jawDrawn) { jawDrawn = j; wolf(HOWL, lerp(3, 9, j)); }
     for (const H of huffs) {
       const p = tval(H.p, now);
       if (!tdone(H.p, now)) moving = true;
@@ -157,8 +159,8 @@ function mount({ stage, svg, read }, value) {
     const now = performance.now();
     act = on;
     tset(jawT, on ? 1 : 0, now, 0);
-    huffs.forEach((H) => { H.p = tween(0); H.drawn = NaN; if (on) tset(H.p, 1, now, 520 + [0, 0.3, 1.2, 1.5][H.i] * stag); });
-    [0, 1].forEach((k) => tset(houses[k].f, on ? 1 : 0, now, on ? 520 + (k ? 1.75 : 0.55) * stag : (1 - k) * stag * 0.5));
+    huffs.forEach((H) => { H.p = tween(0); H.drawn = NaN; if (on) tset(H.p, 1, now, 60 + [0, 0.3, 1.2, 1.5][H.i] * stag); });
+    [0, 1].forEach((k) => tset(houses[k].f, on ? 1 : 0, now, on ? 60 + (k ? 1.75 : 0.55) * stag : (1 - k) * stag * 0.5));
     L.wake();
   }
 

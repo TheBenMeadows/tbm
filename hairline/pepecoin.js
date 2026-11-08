@@ -20,14 +20,14 @@
  * hit test is the outline of the rest desk, read once.
  */
 const {
-  Cam, circ, clamp, facing, fit, hull, lerp, open, poly, prism, proj, rad, ringAt, rrect,
+  Cam, circ, clamp, facing, fit, hull, lerp, open, poly, prism, proj, rad, ringAt, rrect, run,
   tdone, tset, tval, tween, disposer, mk, pointer, put, register, solid,
 } = HL;
 
-const FW = 22, ZH = 25, A = 10, ST = 3.2, BR = 3, OPEN = 46, SHUT = 0;
-const CR = 5.5, CT = 1.6, HTOP = ZH + A + 14, MZ = ZH - 2, LIP = ZH + 6;
-// the coins on the desk, in the purse's own frame: x along the clasp, y toward the eye
-const DESK = [[-15, 22, 0], [2, 28, 0], [18, 21, 0], [29, 11, 0], [19.5, 19.5, CT]];
+const FW = 22, ZH = 25, A = 10, ST = 3.2, BR = 3, OPEN = 66, SHUT = 0;
+const CR = 5.5, CT = 1.6, HTOP = ZH + A + 14, MZ = ZH - 4, LIP = ZH + 2;
+// the coins on the desk, in front of the purse and round its near end
+const DESK = [[-10, 25, 0], [8, 28, 0], [26, 21, 0], [34, 4, 0], [27.5, 19.5, CT]];
 const N = DESK.length, TOPI = 4;
 const ss = (t) => { t = clamp(t, 0, 1); return t * t * (3 - 2 * t); };
 const at = (ring, x, y) => ring.map((q) => ({ ...q, u: q.u + x, v: q.v + y }));
@@ -45,26 +45,26 @@ function mount({ stage, svg, read }, value) {
   const bag = disposer();
   let stag = value;
 
-  // The purse is turned 45 degrees to face the eye: its own x runs level across the screen, its y toward the viewer.
-  const C = Cam(45, 0.5, 3.7), R2 = Math.SQRT1_2, toW = ([a, b, z]) => [(a + b) * R2, (b - a) * R2, z];
-  const pts = [[-FW - 3, -16, 0], [FW + 3, 16, 0], [-FW - 3, 16, 0], [FW + 3, -16, 0], [0, 0, ZH + A + ST + 2 * BR], [0, -14, ZH + A]];
+  // The clasp runs along x; R2 turns a flat glyph or a ball's radius to read level across the screen.
+  const C = Cam(45, 0.5, 3.6), R2 = Math.SQRT1_2;
+  const pts = [[-FW - 3, -16, 0], [FW + 3, 16, 0], [-FW - 3, 16, 0], [FW + 3, -16, 0], [0, 0, ZH + A + ST + 2 * BR], [0, -14, ZH + A + ST + 2 * BR], [0, 14, ZH + 6]];
   DESK.forEach(([x, y]) => pts.push([x - CR, y - CR, 0], [x + CR, y + CR, 0], [lerp(x, 0, 0.3), lerp(y, 0, 0.3), HTOP + CT]));
-  fit(C, pts.map(toW), 200, 166);
-  const PW = proj(C), fw = facing(C), P = (a, b, z) => PW(...toW([a, b, z]));
-  const front = (q) => fw({ ...q, nu: (q.nu + q.nv) * R2, nv: (q.nv - q.nu) * R2 });
+  fit(C, pts, 200, 166);
+  const P = proj(C), front = facing(C);
 
   /** A point on a jaw: x along it, h above the hinge, the jaw leaning by deg toward +y (side 1) or -y (side -1). */
   const jaw = (x, h, deg, side, dy = 0) => P(x, side * h * Math.sin(rad(deg)) + dy, ZH + h * Math.cos(rad(deg)));
   const jawLine = (deg, side, dh = 0) => XS.map((x) => jaw(x, Math.max(0, arch(x) - dh), deg, side));
   /** A ball: a circle round its centre, the radius it has across the screen. */
-  const ball = ([x, y, z]) => { const [cx, cy] = P(x, y, z), r = P(x + BR, y, z)[0] - cx; return poly(circ(r, 28).map((q) => [cx + q.u, cy + q.v])); };
+  const ball = ([x, y, z]) => { const [cx, cy] = P(x, y, z), r = P(x + BR * R2, y - BR * R2, z)[0] - cx; return poly(circ(r, 28).map((q) => [cx + q.u, cy + q.v])); };
   const ballAt = (deg, side) => {
-    const h = A + ST, lean = deg > 4 ? 0 : side * 0.9;
-    return [-side * 1.7, side * h * Math.sin(rad(deg)) + lean, ZH + h * Math.cos(rad(deg))];
+    // the ball stands straight up on its stem from the tip of its arc, so it stays on the frame however far it is sprung
+    const lean = deg > 4 ? 0 : side * 0.9;
+    return [-side * 1.7, side * A * Math.sin(rad(deg)) + lean, ZH + A * Math.cos(rad(deg)) + ST];
   };
 
   const g = mk("g", {}, svg);
-  const body = solid(g), backJaw = mk("path", { class: "nf" }, g), mouth = mk("path", { class: "lo" }, g);
+  const body = solid(g), backJaw = mk("path", { class: "nf sil" }, g), mouth = mk("path", { class: "lo" }, g), hole = mk("path", { class: "nf lo" }, g);
   const innerG = mk("g", {}, g);
   const frontJaw = mk("path", { class: "nf sil" }, g), frontLip = mk("path", { class: "nf lo" }, g);
   const stems = mk("path", { class: "nf" }, g), backBall = mk("path", { class: "sil" }, g), frontBall = mk("path", { class: "sil" }, g);
@@ -74,12 +74,18 @@ function mount({ stage, svg, read }, value) {
   function drawPurse(deg, f) {
     // a rounded bottom (a quarter turn up from the desk to the belly), then a taper up to the hinge
     const T = lerp(9, 12, f), wB = FW + 1 + 1.5 * f, sec = [0, 22, 45, 68, 90].map((d) => [ZH * 0.32 * (1 - Math.cos(rad(d))), wB - 8 + 8 * Math.sin(rad(d)), T * (0.6 + 0.4 * Math.sin(rad(d)))]);
-    sec.push([ZH * 0.62, FW + 0.4, T * 0.8], [ZH * 0.9, FW, T * 0.4]);
+    // up top the pouch widens to follow the frame as it springs apart, so the rim and the mouth read as a top plane
+    sec.push([ZH * 0.62, FW + 0.4, T * 0.8], [ZH, FW, Math.max(T * 0.4, A * Math.sin(rad(deg)) * 0.8)]);
     const ring = sec.flatMap(([z, w, t]) => ringAt(P, rrect(-w, -t, w, t, Math.min(w, t) * 0.95, 4), z));
     const fj = jawLine(deg, 1), bj = jawLine(deg, -1);
-    put(body, { sil: poly(hull(ring.concat(fj, bj))), crease: "" });
+    // the crease: the near half of the seam round the belly, where the pouch is widest
+    const belt = rrect(-wB + 1.2, -T + 1.2, wB - 1.2, T - 1.2, T - 1.2, 6);
+    put(body, { sil: poly(hull(ring.concat(fj, bj))), crease: open(ringAt(P, run(belt, front), ZH * 0.32)) });
     backJaw.setAttribute("d", open(bj));
     mouth.setAttribute("d", deg > 3 ? poly(fj.concat(bj.slice().reverse())) : "");
+    // the far wall seen through the open mouth, falling away inside, so the mouth reads as a hole
+    const sn = Math.sin(rad(deg)), cs = Math.cos(rad(deg));
+    hole.setAttribute("d", deg > 20 ? open(XS.slice(2, -2).map((x) => P(x * 0.92, -arch(x) * sn * 0.7, ZH + arch(x) * cs - 7 * sn))) : "");
     frontJaw.setAttribute("d", open(fj));
     frontLip.setAttribute("d", open(jawLine(deg, 1, 1.4)));
     const fb = ballAt(deg, 1), bb = ballAt(deg, -1);
@@ -95,7 +101,7 @@ function mount({ stage, svg, read }, value) {
   });
   /** A plain frog glyph on a coin's top face, its head toward the far edge: a wide head, two eye bumps on its brow, pupils, a smile. */
   function frog(x, y, z) {
-    const p = (u, v) => P(x + u, y + v, z), eyes = (r) => [-1.75, 1.75].map((u) => poly(circ(r, 16).map((q) => p(u + q.u, -1.4 + q.v)))).join("");
+    const p = (u, v) => P(x + (u + v) * R2, y + (v - u) * R2, z), eyes = (r) => [-1.75, 1.75].map((u) => poly(circ(r, 16).map((q) => p(u + q.u, -1.4 + q.v)))).join("");
     const smile = [-2.4, -1.2, 0, 1.2, 2.4].map((u) => p(u, 0.9 + 0.9 * (1 - (u / 2.4) ** 2)));
     return [poly(rrect(-3.5, -1.3, 3.5, 2.9, 1.9, 3).map((q) => p(q.u, q.v))), eyes(1.2), open(smile), eyes(0.42)];
   }
@@ -128,7 +134,7 @@ function mount({ stage, svg, read }, value) {
     if (key !== `${last}|${lastF}`) { last = deg; lastF = f; drawPurse(deg, f); }
     // Paint order: a coin over the mouth goes behind the front jaw, one still out over the desk in front of the purse.
     const inner = coins.filter((c) => c.mv > 0.6).sort((p, q) => p.pz - q.pz);
-    const outer = coins.filter((c) => c.mv <= 0.6).sort((p, q) => p.y + p.pz - q.y - q.pz);
+    const outer = coins.filter((c) => c.mv <= 0.6).sort((p, q) => p.x + p.y + p.pz - q.x - q.y - q.pz);
     inner.forEach((c) => innerG.append(c.el.g));
     outer.forEach((c) => outerG.append(c.el.g));
     const shut = act && all1 && tdone(clasp, now);
