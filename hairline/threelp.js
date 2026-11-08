@@ -9,14 +9,15 @@
  * sticks (upright stick lines) and brick (mortar courses, staggered joints).
  * The brick house carries the one bright edge throughout. Pointing at the
  * bench: it holds the howl, the jaw opens a little wider, and the huff
- * leaves the raised muzzle as hairline arcs that curve down the bench,
+ * leaves the raised muzzle as hairline arcs that level off at roof height and
+ * blow along the bench,
  * two for each house; the straw house leans downwind and folds flat, its roof
  * dropping onto its walls, then the stick house does the same; brick holds.
  * Leaving closes the jaw and stands the houses back up. The read-out counts what
  * stands. The slider is the stagger between houses, in ms.
  *
  * The pattern: discrete items, as Riffle. One 700ms tween per house fold, per
- * huff and one for the jaw; the stagger is the house's distance from the mouth.
+ * huff and one for the jaw; each house folds as its gust arrives.
  * The hit test is the outline of the REST bench, houses and wolf, read once.
  */
 const {
@@ -82,12 +83,13 @@ function mount({ stage, svg, read }, value) {
     place(eye, WP(...head(EYE), TH / 2));
   }
   /** One huff at progress p: two arcs leaving the mouth; the later two travel on, over the fallen straw, to the sticks. */
+  /** A huff's centre at t: a short launch forward from the raised muzzle, levelling off at roof height; the far ones then run on. */
+  const launch = (t) => [0, 1].map((k) => { const q = [MOUTH, [16, 40.5], [21, 28], [30, 28]].map((v) => v[k]), r = 1 - t; return r * r * r * q[0] + 3 * r * r * t * q[1] + 3 * r * t * t * q[2] + t * t * t * q[3]; });
+  const gust = (far, p) => (far ? (p < 0.25 ? launch(p / 0.25) : [lerp(30, 60, (p - 0.25) / 0.75), 28]) : launch(p));
   function huff(H, p) {
     if (p < 0.002 || p > 0.995) return "";
-    const [m, c, e] = H.i > 1 ? [MOUTH, [34, 44], [52, 16]] : [MOUTH, [17, 36], [21, 16]];
-    const at2 = (t) => [0, 1].map((k) => (1 - t) * (1 - t) * m[k] + 2 * (1 - t) * t * c[k] + t * t * e[k]);
-    const [cu, cw] = at2(p), [nu, nw] = at2(Math.min(1, p + 0.02)), th = Math.atan2(nw - cw, nu - cu) || 0, r = lerp(2.5, 6.5, p);
-    return [r, r - 2.6].filter((rr) => rr > 1).map((rr) => open(Array.from({ length: 9 }, (_, j) => { const a = th + rad(-40 + j * 10); return WP(cu + rr * Math.cos(a), cw + rr * Math.sin(a), TH / 2); }))).join(" ");
+    const far = H.i > 1, [cu, cw] = gust(far, p), [pu, pw] = gust(far, Math.max(0, p - 0.01)), th = Math.atan2(cw - pw, cu - pu) || 0, r = lerp(2.5, 6.5, p);
+    return [r, r - 2.6].filter((rr) => rr > 1).map((rr) => open(Array.from({ length: 9 }, (_, j) => { const a = th + rad(-40 + j * 10); return WP(cu - rr * 0.6 + rr * Math.cos(a), cw + rr * Math.sin(a), TH / 2); }))).join(" ");
   }
   const jawT = tween(0);
   let jawDrawn = NaN;
@@ -160,7 +162,7 @@ function mount({ stage, svg, read }, value) {
     act = on;
     tset(jawT, on ? 1 : 0, now, 0);
     huffs.forEach((H) => { H.p = tween(0); H.drawn = NaN; if (on) tset(H.p, 1, now, 60 + [0, 0.3, 1.2, 1.5][H.i] * stag); });
-    [0, 1].forEach((k) => tset(houses[k].f, on ? 1 : 0, now, on ? 60 + (k ? 1.75 : 0.55) * stag : (1 - k) * stag * 0.5));
+    [0, 1].forEach((k) => tset(houses[k].f, on ? 1 : 0, now, on ? 60 + (k ? 2.3 : 0.8) * stag : (1 - k) * stag * 0.5));
     L.wake();
   }
 
