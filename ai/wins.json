@@ -11,13 +11,14 @@
     "wins": [
         {
             "id": "packomania-scu-239",
-            "date": "2026-11-08",
+            "date": "2026-11-09",
             "kind": "placement",
-            "title": "Spheres in a cube table: 239 records improved",
-            "where": "Eckard Specht's Packomania table of equal spheres in a cube",
-            "summary": "Packings of N equal spheres in a unit cube with a larger radius than the table listed, for 239 values of N from 135 to 981, each checked in exact arithmetic. Every file beats the table's radius for N and for every larger N, a local polish of the posted packing, and the best radius in the Moki & Julio collection, each by at least 1e-7. Gains run from 1.1e-7 to 4.7e-4, with a median of 1.5e-5. Eckard Specht (Otto von Guericke University Magdeburg) put all 239 in the table on 2026-11-08, citing the packing-records data set.",
+            "title": "Packomania: 318 records in two tables",
+            "where": "Eckard Specht's Packomania tables of equal spheres in a cube and in a 4-dimensional ball",
+            "summary": "Packings of N equal spheres with a larger radius than the table listed, each checked in exact arithmetic: 239 in a unit cube (N from 135 to 981) and 79 in a 4-dimensional ball (N from 65 to 300). Every file beats the table's radius for N and for every larger N, a local polish of the posted packing, and the best radius in the Moki & Julio collection, each by at least 1e-7. Gains run from 1.1e-7 to 4.7e-4 in the cube and from 1.3e-7 to 3.6e-4 in the ball. Eckard Specht (Otto von Guericke University Magdeburg) put the cube packings in the table on 2026-11-08 and the 4-D ones on 2026-11-09, citing the packing-records data set.",
             "links": [
-                { "label": "the table", "url": "https://packomania.com/scu/scu.html" },
+                { "label": "the cube table", "url": "https://packomania.com/scu/scu.html" },
+                { "label": "the 4-D table", "url": "https://packomania.com/hsp4/hsp4.html" },
                 { "label": "packing-records data set", "url": "https://doi.org/10.5281/zenodo.23906181" }
             ]
         },
