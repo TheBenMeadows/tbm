@@ -62,11 +62,11 @@
         {
             "id": "cohn-grassmannian-731",
             "pin": 1,
-            "date": "2026-11-03",
+            "date": "2026-11-10",
             "kind": "placement",
-            "title": "Grassmannian packings table: 747 records improved",
+            "title": "Grassmannian packings table: 1,442 records improved",
             "where": "Henry Cohn's table of Grassmannian packings, MIT",
-            "summary": "Explicit packings for 747 rows of the table, with every value recomputed in exact rational arithmetic. The first 731 each beat the listed squared chordal distance by at least 1e-7; 553 of them date from the 1996-97 tables and 170 from entries added in 2025 and 2026, and the largest gains are in 12 dimensions, where 87 to 89 lines reach 8/9. The other 16 beat the listed value in its last printed digit, after the table's keeper asked for improvements of any size. Henry Cohn (MIT) added all 747 to the table by 2026-11-05, citing two versions of the packing-records data set.",
+            "summary": "Explicit packings for rows of the table, with every value recomputed in exact rational arithmetic. The first 747 (November 3 to 5) beat the listed squared chordal distance by at least 1e-7, or in its last printed digit after the table's keeper asked for improvements of any size; the largest gains are in 12 dimensions, where 87 to 89 lines reach 8/9. A second batch added 739 new rows and better packings for 501 of the first ones. Henry Cohn (MIT) added both batches, citing three versions of the packing-records data set, and on 2026-11-10 the table credits 1,442 rows to it; he has improved 44 of the submitted rows further himself.",
             "links": [
                 { "label": "the table", "url": "https://cohn.mit.edu/grassmannian/" },
                 { "label": "packing-records data set", "url": "https://doi.org/10.5281/zenodo.23906182" }
@@ -74,11 +74,11 @@
         },
         {
             "id": "cohn-harmonic-31",
-            "date": "2026-11-06",
+            "date": "2026-11-10",
             "kind": "placement",
-            "title": "Harmonic energy table: 31 records improved",
+            "title": "Harmonic energy table: 43 records improved",
             "where": "Henry Cohn's table of harmonic energy minimizers, MIT",
-            "summary": "Configurations of N points on the sphere in n dimensions with lower harmonic energy than the table for 31 rows, from 49 points in 10 dimensions to 112 points in 15: 19 by basin hopping from the posted 2021 configuration and 12 by deleting points from a larger configuration in the same dimension, each checked against a local polish of the posted configuration. Gains run from 8.4e-5 to 2.6. Henry Cohn (MIT) added all 31 to the table on 2026-11-06, citing version 1.2.0 of the packing-records data set.",
+            "summary": "Configurations of N points on the sphere in n dimensions with lower harmonic energy than the table for 43 rows, with N from 48 to 112 and n from 10 to 26. They came from basin hopping, from deleting or adding points in a neighbouring configuration, and from lifting a configuration from one dimension lower, and each was checked against a local polish of the posted 2021 configuration, so it is a different local minimum. Gains run from 8.4e-5 to 2.6. Henry Cohn (MIT) added 31 to the table on 2026-11-06 and the other 12 by 2026-11-10, citing versions 1.2 and 1.3 of the packing-records data set.",
             "links": [
                 { "label": "the table", "url": "https://cohn.mit.edu/harmonic-energy/" },
                 { "label": "packing-records data set", "url": "https://doi.org/10.5281/zenodo.23906181" }
