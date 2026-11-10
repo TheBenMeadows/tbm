@@ -21,6 +21,8 @@ The holders come from `ownerOf(1)` through `ownerOf(6)` on Abstract at block 885
 
 The contract has no owner. It does not have an `owner()` function at all, so there was nothing to renounce: there is no admin, no mint function, and no way to change the metadata. The only functions that change state are the standard ERC-1155 transfers and approvals a holder uses on their own copies.
 
+Both versions are in my catalogue: the [Ethereum reissue](https://art.thebenmeadows.com/works/eth/0xef240576e22e3d197a9357bbf2588875424bb7db/1/) and the [original six Abstract tokens](https://art.thebenmeadows.com/collections/phthalo-tunnel/).
+
 ## The image
 
 The image shown on the token is stored on Ethereum. It is a 1100 × 1467 WebP (243,556 bytes), split across 10 data contracts: each one's code is a `0x00` byte followed by up to 24,575 bytes of image, read back with `EXTCODECOPY` (the SSTORE2 pattern). My first fully on-chain piece, "together" (2023), used the same pattern through [diid](https://x.com/0xdiid)'s efficax extension. This time the contract does it without a platform.
