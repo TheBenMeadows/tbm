@@ -54,4 +54,4 @@ Before the mainnet deploy I ran the whole thing on a local chain and twice on Se
 
 Claude wrote the contract, the deploy and signing pages, and the check script, and ran the measurements above. I made the calls: reissuing instead of only archiving, no owner, ERC-1155, the 1100 px WebP, the wording of the description, and signing every mainnet transaction myself.
 
-If you hold one and something looks wrong, message me on X ([@TheBenMeadows](https://x.com/TheBenMeadows)). The contract is on [Etherscan](https://etherscan.io/address/0xEf240576e22E3d197a9357BBF2588875424BB7DB).
+If you hold one and something looks wrong, message me on X ([@TheBenMeadows](https://x.com/TheBenMeadows)). The contract source is verified on [Etherscan](https://etherscan.io/address/0xEf240576e22E3d197a9357BBF2588875424BB7DB#code) and [Sourcify](https://repo.sourcify.dev/1/0xEf240576e22E3d197a9357BBF2588875424BB7DB).
