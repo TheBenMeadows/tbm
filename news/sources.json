@@ -2,6 +2,42 @@
   "_comment": "Written by scripts/fetch-news.mjs (daily, .github/workflows/news-refresh.yml). Do not edit by hand: hand-written entries, the skip and hide lists and text overrides live in news/entries.json.",
   "releases": [
     {
+      "repo": "TheBenMeadows/tbm",
+      "tag": "2026.11.08",
+      "name": "2026.11.08",
+      "date": "2026-11-08",
+      "published": "2026-11-08T16:33:54Z",
+      "url": "https://github.com/TheBenMeadows/tbm/releases/tag/2026.11.08",
+      "notes": "Arweave `Yq_A5HvH_ZxjZxbXz99zRKaK5LIXX2JMDjF5FOGHXmQ` — `ar://thebenmeadows`\nManifest sha256 `4aa8511eda3ce60342242ccd4de8003c5385f3482ba0c3ec9cf49b146ec59368`, signed to Nostr and anchored with OpenTimestamps.\n\nThe continuous mirrors (Cloudflare, Netlify, onion, i2p) already track `main`; this release is what the pinned surfaces — Arweave, IPNS, and the Nostr nsite — now serve.\n\nAssets:\n\n`tbm-2026.11.08.zim` is the whole site as a single offline archive: open it in [Kiwix](https://kiwix.org/) with no network at all.\n\n`tbm-2026.11.08.bundle` is the full git history in one file: `git clone tbm-2026.11.08.bundle tbm`.\n\n`tbm-2026.11.08.torrent` is trackerless with an HTTP webseed, so the swarm stays reachable if this origin does not.\n\n`tbm-2026.11.08-manifest.json` and `tbm-2026.11.08-manifest.json.ots` verify the Bitcoin anchor on their own: put both in one directory and run `ots verify tbm-2026.11.08-manifest.json.ots`.\n\n`tbm-2026.11.08-SHA256SUMS.txt` covers every asset above. Download them into one directory and run `shasum -a 256 -c tbm-2026.11.08-SHA256SUMS.txt`. It does not cover the Source code (zip/tar.gz) links, which GitHub regenerates on demand."
+    },
+    {
+      "repo": "TheBenMeadows/tbm",
+      "tag": "2026.11.07",
+      "name": "2026.11.07",
+      "date": "2026-11-07",
+      "published": "2026-11-07T00:53:01Z",
+      "url": "https://github.com/TheBenMeadows/tbm/releases/tag/2026.11.07",
+      "notes": "Arweave `EkP1ThmyMbwyE90R3dfEqaUGRP5pYDD4c03fz0DdZNI` — `ar://thebenmeadows`\nManifest sha256 `ac2b49f9c96efe6a3406796863c1e7eb44b3d3394cb03dbbc478ad13d94ea77b`, signed to Nostr and anchored with OpenTimestamps.\n\nThe continuous mirrors (Cloudflare, Netlify, onion, i2p) already track `main`; this release is what the pinned surfaces — Arweave, IPNS, and the Nostr nsite — now serve.\n\nAssets:\n\n`tbm-2026.11.07.zim` is the whole site as a single offline archive: open it in [Kiwix](https://kiwix.org/) with no network at all.\n\n`tbm-2026.11.07.bundle` is the full git history in one file: `git clone tbm-2026.11.07.bundle tbm`.\n\n`tbm-2026.11.07.torrent` is trackerless with an HTTP webseed, so the swarm stays reachable if this origin does not.\n\n`tbm-2026.11.07-manifest.json` and `tbm-2026.11.07-manifest.json.ots` verify the Bitcoin anchor on their own: put both in one directory and run `ots verify tbm-2026.11.07-manifest.json.ots`.\n\n`tbm-2026.11.07-SHA256SUMS.txt` covers every asset above. Download them into one directory and run `shasum -a 256 -c tbm-2026.11.07-SHA256SUMS.txt`. It does not cover the Source code (zip/tar.gz) links, which GitHub regenerates on demand."
+    },
+    {
+      "repo": "mdws-org/squint",
+      "tag": "v0.9.9",
+      "name": "Squint 0.9.9",
+      "date": "2026-11-07",
+      "published": "2026-11-07T18:46:55Z",
+      "url": "https://github.com/mdws-org/squint/releases/tag/v0.9.9",
+      "notes": "Remove Location Data now removes data that earlier versions left in GIF, HEIC, AVIF and PDF files, and keeps a WebP's and a PNG's orientation.\n\nGIF. Text tucked inside a frame's timing block or a plain text block came through untouched. Only the four bytes of frame timing and the text a frame actually draws are kept now.\n\nHEIC and AVIF. XMP, QuickTime-style keys and the names of the items inside the file survived. They are removed now.\n\nPDF. Document JavaScript, and the author and dates on form fields and replies outside a page's annotation list, survived. Scripts are removed in every mode now, and the result says how many.\n\nOrientation. A WebP or PNG that records which way up it goes came out on its side after Remove Location Data. Its orientation is kept now, and Shrink bakes it into a PNG's pixels.\n\nIf you stripped GIF, HEIC, AVIF or PDF files with Squint 0.9.8 or earlier, strip them again.\n\nAlso: Shrink to a Quality Target no longer runs a Mac out of memory on a very large picture. A picture whose search would need more than half of this Mac's memory (about 14 megapixels on 8 GB, 28 on 16 GB) is encoded once at the fixed quality, and the result says so. A picture with the text "
+    },
+    {
+      "repo": "mdws-org/freewallet-desktop",
+      "tag": "v2.1.3",
+      "name": "FreeWallet 2.1.3",
+      "date": "2026-11-06",
+      "published": "2026-11-06T20:17:33Z",
+      "url": "https://github.com/mdws-org/freewallet-desktop/releases/tag/v2.1.3",
+      "notes": "\n- Settings, on the Wallet tab, can export the wallet to an encrypted backup file and import one. The file holds the wallet record, still encrypted under the wallet password, plus address labels and wallet settings, encrypted again under a backup password chosen at export (PBKDF2-SHA256, 310,000 iterations, a new salt for each export, AES-CBC with HMAC-SHA256). The backup password follows the wallet password rules: at least 12 characters, including a number. Restoring needs the backup password to open the file and the wallet password to unlock the wallet. The passphrase is never written to the file in readable form, and restoring from the passphrase still works without either password.\n- The welcome screen can import a backup file in place of creating a wallet or entering a passphrase.\n- An import checks the password and the file's integrity before reading anything from it, accepts only the wallet entries a backup is made of, and does not replace a wallet already on the device until the replacement is confirmed. Cached balances, history and pending Auto-BTCpay orders of the replaced wallet are removed.\n- NW.js runtime 0.119.2 (Chromium 156, Node 26.12.1), up from 0.92.0 (Chromium 1"
+    },
+    {
       "repo": "mdws-org/nnw-prayer-book",
       "tag": "v1.3.0",
       "name": "v1.3.0",
@@ -446,6 +482,30 @@
   "zenodo": [
     {
       "concept": "23906181",
+      "title": "packing-records: candidate improvements to nine record tables for packing, energy and Thomson problems",
+      "version": "1.4.0",
+      "type": "dataset",
+      "date": "2026-11-10",
+      "url": "https://doi.org/10.5281/zenodo.24111878"
+    },
+    {
+      "concept": "23906181",
+      "title": "packing-records: candidate improvements to seven record tables for packing, energy and Thomson problems",
+      "version": "1.3.0",
+      "type": "dataset",
+      "date": "2026-11-08",
+      "url": "https://doi.org/10.5281/zenodo.24046261"
+    },
+    {
+      "concept": "23906181",
+      "title": "packing-records: candidate improvements to five record tables for packing and energy problems",
+      "version": "1.2.2",
+      "type": "dataset",
+      "date": "2026-11-07",
+      "url": "https://doi.org/10.5281/zenodo.24029005"
+    },
+    {
+      "concept": "23906181",
       "title": "packing-records: candidate improvements to five record tables for packing and energy problems",
       "version": "1.2.1",
       "type": "dataset",
@@ -537,6 +597,14 @@
   ],
   "outside": {
     "pulls": [
+      {
+        "repo": "elder-plinius/V3R1T4S",
+        "number": 893,
+        "title": "[claim] spherical-codes-cohn-table: (31, 64) c* = 0.030319733375 (beats 0.030322662292)",
+        "url": "https://github.com/elder-plinius/V3R1T4S/pull/893",
+        "date": "2026-11-07",
+        "accepted": true
+      },
       {
         "repo": "cookiechain/cookie-mcp",
         "number": 3,
@@ -1070,6 +1138,43 @@
     ]
   },
   "siteWeeks": [
+    {
+      "repo": "TheBenMeadows/benjaminmeadows.com",
+      "week": "2026-11-02",
+      "date": "2026-11-08",
+      "pulls": [
+        8,
+        7,
+        6
+      ],
+      "announce": false,
+      "title": "",
+      "summary": ""
+    },
+    {
+      "repo": "mdws-org/everybadge",
+      "week": "2026-11-02",
+      "date": "2026-11-08",
+      "pulls": [
+        18,
+        17
+      ],
+      "announce": true,
+      "title": "Footer adds ways to support the archive",
+      "summary": "The footer now invites visitors to pin the metadata root on their own IPFS node or chip in toward hosting costs to help keep the archive online."
+    },
+    {
+      "repo": "mdws-org/poap-saver",
+      "week": "2026-11-02",
+      "date": "2026-11-06",
+      "pulls": [
+        32,
+        31
+      ],
+      "announce": false,
+      "title": "",
+      "summary": ""
+    },
     {
       "repo": "mdws-org/orthodoxprayers",
       "week": "2026-10-26",
