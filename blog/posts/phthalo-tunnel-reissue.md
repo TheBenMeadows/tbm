@@ -50,6 +50,8 @@ The deploy was 11 transactions from my wallet: 10 image chunks and the token con
 
 Before the mainnet deploy I ran the whole thing on a local chain and twice on Sepolia, with a script that compares the contract against the source files: holder balances against the snapshot, the decoded image against the WebP file byte for byte, the description against the approved text word for word, and the gas of every metadata read against 2^24. To make sure the script could fail, I deployed copies with planted mistakes (one lowercase letter in the description, an edition size of 7, the wrong image type), and it caught each one. The same script passed against the mainnet contract on November 7, 2026.
 
+Before that, the contract, the signing page and the check script went through three rounds of review by seven other AI models, each asked to find a way the deploy could go wrong. They found problems, including a backdoored copy of the contract that would have passed the first version of the check script, and each one was fixed before the Sepolia runs.
+
 ## Who did what
 
 Claude wrote the contract, the deploy and signing pages, and the check script, and ran the measurements above. I made the calls: reissuing instead of only archiving, no owner, ERC-1155, the 1100 px WebP, the wording of the description, and signing every mainnet transaction myself.
