@@ -1,6 +1,6 @@
 ---
 title: "Phthalo Tunnel, reissued on Ethereum"
-date: 2026-11-07
+date: 2026-11-09
 tags: [Art, Blockchain, Technology]
 image: /blog/media/phthalo-tunnel-reissue/still.webp
 image_alt: "Phthalo Tunnel: a stone tunnel mouth in a forest, in shades of Phthalocyanine Green G."
