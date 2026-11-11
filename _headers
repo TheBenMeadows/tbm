@@ -32,6 +32,9 @@
 /search.js
   Cache-Control: public, max-age=3600
 
+/peek.js
+  Cache-Control: public, max-age=3600
+
 # The stylesheet's dist filename carries a content hash (scripts/version-css.mjs),
 # so it can be cached like the font: forever, immutable. A new build names a new
 # file and the pages point at it atomically — no stale-CSS window on deploy.
