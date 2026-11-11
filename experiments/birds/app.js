@@ -295,7 +295,12 @@
     }
 
     $('load').onclick = () => setAccount($('addr').value.trim());
-    $('addr').addEventListener('keydown', (e) => { if (e.key === 'Enter') setAccount($('addr').value.trim()); });
+    $('addr').addEventListener('keydown', (e) => {
+        if (e.key !== 'Enter') return;
+        e.preventDefault();
+        if (e.isComposing || e.keyCode === 229) return;
+        setAccount($('addr').value.trim());
+    });
     $('connect').onclick = connect;
     if (window.ethereum && window.ethereum.on) {
         window.ethereum.on('accountsChanged', (accts) => {

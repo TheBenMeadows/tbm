@@ -73,22 +73,34 @@
         }
 
         /* Custom Scrollbar for the sidebar */
-        ::-webkit-scrollbar {
-            width: 6px;
+        :root {
+            --scrollbar-thumb: #333;
+            --scrollbar-thumb-active: #555;
+            --scrollbar-track: #0a0a0a;
         }
-        ::-webkit-scrollbar-track {
-            background: #0a0a0a; 
+        * {
+            scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+            scrollbar-width: thin;
         }
-        ::-webkit-scrollbar-thumb {
-            background: #333; 
-            border-radius: 3px;
-        }
-        ::-webkit-scrollbar-thumb:active {
-            background: #555;
-        }
-        @media (hover: hover) and (pointer: fine) {
-            ::-webkit-scrollbar-thumb:hover {
-                background: #555;
+        /* WebKit fallback for browsers without scrollbar-color */
+        @supports not (scrollbar-color: auto) {
+            ::-webkit-scrollbar {
+                width: 6px;
+            }
+            ::-webkit-scrollbar-track {
+                background: var(--scrollbar-track);
+            }
+            ::-webkit-scrollbar-thumb {
+                background: var(--scrollbar-thumb);
+                border-radius: 3px;
+            }
+            ::-webkit-scrollbar-thumb:active {
+                background: var(--scrollbar-thumb-active);
+            }
+            @media (hover: hover) and (pointer: fine) {
+                ::-webkit-scrollbar-thumb:hover {
+                    background: var(--scrollbar-thumb-active);
+                }
             }
         }
 
