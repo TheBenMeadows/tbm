@@ -5,9 +5,9 @@
 (function () {
     "use strict";
     var n = 0;
-    document.querySelectorAll(".peek").forEach(function (gloss) {
-        var term = peek.querySelector(".gloss-term");
-        var body = peek.querySelector(".gloss-body");
+    document.querySelectorAll(".gloss").forEach(function (gloss) {
+        var term = gloss.querySelector(".gloss-term");
+        var body = gloss.querySelector(".gloss-body");
         if (!term || !body) return;
         var button = document.createElement("button");
         button.type = "button";
@@ -23,6 +23,6 @@
             button.setAttribute("aria-expanded", String(open));
         });
         term.replaceWith(button);
-        peek.classList.add("gloss-on");
+        gloss.classList.add("gloss-on");
     });
 })();
