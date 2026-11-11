@@ -5,15 +5,15 @@
 (function () {
     "use strict";
     var n = 0;
-    document.querySelectorAll(".peek").forEach(function (peek) {
-        var term = peek.querySelector(".peek-term");
-        var body = peek.querySelector(".peek-body");
+    document.querySelectorAll(".peek").forEach(function (gloss) {
+        var term = peek.querySelector(".gloss-term");
+        var body = peek.querySelector(".gloss-body");
         if (!term || !body) return;
         var button = document.createElement("button");
         button.type = "button";
-        button.className = "peek-term";
+        button.className = "gloss-term";
         while (term.firstChild) button.appendChild(term.firstChild);
-        body.id = "peek-" + (++n);
+        body.id = "gloss-" + (++n);
         body.hidden = true;
         button.setAttribute("aria-expanded", "false");
         button.setAttribute("aria-controls", body.id);
@@ -23,6 +23,6 @@
             button.setAttribute("aria-expanded", String(open));
         });
         term.replaceWith(button);
-        peek.classList.add("peek-on");
+        peek.classList.add("gloss-on");
     });
 })();

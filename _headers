@@ -32,7 +32,7 @@
 /search.js
   Cache-Control: public, max-age=3600
 
-/peek.js
+/gloss.js
   Cache-Control: public, max-age=3600
 
 # The stylesheet's dist filename carries a content hash (scripts/version-css.mjs),
