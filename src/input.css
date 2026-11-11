@@ -156,6 +156,7 @@ html.search-open body {
     color: #ffffff;
     background: transparent;
     border: 0;
+    display: inline;
     font: inherit;
     font-size: 1rem; /* 16px — anything smaller and iOS zooms the page on focus */
     -webkit-appearance: none;
@@ -178,6 +179,7 @@ html.search-open body {
     color: #a3a3a3;
     background: transparent;
     border: 1px solid #3f3f46;
+    display: inline;
     font: inherit;
     font-size: 0.75rem;
     cursor: pointer;
@@ -452,6 +454,7 @@ html.light {
 .running-head .rh-right { flex: 0 0 auto; padding-left: 1rem; text-align: right; }
 .running-head a,
 .running-head button {
+    display: inline;
     font: inherit;
     letter-spacing: inherit;
     text-transform: inherit;
@@ -823,6 +826,7 @@ main .post-heading + * {
    drawn as text with a dotted underline, and the opened explanation is set in
    the soft ink so it reads as an aside inside the sentence. */
 .gloss-on > button.gloss-term {
+    display: inline;
     font: inherit;
     color: var(--accent);
     background: none;
