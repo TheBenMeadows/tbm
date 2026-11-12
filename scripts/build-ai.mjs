@@ -33,7 +33,7 @@ const data = JSON.parse(readFileSync(`${OUT}/wins.json`, "utf8"));
  * kind in GROUPS order, newest first inside each group, ties broken by id so two
  * entries sharing a date keep the same order on every host. A build that reordered
  * cards would report mirror drift that does not exist. */
-const GROUPS = ["merged", "reported", "placement", "audit", "release", "milestone"];
+const GROUPS = ["placement", "merged", "reported", "audit", "milestone", "release"];
 const byDate = (a, b) => (a.date !== b.date ? (a.date < b.date ? 1 : -1) : a.id < b.id ? -1 : 1);
 const pinned = data.wins.filter((w) => Number.isInteger(w.pin)).sort((a, b) => a.pin - b.pin);
 const rest = data.wins.filter((w) => !Number.isInteger(w.pin));
