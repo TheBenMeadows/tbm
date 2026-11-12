@@ -532,11 +532,14 @@ ${FOOTER}
 function indexPage(posts) {
     /* A row says who wrote it only when that is not the obvious answer. Printing
      * "Ben Meadows" beside every entry on Ben's own site is noise; printing it
-     * beside the two that someone else wrote is the whole point. */
+     * beside the two that someone else wrote is the whole point.
+     * Pinned posts are living pages, so their row shows when they last changed;
+     * the original publish date would make a current page look two years stale. */
     const row = (p) => {
+        const when = p.pin && p.updated ? `Updated ${longDate(p.updated)}` : longDate(p.date);
         const who = p.author.id === "ben"
-            ? longDate(p.date)
-            : `${esc(p.author.name)} &middot; ${longDate(p.date)}`;
+            ? when
+            : `${esc(p.author.name)} &middot; ${when}`;
         return `                <li><a href="${p.url}">${esc(p.title)}<span class="who">${who}</span></a></li>`;
     };
 
