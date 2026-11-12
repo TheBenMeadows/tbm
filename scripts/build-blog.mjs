@@ -540,7 +540,7 @@ function indexPage(posts) {
         const who = p.author.id === "ben"
             ? when
             : `${esc(p.author.name)} &middot; ${when}`;
-        return `                <li><a href="${p.url}">${esc(p.title)}<span class="who">${who}</span></a></li>`;
+        return `                <li><a href="${p.url}">${esc(p.list_title || p.title)}<span class="who">${who}</span></a></li>`;
     };
 
     const pinned = posts.filter((p) => p.pin).sort((a, b) => a.pin - b.pin);
