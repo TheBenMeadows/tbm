@@ -10,6 +10,17 @@
     },
     "wins": [
         {
+            "id": "usage-tracker-prompt-cache",
+            "date": "2026-11-13",
+            "kind": "merged",
+            "title": "Prompt-cache hit rate on the statusline, merged into a menu-bar usage tracker",
+            "where": "Claude Usage Tracker",
+            "summary": "The cache hit ratio was visible only in a cost report after the fact. A new statusline component shows it as a colored percentage and, for ten minutes after a miss, the cause in one word: a changed system prompt, a changed tool set, a model switch, rewritten history, an expired TTL or the server. A cache reset shows up when it happens instead of later as a slow, expensive session.",
+            "links": [
+                { "label": "the pull request", "url": "https://github.com/hamed-elfayome/Claude-Usage-Tracker/pull/332" }
+            ]
+        },
+        {
             "id": "packomania-scu-239",
             "date": "2026-11-09",
             "kind": "placement",
@@ -119,7 +130,8 @@
             "links": [
                 { "label": "the report", "url": "https://github.com/ar-io/ar-io-deploy/issues/17" },
                 { "label": "the credit", "url": "https://github.com/ar-io/ar-io-deploy/issues/17#issuecomment-6074488502" },
-                { "label": "the regression test", "url": "https://github.com/ar-io/ar-io-deploy/pull/33" }
+                { "label": "the regression test", "url": "https://github.com/ar-io/ar-io-deploy/pull/33" },
+                { "label": "the release", "url": "https://github.com/ar-io/ar-io-deploy/releases/tag/v2.1.2" }
             ]
         },
         {
