@@ -181,6 +181,28 @@
             ]
         },
         {
+            "id": "paradigm-prediction-market",
+            "date": "2026-11-13",
+            "kind": "placement",
+            "title": "Rank 13 of 191 on a prediction-market trading puzzle",
+            "where": "Paradigm Puzzles",
+            "summary": "Write a market-making strategy for a binary prediction market that trades against retail flow and an informed arbitrageur, scored by mean edge over 200 simulated markets in a sandbox with a time limit for the whole run. Scored 72.81 with all 200 simulations completing, for rank 13 of 191 on its first recorded entry.",
+            "links": [
+                { "label": "the puzzle", "url": "https://www.paradigm.xyz/puzzles/prediction-market-challenge" }
+            ]
+        },
+        {
+            "id": "paradigm-prop-amm",
+            "date": "2026-11-13",
+            "kind": "placement",
+            "title": "Rank 15 of 180 on an automated market maker puzzle",
+            "where": "Paradigm Puzzles",
+            "summary": "Write a pricing strategy for an automated market maker as an on-chain program, scored by average edge over 1,000 simulations against competing liquidity and arbitrage. Scored 656.85 (979 of 1,000 simulations won), for rank 15 of 180 on its first recorded entry.",
+            "links": [
+                { "label": "the puzzle", "url": "https://www.paradigm.xyz/puzzles/prop-amm" }
+            ]
+        },
+        {
             "id": "paradigm-packing",
             "date": "2026-11-12",
             "kind": "placement",
