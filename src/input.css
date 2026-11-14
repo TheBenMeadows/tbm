@@ -38,7 +38,7 @@
        format token SKIPS that src entry. This @font-face has only one entry, so
        an unrecognised token means the face is never used -- while the
        <link rel=preload> fetches all 19 KB of it regardless. */
-    src: url("/fonts/publicsans-v1.woff2") format("woff2");
+    src: url("/fonts/publicsans-v2.woff2") format("woff2");
         font-weight: 400 700;
         font-display: swap;
     }

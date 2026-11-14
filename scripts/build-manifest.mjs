@@ -213,7 +213,7 @@ console.log(
     }
     const critical = [
         "index.html", versionedCss, "theme.js", "search.js",
-        "fonts/publicsans-v1.woff2", "me.webp",
+        "fonts/publicsans-v2.woff2", "me.webp",
     ];
     let total = 0;
     const missing = [];

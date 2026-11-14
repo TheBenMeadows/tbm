@@ -496,7 +496,7 @@ function page(all) {
 
         <link
             rel="preload"
-            href="/fonts/publicsans-v1.woff2"
+            href="/fonts/publicsans-v2.woff2"
             as="font"
             type="font/woff2"
             crossorigin
