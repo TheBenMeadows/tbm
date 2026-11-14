@@ -4,7 +4,7 @@
    (set by /theme.js) force a mode. */
 @font-face {
     font-family: 'Public Sans';
-    src: url('/fonts/publicsans-v1.woff2') format('woff2');
+    src: url('/fonts/publicsans-v2.woff2') format('woff2');
     font-weight: 100 900;
     font-display: swap;
 }

@@ -56,6 +56,11 @@ jobs:
       - name: Line length and body size (check-measure)
         run: npm run check:measure
 
+      # The shared Public Sans keeps its spaced-hyphen fix, tabular figures and
+      # 400-700 weight axis (scripts/check-font.mjs; built by scripts/build-font.py).
+      - name: Font (check-font)
+        run: npm run check:font
+
       - name: css-touch-lint (hover, focus ring, :invalid, Tailwind flag, input size)
         run: python3 scripts/css-touch-lint.py
       - name: gitleaks (secrets in the pushed commits)

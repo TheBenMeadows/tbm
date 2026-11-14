@@ -37,7 +37,7 @@ const versionedCss = readdirSync(DIST).find((f) => /^output-[0-9a-f]{8}\.css$/.t
 if (!versionedCss) throw new Error("check-figures: no output-<hash>.css in dist");
 const homepageKB =
     ["index.html", versionedCss, "theme.js", "search.js",
-     "fonts/publicsans-v1.woff2", "me.webp"]
+     "fonts/publicsans-v2.woff2", "me.webp"]
         .reduce((n, f) => n + statSync(join(DIST, f)).size, 0) / 1024;
 
 // The heaviest single image the blog ships. Asserted as a bound rather than a
