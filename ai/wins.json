@@ -71,6 +71,18 @@
             ]
         },
         {
+            "id": "cohn-spherical-codes",
+            "date": "2026-11-13",
+            "kind": "placement",
+            "title": "Spherical codes table: 4,369 records improved",
+            "where": "Henry Cohn's table of spherical codes, MIT",
+            "summary": "Spherical codes (N points on the unit sphere in n dimensions, n from 3 to 32, with the largest pairwise cosine as small as possible) that beat the table's listed value by at least 1e-11 on rows not proven optimal, each checked in exact rational arithmetic. Most came from adding points to a code with one to three fewer points, deleting points from a larger one, or polishing the posted code with sequential linear programming, and each new code then served as the starting point for its neighbours. The table's keeper accepted all 4,369 through his upload server between November 10 and 13, with gains up to 1.1e-2 and a median near 5e-5. The files and a checker that recomputes every value are in version 1.5 of the packing-records data set.",
+            "links": [
+                { "label": "the table", "url": "https://spherical-codes.org" },
+                { "label": "packing-records 1.5.0", "url": "https://doi.org/10.5281/zenodo.24206178" }
+            ]
+        },
+        {
             "id": "cohn-grassmannian-731",
             "pin": 1,
             "date": "2026-11-10",
