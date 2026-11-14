@@ -595,8 +595,8 @@ html.dark #theme-toggle::before { content: "Light"; }
 /* /speaking/: the date and running time are one fact and fit beside any
    title, so they never wrap. */
 .talks .who { white-space: nowrap; }
-/* The intro paragraph sits under the title rather than in the header. */
-.post-head + p { margin-top: 1.2rem; }
+/* The /speaking/ intro sits under the title rather than in the header. */
+.speaking-intro { margin-top: 1.2rem; }
 
 @media (max-width: 540px) {
     .toc a { flex-direction: column; align-items: flex-start; gap: 0.15rem; }
