@@ -9,6 +9,12 @@
 // WebKit: healthy justified pages on thebenmeadows.com have 4-5.5% of spaces
 // over 0.5em; the art and dailymuse intros with `pretty` had 64-67%.
 //
+// Only macOS measures what Safari shows. Playwright's Linux WebKit is a
+// different port: on GitHub's ubuntu runner the hub's healthy posts measured
+// 15-37% (no English hyphenation, different fonts) against 4-5% in macOS
+// WebKit and in Safari itself. Off macOS the pass prints a note and checks
+// nothing; tbm's CI runs it in a macOS job.
+//
 // Shared by the check-measure scripts of thebenmeadows.com, art, abx,
 // benjaminmeadows.com and EveryBadge; keep the copies identical.
 import { existsSync, readdirSync } from "node:fs";
@@ -60,6 +66,10 @@ const gaps = ([sel, maxEm]) => {
 // paths: page paths relative to origin. selector: the prose this site justifies.
 // Returns one string per problem; empty when every page holds.
 export async function checkWebkitGaps(webkit, origin, paths, selector) {
+    if (process.platform !== "darwin") {
+        console.error("webkit-gaps: Safari word spacing is measured on macOS only; skipped here");
+        return [];
+    }
     const exe = webkitPath(webkit);
     if (!exe) return ["WebKit is not installed: run `npx --prefix tools playwright-core install webkit` (or set WEBKIT_PATH)"];
     const browser = await webkit.launch({ headless: true, executablePath: exe });

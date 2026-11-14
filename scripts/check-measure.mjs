@@ -113,4 +113,4 @@ if (failures.length) {
     console.error(`check-measure: ${failures.length} problem(s)\n  ` + failures.join("\n  "));
     process.exit(1);
 }
-console.log(`check-measure      ${pages(DIST).length} pages within ${MEDIAN_MAX}/${LINE_MAX} characters a line, ${BODY_MIN}px body, flush left on the phone, even word spaces in Safari`);
+console.log(`check-measure      ${pages(DIST).length} pages within ${MEDIAN_MAX}/${LINE_MAX} characters a line, ${BODY_MIN}px body, flush left on the phone${process.platform === "darwin" ? ", even word spaces in Safari" : ""}`);
