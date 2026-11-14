@@ -6,7 +6,9 @@
 //   desktop (1440px): body copy that wraps to 3+ lines sets at 16px or more,
 //                     a page's median line is at most 75 characters, and no
 //                     paragraph's average line passes 85;
-//   phone (390px):    no body copy is justified.
+//   phone (390px):    no body copy is justified;
+//   Safari (WebKit):  justified body copy keeps its word spaces even
+//                     (webkit-gaps.mjs).
 //
 // "Body copy" is the same set input.css styles as body copy: direct <p> and
 // <li> children of <main> and of a post's .e-content. Card text, labels and
@@ -14,8 +16,10 @@
 // direct child that is not prose.
 //
 // Runs from dist/ after build:netlify. Chrome comes from CHROME_PATH, or the
-// copy GitHub's ubuntu runners ship at /usr/bin/google-chrome.
-import { chromium } from "playwright-core";
+// copy GitHub's ubuntu runners ship at /usr/bin/google-chrome. WebKit comes
+// from `npx playwright-core install webkit` (or WEBKIT_PATH).
+import { chromium, webkit } from "playwright-core";
+import { checkWebkitGaps } from "./webkit-gaps.mjs";
 import { createServer } from "node:http";
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { extname, join } from "node:path";
@@ -59,8 +63,8 @@ const server = createServer((req, res) => {
 await new Promise((r) => server.listen(0, "127.0.0.1", r));
 const origin = `http://127.0.0.1:${server.address().port}/`;
 
-const measure = () => {
-    const sel = "main > p, main > ul > li, main > ol > li, main > .e-content > p, main > .e-content > ul > li, main > .e-content > ol > li";
+const BODY = "main > p, main > ul > li, main > ol > li, main > .e-content > p, main > .e-content > ul > li, main > .e-content > ol > li";
+const measure = (sel) => {
     return [...document.querySelectorAll(sel)].flatMap((el) => {
         const cs = getComputedStyle(el);
         if (el.hasAttribute("data-measure-skip")) return [];
@@ -83,7 +87,7 @@ try {
         const page = await ctx.newPage();
         for (const path of pages(DIST)) {
             await page.goto(origin + path, { waitUntil: "load" });
-            const blocks = (await page.evaluate(measure)).filter((b) => b.lines >= 3 && !b.mono);
+            const blocks = (await page.evaluate(measure, BODY)).filter((b) => b.lines >= 3 && !b.mono);
             if (!blocks.length) continue;
             if (width === 1440) {
                 const cpl = blocks.map((b) => b.cpl).sort((a, b) => a - b);
@@ -99,6 +103,7 @@ try {
         }
         await ctx.close();
     }
+    failures.push(...await checkWebkitGaps(webkit, origin, pages(DIST), BODY));
 } finally {
     await browser.close();
     server.close();
@@ -108,4 +113,4 @@ if (failures.length) {
     console.error(`check-measure: ${failures.length} problem(s)\n  ` + failures.join("\n  "));
     process.exit(1);
 }
-console.log(`check-measure      ${pages(DIST).length} pages within ${MEDIAN_MAX}/${LINE_MAX} characters a line, ${BODY_MIN}px body, flush left on the phone`);
+console.log(`check-measure      ${pages(DIST).length} pages within ${MEDIAN_MAX}/${LINE_MAX} characters a line, ${BODY_MIN}px body, flush left on the phone, even word spaces in Safari`);

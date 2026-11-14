@@ -50,9 +50,15 @@ jobs:
       - name: Build and run the build-time guards
         run: npm run build:netlify
 
+      # check-measure's Safari pass needs the WebKit build that matches the
+      # pinned playwright-core, plus its system libraries.
+      - name: Install WebKit
+        run: npx playwright-core install --with-deps webkit
+
       # Renders dist/ in the runner's preinstalled Chrome and fails on body
-      # copy past 75 characters a line, under 16px, or justified on a phone.
-      - name: Line length and body size (check-measure)
+      # copy past 75 characters a line, under 16px, or justified on a phone;
+      # then renders it in WebKit and fails on stretched justified word spaces.
+      - name: Line length, body size and Safari word spacing (check-measure)
         run: npm run check:measure
 
       - name: css-touch-lint (hover, focus ring, :invalid, Tailwind flag, input size)
