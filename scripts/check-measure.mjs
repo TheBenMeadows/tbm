@@ -8,7 +8,9 @@
 //                     paragraph's average line passes 85;
 //   phone (390px):    no body copy is justified;
 //   Safari (WebKit):  justified body copy keeps its word spaces even
-//                     (webkit-gaps.mjs).
+//                     (webkit-gaps.mjs);
+//   both widths:      nothing moves after it appears: layout shift of 0.1 or
+//                     less on every page (layout-shift.mjs).
 //
 // "Body copy" is the same set input.css styles as body copy: direct <p> and
 // <li> children of <main> and of a post's .e-content. Card text, labels and
@@ -20,6 +22,7 @@
 // from `npx playwright-core install webkit` (or WEBKIT_PATH).
 import { chromium, webkit } from "playwright-core";
 import { checkWebkitGaps } from "./webkit-gaps.mjs";
+import { checkLayoutShift } from "./layout-shift.mjs";
 import { createServer } from "node:http";
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { extname, join } from "node:path";
@@ -103,6 +106,7 @@ try {
         }
         await ctx.close();
     }
+    failures.push(...await checkLayoutShift(browser, origin, pages(DIST)));
     failures.push(...await checkWebkitGaps(webkit, origin, pages(DIST), BODY));
 } finally {
     await browser.close();
@@ -113,4 +117,4 @@ if (failures.length) {
     console.error(`check-measure: ${failures.length} problem(s)\n  ` + failures.join("\n  "));
     process.exit(1);
 }
-console.log(`check-measure      ${pages(DIST).length} pages within ${MEDIAN_MAX}/${LINE_MAX} characters a line, ${BODY_MIN}px body, flush left on the phone${process.platform === "darwin" ? ", even word spaces in Safari" : ""}`);
+console.log(`check-measure      ${pages(DIST).length} pages within ${MEDIAN_MAX}/${LINE_MAX} characters a line, ${BODY_MIN}px body, flush left on the phone, nothing moving after load${process.platform === "darwin" ? ", even word spaces in Safari" : ""}`);

@@ -144,6 +144,7 @@ function head({ title, description, url, read = false }) {
         <meta property="og:description" content="${esc(description)}" />
         <meta property="og:url" content="${SITE}${url}" />
         <meta property="og:image" content="${SITE}/og.png" />
+        <link rel="preload" href="/fonts/publicsans-v2.woff2" as="font" type="font/woff2" crossorigin />
         <link rel="stylesheet" href="/output.css" />
         <script src="/theme.js"></script>
         <script src="/search.js" defer></script>

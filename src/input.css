@@ -622,6 +622,11 @@ html.dark #theme-toggle::before { content: "Light"; }
     --hairline-mid: #404040;
     --hairline-lo: #262626;
 }
+/* The figure is drawn by script into a 400 x 320 viewBox. Holding that shape
+   before it arrives keeps the card, and every card after it, from moving. */
+.hl-figure [data-hl] {
+    aspect-ratio: 400 / 320;
+}
 .hl-read {
     position: absolute;
     top: 0;
