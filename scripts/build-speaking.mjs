@@ -201,7 +201,7 @@ function indexPage(items, registry) {
     const rows = items.map((t) =>
         `                <li><a href="${esc(t.url)}">${esc(t.title)}<span class="who">${longDate(t.date)}${t.minutes ? ` &middot; ${Math.round(Number(t.minutes))} min` : ""}</span></a></li>`
     ).join("\n");
-    const root = `            <p class="post-meta no-justify">The whole archive -- audio and these transcripts -- is one IPFS directory:
+    const root = `            <p class="list-note no-justify" data-measure-skip>The whole archive - audio and these transcripts - is one IPFS directory:
                 <a class="${LINK}" href="${AUDIO_SW}${registry.root}/">browse</a> &nbsp;&middot;&nbsp; <code class="cid">ipfs://${registry.root}</code></p>\n`;
     return head({ read: true,
         title: "Speaking · Transcripts · TheBenMeadows",
@@ -210,12 +210,13 @@ function indexPage(items, registry) {
     }) + `        <main class="text-neutral-400 max-w-(--breakpoint-md) mx-auto px-6 pt-8 pb-12 leading-relaxed">
             <header class="post-head">
                 <h1 class="text-white text-3xl font-bold" style="letter-spacing: -0.025em">Speaking</h1>
-                <p class="post-meta no-justify">Transcripts of talks, panels, podcasts and classes. Each one is diarized and speaker-labeled;
-                    timestamps link into the page, and the audio is on IPFS. The list of appearances with context is on the
-                    <a class="${LINK}" href="/blog/podcasts-public-speaking/">Podcasts &amp; Public Speaking</a> post.
-                    These pages are not in the site search box (it would grow it twenty-fold); use this list or a search engine.</p>
-${root}            </header>
-            <ul class="toc">
+            </header>
+            <p class="speaking-intro">Transcripts of talks, panels, podcasts and classes. Each one is diarized and speaker-labeled;
+                timestamps link into the page, and the audio is on IPFS. The list of appearances with context is on the
+                <a class="${LINK}" href="/blog/podcasts-public-speaking/">Podcasts &amp; Public Speaking</a> post.
+                These pages are not in the site search box (it would grow it twenty-fold); use this list or a search engine.</p>
+${root}
+            <ul class="toc talks">
 ${rows}
             </ul>
         </main>
