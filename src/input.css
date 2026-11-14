@@ -856,6 +856,14 @@ main .post-heading + * {
     word-break: break-all;
     color: var(--ink-soft);
 }
+/* In a caps meta line the address sits on its own line in its real case: a
+   content address is copied character for character, and uppercase changes it. */
+.post-meta .cid {
+    display: block;
+    margin-top: 0.3rem;
+    text-transform: none;
+    letter-spacing: 0;
+}
 /* The table scrolls inside its own box. Letting it widen the column would put
    a horizontal scrollbar on the whole page on a phone. */
 .post-table-wrap {
