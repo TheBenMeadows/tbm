@@ -166,7 +166,7 @@ function audioLine(t, root) {
     const path = `${root}/audio/${file}`;
     return `                <p class="post-meta no-justify">Audio: <a class="${LINK}" href="${AUDIO_HTTP}${file}">listen</a>
                     &nbsp;&middot;&nbsp; <a class="${LINK}" href="${AUDIO_SW}${path}">via IPFS in your browser</a>
-                    &nbsp;&middot;&nbsp; <code class="cid">ipfs://${path}</code></p>\n`;
+                    <code class="cid">ipfs://${path}</code></p>\n`;
 }
 
 function page(t, root) {
