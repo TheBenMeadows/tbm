@@ -56,7 +56,7 @@ document.querySelectorAll('img[data-art]').forEach(img => {
 document.querySelectorAll('[data-cap]').forEach(e => { e.textContent = `Position ${fmt(+e.dataset.cap)}: ${traitLine(D.art[e.dataset.cap])}`; });
 document.querySelectorAll('[data-tag]').forEach(e => { e.textContent = `${D.art[e.dataset.tag].Bars} bars`; });
 document.querySelectorAll('[data-hash]').forEach(e => { e.textContent = D.art[e.dataset.hash].hash; });
-// start and end colour of each interval, with the distance between them
+// start and end color of each interval, with the distance between them
 document.querySelectorAll('[data-sw]').forEach(e => {
   const rec = D.intervals[e.dataset.sw];
   rec.pairs.forEach((pair, k) => {
@@ -76,13 +76,13 @@ function el(tag, attrs = {}, parent) {
 }
 
 // ---- chart: seven fixed rows; every state gives each row a value, and the dots are drawn
-// at a blend of two neighbouring states so they follow the scroll position exactly
+// at a blend of two neighboring states so they follow the scroll position exactly
 const cutInput = $('cut');
 const share = v => V[v] / D.n, rate = v => S[v] / V[v];
 const cap100 = `${fmt(D.n)} hashes, positions 0 to ${fmt(D.n - 1)}.`;
 const STATES = {
   shares: {
-    title: () => 'Share of pieces by colour variant',
+    title: () => 'Share of pieces by color variant',
     note: () => `Ring: the weight written into the script. Dot: observed in ${cap100}`,
     scale: { log: false, min: 0, max: 0.6, ticks: [0, 0.2, 0.4, 0.6], tf: t => Math.round(t * 100) + '%' },
     val: share, text: v => pct(share(v)), ring: v => D.odds[v] / 100, r: 4,
@@ -249,7 +249,7 @@ function table(caption, head, rows) {
   rows.forEach(r => { const tr = body.insertRow(); r.forEach((c, i) => { const td = i ? tr.insertCell() : tr.appendChild(Object.assign(document.createElement('th'), { scope: 'row' })); td.textContent = c; }); });
   $('t-all').appendChild(t);
 }
-table(`Colour variant, ${fmt(D.n)} hashes`, ['Variant', 'Script weight', 'Pieces', 'Share', 'No-blend', 'Rate'],
+table(`Color variant, ${fmt(D.n)} hashes`, ['Variant', 'Script weight', 'Pieces', 'Share', 'No-blend', 'Rate'],
   VARS.map(v => [NAMES[v], D.odds[v] + '%', fmt(V[v]), pct(share(v), 3), fmt(S[v]), `1 in ${oneIn(rate(v))}`]));
 table(`Every interval under the cut-off, first ${fmt(n10)} hashes`, ['Variant', '2 units', '3 units', '4 units', '5 units'],
   VARS.map(v => [NAMES[v], ...[2, 3, 4, 5].map(c => fmt(under(v, c)))]));
@@ -276,7 +276,7 @@ async function hashAt(i) {
 function showTraits(f, ratio) {
   const variant = String(f['Color Variant'] ?? '').toLowerCase(), bars = String(f.Bars), horiz = f['Bar Orientation'] === 'Horizontal', varied = f['Bar Width'] === 'Varied';
   const rowsOut = [
-    ['Colour variant', NAMES[variant] ?? f['Color Variant'], V[variant] !== undefined ? `${pct(V[variant] / D.n)} of ${fmt(D.n)}` : ''],
+    ['Color variant', NAMES[variant] ?? f['Color Variant'], V[variant] !== undefined ? `${pct(V[variant] / D.n)} of ${fmt(D.n)}` : ''],
     ['Bars', bars, C.bars[bars] !== undefined ? `${pct(C.bars[bars] / n10, 1)} of the first ${fmt(n10)}` : ''],
     ['Orientation', f['Bar Orientation'], `${pct(D.orientation10[horiz ? '1' : '0'] / n10)} of the first ${fmt(n10)}`],
     ['Bar width', ratio ? `${f['Bar Width']} (${ratio})` : f['Bar Width'], ratio && C.ratio[ratio] !== undefined ? `${pct(C.ratio[ratio] / n10, 1)} of the first ${fmt(n10)}` : `${pct(D.widths10[varied ? '1' : '0'] / n10, 1)} of the first ${fmt(n10)}`],

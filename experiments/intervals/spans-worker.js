@@ -1,6 +1,6 @@
-// Computes one piece's traits and the CIELAB travel of its three colour intervals.
+// Computes one piece's traits and the CIELAB travel of its three color intervals.
 // The Intervals script is loaded from the artist's site at run time, unmodified; the functions
-// below stand in for the few p5 1.9.0 colour and math calls its setup() uses.
+// below stand in for the few p5 1.9.0 color and math calls its setup() uses.
 const RGB = 'rgb', HSB = 'hsb';
 const MAXES = { rgb: [255, 255, 255, 255], hsb: [360, 100, 100, 1] };
 let colorModeNow = RGB;
