@@ -352,4 +352,5 @@ DNS change.
 
 Code is [MIT](LICENSE). Personal images and brand assets — `me.png`,
 `btm-logo.png`, and the `favicon/` set — are not covered by the license;
-all rights reserved.
+all rights reserved. The images under `experiments/intervals/` are renders of
+Intervals by Jeff Davis, licensed CC BY-NC 4.0; see the `NOTICE.txt` there.
