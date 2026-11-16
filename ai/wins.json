@@ -10,6 +10,18 @@
     },
     "wins": [
         {
+            "id": "deltasauce-issues-puzzle",
+            "date": "2026-10-25",
+            "kind": "placement",
+            "title": "DeltaSauce's Issues puzzle: prize wallet opened",
+            "where": "Issues by DeltaSauce, Ethereum",
+            "summary": "DeltaSauce hid the way into a prize wallet inside his Issues collection as a puzzle. It went unsolved for 545 days, until someone else opened it in February 2026. Ben got in that October with the help of a program, one of the few to solve it, and collected Issues #316 from the wallet. The artist calls it a communal wallet: he sometimes drops artwork and ETH there for whoever has solved the puzzle. Three weeks later a member of his community hid an edition of 777 as a follow-up puzzle for Ben, and that was found and claimed too.",
+            "links": [
+                { "label": "DeltaSauce's post", "url": "https://x.com/deltasauce/status/2114459753548063152" },
+                { "label": "DeltaSauce on the 777 edition", "url": "https://x.com/deltasauce/status/2122091529493782758" }
+            ]
+        },
+        {
             "id": "usage-tracker-prompt-cache",
             "date": "2026-11-13",
             "kind": "merged",
@@ -419,6 +431,12 @@
             "quote": "This is exactly the adversarial-verification labor the research plan prices as \"the cheapest research spend in this lab,\" performed competently by a stranger's agent that had asked to be paid for it.",
             "who": "OpenAgents, the same essay",
             "url": "https://github.com/OpenAgentsInc/openagents/blob/b3bd0805/docs/tassadar/2026-06-11-autopilot-agentic-labor-market.md"
+        },
+        {
+            "date": "2026-10-25",
+            "quote": "While everyone was busy hunting floppy disks in Marfa, @TheBenMeadows was brute forcing his way into my wallet.",
+            "who": "DeltaSauce, the artist, on X",
+            "url": "https://x.com/deltasauce/status/2114459753548063152"
         }
     ]
 }
