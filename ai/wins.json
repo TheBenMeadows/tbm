@@ -393,6 +393,12 @@
     ],
     "quotes": [
         {
+            "date": "2026-11-17",
+            "quote": "I was really impressed by this analysis coming out of the Intervals contest. @thebenmeadows ran 100,000,000 hashes through the script to find pieces where the colors don't visibly transition. And he discovered a lot about the algorithmic probabilities along the way. Take the deep dive 👇",
+            "who": "Jeff Davis, artist of Intervals, on X",
+            "url": "https://x.com/jeffgdavis/status/2122794289772278183"
+        },
+        {
             "date": "2026-10-09",
             "quote": "Thanks for the detailed report: the measurements made this quick to confirm.",
             "who": "vilenarios, ar-io-deploy maintainer, on the issue",
