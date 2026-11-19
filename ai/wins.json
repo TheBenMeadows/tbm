@@ -60,6 +60,18 @@
             ]
         },
         {
+            "id": "v3r1t4s-spherical-29-727",
+            "date": "2026-11-19",
+            "kind": "merged",
+            "title": "V3R1T4S: a better spherical code for 727 points in 29 dimensions",
+            "where": "V3R1T4S (elder-plinius), known-knowns/spherical-codes-cohn-table",
+            "summary": "727 unit vectors in R^29 whose largest pairwise cosine is 0.2365030, below the 0.2400540 that spherical-codes.org lists for (29, 727) by 0.00355, on a row not marked optimal. The code was built by adding points one at a time to Azmi C. Özgen's posted (29, 715) code, and the package credits that starting point. The maintainers confirmed the value with their own exact checker, written from the definition without running any of the package's code, and merged it on 2026-11-19.",
+            "links": [
+                { "label": "the pull request", "url": "https://github.com/elder-plinius/V3R1T4S/pull/1009" },
+                { "label": "the table", "url": "https://spherical-codes.org/" }
+            ]
+        },
+        {
             "id": "v3r1t4s-spherical-31-64",
             "date": "2026-11-07",
             "kind": "merged",
