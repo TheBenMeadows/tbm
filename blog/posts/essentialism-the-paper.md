@@ -1,12 +1,15 @@
 ---
 title: "essentialism: the paper"
 date: 2026-10-13
+updated: 2026-11-17
 tags: [Art, Blockchain, Technology]
 related: [essentialism-the-working-log, /art/essentialism/]
 image: /blog/media/essentialism-the-paper/curve.webp
 image_alt: "Correlation with the photograph by edition. The field stays near 1 until about edition 22 and falls steeply after edition 34; the drawn dots follow the same shape lower; the control stays near zero."
 description: "Every essentialism token prints a memory percentage. I measured what that number leaves of the photograph across 44,000 renders and wrote it up as a paper, archived on Zenodo with a DOI."
 ---
+
+Update, November 17: the paper is now at version 2.0.0. Fourteen of the 44 are minted, and the part below about not being able to redraw edition 1 was wrong - the artifact each mint wrote on chain redraws the platform's image (I had tested a truncated seed). The numbers in this post are from the first version; the paper has the current ones.
 
 Every token of [essentialism](/art/essentialism/) prints a "memory" percentage in its trait line: how strongly that edition samples the photograph embedded in the code. It is 100% on edition 1 and falls about two points per edition to 12% on edition 44. I had never checked what that number leaves of the photograph in the finished drawing, so I rendered 1,000 seeds at all 44 editions (44,000 renders) with a byte-identical copy of the generator stored on Tezos, and measured it in two places: the darkness field the dots sample, and the ink of the dots themselves.
 
