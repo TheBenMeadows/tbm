@@ -319,6 +319,15 @@
 /marfa/*.webp
   Cache-Control: public, max-age=604800
 
+/marfa/title-card.pdf
+  Link: <https://thebenmeadows.com/marfa/title-card.pdf>; rel="canonical"
+
+/papers/essentialism/essentialism-preprint.pdf
+  Link: <https://thebenmeadows.com/papers/essentialism/essentialism-preprint.pdf>; rel="canonical"
+
+/papers/rrf-score-ceiling/rrf-1k-ceiling.pdf
+  Link: <https://thebenmeadows.com/papers/rrf-score-ceiling/rrf-1k-ceiling.pdf>; rel="canonical"
+
 # Intervals in Numbers is the one page that uses third-party code: its hash
 # tool frames the artist's generator and runs his script in a worker. The site
 # policy is detached for this folder and replaced by one that adds
