@@ -44,5 +44,3 @@ These are the public ones (there were also a few unsolved cipher puzzles in the 
 3) Paradigm QEC: our first entry, 2854 errors per million.
 
 The GPUs are not used. The two D500s share one heat core with the CPU. Under Linux, the fan ignores CPU temperature unless you tell it otherwise (I wrote a small fan curve script for that). I didn't want to risk the board, so the GPUs stay off.
-
-Disclosure: I am a Devin ambassador. These are my own notes and numbers, not Cognition's.
