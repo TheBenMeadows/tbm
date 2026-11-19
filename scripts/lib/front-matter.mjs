@@ -6,7 +6,7 @@
  * would accept far more than this build knows how to render. If a post needs a
  * key that is not here, the build should fail loudly rather than drop it. */
 const KNOWN = new Set(["title", "subtitle", "date", "updated", "tags", "description", "image", "image_alt",
-                       "author", "pin", "related", "unlisted"]);
+                       "author", "pin", "related", "unlisted", "list_title"]);
 
 export function frontMatter(text, file) {
     if (!text.startsWith("---\n")) throw new Error(`build-blog: ${file} has no front matter`);

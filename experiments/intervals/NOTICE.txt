@@ -1,0 +1,9 @@
+Intervals in Numbers
+
+Page code (index.html, style.css, app.js, spans-worker.js) and data/site.json: MIT, as the rest of this repository.
+
+Images in art/ and og.png are renders of Intervals by Jeff Davis (https://heftgallery.com/intervals), made by running his script on hashes from the sequence described on the page. Intervals is licensed CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/). These images are not covered by this repository's MIT license and may not be used commercially.
+
+The Intervals script itself is not in this repository. The page loads it from heftgallery.com when a reader uses the hash tool.
+
+Fonts in fonts/: Newsreader (Production Type) and IBM Plex Mono (IBM), both under the SIL Open Font License 1.1.
