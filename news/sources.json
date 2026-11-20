@@ -2,6 +2,15 @@
   "_comment": "Written by scripts/fetch-news.mjs (daily, .github/workflows/news-refresh.yml). Do not edit by hand: hand-written entries, the skip and hide lists and text overrides live in news/entries.json.",
   "releases": [
     {
+      "repo": "mdws-org/abxfs-rs",
+      "tag": "archive-bundles",
+      "name": "ABX archive bundles",
+      "date": "2026-11-20",
+      "published": "2026-11-20T04:48:33Z",
+      "url": "https://github.com/mdws-org/abxfs-rs/releases/tag/archive-bundles",
+      "notes": "Every bundle of the ABX archive, one file per bundle, named by its IPFS CID, and manifest.json, the list of them. The format and how to check a bundle are in archive/ARCHIVE.md; archive/SUCCESSION.md says how to use these files with nobody left to run the archive. A bundle here is the same bytes as `ipfs dag export <cid>`. The art in the bundles belongs to its artists."
+    },
+    {
       "repo": "mdws-org/nnw-prayer-book",
       "tag": "v1.5.1",
       "name": "v1.5.1",
@@ -516,6 +525,14 @@
     }
   ],
   "zenodo": [
+    {
+      "concept": "23906181",
+      "title": "packing-records: candidate improvements to nine record tables for packing, energy and Thomson problems",
+      "version": "1.6.0",
+      "type": "dataset",
+      "date": "2026-11-19",
+      "url": "https://doi.org/10.5281/zenodo.24386804"
+    },
     {
       "concept": "23331138",
       "title": "The 1/k Ceiling in Reciprocal Rank Fusion: A Zero-Overlap Test for Hybrid Retrieval",
