@@ -110,24 +110,24 @@
         },
         {
             "id": "cohn-spherical-codes",
-            "date": "2026-11-15",
+            "date": "2026-11-19",
             "kind": "placement",
-            "title": "Spherical codes table: 4,899 records improved",
+            "title": "Spherical codes table: 5,203 records improved",
             "where": "Henry Cohn's table of spherical codes, MIT",
-            "summary": "Spherical codes (N points on the unit sphere in n dimensions, n from 3 to 32, with the largest pairwise cosine as small as possible) that beat the table's listed value by at least 1e-11 on rows not proven optimal, each checked in exact rational arithmetic. Most came from adding points to a code with one to three fewer points, deleting points from a larger one, or polishing the posted code with sequential linear programming, and each new code then served as the starting point for its neighbours. The table's keeper accepted every code sent through his upload server between November 10 and 15: 11,622 codes in ten rounds, covering 4,899 different rows (later codes often replaced earlier ones for the same row), with gains up to 1.1e-2 and a median near 5e-5. Version 1.5 of the packing-records data set holds the 4,369 codes accepted by November 13 with a checker that recomputes every value; the later ones go into the next version.",
+            "summary": "Spherical codes (N points on the unit sphere in n dimensions, n from 3 to 32, with the largest pairwise cosine as small as possible) that beat the table's listed value by at least 1e-11 on rows not proven optimal, each checked in exact rational arithmetic. Most came from adding points to a code with one to three fewer points, deleting points from a larger one, or polishing the posted code with sequential linear programming, and each new code then served as the starting point for its neighbours; a last sweep tried those moves on every row of the table. The table's keeper accepted every code sent through his upload server between November 10 and 19: 12,486 codes covering 5,203 different rows (later codes often replaced earlier ones for the same row, and some rows were later beaten by other uploaders or dropped because a larger code covers them). On 2026-11-19 the table credits 4,359 rows to the data set. Version 1.6 of the packing-records data set holds 5,107 of these codes, with a checker that recomputes every value.",
             "links": [
                 { "label": "the table", "url": "https://spherical-codes.org" },
-                { "label": "packing-records 1.5.0", "url": "https://doi.org/10.5281/zenodo.24206178" }
+                { "label": "packing-records 1.6.0", "url": "https://doi.org/10.5281/zenodo.24386804" }
             ]
         },
         {
             "id": "cohn-grassmannian-731",
             "pin": 1,
-            "date": "2026-11-16",
+            "date": "2026-11-19",
             "kind": "placement",
-            "title": "Grassmannian packings table: 1,658 records improved",
+            "title": "Grassmannian packings table: 1,666 records improved",
             "where": "Henry Cohn's table of Grassmannian packings, MIT",
-            "summary": "Explicit packings for rows of the table, with every value recomputed in exact rational arithmetic. The first 747 (November 3 to 5) beat the listed squared chordal distance by at least 1e-7, or in its last printed digit after the table's keeper asked for improvements of any size; the largest gains are in 12 dimensions, where 87 to 89 lines reach 8/9. A second batch added 739 new rows and better packings for 501 of the first ones. Henry Cohn (MIT) added both batches, citing three versions of the packing-records data set. A third batch on November 13 sent 1,572 packings, 172 for new rows and the rest improving rows already listed, including 195 credited to Henry Cohn; he added all of them, and on 2026-11-16 the table credits 1,658 rows to the data set.",
+            "summary": "Explicit packings for rows of the table, with every value recomputed in exact rational arithmetic. The first 747 (November 3 to 5) beat the listed squared chordal distance by at least 1e-7, or in its last printed digit after the table's keeper asked for improvements of any size; the largest gains are in 12 dimensions, where 87 to 89 lines reach 8/9. A second batch added 739 new rows and better packings for 501 of the first ones. Henry Cohn (MIT) added both batches, citing three versions of the packing-records data set. A third batch on November 13 sent 1,572 packings, 172 for new rows and the rest improving rows already listed, including 195 credited to Henry Cohn; he added all of them, and on 2026-11-16 the table credits 1,658 rows to the data set. A fourth batch on November 18 sent 1,395 packings, 8 for new rows and the rest improving rows already credited to the data set; on 2026-11-19 the table credits 1,661 rows to it, and version 1.6 of the data set holds 1,394 of those packings (for one row the table lists a value above any file we hold).",
             "links": [
                 { "label": "the table", "url": "https://cohn.mit.edu/grassmannian/" },
                 { "label": "packing-records data set", "url": "https://doi.org/10.5281/zenodo.23906181" }
@@ -137,9 +137,9 @@
             "id": "cohn-harmonic-31",
             "date": "2026-11-10",
             "kind": "placement",
-            "title": "Harmonic energy table: 43 records improved",
+            "title": "Harmonic energy table: 44 records improved",
             "where": "Henry Cohn's table of harmonic energy minimizers, MIT",
-            "summary": "Configurations of N points on the sphere in n dimensions with lower harmonic energy than the table for 43 rows, with N from 48 to 112 and n from 10 to 26. They came from basin hopping, from deleting or adding points in a neighbouring configuration, and from lifting a configuration from one dimension lower, and each was checked against a local polish of the posted 2021 configuration, so it is a different local minimum. Gains run from 8.4e-5 to 2.6. Henry Cohn (MIT) added 31 to the table on 2026-11-06 and the other 12 by 2026-11-10, citing versions 1.2 and 1.3 of the packing-records data set.",
+            "summary": "Configurations of N points on the sphere in n dimensions with lower harmonic energy than the table for 44 rows, with N from 48 to 112 and n from 10 to 26. They came from basin hopping, from deleting or adding points in a neighbouring configuration, and from lifting a configuration from one dimension lower, and each was checked against a local polish of the posted 2021 configuration, so it is a different local minimum. Gains run from 8.4e-5 to 2.6. Henry Cohn (MIT) added 31 to the table on 2026-11-06, 12 more by 2026-11-10 and N = 58, n = 24 (sent 2026-11-13) by 2026-11-19, citing the packing-records data set.",
             "links": [
                 { "label": "the table", "url": "https://cohn.mit.edu/harmonic-energy/" },
                 { "label": "packing-records data set", "url": "https://doi.org/10.5281/zenodo.23906181" }
