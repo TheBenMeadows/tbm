@@ -36,6 +36,7 @@ const PAGES = [
     "papers/index.html",
     "papers/essentialism/index.html",
     "papers/rrf-score-ceiling/index.html",
+    "papers/auditor-calibration/index.html",
     "art/index.html",
     "art/essentialism/index.html",
     "search/index.html",

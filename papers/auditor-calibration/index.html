@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Preprint by Benjamin Meadows (2026), DOI 10.5281/zenodo.24449095: six language-model verifier lanes re-check 144 labelled code-review claims and report a probability that each is real, and the labels are audited as closely as the agents." />
+        <meta name="color-scheme" content="dark light" />
+        <link rel="canonical" href="https://thebenmeadows.com/papers/auditor-calibration/" />
+        <link rel="alternate" type="application/atom+xml" title="Site releases" href="/feed.xml" />
+        <link rel="alternate" type="application/rss+xml" title="Site releases (RSS)" href="/rss.xml" />
+
+        <!-- Highwire Press tags for Google Scholar. citation_pdf_url has to sit in
+             the same directory as this page. The PDF is the Zenodo file byte for byte. -->
+        <meta name="citation_title" content="Calibrating Auditors of Code-Review Claims, and Auditing Their Labels" />
+        <meta name="citation_author" content="Meadows, Benjamin" />
+        <meta name="citation_author_orcid" content="0009-0007-9698-0910" />
+        <meta name="citation_publication_date" content="2026/11/22" />
+        <meta name="citation_publisher" content="Zenodo" />
+        <meta name="citation_doi" content="10.5281/zenodo.24449095" />
+        <meta name="citation_language" content="en" />
+        <meta name="citation_keywords" content="code review; LLM agents; verification; calibration; AUROC; label noise; evaluation methodology; benchmark construction; software engineering" />
+        <meta name="citation_abstract_html_url" content="https://thebenmeadows.com/papers/auditor-calibration/" />
+        <meta name="citation_pdf_url" content="https://thebenmeadows.com/papers/auditor-calibration/calibrating-auditors-of-code-review-claims.pdf" />
+
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="TheBenMeadows" />
+        <meta property="og:title" content="Calibrating Auditors of Code-Review Claims, and Auditing Their Labels" />
+        <meta property="og:description" content="Preprint by Benjamin Meadows (2026), DOI 10.5281/zenodo.24449095: six language-model verifier lanes re-check 144 labelled code-review claims and report a probability that each is real, and the labels are audited as closely as the agents." />
+        <meta property="og:url" content="https://thebenmeadows.com/papers/auditor-calibration/" />
+        <meta property="og:image" content="https://thebenmeadows.com/og.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="TheBenMeadows · thebenmeadows.com" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Calibrating Auditors of Code-Review Claims, and Auditing Their Labels" />
+        <meta name="twitter:description" content="Preprint by Benjamin Meadows (2026), DOI 10.5281/zenodo.24449095: six language-model verifier lanes re-check 144 labelled code-review claims and report a probability that each is real, and the labels are audited as closely as the agents." />
+        <meta name="twitter:image" content="https://thebenmeadows.com/og.png" />
+
+        <title>Calibrating Auditors of Code-Review Claims, and Auditing Their Labels · TheBenMeadows</title>
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000" />
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+
+        <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
+
+        <link
+            rel="preload"
+            href="/fonts/publicsans-v2.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+        />
+        <link rel="stylesheet" href="/output.css" />
+        <script src="/theme.js"></script>
+        <script src="/search.js" defer></script>
+    </head>
+    <body id="top" class="bg-black read">
+        <header class="running-head">
+            <span class="rh-left"><a href="/">Index</a></span>
+            <nav class="rh-right">
+                <button id="search-open" type="button" aria-label="Search this site" title="Search (press / )">Search</button>
+                <span aria-hidden="true">&nbsp;&middot;&nbsp;</span>
+                <button id="theme-toggle" type="button" aria-label="Switch theme"></button>
+            </nav>
+        </header>
+        <main class="text-neutral-400 max-w-(--breakpoint-md) mx-auto px-6 pt-8 pb-12 leading-relaxed">
+            <div class="font-mono text-xs uppercase tracking-widest text-neutral-500">Preprint &middot; version 1 &middot; 22 Nov 2026 &middot; CC BY 4.0</div>
+            <h1 class="mt-3 text-white text-3xl font-bold" style="letter-spacing: -0.025em">Calibrating Auditors of Code-Review Claims, and Auditing Their Labels</h1>
+            <p class="mt-4">Benjamin Meadows &middot; Independent Researcher</p>
+            <div class="mt-4 flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs">
+                <a class="text-neutral-400 hover:text-white transition-colors" href="/papers/auditor-calibration/calibrating-auditors-of-code-review-claims.pdf">pdf</a>
+                <a class="text-neutral-400 hover:text-white transition-colors" href="https://doi.org/10.5281/zenodo.24449095" target="_blank" rel="noopener">doi 10.5281/zenodo.24449095</a>
+                <a class="text-neutral-400 hover:text-white transition-colors" href="https://github.com/TheBenMeadows/auditor-calibration" target="_blank" rel="noopener">source</a>
+                <a class="text-neutral-400 hover:text-white transition-colors" href="https://orcid.org/0009-0007-9698-0910" target="_blank" rel="noopener">orcid</a>
+            </div>
+
+            <h2 class="mt-10 text-white text-lg font-bold">Abstract</h2>
+            <p class="mt-3">Automated code review produces claims, and someone has to decide which ones are true. I evaluate language-model agents that re-check a claim against a repository at a fixed commit and report the probability that it is a real, correct finding. I audit the labels as hard as the agents. In a first pass of 61 cases, five of the agent's eight misses turned out to be faults in the evaluation. The final set has 144 cases (52 real findings, 92 false claims) from three sources with different label provenance. Six lanes (a lane is one model in one harness) ran it: four Claude models in one harness, DeepSeek Flash in the same harness, and SWE-2 in a different harness with the files inline and no tools. The area under the ROC curve (AUROC) runs from 0.953 (SWE-2) to 0.994 (Opus 5.5). A rule that knows only where each claim came from, which the lanes were not told, reaches 0.962. Few differences between lanes survive correction for multiple comparisons, and the four that survive every label scenario all involve SWE-2. Giving Haiku 5.5 SWE-2's inputs (files inline, no tools) lowers its recall without lowering its specificity, so missing tools do not explain SWE-2's lower specificity. How the target is defined matters more than most differences between lanes: counting a compound claim as real when any defect it alleges is genuine lowers Opus's AUROC from 0.994 to 0.968, a drop larger than 10 of the 15 pairwise differences. A blind panel of three other models agrees with the frozen labels on 91.0% of cases (Cohen's κ 0.81). All cases come from one maintainer's repositories, and the pairwise tests were chosen after the results were seen, so the comparisons are exploratory.</p>
+            <p class="mt-3 no-justify">Code, cases, run data, rulings and this paper's source: <a class="text-neutral-300 underline underline-offset-4 hover:text-white transition-colors hyphens-none break-words" href="https://github.com/TheBenMeadows/auditor-calibration" target="_blank" rel="noopener">https://github.com/TheBenMeadows/auditor-calibration</a></p>
+
+            <h2 class="mt-10 text-white text-lg font-bold">Cite</h2>
+            <pre class="mt-3 overflow-x-auto rounded-lg bg-zinc-900 p-4 text-xs text-neutral-400"><code>@misc{meadows_2026_24449095,
+  author    = {Meadows, Benjamin},
+  title     = {Calibrating Auditors of Code-Review Claims, and Auditing Their Labels},
+  month     = nov,
+  year      = 2026,
+  publisher = {Zenodo},
+  version   = {1},
+  doi       = {10.5281/zenodo.24449095},
+  url       = {https://doi.org/10.5281/zenodo.24449095},
+}</code></pre>
+        </main>
+
+        <footer class="site-footer">
+            <nav class="footer-line">
+                <a href="/support/">Support</a>
+                <span aria-hidden="true">&middot;</span>
+                <a class="js-email" rel="nofollow" href="mailto:steam-gab-shape@duck.com">Email</a>
+                <span aria-hidden="true">&middot;</span>
+                <a href="https://x.com/thebenmeadows" target="_blank" rel="me noopener">X</a>
+                <span aria-hidden="true">&middot;</span>
+                <a href="https://primal.net/p/npub1wldqfuy0yge4fvxukdm43gze2ral9dnp5avlps5a6t8q0vyv2nds84nq29" target="_blank" rel="me noopener">Nostr</a>
+                <span aria-hidden="true">&middot;</span>
+                <a href="/profiles/" aria-label="All profiles">All &rarr;</a>
+            </nav>
+            <nav class="footer-line">
+                <a href="https://github.com/TheBenMeadows/tbm" target="_blank" rel="noopener">Source</a>
+                <span aria-hidden="true">&middot;</span>
+                <a href="/mirrors/">Mirrors</a>
+                <span aria-hidden="true">&middot;</span>
+                <a href="/tech/">Tech&nbsp;Stack</a>
+                <span aria-hidden="true">&middot;</span>
+                <a href="/infra/">Infra</a>
+            </nav>
+        </footer>
+    </body>
+</html>

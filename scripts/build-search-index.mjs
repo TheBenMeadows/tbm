@@ -37,6 +37,7 @@ const PAGES = [
     { file: 'papers/index.html', url: '/papers/' },
     { file: 'papers/essentialism/index.html', url: '/papers/essentialism/' },
     { file: 'papers/rrf-score-ceiling/index.html', url: '/papers/rrf-score-ceiling/' },
+    { file: 'papers/auditor-calibration/index.html', url: '/papers/auditor-calibration/' },
     { file: 'art/index.html', url: '/art/' },
     { file: 'art/essentialism/index.html', url: '/art/essentialism/' },
     { file: 'archive/index.html', url: '/archive/' },
