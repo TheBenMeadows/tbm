@@ -112,12 +112,14 @@
             "id": "brouwer-code-tables",
             "date": "2026-11-20",
             "kind": "placement",
-            "title": "Brouwer's code tables: four lower bounds improved",
+            "title": "Brouwer's code tables: seven lower bounds improved",
             "where": "Andries Brouwer's tables of bounds for unrestricted codes",
-            "summary": "Three new error-correcting codes raise four lower bounds in the tables. A ternary code of length 15 and minimum distance 10 has 31 words, where the bound had been 27 since 1995. A quaternary code of length 12 and distance 7 has 320 words (the table had 256), and one of length 12 and distance 8 has 145 words (128), which also gives 145 words at length 11 and distance 7 (128). Each is a union of orbits of a small group of coordinate and symbol permutations, found by an exact search for the largest code invariant under that group, and each was checked over all pairs of words. The tables' keeper added them the day they were sent, credited to Ben Meadows.",
+            "summary": "Six new error-correcting codes raise seven lower bounds in the tables. A ternary code of length 15 and minimum distance 10 has 31 words, where the bound had been 27 since 1995, and one of length 16 and distance 11 has 21 words (18). A quaternary code of length 12 and distance 7 has 320 words (the table had 256), and one of length 12 and distance 8 has 145 words (128), which also gives 145 words at length 11 and distance 7 (128). A 5-ary code of length 9 and distance 5 has 905 words (893), and a mixed code with 4 binary and 10 ternary coordinates and distance 7 has 86 words (84). Each is a union of orbits of a small group of coordinate and symbol permutations, found by an exact search for the largest code invariant under that group, and each was checked over all pairs of words. The tables' keeper added them within a day of each email, credited to Ben Meadows.",
             "links": [
                 { "label": "ternary table", "url": "https://aeb.win.tue.nl/codes/ternary-1.html" },
-                { "label": "quaternary table", "url": "https://aeb.win.tue.nl/codes/quaternary-1.html" }
+                { "label": "quaternary table", "url": "https://aeb.win.tue.nl/codes/quaternary-1.html" },
+                { "label": "5-ary table", "url": "https://aeb.win.tue.nl/codes/5ary-1.html" },
+                { "label": "mixed binary/ternary table", "url": "https://aeb.win.tue.nl/codes/23codes.html" }
             ]
         },
         {
