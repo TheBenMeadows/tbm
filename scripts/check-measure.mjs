@@ -37,6 +37,7 @@ const SKIP = [
     /^projects\/poap-saver\//,
     /^essentialism\//,
     /^search\//,
+    /^check\//,
 ];
 
 function pages(dir, base = "") {
