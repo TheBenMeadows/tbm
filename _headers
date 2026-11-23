@@ -189,6 +189,10 @@
   Cache-Control: public, max-age=0, must-revalidate
   Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/experiments/intervals/
 
+/check/
+  Cache-Control: public, max-age=0, must-revalidate
+  Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/check/
+
 /ai/
   Cache-Control: public, max-age=0, must-revalidate
   Onion-Location: http://meadowsvn6ah25czpa3mv735fizgdz6xp7vlzeqxpydfwnnsygtcleyd.onion/ai/
@@ -336,6 +340,17 @@
 /experiments/intervals/*
   ! Content-Security-Policy
   Content-Security-Policy: default-src 'self'; script-src 'self' https://heftgallery.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src https://heftgallery.com; worker-src 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'
+
+# The from-chain check page is one file that holds its own scripts, style and worker
+# (mdws-org/abxfs-rs, tools/build-check-file.py), and it reads public chain and beacon
+# endpoints from the browser. Its bytes are the ones published on Base as project 2
+# of org 0x6cb8206e55cf52e069fd3ed3d75b5d391934693c; build.txt there holds their
+# SHA-256. The page carries its own policy with the hashes of its script and style.
+# The site policy is detached here and replaced by one with the same shape without
+# the hashes, so a new version of the file needs no change in this file.
+/check/*
+  ! Content-Security-Policy
+  Content-Security-Policy: default-src 'none'; script-src 'unsafe-inline' blob:; worker-src blob:; style-src 'unsafe-inline'; connect-src https: http://localhost:* http://127.0.0.1:*; base-uri 'none'; form-action 'none'; frame-ancestors 'none';
 
 /experiments/intervals/art/*
   Cache-Control: public, max-age=604800
