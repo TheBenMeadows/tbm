@@ -379,6 +379,15 @@ main :not(pre) > code.nb {
     white-space: nowrap;
 }
 
+/* Longer inline code (a hash, a URL) has no break points of its own, so in a
+   justified line it either broke at a hyphen the browser added mid-hash or
+   left the line before it with wide word spaces. It breaks between any two
+   characters instead, with no hyphen, and fills the line it starts on. */
+main :not(pre) > code:not(.nb) {
+    word-break: break-all;
+    hyphens: none;
+}
+
 body.read main,
 body.read .running-head {
     max-width: 38rem;
