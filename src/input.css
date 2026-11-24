@@ -884,6 +884,7 @@ main .post-heading + * {
 .gloss-on > button.gloss-term[aria-expanded="true"] { text-decoration-style: solid; }
 .gloss-on > button.gloss-term:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .gloss-on > .gloss-body { color: var(--ink-soft); }
+html.js .gloss:not(.gloss-on) > .gloss-body { display: none; }
 @media print {
     .gloss-on > .gloss-body[hidden] { display: inline; }
 }

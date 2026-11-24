@@ -13,6 +13,11 @@
    paint and the page never flashes the wrong theme. */
 (function () {
     var d = document.documentElement;
+
+    /* Marks, before first paint, that scripts run here. CSS uses it to start
+       gloss explanations folded, so the text does not move when gloss.js
+       (deferred) folds them after the page has drawn. */
+    d.classList.add('js');
     var KEY = 'theme';
 
     function stored() {
