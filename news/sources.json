@@ -526,6 +526,14 @@
   ],
   "zenodo": [
     {
+      "concept": "24449094",
+      "title": "Calibrating Auditors of Code-Review Claims, and Auditing Their Labels",
+      "version": "1",
+      "type": "publication",
+      "date": "2026-11-22",
+      "url": "https://doi.org/10.5281/zenodo.24449095"
+    },
+    {
       "concept": "23906181",
       "title": "packing-records: candidate improvements to nine record tables for packing, energy and Thomson problems",
       "version": "1.6.0",
@@ -1243,6 +1251,67 @@
     ]
   },
   "siteWeeks": [
+    {
+      "repo": "TheBenMeadows/benjaminmeadows.com",
+      "week": "2026-11-16",
+      "date": "2026-11-19",
+      "pulls": [
+        13
+      ],
+      "announce": false,
+      "title": "",
+      "summary": ""
+    },
+    {
+      "repo": "mdws-org/abx-explorer",
+      "week": "2026-11-16",
+      "date": "2026-11-22",
+      "pulls": [
+        21,
+        20,
+        19
+      ],
+      "announce": true,
+      "title": "Collection dependencies shown in detail view",
+      "summary": "Each collection's detail view now lists what its art depends on, such as metadata, program, images and hooks, and whether each is on chain or changeable."
+    },
+    {
+      "repo": "mdws-org/everybadge",
+      "week": "2026-11-16",
+      "date": "2026-11-20",
+      "pulls": [
+        25,
+        24,
+        23,
+        22
+      ],
+      "announce": true,
+      "title": "Event links now preview with the event name",
+      "summary": "Shared event links and search results now show the event's own name, year and place, and unknown event numbers return a clear not found page."
+    },
+    {
+      "repo": "mdws-org/orthodoxprayers",
+      "week": "2026-11-16",
+      "date": "2026-11-19",
+      "pulls": [
+        70,
+        69,
+        68,
+        67,
+        66,
+        65,
+        64,
+        62,
+        61,
+        60,
+        59,
+        58,
+        50
+      ],
+      "announce": true,
+      "title": "Red leaves mark optional passages",
+      "summary": "Passages said only in some cases now stand between two red leaves, as in the printed service books, and Typika dialogues are set with speaker labels beside responses."
+    },
     {
       "repo": "TheBenMeadows/benjaminmeadows.com",
       "week": "2026-11-09",
