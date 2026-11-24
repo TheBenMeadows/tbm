@@ -284,7 +284,33 @@ const RENDERER = {
  * contains are the ones that were <br> in the source. Several entries are a bold
  * title, a line break, then a date, and collapsing that to a space runs them
  * together. */
-marked.use({ renderer: RENDERER, gfm: true, breaks: true, async: false });
+/* A term a reader can open: `[[term::what it means]]` in a post.
+ *
+ * The explanation is written into the page in parentheses after the term, so it
+ * reads as an ordinary aside with no script: in a feed reader, on the mirrors,
+ * in a text browser. /gloss.js then folds each one away behind its term and opens
+ * it in place when the term is clicked. Both parts are inline markdown, so links
+ * and code work inside them, and neither reopens raw HTML. */
+const GLOSS = {
+    name: "gloss",
+    level: "inline",
+    start(src) { return src.indexOf("[["); },
+    tokenizer(src) {
+        const m = /^\[\[([^\[\]\n]+?)::([^\n]+?)\]\]/.exec(src);
+        if (!m) return undefined;
+        return {
+            type: "gloss", raw: m[0],
+            term: this.lexer.inlineTokens(m[1].trim()),
+            body: this.lexer.inlineTokens(m[2].trim()),
+        };
+    },
+    renderer(token) {
+        return `<span class="gloss"><span class="gloss-term">${this.parser.parseInline(token.term)}</span>`
+            + `<span class="gloss-body"> (${this.parser.parseInline(token.body)})</span></span>`;
+    },
+};
+
+marked.use({ renderer: RENDERER, extensions: [GLOSS], gfm: true, breaks: true, async: false });
 
 /* ------------------------------------------------------------------ */
 /* page templates                                                       */
@@ -312,7 +338,7 @@ const FOOTER = `        <footer class="site-footer">
             </nav>
         </footer>`;
 
-function head({ title, description, url, image, imageAlt, author, extraLinks = "", read = false }) {
+function head({ title, description, url, image, imageAlt, author, extraLinks = "", read = false, gloss = false }) {
     const img = image ? SITE + image : `${SITE}/og.png`;
     const alt = imageAlt || "TheBenMeadows · thebenmeadows.com";
     /* The index has no single author; a post does, and it is whoever wrote that
@@ -363,7 +389,7 @@ ${extraLinks}
         />
         <link rel="stylesheet" href="/output.css" />
         <script src="/theme.js"></script>
-        <script src="/search.js" defer></script>
+        <script src="/search.js" defer></script>${gloss ? `\n        <script src="/gloss.js" defer></script>` : ""}
     </head>
     <body id="top" class="bg-black${read ? " read" : ""}">
         <header class="running-head">
@@ -499,6 +525,7 @@ ${post.seeAlso.map((r) =>
      * same body-copy rules as main. */
     return head({
         read: true,
+        gloss: post.html.includes('class="gloss"'),
         title: `${post.title} · TheBenMeadows`,
         description: post.description,
         url: post.url,
