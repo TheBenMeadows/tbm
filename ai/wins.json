@@ -160,6 +160,17 @@
             ]
         },
         {
+            "id": "bouchaudy-csp889-p6",
+            "date": "2026-11-23",
+            "kind": "placement",
+            "title": "CSP-889 (SIGABA) cipher challenge: Problem 6 solved",
+            "where": "J.-F. Bouchaudy's cipher machine challenges",
+            "summary": "Problem 6 of the CSP-889 challenge, rated very hard: a message from 7 February 1945 enciphered on a captured SIGABA, with only the stock opening line from the manual known. A simulator built from the setter's description pages and checked against his test vectors drove a GPU search for the rotor settings; the settings found decrypt the whole message, and re-encrypting the plaintext gives the ciphertext exactly. The setter confirmed the solution by email and listed it on his solver table, the only solver of the problem, on 2026-11-23.",
+            "links": [
+                { "label": "the solver table, archived", "url": "https://web.archive.org/web/20261124183849/http://www.jfbouch.fr/crypto/challenges/CSP-889/index.html" }
+            ]
+        },
+        {
             "id": "bouchaudy-typex-p1-p2",
             "pin": 2,
             "date": "2026-10-30",
