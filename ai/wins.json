@@ -10,6 +10,43 @@
     },
     "wins": [
         {
+            "id": "intervals-unison-special-mention",
+            "date": "2026-11-16",
+            "kind": "placement",
+            "title": "Jeff Davis's Intervals contest: Special Mention for Unison",
+            "where": "Intervals by Jeff Davis, Heft Gallery",
+            "summary": "Ahead of the Intervals release, Jeff Davis and Heft Gallery asked people to explore the algorithm and enter outputs for best title, best plot and best outlier, with a free mint for the winners. Ben screened 100 million hashes and entered Unison: one of only two outputs in that sample with no color variant whose intervals do not visibly change. The full screen is public so anyone can re-run it. The contest had three categories and one winner for each; Jeff added Unison as a fourth, a Special Mention.",
+            "links": [
+                { "label": "Jeff Davis's winners post", "url": "https://x.com/jeffgdavis/status/2122434980840349917" },
+                { "label": "the Unison entry", "url": "https://x.com/TheBenMeadows/status/2121725010423488630" },
+                { "label": "the screen, re-runnable", "url": "https://github.com/TheBenMeadows/intervals-screen" },
+                { "label": "Intervals in Numbers", "url": "https://thebenmeadows.com/experiments/intervals/" }
+            ]
+        },
+        {
+            "id": "deltasauce-issues-puzzle",
+            "date": "2026-10-25",
+            "kind": "placement",
+            "title": "DeltaSauce's Issues puzzle: prize wallet opened",
+            "where": "Issues by DeltaSauce, Ethereum",
+            "summary": "DeltaSauce hid the way into a prize wallet inside his Issues collection as a puzzle. It went unsolved for 545 days, until someone else opened it in February 2026. Ben got in that October with the help of a program, one of the few to solve it, and collected Issues #316 from the wallet. The artist calls it a communal wallet: he sometimes drops artwork and ETH there for whoever has solved the puzzle. Three weeks later a member of his community hid an edition of 777 as a follow-up puzzle for Ben, and that was found and claimed too.",
+            "links": [
+                { "label": "DeltaSauce's post", "url": "https://x.com/deltasauce/status/2114459753548063152" },
+                { "label": "DeltaSauce on the 777 edition", "url": "https://x.com/deltasauce/status/2122091529493782758" }
+            ]
+        },
+        {
+            "id": "usage-tracker-prompt-cache",
+            "date": "2026-11-13",
+            "kind": "merged",
+            "title": "Prompt-cache hit rate on the statusline, merged into a menu-bar usage tracker",
+            "where": "Claude Usage Tracker",
+            "summary": "The cache hit ratio was visible only in a cost report after the fact. A new statusline component shows it as a colored percentage and, for ten minutes after a miss, the cause in one word: a changed system prompt, a changed tool set, a model switch, rewritten history, an expired TTL or the server. A cache reset shows up when it happens instead of later as a slow, expensive session.",
+            "links": [
+                { "label": "the pull request", "url": "https://github.com/hamed-elfayome/Claude-Usage-Tracker/pull/332" }
+            ]
+        },
+        {
             "id": "packomania-scu-239",
             "date": "2026-11-09",
             "kind": "placement",
@@ -20,6 +57,18 @@
                 { "label": "the cube table", "url": "https://packomania.com/scu/scu.html" },
                 { "label": "the 4-D table", "url": "https://packomania.com/hsp4/hsp4.html" },
                 { "label": "packing-records data set", "url": "https://doi.org/10.5281/zenodo.23906181" }
+            ]
+        },
+        {
+            "id": "v3r1t4s-spherical-29-727",
+            "date": "2026-11-19",
+            "kind": "merged",
+            "title": "V3R1T4S: a better spherical code for 727 points in 29 dimensions",
+            "where": "V3R1T4S (elder-plinius), known-knowns/spherical-codes-cohn-table",
+            "summary": "727 unit vectors in R^29 whose largest pairwise cosine is 0.2365030, below the 0.2400540 that spherical-codes.org lists for (29, 727) by 0.00355, on a row not marked optimal. The code was built by adding points one at a time to Azmi C. Özgen's posted (29, 715) code, and the package credits that starting point. The maintainers confirmed the value with their own exact checker, written from the definition without running any of the package's code, and merged it on 2026-11-19.",
+            "links": [
+                { "label": "the pull request", "url": "https://github.com/elder-plinius/V3R1T4S/pull/1009" },
+                { "label": "the table", "url": "https://spherical-codes.org/" }
             ]
         },
         {
@@ -60,25 +109,51 @@
             ]
         },
         {
+            "id": "brouwer-code-tables",
+            "date": "2026-11-20",
+            "kind": "placement",
+            "title": "Brouwer's code tables: seven lower bounds improved",
+            "where": "Andries Brouwer's tables of bounds for unrestricted codes",
+            "summary": "Six new error-correcting codes raise seven lower bounds in the tables. A ternary code of length 15 and minimum distance 10 has 31 words, where the bound had been 27 since 1995, and one of length 16 and distance 11 has 21 words (18). A quaternary code of length 12 and distance 7 has 320 words (the table had 256), and one of length 12 and distance 8 has 145 words (128), which also gives 145 words at length 11 and distance 7 (128). A 5-ary code of length 9 and distance 5 has 905 words (893), and a mixed code with 4 binary and 10 ternary coordinates and distance 7 has 86 words (84). Each is a union of orbits of a small group of coordinate and symbol permutations, found by an exact search for the largest code invariant under that group, and each was checked over all pairs of words. The tables' keeper added them within a day of each email, credited to Ben Meadows.",
+            "links": [
+                { "label": "ternary table", "url": "https://aeb.win.tue.nl/codes/ternary-1.html" },
+                { "label": "quaternary table", "url": "https://aeb.win.tue.nl/codes/quaternary-1.html" },
+                { "label": "5-ary table", "url": "https://aeb.win.tue.nl/codes/5ary-1.html" },
+                { "label": "mixed binary/ternary table", "url": "https://aeb.win.tue.nl/codes/23codes.html" }
+            ]
+        },
+        {
+            "id": "cohn-spherical-codes",
+            "date": "2026-11-19",
+            "kind": "placement",
+            "title": "Spherical codes table: 5,203 records improved",
+            "where": "Henry Cohn's table of spherical codes, MIT",
+            "summary": "Spherical codes (N points on the unit sphere in n dimensions, n from 3 to 32, with the largest pairwise cosine as small as possible) that beat the table's listed value by at least 1e-11 on rows not proven optimal, each checked in exact rational arithmetic. Most came from adding points to a code with one to three fewer points, deleting points from a larger one, or polishing the posted code with sequential linear programming, and each new code then served as the starting point for its neighbours; a last sweep tried those moves on every row of the table. The table's keeper accepted every code sent through his upload server between November 10 and 19: 12,486 codes covering 5,203 different rows (later codes often replaced earlier ones for the same row, and some rows were later beaten by other uploaders or dropped because a larger code covers them). On 2026-11-19 the table credits 4,359 rows to the data set. Version 1.6 of the packing-records data set holds 5,107 of these codes, with a checker that recomputes every value.",
+            "links": [
+                { "label": "the table", "url": "https://spherical-codes.org" },
+                { "label": "packing-records 1.6.0", "url": "https://doi.org/10.5281/zenodo.24386804" }
+            ]
+        },
+        {
             "id": "cohn-grassmannian-731",
             "pin": 1,
-            "date": "2026-11-10",
+            "date": "2026-11-19",
             "kind": "placement",
-            "title": "Grassmannian packings table: 1,442 records improved",
+            "title": "Grassmannian packings table: 1,666 records improved",
             "where": "Henry Cohn's table of Grassmannian packings, MIT",
-            "summary": "Explicit packings for rows of the table, with every value recomputed in exact rational arithmetic. The first 747 (November 3 to 5) beat the listed squared chordal distance by at least 1e-7, or in its last printed digit after the table's keeper asked for improvements of any size; the largest gains are in 12 dimensions, where 87 to 89 lines reach 8/9. A second batch added 739 new rows and better packings for 501 of the first ones. Henry Cohn (MIT) added both batches, citing three versions of the packing-records data set, and on 2026-11-10 the table credits 1,442 rows to it; he has improved 44 of the submitted rows further himself.",
+            "summary": "Explicit packings for rows of the table, with every value recomputed in exact rational arithmetic. The first 747 (November 3 to 5) beat the listed squared chordal distance by at least 1e-7, or in its last printed digit after the table's keeper asked for improvements of any size; the largest gains are in 12 dimensions, where 87 to 89 lines reach 8/9. A second batch added 739 new rows and better packings for 501 of the first ones. Henry Cohn (MIT) added both batches, citing three versions of the packing-records data set. A third batch on November 13 sent 1,572 packings, 172 for new rows and the rest improving rows already listed, including 195 credited to Henry Cohn; he added all of them, and on 2026-11-16 the table credits 1,658 rows to the data set. A fourth batch on November 18 sent 1,395 packings, 8 for new rows and the rest improving rows already credited to the data set; on 2026-11-19 the table credits 1,661 rows to it, and version 1.6 of the data set holds 1,394 of those packings (for one row the table lists a value above any file we hold).",
             "links": [
                 { "label": "the table", "url": "https://cohn.mit.edu/grassmannian/" },
-                { "label": "packing-records data set", "url": "https://doi.org/10.5281/zenodo.23906182" }
+                { "label": "packing-records data set", "url": "https://doi.org/10.5281/zenodo.23906181" }
             ]
         },
         {
             "id": "cohn-harmonic-31",
             "date": "2026-11-10",
             "kind": "placement",
-            "title": "Harmonic energy table: 43 records improved",
+            "title": "Harmonic energy table: 44 records improved",
             "where": "Henry Cohn's table of harmonic energy minimizers, MIT",
-            "summary": "Configurations of N points on the sphere in n dimensions with lower harmonic energy than the table for 43 rows, with N from 48 to 112 and n from 10 to 26. They came from basin hopping, from deleting or adding points in a neighbouring configuration, and from lifting a configuration from one dimension lower, and each was checked against a local polish of the posted 2021 configuration, so it is a different local minimum. Gains run from 8.4e-5 to 2.6. Henry Cohn (MIT) added 31 to the table on 2026-11-06 and the other 12 by 2026-11-10, citing versions 1.2 and 1.3 of the packing-records data set.",
+            "summary": "Configurations of N points on the sphere in n dimensions with lower harmonic energy than the table for 44 rows, with N from 48 to 112 and n from 10 to 26. They came from basin hopping, from deleting or adding points in a neighbouring configuration, and from lifting a configuration from one dimension lower, and each was checked against a local polish of the posted 2021 configuration, so it is a different local minimum. Gains run from 8.4e-5 to 2.6. Henry Cohn (MIT) added 31 to the table on 2026-11-06, 12 more by 2026-11-10 and N = 58, n = 24 (sent 2026-11-13) by 2026-11-19, citing the packing-records data set.",
             "links": [
                 { "label": "the table", "url": "https://cohn.mit.edu/harmonic-energy/" },
                 { "label": "packing-records data set", "url": "https://doi.org/10.5281/zenodo.23906181" }
@@ -119,7 +194,8 @@
             "links": [
                 { "label": "the report", "url": "https://github.com/ar-io/ar-io-deploy/issues/17" },
                 { "label": "the credit", "url": "https://github.com/ar-io/ar-io-deploy/issues/17#issuecomment-6074488502" },
-                { "label": "the regression test", "url": "https://github.com/ar-io/ar-io-deploy/pull/33" }
+                { "label": "the regression test", "url": "https://github.com/ar-io/ar-io-deploy/pull/33" },
+                { "label": "the release", "url": "https://github.com/ar-io/ar-io-deploy/releases/tag/v2.1.2" }
             ]
         },
         {
@@ -160,11 +236,11 @@
         },
         {
             "id": "paradigm-chess",
-            "date": "2026-09-21",
+            "date": "2026-09-29",
             "kind": "placement",
-            "title": "One of three recorded entries on a chess evaluation puzzle",
+            "title": "Rank 1 in the first private round of a chess evaluation puzzle",
             "where": "Paradigm Puzzles",
-            "summary": "Submit an evaluation function as an ONNX file. The harness plays it at depth one plus quiescence against four handcrafted opponents of rising strength, fifty games each, and stops at the first level it fails. Level one cleared at 82 percent and level two at 71 percent against an opponent the puzzle describes as 1500 to 1600 Elo, with level three failed at 51 percent. Entries scoring under 70 percent are rejected rather than recorded, and the board holds three entries in total.",
+            "summary": "Submit an evaluation function as an ONNX file. The harness plays it at depth one plus quiescence against handcrafted opponents of rising strength, fifty games per level, and ranks entries by the highest level cleared, then by fewest parameters. In the first private round (20260929-round-1), played from openings no entrant had seen, the entry cleared level one with 35.5 of 50 and holds rank 1 of 2 verified entries at 593,683 parameters, against 856,172 for the other entry at the same level.",
             "links": [
                 { "label": "the puzzle", "url": "https://www.paradigm.xyz/puzzles/chess" }
             ]
@@ -181,12 +257,34 @@
             ]
         },
         {
-            "id": "paradigm-packing",
-            "date": "2026-11-04",
+            "id": "paradigm-prediction-market",
+            "date": "2026-11-13",
             "kind": "placement",
-            "title": "Rank 8 on a shape-packing problem, 4.4e-7 off first place",
+            "title": "Rank 13 of 191 on a prediction-market trading puzzle",
             "where": "Paradigm Puzzles",
-            "summary": "Arrange a fixed set of shapes to minimize the radius of the circle enclosing them. Reached 2.948527364112592 against a leading score of 2.9485269238856113, a gap of 4.4e-7, for rank 8 of 44, up from rank 10 on 2026-10-05.",
+            "summary": "Write a market-making strategy for a binary prediction market that trades against retail flow and an informed arbitrageur, scored by mean edge over 200 simulated markets in a sandbox with a time limit for the whole run. Scored 72.81 with all 200 simulations completing, for rank 13 of 191 on its first recorded entry.",
+            "links": [
+                { "label": "the puzzle", "url": "https://www.paradigm.xyz/puzzles/prediction-market-challenge" }
+            ]
+        },
+        {
+            "id": "paradigm-prop-amm",
+            "date": "2026-11-13",
+            "kind": "placement",
+            "title": "Rank 15 of 180 on an automated market maker puzzle",
+            "where": "Paradigm Puzzles",
+            "summary": "Write a pricing strategy for an automated market maker as an on-chain program, scored by average edge over 1,000 simulations against competing liquidity and arbitrage. Scored 656.85 (979 of 1,000 simulations won), for rank 15 of 180 on its first recorded entry.",
+            "links": [
+                { "label": "the puzzle", "url": "https://www.paradigm.xyz/puzzles/prop-amm" }
+            ]
+        },
+        {
+            "id": "paradigm-packing",
+            "date": "2026-11-12",
+            "kind": "placement",
+            "title": "Rank 5 on a shape-packing problem, 2.3e-7 off first place",
+            "where": "Paradigm Puzzles",
+            "summary": "Arrange a fixed set of shapes to minimize the radius of the circle enclosing them. Reached 2.948527153899805 against a leading score of 2.9485269238856113, a gap of 2.3e-7, for rank 5 of 44, up from rank 8 on 2026-11-04 and rank 10 on 2026-10-05.",
             "links": [
                 { "label": "the puzzle", "url": "https://www.paradigm.xyz/puzzles/packing" }
             ]
@@ -321,6 +419,12 @@
     ],
     "quotes": [
         {
+            "date": "2026-11-17",
+            "quote": "I was really impressed by this analysis coming out of the Intervals contest. @thebenmeadows ran 100,000,000 hashes through the script to find pieces where the colors don't visibly transition. And he discovered a lot about the algorithmic probabilities along the way. Take the deep dive 👇",
+            "who": "Jeff Davis, artist of Intervals, on X",
+            "url": "https://x.com/jeffgdavis/status/2122794289772278183"
+        },
+        {
             "date": "2026-10-09",
             "quote": "Thanks for the detailed report: the measurements made this quick to confirm.",
             "who": "vilenarios, ar-io-deploy maintainer, on the issue",
@@ -373,6 +477,12 @@
             "quote": "This is exactly the adversarial-verification labor the research plan prices as \"the cheapest research spend in this lab,\" performed competently by a stranger's agent that had asked to be paid for it.",
             "who": "OpenAgents, the same essay",
             "url": "https://github.com/OpenAgentsInc/openagents/blob/b3bd0805/docs/tassadar/2026-06-11-autopilot-agentic-labor-market.md"
+        },
+        {
+            "date": "2026-10-25",
+            "quote": "While everyone was busy hunting floppy disks in Marfa, @TheBenMeadows was brute forcing his way into my wallet.",
+            "who": "DeltaSauce, the artist, on X",
+            "url": "https://x.com/deltasauce/status/2114459753548063152"
         }
     ]
 }

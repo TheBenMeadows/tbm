@@ -46,6 +46,7 @@ const PAGES = [
     { file: 'experiments/etherhoo/index.html', url: '/experiments/etherhoo/' },
     { file: 'experiments/dls/index.html', url: '/experiments/dls/' },
     { file: 'experiments/poap-vault/index.html', url: '/experiments/poap-vault/' },
+    { file: 'experiments/intervals/index.html', url: '/experiments/intervals/' },
     { file: 'projects/poap-saver/index.html', url: '/projects/poap-saver/' },
 ];
 

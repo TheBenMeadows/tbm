@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Intervals in Numbers</title>
+<link rel="canonical" href="https://thebenmeadows.com/experiments/intervals/">
+<meta name="description" content="One hundred million hashes of Jeff Davis's Intervals, read as data, and the two pieces whose colors do not visibly change.">
+<meta property="og:title" content="Intervals in Numbers">
+<meta property="og:description" content="One hundred million hashes of Jeff Davis's Intervals, and the two pieces whose colors do not visibly change.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://thebenmeadows.com/experiments/intervals/">
+<meta property="og:image" content="https://thebenmeadows.com/experiments/intervals/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+<script type="module" src="app.js"></script>
+</head>
+<body>
+<main>
+<div class="story" id="story">
+  <div class="stage"><div class="box" id="box">
+
+    <figure class="scene" data-scene="hero" aria-hidden="true">
+      <div class="pieces one"><div><img data-art="3806" src="art/3806.webp" width="1000" height="1000" alt="" fetchpriority="high"></div></div>
+      <figcaption id="heroCap"><span class="hash" data-hash="3806"></span><span data-cap="3806"></span></figcaption>
+    </figure>
+
+    <figure class="scene" data-scene="bars" aria-hidden="true">
+      <div class="pieces two">
+        <div><img data-art="852" src="art/852.webp" width="1000" height="1000" alt=""><span class="tag" data-tag="852"></span></div>
+        <div><img data-art="6" src="art/6.webp" width="1000" height="1000" alt=""><span class="tag" data-tag="6"></span></div>
+      </div>
+    </figure>
+
+    <figure class="scene" data-scene="cut" aria-hidden="true">
+      <div class="pieces two">
+        <div><img data-art="388" src="art/388.webp" width="1000" height="1000" alt=""><span class="tag">Horizontal</span></div>
+        <div><img data-art="965" src="art/965.webp" width="1000" height="1000" alt=""><span class="tag">Widths 1:2:4</span></div>
+      </div>
+    </figure>
+
+    <figure class="scene" data-scene="palettes" aria-hidden="true">
+      <div class="pieces seven">
+        <div><img data-art="3806" src="art/3806-s.webp" width="240" height="240" alt=""><span class="tag">No variant</span></div>
+        <div><img data-art="938" src="art/938-s.webp" width="240" height="240" alt=""><span class="tag">Analogous</span></div>
+        <div><img data-art="422" src="art/422-s.webp" width="240" height="240" alt=""><span class="tag">Saturated</span></div>
+        <div><img data-art="192" src="art/192-s.webp" width="240" height="240" alt=""><span class="tag">Tinted</span></div>
+        <div><img data-art="2713" src="art/2713-s.webp" width="240" height="240" alt=""><span class="tag">Complementary</span></div>
+        <div><img data-art="42299" src="art/42299-s.webp" width="240" height="240" alt=""><span class="tag">Monochromatic</span></div>
+        <div><img data-art="16798" src="art/16798-s.webp" width="240" height="240" alt=""><span class="tag">Achromatic</span></div>
+      </div>
+    </figure>
+
+    <figure class="scene" data-scene="blend" aria-hidden="true">
+      <div class="pieces two">
+        <div><img data-art="42299" src="art/42299.webp" width="1000" height="1000" alt=""><span class="tag">Blends</span><span class="sw" data-sw="42299"></span></div>
+        <div><img data-art="37767" src="art/37767.webp" width="1000" height="1000" alt=""><span class="tag">Does not visibly change</span><span class="sw" data-sw="37767"></span></div>
+      </div>
+      <figcaption>Two Monochromatic pieces, positions 42,299 and 37,767. Under each: the start and end color of its three intervals, and how far each travels in CIELAB units.</figcaption>
+    </figure>
+
+    <figure class="scene" data-scene="chart">
+      <p class="chart-title" id="chartTitle"></p>
+      <div class="chart" id="chart"></div>
+      <div class="cutctl" id="cutctl">
+        <label for="cut">Largest change allowed in any interval: <b id="cutVal"></b> CIELAB units</label>
+        <input type="range" id="cut" min="0.5" max="10" step="0.5" value="2">
+      </div>
+      <p class="chart-note" id="chartNote"></p>
+    </figure>
+
+    <figure class="scene" data-scene="climax" aria-hidden="true">
+      <p class="big"><span data-k="noneStatics"></span> <small>of <span data-k="noneAll"></span></small></p>
+      <div class="pieces three">
+        <div><img data-art="6610" src="art/6610.webp" width="1000" height="1000" alt=""><span class="tag"><b>&nbsp;</b>Position 6,610</span><span class="sw" data-sw="6610"></span></div>
+        <div><img data-art="9836373" src="art/9836373.webp" width="1000" height="1000" alt=""><span class="tag"><b>Unison</b>Position 9,836,373</span><span class="sw" data-sw="9836373"></span></div>
+        <div><img data-art="11318975" src="art/11318975.webp" width="1000" height="1000" alt=""><span class="tag"><b>Fermata</b>Position 11,318,975</span><span class="sw" data-sw="11318975"></span></div>
+      </div>
+      <figcaption>All three have no color variant. The left one blends. In the other two, no interval travels as much as 2 units.</figcaption>
+    </figure>
+
+  </div></div>
+
+  <div class="steps">
+    <header class="step lead" data-scene="hero">
+      <h1>Intervals in Numbers</h1>
+      <p class="dek">Every piece of <a href="https://heftgallery.com/intervals">Intervals</a> is decided by a single hash. Run one hundred million of them through the script and a pattern shows: the colors almost always travel. With no palette rule at all, they stood still twice.</p>
+      <p class="byline">Analysis by Benjamin Meadows. Intervals is by Jeff Davis, <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>.</p>
+    </header>
+
+    <article class="step" data-scene="hero">
+      <h2><span class="n">01</span>What a hash decides</h2>
+      <p>A hash is 64 hexadecimal characters. The script reads it as a seed and makes a short list of choices. This piece is what one hash produces.</p>
+      <p>The hashes here are one fixed, reproducible sequence: hash <span class="num">i</span> is the SHA-256 of the text <span class="num">intervals-r3:i</span>.</p>
+    </article>
+
+    <article class="step" data-scene="bars">
+      <p>First, how many bars: one of eight counts, from 15 to 72. Six of the counts are equally likely, near <span data-k="barsMid"></span> each. The two extremes come up half as often.</p>
+    </article>
+
+    <article class="step" data-scene="cut">
+      <p>Which way the bars run is a coin toss: <span data-k="vertShare"></span> vertical. Bars are all the same width in <span data-k="evenShare"></span> of pieces. In the rest, each of the three color intervals gets its own bar width, in a ratio such as 1:2:4.</p>
+    </article>
+
+    <article class="step" data-scene="palettes">
+      <h2><span class="n">02</span>Seven palettes</h2>
+      <p>Then a color variant. Six of them hold the colors to a rule. The seventh option is no variant at all, and it is the one most pieces get.</p>
+    </article>
+
+    <article class="step" data-scene="chart" data-chart="shares">
+      <p>The script weights the choice. More than half of all pieces get no variant; Achromatic is kept to one in a hundred. One hundred million hashes land on those weights almost exactly.</p>
+    </article>
+
+    <article class="step" data-scene="blend">
+      <h2><span class="n">03</span>When nothing blends</h2>
+      <p>The three intervals alternate bar by bar, and each travels from its own start color to its own end color. Sometimes start and end are so close that the interval does not visibly change. The stripes still alternate, but nothing shifts across the piece.</p>
+      <p>Call a piece no-blend when all three intervals move less than 2 units in CIELAB, close to the commonly cited threshold for a just-noticeable difference.</p>
+    </article>
+
+    <article class="step" data-scene="chart" data-chart="counts">
+      <p><span data-k="staticsAll"></span> of the hundred million are no-blend, and <span data-k="monoShare"></span> of those are Monochromatic. But raw counts mostly follow how often a variant is picked.</p>
+    </article>
+
+    <article class="step" data-scene="chart" data-chart="rates">
+      <p>The fairer question is how often each variant fails to blend once it has been chosen. For Monochromatic it is about once in <span data-k="mono1in"></span>: its widest interval typically travels only <span data-k="monoMedian"></span> units.</p>
+      <p>With no variant, <span data-k="noneFar"></span> of pieces have an interval that travels 20 units or more.</p>
+    </article>
+
+    <article class="step" data-scene="climax">
+      <h2><span class="n">04</span>The two that stand still</h2>
+      <p>Of <span data-k="noneAll"></span> pieces with no variant, <span data-k="noneStatics"></span> came out no-blend. Nothing asked their colors to agree. They do not visibly change anyway.</p>
+      <p class="aside">Positions are places in this analysis sequence, not mint numbers.</p>
+    </article>
+
+    <article class="step" data-scene="chart" data-chart="cut">
+      <h2><span class="n">05</span>The line moves the answer</h2>
+      <p>Two units is a choice, not a law. Move the line and the counts change, the rarest ones most of all. The slider works on the first ten million hashes, the range where every piece's distances were kept. That range holds one of the two pieces above, so at 2 units it counts one.</p>
+    </article>
+  </div>
+</div>
+
+<div class="col">
+<section id="lookup">
+  <h2><span class="n">06</span>Check a hash</h2>
+  <p>Paste any Intervals hash, or a position in the sequence, to see the piece, its traits, how common each one is, and how far its colors travel.</p>
+  <form class="controls" id="lookupForm">
+    <label>Hash or position <input type="text" id="q" value="9836373" spellcheck="false" autocomplete="off" autocapitalize="off" aria-describedby="spanOut"></label>
+    <button>Check</button>
+    <button type="button" class="quiet" id="qRandom">Random</button>
+  </form>
+  <div class="lookup">
+    <div class="frame-wrap"><iframe class="frame" id="frame" title="Intervals piece drawn by the artist's generator" sandbox="allow-scripts allow-same-origin" referrerpolicy="no-referrer"></iframe><p class="frame-msg" id="frameMsg" role="status" hidden></p></div>
+    <div>
+      <p class="hash" id="qHash"></p>
+      <div class="tbl"><table id="traits"><caption>Traits</caption><tbody></tbody></table></div>
+      <p class="readout" id="spanOut" aria-live="polite"></p>
+    </div>
+  </div>
+  <p class="note">The piece is drawn live by the generator at heftgallery.com, which also reports its traits. Blend distances are computed in your browser by running the artist's script from his site. The script is not copied to this site.</p>
+</section>
+
+<section id="tables">
+  <details><summary>The numbers as tables</summary><div class="tbl" id="t-all"></div></details>
+</section>
+
+<footer>
+  <p class="small">Method. Each hash was run through the unmodified Intervals script in Node, recording its traits and the CIELAB distance between each interval's start and end color. Positions 0 to <span data-k="lastPos"></span> were screened in chunks of 100,000. The manifest (sha256 <span data-k="manifest"></span>) lists counts per chunk and can be re-run with the public verifier at <a href="https://github.com/TheBenMeadows/intervals-screen">github.com/TheBenMeadows/intervals-screen</a>. Bar count, orientation, widths and the cut-off slider use per-piece rows kept for the first 10,000,000 positions only. All counts describe this one sequence, which is a sample; other hashes will differ.</p>
+  <p class="small">Intervals © Jeff Davis, CC BY-NC 4.0, <a href="https://heftgallery.com/intervals">heftgallery.com/intervals</a>. Images of pieces on this page are renders of his script, shown under that license. Analysis and page: Benjamin Meadows. Non-commercial. <a href="/experiments/">More experiments</a>.</p>
+</footer>
+</div>
+</main>
+<noscript><p class="error">This page needs JavaScript for its numbers, charts and the hash tool.</p></noscript>
+</body>
+</html>

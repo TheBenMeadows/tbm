@@ -25,8 +25,8 @@ supporting pages — [`/mirrors/`](https://thebenmeadows.com/mirrors/),
 compiles the CSS, the search index, the blog and the `/ai/` page; there is no
 framework or client-side rendering.
 
-Search is dependency-free on purpose. The corpus is about 182 KB across 39 pages
-and the index built from it about 198 KB — small enough to match in the browser
+Search is dependency-free on purpose. The corpus is about 182 KB across 41 pages
+and the index built from it about 205 KB — small enough to match in the browser
 without a search library. The usual pick, Pagefind, runs on WebAssembly, which
 under this site's `script-src 'self'` CSP would mean adding `'wasm-unsafe-eval'`.
 Instead `scripts/build-search-index.mjs` emits a JSON index at build time and
@@ -119,7 +119,7 @@ page and do count:
 
 `search-index.json` grows with every page in `scripts/build-search-index.mjs` and with
 every post under `blog/posts/`, but `search.js` fetches it on first search rather than
-on load, so it stays out of the measurement. It is 198 KB — more than the entire budget on
+on load, so it stays out of the measurement. It is 205 KB — more than the entire budget on
 its own, most of it blog prose — so it must stay lazy. Fetching it on load would fail
 the build. It has outgrown the budget already and will keep growing with the blog, which is
 survivable only because it is never part of a cold visit; the day it stops being lazy is
@@ -352,4 +352,5 @@ DNS change.
 
 Code is [MIT](LICENSE). Personal images and brand assets — `me.png`,
 `btm-logo.png`, and the `favicon/` set — are not covered by the license;
-all rights reserved.
+all rights reserved. The images under `experiments/intervals/` are renders of
+Intervals by Jeff Davis, licensed CC BY-NC 4.0; see the `NOTICE.txt` there.

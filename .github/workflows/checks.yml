@@ -52,8 +52,14 @@ jobs:
 
       # Renders dist/ in the runner's preinstalled Chrome and fails on body
       # copy past 75 characters a line, under 16px, or justified on a phone.
+      # Its Safari pass skips itself on Linux; the safari job below runs it.
       - name: Line length and body size (check-measure)
         run: npm run check:measure
+
+      # The shared Public Sans keeps its spaced-hyphen fix, tabular figures and
+      # 400-700 weight axis (scripts/check-font.mjs; built by scripts/build-font.py).
+      - name: Font (check-font)
+        run: npm run check:font
 
       - name: css-touch-lint (hover, focus ring, :invalid, Tailwind flag, input size)
         run: python3 scripts/css-touch-lint.py
@@ -65,3 +71,37 @@ jobs:
           ./gitleaks git --no-banner --redact
       - name: npm audit (high and critical advisories)
         run: npm audit --audit-level=high
+
+  # Safari stretches justified lines differently from Chrome, and only macOS
+  # WebKit measures what Safari shows (Linux WebKit read 15-37% wide word
+  # spaces on pages that measure 4-5% in Safari). Builds dist/ here and runs
+  # check-measure, whose WebKit pass fails a page where more than 15% of the
+  # word spaces in justified body copy are wider than 0.5em.
+  safari:
+    runs-on: macos-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        run: npm run build:netlify
+
+      - name: Install WebKit
+        run: npx playwright-core install webkit
+
+      - name: Safari word spacing, line length and body size (check-measure)
+        run: npm run check:measure
+        env:
+          CHROME_PATH: /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
