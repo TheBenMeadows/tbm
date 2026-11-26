@@ -56,7 +56,8 @@
             "links": [
                 { "label": "the cube table", "url": "https://packomania.com/scu/scu.html" },
                 { "label": "the 4-D table", "url": "https://packomania.com/hsp4/hsp4.html" },
-                { "label": "packing-records data set", "url": "https://doi.org/10.5281/zenodo.23906181" }
+                { "label": "packing-records data set", "url": "https://doi.org/10.5281/zenodo.23906181" },
+                { "label": "packing-records repository", "url": "https://github.com/TheBenMeadows/packing-records" }
             ]
         },
         {
@@ -115,12 +116,13 @@
             "kind": "placement",
             "title": "Brouwer's code tables: seven lower bounds credited, an eighth implied",
             "where": "Andries Brouwer's tables of bounds for unrestricted codes",
-            "summary": "Seven new error-correcting codes raise seven lower bounds in the tables. A ternary code of length 15 and minimum distance 10 has 31 words, where the bound had been 27 since 1995, and one of length 16 and distance 11 has 21 words (18). A quaternary code of length 12 and distance 7 has 320 words (the table had 256), and one of length 12 and distance 8 has 145 words (128). A 5-ary code of length 9 and distance 5 has 905 words (893) and one of distance 6 has 166 words (157), and a mixed code with 4 binary and 10 ternary coordinates and distance 7 has 86 words (84). Each is a union of orbits of a small group of coordinate and symbol permutations, found by an exact search for the largest code invariant under that group, and each was checked over all pairs of words. The tables' keeper added them within a day of each email, each credited to Ben Meadows by name. Puncturing the length-12, distance-8 quaternary code also gives 145 words at length 11 and distance 7 (128); the quaternary table lists that value without a separate credit line.",
+            "summary": "Seven new error-correcting codes raise seven lower bounds in the tables. A ternary code of length 15 and minimum distance 10 has 31 words, where the best known code, from 1995, had 27 words, and one of length 16 and distance 11 has 21 words (18). A quaternary code of length 12 and distance 7 has 320 words (the table had 256), and one of length 12 and distance 8 has 145 words (128). A 5-ary code of length 9 and distance 5 has 905 words (893) and one of distance 6 has 166 words (157), and a mixed code with 4 binary and 10 ternary coordinates and distance 7 has 86 words (84). Each is a union of orbits of a small group of coordinate and symbol permutations, found by an exact search for the largest code invariant under that group, and each was checked over all pairs of words. The tables' keeper added them within a day of each email, each credited to Ben Meadows by name. Puncturing the length-12, distance-8 quaternary code also gives 145 words at length 11 and distance 7 (128); the quaternary table lists that value without a separate credit line.",
             "links": [
                 { "label": "ternary table", "url": "https://aeb.win.tue.nl/codes/ternary-1.html" },
                 { "label": "quaternary table", "url": "https://aeb.win.tue.nl/codes/quaternary-1.html" },
                 { "label": "5-ary table", "url": "https://aeb.win.tue.nl/codes/5ary-1.html" },
-                { "label": "mixed binary/ternary table", "url": "https://aeb.win.tue.nl/codes/23codes.html" }
+                { "label": "mixed binary/ternary table", "url": "https://aeb.win.tue.nl/codes/23codes.html" },
+                { "label": "code-table-search repository", "url": "https://github.com/TheBenMeadows/code-table-search" }
             ]
         },
         {
@@ -132,7 +134,8 @@
             "summary": "Spherical codes (N points on the unit sphere in n dimensions, n from 3 to 32, with the largest pairwise cosine as small as possible) that beat the table's listed value by at least 1e-11 on rows not proven optimal, each checked in exact rational arithmetic. Most came from adding points to a code with one to three fewer points, deleting points from a larger one, or polishing the posted code with sequential linear programming, and each new code then served as the starting point for its neighbours; a last sweep tried those moves on every row of the table. The table's keeper accepted every code sent through his upload server between November 10 and 19: 12,486 codes covering 5,203 different rows (later codes often replaced earlier ones for the same row). On 2026-11-19 the table credited 4,359 rows to the data set. Most of those rows were later improved by other uploaders or dropped because a larger code covers them, and on 2026-11-25 the table credits 7 of its 14,700 rows to the data set: (n, N) = (5, 263), (6, 67), (6, 92), (6, 117), (7, 113), (9, 76) and (14, 88). Version 1.6 of the packing-records data set holds 5,107 of these codes, with a checker that recomputes every value.",
             "links": [
                 { "label": "the table", "url": "https://spherical-codes.org" },
-                { "label": "packing-records 1.6.0", "url": "https://doi.org/10.5281/zenodo.24386804" }
+                { "label": "packing-records 1.6.0", "url": "https://doi.org/10.5281/zenodo.24386804" },
+                { "label": "packing-records repository", "url": "https://github.com/TheBenMeadows/packing-records" }
             ]
         },
         {
@@ -145,7 +148,8 @@
             "summary": "Explicit packings for rows of the table, with every value recomputed in exact rational arithmetic. The first 747 (November 3 to 5) beat the listed squared chordal distance by at least 1e-7, or in its last printed digit after the table's keeper asked for improvements of any size; the largest gains are in 12 dimensions, where 87 to 89 lines reach 8/9. A second batch added 739 new rows and better packings for 501 of the first ones. Henry Cohn (MIT) added both batches, citing three versions of the packing-records data set. A third batch on November 13 sent 1,572 packings, 172 for new rows and the rest improving rows already listed, including 195 credited to Henry Cohn; he added all of them, and on 2026-11-16 the table credited 1,658 rows to the data set. A fourth batch on November 18 sent 1,395 packings, 8 for new rows and the rest improving rows already credited to the data set; on 2026-11-19 the table credited 1,661 rows to it, and version 1.6 of the data set holds 1,394 of those packings (for one row the table lists a value above any file we hold). On 2026-11-25 the table credits 1,661 of its 3,511 rows to the data set (reference [25]).",
             "links": [
                 { "label": "the table", "url": "https://cohn.mit.edu/grassmannian/" },
-                { "label": "packing-records data set", "url": "https://doi.org/10.5281/zenodo.23906181" }
+                { "label": "packing-records data set", "url": "https://doi.org/10.5281/zenodo.23906181" },
+                { "label": "packing-records repository", "url": "https://github.com/TheBenMeadows/packing-records" }
             ]
         },
         {
@@ -157,7 +161,8 @@
             "summary": "Configurations of N points on the sphere in n dimensions with lower harmonic energy than the table for 44 rows, with N from 48 to 112 and n from 10 to 26. They came from basin hopping, from deleting or adding points in a neighbouring configuration, and from lifting a configuration from one dimension lower, and each was checked against a local polish of the posted 2021 configuration, so it is a different local minimum. Gains run from 8.4e-5 to 2.6. Henry Cohn (MIT) added 31 to the table on 2026-11-06, 12 more by 2026-11-10 and N = 58, n = 24 (sent 2026-11-13) by 2026-11-19, citing the packing-records data set.",
             "links": [
                 { "label": "the table", "url": "https://cohn.mit.edu/harmonic-energy/" },
-                { "label": "packing-records data set", "url": "https://doi.org/10.5281/zenodo.23906181" }
+                { "label": "packing-records data set", "url": "https://doi.org/10.5281/zenodo.23906181" },
+                { "label": "packing-records repository", "url": "https://github.com/TheBenMeadows/packing-records" }
             ]
         },
         {
