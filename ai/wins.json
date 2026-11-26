@@ -50,9 +50,9 @@
             "id": "packomania-scu-239",
             "date": "2026-11-09",
             "kind": "placement",
-            "title": "Packomania: 318 records in two tables",
+            "title": "Packomania: 317 records in two tables",
             "where": "Eckard Specht's Packomania tables of equal spheres in a cube and in a 4-dimensional ball",
-            "summary": "Packings of N equal spheres with a larger radius than the table listed, each checked in exact arithmetic: 239 in a unit cube (N from 135 to 981) and 79 in a 4-dimensional ball (N from 65 to 300). Every file beats the table's radius for N and for every larger N, a local polish of the posted packing, and the best radius in the Moki & Julio collection, each by at least 1e-7. Gains run from 1.1e-7 to 4.7e-4 in the cube and from 1.3e-7 to 3.6e-4 in the ball. Eckard Specht (Otto von Guericke University Magdeburg) put the cube packings in the table on 2026-11-08 and the 4-D ones on 2026-11-09, citing the packing-records data set.",
+            "summary": "Packings of N equal spheres with a larger radius than the table listed, each checked in exact arithmetic: 239 in a unit cube (N from 135 to 981) and 78 in a 4-dimensional ball (N from 65 to 300; the table credits N = 98 to others). Every file beats the table's radius for N and for every larger N, and a local polish of the posted packing, each by at least 1e-7. All 239 cube files and 73 of the 78 in the ball also beat the best radius in the Moki & Julio collection by at least 1e-7; for N = 95, 133, 147, 181 and 206 that collection already held an equal radius or one less than 1e-7 below. Gains run from 1.1e-7 to 4.7e-4 in the cube and from 1.3e-7 to 3.6e-4 in the ball. Eckard Specht (Otto von Guericke University Magdeburg) put the cube packings in the table on 2026-11-08 and the 4-D ones on 2026-11-09, citing the packing-records data set.",
             "links": [
                 { "label": "the cube table", "url": "https://packomania.com/scu/scu.html" },
                 { "label": "the 4-D table", "url": "https://packomania.com/hsp4/hsp4.html" },
