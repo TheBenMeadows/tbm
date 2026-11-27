@@ -961,6 +961,14 @@
     ],
     "issues": [
       {
+        "repo": "LadybirdBrowser/ladybird",
+        "number": 15868,
+        "title": "Second line beside a float drops below it when the free width is less than a space wider than the word",
+        "url": "https://github.com/LadybirdBrowser/ladybird/issues/15868",
+        "date": "2026-11-27",
+        "fixed": true
+      },
+      {
         "repo": "ar-io/ar-io-deploy",
         "number": 17,
         "title": "Deploy fails when credits come from a Turbo credit share approval (checks owned winc, not effectiveBalance)",
