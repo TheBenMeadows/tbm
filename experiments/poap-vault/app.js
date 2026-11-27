@@ -184,6 +184,71 @@
     });
     q.addEventListener('input', render);
 
+    /* Long badge names have shorter versions in short-names.js (words only
+       deleted, numbers kept, checked by a validator when they were written).
+       Each card shows the longest version that wraps into its two lines, so
+       a name is shortened where it is least informative instead of being cut
+       off mid-word; resizing picks again and fades the new text in. */
+    var SHORT = window.POAP_SHORT || {};
+    var FIT = document.createElement('canvas').getContext('2d');
+    var STILL = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+
+    function norm(s) {
+        return String(s == null ? '' : s).split(/\s+/).filter(Boolean).join(' ');
+    }
+
+    function lineCount(text, w) {
+        var words = text.split(' ');
+        var sp = FIT.measureText(' ').width;
+        var n = 1, cur = 0;
+        for (var k = 0; k < words.length; k++) {
+            var ww = FIT.measureText(words[k]).width;
+            if (ww > w) {   /* overflow-wrap: anywhere breaks a word wider than the card */
+                n += Math.ceil((cur ? cur + sp + ww : ww) / w) - 1;
+                cur = ww % w;
+                continue;
+            }
+            var need = cur ? cur + sp + ww : ww;
+            if (need <= w) cur = need;
+            else { n++; cur = ww; }
+        }
+        return n;
+    }
+
+    function fitNames() {
+        var els = grid.querySelectorAll('.card .n');
+        if (!els.length) return;
+        var w = els[0].clientWidth - 1;
+        if (w <= 0) return;
+        var cs = getComputedStyle(els[0]);
+        FIT.font = cs.fontWeight + ' ' + cs.fontSize + ' ' + cs.fontFamily;
+        Array.prototype.forEach.call(els, function (el) {
+            var full = norm(DATA[Number(el.parentNode.dataset.i)].n);
+            var v = SHORT[full];
+            if (!v) return;
+            var opts = [full].concat(v);
+            var pick = opts[opts.length - 1];
+            for (var k = 0; k < opts.length; k++) {
+                if (lineCount(opts[k], w) <= 2) { pick = opts[k]; break; }
+            }
+            if (el.textContent === pick) { el.dataset.fit = '1'; return; }
+            var fade = el.dataset.fit && !(STILL && STILL.matches) && el.animate;
+            el.textContent = pick;
+            el.title = pick === full ? '' : full;
+            el.dataset.fit = '1';
+            if (fade) el.animate([{ opacity: 0.4 }, { opacity: 1 }], { duration: 240, easing: 'ease-out' });
+        });
+    }
+
+    var fitQueued = false;
+    function fitSoon() {
+        if (fitQueued) return;
+        fitQueued = true;
+        requestAnimationFrame(function () { fitQueued = false; fitNames(); });
+    }
+    if (window.ResizeObserver) new ResizeObserver(fitSoon).observe(grid);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitSoon);
+
     function render() {
         var term = q.value.toLowerCase();
         var html = '';
@@ -204,6 +269,7 @@
                 '</button>';
         });
         grid.innerHTML = html;
+        fitSoon();
         countEl.textContent =
             n === total ? n + ' badges' : n + ' of ' + total + ' badges';
     }
