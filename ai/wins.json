@@ -128,6 +128,19 @@
             ]
         },
         {
+            "id": "friedman-maxmin3",
+            "date": "2026-11-27",
+            "kind": "placement",
+            "title": "Friedman's max/min distance page in 3 dimensions: twelve configurations credited",
+            "where": "Erich Friedman's Packing Center",
+            "summary": "Sets of n points in space with the smallest known ratio of maximum to minimum distance, for n = 36, 38 and 41 to 50. Until 2026-11-27 the page stopped at n = 30. Matt Van Horn's entries for n = 31 to 40 went up first, and later that day Erich Friedman added these twelve, credited to Benjamin Meadows. For n = 41 to 50 they are the page's first entries; at n = 36 and 38 they replaced Van Horn's entries with slightly smaller values (squared ratio 9.43124 against 9.43126, and 9.83037 against 9.83041). For n = 50 the squared ratio is 12.25011. For each n there were tens of thousands of starts: random points, lattice and two-shell layouts, and the n-1 and n+1 configurations with a point added or removed. Each start was smoothed with a soft max/min objective and polished by sequential linear programming. Each of the twelve was checked in exact rational arithmetic.",
+            "links": [
+                { "label": "the page", "url": "https://erich-friedman.github.io/packing/maxmin3/" },
+                { "label": "the page, archived", "url": "https://web.archive.org/web/20261128011939/https://erich-friedman.github.io/packing/maxmin3/" },
+                { "label": "the page's history", "url": "https://github.com/erich-friedman/erich-friedman.github.io/commits/master/packing/maxmin3/index.html" }
+            ]
+        },
+        {
             "id": "cohn-spherical-codes",
             "date": "2026-11-19",
             "kind": "placement",
